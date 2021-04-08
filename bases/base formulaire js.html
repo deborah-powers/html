@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='exemples/nounours-perso.svg'>
+<style type='text/css'>
+	input { display: block; }
+	* {
+		font-size: 100%;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 6mm;
+	}
+</style></head><body>
+	<form>
+		<p>Votre nom</p>
+		<input type='text' id='l-name' value='Carroussi'/>
+		<p>Votre prénom</p>
+		<input type='text' id='f-name' value='Claudia'/>
+		<input type='submit' onmouseleave='printName()'/>
+		<input type='reset'/>
+	</form>
+	<p id='showLname'>Votre nom est:</p>
+	<p id='showFname'>Votre prénom est:</p>
+</body><script type='text/javascript'>
+	var Fname = document.getElementById ('f-name');
+	var Lname = document.getElementById ('l-name');
+			var showFname = document.getElementById ('showFname');
+			var showLname = document.getElementById ('showLname');
+	function printName(){
+		var txtFname = Fname.value;
+		var txtLname = Lname.value;
+		showFname.innerHTML = 'Votre prénom est: '+ txtFname;
+		showLname.innerHTML = 'Votre nom est: '+ txtLname;
+	}
+</script></html>

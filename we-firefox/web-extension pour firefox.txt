@@ -1,0 +1,209 @@
+créer une web extension (add-on) pour firefox
+
+
+====== installer ======
+
+l'extension est codée.
+
+ouvrir about:debugging#/setup
+cliquer sur "ce firefox"
+charger un module temporaire
+
+
+
+
+====== exemple a ======
+
+https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
+
+créer un dossier, exemple-a/
+
+manifest.json
+{
+	"manifest_version": 2,
+	"name": "exemple addon a",
+	"version": "1.0",
+	"description": "créer une web extension basique pour firefox.",
+	"icons": { "48": "smile.bmp" },
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"js": ["modify.js"]
+	}]
+}
+le nom manifest est obligatoire.
+manifest_version, name, version sont obligatoires.
+
+icons: {
+	"48": "img-48.png",
+	"96": "img-96.png"
+}
+les icones sont des images carrées de 48 ou 96px de coté. 48 est la valeur par défaut. je peux utiliser des fichiers svg et des fichiers externes.
+
+content_scripts: charger un script quand je suis sur les pages. ici, il n'est chargé que quand je suis sur les pages de mozilla.
+si je veux lancer l'addon pour tous les sites: "matches": ["<all_urls>"]
+
+modify.js
+le nom est libre.
+
+dans firefox, taper about:debugging
+dans ce firefox/extension temporaire, charger un module complémentaire temporaire
+mon module est chargé. si je ferme firefox, il est perdu, je dois le recharger. je peux aussi recharger mon script de la page de debugging.
+about:debugging#/runtime/this-firefox
+
+====== exemple b ======
+
+https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension
+
+dossier exemple-b/
+je veux avoir une icône dans la barre d'outils. quand je clique dessus, une popup apparait et me présente des images. j'en sélectionne une, qui remplace le contenu de la page.
+
+rajouter dans manifest.json
+
+"permissions": [ "activeTab" ],
+"browser_action": {
+	"default_icon": "nounours.svg",
+	"default_title": "exemple addon b",
+	"default_popup": "popup.html"
+},
+"web_accessible_resources": [
+	"images/fleur-1.svg",
+	"images/fleur-2.svg",
+	"images/fleur-4.svg"
+]
+browser_action contient les fichiers necéssaires pour la popup.
+	default_icon: l'icône affichée dans la barre d'outils, différente de celle de "icons"
+	default_popup: le fichier html de la popup
+la popup est également reliée à un script js, différent de content_scripts/js. ce script est appelé normalement, dans la page de la popup.
+sans default_popup, l'action se lance quand on clique sur l'icône de la barre d'outils.
+
+web_accessible_resources déclare que les images sont accessibles par le web.
+permissions déclare les permissions dont a besoin l'extension.
+
+dans modify.js
+
+function chooseMyFlower (request, sender, sendResponse){
+	while (document.body.firstChild) document.body.firstChild.remove();
+	var flowerImage = document.createElement ('img');
+	flowerImage.setAttribute ('src', flowerUrl);
+	flowerImage.setAttribute ('style', 'width: 100vw');
+	flowerImage.setAttribute ('style', 'height: 100vh');
+	document.body.appendChild (flowerImage);
+	browser.runtime.onMessage.removeListener (chooseFlower);
+}
+browser.runtime.onMessage.addListener (chooseMyFlower);
+
+====== exemple c ======
+
+je veux avoir une icône dans la barre d'outil. quand je clique dessus, la page se modifie.
+
+dossier exemple-c/
+
+rajouter dans manifest.json
+
+"permissions": [ "activeTab", "tabs" ],
+"page_action": {
+	"default_icon": "fleur-rose.svg",
+	"default_title": "simplificateur d'affichage",
+	"browser_style": true
+},
+"background": { "scripts": [ "modify.js" ]}
+
+page_action permet de lancer une action sans popup. background.scripts contient le script à lancer.
+je peux intervertir deux icônes pour marquer l'état éteint ou allumé de l'extension. le changement est éffectué dans le script.
+
+dans launch-action.js
+
+function initAction (tab){
+	browser.pageAction.setIcon ({tabId: tab.id, path: "fleur-rose.svg"});
+	browser.pageAction.setTitle ({tabId: tab.id, title: launchExtension});
+	browser.pageAction.show (tab.id);
+}
+// réinitialiser l'extension chaque fois que l'onglet est rafraîchi
+browser.tabs.onUpdated.addListener (function (id, changeInfo, tab){
+	initAction (tab);
+});
+// à l'ouverture de firefox, initialiser l'extension pour toutes les pages
+var allTabs = browser.tabs.query({});
+allTabs.then (function (tabs){
+	for (var tab in tabs) initAction (tab);
+});
+function toggleExtension (tab){
+	function gotTitle (title){
+		if (title === launchExtension){
+			browser.pageAction.setIcon({tabId: tab.id, path: "fleur-bleue.svg"});
+			browser.pageAction.setTitle({tabId: tab.id, title: stopExtension});
+			browser.tabs.insertCSS ({code: CSS});
+		} else {
+			browser.pageAction.setIcon({tabId: tab.id, path: "fleur-rose.svg"});
+			browser.pageAction.setTitle({tabId: tab.id, title: launchExtension});
+			browser.tabs.removeCSS ({code: CSS});
+		}
+	}
+
+	var title = browser.pageAction.getTitle ({ tabId: tab.id });
+	title.then (gotTitle);
+}
+// lancer l'extention quand je clique sur l'icône
+browser.pageAction.onClicked.addListener (toggleExtension);
+
+launch-action est relié à un dom créé par le navigateur, différent de celui de la page.
+je peux modifier ma page grâce aux fonctions browser.tabs.insertCSS ({}) et browser.tabs.executeScript ({}). { code: '...' } ou { file: '...' }
+
+====== exemple d ======
+
+https://code.google.com/archive/p/pythonext/
+
+j'ai firefox 74.0.1 64 bits.
+
+====== web ext ======
+
+// ajouter le répertoire de nodejs à mon apt
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+// installer nodejs et npm
+sudo apt install nodejs
+// installer web-ext
+npm install --global web-ext
+web-ext --version
+dans about:config, xpinstall.signatures.required = false
+
+
+
+https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/
+
+	charger provisoirement une extension
+cd my/extension/
+web-ext run
+
+	charger durablement une extension
+dans le manifest, rajouter un id qui ressemble à une adresse mail
+	"browser_specific_settings": { "gecko": { "id": "extension-name@deborah-powers.fr" }}
+web-ext build
+dans about:addons/gestion de vos extensions, charger le .zip créé par le build
+
+https://extensionworkshop.com/documentation/publish/self-distribution/
+
+
+=========== déboguer mon extension ======
+
+sur la page de debugging, cliquer sur examiner.
+dans le menu ..., cliquer désactiver le masquage automatique de la popup.
+
+====== erreurs ======
+
+https://stackoverflow.com/questions/27323631/how-to-override-content-security-policy-while-including-script-in-browser-js-con
+https://developer.chrome.com/extensions/contentSecurityPolicy
+
+====== Content Security Policy ======
+
+Content Security Policy: Les paramètres de la page ont empêché le chargement d’une ressource à inline (« script-src »).
+dans about:config
+désactiver security.csp.enable
+
+====== Missing host permission for the tab ======
+
+Error: Missing host permission for the tab
+se produit quand je lance une popup à partir d'une page vide, sans url.
+
+====== Receiving end does not exist ======
+
+Could not establish connection. Receiving end does not exist

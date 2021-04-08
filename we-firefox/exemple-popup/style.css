@@ -1,0 +1,175 @@
+/* mise en forme de base
+les classes
+.table		émuler simplement une table. structure par défaut: 2 colones de 50% de large chacune
+les formes	.heart, .cloud à associer à la classe .shape; .moon
+*/
+:root {
+	--button-bg: #C36;
+	--bg-color: white;
+	--text-color: #603;
+	--button-height: 2em;
+	--button-bg-hover: #399;
+	--button-color: ivory;
+	--button-color-hover: var(--button-color, black);
+	--button-border: none;
+	--option-size: 1em;
+	--input-bg: #FCC;
+	--table-col: 18em 1fr;
+}
+body {
+	font-size: 1em;
+	background-color: ivory;
+	color: var(--text-color, black);
+	font-family: serif;
+	border-color: var(--text-color, black);
+	border-width: 2px;
+	border-style: none;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-size: 1em;
+	line-height: 2em;
+	vertical-align: top;
+	font-family: inherit;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	color: inherit;
+	background: none;
+	border-width: inherit;
+	border-style: none;
+	border-color: inherit;
+}
+body > * {	margin-bottom: 1em;	}
+*:first-letter {	text-transform: uppercase;	}
+*:before, *:after {	box-sizing: border-box;	}
+table, caption, tr {
+	/* width: 100%; */
+	border-collapse: collapse;
+}
+th, td {	padding-right: 0.2em;	}
+ol, ul {	margin-left: 2%;	}
+h1, h2, h3 {
+	text-align: center;
+	font-weight: bold;
+}
+h1 {	font-size: 1.2em;	}
+hr {
+	height: 0.2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	background-color: var(--text-color, black);
+}
+/* a {	display: block } */
+a:hover {	font-weight: bold }
+/* les boutons */
+button, input, select, textarea {	outline: none;	}
+button, a.button, input[type='button'], input[type='submit'], input[type='reset'], select {
+	text-align: center;
+	display: inline-block;
+	height: var(--button-height, 2em);
+	line-height: var(--button-height, 2em);
+	padding: 0.2em;
+	padding-top: 0;
+	color: var(--button-color, black);
+	background-color: var(--button-bg, #DDD);
+	border-style: var(--button-border, none);
+}
+button:hover, a.button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='reset']:hover {
+	background-color: var(--button-bg-hover, #DDD);
+	color: var(--button-color-hover, black);
+	font-weight: normal;
+}
+/* les champs de texte */
+input[type='radio'], input[type='checkbox'], input[type='number'], input[type='date'], input[type='time'] {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+textarea, input[type='text'], input[type='email'], input[type='number'], input[type='date'], input[type='time'] {
+	width: 100%;
+	color: var(--text-color, black);
+	background-color: var(--input-bg, #DDD);
+	border-style: var(--button-border, none);
+	margin-bottom: 0.2em;
+}
+::placeholder {
+	color: var(--text-color, black);
+	opacity: 0.6;
+}
+textarea {	height: 3em;	}
+/* les boutons radio */
+input[type='radio'], input[type='checkbox'] {
+	width: var(--option-size, 1em);
+	height: var(--option-size, 1em);
+	border: solid 2px black;
+	border-color: var(--text-color);
+}
+input[type='radio']:checked, input[type='checkbox']:checked {	background-color: var(--button-bg, #DDD);	}
+/* classes utilitaires */
+.table {
+	display: grid;
+	grid-template-columns: var(--table-col, 18em 1fr);
+}
+/* formes */
+.shape {
+	width: 3em;
+	height: 3em;
+	margin-left: 1em;
+	z-index: 2;
+	position: relative;
+	background-color: var(--input-bg, #DDD);
+	text-align: center;
+}
+.shape:before, .shape:after {
+	content: "";
+	position: absolute;
+	z-index: -2;
+	width: inherit;
+	height: inherit;
+	background-color: inherit;
+	border-style: inherit;
+	border-width: inherit;
+	border-color: inherit;
+}
+.cloud {
+	margin-left: 2em;
+	margin-top: 1em;
+	padding-top: 1em;
+	border-radius: 100% 100% 0 0;
+}
+.cloud:before, .cloud:after {	bottom: 0;	border-radius: 100%;	}
+.cloud:before {	width: 4em;	height: 75%;	left: -2em;	}
+.cloud:after {	width: 3em;	height: 60%;	right: -1.5em;	}
+.heart {	margin-top: 2em;	margin-bottom: 1em;	transform: rotate(45deg);	}
+.heart:before, .heart:after {	border-radius: 50%;	}
+.heart:before {	left: 0%;	top: -50%;	}
+.heart:after {	left: -50%;	}
+.moon {
+	background-color: transparent;
+	border-radius: 50%;	padding-top: 1em;
+	box-shadow: -1em 0 0 0 var(--input-bg, #DDD);
+}
+.moon:before, .moon:after {	content: none;	}
+.arrow-left {
+	background-image:
+		linear-gradient(0deg, var(--bg-color) 10%, transparent 10%, transparent 90%, var(--bg-color) 90%),
+		linear-gradient(135deg, var(--bg-color) 45%, transparent 45%),
+		linear-gradient(45deg, var(--bg-color) 45%, var(--text-color) 45%, var(--text-color) 55%, transparent 55%),
+		linear-gradient(135deg, transparent 45%, var(--text-color) 45%, var(--text-color) 55%, transparent 55%);
+		}
+.arrow-right {
+	background-image:
+		linear-gradient(0deg, var(--bg-color) 10%, transparent 10%, transparent 90%, var(--bg-color) 90%),
+		linear-gradient(135deg, transparent 55%, var(--bg-color) 55%),
+		linear-gradient(45deg, transparent 45%, var(--text-color) 45%, var(--text-color) 55%, var(--bg-color) 55%),
+		linear-gradient(135deg, transparent 45%, var(--text-color) 45%);
+}
+/* affichage pour les tablettes */
+@media (max-width: 992px){}
+/* affichage pour les smartphones */
+@media (max-width: 768px){}
