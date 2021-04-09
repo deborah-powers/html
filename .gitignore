@@ -1,7 +1,6 @@
 divers/
-exemples
+exemples/
 *.ico
-*.json
 *.log
 *.zip
 *-va.*

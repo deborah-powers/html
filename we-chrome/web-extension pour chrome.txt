@@ -1,2 +1,30 @@
 
+
+
+====== base de l'extension ======
+
+cf fichier we-grafikart
+extension avec une popup.
 https://grafikart.fr/tutoriels/extension-chrome-666
+
+une fois l'extension codée,
+dans chrome://extensions/
+charger l'extension non empaquetée
+si l'icone de l'extension n'apparait pas dans la barre d'outil, cliquer sur l'icone des extensions (la pièce de puzzle grise) et épingler mon extension.
+
+
+
+pas de alert dans la popup !
+
+====== avant de coder ======
+
+activer le mode développeur dans chrome.
+
+dans paramètres / plus d'outils / extensions
+ou chrome://extensions/
+cocher le bouton "mode développeur", en haut à droite.
+
+
+
+
+
