@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='60' height='40' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='border:solid 4px red'>
+	<title>icone console</title>
+<path d='m 0,20 c 0,-20 0,-20 30,-20 c 30,0 30,0 30,20 c 0,20 0,20 -30,20 c -30,0 -30,0 -30,-20' fill='purple' stroke='darkblue' stroke-width='4' />
+<polyline points='5,10 15,15 5,20' fill='none' stroke='darkblue' stroke-width='4' />
+</svg>

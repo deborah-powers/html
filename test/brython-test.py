@@ -1,0 +1,1 @@
+print ('coucou je suis un script externe')

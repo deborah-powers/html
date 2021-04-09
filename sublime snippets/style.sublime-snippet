@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<style type='text/css'>$1</style>]]></content>
+	<tabTrigger>style</tabTrigger>
+	<scope>text</scope>
+</snippet>

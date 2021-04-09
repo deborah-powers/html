@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<!--
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/x-icon' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>">
+	-->
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<script type='text/javascript' src='../site-dp/library-js/drag-drop.js'></script>
+<style type='text/css'>
+	body {
+		width: 18cm;
+		height: 18cm;
+		padding: 10px;
+		background-color: black;
+	}
+	p {
+		width: 60px;
+		height: 60px;
+		margin: 0;
+		margin-bottom: 0;
+		border-radius: 50%;
+		background-image: radial-gradient(deeppink 10%, transparent 80%);
+		position: absolute;
+		left: 600px;
+		top: 260px;
+	}
+</style></head><body>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+	<p class='auto'></p>
+</body><script type='text/javascript'>
+	const couleurs =[ 'orangered', 'purple', 'springgreen', 'cadetblue', 'deeppink', 'orange', 'teal', 'lightblue', 'magenta' ];
+Array.prototype.chooseRandomly = function() {
+	var pos = Math.random();
+	pos = pos * this.length;
+	pos = Math.floor (pos);
+	return this[pos];
+}
+HTMLElement.prototype.setPos = function(){
+	var posX = boundaries[0] + Math.floor (Math.random() * (boundaries[2] - boundaries[0]));
+	var posY = boundaries[1] + Math.floor (Math.random() * boundaries[3] - boundaries[1]);
+	this.style.left = posX +'px';
+	this.style.top = posY +'px';
+	this.style.backgroundImage = 'radial-gradient('+ couleurs.chooseRandomly() +' 10%, transparent 80%)';
+}
+	document.body.isContainer();
+	for (var c=0; c< document.body.children.length; c++) document.body.children[c].setPos();
+</script></html>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<script type='text/javascript'>$1</script>]]></content>
+	<tabTrigger>script</tabTrigger>
+	<scope>text</scope>
+</snippet>

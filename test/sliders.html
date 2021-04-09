@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	[role='slider'] {
+		height: 2em;
+		border-style: double;
+		border-radius: 10% / 50%;
+	}
+	[role='slider'] >* {
+		width: 1em;
+		height: 1em;
+		background-color: var(--fond-color);
+	}
+	input[type='range'], datalist { width: 70%; }
+	datalist {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		writing-mode: vertical-lr;
+	}
+</style></head><body>
+	<h1>les sliders</h1>
+	<h2>input</h2>
+	<input type='range' min='2' max='12' list='graduations' />
+	<datalist id='graduations'>
+		<option value='2' label='très peu'></option>
+		<option value='4' label='assez peu'></option>
+		<option value='6' label='peu'></option>
+		<option value='8' label='assez'></option>
+		<option value='10' label='bien assez'></option>
+		<option value='12' label='beaucoup'></option>
+	</datalist>
+	<h2 id='slider-1'>premier slider</h2>
+	<p role='slider' aria-labelledby='slider-1' aria-valuemin='1' aria-valuemax='100' aria-valuenow='60'>
+		<span>o</span>
+	</p>
+	<h2 id='slider-2'>slider pour des phrases</h2>
+	<p role='slider' id='slider-week' aria-labelledby='slider-2' aria-valuemin='1' aria-valuemax='7' aria-valuenow='5' aria-valuetext='Vendredi'></p>
+</body><script type='text/javascript'>
+	const dayNames = [
+		'Lundi',
+		'Mardi',
+		'Mercredi',
+		'Jeudi',
+		'Vendredi',
+		'Samedi',
+		'Dimanche'
+	];
+	const slider = document.getElementById ('slider-week');
+	function updateSlider (newValue){
+		slider.setAttribute ('aria-valuenow', newValue.toString());
+		slider.setAttribute ('aria-valuetext', dayNames[newValue -1]);
+	}
+</script></html>

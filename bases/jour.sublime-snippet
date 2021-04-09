@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+======================== 2025/0$1/$2 ========================
+
+$3
+]]></content>
+	<tabTrigger>jour</tabTrigger>
+	<scope>text</scope>
+</snippet>

@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head>
+	<title>une pièce de la maison</title>
+	<base target='_blank'/>
+	<meta charset='utf-8'/>
+	<meta name='viewport' content='width=device-width, initial-scale=1'/>
+	<meta name='subject' content='loisir'/>
+	<meta name='author' content='deborah'/>
+	<meta name='link' content='o'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble-3d.css'/>
+	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
+<style type='text/css'>
+body {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+	padding-left: 8em;
+}
+ul {
+	list-style-type: none;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	margin-bottom: 2em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+}
+li {
+	flex-grow: 1;
+	margin: 0;
+	padding: 0;
+}
+li > button {
+	width: 100%;
+	height: 100%;
+}
+bole-3d {
+	--radius: 3em;
+	--fond: pink;
+	left: 11em;
+}
+bole-3d:after, bole-3d:before {
+	content: none;
+	display: block;
+	width: 600%;
+	height: 1200%;
+	border-radius: 50%;
+	position: absolute;
+	left: -250%;
+	top: -550%;
+	background-color: transparent;
+	background-image: radial-gradient(var(--fond), transparent, transparent);
+}
+bole-3d:before { transform: rotateY(90deg); }
+.rond {
+	border-radius: 100%;
+	margin: 0;
+	aspect-ratio: 1;
+	/* --- */
+	width: 3em;
+	background-color: pink;
+	background-image: radial-gradient(pink, green);
+}
+table-3d, chaise-3d {
+	--bord: solid 4px maroon;
+	--fond: brown;
+}
+table-3d {
+	width: 10em;
+	--depth: 8em;
+	top: 15em;	/* fixé en fonction des hauteurs définies par l'utilisateur. ne peut être définie automatiquement */
+	left: 45%;
+}
+chaise-3d {
+	top: 13em;
+	left: 20%;
+	transform: rotateY(90deg);
+}
+</style></head><body>
+	<ul title='pivoter la pièce'>
+		<li><button onclick='turnLeft ("test-room")'>gauche</button></li>
+		<li><button onclick='turnStraigth ("test-room")'>centré</button></li>
+		<li><button onclick='turnRigth ("test-room")'>droite</button></li>
+	</ul>
+	<piece-3d id='test-room' class='semi-losange carrelage-cabochon'>
+		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
+		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
+		<bole-3d> </bole-3d>
+		<table-3d></table-3d>
+		<chaise-3d></chaise-3d>
+		<p class='rond'></p>
+	</piece-3d>
+<script type='text/javascript'>
+</script>
+</body></html>

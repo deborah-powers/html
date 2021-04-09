@@ -1,0 +1,26 @@
+/*
+dépendances: list.js, sudoku.js, structure.css
+*/
+sudoku {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	justify-items: stretch;
+	align-items: stretch;
+	min-height: 12cm;
+	min-width: 12cm;
+	max-width: 24cm;
+	margin: auto;
+}
+sudoku >p {
+	border-style: solid;
+	border-width: 2px;
+	text-align: center;
+	padding: auto;
+}
+sudoku >p:nth-child(3n) { border-right-width: 6px; }
+sudoku >p:nth-child(9n-8) { border-left-width: 6px; }
+sudoku >p:nth-child(-n+9) { border-top-width: 6px; }
+sudoku >p:nth-child(27n-8), sudoku >p:nth-child(27n-7), sudoku >p:nth-child(27n-6),
+	sudoku >p:nth-child(27n-5), sudoku >p:nth-child(27n-4), sudoku >p:nth-child(27n-3),
+	sudoku >p:nth-child(27n-2), sudoku >p:nth-child(27n-1), sudoku >p:nth-child(27n)
+	{ border-bottom-width: 6px; }

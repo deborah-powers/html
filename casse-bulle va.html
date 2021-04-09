@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head>
+	<title>bulles</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='/var/www/html/site-dp/'/>
+	<link rel='icon' type='image/x-icon' href='data/nounours-perso.svg'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	div {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	hr {
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		border-style: solid;
+		border-width: 2px;
+		background-color: pink;
+		border-color: deeppink;
+	}
+	hr.bleu {
+		background-color: lightblue;
+		border-color: blue;
+	}
+	hr.vert {
+		background-color: lightgreen;
+		border-color: green;
+	}
+	hr.orange {
+		background-color: orange;
+		border-color: orangered;
+	}
+</style></head><body>
+	<h1>casse-bulle</h1>
+	<div>
+	<hr onclick='detruire(this)' class='orange'/>
+	<hr onclick='detruire(this)' class='bleu'/>
+	<hr onclick='detruire(this)'/>
+	<hr onclick='detruire(this)' class='vert'/>
+	</div>
+</body>
+<script type='text/javascript'>
+	var div = document.getElementsByClassName ('div')[0];
+	function creer(){}
+	function detruire (bulle){
+		console.log (bulle);
+		bulle.parentElement.removeChild (bulle);
+	}
+</script>
+</html>

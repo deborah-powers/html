@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type='text/css' href='../site-dp/library-css/svg.css'?>
+<svg version='1.1' width='750' height='750' viewBox='0,0 250,250' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='grid'>
+	<title>logos de groupes</title>
+<style type='text/css'><![CDATA[
+	* {
+		fill: none;
+		stroke: deeppink;
+		stroke-width: 1px;
+	}
+	path#pentagram { stroke: green; }
+]]></style>
+<defs>
+	<pattern id='' x='0' y='0' width='20' height='20' patternUnits='userSpaceOnUse'></pattern>
+	<pattern id='' x='0' y='0' width='1' height='0.5' patternUnits='objectBoundingBox'></pattern>
+	<path id='pentagram' d='m 4,128.648 l 154.778,-109.549 l -58,180.901 l -58,-180.901 l 153.557,109.549 z'/>
+</defs>
+	<circle cx='100' cy='100' r='100'/>
+	<path d='m 4,128.648 l 154.778,-109.549 l -58,180.901 l -58,-180.901 l 153.557,109.549 z'/>
+</svg>
+<!--
+
+-->

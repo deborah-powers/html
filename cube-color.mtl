@@ -1,0 +1,14 @@
+# https://www.loc.gov/preservation/digital/formats/fdd/fdd000508.shtml
+
+newmtl diamant_reflet
+
+# couleur principale
+Kd 0.0 1.0 0.0
+# couleur des reflets
+Ks 1.0 0.0 0.0
+# importance du reflet, de 0 à 1000. plus il est faible, plus le reflet est visible
+Ns 9990
+# couleur ambiante de la scène
+Ka 1.0 1.0 1.0
+# transparence. de 0 à 1
+d 1.0

@@ -1,0 +1,35 @@
+nvda a deux modes
+navigation:	par défaut	lecture de la page en utilisant les flèches haut et bas
+focus:	en présence de formulaire	saut d'un élément focusable à l'autre avec tab
+la touche nvda est choisie au lancement de nvda. sa valeur par défaut dépend de l'appareil. je préfère la touche maj.
+
+== raccourcis
+ctl F11: revenir en haut de la page
+ctl F12: aller en bas de la page
+ctl flèche vers le bas: lire la ligne en-dessous
+echap: passer du mode focus au mode navigation
+nvda espace: passer du mode focus au mode navigation
+nvda q: fermer nvda
+f: naviguer entre les éléments d'un formulaire
+h: naviguer de tître en tître
+l: naviguer de liste en liste
+p: naviguer entre les paragraphes
+r: naviguer entre les boutons radio
+,: sortir d'une liste ou d'une table
+shift ,: revenir au début d'une liste ou d'une table
+
+ctl alt n: ouvrir nvda
+flèche du bas: avancer dans la lecture de la page
+flèche du haut: reculer dans la lecture de la page
+
+== sources
+
+https://download.nvaccess.org/releases/2021.2/documentation/keyCommands.html
+https://www.reddit.com/r/Blind/comments/1fo19pz/nvda_question_top_and_bottom_of_pages/?rdt=62465#:~:text=Control%20%2B%20home%20key%20to%20bring,NVDA%20key%20%2B%20the%20space%20bar
+https://www.unimelb.edu.au/accessibility/tools/testing-web-pages-with-nvda#:~:text=Browse%20mode%20v.-,Focus%20mode,focus%20to%20the%20next%20heading
+
+==
+
+Sujet:	rgaa, Programmation, outil
+Auteur:	nvaccess
+Lien:	https://download.nvaccess.org/releases/2021.2/documentation/keyCommands.html

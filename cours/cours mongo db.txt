@@ -1,0 +1,88 @@
+
+
+https://mongodb.github.io/node-mongodb-native/
+http://mongodb.github.io/node-mongodb-native/3.0/
+http://mongodb.github.io/node-mongodb-native/3.0/quick-start/quick-start/
+
+== Installer mongodb
+
+https://docs.mongodb.com/
+https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/
+Pas de dépendances
+Sudo apt-get install -y mongodb
+Sudo apt-get update
+Démarer le serveur
+Sudo service mongodb start
+http://localhost:27017/
+
+== Installer robot3t
+
+ou robot mongo
+http://urlm.co/www.robot3t.com
+https://robomongo.org/
+Outil de management pour mongodb, interface graphique
+Le mettre dans /usr/bin/
+Ouvrir "téléchargement" en mode root
+Ou
+Sudo tar -xzf robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -c /opt
+Rm robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
+Sudo mkdir /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/bkp/
+Sudo mv /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/bkp/
+Sudo ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t /usr/bin/robo3t
+Cat > ~/.local/share/applications/robo3t.desktop <<eol
+[desktop entry]
+Encoding=utf-8
+Name=robo3t
+Exec=robo3t
+Terminal=false
+Type=application
+Categories=development;
+Eol
+Ou
+Wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
+
+== Lancer mongodb
+
+Dans la console
+	Npm install mongodb --save
+	Mongo
+
+== Fonctions utiles
+
+https://docs.mongodb.com/manual/mongo/
+https://docs.mongodb.com/manual/reference/mongo-shell/
+Aide pour les bdd
+	Db.help()
+Voir la liste des bdd
+	Db.admincommand( { listdatabases: 1 } )
+	Show databases
+Supprimer une bdd
+	Use dbtodelete
+	Db.db.dropdatabase()
+Aller dans une bdd
+	Use dbname
+Voir la liste des collections
+	Show collections
+Aide pour les collections
+	Db.collectionname.help()
+Créer une collection
+	Db.createcollection ('colname', json_object)
+Voir le contenu d'une collection
+	Db.collectionname.find()
+Reperer un element dans une collection
+	Db.collectionname.findone ({ field: 'value' })
+Supprimer un element d'une collection
+	Db.collectionname.remove ({ field: 'value' }, true)
+
+== Tutoriels
+
+https://www.tutorialspoint.com/mongodb/mongodb_limit_record.htm
+Lancer mongodb
+Lancer robo3t
+Créer / aller dans une bdd
+Use dbname
+Créer une table
+Db.createcollection ('name', [options])
+Méthode pour mettre des trucs dans une collection, du terminal et pas de mongo
+Sudo mongoimport --jsonarray --db projet10 --collection docs --file /chemin/absolu/users.json
+Sudo mongoimport --jsonarray --db projet_12_13 --collection test --file /home/deborah/bureau/node/node-12-06-deborah-loic-matthieu-karim/api/listusers.json

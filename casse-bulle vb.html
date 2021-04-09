@@ -1,0 +1,96 @@
+<!DOCTYPE html><html><head>
+	<title>lettres en braille</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css'/>
+	<script type='text/javascript' src='library-js/popup.js'></script>
+<style type='text/css'>
+	section {
+		display: inline-flex;
+		flex-wrap: wrap;
+		width: 12em;
+		line-height: 0;
+	}
+	p {
+		box-sizing: border-box;
+		width: 2em;
+		height: 2em;
+		border-radius: 50%;
+		border-width: 4px;
+		border-style: solid;
+		border-color: maroon;
+		background-color: lightcoral;
+		line-height: 0;
+		margin: 0;
+	}
+	p.vider { border-color: blue; }
+	p.vider-a { border-color: green; }
+	p.vider-b { border-color: red; }
+	p.vider-c { border-color: deeppink; }
+	p.rose { background-color: pink; }
+	p.jaune { background-color: orange; }
+	p.vert { background-color: lightgreen; }
+	p.bleu { background-color: lightblue; }
+</style></head><body>
+	<h1>casse-bulle</h1>
+	<button onclick='effacer()'>effacer</button>
+	<section></section>
+	<section></section>
+</body>
+<script type='text/javascript'>
+//	console.log (document.getElementsByTagName ('p')[0].constructor.name);
+
+const classList =[ 'rose', 'jaune', 'bleu' ];
+
+Array.prototype.chooseRandomly = function(){
+	var pos = Math.random();
+	pos = pos * this.length;
+	pos = Math.floor (pos);
+	return this[pos];
+}
+HTMLElement.prototype.createChild = function(){
+	var newElement = document.createElement ('p');
+	newElement.className = classList.chooseRandomly();
+	this.appendChild (newElement);
+}
+HTMLElement.prototype.getByPosX = function (color, posX){
+	var items =[];
+	for (var c=0; c< this.children; c++) if (this.children[c].className === color) items.push (this.children[c]);
+	return items;
+}
+var cadre = document.getElementsByTagName ('section')[0];
+const len =6;
+const len2 = len * len;
+for (var c=0; c< len2; c++) cadre.createChild();
+document.getElementsByTagName ('section')[1].innerHTML = cadre.innerHTML;
+
+function effacer(){
+	var nb=1;
+	// lignes verticales
+	for (var c=0; c< len; c++){
+		nb=1;
+		for (var d=c+ len; d< len2; d+= len){
+			if (cadre.children[d].classList[0] === cadre.children[d-len].classList[0]) nb+=1;
+			else if (nb>2){
+				for (var e=d-nb* len; e<d; e+= len) cadre.children[e].classList.add ('vider-a');
+				nb=1;
+		}}
+		if (nb>2) for (var e=d-nb* len; e<d; e+= len) cadre.children[e].classList.add ('vider-b');
+	//	if (nb>2) for (var e=d-nb* len; e<d; e+= len) cadre.children[e].className ="";
+	}
+	// lignes horizontales
+	for (var c=0; c< len2; c+= len){
+		nb=1;
+		for (var d=c+1; d<c+ len; d++){
+			if (cadre.children[d].classList[0] === cadre.children[d-1].classList[0]) nb+=1;
+			else if (nb>2){
+				for (var e=d-nb; e<d; e++) cadre.children[e].classList.add ('vider-c');
+				nb=1;
+		}}
+		if (nb>2) for (var e=d-nb; e<d; e++) cadre.children[e].classList.add ('vider');
+	}
+}
+</script></html>

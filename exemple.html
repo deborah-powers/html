@@ -1,0 +1,115 @@
+<!DOCTYPE html><html><head>
+	<title>fonctionnalités à tester</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	ul[role='listbox'] { display: none; }
+	ul[role='listbox'].isopen { display: block; }
+	ul[role='listbox'] > li:focus { background-color: yellow; }
+</style></head><body>
+	<h1>tester le fonctionnement de certains composants</h1>
+	<h2>les listes combobox</h2>
+	<p><a href='https://blog.crea-troyes.fr/10868/coder-une-combobox-en-css-et-js-guide-code-complet/#aioseo-le-html-dune-combobox-poser-des-bases-solides-32'>tutoriel</a></p>
+	<label for='option-choix'>choisir une option</label>
+	<input type='text' id='option-choix' role='combobox' aria-autocomplete='list' aria-expanded='false' aria-haspopup='listbox' data-active-option='choix-1' aria-controls='option-liste' />
+	<ul role='listbox' id='option-liste'>
+		<li role='option' id='choix-1'></li>
+	</ul>
+	<script type='text/javascript'>
+const ipCombo = document.getElementById ('option-choix');
+const optionList = document.getElementById ('option-liste');
+const optionsOriginal =[ 'peche', 'pomme', 'poire', 'abricot' ];
+
+function selectOption (event){
+	ipCombo.value = event.target.innerText;
+	event.target.parentElement.className ="";
+}
+HTMLLIElement.prototype.renderOption = function (option, parent){
+	this.innerHTML = option;
+	this.id = 'choix-' + option;
+	this.setAttribute ('role', 'option');
+	this.setAttribute ('tabindex', '0');
+	this.addEventListener ('click', selectOption);
+	parent.appendChild (this);
+}
+HTMLUListElement.prototype.renderList = function (options){
+	this.innerHTML ="";
+	var li= null;
+	if (options.length ===0) this.innerHTML = "<li>aucune valeur correspondante</li>";
+	else for (var option of options){
+		li= document.createElement ('li');
+		li.renderOption (option, this);
+	}
+	this.className = 'isopen';
+}
+HTMLInputElement.prototype.searchQuery = function(){
+	const query = this.value.trim().toLowerCase();
+	var optionsCurrent =[];
+	if (query ==="") for (var option of optionsOriginal){ optionsCurrent.push (option); }
+	else for (var option of optionsOriginal){ if (option.includes (query))
+		optionsCurrent.push (option);
+	}
+	optionList.renderList (optionsCurrent);
+	this.setAttribute ('aria-expanded', 'true');
+}
+ipCombo.addEventListener ('focus', function (event){ event.target.searchQuery(); });
+ipCombo.addEventListener ('keyup', function (event){
+	if (event.key === 'ArrowDown') optionList.children[0].focus();
+	else if (event.key === 'ArrowUp') optionList.children [optionList.children.length -1].focus();
+	else event.target.searchQuery();
+});
+optionList.addEventListener ('keyup', function (event){
+	var optionIndex = -1;
+	for (var o=0; o< optionList.children.length; o++)
+		if (optionList.children[o].id === document.activeElement.id){ optionIndex =o; }
+	if (event.key === 'ArrowDown') optionIndex +=1;
+	else if (event.key === 'ArrowUp') optionIndex -=1;
+	if (optionIndex <0 || optionIndex >= optionList.children.length) ipCombo.focus();
+	else  optionList.children [optionIndex].focus();
+});
+	</script>
+	<h2>l'auto-completion</h2>
+	<label for='auc-off'>auto-complétion désactivée</label><input type='text' id='auc-off' autocomplete='off' />
+	<label for='auc-on'>auto-complétion activée. le navigateur devine lui-même le type de valeur attendue</label><input type='text' id='auc-on' autocomplete='on' />
+	<label for='auc-given-name'>prénom</label><input type='text' id='auc-given-name' autocomplete='given-name' />
+	<label for='auc-family-name'>nom de famille</label><input type='text' id='auc-family-name' autocomplete='family-name' />
+	<label for='auc-url'>une url</label><input type='text' id='auc-url' autocomplete='url' />
+	<label for='auc-bday'>anniversaire</label><input type='date' id='auc-bday' autocomplete='bday' />
+	<label for='auc-'></label><input type='text' id='auc-' autocomplete='' />
+	<h2>les téléverseurs de fichiers</h2>
+	<a href='https://stackoverflow.com/questions/3024404/transform-longitude-latitude-into-meters'>gps en mètres</a>
+	<input type='file' />
+	<input type='file' required />
+	<input type='file' required='false' />
+	<input type='file' required='true' />
+	<input type='file' aria-required />
+	<input type='file' aria-required='false' />
+	<input type='file' aria-required='true' />
+</body>
+<script type='text/javascript' id='brouillon'>
+</script>
+<script type='text/javascript'>
+/*
+navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
+function toRadians (degrees){
+	degrees *= Math.PI;
+	degrees /=180;
+	return degrees;
+}
+function findNearStop (pos){
+	// latitude. 1 degré = 111.133 km
+	const deltaXgps =0.0001;
+	const deltaYgps =0.0001;
+	const deltaYmeter = deltaYgps * 40008000 / 360;
+	const circumferenceY = 40075160 * Math.cos (toRadians (pos.coords.latitude));
+	const deltaXmeter = deltaXgps * circumferenceY /360;
+	console.log (deltaXmeter, deltaYmeter);
+}
+	navigator.geolocation.getCurrentPosition(findNearStop);
+*/
+</script>
+</html>

@@ -5,11 +5,16 @@ Laut:	o
 
 ====== créer un raccourci ======
 
+whereis google-chrome
+
 ****** un raccourci vers un fichier ou un dossier ******
 
 ln -s <complete path to dir> <shortcut save location>
 ln -s /home/deborah/python /home/deborah/Bureau
 ln -s /var/www/html/site-dp /home/deborah/Bureau
+ln -s /usr/bin/google-chrome /home/deborah/Bureau
+ln -s trash:/// /home/deborah/Bureau
+
 
 ****** un raccourci vers une application ******
 
@@ -21,15 +26,52 @@ Version=1.0
 Name=mon appli
 Comment=details sur l'appli
 Icon=/path/to/icon.svg
+Exec=path/to/myapp -arg
 Type=Application
 Terminal=false
 Categories=Utility;divers;
 
 le mettre sur le bureau
+cliquer droit dessus
+autoriser le lancement
+
+chrome.desktop
+
+[Desktop Entry]
+Version=1.0
+Name=chrome
+Comment=navigateur qui prend en compte les fichiers locaux
+Exec=/opt/google/chrome/chrome --password-store=basic --allow-file-access-from-files
+Icon=/opt/google/chrome/product_logo_48.png
+Type=Application
+Terminal=false
+Categories=internet;
 
 
-____________________
-______ divers ______
+====== installer lamp-serveur ======
+
+https://www.linuxrouen.fr/wp/cms-sgc-et-web/lamp-server-phpmyadmin-filezilla-2-312/
+https://blog.storagecraft.com/install-lamp-server-linux-mint-18-command/
+maj apt-get
+sudo apt-get update && sudo apt-get dist-upgrade -y
+sudo reboot
+installer lamp
+sudo apt-get install lamp-server^ -y
+entrer un mdp pour mysql (root)
+
+====== les droits ======
+
+sudo chmod -R 744 .
+sudo chmod -R 744 /usr/local/lib/python3.6/dist-packages/
+
+rendre un fichier executable
+sudo chmod -R chmod u+x fichier.sh
+
+rendre les fichiers d'un dossier non executable
+sudo chmod -R 744 folder
+find folder/ -type f -exec chmod a-x {} \;
+
+====== divers ======
 
 echo $JAVA_HOME
 	/home/lenovo/programmes/jdk-12.0.1
@@ -40,24 +82,70 @@ java --version
 	OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)
 	OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)
 
-sudo chmod -R 744 .
-sudo chmod -R 744 /usr/local/lib/python3.6/dist-packages/
+mkdir path/to/my-folder/
+touch path/to/my-folder/my-file.txt
+
+afficher la barre de navigation dans nautilus, l'explorateur de fichier d'ubuntu
+ctl +l
+ou, dans la console
+gsettings set org.gnome.nautilus.preferences always-use-location-entry true
+
+****** utiliser la dernière version de nodejs ******
+
+télécharger le .tar pour linux
+le dézipper dans /opt/BNF/
+modifier /home/deborah/.bashrc
+export PATH=/opt/BNF/node-v18.12/bin/:/opt/BNF/yarn-v1.12.3/bin/:/opt/BNF/apache-maven-3.2.1/bin:/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin
 
 
-__________________________________________
-______ désinstaller une application ______
+****** créer des alias ******
 
-______ retrouver les infos sur une commande ______
+modifier /home/deborah/.bashrc
+
+ajouter
+# mes alias perso
+alias truc="ma commande sans paramètres"
+actionAvecParam(){
+    ma commande avec des paramètres, $1 et $2;
+    cd $1;
+}
+actionAvecParam /my/path/
+
+alias goh="cd /var/www/html/html/"
+alias gos="cd /var/www/html/site-dp/"
+alias gob="cd /home/deborah/Bureau/"
+alias gop="cd /home/deborah/Bureau/python/"
+alias goph="cd /home/deborah/Bureau/photos/"
+alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
+alias pull="git pull origin master"
+alias push="git push origin master"
+
+https://forums.fedoraforum.org/showthread.php?232018-Where-are-aliases-defined
+sur fedora, les alias sont dans
+/etc/bashrc
+
+alias gob="cd /home/ent6904919/Bureau/"
+alias gop="cd /home/ent6904919/Bureau/python/"
+alias gos="cd /home/ent6904919/Bureau/site-dp/"
+alias goh="cd /home/ent6904919/Bureau/html/"
+alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
+alias pull="git pull origin master"
+alias push="git push origin master"
+
+
+====== désinstaller une application ======
+
+****** retrouver les infos sur une commande ******
 
 which myapp
 whereis myapp
 myapp --version
 
-______ retrouver les infos sur une appli ______
+****** retrouver les infos sur une appli ******
 
 dpkg --listfiles my-app
 
-______ suppression
+****** suppression
 
 sudo rm -R /opt/my-app/
 sudo rm /usr/share/applications/my-app.desktop
@@ -68,8 +156,7 @@ sudo rm /usr/share/icons/hicolor/128x128/apps/my-app.png
 sudo rm /usr/share/icons/hicolor/256x256/apps/my-app.png
 sudo rm /usr/bin/myapp
 
-_____________________________________________________
-______ changer la version de python par défaut ______
+====== changer la version de python par défaut ======
 
 quand j'ai deux versions sur mon ordi.
 
@@ -84,7 +171,7 @@ sudo ln -s /usr/bin/pip3 /usr/bin/pip
 # Confirm the new version of Python: 3
 python --version
 
-______ seconde méthode ______
+****** seconde méthode ******
 
 # try following to see all instances of python
 whereis python

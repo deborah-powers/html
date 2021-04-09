@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='300' height='500' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>tricot tricolor</title>
+<style type='text/css'><![CDATA[
+	svg { border: dotted 4px cadetblue; }
+	path {
+		fill: none;
+		stroke-width: 8px;
+	}
+]]></style>
+<defs>
+	<path
+		d='m 0,50 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100'
+		id='filb'
+	/>
+	<!-- rx,ry rotation flag-grand-arc, flag-sweep, dx,dy -->
+	<path
+		d='m 0,50 v100 a 20,20 0 0,0 20,20 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100 a 10,10 0 1,0 0,40 h100 a 10,10 20 0,1 0,40 h-100'
+		id='fila'
+	/>
+</defs>
+	<use xlink:href='#fila' stroke='limegreen' x='50' />
+	<use xlink:href='#fila' stroke='deeppink' x='60' y='10' transform='scale(-1,1) translate(-260,0)' />
+	<use xlink:href='#fila' stroke='orange' x='70' y='20' />
+</svg>
+

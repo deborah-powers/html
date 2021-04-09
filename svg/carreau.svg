@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/svg.css'?>
+<svg version='1.1' width='600' height='600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='grid'>
+	<title>base pour les carreaux</title>
+	<style type='text/css'><![CDATA[]]></style>
+<defs>
+	<pattern id='' x='0' y='0' width='20' height='20' patternUnits='userSpaceOnUse'></pattern>
+	<pattern id='' x='0' y='0' width='1' height='0.5' patternUnits='objectBoundingBox'></pattern>
+</defs>
+	<g id='coin'>
+		<rect x='20' y='10' width='120' height='60' fill='red' stroke='maroon' />
+		<circle cx='12' cy='12' r='6' fill='green' />
+	</g>
+	<use xlink:href='#coin' transform='rotate(180, 300, 300)' />
+	<use xlink:href='#coin' x='-600' transform='scale(-1.0,1.0)' />
+	<use xlink:href='#coin' y='-600' transform='scale(1.0,-1.0)' />
+</svg>

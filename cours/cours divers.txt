@@ -1,230 +1,267 @@
+== les sélecteurs css
+https://www.w3schools.com/cssref/css_selectors.php
+div[role] { tous les div portant l'attribut rôle }
+div[role='group'] { tous les div portant l'attribut rôle et la valeur group }
+div[id~='monid'] { tous les div dont l'id contient le texte monid, comme commonid1 }
+div[id*='monid'] { tous les div dont l'id contient le texte monid, comme commonid1 }
+div[id|='monid'] { tous les div dont l'id commence par monid, comme monid1 }
+div[id^='monid'] { tous les div dont l'id commence par monid, comme monid1 }
+div[id$='monid'] { tous les div dont l'id fini par monid, comme commonid }
+div [id] { tous les éléments portant un id contenus dans une div }
+div:has([id]) { tous les div dont au moins un enfant porte un id }
+div:not(:has([id])) { tous les div dont aucun enfant ne porte d'id }
 
-_________________
-______ git ______
+== déconnecter un appareil de mes comptes
 
-https://git-scm.com/book/fr/v1/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git
+** google
 
-______ l'installer ______
+icone photo / gérer votre compte google
+menu de gauche / sécurité et connection
+vos appareils
 
-sudo apt-get install git
-git != github
-git --version
-git status
+** hotmail
 
-______ installer git dans un dossier ______
-
-dans mon dossier projet
-git init
-git config --global user.name "deborah-powers"
-git config --global user.email "deborah.powers.dev@gmail.com"
-
-______ commiter des fichiers ______
-
-git add .
-git commit -m 'message de création (date et heure)'
-git show --name-only --pretty=""
-git pull origin master
-git push origin master
-
-
-______ bases, utilisation locale ______
-
-selectionner un fichier
-	git add doc.html
-le mettre sur le git
-	git add .
-	git commit -m "message disant pk on met ce doc sur le git"
-voir les branches
-	git branch
-	une étoile devant la branche dans laquelle on est
-créer une branche
-	git branch new-branch
-aller sur une branche
-	git checkout new-branch
-modifier doc.html dans sublime. la nv version est enregistrée dans new-branch alors que l'ancienne reste dans master
-quand on change de branche et que l'on raffraîchi doc.html, la version affichée est celle de la branche actuelle !
-fusionner une branche dans master, garder ses modifications
-	git checkout master
-	git merge new-branch
-supprimer une branche
-	git branch -d new-branch
-conflit lors d'un meging
-	git status#Unmerged paths
+icone photo / mon compte microsoft
+menu de gauche / sécurité
+protection des appareils
 
 
-______ utilisation à distance ______
 
-créer un répertoire sous github
-	faire le lien. origin est un nom par défaut, comme master en locale
-	git remote add origin https://github.com/nom-github/dossier.git
-	git remote add origin https://github.com/deborah-powers/html.git
-	git config credential.helper store
-	git config --global user.email "deborah.powers.dev@gmail.com"
-	git config --global user.name "deborah-powers"
-vérifier que le lien a été fait. renvoi origin normalement
-	git remote
-déposer le contenu de la branche master dans origin
-	git push origin master
-récupérer un projet chez moi. git demande nom et mdp de github
-	git pull origin master
-	git push origin <local-branch-name>:<remote-branch-name>
-me connecter chez quelqu'un d'autre
-	git remote add nom-autre master adresse
-aller sur une branche du remote
-	git fetch origin
-	git checkout mabranche
-voir les infos du site distant
-	git remote show origin
-récupérer les données de distant/random à local/deborah
-	les récupérer sur local/random
-		git checkout random
-		git pull origin random
-	merger local/random dans local/deborah
-		checkout deborah
-		git merge random
 
-****** erreurs *******
+============ Afficher une image de google photo sur mon site
 
-github fatal "couldn't find remote ref" master
-fatal: impossible de trouver la référence distante master
-git remote rm origin
-git push --set-upstream origin master
+https://www.benjamin-mary.com/fr/outil/google-photos
+Le mieux est de créer un album google contenant les photos que je veux partager.
+Partager la photo ou l'album, obtenir un lien.
+Vérifier que le lien est bien accessible en l'ouvrant dans une fenêtre de navigation privée.
+Dans la fenêtre privée, afficher mon image.
+Copier l'adresse de l'image.
+Je dois obtenir un lien du type "https://lh3.googleusercontent.com/..."
 
-________________________________
-____________ divers ____________
+============ Créer un template pour sublime text
 
-____________ accéder aux json dans chrome ____________
+https://stackoverflow.com/questions/27675067/create-snippet-for-txt-scope
+1. Créer un fichier mon-truc.sublime-snippet
+Pour du texte.txt
+<snippet>
+	<content><![cdata[
+== 2025/$1/$2 ==
+$3
+]]></content>
+	<tabtrigger>jour</tabtrigger>
+	<scope>text</scope>
+</snippet>
+Pour du code python
+<snippet>
+	<content><![cdata[
+	Print ('hello')
+]]></content>
+	<tabtrigger>hello</tabtrigger>
+	<scope>source.python</scope>
+</snippet>
+2. Sauver ce fichier dans
+C:/users/deborah.powers/appdata/roaming/sublime text/packages/user
 
-fermer toutes les fenêtres de chrome
+*** insérer la date du jour dans mon template ***
 
-dans la console
-C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --allow-file-access-from-files
+https://topic.alibabacloud.com/a/sublime-text-3-insert-date-time-etc_1_56_31383282.html
 
-modification permanente qui nécessite les droits d'admin
-raccourci chrome du bureau /propriétés/target
-rajouter --allow-file-access-from-files en fin de ligne
+tous les fichiers sont dans
+C:/users/deborah.powers/appdata/roaming/sublime text/packages/user
 
-____________ autoriser l'accès à mutu dans chrome ____________
+dans Default.sublime-keymap
+[{
+	"keys": ["ctrl+shift+d"],
+	"command": "add_date",
+},]
+s'il existe déjà, rajouter la clef dans la liste.
 
-dans chrome/paramètres/paramètres avancés
-dans système/ouvrir les paramètres proxy/sécurité
-boutons "sites de confiance" et "site"
+dans add_date.py
+import time
+import datetime
+import sublime_plugin
+
+class AddDateCommand (sublime_plugin.TextCommand):
+	def run (self, edit):
+		utc_offset_sec = None
+		if time.localtime().tm_isdst: utc_offset_sec = time.altzone
+		else: utc_offset_sec = time.timezone
+		utc_offset = datetime.timedelta (seconds=-utc_offset_sec)
+		formatted_string = datetime.datetime.now().replace (tzinfo=datetime.timezone (offset=utc_offset)).strftime ('%Y-%m-%dT%H:%M%z')
+		self.view.run_command ('insert_snippet', { 'contents': formatted_string })
+
+la commande add_date et la classe AddDateCommand ont obligatoirement des noms similaires.
+
+== excel
+
+=LIEN_HYPERTEXTE(P6&"927238";"DSCI")
+=DATE(ANNEE(A2);MOIS(A2);JOUR(A2)+1)
+
+============ Wamp
+
+https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/
+https://www.wampserver.com/
+https://wampserver.aviatechno.net/?lang=fr&prerequis=afficher
+Créer un sous-dossier dans c:/wamp/www/
+C:/wamp64/www/
+Installer visual c++, surtout les packages vc9, vc10, vc11, vc15, vc17 et vs16
+Quelques explications sur le fonctionnement de wampserver
+Voir le fichier: Wamp(64)/instructions_utilisation.pdf
+Pour l'utilisation de mariadb et mysql
+Voir le fichier: Wamp(64)/mariadb_mysql.txt
+Service mysql restart
+Service apache2 restart
+
+============ Macro pour window
+
+Créer un fichier macros.doskey
+Gor=cd c:/users/lenovo
+Gob=cd c:/users/lenovo/desktop
+Gop=cd c:/users/lenovo/desktop/python
+Goh=cd c:/users/lenovo/desktop/html
+Gos=cd c:/users/lenovo/desktop/site-dp
+: : Cmmt=git add. $t git commit -m "boulot %date: ~6,4%/%date: ~3,2%/%date: ~0,2% %time: ~0,5% $1"
+Cmmt=git add. $t git commit -m "boulot %date: ~3,2%/%date: ~0,2% %time: ~0,5% $1"
+Mrng=git add. $t git commit -m "boulot%date: ~3,2%/%date: ~0,2% %time: ~0,5%" $t git pull origin master
+Pull=git pull origin master
+Push=git push origin master
+Gnew=git init $t git remote add origin https://github.com/deborah-powers/$1.git $t git pull origin master
+Pymod=python -m $*
+Pym=python -m mantis $*
+Pystall=python setup.py install $t cd..
+Statis=cd mantis $t python setup.py install $t cd..
+
+************ L'installer sérieusement
+
+Créer c:/users/deborah.powers/documents/macros.doskey
+Dans l'éditeur du registre
+Hkey_local_machine/software/microsoft/command processor/
+Clique droit / nouveau / valeur chaine
+La nommer autorun
+Clique droit / modifier / données de la valeur
+Doskey /macrofile="c:/users/deborah.powers/documents/macros.doskey"
+
+************ L'installer sans droits d'admin
+
+Créer c:/users/deborah.powers/documents/macros.doskey
+Raccourci console du bureau /propriétés/target
+Rajouter en fin de ligne:/k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
+/k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
+
+== détacher edge de la barre des tâches
+
+C:\Users\deborah.powers\AppData\Local\Microsoft\Windows\Shell\
+LayoutModification.xml
+DefaultLayouts.xml
+supprimer
+<taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" />
+
+== empêcher le démarrage automatique de firefox au démarrage de mon pc:
+firefox / about:config
+toolkit.winRegisterApplacationRestart = false
+** ou
+firefox / menu / paramètres / général
+décocher "Ouvrir Firefox automatiquement au démarrage de votre ordinateur"
+
+============ Effacer les coockies et le cache
+
+************ Dans firefox
+
+about:preferences#privacy
+Cookies et données de sites / bouton pour éffacer les données
+Intervalle: Tout (de préférence)
+Cocher les types de données à supprimer
+
+************ Dans chrome
+
+Chrome://settings/clearbrowserdata
+Période: Toutes les données (de préférence)
+Cocher les types de données à supprimer
+
+== désactiver js dans firefox
+
+about:config
+javascript.enabled
+false - true
+
+============ Accéder aux json
+
+************ dans edge
+
+Diseable cors policy
+https://answers.microsoft.com/en-us/microsoftedge/forum/all/disable-cors/55c89fb6-8d72-4318-9ee3-e9cdfc6fa708
+
+************ dans chrome
+
+Fermer toutes les fenêtres de chrome
+Dans la console
+C:/program files (x86)/google/chrome/application/chrome.exe --allow-file-access-from-files
+Modification permanente qui nécessite les droits d'admin
+Raccourci chrome du bureau /propriétés/target
+Rajouter --allow-file-access-from-files en fin de ligne
+Pour le chrome du lanceur d'ubuntu,
+Rechercher et modifier /usr/bin/google-chrome
+https://askubuntu.com/questions/160245/how-do-i-make-the-google-chrome-flag-allow-file-access-from-files-permanent
+
+************ dans firefox
+
+Dans about:config
+Privacy.file_unique_origin, le passer à false.
+Security.fileuri.strict_origin_policy
+
+
+============ Divers
+
+************ Autoriser l'accès à mutu dans chrome
+
+Dans chrome/paramètres/paramètres avancés
+Dans système/ouvrir les paramètres proxy/sécurité
+Boutons "sites de confiance" et "site"
 "ajouter ce site web à la zone" accepte les *
 
-____________ commande window ____________
+** racourci bureau linux
 
-dir:				affiche la liste de fichiers dans le répertoire courant
-copy con myfile:	modifier le contenu d'un fichier
+dans mon-appli.desktop
 
-____________ racourcis clavier ____________
-
-console js	f12 = ctl+shift+c
-rafraîchir	f5
-commenter	ctl+shift+/
-annuler		ctl+z
-
-______________________
-______ mongo db ______
-
-https://mongodb.github.io/node-mongodb-native/
-http://mongodb.github.io/node-mongodb-native/3.0/
-http://mongodb.github.io/node-mongodb-native/3.0/quick-start/quick-start/
-
-______ installer mongoDB ______
-
-https://docs.mongodb.com/
-https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/
-pas de dépendances
-sudo apt-get install -y mongodb
-sudo apt-get update
-démarer le serveur
-sudo service mongodb start
-http://localhost:27017/
-
-______ installer robot3t ______
-
-= robot mongo
-http://urlm.co/www.robot3t.com
-https://robomongo.org/
-outil de management pour mongodb, interface graphique
-le mettre dans /usr/bin/
-ouvrir "téléchargement" en mode root
-ou
-sudo tar -xzf robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -C /opt
-rm robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
-sudo mkdir /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/BKP/
-sudo mv /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/BKP/
-sudo ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t /usr/bin/robo3t
-cat > ~/.local/share/applications/robo3t.desktop <<EOL
 [Desktop Entry]
-Encoding=UTF-8
-Name=Robo3T
-Exec=robo3t
-Terminal=false
+Name=mon appli
+Comment=elle sert a faire des trucs
+Exec=pathToScriptFile.sh
+Icon=icon name
+Terminal=true
 Type=Application
-Categories=Development;
-EOL
-ou
-wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
 
-	
-______ lancer mongodb ______
+** raccourci teams sur windows
 
-dans la console
-	npm install mongodb --save
-	mongo
+teams est une application.
 
-______ fonctions utiles ______
+ouvrir la boîte "run dialog box": windows + R
+taper shell:appsfolder
+entrer
+le fichier des applications s'ouvre
+rechercher teams
+Cliquer droit dessus
+créer un raccouci
 
-https://docs.mongodb.com/manual/mongo/
-https://docs.mongodb.com/manual/reference/mongo-shell/
+************ Commande window
 
-aide pour les bdd
-	db.help()
-voir la liste des bdd
-	db.adminCommand( { listDatabases: 1 } )
-	show databases
-supprimer une bdd
-	use dbToDelete
-	db.db.dropDatabase()
-aller dans une bdd
-	use dbName
-voir la liste des collections
-	show collections
-aide pour les collections
-	db.collectionName.help()
-créer une collection
-	db.createCollection ('ColName', json_object)
-voir le contenu d'une collection
-	db.collectionName.find()
-reperer un element dans une collection
-	db.collectionName.findOne ({ field: 'value' })
-supprimer un element d'une collection
-	db.collectionName.remove ({ field: 'value' }, true)
+Dir: affiche la liste de fichiers dans le répertoire courant
+dir *clef*.pdf: affiche les pdf contenant le mot clef dans leur nom
+def "my file.ext": supprimer le fichier
+Copy con myfile: Modifier le contenu d'un fichier
 
+************ Racourcis clavier
 
-______ tutoriels ______
+Console js	f12 = ctl+shift+c
+Rafraîchir	f5
+Commenter	ctl+shift+/
+Annuler		ctl+z
 
-https://www.tutorialspoint.com/mongodb/mongodb_limit_record.htm
-lancer mongodb
-lancer robo3t
-créer / aller dans une bdd
-use dbName
-créer une table
-db.createCollection ('name', [options])
-méthode pour mettre des trucs dans une collection, du terminal et pas de mongo
-sudo mongoimport --jsonArray --db projet10 --collection docs --file /chemin/absolu/users.json
+============ Docker
 
-sudo mongoimport --jsonArray --db projet_12_13 --collection test --file /home/deborah/Bureau/node/node-12-06-deborah-loic-matthieu-karim/api/listUsers.json
-
-____________________
-______ docker ______
-
-user	deborahpowers
+User	deborahpowers
 https://hub.docker.com/
 https://docs.docker.com/engine/reference/commandline/
-
-l'installer
-	sudo apt install docker.io
-	docker --version
-
+L'installer
+	Sudo apt install docker.io
+	Docker --version
