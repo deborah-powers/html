@@ -1,3 +1,17 @@
+====== wamp ======
+
+https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/
+https://www.wampserver.com/
+
+créer un sous-dossier dans C:/wamp/www/
+C:/wamp64/www/
+
+installer visual C++, surtout les packages VC9, VC10, VC11, VC15, VC17 et VS16
+
+quelques explications sur le fonctionnement de Wampserver
+Voir le fichier : wamp(64)\instructions_utilisation.pdf
+Pour l'utilisation de MariaDB et MySQL
+Voir le fichier : wamp(64)\mariadb_mysql.txt
 
 _________________
 ______ git ______
@@ -103,6 +117,11 @@ C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --allow-file-access-
 modification permanente qui nécessite les droits d'admin
 raccourci chrome du bureau /propriétés/target
 rajouter --allow-file-access-from-files en fin de ligne
+
+****** accéder aux json dans firefox ******
+
+dans about:config
+privacy.file_unique_origin, le passer à false.
 
 ____________ autoriser l'accès à mutu dans chrome ____________
 

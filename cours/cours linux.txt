@@ -5,11 +5,15 @@ Laut:	o
 
 ====== créer un raccourci ======
 
+whereis google-chrome
+
 ****** un raccourci vers un fichier ou un dossier ******
 
 ln -s <complete path to dir> <shortcut save location>
 ln -s /home/deborah/python /home/deborah/Bureau
 ln -s /var/www/html/site-dp /home/deborah/Bureau
+ln -s /usr/bin/google-chrome /home/deborah/Bureau
+
 
 ****** un raccourci vers une application ******
 
@@ -21,12 +25,15 @@ Version=1.0
 Name=mon appli
 Comment=details sur l'appli
 Icon=/path/to/icon.svg
+Exec=path/to/myapp -arg
+Terminal=false
 Type=Application
 Terminal=false
 Categories=Utility;divers;
 
 le mettre sur le bureau
-
+cliquer droit dessus
+autoriser le lancement
 
 ____________________
 ______ divers ______
