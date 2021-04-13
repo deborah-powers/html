@@ -1,0 +1,30 @@
+<html><head>
+	<link rel='stylesheet' type='text/css' href='structure.css'/>
+	<link rel='stylesheet' type='text/css' href='perso.css' media='screen'/>
+	<style type='text/css'>
+		table { width: 100% }
+		td { padding-left: 2em }
+		caption {
+			font-size: 1.5em;
+			background-color: hotpink;
+		}
+</style></head><body>
+<section ng-app='appLink' ng-controller='controllerShow'>
+	<table class='menu' id='make-my-choice'>
+		<caption>Que veuille-je voir</caption>
+		<tr ng-repeat='choice in listTags | orderBy'>
+			<td><input type='radio' ng-model='$parent.choice' value='{{ choice }}' ng-click='printLinks()'/></td>
+			<td>{{ choice }}</td>
+		</tr>
+	</table>
+	<h2 ng-if='(listLinks.length ==0)'>Pas de lien dans cette categorie</h2>
+	<table>
+		<caption>liens</caption>
+		<tr ng-repeat='item in listLinks | orderBy:"name"'>
+			<td><a href='{{ item.link }}' target='_blank'>{{ item.name }}</a></td>
+			<td>{{ item.infos }}</td>
+		</tr>
+	</table>
+</section>
+	<script src='angular.js'></script><script src='popup.js'></script>
+</body></html>

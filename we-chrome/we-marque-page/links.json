@@ -1,0 +1,179 @@
+{
+"important": [
+	{
+		"name": "boulot",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"infos": "deborah.powers.dev@gmail.com, noisette416"
+	},
+	{
+		"name": "noisetier",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"infos": "deborah.noisetier@gmail.com, noisette416"
+	},
+	{
+		"name": "orange",
+		"link": "https://webmail1j.orange.fr/webmail/fr_FR/inbox.html?FromSubmit=true&dub=1",
+		"infos": "deborah.powers@orange.fr, BRILLIANCE107MP"
+	},
+	{
+		"name": "pe",
+		"link": "https://authentification-candidat.pole-emploi.fr/connexion/XUI/#login/&realm=%2Findividu&goto=https%3A%2F%2Fauthentification-candidat.pole-emploi.fr%2Fconnexion%2Foauth2%2Fauthorize%3Frealm%3D%252Find",
+		"infos": "5965492F, 248420"
+	},
+	{
+		"name": "pe avon",
+		"link": "https://authentification-candidat.pole-emploi.fr/connexion/XUI/#login/&realm=%2Findividu&goto=https%3A%2F%2Fauthentification-candidat.pole-emploi.fr%2Fconnexion%2Foauth2%2Fauthorize%3Frealm%3D%252Find",
+		"infos": "7820494M, 319703"
+	},
+	{
+		"name": "simplon",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"infos": "deborah.powers89@gmail.com, noisette416"
+	},
+	{
+		"name": "via navigo",
+		"link": "https://www.vianavigo.com/accueil",
+		"infos": "noisetier, Noisette416"
+	}
+],
+"logement": [
+	{
+		"name": "comparateur de banque",
+		"link": "https://www.meilleurtaux.com/demande-simulation/credit-immobilier/result.php",
+		"infos": "deborah.powers@orange.fr, Noisette416, dossier 18284744"
+	},
+	{
+		"name": "recherche century21",
+		"link": "https://www.century21.fr/annonces/achat-appartement/v-paris-maisons+alfort-la+courneuve/cpv-93200_st+denis/d-92_hauts_de_seine/s-10-/st-0-/b-0-120000/page-1/#/annonces/achat-appartement/v-paris-maisons+alfort-la+courneuve/cpv-93200_st+denis/d-92_hauts_de_seine/s-10-/st-0-/b-0-120000/p-1-2/page-1/"
+	},
+	{
+		"name": "recherche la forêt",
+		"link": "http://www.laforet.com/acheter/rechercher?slug=&ajaxValue=0&localisation=Paris+%2875000%29%2C+Courbevoie+%2892400%29%2C+Nanterre+%2892000%29%2C+Puteaux+%2892800%29&rayon=15&price_min=0&price_max=120000&surface_min=10&surface_max=Max&ground_surface=&appartement=on&floor_min=&floor_max=&reference=&type_rech=&url_rech_elargie=&nb_rech_elargie=&est_groupement="
+	},
+	{
+		"name": "recherche logic immo",
+		"link": "https://www.logic-immo.com/vente-immobilier/options/grouplocalities=100_1,117_1,27495_2,19093_2,14899_2/groupprptypesids=1/pricemin=25000/pricemax=120000/areamin=18"
+	},
+	{
+		"name": "recherche orpi",
+		"link": "https://www.orpi.com/recherche/buy?realEstateTypes%5B%5D=appartement&locations%5B0%5D%5Bvalue%5D=hauts-de-seine&locations%5B0%5D%5Blabel%5D=Hauts-de-Seine&locations%5B1%5D%5Bvalue%5D=paris&locations%5B1%5D%5Blabel%5D=Paris&locations%5B2%5D%5Bvalue%5D=maisons-alfort&locations%5B2%5D%5Blabel%5D=Maisons-Alfort+(94700)&locations%5B3%5D%5Bvalue%5D=la-courneuve&locations%5B3%5D%5Blabel%5D=La+Courneuve+(93120)&locations%5B4%5D%5Bvalue%5D=saint-denis-seine-saint-denis&locations%5B4%5D%5Blabel%5D=Saint-Denis+(93200)&minSurface=15&maxPrice=120000&sort=date-down&layoutType=mixte"
+	},
+	{
+		"name": "recherche pap",
+		"link": "https://www.pap.fr/annonce/vente-appartements-paris-75-g439g456g43305g43389g43705-jusqu-a-120000-euros-a-partir-de-15-m2"
+	},
+	{
+		"name": "recherche se loger",
+		"link": "https://www.seloger.com/list.htm?types=1&projects=2&enterprise=0&natures=1%2C2&price=NaN%2F120000&surface=16%2FNaN&places=%5B%7Bcp%3A75%7D%7C%7Bcp%3A92%7D%7C%7Bci%3A940046%7D%7C%7Bci%3A930066%7D%7C%7Bci%3A950018%7D%7C%7Bci%3A930027%7D%5D&qsVersion=1.0"
+	},
+	{
+		"name": "",
+		"link": "",
+		"infos": ""
+	}
+],
+"amour": [
+	{
+		"name": "c pour nous",
+		"link": "https://www.okcupid.com/home",
+		"infos": "noisetier, violette1405"
+	},
+	{
+		"name": "ok cupid",
+		"link": "https://www.okcupid.com/home",
+		"infos": "noisetier, violette1405"
+	}
+],
+"argent": [
+	{
+		"name": "banque",
+		"link": "https://particuliers.societegenerale.fr/",
+		"infos": "39458399, 444666, 9803"
+	},
+	{
+		"name": "caf",
+		"link": "https://wwwd.caf.fr/wps/portal/caffr/login/!ut/p/a1/04_Sj9CPykssy0xPLMnMz0vMAfGjzOID_A3dPbyDDdz9A1yNDTxdzQNDXJ19DS0CjYAKIoEKDHAARwNC-sP1o8BK8JhQkBthkO6oqAgArtbX2Q!!/dl5/d5/L2dBISEvZ0FBIS9nQSEh/#/signature",
+		"infos": "6701676, 14789416"
+	},
+	{
+		"name": "caf avon",
+		"link": "https://wwwd.caf.fr/wps/portal/caffr/login/!ut/p/a1/04_Sj9CPykssy0xPLMnMz0vMAfGjzOID_A3dPbyDDdz9A1yNDTxdzQNDXJ19DS0CjYAKIoEKDHAARwNC-sP1o8BK8JhQkBthkO6oqAgArtbX2Q!!/dl5/d5/L2dBISEvZ0FBIS9nQSEh/#/signature",
+		"infos": "7591617, 14789416"
+	},
+	{
+		"name": "e-cb",
+		"link": "https://service.e-cartebleue.com/fr/sg/index",
+		"infos": "LQGMIZKD, dp140789"
+	},
+	{
+		"name": "engie",
+		"link": "https://particuliers.engie.fr/espace-client/",
+		"infos": "orange, noisette416"
+	},
+	{
+		"name": "esalia",
+		"link": "https://www.esalia.com/fr/epargnants/",
+		"infos": "orange, 444666"
+	},
+	{
+		"name": "générali",
+		"link": "https://www.generali.fr/espace-client/",
+		"infos": "dpowers1, 444666"
+	},
+	{
+		"name": "red by sfr",
+		"link": "https://www.sfr.fr/",
+		"infos": "tel30go10e"
+	}
+],
+"autres": [
+	{
+		"name": "",
+		"link": "",
+		"infos": ""
+	},
+	{
+		"name": "monsieur",
+		"link": "http://www.slate.fr/story/158536/derriere-porte-close-monsieur-dominateur-bdsm-domination-soumission-sexualite"
+	}
+],
+"programmation": [
+	{
+		"name": "bdd locale",
+		"link": "http://localhost/adminer.php?username=root&db=site",
+		"infos": "root, root"
+	},
+	{
+		"name": "bdd ovh",
+		"link": "https://phpmyadmin.cluster021.hosting.ovh.net/index.php?db=deborahprrdebbie",
+		"infos": "deborahprrdebbie, noisette416"
+	},
+	{
+		"name": "filezilla",
+		"link": "",
+		"infos": "ftp.cluster021.hosting.ovh.net, deborahprr, hg6baD63qZfr"
+	},
+	{
+		"name": "ovh",
+		"link": "https://www.ovh.com/auth/",
+		"infos": "pd221884-ovh, Noisette416"
+	}
+],
+"sante": [
+	{
+		"name": "ameli",
+		"link": "https://assure.ameli.fr/PortailAS/appmanager/PortailAS/assure?_somtc=true",
+		"infos": "deborah.powers@orange.fr, 289077718607245, 19890714"
+	},
+	{
+		"name": "medibio",
+		"link": "http://medibiolab.fr/",
+		"infos": "P-001834128, premier animal de compagnie: zoe"
+	},
+	{
+		"name": "wls forte",
+		"link": "https://www.fitforme.fr/checkout/cart/",
+		"infos": "noisetier"
+	}
+]
+}
