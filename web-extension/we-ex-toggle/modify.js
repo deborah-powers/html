@@ -1,7 +1,9 @@
-const CSS = "body { border: 20px solid green; }";
+const cssCode = "body { border: 20px solid green; }";
 const cssFile = 'perso.css';
-const launchExtension = "Apply CSS";
-const stopExtension = "Remove CSS";
+const jsCode = "console.log ('coucou je suis le code')";
+const jsFile = 'page.js';
+const launchExtension = "launch appli";
+const stopExtension = "stop appli";
 
 function initAction (tab){
 	browser.pageAction.setIcon ({tabId: tab.id, path: "icon-128.png"});
@@ -20,15 +22,17 @@ allTabs.then (function (tabs){
 function toggleExtension (tab){
 	function gotTitle (title){
 		if (title === launchExtension){
-			browser.pageAction.setIcon({tabId: tab.id, path: "icon-128-bis.png"});
-			browser.pageAction.setTitle({tabId: tab.id, title: stopExtension});
-			browser.tabs.insertCSS ({file: cssFile});
-		//	browser.tabs.insertCSS ({code: CSS});
+			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128-bis.png" });
+			browser.pageAction.setTitle ({ tabId: tab.id, title: stopExtension });
+			browser.tabs.insertCSS ({ file: cssFile });
+		//	browser.tabs.insertCSS ({ code: cssCode });
+		//	browser.tabs.executeScript ({ code: jsCode });
+			browser.tabs.executeScript ({ file: jsFile });
 		} else {
-			browser.pageAction.setIcon({tabId: tab.id, path: "icon-128.png"});
-			browser.pageAction.setTitle({tabId: tab.id, title: launchExtension});
-			browser.tabs.removeCSS ({file: cssFile});
-		//	browser.tabs.removeCSS ({code: CSS});
+			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128.png" });
+			browser.pageAction.setTitle ({ tabId: tab.id, title: launchExtension });
+			browser.tabs.removeCSS ({ file: cssFile });
+		//	browser.tabs.removeCSS ({ code: cssCode });
 		}
 	}
 

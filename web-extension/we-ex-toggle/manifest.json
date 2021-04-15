@@ -12,5 +12,5 @@
 		"browser_style": true
 	},
 	"background": { "scripts": [ "modify.js" ] },
-	"web_accessible_resources": ["perso.css"]
+	"web_accessible_resources": ["perso.css", "page.js"]
 }
