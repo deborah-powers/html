@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "we-aooo",
+	"description": "nettoyer les pages du site aooo",
+	"version": "1.0",
+	"permissions": [ "https://archiveofourown.org/works/*", "activeTab" ],
+	"icons": { "128" : "icon-128.png" },
+	// lancer une we sans popup. je peux aussi utiliser browser_action
+	"page_action": {
+		"default_icon" : "icon-128.png",
+		"default_title": "we-aooo",
+		"browser_style": true
+	},
+	"background": { "scripts": [ "modify.js" ] },
+	"web_accessible_resources": []
+}
