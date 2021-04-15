@@ -1,16 +1,16 @@
 {
 	"manifest_version": 2,
-	"name": "we-aooo",
-	"description": "nettoyer les pages du site aooo",
+	"name": "we-toggle",
+	"description": "exemple de web-extension affichant ou masquant du css",
 	"version": "1.0",
-	"permissions": [ "https://archiveofourown.org/works/*", "activeTab" ],
+	"permissions": [ "http://*/*", "https://*/*", "activeTab" ],
 	"icons": { "128" : "icon-128.png" },
 	// lancer une we sans popup. je peux aussi utiliser browser_action
-	"page_action": {
+	"browser_action": {
 		"default_icon" : "icon-128.png",
-		"default_title": "we-aooo",
+		"default_title": "we-toggle",
 		"browser_style": true
 	},
-	"background": { "scripts": [ "modify.js" ] },
-	"web_accessible_resources": ["perso.css", "page.js"]
+	"background": { "scripts": [ "toggle.js" ] },
+	"web_accessible_resources": [ "page.js", "structure.css", "perso.css"]
 }

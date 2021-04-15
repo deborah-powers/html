@@ -1,5 +1,7 @@
+// les chemins des fichiers js et css partent de la racine de l'extension
 const cssCode = "body { border: 20px solid green; }";
-const cssFile = 'perso.css';
+const cssFile = 'structure.css';
+const cssFile2 = 'perso.css';
 const jsCode = "console.log ('coucou je suis le code')";
 const jsFile = 'page.js';
 const launchExtension = "launch appli";
@@ -25,14 +27,15 @@ function toggleExtension (tab){
 			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128-bis.png" });
 			browser.pageAction.setTitle ({ tabId: tab.id, title: stopExtension });
 			browser.tabs.insertCSS ({ file: cssFile });
+			browser.tabs.insertCSS ({ file: cssFile2 });
 		//	browser.tabs.insertCSS ({ code: cssCode });
-		//	browser.tabs.executeScript ({ code: jsCode });
 			browser.tabs.executeScript ({ file: jsFile });
+		//	browser.tabs.executeScript ({ code: jsCode });
 		} else {
 			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128.png" });
 			browser.pageAction.setTitle ({ tabId: tab.id, title: launchExtension });
 			browser.tabs.removeCSS ({ file: cssFile });
-		//	browser.tabs.removeCSS ({ code: cssCode });
+			browser.tabs.removeCSS ({ file: cssFile2 });
 		}
 	}
 
