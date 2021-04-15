@@ -1,6 +1,6 @@
 divers/
 exemples/
-we-*/*marque-page/
+web-extension/*marque-page/
 *.ico
 *.log
 *.zip
