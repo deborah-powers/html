@@ -3,14 +3,12 @@
 	"name": "we-toggle",
 	"description": "exemple de web-extension affichant ou masquant du css",
 	"version": "1.0",
-	"permissions": [ "http://*/*", "https://*/*", "activeTab" ],
-	"icons": { "128" : "icon-128.png" },
+	"permissions": [ "activeTab", "tabs" ],
+	"icons": { "128" : "icon.svg" },
 	// lancer une we sans popup. je peux aussi utiliser browser_action
-	"browser_action": {
-		"default_icon" : "icon-128.png",
-		"default_title": "we-toggle",
-		"browser_style": true
+	"page_action": {
+		"default_icon" : "icon.svg",
+		"default_title": "we-toggle"
 	},
-	"background": { "scripts": [ "toggle.js" ] },
-	"web_accessible_resources": [ "page.js", "structure.css", "perso.css"]
+	"background": { "scripts": [ "toggle.js" ] }
 }

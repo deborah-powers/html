@@ -25,5 +25,6 @@
 	//	"matches": ["http://google.fr", "http://google.com"],
 		"css": ["structure.css", "perso.css"],
 		"js": ["page.js"]
-	}]
+	}],
+	"web_accessible_resources": [ "icon-128.png"]
 }

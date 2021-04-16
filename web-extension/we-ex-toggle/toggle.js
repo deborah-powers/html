@@ -6,6 +6,8 @@ const jsCode = "console.log ('coucou je suis le code')";
 const jsFile = 'page.js';
 const launchExtension = "launch appli";
 const stopExtension = "stop appli";
+const iconLaunch = 'icon.svg';
+const iconStop = 'icon-off.svg';
 
 function initAction (tab){
 	browser.pageAction.setIcon ({tabId: tab.id, path: "icon-128.png"});
@@ -24,7 +26,7 @@ allTabs.then (function (tabs){
 function toggleExtension (tab){
 	function gotTitle (title){
 		if (title === launchExtension){
-			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128-bis.png" });
+			browser.pageAction.setIcon ({ tabId: tab.id, path: iconLaunch });
 			browser.pageAction.setTitle ({ tabId: tab.id, title: stopExtension });
 			browser.tabs.insertCSS ({ file: cssFile });
 			browser.tabs.insertCSS ({ file: cssFile2 });
@@ -32,7 +34,7 @@ function toggleExtension (tab){
 			browser.tabs.executeScript ({ file: jsFile });
 		//	browser.tabs.executeScript ({ code: jsCode });
 		} else {
-			browser.pageAction.setIcon ({ tabId: tab.id, path: "icon-128.png" });
+			browser.pageAction.setIcon ({ tabId: tab.id, path: iconStop });
 			browser.pageAction.setTitle ({ tabId: tab.id, title: launchExtension });
 			browser.tabs.removeCSS ({ file: cssFile });
 			browser.tabs.removeCSS ({ file: cssFile2 });
