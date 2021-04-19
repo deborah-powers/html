@@ -1,6 +1,11 @@
 /* pas de alert
 */
-console.log ('coucou');
+console.log (
+	'host:\t', window.location.hostname,
+	'\npath:\t', window.location.pathname,
+	'\nhash:\t', window.location.hash,
+	'\nquery:\t', window.location.search
+);
 document.head.innerHTML ="";
 document.body.style.border = "5px solid green";
 document.body.style.backgroundColor = "pink";
