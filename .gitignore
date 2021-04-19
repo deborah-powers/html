@@ -1,6 +1,6 @@
 divers/
 exemples/
-web-extension/*marque-page/
+web-extension/we-marque-page/links-perso.json
 *.ico
 *.log
 *.zip
