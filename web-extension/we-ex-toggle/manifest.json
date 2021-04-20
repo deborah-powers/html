@@ -4,10 +4,10 @@
 	"description": "exemple de web-extension affichant ou masquant du css",
 	"version": "1.0",
 	"permissions": [ "activeTab", "tabs" ],
-	"icons": { "128" : "icon.svg" },
+	"icons": { "128" : "icon-128.png" },
 	// lancer une we sans popup. je peux aussi utiliser browser_action
 	"page_action": {
-		"default_icon" : "icon.svg",
+		"default_icon" : "icon-128.png",
 		"default_title": "we-toggle"
 	},
 	"background": { "scripts": [ "toggle.js" ] }
