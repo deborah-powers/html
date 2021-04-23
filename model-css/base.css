@@ -13,6 +13,12 @@ table {
 caption, th, td { border: solid 2px var(--button-bg); }
 img, a { display: block; }
 p.info { border-style: none; }
+xmp {
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+}
 section.list3 { column-count: 3; }
 section.list2 { column-count: 2; }
 section.bord p, math { border: solid 4px var(--button-bg); }

@@ -17,13 +17,20 @@
 </style><section>
 	<h2>flex-box</h2>
 	<div><p></p><p></p><p></p><p></p><p></p><p></p></div>
-	<p>display: flex; flex-direction: row; justify-content: space-around; align-items: stretch; fd column, row-reverse, column-reverse; ne pas préciser de height pour les éléments interne afin que stretch fonctionne.</p>
+	<xmp>div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: stretch;
+}</xmp>
+	<p>flex-direction: column, row-reverse, column-reverse;</p>
+	<p>ne pas préciser de height pour les éléments interne afin que stretch fonctionne.</p>
 	<div style='justify-content:space-between'><p></p><p></p><p></p><p></p><p></p><p></p></div>
-	<p>justify-content:space-between</p>
+	<p>justify-content: space-between</p>
 	<div style='justify-content:space-evenly'><p></p><p></p><p></p><p></p><p></p><p></p></div>
-	<p>justify-content:space-evenly</p>
+	<p>justify-content: space-evenly</p>
 	<div style='justify-content:center'><p></p><p></p><p></p><p></p><p></p><p></p></div>
-	<p>justify-content:center; flex-start et flex-end (carré collé à gauche ou à droite de la boîte) existent aussi.</p>
+	<p>justify-content: center; flex-start et flex-end (carré collé à gauche ou à droite de la boîte) existent aussi.</p>
 	<div style='align-items:center'><p></p><p></p><p></p><p></p><p></p><p></p></div>
 	<p>align-items: center; flex-start et flex-end (carré collé au haut ou au bas de la boîte) existent aussi. préciser une hauteur pour les éléments internes vides.</p>
 	<div class='grow'><p></p><p style='flex-grow:2'></p><p></p><p></p><p></p><p></p></div>
