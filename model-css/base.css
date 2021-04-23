@@ -18,8 +18,16 @@ section.list2 { column-count: 2; }
 section.bord p, math { border: solid 4px var(--button-bg); }
 h2 { column-span: all; }
 div.column p { height: 3em; }
+section#summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+}
 section#summary a {
 	border-radius: 1em;
-	background-color: var(--input-bg);
-	margin-bottom: 1em;
+	padding: 2px;
+	margin: 4px;
+	width: 12em;
+	background-color: var(--fond-color);
 }
