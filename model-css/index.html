@@ -1,0 +1,139 @@
+<!doctype html><html><head>
+	<title>notes de css</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/png' href='icone.bmp'>
+	<link rel='stylesheet' type='text/css' href='/home/lenovo/Bureau/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='/home/lenovo/Bureau/site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='base.css'/>
+	<!-- base target='_blank' href='C:/Users/deborah.powers/Desktop/articles/'/ -->
+	<script type='text/javascript' src='???/angular.js'></script>
+	<script type='text/javascript' src='???/angular-ui-router.js'></script>
+<style>
+	section {
+		border: solid 4px #3C3;
+		padding: 1em;
+	}
+	h3 {
+		font-weight: bold;
+		text-align: center;
+	}
+	ul { border: dashed 2px var(--input-bg); }
+	table {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	caption { background-color: var(--input-bg); }
+	caption, th, td { border: solid 2px var(--button-bg); }
+	th { font-weight: bold; }
+	img, a { display: block; }
+	img.img-resize {
+		width: 400px;
+		height: 200px;
+	}
+	p.img { background: url('exemple-img.bmp'); }
+	p.svg {
+		background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' fill='lightgreen' stroke-width='2mm'><polygon points='50,0 350,0 400,50 350,100 50,100 0,50'/></svg>");
+	}
+	p.info { border-style: none; }
+	fieldset.table {
+		display: grid;
+		grid-template-columns: 2em 1fr;
+		border-bottom: dashed 2px var(--button-bg);
+		margin-bottom: 1em;
+	}
+	section#summary, section#list, section#border, section#mathml { column-count: 3; }
+	section#background, section#spacing { column-count: 2; }
+	h2 { column-span: all; }
+	section#background p, section#border p, section#spacing p, math { border: solid 4px var(--button-bg); }
+	section#background p, section#border p { margin-bottom: 1em; }
+	section#background p { height: 6em; }
+	section#grid div, section#flex div {
+		border: solid 4px var(--button-bg);
+		height: 6em;
+	}
+	section#grid div p, section#flex div p { border: solid 6px var(--button-bg-hover); }
+	section#grid div {
+		display: grid;
+		grid-template-columns: 1fr 50% 1fr;
+		justify-items: stretch;
+		align-items: stretch;
+	}
+	section#flex div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: stretch;
+	}
+	div.grow p { flex-grow: 1; }
+	section#flex div.column {
+		height: 12em;
+		width: 6em;
+		flex-direction: column;
+	}
+	div.column p { height: 3em; }
+	section#summary a {
+		border-radius: 1em;
+		background-color: var(--input-bg);
+		margin-bottom: 1em;
+	}
+	math {
+		display: block;
+		padding: 1em;
+		margin-bottom: 1em;
+	}
+	/* affichage pour les tablettes */
+	@media (max-width: 992px){
+		body, head, head > title { background-color: #FF9; }
+	}
+	/* affichage pour les smartphones */
+	@media (max-width: 768px){
+		body, head, head > title { background-color: #CF9; }
+	}
+	@media print{}
+	/* les annimations */
+	#moving-heart {
+		animation-name: moving-heart;
+		animation-duration: 10s;
+		animation-iteration-count: 2;
+	}
+	@keyframes moving-heart {
+		from {
+			margin-left: 50%;
+			margin-top: 20%;
+		}
+		to {}
+		0% { background-color: red; }
+		50% { background-color: pink; }
+	}
+</style></head><body>
+	<header>
+		<h1>page de référence pour démontrer des styles css basiques</h1>
+		<p>rappel: un grand titre par page</p>
+		<p>les feuilles de style: structure.css et css-notes.css</p>
+		<p>structure apporte l'affichage de base, perso les couleurs de la page.</p>
+		<section id='summary' style='border:none;text-align:center;'>
+			<a href='#grid'>le framework grid</a>
+			<a href='#flex'>le framework flex</a>
+			<a href='#form'>les formulaire</a>
+			<a href='#spacing'>l'espace entre les boîtes</a>
+			<a href='#border'>les bordures</a>
+			<a href='#background'>les fonds</a>
+			<a href='#table'>les tables</a>
+			<a href='#list'>les listes</a>
+			<a href='#image'>les images</a>
+			<a href='#mathml'>le framework mathml</a>
+			<a href='#media-queries'>les media queries</a>
+			<a href='#shapes'>les formes</a>
+			<a href='#animations'>les animations</a>
+		</section>
+	</header>
+	<main>
+	</main>
+	<footer>
+		<p>pied de page</p>
+		<a href=''>revenir au sommaire</a>
+	</footer>
+</body>
+	<script type='text/javascript' src='???/angular.js'></script>
+</html>
