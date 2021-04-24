@@ -13,6 +13,11 @@ web-ext run
 ouvrir about:debugging#/runtime/this-firefox
 charger un module temporaire
 
+****** déboguer mon script de background ******
+
+ouvrir about:debugging#/runtime/this-firefox
+cliquer sur le bouton "examiner" de mon extension
+
 ****** charger durablement une extension ******
 
 dans le manifest, rajouter un id qui ressemble à une adresse mail
@@ -38,10 +43,4 @@ npm install --global web-ext
 web-ext --version
 
 dans about:config, xpinstall.signatures.required = false
-
-=========== déboguer mon extension ======
-
-sur la page de debugging, cliquer sur examiner.
-dans le menu ..., cliquer désactiver le masquage automatique de la popup.
-
 

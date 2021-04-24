@@ -10,7 +10,7 @@ const iconLaunch = 'icon-128.png';
 const iconStop = 'icon-128-bis.png';
 
 function initAction (tab){
-	chrome.pageAction.setIcon ({tabId: tab.id, path: "icon-128.png"});
+	chrome.pageAction.setIcon ({tabId: tab.id, path: iconLaunch });
 	chrome.pageAction.setTitle ({tabId: tab.id, title: launchExtension});
 	chrome.pageAction.show (tab.id);
 }
@@ -19,10 +19,11 @@ chrome.tabs.onUpdated.addListener (function (id, changeInfo, tab){
 	initAction (tab);
 });
 // à l'ouverture de firefox, initialiser l'extension pour toutes les pages
-var allTabs = chrome.tabs.query({});
-allTabs.then (function (tabs){
-	for (var tab in tabs) initAction (tab);
+var allTabs = chrome.tabs.query ({ currentWindow: true}, function (tabs){
+	console.log (tabs);
+	for (var t=0; t< tabs.length; t++) initAction (tabs[t]);
 });
+// allTabs.then (function (tabs){ for (var tab in tabs) initAction (tab); });
 function toggleExtension (tab){
 	function gotTitle (title){
 		if (title === launchExtension){
@@ -40,9 +41,9 @@ function toggleExtension (tab){
 			chrome.tabs.removeCSS ({ file: cssFile2 });
 		}
 	}
-
-	var gettingTitle = chrome.pageAction.getTitle ({ tabId: tab.id });
-	gettingTitle.then (gotTitle);
+	var gettingTitle = chrome.pageAction.getTitle ({ tabId: tab.id }, function (title){
+		gotTitle (title);
+	});
 }
 // lancer l'extention quand je clique sur l'icône
 chrome.pageAction.onClicked.addListener (toggleExtension);

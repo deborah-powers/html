@@ -21,7 +21,6 @@ HTMLElement.prototype.clean = function(){
 if (window.location.hostname == 'archiveofourown.org'){
 	document.head.innerHTML ="";
 	document.body.clean();
-	console.log (document.body.innerHTML);
 	if (window.location.pathname.indexOf ('/works/search') ==0){
 		var ficList = document.getElementsByClassName ('landmark heading');
 		var nvBody =""
@@ -31,7 +30,6 @@ if (window.location.hostname == 'archiveofourown.org'){
 	else if (window.location.pathname.indexOf ('/works/') ==0){
 		document.body.innerHTML = document.getElementsByClassName ('userstuff module')[0].innerHTML;
 		document.body.clean();
-	//	console.log (document.body.innerHTML);
 	}
 	else console.log ('non');
 }

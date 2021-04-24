@@ -12,6 +12,11 @@ dans chrome://extensions/
 charger l'extension non empaquetée
 si l'icone de l'extension n'apparait pas dans la barre d'outil, cliquer sur l'icone des extensions (la pièce de puzzle grise) et épingler mon extension.
 
+****** déboguer mon script de background ******
+
+chrome://extensions/
+bloc de mon extension
+cliquer sur "page en arrière-plan"
 
 
 pas de alert dans la popup !
