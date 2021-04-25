@@ -12,9 +12,19 @@
 		width: 6em;
 		flex-direction: column;
 	}
-	div p { border: solid 6px var(--button-bg-hover); }
+	div p {
+		border: solid 6px var(--button-bg-hover);
+		margin: 0;
+	}
+	hr {
+		background-color: var(--fond-color);
+		border: solid 6px var(--text-color);
+		margin: 0;
+		height: none;
+	}
 	div.grow p { flex-grow: 1; }
 </style><section>
+	<div><hr><hr><hr><hr><hr><hr><hr></div>
 	<h2>flex-box</h2>
 	<div><p></p><p></p><p></p><p></p><p></p><p></p></div>
 	<xmp>div {

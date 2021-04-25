@@ -19,8 +19,14 @@ xmp {
 	margin: 0;
 	padding: 0;
 }
-section.list3 { column-count: 3; }
-section.list2 { column-count: 2; }
+section.list3 {
+	column-count: 3;
+	break-inside: column;
+}
+section.list2 {
+	column-count: 2;
+	break-inside: column;
+}
 section.bord p, math { border: solid 4px var(--button-bg); }
 h2 { column-span: all; }
 div.column p { height: 3em; }
