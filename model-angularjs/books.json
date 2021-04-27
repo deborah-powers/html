@@ -1,16 +1,16 @@
 [{
-	"name": "The Magic Of Thinking Big",
-	"author": "David Schwartz",
-	"price": "10",
-	"currency": "$"
-}, {
-	"name": "The Pillars of the Earth",
-	"author": "Ken Follet",
+	"name": "l'histoire sans fin",
+	"author": "michael ende",
 	"price": "20",
-	"currency": "$"
+	"currency": "€"
 }, {
-	"name": "Zero To One",
-	"author": "Peter Thiel",
+	"name": "alice au pays des merveilles",
+	"author": "lewis carroll",
+	"price": "10",
+	"currency": "€"
+}, {
+	"name": "villa esseling monde",
+	"author": "philippe dorin",
 	"price": "15",
-	"currency": "$"
+	"currency": "€"
 }]
