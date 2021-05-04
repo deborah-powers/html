@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='800' height='600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>la lumière des fées</title>
+	<script xlink:href='fees.js'/>
+<style type='text/css'><![CDATA[
+	svg { background-color: black; }
+	circle {
+		stroke: none;
+		r: 40px;
+	}
+	radialGradient {
+		r: 20%;
+		cx: 50%;
+		cy: 50%;
+	}
+	stop {
+		animation-duration: 4s;
+		animation-iteration-count: infinite;
+	}
+	stop:nth-child(2){ stop-opacity: 0.2; }
+	radialGradient#grd-green stop {
+		stop-color: #AFA;
+		animation-name: anim-green;
+	}
+	radialGradient#grd-blue stop {
+		stop-color: #AAF;
+		animation-name: anim-blue;
+	}
+	radialGradient#grd-pink stop {
+		stop-color: #FAA;
+		animation-name: anim-pink;
+	}
+	@keyframes anim-green {
+		from {}
+		to { stop-color: #1B1; }
+	}
+	@keyframes anim-blue {
+		from {}
+		to { stop-color: #44F; }
+	}
+	@keyframes anim-pink {
+		from {}
+		to { stop-color: #F44; }
+	}
+]]></style>
+<defs>
+	<circle transform='matrix(1 0 0 1 0 0)' onmousedown='selectElement(evt))' cx='20' cy='40'/>
+	<radialGradient id='grd-green'><stop offset='40%'/><stop offset='100%'/></radialGradient>
+	<radialGradient id='grd-pink'><stop offset='40%'/><stop offset='100%'/></radialGradient>
+	<radialGradient id='grd-blue'><stop offset='40%'/><stop offset='100%'/></radialGradient>
+<pattern id='points-serres' x='0' y='0' width='240' height='120' patternUnits='userSpaceOnUse' stroke='none' fill='none'>
+	<circle fill='url(#grd-pink)' cx='0' cy='-20'/>
+	<circle fill='url(#grd-blue)' cx='80' cy='-20'/>
+	<circle fill='url(#grd-green)' cx='160' cy='-20'/>
+	<circle fill='url(#grd-pink)' cx='240' cy='-20'/>
+	<circle fill='url(#grd-green)' cx='40' cy='40'/>
+	<circle fill='url(#grd-pink)' cx='120' cy='40'/>
+	<circle fill='url(#grd-blue)' cx='200' cy='40'/>
+	<circle fill='url(#grd-pink)' cx='0' cy='100'/>
+	<circle fill='url(#grd-blue)' cx='80' cy='100'/>
+	<circle fill='url(#grd-green)' cx='160' cy='100'/>
+	<circle fill='url(#grd-pink)' cx='240' cy='100'/>
+</pattern>
+<pattern id='points-larges' x='0' y='0' width='300' height='160' patternUnits='userSpaceOnUse' stroke='none' fill='none'>
+	<circle fill='url(#grd-pink)' cx='0' cy='-20'/>
+	<circle fill='url(#grd-blue)' cx='100' cy='-20'/>
+	<circle fill='url(#grd-green)' cx='200' cy='-20'/>
+	<circle fill='url(#grd-pink)' cx='300' cy='-20'/>
+	<circle fill='url(#grd-green)' cx='50' cy='60'/>
+	<circle fill='url(#grd-pink)' cx='150' cy='60'/>
+	<circle fill='url(#grd-blue)' cx='250' cy='60'/>
+	<circle fill='url(#grd-pink)' cx='0' cy='140'/>
+	<circle fill='url(#grd-blue)' cx='100' cy='140'/>
+	<circle fill='url(#grd-green)' cx='200' cy='140'/>
+	<circle fill='url(#grd-pink)' cx='300' cy='140'/>
+</pattern>
+	<rect x='0' y='0' width='800' height='600' fill='url(#points)'/>
+</defs>
+	<rect x='0' y='0' width='800' height='600' fill='url(#points-serres)'/>
+</svg>
