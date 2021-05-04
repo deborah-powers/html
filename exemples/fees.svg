@@ -8,14 +8,11 @@
 		stroke: none;
 		r: 40px;
 	}
-	radialGradient {
-		r: 20%;
-		cx: 50%;
-		cy: 50%;
-	}
+	radialGradient { r: 20%; cx: 50%; cy: 50%; }
 	stop {
 		animation-duration: 4s;
 		animation-iteration-count: infinite;
+		animation-direction: alternate;
 	}
 	stop:nth-child(2){ stop-opacity: 0.2; }
 	radialGradient#grd-green stop {
@@ -32,15 +29,15 @@
 	}
 	@keyframes anim-green {
 		from {}
-		to { stop-color: #1B1; }
+		to { stop-color: #080; }
 	}
 	@keyframes anim-blue {
 		from {}
-		to { stop-color: #44F; }
+		to { stop-color: #22F; }
 	}
 	@keyframes anim-pink {
 		from {}
-		to { stop-color: #F44; }
+		to { stop-color: #F00; }
 	}
 ]]></style>
 <defs>
