@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head>
+	<title>cube en css</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='file:///C:/wamp64/www/site-dp/'>
+	<!-- base target='blank' href='../../site-perso/' -->
+	<link rel='icon' type='image/svg+xml' href='exemples/nounours-perso.svg'>
+	<!-- link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>" -->
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='library-css/debbyPlay.css'/>
+	<script type='text/javascript' src='library-js/text.js'></script>
+	<script type='text/javascript' src='library-js/file.js'></script>
+	<script type='text/javascript' src='library-js/debbyPlay.js'></script>
+	<link rel='stylesheet' type='text/css' href='.css'/>
+<style type='text/css'>
+	div.perspective {
+		perspective: 800px;
+		perspective-origin: 50% 100px;
+	}
+	div.cube {
+		width: 200px;
+		transform-style: preserve-3d;
+		position: relative;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+		animation-direction: normal;
+	}
+	div.cube > div {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		text-align: center;
+		border-style: solid;
+		background-color: #FABA;
+	}
+	div.front { transform: translateZ(100px); }
+	div.back { transform: translateZ(-100px) rotateY(180deg); }
+	div.top {
+		transform: rotateX(-90deg) translateY(-100px);
+		transform-origin: top center;
+	}
+	div.bottom {
+		transform: rotateX(90deg) translateY(100px);
+		transform-origin: bottom center;
+	}
+	div.left {
+		transform: rotateY(270deg) translateX(-100px);
+		transform-origin: center left;
+	}
+	div.right {
+		transform: rotateY(-270deg) translateX(100px);
+		transform-origin: center right;
+	}
+	@keyframes spin-horizontally {
+		to { transform: rotateY(360deg); }
+	}
+	@keyframes spin-vertically {
+		from { transform: rotateX(0); }
+		to { transform: rotateX(360deg); }
+	}
+	div#cube-1 {
+		animation-name: spin-horizontally;
+	}
+	div#cube-2 {
+		animation-name: spin-vertically;
+		left: 400px;
+	}
+	div#cube-3 {
+		animation-name: spin-vertically-b;
+		left: 800px;
+	}
+</style></head><body>
+	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source: la cascade</a>
+	<div class='perspective'>
+		<div class='cube' id='cube-1'>
+			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
+			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
+		</div>
+		<div class='cube' id='cube-2'>
+			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
+			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
+		</div>
+		<div class='cube' id='cube-3'>
+			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
+			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
+		</div>
+	</div>
+</body>
+<script type='text/javascript' src='.js'></script>
+</html>
