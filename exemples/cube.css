@@ -1,0 +1,49 @@
+div.perspective {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+}
+div.perspective.flat {
+	perspective: none;
+	perspective-origin: 0 0;
+}
+div.cube {
+	width: 200px;
+	transform-style: preserve-3d;
+	position: relative;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+div.cube > div {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	text-align: center;
+	border: solid 4px var(--bord-color);
+	background-color: #FACA;
+}
+@keyframes spin-horizontally { to { transform: rotateY(360deg); }}
+div.cube.horizontal { animation-name: spin-horizontally; }
+div.front { transform: translateZ(100px); }
+div.back { transform: translateZ(-100px) rotateY(180deg); }
+div.top {
+	transform: rotateX(-90deg) translateY(-100px);
+	transform-origin: top center;
+}
+div.bottom {
+	transform: rotateX(90deg) translateY(100px);
+	transform-origin: bottom center;
+}
+div.left {
+	transform: rotateY(270deg) translateX(-100px);
+	transform-origin: center left;
+}
+div.right {
+	transform: rotateY(-270deg) translateX(100px);
+	transform-origin: center right;
+}
+@keyframes spin-vertically { to { transform: rotateX(360deg); }}
+div.cube.vertical {
+	animation-name: spin-vertically;
+	transform-origin: 0 100px;
+}

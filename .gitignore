@@ -1,6 +1,7 @@
 divers/
 web-extension/we-marque-page/links-perso.json
-model-css/index.html
+# model-css/index.html
+# exemples/cube.html
 *.ico
 *.log
 *.zip

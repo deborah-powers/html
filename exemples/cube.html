@@ -2,74 +2,42 @@
 	<title>cube en css</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='blank' href='file:///C:/wamp64/www/site-dp/'>
-	<!-- base target='blank' href='../../site-perso/' -->
+	<!-- base target='blank' href='file:///C:/wamp64/www/site-dp/' -->
+	<base target='blank' href='../../site-perso/'>
 	<link rel='icon' type='image/svg+xml' href='exemples/nounours-perso.svg'>
 	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../html/exemples/cube.css'/>
 <style type='text/css'>
-	div.perspective {
-		perspective: 800px;
-		perspective-origin: 50% 100px;
+	div.cube { top: 100px; }
+	div.cube.horizontal { left: 100px; }
+	div.cube.vertical { left: 400px; }
+	div.front {
+		background: linear-gradient(45deg, deeppink 20%, #FACA 20%, #FACA 80%, seagreen 80%);
 	}
-	div.perspective.flat {
-		perspective: none;
-		perspective-origin: 0 0;
+	div.back {
+		background: linear-gradient(135deg, orangered 20%, #FACA 20%);
 	}
-	div.cube {
-		width: 200px;
-		transform-style: preserve-3d;
-		position: relative;
-		animation-duration: 10s;
-		animation-iteration-count: infinite;
-		animation-direction: normal;
-		top: 100px;
-	}
-	div.cube > div {
-		width: 200px;
-		height: 200px;
-		position: absolute;
-		text-align: center;
-		border: double 20px var(--bord-color);
-		background-color: #FABA;
-	}
-	@keyframes spin-horizontally { to { transform: rotateY(360deg); }}
-	div#cube-horizontal {
-		animation-name: spin-horizontally;
-		left: 100px;
-	}
-	div.front { transform: translateZ(100px); }
-	div.back { transform: translateZ(-100px) rotateY(180deg); }
 	div.top {
-		transform: rotateX(-90deg) translateY(-100px);
-		transform-origin: top center;
+		background: linear-gradient(135deg, #FACA 80%, deeppink 80%);
 	}
 	div.bottom {
-		transform: rotateX(90deg) translateY(100px);
-		transform-origin: bottom center;
+		background: linear-gradient(45deg, deeppink 20%, #FACA 20%);
 	}
 	div.left {
-		transform: rotateY(270deg) translateX(-100px);
-		transform-origin: center left;
+		background: linear-gradient(135deg, #FACA 80%, deeppink 80%);
 	}
 	div.right {
-		transform: rotateY(-270deg) translateX(100px);
-		transform-origin: center right;
-	}
-	@keyframes spin-vertically { to { transform: rotateX(360deg); }}
-	div#cube-vertical {
-		animation-name: spin-vertically;
-		transform-origin: 0 100px;
-		left: 400px;
+		background: linear-gradient(45deg, #FACA 80%, deeppink 80%);
 	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source: la cascade</a>
 	<div class='perspective'>
-		<div class='cube' id='cube-horizontal'>
+		<div class='cube horizontal'>
 			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
 			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
 		</div>
-		<div class='cube' id='cube-vertical'>
+		<div class='cube vertical'>
 			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
 			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
 		</div>
