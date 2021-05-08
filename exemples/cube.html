@@ -3,11 +3,12 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<!-- base target='blank' href='file:///C:/wamp64/www/site-dp/' -->
-	<base target='blank' href='../../site-perso/'>
-	<link rel='icon' type='image/svg+xml' href='exemples/nounours-perso.svg'>
-	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
-	<link rel='stylesheet' type='text/css' href='../html/exemples/cube.css'/>
+	<!-- base target='blank' href='../../site-perso/' -->
+	<link rel='icon' type='image/svg+xml' href='s/exemples/nounours-perso.svg'>
+	<link rel='stylesheet' type='text/css' href='s/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='s/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='h/exemples/cube.css'/>
+	<script type='text/javascript' src='setUrl.js'></script>
 <style type='text/css'>
 	div.cube {
 		top: 100px;
@@ -15,7 +16,6 @@
 	}
 	div.cube > div {
 		background-color: transparent;
-		border: solid 4px var(--bord-color);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -51,11 +51,14 @@
 			linear-gradient(45deg, purple 10%, transparent 30%, transparent 70%, magenta 90%),
 			linear-gradient(135deg, seagreen 10%, transparent 30%, transparent 70%, orangered 90%);
 	}
-	div.cube.corner > div {
+	div.cube.corner-va > div {
 		background:
 			linear-gradient(45deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%),
 			linear-gradient(135deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%);
-		}
+	}
+	div.cube.corner > div {
+		background: radial-gradient ();
+	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source: la cascade</a>
 	<div class='perspective'>
