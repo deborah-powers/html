@@ -1,25 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<svg width='450' height='450'
-	xmlns:xlink='http://www.w3.org/1999/xlink'
-	xmlns='http://www.w3.org/2000/svg'>
-<meta name='author' content="deborah powers"/>
-<meta name='dcreation' content="2016/12"/>
-<meta name='dmodification' content="2017/02"/>
-<meta name='lcreation' content="chez maman"/>
+<svg width='450' height='450' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
 <style><![CDATA[
-svg {
-	background-color: ivory;
-	border: 2px solid maroon;
-	}
-polygon {
-	fill: yellow;
-	stroke: maroon;
-	}
-polygon.pt-pal { fill: darkturquoise; }
-polygon.ombre {
-	fill: maroon;
-	fill-opacity: 0.3;
-	}
+	svg {
+		background-color: ivory;
+		border: 2px solid maroon;
+		}
+	polygon {
+		fill: yellow;
+		stroke: maroon;
+		}
+	polygon.pt-pal { fill: darkturquoise; }
+	polygon.ombre {
+		fill: maroon;
+		fill-opacity: 0.3;
+		}
 ]]></style>
 <g id='moulin'>
 <polygon points='25,150 25,300 425,150 425,300'/><polygon points='25,200 25,250 425,200 425,250' class='pt-pal'/>
