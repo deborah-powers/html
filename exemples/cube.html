@@ -7,61 +7,29 @@
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='cube.css'/>
 <style type='text/css'>
+	div.perspective {
+		perspective: 1200px;
+		perspective-origin: 50% 50%;
+	}
 	div.cube {
+		width: 200px;
+		height: 200px;
 		top: 100px;
 		left: 400px;
 	}
-	div.cube > div {
-		background-color: transparent;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		font-size: 2em;
-	}
-	div.cube.arlequin > div:nth-child(1) {
-		background:
-			linear-gradient(45deg, deeppink 10%, transparent 30%, transparent 70%, seagreen 90%),
-			linear-gradient(135deg, orange 10%, transparent 30%, transparent 70%, purple 90%);
-	}
-	div.cube.arlequin > div:nth-child(2) {
-		background:
-			linear-gradient(45deg, orangered 10%, transparent 30%, transparent 70%, blue 90%),
-			linear-gradient(135deg, magenta 10%, transparent 30%, transparent 70%, grey 90%);
-	}
-	div.cube.arlequin > div:nth-child(3) {
-		background:
-			linear-gradient(45deg, blue 10%, transparent 30%, transparent 70%, seagreen 90%),
-			linear-gradient(135deg, orange 10%, transparent 30%, transparent 70%, magenta 90%);
-	}
-	div.cube.arlequin > div:nth-child(4) {
-		background:
-			linear-gradient(45deg, deeppink 10%, transparent 30%, transparent 70%, orangered 90%),
-			linear-gradient(135deg, grey 10%, transparent 30%, transparent 70%, purple 90%);
-	}
-	div.cube.arlequin > div:nth-child(5) {
-		background:
-			linear-gradient(45deg, grey 10%, transparent 30%, transparent 70%, orange 90%),
-			linear-gradient(135deg, blue 10%, transparent 30%, transparent 70%, deeppink 90%);
-	}
-	div.cube.arlequin > div:nth-child(6) {
-		background:
-			linear-gradient(45deg, purple 10%, transparent 30%, transparent 70%, magenta 90%),
-			linear-gradient(135deg, seagreen 10%, transparent 30%, transparent 70%, orangered 90%);
-	}
-	div.cube.corner-va > div {
-		background:
-			linear-gradient(45deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%),
-			linear-gradient(135deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%);
-	}
 	div.cube.corner > div {
-		background: radial-gradient ();
+		background: radial-gradient(transparent 70%, var(--bord-color) 90%);
+	}
+	div.ball {
+		width: 200px;
+		height: 200px;
+		background: radial-gradient(circle at 40% 50%, green 50%, black);
 	}
 </style></head><body>
-	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source: la cascade</a>
+	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
+	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<div class='perspective'>
-		<div class='cube full corner'>
-			<div class='front'>devant</div><div class='back'>derrière</div><div class='top'>haut</div>
-			<div class='bottom'>bas</div><div class='left'>gauche</div><div class='right'>droite</div>
-		</div>
+		<div class='cube corner text'><div>devant</div><div>derrière</div><div>haut</div><div>bas</div><div>gauche</div><div>droite</div></div>
+		<div class='ball text'>coucou</div>
 	</div>
 </body></html>
