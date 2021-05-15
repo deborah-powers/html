@@ -6,10 +6,11 @@
 	perspective: none;
 	perspective-origin: 0 0;
 }
-.text {
+.text, .cube.text >* {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	font-size: 2em;
 }
 .anim {
@@ -62,8 +63,20 @@
 	animation-name: cube-spin-full;
 	transform-origin: 100px 100px;
 }
-div.ball {
-	/* préciser width et height */
+.ball {
+	/* préciser width, height et background-color */
 	border-radius: 50%;
-	background: radial-gradient(circle at 20% 50%, var(--fond-color), var(--text-color));
+	background-image: radial-gradient(circle at 20% 50%, transparent, black);
+	animation-duration: 8s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+.ball.vertical { animation-name: ball-spin-horizontally; }
+@keyframes ball-spin-horizontally {
+	17% { background-image: radial-gradient(circle at 30% 50%, transparent, black); }
+	33% { background-image: radial-gradient(circle at 40% 50%, transparent, black); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, black); }
+	67% { background-image: radial-gradient(circle at 60% 50%, transparent, black); }
+	83% { background-image: radial-gradient(circle at 70% 50%, transparent, black); }
+	100% { background-image: radial-gradient(circle at 80% 50%, transparent, black); }
 }

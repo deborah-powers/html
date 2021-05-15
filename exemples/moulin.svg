@@ -4,16 +4,16 @@
 	svg {
 		background-color: ivory;
 		border: 2px solid maroon;
-		}
+	}
 	polygon {
 		fill: yellow;
 		stroke: maroon;
-		}
+	}
 	polygon.pt-pal { fill: darkturquoise; }
 	polygon.ombre {
 		fill: maroon;
 		fill-opacity: 0.3;
-		}
+	}
 ]]></style>
 <g id='moulin'>
 <polygon points='25,150 25,300 425,150 425,300'/><polygon points='25,200 25,250 425,200 425,250' class='pt-pal'/>
@@ -33,5 +33,5 @@ function rotation(){
 	angle = angle + saut;
 	obj.setAttributeNS (null, 'transform', 'rotate(' + angle + ',225,225)');
 	tourner = requestAnimationFrame (rotation);
-	}
+}
 ]]></script></svg>
