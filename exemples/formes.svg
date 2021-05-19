@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?xml-stylesheet type='text/css' href='../../library-css/svg.css'?>
-<svg version='1.1' width='900' height='500' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+<?xml-stylesheet type='text/css' href='../../site-dp/library-css/svg.css'?>
+<svg version='1.1' width='900' height='500' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='grid'>
 	<title>mes formes</title>
 <style type='text/css'><![CDATA[
 	/* défaut */
