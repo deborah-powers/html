@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='fr'>
+<head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../liseuse.css'/>
+	<link rel='stylesheet' type='text/css' href='.css'/>
+<style type='text/css'>
+	f {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+	f >*:last-child {
+		border-top-style: solid;
+		border-top-width: 0.1em;
+	}
+	r-va {
+		border-top-style: solid;
+		border-left-style: solid;
+		transform: rotateY(270deg);
+	}
+	r-vb {
+		display: inline-block;
+		padding-left: 1em;
+		padding-top: 0.2em;
+		background:
+			linear-gradient(10deg, transparent 85%, blue 85%),
+			linear-gradient(75deg, transparent 15%, blue 15%, blue 25%, transparent 25%),
+			linear-gradient(105deg, transparent 30%, blue 30%, blue 40%, transparent 40%);
+	}
+	r {
+		border-top-style: solid;
+	}
+	r:before {
+		content: '\\/';
+	}
+</style></head><body>
+	<h1>afficher les images dans les documents de ma liseuse</h1>
+	<p>les images en bmp ne sont pas affichées</p>
+	<p>les styles css externes sont pris en compte</p>
+	<p>fermer toutes les balises, comme img, base</p>
+	<f>coucou</f>
+	<d>coucou</d>
+	<n>coucou</n>
+	<p>voici une fraction <f><d>a</d><n>b+ 12 +c</n></f> stylisée. et une racine <r>5</r> ici.</p>
+</body></html>
