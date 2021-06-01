@@ -13,6 +13,10 @@ Voir le fichier : wamp(64)\instructions_utilisation.pdf
 Pour l'utilisation de MariaDB et MySQL
 Voir le fichier : wamp(64)\mariadb_mysql.txt
 
+service mysql start
+service apache2 start
+
+
 ====== git ======
 
 https://git-scm.com/book/fr/v1/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git
