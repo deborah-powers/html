@@ -1,0 +1,82 @@
+.perspective {
+	perspective: 800px;
+	perspective-origin: 50% 50%;
+}
+.perspective.flat {
+	perspective: none;
+	perspective-origin: 0 0;
+}
+.text, .cube.text >* {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+}
+.anim {
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+.cube {
+	/* préciser width et height */
+	transform-style: preserve-3d;
+	position: relative;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+.cube >* {
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	text-align: center;
+}
+/* ordre des faces: devant, derrière, haut, bas, gauche, droite */
+.cube > div:nth-child(1) { transform: translateZ(100px); }
+.cube > div:nth-child(2) { transform: translateZ(-100px) rotateY(180deg); }
+.cube > div:nth-child(3) {
+	transform: rotateX(-90deg) translateY(-100px);
+	transform-origin: top center;
+}
+.cube > div:nth-child(4) {
+	transform: rotateX(90deg) translateY(100px);
+	transform-origin: bottom center;
+}
+.cube > div:nth-child(5) {
+	transform: rotateY(270deg) translateX(-100px);
+	transform-origin: center left;
+}
+.cube > div:nth-child(6) {
+	transform: rotateY(-270deg) translateX(100px);
+	transform-origin: center right;
+}
+@keyframes cube-spin-horizontally { to { transform: rotateY(360deg); }}
+.cube.horizontal { animation-name: cube-spin-horizontally; }
+@keyframes cube-spin-vertically { to { transform: rotateX(360deg); }}
+.cube.vertical {
+	animation-name: cube-spin-vertically;
+	transform-origin: 0 100px;
+}
+@keyframes cube-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
+.cube.full {
+	animation-name: cube-spin-full;
+	transform-origin: 100px 100px;
+}
+.ball {
+	/* préciser width, height et background-color */
+	border-radius: 50%;
+	background-image: radial-gradient(circle at 20% 50%, transparent, black);
+	animation-duration: 8s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+}
+.ball.vertical { animation-name: ball-spin-horizontally; }
+@keyframes ball-spin-horizontally {
+	17% { background-image: radial-gradient(circle at 30% 50%, transparent, black); }
+	33% { background-image: radial-gradient(circle at 40% 50%, transparent, black); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, black); }
+	67% { background-image: radial-gradient(circle at 60% 50%, transparent, black); }
+	83% { background-image: radial-gradient(circle at 70% 50%, transparent, black); }
+	100% { background-image: radial-gradient(circle at 80% 50%, transparent, black); }
+}

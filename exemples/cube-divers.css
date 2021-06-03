@@ -1,0 +1,38 @@
+div.cube.arlequin > div:nth-child(1) {
+	background:
+		linear-gradient(45deg, deeppink 10%, transparent 30%, transparent 70%, seagreen 90%),
+		linear-gradient(135deg, orange 10%, transparent 30%, transparent 70%, purple 90%);
+}
+div.cube.arlequin > div:nth-child(2) {
+	background:
+		linear-gradient(45deg, orangered 10%, transparent 30%, transparent 70%, blue 90%),
+		linear-gradient(135deg, magenta 10%, transparent 30%, transparent 70%, grey 90%);
+}
+div.cube.arlequin > div:nth-child(3) {
+	background:
+		linear-gradient(45deg, blue 10%, transparent 30%, transparent 70%, seagreen 90%),
+		linear-gradient(135deg, orange 10%, transparent 30%, transparent 70%, magenta 90%);
+}
+div.cube.arlequin > div:nth-child(4) {
+	background:
+		linear-gradient(45deg, deeppink 10%, transparent 30%, transparent 70%, orangered 90%),
+		linear-gradient(135deg, grey 10%, transparent 30%, transparent 70%, purple 90%);
+}
+div.cube.arlequin > div:nth-child(5) {
+	background:
+		linear-gradient(45deg, grey 10%, transparent 30%, transparent 70%, orange 90%),
+		linear-gradient(135deg, blue 10%, transparent 30%, transparent 70%, deeppink 90%);
+}
+div.cube.arlequin > div:nth-child(6) {
+	background:
+		linear-gradient(45deg, purple 10%, transparent 30%, transparent 70%, magenta 90%),
+		linear-gradient(135deg, seagreen 10%, transparent 30%, transparent 70%, orangered 90%);
+}
+div.cube.corner-va > div {
+	background:
+		linear-gradient(45deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%),
+		linear-gradient(135deg, var(--text-color) 10%, transparent 20%, transparent 80%, var(--text-color) 90%);
+}
+div.cube.corner > div {
+	background: radial-gradient(transparent 70%, var(--bord-color) 90%);
+}

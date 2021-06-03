@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head>
+	<title>cube en css</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='cube.css'/>
+	<link rel='stylesheet' type='text/css' href='cube-divers.css'/>
+<style type='text/css'>
+	div.perspective {
+		perspective: 1200px;
+		perspective-origin: 50% 50%;
+	}
+	div.cube {
+		top: 100px;
+		left: 400px;
+		width: 200px;
+		height: 200px;
+	}
+	div.cube > div {
+		background-color: transparent;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-size: 2em;
+	}
+	div.ball {
+		width: 200px;
+		height: 200px;
+		background-color: pink;
+	}
+</style></head><body>
+	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
+	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
+	<div class='perspective'>
+		<div class='cube arlequin text'>
+			<div>devant</div><div>derrière</div><div>haut</div>
+			<div>bas</div><div>gauche</div><div>droite</div>
+		</div>
+		<div class='ball text'>coucou</div>
+	</div>
+	<p>coucou</p>
+</body></html>

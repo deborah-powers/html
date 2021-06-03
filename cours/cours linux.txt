@@ -35,8 +35,42 @@ le mettre sur le bureau
 cliquer droit dessus
 autoriser le lancement
 
-____________________
-______ divers ______
+chrome.desktop
+
+[Desktop Entry]
+Version=1.0
+Name=chrome
+Comment=navigateur qui prend en compte les fichiers locaux
+Exec=/usr/bin/google-chrome --allow-file-access-from-files
+Icon=/home/deborah/Bureau/html/icones/icone-hexagone-h.svg
+Type=Application
+Terminal=false
+Categories=internet;
+
+====== installer lamp-serveur ======
+
+https://www.linuxrouen.fr/wp/cms-sgc-et-web/lamp-server-phpmyadmin-filezilla-2-312/
+https://blog.storagecraft.com/install-lamp-server-linux-mint-18-command/
+maj apt-get
+sudo apt-get update && sudo apt-get dist-upgrade -y
+sudo reboot
+installer lamp
+sudo apt-get install lamp-server^ -y
+entrer un mdp pour mysql (root)
+
+====== les droits ======
+
+sudo chmod -R 744 .
+sudo chmod -R 744 /usr/local/lib/python3.6/dist-packages/
+
+rendre un fichier executable
+sudo chmod -R chmod u+x fichier.sh
+
+rendre les fichiers d'un dossier non executable
+sudo chmod -R 744 folder
+find folder/ -type f -exec chmod a-x {} \;
+
+====== divers ======
 
 echo $JAVA_HOME
 	/home/lenovo/programmes/jdk-12.0.1
@@ -47,24 +81,28 @@ java --version
 	OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)
 	OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)
 
-sudo chmod -R 744 .
-sudo chmod -R 744 /usr/local/lib/python3.6/dist-packages/
+****** créer des alias ******
+
+modifier /home/deborah/.bashrc
+
+ajouter
+# mes alias perso
+alias truc="ma commande sans paramètres"
 
 
-__________________________________________
-______ désinstaller une application ______
+====== désinstaller une application ======
 
-______ retrouver les infos sur une commande ______
+****** retrouver les infos sur une commande ******
 
 which myapp
 whereis myapp
 myapp --version
 
-______ retrouver les infos sur une appli ______
+****** retrouver les infos sur une appli ******
 
 dpkg --listfiles my-app
 
-______ suppression
+****** suppression
 
 sudo rm -R /opt/my-app/
 sudo rm /usr/share/applications/my-app.desktop
@@ -75,8 +113,7 @@ sudo rm /usr/share/icons/hicolor/128x128/apps/my-app.png
 sudo rm /usr/share/icons/hicolor/256x256/apps/my-app.png
 sudo rm /usr/bin/myapp
 
-_____________________________________________________
-______ changer la version de python par défaut ______
+====== changer la version de python par défaut ======
 
 quand j'ai deux versions sur mon ordi.
 
@@ -91,7 +128,7 @@ sudo ln -s /usr/bin/pip3 /usr/bin/pip
 # Confirm the new version of Python: 3
 python --version
 
-______ seconde méthode ______
+****** seconde méthode ******
 
 # try following to see all instances of python
 whereis python
