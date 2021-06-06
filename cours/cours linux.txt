@@ -41,8 +41,8 @@ chrome.desktop
 Version=1.0
 Name=chrome
 Comment=navigateur qui prend en compte les fichiers locaux
-Exec=/usr/bin/google-chrome --allow-file-access-from-files
-Icon=/home/deborah/Bureau/html/icones/icone-hexagone-h.svg
+Exec=/usr/bin/google-chrome --password-store=basic --allow-file-access-from-files
+Icon=/var/www/html/html/icones/fleur.svg
 Type=Application
 Terminal=false
 Categories=internet;
