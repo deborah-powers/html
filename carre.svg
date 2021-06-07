@@ -74,61 +74,38 @@
 	<polygon points='200,200 0,200 0,400'/><polygon points='200,200 0,200 0,0'/>
 </g>
 </defs>
-	<polygon points='200,200 200,100 133,133' class='b'/>
-	<polygon points='200,200 200,100 267,133' class='a'/>
-	<polygon points='200,200 300,200 267,133' class='c'/>
-	<polygon points='200,200 300,200 267,267' class='e'/>
-	<polygon points='200,200 200,300 267,267' class='d'/>
-	<polygon points='200,200 200,300 133,267' class='i'/>
-	<polygon points='200,200 100,200 133,267' class='f'/>
-	<polygon points='200,200 100,200 133,133' class='o'/>
-
-	<polygon points='200,100 160,80 133,133' class='e'/>
-	<polygon points='200,100 240,80 267,133' class=''/>
-	<polygon points='300,200 267,133 320,160' class=''/>
-	<polygon points='300,200 267,267 320,240' class=''/>
-	<polygon points='200,300 240,320 267,267' class=''/>
-	<polygon points='200,300 160,320 133,267' class=''/>
-	<polygon points='100,200 80,240 133,267' class=''/>
-	<polygon points='100,200 80,160 133,133' class=''/>
-	<polygon points='160,80 133,133 100,100 133,67' class=''/>
-	<polygon points='240,80 267,133 300,100 267,67' class=''/>
-	<polygon points='320,160 267,133 300,100 333,133' class=''/>
-	<polygon points='320,240 267,267 300,300 333,267' class=''/>
-	<polygon points='240,320 267,333 300,300 267,267' class=''/>
-	<polygon points='160,320 133,333 100,300 133,267' class=''/>
-	<polygon points='80,240 67,267 100,300 133,267' class=''/>
-	<polygon points='80,160 67,133 100,100 133,133' class=''/>
-	<polygon points='200,0 160,80 133,67' class=''/>
-	<polygon points='200,0 240,80 267,67' class=''/>
-	<polygon points='400,200 320,160 333,133' class=''/>
-	<polygon points='400,200 320,240 333,267' class=''/>
-	<polygon points='200,400 240,320 267,333' class=''/>
-	<polygon points='200,400 160,320 133,333' class=''/>
-	<polygon points='0,200 80,240 67,267' class=''/>
-	<polygon points='0,200 80,160 67,133' class=''/>
-	<polygon points='200,0 160,80 200,100' class=''/>
-	<polygon points='200,0 240,80 200,100' class=''/>
-	<polygon points='400,200 320,160 300,200' class=''/>
-	<polygon points='400,200 320,240 300,200' class=''/>
-	<polygon points='200,400 240,320 200,300' class=''/>
-	<polygon points='200,400 160,320 200,300' class=''/>
-	<polygon points='0,200 80,240 100,200' class=''/>
-	<polygon points='0,200 80,160 100,200' class=''/>
-	<polygon points='133,67 0,0 100,100' class=''/>
-	<polygon points='267,67 400,0 300,100' class=''/>
-	<polygon points='333,133 400,0 300,100' class=''/>
-	<polygon points='333,267 400,400 300,300' class=''/>
-	<polygon points='267,333 400,400 300,300' class=''/>
-	<polygon points='133,333 0,400 100,300' class=''/>
-	<polygon points='67,267 0,400 100,300' class=''/>
-	<polygon points='67,133 0,0 100,100' class=''/>
-	<polygon points='133,67 0,0 200,0' class=''/>
-	<polygon points='267,67 400,0 200,0' class=''/>
-	<polygon points='333,133 400,0 400,200' class=''/>
-	<polygon points='333,267 400,400 400,200' class=''/>
-	<polygon points='267,333 400,400 200,400' class=''/>
-	<polygon points='133,333 0,400 200,400' class=''/>
-	<polygon points='67,267 0,400 0,200' class=''/>
-	<polygon points='67,133 0,0 0,200' class=''/>
+	<polygon points='200,200 200,100 133,133' class='b'/><polygon points='200,200 200,100 267,133' class='a'/>
+	<polygon points='200,200 300,200 267,133' class='c'/><polygon points='200,200 300,200 267,267' class='e'/>
+	<polygon points='200,200 200,300 267,267' class='d'/><polygon points='200,200 200,300 133,267' class='i'/>
+	<polygon points='200,200 100,200 133,267' class='f'/><polygon points='200,200 100,200 133,133' class='o'/>
+	<!---->
+	<polygon points='200,100 160,80 133,133' class='e'/><polygon points='200,100 240,80 267,133' class='f'/>
+	<polygon points='300,200 267,133 320,160' class='i'/><polygon points='300,200 267,267 320,240' class='b'/>
+	<polygon points='200,300 240,320 267,267' class='o'/><polygon points='200,300 160,320 133,267' class='c'/>
+	<polygon points='100,200 80,240 133,267' class='a'/><polygon points='100,200 80,160 133,133' class='d'/>
+	<!---->
+	<polygon points='160,80 133,133 100,100 133,67' class='c'/><polygon points='240,80 267,133 300,100 267,67' class='o'/>
+	<polygon points='320,160 267,133 300,100 333,133' class='d'/><polygon points='320,240 267,267 300,300 333,267' class='a'/>
+	<polygon points='240,320 267,333 300,300 267,267' class='f'/><polygon points='160,320 133,333 100,300 133,267' class='e'/>
+	<polygon points='80,240 67,267 100,300 133,267' class='b'/><polygon points='80,160 67,133 100,100 133,133' class='i'/>
+	<!---->
+	<polygon points='200,0 160,80 133,67' class='a'/><polygon points='200,0 240,80 267,67' class='b'/>
+	<polygon points='400,200 320,160 333,133' class='e'/><polygon points='400,200 320,240 333,267' class='c'/>
+	<polygon points='200,400 240,320 267,333' class='i'/><polygon points='200,400 160,320 133,333' class='d'/>
+	<polygon points='0,200 80,240 67,267' class='o'/><polygon points='0,200 80,160 67,133' class='f'/>
+	<!---->
+	<polygon points='200,0 160,80 200,100' class='d'/><polygon points='200,0 240,80 200,100' class='i'/>
+	<polygon points='400,200 320,160 300,200' class='f'/><polygon points='400,200 320,240 300,200' class='o'/>
+	<polygon points='200,400 240,320 200,300' class='b'/><polygon points='200,400 160,320 200,300' class='a'/>
+	<polygon points='0,200 80,240 100,200' class='c'/><polygon points='0,200 80,160 100,200' class='e'/>
+	<!---->
+	<polygon points='133,67 0,0 100,100' class='o'/><polygon points='267,67 400,0 300,100' class='c'/>
+	<polygon points='333,133 400,0 300,100' class='a'/><polygon points='333,267 400,400 300,300' class='d'/>
+	<polygon points='267,333 400,400 300,300' class='e'/><polygon points='133,333 0,400 100,300' class='f'/>
+	<polygon points='67,267 0,400 100,300' class='i'/><polygon points='67,133 0,0 100,100' class='b'/>
+	<!---->
+	<polygon points='133,67 0,0 200,0' class='f'/><polygon points='267,67 400,0 200,0' class='e'/>
+	<polygon points='333,133 400,0 400,200' class='b'/><polygon points='333,267 400,400 400,200' class='i'/>
+	<polygon points='267,333 400,400 200,400' class='c'/><polygon points='133,333 0,400 200,400' class='o'/>
+	<polygon points='67,267 0,400 0,200' class='d'/><polygon points='67,133 0,0 0,200' class='a'/>
 </svg>
