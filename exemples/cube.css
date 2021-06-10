@@ -66,17 +66,30 @@
 .ball {
 	/* préciser width, height et background-color */
 	border-radius: 50%;
-	background-image: radial-gradient(circle at 20% 50%, transparent, black);
-	animation-duration: 8s;
+	background-image: radial-gradient(circle at 20% 50%, transparent 25%, black);
+	animation-duration: 1s;
 	animation-iteration-count: infinite;
-	animation-direction: normal;
+	animation-direction: alternate;
 }
-.ball.vertical { animation-name: ball-spin-horizontally; }
+.ball.horizontal { animation-name: ball-spin-horizontally; }
 @keyframes ball-spin-horizontally {
-	17% { background-image: radial-gradient(circle at 30% 50%, transparent, black); }
-	33% { background-image: radial-gradient(circle at 40% 50%, transparent, black); }
-	50% { background-image: radial-gradient(circle at 50% 50%, transparent, black); }
-	67% { background-image: radial-gradient(circle at 60% 50%, transparent, black); }
-	83% { background-image: radial-gradient(circle at 70% 50%, transparent, black); }
-	100% { background-image: radial-gradient(circle at 80% 50%, transparent, black); }
+	5% { background-image: radial-gradient(circle at 5% 50%, transparent 25%, black); }
+	10% { background-image: radial-gradient(circle at 10% 50%, transparent 25%, black); }
+	15% { background-image: radial-gradient(circle at 15% 50%, transparent 25%, black); }
+	20% { background-image: radial-gradient(circle at 20% 50%, transparent 25%, black); }
+	25% { background-image: radial-gradient(circle at 25% 50%, transparent 25%, black); }
+	30% { background-image: radial-gradient(circle at 30% 50%, transparent 25%, black); }
+	35% { background-image: radial-gradient(circle at 35% 50%, transparent 25%, black); }
+	40% { background-image: radial-gradient(circle at 40% 50%, transparent 25%, black); }
+	45% { background-image: radial-gradient(circle at 45% 50%, transparent 25%, black); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent 25%, black); }
+	55% { background-image: radial-gradient(circle at 55% 50%, transparent 25%, black); }
+	60% { background-image: radial-gradient(circle at 60% 50%, transparent 25%, black); }
+	65% { background-image: radial-gradient(circle at 65% 50%, transparent 25%, black); }
+	70% { background-image: radial-gradient(circle at 70% 50%, transparent 25%, black); }
+	75% { background-image: radial-gradient(circle at 75% 50%, transparent 25%, black); }
+	80% { background-image: radial-gradient(circle at 80% 50%, transparent 25%, black); }
+	85% { background-image: radial-gradient(circle at 85% 50%, transparent 25%, black); }
+	90% { background-image: radial-gradient(circle at 90% 50%, transparent 25%, black); }
+	95% { background-image: radial-gradient(circle at 95% 50%, transparent 25%, black); }
 }
