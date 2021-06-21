@@ -25,7 +25,7 @@
 	a:hover { font-weight: normal; }
 	td:first-letter { text-transform: none; }
 </style></head><body>
-	<selection name='optionChoosen' onchange='chooseOption()'>optionList</selection>
+	<selection name='optionChoosen' callback='chooseOption'>optionList</selection>
 	<table>
 		<tr><th>site</th><th>utilisateur</th><th>courriel</th><th>mot de passe</th><th>infos</th></tr>
 		<tr for='dataList'>
@@ -39,7 +39,7 @@
 	debbyPlay.optionList =[];
 	debbyPlay.dataList =[];
 	debbyPlay.jsonList ={};
-	debbyPlay.optionChoosen ="";
+	debbyPlay.optionChoosen = 'important';
 
 	const linkRef ={
 		"name": "",
@@ -49,17 +49,15 @@
 		"password": "",
 		"infos": ""
 	};
-	function chooseOption(){
-		console.log ('coucou', debbyPlay.optionChoosen);
+	function chooseOption (option){
 		debbyPlay.dataList =[];
-		debbyPlay.dataList = debbyPlay.jsonList [debbyPlay.optionChoosen];
+		debbyPlay.dataList = debbyPlay.jsonList [option];
 		document.body.load();
 	}
 	// récupérer les données
 	debbyPlay.jsonList = useJson (fileJson);
 	// les noms des catégories
 	for (var j in debbyPlay.jsonList) if (debbyPlay.jsonList.hasOwnProperty (j)){
-		console.log (j, debbyPlay.jsonList[j]);
 		debbyPlay.optionList.push (j);
 		for (var k=0; k< debbyPlay.jsonList[j].length; k++) debbyPlay.jsonList[j][k].fill (linkRef);
 	}
