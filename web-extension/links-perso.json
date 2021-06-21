@@ -1,0 +1,370 @@
+{
+"synergie": [{
+		"name": "crah axyus",
+		"link": "https://sx.axyus.com/sx/",
+		"username": "deborah.powers",
+		"password": "DePoS2020**",
+		"infos": "allumer le vpn cisco"
+	}, {
+		"name": "crah cgi",
+		"link": "https://psa-fs.ent.cgi.com/psc/fsprda/EMPLOYEE/ERP/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?",
+		"username": "deborah.powers",
+		"password": "OignOn124 (variable)",
+		"infos": "vpn eras"
+	}, {
+		"name": "pause de congé",
+		"link": "https://psa-hrservicecenter.ent.cgi.com/psp/cmprd/EMPLOYEE/CRM/h/?tab=CR_RC_HRHD_SS",
+		"infos": "ids et vpn de cgi"
+	}, {
+		"name": "wiki",
+		"link": "https://forgeaxyus.local.axyus.com/plugins/mediawiki/wiki/synergie-2-0-interne/index.php?title=Accueil"
+	}, {
+		"name": "mantis externe",
+		"link": "https://mantis2.axyus.com/"
+	}, {
+		"name": "mantis interne",
+		"link": "https://forgeaxyus.local.axyus.com/plugins/tracker/?report=344&renderer=518",
+		"username": "powers.deborah",
+		"password": "noisette416"
+	}, {
+		"name": "env usine 1",
+		"link": "https://auth.usine1.synergie-europe.fr/",
+		"username": "deborah.powers",
+		"password": "Noisette416",
+		"infos": "superadmin / recette"
+	}, {
+		"name": "env usine 2",
+		"link": "https://auth.usine2.synergie-europe.fr/",
+		"infos": "les usines sont pour nous"
+	}, {
+		"name": "env recette 1",
+		"link": "https://auth.recette1.synergie-europe.fr/",
+		"username": "dpow",
+		"password": "Password1",
+		"infos": "pour l'anct. ydon / password, scha / Password, superadmin / recette"
+	}, {
+		"name": "env recette 2",
+		"link": "https://auth.recette2.synergie-europe.fr/",
+		"username": "sara.chaib",
+		"password": "Password01",
+		"infos": "pour l'anct. yohan.donjo / Password01"
+	}, {
+		"name": "forge axyus",
+		"link": "https://forgeaxyus.local.axyus.com/",
+		"infos": "comme pour le crah d'axyus"
+	}, {
+		"name": "ce",
+		"link": "https://www.cse-mutu-alizee.com/",
+		"username": "238964",
+		"password": "noisette",
+		"infos": "vpn eras"
+}],
+"courriel": [{
+		"name": "boulot, dev",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"email": "deborah.powers.dev@gmail.com",
+		"password": "noisette416"
+	}, {
+		"name": "noisetier",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"email": "deborah.noisetier@gmail.com",
+		"password": "noisette416"
+	}, {
+		"name": "orange",
+		"link": "https://webmail1j.orange.fr/webmail/fr_FR/inbox.html?FromSubmit=true&dub=1",
+		"email": "deborah.powers@orange.fr",
+		"password": "BRILLIANCE107MP"
+	}, {
+		"name": "powers89",
+		"link": "https://mail.google.com/mail/u/1/#inbox",
+		"email": "deborah.powers89@gmail.com",
+		"password": "violette416, noisette416"
+	}
+],
+"amour": [{
+		"name": "c pour nous",
+		"link": "https://www.okcupid.com/home",
+		"email": "noisetier",
+		"password": "violette1405"
+	}, {
+		"name": "happy friends",
+		"link": "https://www.happy-friends.fr/",
+		"email": "noisetier",
+		"password": "noisette"
+	}, {
+		"name": "meetic",
+		"link": "https://www.meetic.fr/",
+		"email": "noisetier",
+		"password": "Noisette416"
+	}, {
+		"name": "meetic afinity",
+		"link": "https://www.affiny.fr/",
+		"email": "noisetier",
+		"password": "Noisette416"
+	}, {
+		"name": "ok cupid",
+		"link": "https://www.okcupid.com/home",
+		"email": "noisetier",
+		"password": "violette1405"
+	}
+],
+"administratif": [{
+		"name": "ants",
+		"link": "https://ants.gouv.fr/monespace/s-inscrire",
+		"email": "orange",
+		"username": "dpowers",
+		"password": "9Er3Pu%n!"
+	}, {
+		"name": "banque",
+		"link": "https://particuliers.societegenerale.fr/",
+		"username": "39458399",
+		"password": "246135",
+		"infos": "9803"
+	}, {
+		"name": "caf",
+		"link": "https://wwwd.caf.fr/wps/portal/caffr/login/!ut/p/a1/04_Sj9CPykssy0xPLMnMz0vMAfGjzOID_A3dPbyDDdz9A1yNDTxdzQNDXJ19DS0CjYAKIoEKDHAARwNC-sP1o8BK8JhQkBthkO6oqAgArtbX2Q!!/dl5/d5/L2dBISEvZ0FBIS9nQSEh/#/signature",
+		"username": "8078616",
+		"password": "14789416"
+	}, {
+		"name": "digiposte",
+		"link": "https://secure.digiposte.fr/home",
+		"email": "powers89",
+		"password": "Noisette416"
+	}, {
+		"name": "e-cb",
+		"link": "https://service.e-cartebleue.com/fr/sg/index",
+		"username": "LQGMIZKD",
+		"password": "dp140789"
+	}, {
+		"name": "engie électricité",
+		"link": "https://particuliers.engie.fr/espace-client/",
+		"username": "310414161",
+		"email": "orange",
+		"password": "Noisette-416",
+		"infos": "deux contrats rattachés"
+	}, {
+		"name": "esalia",
+		"link": "https://www.esalia.com/fr/epargnants/",
+		"username": "65 22 37 32",
+		"email": "orange",
+		"password": "444666"
+	}, {
+		"name": "générali",
+		"link": "https://www.generali.fr/espace-client/",
+		"username": "dpowers1",
+		"password": "246531",
+		"infos": "ancien mdp: 444666"
+	}, {
+		"name": "impots",
+		"link": "https://cfspart.impots.gouv.fr/enp/ensu/accueilensupres.do",
+		"username": "n° fiscal: 3006983777189",
+		"password": "2CEE3W22cee3w2"
+	}, {
+		"name": "impots maman",
+		"link": "https://cfspart.impots.gouv.fr/enp/ensu/accueilensupres.do",
+		"username": "n° fiscal: 0100134048021",
+		"password": "2CEE3W22cee3w2"
+	}, {
+		"name": "lsvo",
+		"link": "https://lsvo.fr/",
+		"username": "21795",
+		"email": "orange",
+		"password": "e692db"
+	}, {
+		"name": "pe",
+		"link": "https://authentification-candidat.pole-emploi.fr/connexion/XUI/#login/&realm=%2Findividu&goto=https%3A%2F%2Fauthentification-candidat.pole-emploi.fr%2Fconnexion%2Foauth2%2Fauthorize%3Frealm%3D%252Find",
+		"infos": "5965492F, 248420"
+	}, {
+		"name": "red by sfr téléphone",
+		"link": "https://www.sfr.fr/",
+		"email": "noisetier",
+		"password": "tel30go10e",
+		"infos": "0641356229"
+	}, {
+		"name": "red by sfr internet",
+		"link": "https://www.sfr.fr/",
+		"email": "noisetier",
+		"password": "Box100mb20e",
+		"infos": "0171739928, deborah.noisetier@sfr.fr, srMerde0"
+}],
+"divers": [{
+		"name": "billet réduc",
+		"link": "https://www.billetreduc.com/",
+		"email": "noisetier",
+		"password": "N_oisette"
+	}, {
+		"name": "intermarché",
+		"link": "https://www.intermarche.com/mon-compte/",
+		"email": "noisetier",
+		"password": "noisette416"
+	}, {
+		"name": "le bon coin",
+		"link": "https://www.leboncoin.fr/",
+		"username": "debbie",
+		"email": "noisetier",
+		"password": "Noisette416"
+	}, {
+		"name": "monster",
+		"email": "dev",
+		"password": "Noisette-416"
+	}, {
+		"name": "via navigo",
+		"link": "https://www.vianavigo.com/accueil",
+		"email": "noisetier",
+		"password": "Noisette416"
+	}
+],
+"autres": [{
+		"name": "futura science",
+		"link": "https://forums.futura-sciences.com/members/1082988-debby-noisette.html?tab=aboutme#aboutme",
+		"username": "debby noisette",
+		"email": "noisetier",
+		"password": "noisette"
+	}, {
+		"name": "monsieur",
+		"link": "http://www.slate.fr/story/158536/derriere-porte-close-monsieur-dominateur-bdsm-domination-soumission-sexualite"
+	}, {
+		"name": "trains du val de loire",
+		"link": "https://www.ter.sncf.com/centre-val-de-loire/",
+		"email": "noisetier",
+		"password": "noisette"
+	}, {
+		"name": "mes photos",
+		"link": "https://imageshack.com/my/images",
+		"username": "debby-noisette",
+		"email": "noisetier",
+		"password": "noisette"
+	}
+],
+"programmation": [{
+		"name": "bdd locale",
+		"link": "http://localhost/adminer.php?username=root&db=site",
+		"username": "root",
+		"password": "root"
+	}, {
+		"name": "bdd ovh",
+		"link": "https://phpmyadmin.cluster021.hosting.ovh.net/index.php?db=deborahprrdebbie",
+		"username": "deborahprrdebbie",
+		"password": "Noisette416",
+		"infos": "serveur deborahprrdebbie.mysql.db"
+	}, {
+		"name": "code cadémy dev",
+		"email": "dev",
+		"password": "noisette"
+	}, {
+		"name": "code cadémy framboisier",
+		"email": "noisetier",
+		"password": "noisette"
+	}, {
+		"name": "filezilla",
+		"username": "deborahprr",
+		"password": "hg6baD63qZfr",
+		"infos": "ftp.cluster021.hosting.ovh.net"
+	}, {
+		"name": "free code camp",
+		"link": "https://www.freecodecamp.org/",
+		"email": "dev"
+	}, {
+		"name": "github",
+		"link": "https://github.com/deborah-powers",
+		"email": "dev",
+		"password": "noisette416"
+	}, {
+		"name": "ovh",
+		"link": "https://www.ovh.com/auth/",
+		"username": "pd221884-ovh",
+		"password": "Noisette416"
+	}, {
+		"name": "trello",
+		"link": "https://trello.com/",
+		"email": "powers89",
+		"password": "noisette416"
+	}, {
+		"name": "stack overflow",
+		"link": "https://stackoverflow.com/",
+		"email": "dev",
+		"password": "noisette416",
+		"infos": "ids de github"
+	}
+],
+"reseaux": [{
+		"name": "",
+		"link": "",
+		"username": "",
+		"email": "",
+		"password": "",
+		"infos": ""
+	}, {
+		"name": "reddit",
+		"link": "https://www.reddit.com/",
+		"username": "blue-hazelnut",
+		"email": "noisetier",
+		"password": "noisette416"
+	}, {
+		"name": "instagram",
+		"link": "https://www.instagram.com/?hl=fr",
+		"email": "noisetier",
+		"password": "noisette416",
+		"infos": "comme facebook"
+	}, {
+		"name": "facebook",
+		"link": "https://www.facebook.com/deborah.noisetier",
+		"email": "noisetier",
+		"password": "noisette416"
+	}, {
+		"name": "linkedin",
+		"link": "https://www.linkedin.com/in/deborah-powers-web-dev/",
+		"email": "dev",
+		"password": "noisette416"
+	}, {
+		"name": "netflix",
+		"link": "https://www.netflix.com/",
+		"email": "victoriapowers28@gmail.com",
+		"password": "Victoria22"
+	}, {
+		"name": "amazon prime",
+		"link": "https://www.primevideo.com/",
+		"email": "victoriapowers28@gmail.com",
+		"password": "Victoria22"
+	}, {
+		"name": "twitter",
+		"link": "https://twitter.com/home",
+		"email": "dev",
+		"password": "noisette416"
+	}, {
+		"name": "twitter perso",
+		"link": "https://twitter.com/home",
+		"email": "noisetier",
+		"password": "noisette416"
+	}
+],
+"sante": [{
+		"name": "ameli",
+		"link": "https://assure.ameli.fr/PortailAS/appmanager/PortailAS/assure?_somtc=true",
+		"email": "deborah.powers@orange.fr",
+		"infos": "289077718607245, 19890714"
+	}, {
+		"name": "medibio",
+		"link": "http://medibiolab.fr/",
+		"infos": "P-001834128, premier animal de compagnie: zoe"
+	}, {
+		"name": "mutuelle",
+		"link": "https://monespace.verspieren.com/"
+	}, {
+		"name": "biosmose",
+		"link": "http://www.laboratoire-biosmose.fr/",
+		"username": "960971",
+		"password": "CL2U47, Noisette416"
+	}, {
+		"name": "bariatric advantage",
+		"link": "https://www.bariatricadvantage.eu/fr/bariatric-advantage-multi-gelules-180",
+		"email": "noisetier",
+		"password": "Noisette416"
+	}, {
+		"name": "wls forte",
+		"link": "https://www.fitforme.fr/checkout/cart/",
+		"email": "noisetier",
+		"password": "noisette416"
+	}
+]
+}

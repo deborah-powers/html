@@ -2,15 +2,13 @@
 	<title>Liens personnels</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='blank' href='/var/www/html/site-dp/'>
-	<!-- base target='blank' href='../../site-perso/' -->
-	<link rel='icon' type='image/x-icon' href='data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/debbyPlay.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/perso.css'/>
-	<script type='text/javascript' src='library-js/text.js'></script>
-	<script type='text/javascript' src='library-js/file.js'></script>
-	<script type='text/javascript' src='library-js/debbyPlay.js'></script>
+	<link rel='icon' type='image/x-icon' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/debbyPlay.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css'/>
+	<script type='text/javascript' src='../../site-dp/library-js/text.js'></script>
+	<script type='text/javascript' src='../../site-dp/library-js/file.js'></script>
+	<script type='text/javascript' src='../../site-dp/library-js/debbyPlay.js'></script>
 <style type='text/css'>
 	body {
 		text-align: center;
@@ -25,7 +23,7 @@
 	a:hover { font-weight: normal; }
 	td:first-letter { text-transform: none; }
 </style></head><body>
-	<selection name='optionChoosen' callback='chooseOption'>optionList</selection>
+	<selection callback='chooseOption' name='optionChoosen'>optionList</selection>
 	<table>
 		<tr><th>site</th><th>utilisateur</th><th>courriel</th><th>mot de passe</th><th>infos</th></tr>
 		<tr for='dataList'>
@@ -34,12 +32,12 @@
 	</table>
 </body>
 <script type='text/javascript'>
-	// var fileJson = '../html/divers/links-perso.json';
-	var fileJson = '/var/www/html/html/web-extension/we-marque-page/links-perso.json';
+//	var fileJson = '/var/www/html/html/web-extension/we-marque-page/links-perso.json';
+	var fileJson = 'C:\\Users\\deborah.powers\\html\\web-extension\\links-perso.json';
 	debbyPlay.optionList =[];
 	debbyPlay.dataList =[];
 	debbyPlay.jsonList ={};
-	debbyPlay.optionChoosen = 'important';
+	debbyPlay.optionChoosen = 'synergie';
 
 	const linkRef ={
 		"name": "",
@@ -63,9 +61,6 @@
 	}
 	debbyPlay.optionList.sort();
 	// la première option choisie
-	var pos = debbyPlay.optionList.indexOf ('important');
-	debbyPlay.optionList.splice (pos, 1);
-	debbyPlay.optionList.unshift ('important');
 	document.body.init();
-	chooseOption ('important');
+	chooseOption ('synergie');
 </script></html>
