@@ -1,7 +1,6 @@
 divers/
-web-extension/we-marque-page/links-perso.json
+*links-perso.json
 *.ico
-*.json
 *.log
 *.zip
 *-va.*
