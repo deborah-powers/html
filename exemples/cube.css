@@ -13,11 +13,6 @@
 	align-items: center;
 	font-size: 2em;
 }
-.anim {
-	animation-duration: 10s;
-	animation-iteration-count: infinite;
-	animation-direction: normal;
-}
 .volume {
 	transform-style: preserve-3d;
 	position: relative;
@@ -30,9 +25,7 @@
 	text-align: center;
 }
 /* le cube */
-.cube {
-	/* préciser width et height */
-}
+.cube { /* préciser width et height */ }
 .cube >* {
 	width: inherit;
 	height: inherit;
