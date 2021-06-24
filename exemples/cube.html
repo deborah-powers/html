@@ -30,15 +30,87 @@
 		height: 200px;
 		background-color: pink;
 	}
+/* la brique-a */
+.brique-a {
+	transform-style: preserve-3d;
+	position: relative;
+		top: 100px;
+		left: 400px;
+		width: 200px;
+		height: 200px;
+}
+.brique-a >* {
+	background-color: #F0F4;
+	width: 200px;
+	height: 100px;
+}
+.brique-a > *:nth-child(1) { transform: translateZ(50px); }
+.brique-a > *:nth-child(2) { transform: translateZ(-50px) rotateY(180deg); }
+.brique-a > *:nth-child(3) {
+	transform: rotateX(-90deg) translateY(-50px);
+	transform-origin: top center;
+}
+.brique-a > *:nth-child(4) {
+	transform: rotateX(90deg) translateY(50px);
+	transform-origin: bottom center;
+}
+.brique-a > *:nth-child(5) {
+	width: 100px;
+	transform: rotateY(270deg) translateX(-50px) translateZ(50px);
+	transform-origin: center left;
+}
+.brique-a > *:nth-child(6) {
+	width: 100px;
+	transform: rotateY(-270deg) translateX(50px) translateZ(50px);
+	transform-origin: center right;
+}
+/* le toblerone */
+.toblerone {
+	top: 100px;
+	left: 400px;
+	width: 200px;
+	height: 200px;
+}
+.toblerone >* {
+	background-color: #F0F4;
+	width: 200px;
+	height: 100px;
+}
+.toblerone > *:nth-child(1) {
+	height: 112px;
+	transform: translateZ(50px) rotateX(45deg);
+}
+.toblerone > *:nth-child(2) {
+	height: 112px;
+	transform: translateZ(-50px) rotateY(180deg) rotateX(45deg);
+}
+.toblerone > *:nth-child(3) {
+	transform: rotateX(90deg) translateY(50px);
+	transform-origin: bottom center;
+}
+.toblerone > *:nth-child(4) {
+	width: 100px;
+	transform: rotateY(270deg) translateX(-50px) translateZ(50px);
+	transform-origin: center left;
+}
+.toblerone > *:nth-child(5) {
+	width: 100px;
+	transform: rotateY(-270deg) translateX(50px) translateZ(50px);
+	transform-origin: center right;
+}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<div class='perspective'>
-		<div class='cube arlequin text'>
-			<div>devant</div><div>derrière</div><div>haut</div>
-			<div>bas</div><div>gauche</div><div>droite</div>
+		<div class='volume cube arlequin text'>
+			<p>devant</p><p>derrière</p><p>haut</p>
+			<p>bas</p><p>gauche</p><p>droite</p>
 		</div>
-		<div class='ball text horizontal'>coucou</div>
+		<div class='volume toblerone text full'>
+			<p>devant</p><p>derrière</p>
+			<p>bas</p><p>gauche</p><p>droite</p>
+		</div>
+		<div class='ball text'>coucou</div>
 	</div>
 	<p>coucou</p>
 </body></html>
