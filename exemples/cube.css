@@ -6,48 +6,46 @@
 	perspective: none;
 	perspective-origin: 0 0;
 }
-.text, .cube.text >* {
+.text, .volume.text >* {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	font-size: 2em;
 }
-.anim {
-	animation-duration: 10s;
-	animation-iteration-count: infinite;
-	animation-direction: normal;
-}
-.cube {
-	/* préciser width et height */
+.volume {
 	transform-style: preserve-3d;
 	position: relative;
 	animation-duration: 10s;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
 }
-.cube >* {
-	width: inherit;
-	height: inherit;
+.volume >* {
 	position: absolute;
 	text-align: center;
 }
+/* le cube */
+.cube { /* préciser width et height */ }
+.cube >* {
+	width: inherit;
+	height: inherit;
+}
 /* ordre des faces: devant, derrière, haut, bas, gauche, droite */
-.cube > div:nth-child(1) { transform: translateZ(100px); }
-.cube > div:nth-child(2) { transform: translateZ(-100px) rotateY(180deg); }
-.cube > div:nth-child(3) {
+.cube > *:nth-child(1) { transform: translateZ(100px); }
+.cube > *:nth-child(2) { transform: translateZ(-100px) rotateY(180deg); }
+.cube > *:nth-child(3) {
 	transform: rotateX(-90deg) translateY(-100px);
 	transform-origin: top center;
 }
-.cube > div:nth-child(4) {
+.cube > *:nth-child(4) {
 	transform: rotateX(90deg) translateY(100px);
 	transform-origin: bottom center;
 }
-.cube > div:nth-child(5) {
+.cube > *:nth-child(5) {
 	transform: rotateY(270deg) translateX(-100px);
 	transform-origin: center left;
 }
-.cube > div:nth-child(6) {
+.cube > *:nth-child(6) {
 	transform: rotateY(-270deg) translateX(100px);
 	transform-origin: center right;
 }
@@ -59,37 +57,64 @@
 	transform-origin: 0 100px;
 }
 @keyframes cube-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
-.cube.full {
+.full {
 	animation-name: cube-spin-full;
 	transform-origin: 100px 100px;
 }
+/* la boule */
 .ball {
 	/* préciser width, height et background-color */
 	border-radius: 50%;
-	background-image: radial-gradient(circle at 20% 50%, transparent 25%, black);
+	background-image: radial-gradient(circle at 20% 50%, transparent, #0005);
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 }
 .ball.horizontal { animation-name: ball-spin-horizontally; }
+.ball.vertical { animation-name: ball-spin-vertically; }
 @keyframes ball-spin-horizontally {
-	5% { background-image: radial-gradient(circle at 5% 50%, transparent 25%, black); }
-	10% { background-image: radial-gradient(circle at 10% 50%, transparent 25%, black); }
-	15% { background-image: radial-gradient(circle at 15% 50%, transparent 25%, black); }
-	20% { background-image: radial-gradient(circle at 20% 50%, transparent 25%, black); }
-	25% { background-image: radial-gradient(circle at 25% 50%, transparent 25%, black); }
-	30% { background-image: radial-gradient(circle at 30% 50%, transparent 25%, black); }
-	35% { background-image: radial-gradient(circle at 35% 50%, transparent 25%, black); }
-	40% { background-image: radial-gradient(circle at 40% 50%, transparent 25%, black); }
-	45% { background-image: radial-gradient(circle at 45% 50%, transparent 25%, black); }
-	50% { background-image: radial-gradient(circle at 50% 50%, transparent 25%, black); }
-	55% { background-image: radial-gradient(circle at 55% 50%, transparent 25%, black); }
-	60% { background-image: radial-gradient(circle at 60% 50%, transparent 25%, black); }
-	65% { background-image: radial-gradient(circle at 65% 50%, transparent 25%, black); }
-	70% { background-image: radial-gradient(circle at 70% 50%, transparent 25%, black); }
-	75% { background-image: radial-gradient(circle at 75% 50%, transparent 25%, black); }
-	80% { background-image: radial-gradient(circle at 80% 50%, transparent 25%, black); }
-	85% { background-image: radial-gradient(circle at 85% 50%, transparent 25%, black); }
-	90% { background-image: radial-gradient(circle at 90% 50%, transparent 25%, black); }
-	95% { background-image: radial-gradient(circle at 95% 50%, transparent 25%, black); }
+	0% { background-image: radial-gradient(circle at 0% 50%, transparent, #0005); }
+	5% { background-image: radial-gradient(circle at 5% 50%, transparent, #0005); }
+	10% { background-image: radial-gradient(circle at 10% 50%, transparent, #0005); }
+	15% { background-image: radial-gradient(circle at 15% 50%, transparent, #0005); }
+	20% { background-image: radial-gradient(circle at 20% 50%, transparent, #0005); }
+	25% { background-image: radial-gradient(circle at 25% 50%, transparent, #0005); }
+	30% { background-image: radial-gradient(circle at 30% 50%, transparent, #0005); }
+	35% { background-image: radial-gradient(circle at 35% 50%, transparent, #0005); }
+	40% { background-image: radial-gradient(circle at 40% 50%, transparent, #0005); }
+	45% { background-image: radial-gradient(circle at 45% 50%, transparent, #0005); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0005); }
+	55% { background-image: radial-gradient(circle at 55% 50%, transparent, #0005); }
+	60% { background-image: radial-gradient(circle at 60% 50%, transparent, #0005); }
+	65% { background-image: radial-gradient(circle at 65% 50%, transparent, #0005); }
+	70% { background-image: radial-gradient(circle at 70% 50%, transparent, #0005); }
+	75% { background-image: radial-gradient(circle at 75% 50%, transparent, #0005); }
+	80% { background-image: radial-gradient(circle at 80% 50%, transparent, #0005); }
+	85% { background-image: radial-gradient(circle at 85% 50%, transparent, #0005); }
+	90% { background-image: radial-gradient(circle at 90% 50%, transparent, #0005); }
+	95% { background-image: radial-gradient(circle at 95% 50%, transparent, #0005); }
+	100% { background-image: radial-gradient(circle at 100% 50%, transparent, #0005); }
+}
+@keyframes ball-spin-vertically {
+	0% { background-image: radial-gradient(circle at 50% 0%, transparent, #0005); }
+	5% { background-image: radial-gradient(circle at 50% 5%, transparent, #0005); }
+	10% { background-image: radial-gradient(circle at 50% 10%, transparent, #0005); }
+	15% { background-image: radial-gradient(circle at 50% 15%, transparent, #0005); }
+	20% { background-image: radial-gradient(circle at 50% 20%, transparent, #0005); }
+	25% { background-image: radial-gradient(circle at 50% 25%, transparent, #0005); }
+	30% { background-image: radial-gradient(circle at 50% 30%, transparent, #0005); }
+	35% { background-image: radial-gradient(circle at 50% 35%, transparent, #0005); }
+	40% { background-image: radial-gradient(circle at 50% 40%, transparent, #0005); }
+	45% { background-image: radial-gradient(circle at 50% 45%, transparent, #0005); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0005); }
+	55% { background-image: radial-gradient(circle at 50% 55%, transparent, #0005); }
+	60% { background-image: radial-gradient(circle at 50% 60%, transparent, #0005); }
+	65% { background-image: radial-gradient(circle at 50% 65%, transparent, #0005); }
+	70% { background-image: radial-gradient(circle at 50% 70%, transparent, #0005); }
+	75% { background-image: radial-gradient(circle at 50% 75%, transparent, #0005); }
+	80% { background-image: radial-gradient(circle at 50% 80%, transparent, #0005); }
+	85% { background-image: radial-gradient(circle at 50% 85%, transparent, #0005); }
+	90% { background-image: radial-gradient(circle at 50% 90%, transparent, #0005); }
+	95% { background-image: radial-gradient(circle at 50% 95%, transparent, #0005); }
+	100% { background-image: radial-gradient(circle at 50% 100%, transparent, #0005); }
 }
