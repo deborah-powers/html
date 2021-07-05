@@ -6,20 +6,17 @@
 	perspective: none;
 	perspective-origin: 0 0;
 }
-.text {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.5em;
-}
 .volume {
 	transform-style: preserve-3d;
 	position: relative;
 	animation-duration: 10s;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
-	--cube-side: 120px;
+	--long-x: 100px;
+	--long-y: 150px;
+	--long-z: 200px;
+	top: 100px;
+	left: 50%;
 }
 .volume >* {
 	position: absolute;
@@ -28,102 +25,160 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.5em;
+	font-size: 1em;
 }
-/* le cube */
-.cube {
-	width: var(--cube-side);
-	height: var(--cube-side);
+/* le cube. ordre des faces: devant, derrière, haut, bas, gauche, droite */
+.cube, .cube >* {
+	width: var(--long-x);
+	height: var(--long-x);
 }
-.cube >* {
-	width: inherit;
-	height: inherit;
-}
-/* ordre des faces: devant, derrière, haut, bas, gauche, droite */
-.cube > *:nth-child(1) { transform: translateZ(calc(0.5* var(--cube-side))); }
-.cube > *:nth-child(2) { transform: translateZ(calc(-0.5* var(--cube-side))) rotateY(180deg); }
+.cube > *:nth-child(1) { transform: translateZ(calc(0.5* var(--long-x))); }
+.cube > *:nth-child(2) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
 .cube > *:nth-child(3) {
-	transform: rotateX(-90deg) translateY(-50%);
 	transform-origin: top center;
+	transform: rotateX(-90deg) translateY(-50%);
 }
 .cube > *:nth-child(4) {
-	transform: rotateX(90deg) translateY(50%);
 	transform-origin: bottom center;
+	transform: rotateX(90deg) translateY(50%);
 }
 .cube > *:nth-child(5) {
-	transform: rotateY(270deg) translateX(-50%);
 	transform-origin: center left;
+	transform: rotateY(270deg) translateX(-50%);
 }
 .cube > *:nth-child(6) {
-	transform: rotateY(-270deg) translateX(50%);
 	transform-origin: center right;
+	transform: rotateY(-270deg) translateX(50%);
+}
+/* la brique. ordre des faces: devant, derrière, haut, bas, gauche, droite */
+.brique { width: var(--long-x);	height: var(--long-y); }
+.brique > *:nth-child(1) {
+	width: var(--long-x);	height: var(--long-y);
+	transform: translateZ(calc(0.5* var(--long-z)));
+}
+.brique > *:nth-child(2) {
+	width: var(--long-x);	height: var(--long-y);
+	transform: rotateY(180deg) translateZ(calc(0.5* var(--long-z)));
+}
+.brique > *:nth-child(3) {
+	width: var(--long-x);	height: var(--long-z);
+	transform: rotateX(-90deg) translateY(calc(-0.5* var(--long-z)));
+	transform-origin: top center;
+}
+.brique > *:nth-child(4) {
+	width: var(--long-x);	height: var(--long-z);
+	transform-origin: bottom center;
+	transform: rotateX(-90deg) translateY(calc(0.5* var(--long-z))) translateZ(calc(var(--long-y) - var(--long-z)));
+}
+.brique > *:nth-child(5) {
+	width: var(--long-z);	height: var(--long-y);
+	transform-origin: center left;
+	transform: rotateY(270deg) translateX(-50%);
+}
+.brique > *:nth-child(6) {
+	width: var(--long-z);	height: var(--long-y);
+	transform-origin: center right;
+	transform: rotateY(-270deg) translateX(50%) translateZ(calc(var(--long-x) - var(--long-z)));
+}
+/* le toblerone */
+.toblerone, .toblerone >* {
+	width: var(--long-x);
+	height: calc(var(--long-x) /2);
+}
+.toblerone > *:nth-child(1) {
+	height: 141.42%;
+	transform: translateZ(calc(0.25* var(--long-x))) rotateX(45deg);
+}
+.toblerone > *:nth-child(2) {
+	height: 141.42%;
+	transform: translateZ(calc(-0.25* var(--long-x))) rotateY(180deg) rotateX(45deg);
+}
+.toblerone > *:nth-child(3) {
+	height: 200%;
+	transform-origin: bottom center;
+	transform: rotateX(-90deg) translateZ(calc(-0.4* var(--long-x))) translateY(50%);
+}
+.toblerone > *:nth-child(4) {
+	transform-origin: center left;
+	transform: rotateY(270deg) translateX(-50%) translateY(20%);
+	clip-path: polygon(100% 100%, 50% 0, 0 100%);
+}
+.toblerone > *:nth-child(5) {
+	transform-origin: center right;
+	transform: rotateY(-270deg) translateX(50%) translateY(20%);
+	clip-path: polygon(100% 100%, 50% 0, 0 100%);
 }
 @keyframes cube-spin-horizontally { to { transform: rotateY(360deg); }}
-.cube.horizontal { animation-name: cube-spin-horizontally; }
+.volume.horizontal { animation-name: cube-spin-horizontally; }
 @keyframes cube-spin-vertically { to { transform: rotateX(360deg); }}
-.cube.vertical {
+.volume.vertical {
 	animation-name: cube-spin-vertically;
 	transform-origin: 0 100px;
 }
 @keyframes cube-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
-.full {
+.volume.full {
 	animation-name: cube-spin-full;
-	transform-origin: 100px 100px;
+	transform-origin: 50px 100px;
 }
 /* la boule */
 .ball {
 	/* préciser width, height et background-color */
 	border-radius: 50%;
-	background-image: radial-gradient(circle at 20% 50%, transparent, #0005);
+	background-image: radial-gradient(circle at 20% 50%, transparent, #0003);
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
 }
 .ball.horizontal { animation-name: ball-spin-horizontally; }
 .ball.vertical { animation-name: ball-spin-vertically; }
 @keyframes ball-spin-horizontally {
-	0% { background-image: radial-gradient(circle at 0% 50%, transparent, #0005); }
-	5% { background-image: radial-gradient(circle at 5% 50%, transparent, #0005); }
-	10% { background-image: radial-gradient(circle at 10% 50%, transparent, #0005); }
-	15% { background-image: radial-gradient(circle at 15% 50%, transparent, #0005); }
-	20% { background-image: radial-gradient(circle at 20% 50%, transparent, #0005); }
-	25% { background-image: radial-gradient(circle at 25% 50%, transparent, #0005); }
-	30% { background-image: radial-gradient(circle at 30% 50%, transparent, #0005); }
-	35% { background-image: radial-gradient(circle at 35% 50%, transparent, #0005); }
-	40% { background-image: radial-gradient(circle at 40% 50%, transparent, #0005); }
-	45% { background-image: radial-gradient(circle at 45% 50%, transparent, #0005); }
-	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0005); }
-	55% { background-image: radial-gradient(circle at 55% 50%, transparent, #0005); }
-	60% { background-image: radial-gradient(circle at 60% 50%, transparent, #0005); }
-	65% { background-image: radial-gradient(circle at 65% 50%, transparent, #0005); }
-	70% { background-image: radial-gradient(circle at 70% 50%, transparent, #0005); }
-	75% { background-image: radial-gradient(circle at 75% 50%, transparent, #0005); }
-	80% { background-image: radial-gradient(circle at 80% 50%, transparent, #0005); }
-	85% { background-image: radial-gradient(circle at 85% 50%, transparent, #0005); }
-	90% { background-image: radial-gradient(circle at 90% 50%, transparent, #0005); }
-	95% { background-image: radial-gradient(circle at 95% 50%, transparent, #0005); }
-	100% { background-image: radial-gradient(circle at 100% 50%, transparent, #0005); }
+	0% { background-image: radial-gradient(circle at 0% 50%, transparent, #0003); }
+	5% { background-image: radial-gradient(circle at 5% 50%, transparent, #0003); }
+	10% { background-image: radial-gradient(circle at 10% 50%, transparent, #0003); }
+	15% { background-image: radial-gradient(circle at 15% 50%, transparent, #0003); }
+	20% { background-image: radial-gradient(circle at 20% 50%, transparent, #0003); }
+	25% { background-image: radial-gradient(circle at 25% 50%, transparent, #0003); }
+	30% { background-image: radial-gradient(circle at 30% 50%, transparent, #0003); }
+	35% { background-image: radial-gradient(circle at 35% 50%, transparent, #0003); }
+	40% { background-image: radial-gradient(circle at 40% 50%, transparent, #0003); }
+	45% { background-image: radial-gradient(circle at 45% 50%, transparent, #0003); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0003); }
+	55% { background-image: radial-gradient(circle at 55% 50%, transparent, #0003); }
+	60% { background-image: radial-gradient(circle at 60% 50%, transparent, #0003); }
+	65% { background-image: radial-gradient(circle at 65% 50%, transparent, #0003); }
+	70% { background-image: radial-gradient(circle at 70% 50%, transparent, #0003); }
+	75% { background-image: radial-gradient(circle at 75% 50%, transparent, #0003); }
+	80% { background-image: radial-gradient(circle at 80% 50%, transparent, #0003); }
+	85% { background-image: radial-gradient(circle at 85% 50%, transparent, #0003); }
+	90% { background-image: radial-gradient(circle at 90% 50%, transparent, #0003); }
+	95% { background-image: radial-gradient(circle at 95% 50%, transparent, #0003); }
+	100% { background-image: radial-gradient(circle at 100% 50%, transparent, #0003); }
 }
 @keyframes ball-spin-vertically {
-	0% { background-image: radial-gradient(circle at 50% 0%, transparent, #0005); }
-	5% { background-image: radial-gradient(circle at 50% 5%, transparent, #0005); }
-	10% { background-image: radial-gradient(circle at 50% 10%, transparent, #0005); }
-	15% { background-image: radial-gradient(circle at 50% 15%, transparent, #0005); }
-	20% { background-image: radial-gradient(circle at 50% 20%, transparent, #0005); }
-	25% { background-image: radial-gradient(circle at 50% 25%, transparent, #0005); }
-	30% { background-image: radial-gradient(circle at 50% 30%, transparent, #0005); }
-	35% { background-image: radial-gradient(circle at 50% 35%, transparent, #0005); }
-	40% { background-image: radial-gradient(circle at 50% 40%, transparent, #0005); }
-	45% { background-image: radial-gradient(circle at 50% 45%, transparent, #0005); }
-	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0005); }
-	55% { background-image: radial-gradient(circle at 50% 55%, transparent, #0005); }
-	60% { background-image: radial-gradient(circle at 50% 60%, transparent, #0005); }
-	65% { background-image: radial-gradient(circle at 50% 65%, transparent, #0005); }
-	70% { background-image: radial-gradient(circle at 50% 70%, transparent, #0005); }
-	75% { background-image: radial-gradient(circle at 50% 75%, transparent, #0005); }
-	80% { background-image: radial-gradient(circle at 50% 80%, transparent, #0005); }
-	85% { background-image: radial-gradient(circle at 50% 85%, transparent, #0005); }
-	90% { background-image: radial-gradient(circle at 50% 90%, transparent, #0005); }
-	95% { background-image: radial-gradient(circle at 50% 95%, transparent, #0005); }
-	100% { background-image: radial-gradient(circle at 50% 100%, transparent, #0005); }
+	0% { background-image: radial-gradient(circle at 50% 0%, transparent, #0003); }
+	5% { background-image: radial-gradient(circle at 50% 5%, transparent, #0003); }
+	10% { background-image: radial-gradient(circle at 50% 10%, transparent, #0003); }
+	15% { background-image: radial-gradient(circle at 50% 15%, transparent, #0003); }
+	20% { background-image: radial-gradient(circle at 50% 20%, transparent, #0003); }
+	25% { background-image: radial-gradient(circle at 50% 25%, transparent, #0003); }
+	30% { background-image: radial-gradient(circle at 50% 30%, transparent, #0003); }
+	35% { background-image: radial-gradient(circle at 50% 35%, transparent, #0003); }
+	40% { background-image: radial-gradient(circle at 50% 40%, transparent, #0003); }
+	45% { background-image: radial-gradient(circle at 50% 45%, transparent, #0003); }
+	50% { background-image: radial-gradient(circle at 50% 50%, transparent, #0003); }
+	55% { background-image: radial-gradient(circle at 50% 55%, transparent, #0003); }
+	60% { background-image: radial-gradient(circle at 50% 60%, transparent, #0003); }
+	65% { background-image: radial-gradient(circle at 50% 65%, transparent, #0003); }
+	70% { background-image: radial-gradient(circle at 50% 70%, transparent, #0003); }
+	75% { background-image: radial-gradient(circle at 50% 75%, transparent, #0003); }
+	80% { background-image: radial-gradient(circle at 50% 80%, transparent, #0003); }
+	85% { background-image: radial-gradient(circle at 50% 85%, transparent, #0003); }
+	90% { background-image: radial-gradient(circle at 50% 90%, transparent, #0003); }
+	95% { background-image: radial-gradient(circle at 50% 95%, transparent, #0003); }
+	100% { background-image: radial-gradient(circle at 50% 100%, transparent, #0003); }
 }

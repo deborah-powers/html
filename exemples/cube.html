@@ -8,152 +8,40 @@
 	<link rel='stylesheet' type='text/css' href='cube.css'/>
 	<link rel='stylesheet' type='text/css' href='cube-divers.css'/>
 <style type='text/css'>
+	a { display: block; }
 	div.perspective {
 		perspective: 1200px;
 		perspective-origin: 50% 50%;
 	}
-	div.cube {
-		top: 100px;
-		left: 400px;
-	}
-	div.cube > div {
-		background-color: transparent;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		font-size: 2em;
-	}
 	div.ball {
 		width: 200px;
 		height: 200px;
-		background-color: pink;
+		background-color: red;
 	}
-/* la brique-a */
-.brique-a {
-	transform-style: preserve-3d;
-	position: relative;
-		top: 100px;
-		left: 400px;
-		width: 200px;
-		height: 200px;
-}
-.brique-a >* {
-	background-color: #F0F4;
-	width: 200px;
-	height: 100px;
-}
-.brique-a > *:nth-child(1) { transform: translateZ(50px); }
-.brique-a > *:nth-child(2) { transform: translateZ(-50px) rotateY(180deg); }
-.brique-a > *:nth-child(3) {
-	transform: rotateX(-90deg) translateY(-50px);
-	transform-origin: top center;
-}
-.brique-a > *:nth-child(4) {
-	transform: rotateX(90deg) translateY(50px);
-	transform-origin: bottom center;
-}
-.brique-a > *:nth-child(5) {
-	width: 100px;
-	transform: rotateY(270deg) translateX(-50px) translateZ(50px);
-	transform-origin: center left;
-}
-.brique-a > *:nth-child(6) {
-	width: 100px;
-	transform: rotateY(-270deg) translateX(50px) translateZ(50px);
-	transform-origin: center right;
-}
-/* le toblerone
-.toblerone {
-	top: 100px;
-	left: 400px;
-	width: var(--cube-size);
-	height: calc(0.5* var(--cube-size));
-}
-.toblerone >* {
-	background-color: #F0F4;
-	width: inherit;
-	height: inherit;
-}
-.toblerone > *:nth-child(1) {
-	height: 141.42%;
-	transform: translateZ(50px) rotateX(45deg);
-}
-.toblerone > *:nth-child(2) {
-	height: 141.42%;
-	transform: translateZ(calc(-0.25 *var(--cube-size))) rotateY(180deg) rotateX(45deg);
-}
-.toblerone > *:nth-child(3) {
-	height: var(--cube-size);
-	transform: rotateX(-90deg) translateZ(calc(-0.25 *var(--cube-size))) translateY(50%);
-	transform-origin: bottom center;
-}
-.toblerone > *:nth-child(4) {
-	transform: rotateY(270deg) translateX(-50%);
-	transform-origin: center left;
-	clip-path: polygon(100% 100%, 50% 0, 0 100%);
-}
-.toblerone > *:nth-child(5) {
-	transform: rotateY(-270deg) translateX(50%);
-	transform-origin: center right;
-	clip-path: polygon(100% 100%, 50% 0, 0 100%);
-}
-*/
-.toblerone {
-	top: 100px;
-	left: 400px;
-	width: 200px;
-	height: 100px;
-}
-.toblerone >* {
-	background-color: #F0F4;
-	width: inherit;
-	height: inherit;
-}
-.toblerone > *:nth-child(1) {
-	height: 141.42px;
-	transform: translateZ(50px) rotateX(45deg);
-}
-.toblerone > *:nth-child(2) {
-	height: 141.42px;
-	transform: translateZ(-50px) rotateY(180deg) rotateX(45deg);
-}
-.toblerone > *:nth-child(3) {
-	height: 200px;
-	transform: rotateX(-90deg) translateZ(-50px) translateY(100px);
-	transform-origin: bottom center;
-}
-.toblerone > *:nth-child(4) {
-	transform: rotateY(270deg) translateX(-100px);
-	transform-origin: center left;
-	clip-path: polygon(100% 100%, 50% 0, 0 100%);
-}
-.toblerone > *:nth-child(5) {
-	transform: rotateY(-270deg) translateX(100px);
-	transform-origin: center right;
-	clip-path: polygon(100% 100%, 50% 0, 0 100%);
-}
-p.test {
-	background-color: #F0F;
-	width: 100px;
-	height: 100px;
-	transform: rotateX(45deg);
-}
+	div.cube >* {
+		--long-x: 200px;
+		background: radial-gradient(transparent 60%, red 70%);
+	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<div class='perspective'>
-		<p class='test'>coucou</p>
-	</div>
-	<div class='perspective'>
-		<div class='volume cube arlequin text full'>
+		<div class='volume cube full'>
 			<p>devant</p><p>derrière</p><p>haut</p>
 			<p>bas</p><p>gauche</p><p>droite</p>
 		</div>
-		<div class='volume toblerone text'>
+		<div class='ball'>coucou</div>
+	</div>
+	<!-- div class='perspective'>
+		<div class='volume brique arlequin'>
+			<p>devant</p><p>derrière</p><p>haut</p>
+			<p>bas</p><p>gauche</p><p>droite</p>
+		</div>
+		<div class='volume toblerone arlequin'>
 			<p>devant</p><p>derrière</p>
 			<p>bas</p><p>gauche</p><p>droite</p>
 		</div>
-		<div class='ball text'>coucou</div>
-	</div>
+		<div class='ball'>coucou</div>
+	</div -->
 </body></html>
