@@ -13,128 +13,16 @@
 		perspective: 1200px;
 		perspective-origin: 50% 50%;
 	}
-	div.ball {
-		width: 200px;
-		height: 200px;
-		background-color: red;
-	}
-	div.cube >* {
-		--long-x: 200px;
-		background: radial-gradient(transparent 60%, red 60%);
-	}
-	p.porte {
-		width: 1cm;
-		height: 2cm;
-		background-color: #D40;
-		border: solid 2px maroon;
-	}
-	p.porte:after {
-		content: 'o';
-		position: relative;
-		top: 20%;
-		left: 10%;
-	}
-	.cube > *:nth-child(1) { background-image: url('C:\\Users\\deborah.powers\\Desktop\\cgi\\divers-professionnel\\cv mickael.png'); }
-/*
 .cylindre {
-	--inclinaison: 18%;
-	/ preciser width et height /
-	}
-.cylindre:before, p.cylindre:after {
-	content: "";
-	display: inline-block;
-	width: inherit;
-	height: inherit;
-	border-radius: 50%;
+	background-color: #F6D4;
 }
-.cylindre:after { position: relative; }
-.cylindre.vertical { border-radius: 50%/var(--inclinaison); }
-.cylindre.vertical:after, p.cylindre.vertical:before { height: calc(2* var(--inclinaison)); }
-.cylindre.vertical:after { top: calc(95% - 4* var(--inclinaison)); }
-.cylindre.horizontal { border-radius: var(--inclinaison)/50%; }
-.cylindre.horizontal:after, p.cylindre.horizontal:before { width: calc(2* var(--inclinaison)); }
-.cylindre.horizontal:after { left: calc(100% - 4* var(--inclinaison)); }
-.cylindre {
-		width: 100px;
-		height: 200px;
-		background-color: #D40;
-	}
-.cylindre:before, p.cylindre:after { background-color: red; }
-*/
-.cylindre {
-	--long-x: 100px;
-	--long-y: 150px;
-	--long-z: 200px;
-	width: var(--long-x);
-	height: var(--long-y);
-}
-.cylindre >* {
-	transform-origin: center center;
-	width: 15%;
-	height: var(--long-y);
-}
-.cylindre > *:nth-child(1) {
-	transform-origin: top center;
-	transform: rotateX(-90deg) translateX(-42.5%);
-	border-radius: 50%;
-	width: var(--long-x);
-	height: var(--long-x);
-}
-.cylindre > *:nth-child(2) {
-	transform-origin: bottom center;
-	transform: rotateX(90deg) translateX(-42.5%) translateZ(calc(var(--long-x) - var(--long-y)));
-	border-radius: 50%;
-	width: var(--long-x);
-	height: var(--long-x);
-}
-.cylindre > *:nth-child(3) { transform: translateZ(calc(-1* var(--long-x))); }
-/*
-.cylindre >* {
-	transform-origin: center center;
-	border-width: 2px;
-	border-left-style: solid;
-	border-right-style: solid;
-}
-.cylindre > *:nth-child(3) { transform: rotateY(15deg); }
-.cylindre > *:nth-child(4) { transform: rotateY(30deg); }
-.cylindre > *:nth-child(5) { transform: rotateY(45deg); }
-.cylindre > *:nth-child(6) { transform: rotateY(60deg); }
-.cylindre > *:nth-child(7) { transform: rotateY(75deg); }
-.cylindre > *:nth-child(8) { transform: rotateY(90deg); }
-.cylindre > *:nth-child(9) { transform: rotateY(105deg); }
-.cylindre > *:nth-child(10) { transform: rotateY(120deg); }
-.cylindre > *:nth-child(11) { transform: rotateY(135deg); }
-.cylindre > *:nth-child(12) { transform: rotateY(150deg); }
-*/
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<div class='perspective'>
-		<div class='volume cylindre arlequin full'>
+		<div class='volume cylindre full'>
 			<p>haut</p><p>bas</p>
-			<p></p><p></p>
+			<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 		</div>
-	<!--
-		<div class='volume cube'>
-			<img src='C:\\Users\\deborah.powers\\Desktop\\cgi\\divers-professionnel\\cv mickael.png' alt='devant'>
-			<p>derrière</p><p>haut</p>
-			<p>bas</p><p>gauche</p><p>droite</p>
-		</div>
-		<div class='ball'>coucou</div>
-	-->
-	</div>
-	<!-- div class='perspective'>
-		<div class='volume brique arlequin'>
-			<p>devant</p><p>derrière</p><p>haut</p>
-			<p>bas</p><p>gauche</p><p>droite</p>
-		</div>
-		<div class='volume toblerone arlequin'>
-			<p>devant</p><p>derrière</p>
-			<p>bas</p><p>gauche</p><p>droite</p>
-		</div>
-		<div class='ball'>coucou</div>
-		<p class='cylindre horizontal'></p>
-	</div -->
-	<div></div>
 </body></html>
