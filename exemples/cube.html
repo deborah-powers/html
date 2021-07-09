@@ -14,67 +14,83 @@
 		perspective-origin: 50% 50%;
 	}
 .volume >p { background-color: #F6D4; }
-.marshmallow {
+/* le cube arrondi. ordre des faces: haut, bas, devant, derrière, gauche, droite */
+.chamallo {
 	width: var(--long-x); height: var(--long-y);
-	--arrondi: 10%;
+	--arrondi-nb: 10;
+	--arrondi: calc(1% * var(--arrondi-nb));
 }
-.marshmallow >* {
+.chamallo >* {
 	width: var(--long-x); height: var(--long-y);
-	transform-style: preserve-3d;
 	transform-origin: center center;
 }
-.marshmallow > *:nth-child(1) {
+.chamallo >*:nth-child(-1n+2) {
 	width: var(--long-x); height: var(--long-x);
+	border-radius: var(--arrondi);
+}
+.chamallo > *:nth-child(1) {
 	transform-origin: top center;
-	transform: rotateX(-90deg) translateY(-50%);
-	border-radius: var(--arrondi);
+	transform: rotateX(90deg) translateY(-50%);
 }
-.marshmallow > *:nth-child(2) {
-	width: var(--long-x); height: var(--long-x);
+.chamallo > *:nth-child(2) {
 	transform-origin: bottom center;
-	transform: rotateX(90deg) translateY(50%) translateZ(calc(var(--long-x) - var(--long-y)));
-	border-radius: var(--arrondi);
+	transform: rotateX(-90deg) translateY(50%) translateZ(calc(var(--long-y) /-2));
 }
-.marshmallow > *:nth-child(3) {
+.chamallo > *:nth-child(3) {
 	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(calc(100 / calc(100% - 2* var(--arrondi)))) translateZ(calc(var(--long-x) /2));
-	background-color: green;
+	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) translateZ(calc(var(--long-x) /2));
 }
-.marshmallow > *:nth-child(4) {
+.chamallo > *:nth-child(4) {
 	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(12.5%) rotateY(90deg) translateZ(calc(var(--long-x) /2));
+	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) translateZ(calc(var(--long-x) / -2)) rotateY(180deg);
 }
-.marshmallow > *:nth-child(5) { transform: translateX(450%) rotateY(45deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(6) { transform: translateX(450%) rotateY(135deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(7) { transform: translateX(450%) rotateY(22.5deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(8) { transform: translateX(450%) rotateY(112.5deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(9) { transform: translateX(450%) rotateY(67.5deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(10) { transform: translateX(450%) rotateY(157.5deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(11) { transform: translateX(450%) rotateY(11.25deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(12) { transform: translateX(450%) rotateY(101.25deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(13) { transform: translateX(450%) rotateY(56.25deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(14) { transform: translateX(450%) rotateY(146.25deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(15) { transform: translateX(450%) rotateY(33.75deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(16) { transform: translateX(450%) rotateY(123.75deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(17) { transform: translateX(450%) rotateY(78.75deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow > *:nth-child(18) { transform: translateX(450%) rotateY(168.75deg) translateZ(calc(var(--long-x) /2)); }
-.marshmallow >*:after {
+.chamallo > *:nth-child(5) {
+	width: calc(100% - 2* var(--arrondi));
+	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) rotateY(270deg) translateZ(calc(var(--long-x) /2));
+}
+.chamallo > *:nth-child(6) {
+	width: calc(100% - 2* var(--arrondi));
+	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) rotateY(90deg) translateZ(calc(var(--long-x) /2));
+}
+.chamallo >*:nth-child(1n+7) {
+	width: 10%;
+	transform-style: preserve-3d;
+}
+.chamallo >*:nth-child(1n+7):after {
 	content: "";
 	width: 100%;
 	height: inherit;
-	transform: translateZ(calc(-1* var(--long-x)));
 	background-color: inherit;
 	background-image: inherit;
+	transform: translateZ(calc(var(--arrondi-nb) * var(--long-x) * 0.00828427 - 1.414213 * var(--long-x)));
 }
-.marshmallow >*:nth-child(1):after, .marshmallow >*:nth-child(2):after { display: none; }
+.chamallo > *:nth-child(7) { transform: translateX(450%) rotateY(45deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
+.chamallo > *:nth-child(8) { transform: translateX(450%) rotateY(135deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
+.chamallo > *:nth-child(9) {
+	transform: translateX(450%) rotateY(22.5deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213));
+	background-color: #6DF4;
+}
+/*
+.chamallo > *:nth-child(8) { transform: translateX(450%) rotateY(112.5deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(9) { transform: translateX(450%) rotateY(67.5deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(10) { transform: translateX(450%) rotateY(157.5deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(11) { transform: translateX(450%) rotateY(11.25deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(12) { transform: translateX(450%) rotateY(101.25deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(13) { transform: translateX(450%) rotateY(56.25deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(14) { transform: translateX(450%) rotateY(146.25deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(15) { transform: translateX(450%) rotateY(33.75deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(16) { transform: translateX(450%) rotateY(123.75deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(17) { transform: translateX(450%) rotateY(78.75deg) translateZ(calc(var(--long-x) /2)); }
+.chamallo > *:nth-child(18) { transform: translateX(450%) rotateY(168.75deg) translateZ(calc(var(--long-x) /2)); }
+*/
 
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<div class='perspective'>
-		<div class='volume marshmallow full'>
-			<p>haut</p><p>bas</p>
-			<p></p><p></p>
+		<div class='volume chamallo full'>
+			<p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p>
+			<p></p><p></p><p></p>
 		</div>
 </body></html>

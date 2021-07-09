@@ -27,21 +27,21 @@
 	align-items: center;
 	font-size: 1em;
 }
-/* le cube. ordre des faces: devant, derrière, haut, bas, gauche, droite */
+/* le cube. ordre des faces: haut, bas, devant, derrière, gauche, droite */
 .cube, .cube >* {
 	width: var(--long-x);
 	height: var(--long-x);
 }
-.cube > *:nth-child(1) { transform: translateZ(calc(0.5* var(--long-x))); }
-.cube > *:nth-child(2) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
-.cube > *:nth-child(3) {
+.cube > *:nth-child(1) {
 	transform-origin: top center;
-	transform: rotateX(-90deg) translateY(-50%);
+	transform: rotateX(90deg) translateY(-50%);
 }
-.cube > *:nth-child(4) {
+.cube > *:nth-child(2) {
 	transform-origin: bottom center;
-	transform: rotateX(90deg) translateY(50%);
+	transform: rotateX(-90deg) translateY(50%);
 }
+.cube > *:nth-child(3) { transform: translateZ(calc(0.5* var(--long-x))); }
+.cube > *:nth-child(4) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
 .cube > *:nth-child(5) {
 	transform-origin: center left;
 	transform: rotateY(270deg) translateX(-50%);
@@ -50,25 +50,25 @@
 	transform-origin: center right;
 	transform: rotateY(-270deg) translateX(50%);
 }
-/* la brique. ordre des faces: devant, derrière, haut, bas, gauche, droite */
+/* la brique. ordre des faces: haut, bas, devant, derrière, gauche, droite */
 .brique { width: var(--long-x);	height: var(--long-y); }
 .brique > *:nth-child(1) {
-	width: var(--long-x);	height: var(--long-y);
-	transform: translateZ(calc(0.5* var(--long-z)));
-}
-.brique > *:nth-child(2) {
-	width: var(--long-x);	height: var(--long-y);
-	transform: rotateY(180deg) translateZ(calc(0.5* var(--long-z)));
-}
-.brique > *:nth-child(3) {
 	width: var(--long-x);	height: var(--long-z);
-	transform: rotateX(-90deg) translateY(calc(-0.5* var(--long-z)));
+	transform: rotateX(90deg) translateY(calc(-0.5* var(--long-z)));
 	transform-origin: top center;
 }
-.brique > *:nth-child(4) {
+.brique > *:nth-child(2) {
 	width: var(--long-x);	height: var(--long-z);
 	transform-origin: bottom center;
 	transform: rotateX(-90deg) translateY(calc(0.5* var(--long-z))) translateZ(calc(var(--long-y) - var(--long-z)));
+}
+.brique > *:nth-child(3) {
+	width: var(--long-x);	height: var(--long-y);
+	transform: translateZ(calc(0.5* var(--long-z)));
+}
+.brique > *:nth-child(4) {
+	width: var(--long-x);	height: var(--long-y);
+	transform: rotateY(180deg) translateZ(calc(0.5* var(--long-z)));
 }
 .brique > *:nth-child(5) {
 	width: var(--long-z);	height: var(--long-y);
@@ -112,22 +112,22 @@
 .cylindre {
 	width: var(--long-x); height: var(--long-y);
 }
-.cylindre >* {
+.cylindre >*:nth-child(1n+3) {
 	width: 10%; height: var(--long-y);
 	transform-style: preserve-3d;
 	transform-origin: center center;
 }
-.cylindre > *:nth-child(1) {
+.cylindre >*:nth-child(-1n+2) {
 	width: var(--long-x); height: var(--long-x);
-	transform-origin: top center;
-	transform: rotateX(-90deg) translateY(-50%);
 	border-radius: 50%;
 }
+.cylindre > *:nth-child(1) {
+	transform-origin: top center;
+	transform: rotateX(-90deg) translateY(-50%);
+}
 .cylindre > *:nth-child(2) {
-	width: var(--long-x); height: var(--long-x);
 	transform-origin: bottom center;
 	transform: rotateX(90deg) translateY(50%) translateZ(calc(var(--long-x) - var(--long-y)));
-	border-radius: 50%;
 }
 .cylindre > *:nth-child(3) { transform: translateX(450%) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(4) { transform: translateX(450%) rotateY(90deg) translateZ(calc(var(--long-x) /2)); }
@@ -145,7 +145,7 @@
 .cylindre > *:nth-child(16) { transform: translateX(450%) rotateY(123.75deg) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(17) { transform: translateX(450%) rotateY(78.75deg) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(18) { transform: translateX(450%) rotateY(168.75deg) translateZ(calc(var(--long-x) /2)); }
-.cylindre >*:after {
+.cylindre >*:nth-child(1n+3):after {
 	content: "";
 	width: 100%;
 	height: inherit;
@@ -153,8 +153,8 @@
 	background-color: inherit;
 	background-image: inherit;
 }
-.cylindre >*:nth-child(1):after, .cylindre >*:nth-child(2):after { display: none; }
 /*
+.cylindre >*:nth-child(1):after, .cylindre >*:nth-child(2):after { display: none; }
 */
 @keyframes cube-spin-horizontally { to { transform: rotateY(360deg); }}
 .volume.horizontal { animation-name: cube-spin-horizontally; }
