@@ -53,9 +53,9 @@
 	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) rotateY(90deg) translateZ(calc(var(--long-x) /2));
 }
 .chamallo >*:nth-child(1n+7) {
-	width: 10%;
+	width: calc(var(--arrondi) /2);
 	transform-style: preserve-3d;
-}
+}/*
 .chamallo >*:nth-child(1n+7):after {
 	content: "";
 	width: 100%;
@@ -63,11 +63,13 @@
 	background-color: inherit;
 	background-image: inherit;
 	transform: translateZ(calc(var(--arrondi-nb) * var(--long-x) * 0.00828427 - 1.414213 * var(--long-x)));
-}
-.chamallo > *:nth-child(7) { transform: translateX(450%) rotateY(45deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
-.chamallo > *:nth-child(8) { transform: translateX(450%) rotateY(135deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
+}*/
+.chamallo > *:nth-child(7) {
+	transform: translateX(calc(10000% / var(--arrondi-nb) - 50%)) rotateY(45deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
+.chamallo > *:nth-child(8) {
+	transform: translateX(calc(10000% / var(--arrondi-nb) - 50%)) rotateY(135deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
 .chamallo > *:nth-child(9) {
-	transform: translateX(450%) rotateY(22.5deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213));
+	transform: translateX(1300%) rotateY(22.5deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213));
 	background-color: #6DF4;
 }
 /*
