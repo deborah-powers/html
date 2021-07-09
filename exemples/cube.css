@@ -7,6 +7,7 @@
 	perspective-origin: 0 0;
 }
 .volume {
+	display: inline-block;
 	transform-style: preserve-3d;
 	position: relative;
 	animation-duration: 10s;
@@ -123,11 +124,11 @@
 }
 .cylindre > *:nth-child(1) {
 	transform-origin: top center;
-	transform: rotateX(-90deg) translateY(-50%);
+	transform: rotateX(90deg) translateY(-50%);
 }
 .cylindre > *:nth-child(2) {
 	transform-origin: bottom center;
-	transform: rotateX(90deg) translateY(50%) translateZ(calc(var(--long-x) - var(--long-y)));
+	transform: rotateX(-90deg) translateY(50%) translateZ(calc(var(--long-y) - var(--long-x)));
 }
 .cylindre > *:nth-child(3) { transform: translateX(450%) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(4) { transform: translateX(450%) rotateY(90deg) translateZ(calc(var(--long-x) /2)); }

@@ -9,11 +9,12 @@
 	<link rel='stylesheet' type='text/css' href='cube-divers.css'/>
 <style type='text/css'>
 	a { display: block; }
-	div.perspective {
-		perspective: 1200px;
-		perspective-origin: 50% 50%;
-	}
-.volume >p { background-color: #F6D4; }
+	div.perspective { perspective: 1200px; }
+	.cube { left: 5%; }
+	.brique { left: 15%; }
+	.cylindre { left: 25%; }
+	.toblerone { left: 35%; }
+	.volume >p { background-color: #F6D4; }
 /* le cube arrondi. ordre des faces: haut, bas, devant, derrière, gauche, droite */
 .chamallo {
 	width: var(--long-x); height: var(--long-y);
@@ -94,5 +95,13 @@
 		<div class='volume chamallo full'>
 			<p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p>
 			<p></p><p></p><p></p>
+		</div>
+	<div class='perspective' id='p2'>
+		<div class='volume full cube'><p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p></div>
+		<div class='volume full brique'><p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p></div>
+		<div class='volume full cylindre'><p>haut</p><p>bas</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div>
+		<div class='volume full toblerone'>
+			<p>devant</p><p>derrière</p>
+			<p>bas</p><p>gauche</p><p>droite</p>
 		</div>
 </body></html>
