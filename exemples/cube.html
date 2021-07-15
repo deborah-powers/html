@@ -8,101 +8,35 @@
 	<link rel='stylesheet' type='text/css' href='cube.css'/>
 	<link rel='stylesheet' type='text/css' href='cube-divers.css'/>
 <style type='text/css'>
+	body { padding-bottom: 30em; }
 	a { display: block; }
-	div.perspective { perspective: 1200px; }
+	div.perspective {
+		perspective: 1200px;
+		margin-bottom: 2cm;
+	}
 	div.perspective#p2 { margin-top: 10em; }
+	.volume {
+		--long-x: 200px;
+		--long-y: 100px;
+	}
+	.volume >p { background-color: #F6D; }
 	.cube { left: 5%; }
 	.brique { left: 15%; }
 	.cylindre { left: 25%; }
 	.toblerone { left: 35%; }
-	.volume >p { background-color: #F6D4; }
-/* le cube arrondi. ordre des faces: haut, bas, devant, derrière, gauche, droite */
-.chamallo {
-	width: var(--long-x); height: var(--long-y);
-	--arrondi-nb: 10;
-	--arrondi: calc(1% * var(--arrondi-nb));
-}
-.chamallo >* {
-	width: var(--long-x); height: var(--long-y);
-	transform-origin: center center;
-}
-.chamallo >*:nth-child(-1n+2) {
-	width: var(--long-x); height: var(--long-x);
-	border-radius: var(--arrondi);
-}
-.chamallo > *:nth-child(1) {
-	transform-origin: top center;
-	transform: rotateX(90deg) translateY(-50%);
-}
-.chamallo > *:nth-child(2) {
-	transform-origin: bottom center;
-	transform: rotateX(-90deg) translateY(50%) translateZ(calc(var(--long-y) /-2));
-}
-.chamallo > *:nth-child(3) {
-	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) translateZ(calc(var(--long-x) /2));
-}
-.chamallo > *:nth-child(4) {
-	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) translateZ(calc(var(--long-x) / -2)) rotateY(180deg);
-}
-.chamallo > *:nth-child(5) {
-	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) rotateY(270deg) translateZ(calc(var(--long-x) /2));
-}
-.chamallo > *:nth-child(6) {
-	width: calc(100% - 2* var(--arrondi));
-	transform: translateX(calc(var(--arrondi-nb) *50% / (50 - var(--arrondi-nb)))) rotateY(90deg) translateZ(calc(var(--long-x) /2));
-}
-.chamallo >*:nth-child(1n+7) {
-	width: calc(var(--arrondi) /2);
-	transform-style: preserve-3d;
-}/*
-.chamallo >*:nth-child(1n+7):after {
-	content: "";
-	width: 100%;
-	height: inherit;
-	background-color: inherit;
-	background-image: inherit;
-	transform: translateZ(calc(var(--arrondi-nb) * var(--long-x) * 0.00828427 - 1.414213 * var(--long-x)));
-}*/
-.chamallo > *:nth-child(7) {
-	transform: translateX(calc(10000% / var(--arrondi-nb) - 50%)) rotateY(45deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
-.chamallo > *:nth-child(8) {
-	transform: translateX(calc(10000% / var(--arrondi-nb) - 50%)) rotateY(135deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213)); }
-.chamallo > *:nth-child(9) {
-	transform: translateX(1300%) rotateY(22.5deg) translateZ(calc(0.707106* var(--long-x) - var(--arrondi-nb) * var(--long-x) * 0.00414213));
-	background-color: #6DF4;
-}
-/*
-.chamallo > *:nth-child(8) { transform: translateX(450%) rotateY(112.5deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(9) { transform: translateX(450%) rotateY(67.5deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(10) { transform: translateX(450%) rotateY(157.5deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(11) { transform: translateX(450%) rotateY(11.25deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(12) { transform: translateX(450%) rotateY(101.25deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(13) { transform: translateX(450%) rotateY(56.25deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(14) { transform: translateX(450%) rotateY(146.25deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(15) { transform: translateX(450%) rotateY(33.75deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(16) { transform: translateX(450%) rotateY(123.75deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(17) { transform: translateX(450%) rotateY(78.75deg) translateZ(calc(var(--long-x) /2)); }
-.chamallo > *:nth-child(18) { transform: translateX(450%) rotateY(168.75deg) translateZ(calc(var(--long-x) /2)); }
-*/
-
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<div class='perspective'>
-		<div class='volume chamallo full'>
-			<p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p>
-			<p></p><p></p><p></p>
-		</div>
+		<div class='volume cube arrondi full'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+	</div>
 	<div class='perspective' id='p2'>
-		<div class='volume cube'><p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p></div>
-		<div class='volume brique'><p>haut</p><p>bas</p><p>devant</p><p>derrière</p><p>gauche</p><p>droite</p></div>
-		<div class='volume cylindre'><p>haut</p><p>bas</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div>
-		<div class='volume toblerone'>
-			<p>devant</p><p>derrière</p>
-			<p>bas</p><p>gauche</p><p>droite</p>
-		</div>
+		<div class='volume cube'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+		<div class='volume brique'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+		<div class='volume cylindre'><p>haut</p><p>bas</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div>
+		<div class='volume toblerone'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p></div>
+		<div class='volume cube arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+		<div class='volume brique arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+	</div>
 </body></html>
