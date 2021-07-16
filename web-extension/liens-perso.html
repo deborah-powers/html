@@ -58,7 +58,7 @@
 		document.body.load();
 	}
 	// récupérer les données
-	debbyPlay.jsonList = useJson (fileJson);
+	debbyPlay.jsonList = fromJson (fileJson);
 	// les noms des catégories
 	for (var j in debbyPlay.jsonList) if (debbyPlay.jsonList.hasOwnProperty (j)){
 		debbyPlay.optionList.push (j);

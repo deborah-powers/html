@@ -3,7 +3,6 @@
 .volume {
 	display: inline-block;
 	transform-style: preserve-3d;
-	position: relative;
 	animation-duration: 10s;
 	animation-iteration-count: infinite;
 	animation-direction: normal;
@@ -12,8 +11,6 @@
 	--long-z: 170px;
 	--arrondi-nb: 30;
 	--arrondi: calc(1%* var(--arrondi-nb));
-	top: 100px;
-	left: 50%;
 }
 .volume >*, .volume > *:after, .volume > *:before {
 	position: absolute;
