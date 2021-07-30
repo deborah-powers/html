@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head>
+	<title>cube en css</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='cube.css'/>
+<style type='text/css'>
+	body { padding-bottom: 30em; }
+	div.perspective {
+		perspective: 1200px;
+		margin-bottom: 2cm;
+	}
+	cube {
+		font-size: 1em;
+		color: green;
+		background-color: pink;
+		width: 4em;
+		height: 4em;
+	}
+</style></head><body>
+	<div class='perspective'>
+		<cube><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></cube>
+	</div>
+	<script type='text/javascript'>
+		/*
+var cubeList = document.getElementsByTagName ('cube');
+for (var c=0; c< cubeList.length; c++){
+	var cubeStyle = getComputedStyle (cubeList[c]);
+	console.log (cubeStyle.fontSize);
+	for (var f=0; f<6; f++){
+		cubeList[c].children[f].style = cubeStyle;
+	}
+}*/
+	</script>
+</body></html>

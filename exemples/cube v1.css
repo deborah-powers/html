@@ -12,10 +12,12 @@
 	--arrondi-nb: 30;
 	--arrondi: calc(1%* var(--arrondi-nb));
 }
-.volume >* {
+.volume >*, .volume > *:after, .volume > *:before {
 	position: absolute;
 	transform-style: preserve-3d;
 	transform-origin: center center;
+}
+.volume >* {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -23,8 +25,22 @@
 	align-items: center;
 	font-size: 1em;
 }
-/* le cube. ordre des faces: haut, bas, gauche, droite, derrière, devant.
-préciser cube { width et height, ainsi que --long-x }. ils doivent être identiques */
+.volume > *:after, .volume > *:before {
+	width: inherit; height: inherit;
+	background-color: inherit;
+}
+.volume > *:nth-child(1) { transform-origin: top center; }
+.volume > *:nth-child(2) { transform-origin: bottom center; }
+.volume > *:nth-child(3) { transform-origin: center left; }
+.volume > *:nth-child(4) { transform-origin: center right; }
+/* le cube. ordre des faces: haut, bas, gauche, droite, derrière, devant */
+.cube, .cube >* { width: var(--long-x); height: var(--long-x); }
+.cube > *:nth-child(1) { transform: rotateX(90deg) translateY(-50%); }
+.cube > *:nth-child(2) { transform: rotateX(-90deg) translateY(50%); }
+.cube > *:nth-child(3) { transform: rotateY(270deg) translateX(-50%); }
+.cube > *:nth-child(4) { transform: rotateY(-270deg) translateX(50%); }
+.cube > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
+.cube > *:nth-child(6) { transform: translateZ(calc(0.5* var(--long-x))); }
 /* la brique. ordre des faces: haut, bas, gauche, droite, derrière, devant */
 .brique { width: var(--long-x); height: var(--long-y); }
 .brique > *:nth-child(1) {
@@ -132,7 +148,7 @@ préciser cube { width et height, ainsi que --long-x }. ils doivent être identi
 	transform-origin: 0 100px;
 }
 @keyframes cube-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
-.volume.full, cube.full {
+.volume.full {
 	animation-name: cube-spin-full;
 	transform-origin: 50px 100px;
 }

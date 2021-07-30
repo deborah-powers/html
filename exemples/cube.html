@@ -14,26 +14,62 @@
 		perspective: 1200px;
 		margin-bottom: 2cm;
 	}
-	div.perspective#p2 { margin-top: 10em; }
-	.volume {
-		margin: 3em;
-		--long-x: 200px;
-		--long-y: 100px;
-	}
-	.volume >p { background-color: #F6D; }
+cube {
+	display: block;
+	width: 100px;
+	height: 100px;
+	transform-style: preserve-3d;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	--long-x: 100px;
+}
+cube >* {
+	position: absolute;
+	transform-style: preserve-3d;
+	transform-origin: center center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	width: inherit;
+	height: inherit;
+	background-color: #FEEC;
+}
+cube > *:nth-child(1) {
+	transform-origin: top center;
+	transform: rotateX(90deg) translateY(-50%);
+}
+cube > *:nth-child(2) {
+	transform-origin: bottom center;
+	transform: rotateX(-90deg) translateY(50%);
+}
+cube > *:nth-child(3) {
+	transform-origin: center left;
+	transform: rotateY(270deg) translateX(-50%);
+}
+cube > *:nth-child(4) {
+	transform-origin: center right;
+	transform: rotateY(-270deg) translateX(50%);
+}
+/*
+cube > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
+cube > *:nth-child(6) { transform: translateZ(calc(0.5* var(--long-x))); }
+*/
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<div class='perspective'>
-		<div class='volume cube arrondi full'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></div>
+		<cube class='full'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant</p></cube>
 	</div>
-	<div class='perspective' id='p2'>
-		<div class='volume cube'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube</p></div>
-		<div class='volume brique'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant de la brique</p></div>
-		<div class='volume cylindre'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></div>
-		<div class='volume toblerone'><p>haut</p><p>bas</p><p>gauche du toblerone</p><p>droite du toblerone</p><p>derrière</p></div>
-		<div class='volume cube arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube arrondi</p></div>
-		<div class='volume brique arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant de la brique arrondie</p></div>
-	</div>
-</body></html>
+	<script type='text/javascript'>
+var cube = document.getElementsByTagName ('cube')[0];
+var cubeStyle = getComputedStyle (cube);
+console.log (cubeStyle.width);
+cube.children[4].style['transform'] = 'translateZ(calc('+ cubeStyle.width +' /-2)) rotateY(180deg)';
+cube.children[5].style['transform'] = 'translateZ(calc('+ cubeStyle.width +' /2))';
+
+</script></body></html>
