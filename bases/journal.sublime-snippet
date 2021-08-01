@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+======================== $1 ========================
+
+date: 2021/$2/$3
+lieu: $4
+tags: $5
+personnes: $6
+
+$7
+]]></content>
+	<tabTrigger>journal</tabTrigger>
+	<scope>text.txt</scope>
+</snippet>
