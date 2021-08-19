@@ -1,5 +1,8 @@
-.perspective { perspective: 800px; perspective-origin: 50% 50%; }
-.perspective.flat { perspective: none; perspective-origin: 0 0; }
+cadre {
+	display: block;
+	perspective: 800px; perspective-origin: 50% 50%;
+}
+cadre.flat { perspective: none; perspective-origin: 0 0; }
 volume {
 	display: inline-block;
 	transform-style: preserve-3d;
@@ -14,7 +17,14 @@ volume {
 	--arrondi-nb: 30;
 	--arrondi: calc(1%* var(--arrondi-nb));
 	width: var(--long-x);
+	height: var(--long-y);
 }
+volume >* {
+	text-align: center;
+/*	display: flex;
+	flex-direction: column;
+	justify-content: center;
+*/}
 volume >*, volume > *:after, volume > *:before {
 	width: inherit; height: inherit;
 	background-color: var(--bg-color);
@@ -23,13 +33,6 @@ volume >*, volume > *:after, volume > *:before {
 	position: absolute;
 	transform-style: preserve-3d;
 	transform-origin: center center;
-}
-volume >* {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: 1em;
 }
 volume > *:nth-child(1) { transform-origin: top center; }
 volume > *:nth-child(2) { transform-origin: bottom center; }
@@ -119,10 +122,15 @@ volume > *:nth-child(4) { transform-origin: center right; }
 }
 .cylindre > *:nth-child(1) { transform: rotateX(90deg) translateY(-50%); }
 .cylindre > *:nth-child(2) { transform: rotateX(-90deg) translateY(50%) translateZ(calc(var(--long-y) - var(--long-x))); }
-.cylindre > *:nth-child(n+3) { width: calc(0.09* var(--long-x)); height: var(--long-y); transform-origin: center center; }
+.cylindre > *:nth-child(n+3) {
+	display: inline;
+	width: calc(0.09* var(--long-x));
+	height: var(--long-y);
+	transform-origin: center center;
+}
 .cylindre > *:nth-child(n+3):before, .cylindre > *:nth-child(n+3):after { content: ""; }
-.cylindre > *:nth-child(n+3):before { transform-origin: center right; transform: rotateY(190deg); }
-.cylindre > *:nth-child(n+3):after { transform-origin: center left; transform: rotateY(170deg); }
+.cylindre > *:nth-child(n+3):before { transform-origin: center left; transform: translateX(50%) rotateY(10deg); }
+.cylindre > *:nth-child(n+3):after { transform-origin: center right; transform: translateX(-150%) rotateY(-10deg); }
 .cylindre > *:nth-child(3) { transform: translateX(505.56%) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(4) { transform: translateX(505.56%) rotateY(30deg) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(5) { transform: translateX(505.56%) rotateY(60deg) translateZ(calc(var(--long-x) /2)); }

@@ -10,29 +10,48 @@
 <style type='text/css'>
 	body { padding-bottom: 30em; }
 	a { display: block; }
-	div.perspective {
+	cadre {
 		perspective: 1200px;
 		margin-bottom: 2cm;
 	}
-	div.perspective#p2 { margin-top: 10em; }
+	cadre#p2 { margin-top: 10em; }
 	volume {
 		margin: 3em;
 		--long-x: 200px;
 		--long-y: 100px;
 	}
+	div {
+		width: 40em;
+		height: 80em;
+		background-color: pink;
+		--inclinaison: 3%;
+		border-radius: 50%/var(--inclinaison);
+	}
+	div:after, div:before {
+		content: "";
+		display: inline-block;
+		width: inherit;
+		height: calc(2* var(--inclinaison));
+		border-radius: 50%;
+		background-color: #69C6;
+	}
+	div:after {
+		background-color: #6C96;
+	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
-	<div class='perspective'>
-		<volume class='cylindre full'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
-	</div>
-	<div class='perspective' id='p2'>
+	<div></div>
+	<cadre>
+		<volume class='cylindre vertical'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
+	</cadre>
+	<cadre id='p2'>
 		<volume class='cube'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube</p></volume>
 		<volume class='pave'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave</p></volume>
 		<volume class='toblerone'><p>haut</p><p>bas</p><p>gauche du toblerone</p><p>droite du toblerone</p><p>derrière</p></volume>
 		<volume class='cylindre'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
 		<volume class='cube arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube arrondi</p></volume>
-		<volume class='pave arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave arrondie</p></volume>
-	</div>
+		<volume class='pave arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave arrondi</p></volume>
+	</cadre>
 </body></html>
