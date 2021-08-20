@@ -20,15 +20,15 @@
 		--long-x: 200px;
 		--long-y: 100px;
 	}
-	div {
-		width: 20em;
-		height: 40em;
-		background-color: pink;
+	cilyndre {
+		display: block;
 		--inclinaison: 10%;
 		border-radius: 50%/var(--inclinaison);
-		padding: 0;
+		width: 6em;
+		height: 10em;
+		background-color: pink;
 	}
-	div >p {
+	cilyndre >p {
 		content: "";
 		position: relative;
 		display: inline-block;
@@ -36,16 +36,30 @@
 		width: inherit;
 		height: calc(2* var(--inclinaison));
 		border-radius: 50%;
-		background-color: #69C6;
+		background-color: #FFF6;
 	}
-	div >p:last-child {
+	cilyndre >p:last-child {
 		top: calc(100% - 4* var(--inclinaison));
+		background-color: #0061;
+	}
+	cilyndre.horizontal {
+		border-radius: var(--inclinaison)/50%;
+		width: 10em;
+		height: 6em;
+	}
+	cilyndre.horizontal >p {
+		width: calc(2* var(--inclinaison));
+		height: inherit;
+	}
+	cilyndre.horizontal >p:last-child {
+		top: 0;
+		left: calc(100% - 4* var(--inclinaison));
 	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
-	<div><p></p><p></p></div>
+	<cilyndre><p></p><p></p></cilyndre>
 	<cadre>
 		<volume class='cylindre vertical'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
 	</cadre>
