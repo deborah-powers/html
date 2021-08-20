@@ -21,28 +21,31 @@
 		--long-y: 100px;
 	}
 	div {
-		width: 40em;
-		height: 80em;
+		width: 20em;
+		height: 40em;
 		background-color: pink;
-		--inclinaison: 3%;
+		--inclinaison: 10%;
 		border-radius: 50%/var(--inclinaison);
+		padding: 0;
 	}
-	div:after, div:before {
+	div >p {
 		content: "";
+		position: relative;
 		display: inline-block;
+		margin: 0;
 		width: inherit;
 		height: calc(2* var(--inclinaison));
 		border-radius: 50%;
 		background-color: #69C6;
 	}
-	div:after {
-		background-color: #6C96;
+	div >p:last-child {
+		top: calc(100% - 4* var(--inclinaison));
 	}
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
-	<div></div>
+	<div><p></p><p></p></div>
 	<cadre>
 		<volume class='cylindre vertical'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
 	</cadre>
