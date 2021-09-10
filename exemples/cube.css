@@ -114,6 +114,22 @@ volume > *:nth-child(4) { transform-origin: center right; }
 	transform: translateX(calc(0.2875 * var(--long-x))) translateZ(calc(var(--long-x) /-2)) rotateY(45deg);
 }
 .toblerone > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
+/* le toit (toblerone allongé). ordre des faces: bas, gauche, droite, devant, derrière /
+.toit, .toit >* { width: var(--long-x); height: var(--long-x); }
+.toit > *:nth-child(1) { transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-x)); }
+.toit > *:nth-child(2), .toit > *:nth-child(3) {
+	height: 50%;
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(0.5* var(--long-x))) translateY(100%); }
+.toit > *:nth-child(3) { transform: rotateY(90deg) translateZ(var(--long-x)) translateX(-50%) translateY(100%); }
+.toit > *:nth-child(4), .toit > *:nth-child(5) {
+	height: 70.71%;
+	transform-origin: top center;
+}
+.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
+.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
+*/
 /* le cylindre. ordre des faces: haut, bas, cotés */
 .cylindre { height: var(--long-y); }
 .cylindre > *:nth-child(-1n+2) {
@@ -144,16 +160,18 @@ volume > *:nth-child(4) { transform-origin: center right; }
 .cylindre > *:nth-child(13) { transform: translateX(505.56%) rotateY(300deg) translateZ(calc(var(--long-x) /2)); }
 .cylindre > *:nth-child(14) { transform: translateX(505.56%) rotateY(330deg) translateZ(calc(var(--long-x) /2)); }
 /* les annimations */
-@keyframes cube-spin-horizontally { to { transform: rotateY(360deg); }}
-volume.horizontal { animation-name: cube-spin-horizontally; }
-@keyframes cube-spin-vertically { to { transform: rotateX(360deg); }}
-volume.vertical {
-	animation-name: cube-spin-vertically;
+@keyframes volume-spin-y { to { transform: rotateY(360deg); }}
+volume.spin-x { animation-name: volume-spin-y; }
+@keyframes volume-spin-x { to { transform: rotateX(360deg); }}
+volume.spin-y {
+	animation-name: volume-spin-y;
 	transform-origin: 0 100px;
 }
-@keyframes cube-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
+@keyframes volume-spin-z { to { transform: rotateZ(360deg); }}
+volume.spin-z { animation-name: volume-spin-z; }
+@keyframes volume-spin-full { to { transform: rotateX(360deg) rotateY(360deg); }}
 volume.full {
-	animation-name: cube-spin-full;
+	animation-name: volume-spin-full;
 	transform-origin: 50px 100px;
 }
 /* la boule */
@@ -170,9 +188,9 @@ volume.full {
 	align-items: center;
 	font-size: 1em;
 }
-.ball.horizontal { animation-name: ball-spin-horizontally; }
-.ball.vertical { animation-name: ball-spin-vertically; }
-@keyframes ball-spin-horizontally {
+.ball.horizontal { animation-name: ball-spin-y; }
+.ball.vertical { animation-name: ball-spin-x; }
+@keyframes ball-spin-y {
 	0% { background-image: radial-gradient(circle at 0% 50%, transparent, #0003); }
 	5% { background-image: radial-gradient(circle at 5% 50%, transparent, #0003); }
 	10% { background-image: radial-gradient(circle at 10% 50%, transparent, #0003); }
@@ -195,7 +213,7 @@ volume.full {
 	95% { background-image: radial-gradient(circle at 95% 50%, transparent, #0003); }
 	100% { background-image: radial-gradient(circle at 100% 50%, transparent, #0003); }
 }
-@keyframes ball-spin-vertically {
+@keyframes ball-spin-x {
 	0% { background-image: radial-gradient(circle at 50% 0%, transparent, #0003); }
 	5% { background-image: radial-gradient(circle at 50% 5%, transparent, #0003); }
 	10% { background-image: radial-gradient(circle at 50% 10%, transparent, #0003); }

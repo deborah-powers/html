@@ -16,59 +16,63 @@
 	}
 	cadre#p2 { margin-top: 10em; }
 	volume {
-		margin: 3em;
 		--long-x: 200px;
 		--long-y: 100px;
-	}
-	cilyndre {
 		display: block;
-		--inclinaison: 10%;
-		border-radius: 50%/var(--inclinaison);
-		width: 6em;
-		height: 10em;
-		background-color: pink;
-	}
-	cilyndre >p {
-		content: "";
-		position: relative;
-		display: inline-block;
 		margin: 0;
-		width: inherit;
-		height: calc(2* var(--inclinaison));
-		border-radius: 50%;
-		background-color: #FFF6;
 	}
-	cilyndre >p:last-child {
-		top: calc(100% - 4* var(--inclinaison));
-		background-color: #0061;
-	}
-	cilyndre.horizontal {
-		border-radius: var(--inclinaison)/50%;
-		width: 10em;
-		height: 6em;
-	}
-	cilyndre.horizontal >p {
-		width: calc(2* var(--inclinaison));
-		height: inherit;
-	}
-	cilyndre.horizontal >p:last-child {
-		top: 0;
-		left: calc(100% - 4* var(--inclinaison));
-	}
+	volume.cube { --bg-color: transparent; }
+
+.toit, .toit >* { width: var(--long-x); height: var(--long-y); }
+.toit > *:nth-child(1) { transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-y)); }
+.toit > *:nth-child(2), .toit > *:nth-child(3) {
+	height: 50%;
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(0.5* var(--long-x))) translateY(100%); }
+.toit > *:nth-child(3) { transform: rotateY(90deg) translateZ(var(--long-x)) translateX(-50%) translateY(100%); }
+.toit > *:nth-child(4), .toit > *:nth-child(5) {
+	height: 70.71%;
+	transform-origin: top center;
+}
+.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
+.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
+
+
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
 	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
 	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
-	<cilyndre><p></p><p></p></cilyndre>
 	<cadre>
-		<volume class='cylindre vertical'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
+		<volume class='toit full'><p>bas</p><p>gauche</p><p>droite</p><p>devant du toit</p><p>derrière</p></volume>
+	</cadre>
+	<cadre>
+		<volume class='toit'><p>bas</p><p>gauche</p><p>droite</p><p>devant</p><p>derrière</p></volume>
+		<volume class='cube'>
+			<p>haut</p><p>bas</p>
+			<img src='facade-cote.svg' alt='coté gauche du cube'>
+			<img src='facade-cote.svg' alt='coté droit du cube'>
+			<img src='facade-avant.svg' alt='devant du cube'>
+			<img src='facade-avant.svg' alt='arrière du cube'>
+		</volume>
 	</cadre>
 	<cadre id='p2'>
 		<volume class='cube'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube</p></volume>
 		<volume class='pave'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave</p></volume>
 		<volume class='toblerone'><p>haut</p><p>bas</p><p>gauche du toblerone</p><p>droite du toblerone</p><p>derrière</p></volume>
+		<volume class='toit'><p>bas</p><p>gauche</p><p>droite</p><p>devant du toit</p><p>derrière</p></volume>
 		<volume class='cylindre'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
 		<volume class='cube arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube arrondi</p></volume>
 		<volume class='pave arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave arrondi</p></volume>
 	</cadre>
-</body></html>
+</body><script type='text/javascript'>
+	console.log ('root', document.documentElement.style);
+	document.documentElement.style.setPropertyValue ('--inclinaison', '20%');
+	/*
+	document.documentElement.style.setPropertyValue ('--inclinaison', '20%');
+	var cylindre = document.getElementsByTagName ('cylindre')[0];
+	console.log ('cylindre', getComputedStyle (cylindre).getPropertyValue ('--inclinaison'));
+	console.log ('root', document.documentElement.style);
+	cylindre.style.setPropertyValue ('--inclinaison', '20%');
+	*/
+</script></html>

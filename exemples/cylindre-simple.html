@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head>
+	<title>cube en css</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	body { padding-bottom: 30em; }
+	a { display: block; }
+	cylindre {
+		display: block;
+		border-radius: 50%/var(--inclinaison);
+		width: 6em;
+		height: 10em;
+		background-color: pink;
+	}
+	cylindre >p {
+		content: "";
+		position: relative;
+		display: inline-block;
+		margin: 0;
+		width: inherit;
+		height: calc(2* var(--inclinaison));
+		border-radius: 50%;
+		background-color: #FFF6;
+	}
+	cylindre >p:last-child {
+		top: calc(100% - 4* var(--inclinaison));
+		background-color: #0061;
+	}
+	cylindre.horizontal {
+		border-radius: var(--inclinaison)/50%;
+		width: 10em;
+		height: 6em;
+	}
+	cylindre.horizontal >p {
+		width: calc(2* var(--inclinaison));
+		height: inherit;
+	}
+	cylindre.horizontal >p:last-child {
+		top: 0;
+		left: calc(100% - 4* var(--inclinaison));
+	}
+</style></head><body>
+	<cylindre class='horizontal'><p></p><p></p></cylindre>
+</body></html>
