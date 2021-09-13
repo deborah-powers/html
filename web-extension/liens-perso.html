@@ -57,7 +57,20 @@
 		debbyPlay.dataList = debbyPlay.jsonList [option];
 		document.body.load();
 	}
+	function callback (data){
+		debbyPlay.jsonList = data;
+		// les noms des catégories
+		for (var j in data) if (data.hasOwnProperty (j)){
+			debbyPlay.optionList.push (j);
+			for (var k=0; k< debbyPlay.jsonList[j].length; k++) debbyPlay.jsonList[j][k].fill (linkRef);
+		}
+		chooseOption ('reseaux');
+	}
 	// récupérer les données
+	document.body.init();
+	debbyPlay.jsonList = fromJson (fileJson, callback);
+
+	/* méthode synchrone
 	debbyPlay.jsonList = fromJson (fileJson);
 	// les noms des catégories
 	for (var j in debbyPlay.jsonList) if (debbyPlay.jsonList.hasOwnProperty (j)){
@@ -68,4 +81,5 @@
 	// la première option choisie
 	document.body.init();
 	chooseOption ('reseaux');
+	*/
 </script></html>
