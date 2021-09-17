@@ -16,28 +16,12 @@
 	}
 	cadre#p2 { margin-top: 10em; }
 	volume {
-		--long-x: 200px;
+		--long-x: 100px;
 		--long-y: 100px;
 		display: block;
 		margin: 0;
 	}
 	volume.cube { --bg-color: transparent; }
-
-.toit, .toit >* { width: var(--long-x); height: var(--long-y); }
-.toit > *:nth-child(1) { transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-y)); }
-.toit > *:nth-child(2), .toit > *:nth-child(3) {
-	height: 50%;
-	clip-path: polygon(0 100%, 50% 0, 100% 100%);
-}
-.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(0.5* var(--long-x))) translateY(100%); }
-.toit > *:nth-child(3) { transform: rotateY(90deg) translateZ(var(--long-x)) translateX(-50%) translateY(100%); }
-.toit > *:nth-child(4), .toit > *:nth-child(5) {
-	height: 70.71%;
-	transform-origin: top center;
-}
-.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
-.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
-
 
 </style></head><body>
 	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>

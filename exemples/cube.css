@@ -46,7 +46,7 @@ volume > *:nth-child(4) { transform-origin: center right; }
 .cube > *:nth-child(4) { transform: rotateY(-270deg) translateX(50%); }
 .cube > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
 .cube > *:nth-child(6) { transform: translateZ(calc(0.5* var(--long-x))); }
-/* la pave. ordre des faces: haut, bas, gauche, droite, derrière, devant */
+/* le pave. ordre des faces: haut, bas, gauche, droite, derrière, devant */
 .pave { height: var(--long-y); }
 .pave > *:nth-child(1) {
 	height: var(--long-z);
@@ -93,6 +93,7 @@ volume > *:nth-child(4) { transform-origin: center right; }
 	transform: rotateY(-20deg);
 }
 .pave.arrondi > *:before, .pave.arrondi > *:after { height: var(--long-y); }
+
 /* le toblerone. ordre des faces: haut, bas, gauche, droite, derrière */
 .toblerone, .toblerone >* { width: var(--long-x); height: var(--long-x); }
 .toblerone > *:nth-child(1) {
@@ -114,22 +115,24 @@ volume > *:nth-child(4) { transform-origin: center right; }
 	transform: translateX(calc(0.2875 * var(--long-x))) translateZ(calc(var(--long-x) /-2)) rotateY(45deg);
 }
 .toblerone > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
-/* le toit (toblerone allongé). ordre des faces: bas, gauche, droite, devant, derrière /
-.toit, .toit >* { width: var(--long-x); height: var(--long-x); }
-.toit > *:nth-child(1) { transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-x)); }
+
+/* le toit (toblerone allongé). ordre des faces: bas, gauche, droite, devant, derrière */
+.toit, .toit >* { width: var(--long-x); height: var(--long-y); }
+.toit > *:nth-child(1) { transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-y)); }
 .toit > *:nth-child(2), .toit > *:nth-child(3) {
 	height: 50%;
 	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+	width: var(--long-y);
 }
-.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(0.5* var(--long-x))) translateY(100%); }
+.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(0.5* var(--long-y))) translateY(100%); }
 .toit > *:nth-child(3) { transform: rotateY(90deg) translateZ(var(--long-x)) translateX(-50%) translateY(100%); }
 .toit > *:nth-child(4), .toit > *:nth-child(5) {
-	height: 70.71%;
+	height: calc(0.7071 * var(--long-y));
 	transform-origin: top center;
 }
-.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
-.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-x))); }
-*/
+.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-y))); }
+.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-y))); }
+
 /* le cylindre. ordre des faces: haut, bas, cotés */
 .cylindre { height: var(--long-y); }
 .cylindre > *:nth-child(-1n+2) {
