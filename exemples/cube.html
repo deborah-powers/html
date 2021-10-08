@@ -6,57 +6,53 @@
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='cube.css'/>
-	<link rel='stylesheet' type='text/css' href='cube-divers.css'/>
 <style type='text/css'>
 	body { padding-bottom: 30em; }
 	a { display: block; }
-	cadre {
-		perspective: 1200px;
-		margin-bottom: 2cm;
-	}
-	cadre#p2 { margin-top: 10em; }
+	cadre { margin-top: 2cm; }
 	volume {
 		--long-x: 100px;
-		--long-y: 100px;
-		display: block;
+		--long-y: 140px;
+		--long-z: 90px;
+		--border: dotted 2px purple;
+		--bg-color: #AFD;
 		margin: 0;
 	}
-	volume.cube { --bg-color: transparent; }
+/*
+	background-color: pink;
+*/
+/* le toit. ordre des faces: gauche, droite, devant, derrière, bas */
+volume.toit >*:nth-child(1){ transform: rotateY(270deg) translateX(-50%); }
+volume.toit >*:nth-child(2){ transform: rotateY(90deg) translate3d(-50%, 0, var(--long-x)); }
+volume.toit >*:nth-child(3) { transform: rotateX(45deg); }
+volume.toit >*:nth-child(4) { transform: rotateY(180deg) rotateX(45deg); }
+volume.toit > *:nth-child(5) {
+	transform-origin: bottom center;
+	transform: rotateX(-90deg) translateY(calc(var(--long-z) /2)) translateZ(calc(var(--long-y) - var(--long-z)));
+}
+/* la maison. ordre des façades: gauche, droite, devant, derrière, bas. ordre du toit: gauche, droite, devant, derrière, sol */
+volume.toit >*:nth-child(1), volume.toit >*:nth-child(2), volume.maison >*:nth-child(6), volume.maison >*:nth-child(7){
+	transform-origin: top left;
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+	width: var(--long-z);
+	height: calc(var(--long-z) /2);
+}
+volume.maison >*:nth-child(6){ transform: rotateY(270deg) translate(-50%, -100%); }
+volume.maison >*:nth-child(7){ transform: rotateY(90deg) translate3d(-50%, -100%, var(--long-x)); }
 
+volume.toit >*:nth-child(3), volume.toit >*:nth-child(4), volume.maison >*:nth-child(8), volume.maison >*:nth-child(9){
+	transform-origin: top center;
+	height: calc(var(--long-z) /1.4142);
+}
+volume.maison >*:nth-child(8) { transform: translateY(calc(var(--long-z) /-2)) rotateX(45deg); }
+volume.maison >*:nth-child(9) { transform: translateY(calc(var(--long-z) /-2)) rotateY(180deg) rotateX(45deg); }
 </style></head><body>
-	<a href='https://la-cascade.io/creer-un-cube-en-css/'>source du cube: la cascade</a>
-	<a href='https://cssanimation.rocks/fr/spheres/'>source de la boule: cssanimation</a>
-	<a href='https://www.w3docs.com/snippets/css/how-to-calculate-the-width-of-an-element-with-the-css-calc-function.html'>calcul</a>
 	<cadre>
-		<volume class='toit full'><p>bas</p><p>gauche</p><p>droite</p><p>devant du toit</p><p>derrière</p></volume>
+		<volume class='toit spin-x'><p>gauche</p><p>droite</p><p>devant</p><p>derrière</p><p>bas</p></volume>
 	</cadre>
 	<cadre>
-		<volume class='toit'><p>bas</p><p>gauche</p><p>droite</p><p>devant</p><p>derrière</p></volume>
-		<volume class='cube'>
-			<p>haut</p><p>bas</p>
-			<img src='facade-cote.svg' alt='coté gauche du cube'>
-			<img src='facade-cote.svg' alt='coté droit du cube'>
-			<img src='facade-avant.svg' alt='devant du cube'>
-			<img src='facade-avant.svg' alt='arrière du cube'>
-		</volume>
+		<volume class='toit'><p>gauche</p><p>droite</p><p>devant</p><p>derrière</p><p>bas</p></volume>
+		<volume class='maison'><p>gauche</p><p>droite</p><p>devant de la maison</p><p>derrière</p><p>bas</p><p>gauche</p><p>droite</p><p>devant</p><p>derrière</p></volume>
+		<volume class='pave'><p>gauche</p><p>droite</p><p>devant du pave</p><p>derrière</p><p>bas</p><p>haut</p></volume>
 	</cadre>
-	<cadre id='p2'>
-		<volume class='cube'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube</p></volume>
-		<volume class='pave'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave</p></volume>
-		<volume class='toblerone'><p>haut</p><p>bas</p><p>gauche du toblerone</p><p>droite du toblerone</p><p>derrière</p></volume>
-		<volume class='toit'><p>bas</p><p>gauche</p><p>droite</p><p>devant du toit</p><p>derrière</p></volume>
-		<volume class='cylindre'><p>haut du cylindre</p><p>bas du cylindre</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></volume>
-		<volume class='cube arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du cube arrondi</p></volume>
-		<volume class='pave arrondi'><p>haut</p><p>bas</p><p>gauche</p><p>droite</p><p>derrière</p><p>devant du pave arrondi</p></volume>
-	</cadre>
-</body><script type='text/javascript'>
-	console.log ('root', document.documentElement.style);
-	document.documentElement.style.setPropertyValue ('--inclinaison', '20%');
-	/*
-	document.documentElement.style.setPropertyValue ('--inclinaison', '20%');
-	var cylindre = document.getElementsByTagName ('cylindre')[0];
-	console.log ('cylindre', getComputedStyle (cylindre).getPropertyValue ('--inclinaison'));
-	console.log ('root', document.documentElement.style);
-	cylindre.style.setPropertyValue ('--inclinaison', '20%');
-	*/
-</script></html>
+</body></html>

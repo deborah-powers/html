@@ -12,7 +12,7 @@ volume {
 	--bg-color: #FAE8;
 	--bg-image: none;
 	--long-x: 200px;
-	--long-y: 150px;
+	--long-y: 100px;
 	--long-z: 170px;
 	--arrondi-nb: 30;
 	--arrondi: calc(1%* var(--arrondi-nb));
@@ -34,87 +34,80 @@ volume >*, volume > *:after, volume > *:before {
 	transform-style: preserve-3d;
 	transform-origin: center center;
 }
+/*
 volume > *:nth-child(1) { transform-origin: top center; }
 volume > *:nth-child(2) { transform-origin: bottom center; }
 volume > *:nth-child(3) { transform-origin: center left; }
 volume > *:nth-child(4) { transform-origin: center right; }
-/* le cube. ordre des faces: haut, bas, gauche, droite, derrière, devant */
-.cube { height: var(--long-x); }
-.cube > *:nth-child(1) { transform: rotateX(90deg) translateY(-50%); }
-.cube > *:nth-child(2) { transform: rotateX(-90deg) translateY(50%); }
-.cube > *:nth-child(3) { transform: rotateY(270deg) translateX(-50%); }
-.cube > *:nth-child(4) { transform: rotateY(-270deg) translateX(50%); }
-.cube > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
-.cube > *:nth-child(6) { transform: translateZ(calc(0.5* var(--long-x))); }
-/* la pave. ordre des faces: haut, bas, gauche, droite, derrière, devant */
+*/
+/* le pave. ordre des faces: haut, bas, gauche, droite, derrière, devant */
 .pave { height: var(--long-y); }
 .pave > *:nth-child(1) {
+	transform-origin: top center;
 	height: var(--long-z);
 	transform: rotateX(90deg) translateY(calc(-0.5* var(--long-z)));
 }
 .pave > *:nth-child(2) {
+	transform-origin: bottom center;
 	height: var(--long-z);
 	transform: rotateX(-90deg) translateY(calc(0.5* var(--long-z))) translateZ(calc(var(--long-y) - var(--long-z)));
 }
 .pave > *:nth-child(3) {
+	transform-origin: center left;
 	width: var(--long-z);
 	transform: rotateY(270deg) translateX(-50%);
 }
 .pave > *:nth-child(4) {
+	transform-origin: center right;
 	width: var(--long-z);
 	transform: rotateY(-270deg) translateX(50%) translateZ(calc(var(--long-x) - var(--long-z)));
 }
 .pave > *:nth-child(5) { transform: rotateY(180deg) translateZ(calc(0.5* var(--long-z))); }
 .pave > *:nth-child(6) { transform: translateZ(calc(0.5* var(--long-z))); }
-/* l'arrondi, à rajouter par-dessus le cube ou la pave */
-.arrondi > *:nth-child(-1n+2) { border-radius: var(--arrondi); }
-.arrondi > *:nth-child(3) { transform: rotateY(270deg) translateX(-50%) translateZ(calc(var(--long-x) * var(--arrondi-nb) /100)); }
-.arrondi > *:nth-child(4) { transform: rotateY(-270deg) translateX(50%) translateZ(calc(var(--long-x) * var(--arrondi-nb) /100)); }
-.arrondi > *:nth-child(n+3) {
-	width: calc(100% - 2* var(--arrondi));
-	right: var(--arrondi);
-}
-.arrondi > *:before, .arrondi > *:after {
-	content: "";
-	width: calc(var(--arrondi-nb) * var(--long-x) /200);
-}
-.arrondi > *:nth-child(-1n+2):before {
-	transform: rotateX(90deg) rotateY(45deg) translateY(-50%) translateZ(calc(var(--long-x) / (1.4142 + var(--arrondi-nb) * 0.011716))); }
-.arrondi > *:nth-child(-1n+2):after {
-	transform: rotateX(90deg) rotateY(45deg) translateY(-50%) translateZ(calc(var(--long-x) / (-1.4142 - var(--arrondi-nb) * 0.011716))); }
-.arrondi > *:nth-child(n+3):before {
-	transform-origin: center left;
-	right: calc(var(--arrondi-nb) * var(--long-x) /-200);
-	transform: rotateY(20deg);
-}
-.arrondi > *:nth-child(n+3):after {
-	transform-origin: center right;
-	left: calc(var(--arrondi-nb) * var(--long-x) /-200);
-	transform: rotateY(-20deg);
-}
-.pave.arrondi > *:before, .pave.arrondi > *:after { height: var(--long-y); }
+
 /* le toblerone. ordre des faces: haut, bas, gauche, droite, derrière */
-.toblerone, .toblerone >* { width: var(--long-x); height: var(--long-x); }
+.toblerone, .toblerone >* { width: var(--long-x); height: var(--long-y); }
+.toblerone > *:nth-child(1), .toblerone > *:nth-child(2) { height: calc(var(--long-x) /2); }
 .toblerone > *:nth-child(1) {
-	height: 50%;
-	transform: rotateX(90deg) translateY(-100%);
+	transform-origin: top center;
 	clip-path: polygon(0 0, 50% 100%, 100% 0);
+	transform: rotateX(90deg);
 }
 .toblerone > *:nth-child(2) {
+	transform-origin: bottom center;
+	clip-path: polygon(0 100%, 50% 0, 100% 100%);
+	transform: rotateX(-90deg) translateZ(calc(var(--long-y) - var(--long-x) /2));
+}
+.toblerone > *:nth-child(3), .toblerone > *:nth-child(4) { width: calc(0.7071 * var(--long-x)); }
+.toblerone > *:nth-child(3) { transform: rotateY(-45deg); }
+
+.toblerone > *:nth-child(4) {
+	transform-origin: center right;
+	transform: translateX(calc(0.2929* var(--long-x))) rotateY(45deg) ;
+}
+.toblerone > *:nth-child(5) {
+	transform-origin: center center;
+	transform: rotateY(180deg);
+}
+/* le toit (toblerone allongé). ordre des faces: bas, gauche, droite, devant, derrière */
+.toit, .toit >* { width: var(--long-x); height: var(--long-y); }
+.toit > *:nth-child(1) {
+	transform-origin: bottom center;
+	transform: rotateX(270deg) translateY(-50%) translateZ(var(--long-y));
+}
+.toit > *:nth-child(2), .toit > *:nth-child(3) {
+	width: var(--long-y);
 	height: 50%;
-	transform: rotateX(-90deg) translateY(100%) translateZ(calc(var(--long-x) /2));
 	clip-path: polygon(0 100%, 50% 0, 100% 100%);
 }
-.toblerone > *:nth-child(3) {
-	width: 70.71%;
-	transform: translateZ(calc(var(--long-x) /-2)) rotateY(-45deg);
+.toit > *:nth-child(2) { transform: rotateY(270deg) translateZ(calc(var(--long-y) /2)) translateY(100%); }
+.toit > *:nth-child(3) { transform: rotateY(90deg) translateZ(var(--long-x)) translateX(-50%) translateY(100%); }
+.toit > *:nth-child(4), .toit > *:nth-child(5) {
+	height: calc(0.7071 * var(--long-y));
+	transform-origin: top center;
 }
-.toblerone > *:nth-child(4) {
-	width: 70.71%;
-	transform: translateX(calc(0.2875 * var(--long-x))) translateZ(calc(var(--long-x) /-2)) rotateY(45deg);
-}
-.toblerone > *:nth-child(5) { transform: translateZ(calc(-0.5* var(--long-x))) rotateY(180deg); }
-
+.toit > *:nth-child(4) { transform: rotateX(45deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-y))); }
+.toit > *:nth-child(5) { transform: rotateX(-45deg) rotateY(180deg) translateY(50%) translateZ(calc(-0.35355 * var(--long-y))); }
 
 /* le cylindre. ordre des faces: haut, bas, cotés */
 .cylindre { height: var(--long-y); }
@@ -150,7 +143,7 @@ volume > *:nth-child(4) { transform-origin: center right; }
 volume.spin-x { animation-name: volume-spin-y; }
 @keyframes volume-spin-x { to { transform: rotateX(360deg); }}
 volume.spin-y {
-	animation-name: volume-spin-x;
+	animation-name: volume-spin-y;
 	transform-origin: 0 100px;
 }
 @keyframes volume-spin-z { to { transform: rotateZ(360deg); }}
