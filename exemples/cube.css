@@ -170,7 +170,7 @@ volume.spin-xy {
 	transform-origin: 50px 100px;
 }
 /* la boule */
-.ball {
+.balle {
 	/* préciser width, height et background-color */
 	border-radius: 50%;
 	background-image: radial-gradient(circle at 20% 50%, transparent, #0003);
@@ -183,9 +183,9 @@ volume.spin-xy {
 	align-items: center;
 	font-size: 1em;
 }
-.ball.horizontal { animation-name: ball-spin-y; }
-.ball.vertical { animation-name: ball-spin-x; }
-@keyframes ball-spin-y {
+.balle.horizontal { animation-name: balle-spin-y; }
+.balle.vertical { animation-name: balle-spin-x; }
+@keyframes balle-spin-y {
 	0% { background-image: radial-gradient(circle at 0% 50%, transparent, #0003); }
 	5% { background-image: radial-gradient(circle at 5% 50%, transparent, #0003); }
 	10% { background-image: radial-gradient(circle at 10% 50%, transparent, #0003); }
@@ -208,7 +208,7 @@ volume.spin-xy {
 	95% { background-image: radial-gradient(circle at 95% 50%, transparent, #0003); }
 	100% { background-image: radial-gradient(circle at 100% 50%, transparent, #0003); }
 }
-@keyframes ball-spin-x {
+@keyframes balle-spin-x {
 	0% { background-image: radial-gradient(circle at 50% 0%, transparent, #0003); }
 	5% { background-image: radial-gradient(circle at 50% 5%, transparent, #0003); }
 	10% { background-image: radial-gradient(circle at 50% 10%, transparent, #0003); }
@@ -230,4 +230,28 @@ volume.spin-xy {
 	90% { background-image: radial-gradient(circle at 50% 90%, transparent, #0003); }
 	95% { background-image: radial-gradient(circle at 50% 95%, transparent, #0003); }
 	100% { background-image: radial-gradient(circle at 50% 100%, transparent, #0003); }
+}
+/* le cylindre droit compte deux éléments. préciser ses dimensions, l'angle */
+.cylindre-droit {
+	border-radius: 50%/var(--angle);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	--angle: 10%;
+}
+.cylindre-droit >* {
+	border-radius: 50%;
+	width: inherit;
+	height: calc(2* var(--angle));
+	margin: 0;
+}
+.cylindre-droit.couche {
+	border-radius: var(--angle)/50%;
+	flex-direction: row;
+	background: linear-gradient(0deg, orange, white, orange);
+}
+.cylindre-droit.couche >* {
+	width: calc(2* var(--angle));
+	height: inherit;
 }
