@@ -1,4 +1,18 @@
-<section class='list3'>
+<style type='text/css'>
+	.boule {
+		background-color: var(--button-bg);
+		width: 6em;
+		height: 6em;
+	}
+	.cylindre {
+		background: linear-gradient(90deg, var(--fond-color), white, var(--fond-color));
+		width: 10em;
+		height: 10em;
+	}
+	.cylindre >* { background-color: var(--fond-color); }
+	.cylindre >*:nth-child(1) { background-color: var(--button-bg); }
+	.cylindre.couche { 	background: linear-gradient(0deg, var(--fond-color), white, var(--fond-color)); }
+</style><section class='list3'>
 	<h2>les formes</h2>
 	<div><p>.shape .heart</p><p class='shape heart'></p></div>
 	<div><p>.shape .cloud</p><p class='shape cloud'></p></div>
@@ -6,4 +20,7 @@
 	<div><p>.outline .arrow</p><p class='outline arrow'></p></div>
 	<div><p>.outline .arrow .right</p><p class='outline arrow right'></p></div>
 	<div><p>.outline .cross</p><p class='outline cross'></p></div>
+	<div><p>.boule</p><p class='boule'></p></div>
+	<div><p>.cylindre</p><div class='cylindre'><p></p><p></p></div></div>
+	<div><p>.cylindre.couche</p><div class='cylindre couche'><p></p><p></p></div></div>
 </section>

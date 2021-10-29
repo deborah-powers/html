@@ -14,6 +14,6 @@ angular.module ('cssApp').config (function ($stateProvider, $urlRouterProvider, 
 	$stateProvider.state ({ name: 'space', url: '/espacement', templateUrl: 'page-space.html' });
 	$stateProvider.state ({ name: 'query', url: '/media-query', templateUrl: 'page-query.html' });
 	$stateProvider.state ({ name: 'image', url: '/image-et-lien', templateUrl: 'page-image.html' });
-	$urlRouterProvider.otherwise ('/flex-box');
+	$urlRouterProvider.otherwise ('/forme');
 	$locationProvider.hashPrefix ('');
 });
