@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head>
+	<title>soude au cou</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='file:///C:/Users/deborah.powers/site-dp/'/>
+	<!--
+	<link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>">
+	-->
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<script type='text/javascript' src='library-js/list.js'></script>
+<style type='text/css'>
+	section {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		justify-items: stretch;
+		align-items: stretch;
+	}
+	p {
+		border: solid 4px black;
+		text-align: center;
+	}
+</style></head><body>
+	<section>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</section>
+</body><script type='text/javascript'>
+	var tableau =[ [1,2,3,4,5,6,7,8,9], [], [], [], [], [], [], [], [] ];
+	var nombres = [1,2,3,4,5,6,7,8,9];
+
+	// utiles
+	function afficher(){
+		var cases = document.getElementsByTagName('p');
+		var c=0;
+		for (var x=0; x<9; x++) for (var y=0; y<9; y++){
+			cases[c].innerHTML = tableau[x][y];
+			c=c+1;
+	}}
+	Array.prototype.enleverAleatoirement = function() {
+		var pos = Math.random();
+		pos = pos * this.length;
+		pos = Math.floor (pos);
+		return this.splice (pos, 1)[0];
+	}
+	Array.prototype.delCroix = function(posX, posY){
+		for (var y= this.length; y>=0; y--) if (tableau[posX].contains (this[y])) this.pop (y);
+		for (var x=0; x< posX; x++) this.popItem (tableau[x][posY]);
+	}
+	Array.prototype.delTriplet = function(posX, posY){
+		for (var y= this.length; y>=0; y--) if (tableau[posX].contains (this[y])) this.pop (y);
+		var x= 3* Math.floor (posX /3);
+		for (; x< posX; x++){
+			this.popItem (tableau[x][posY]);
+			this.popItem (tableau[x][posY +1]);
+			this.popItem (tableau[x][posY +2]);
+	}}
+	function remplirLigne23 (x){
+		tableau[x] =[];
+		console.log (23);
+		for (var y=0; y<9; y=y+3){
+			nombres = [1,2,3,4,5,6,7,8,9];
+			nombres.delTriplet (x,y);
+			for (var z=y; z< y+3; z++) tableau[x].push (nombres.enleverAleatoirement());
+	}}
+	function remplirLigne47 (x){
+		tableau[x] =[];
+		console.log (47);
+		for (var y=0; y<9; y++){
+			nombres = [1,2,3,4,5,6,7,8,9];
+			nombres.delCroix (x,y);
+			tableau[x].push (nombres.enleverAleatoirement());
+	}}
+	function remplirLigne5689 (x){
+		tableau[x] =[];
+		console.log (5689);
+		var n, nombresTmp =[];
+		console.log (x);
+		for (var y=0; y<9; y=y+3){
+			nombres = [1,2,3,4,5,6,7,8,9];
+			nombres.delTriplet (x,y);
+			for (var z=y; z< y+3; z++){
+				nombresTmp =[];
+				for (n=0; n< nombresTmp.length; n++) nombresTmp.push (nombres[n]);
+				nombresTmp.delCroix (x,z);
+				tableau[x].push (nombresTmp.enleverAleatoirement());
+			}
+	}}
+	tableau[0] = tableau[0].shuffle();
+	remplirLigne23 (1);
+	while (tableau[1].contains (undefined)) remplirLigne23 (1);
+	remplirLigne23 (2);
+	while (tableau[2].contains (undefined)) remplirLigne23 (2);
+	remplirLigne47 (3);
+	while (tableau[3].contains (undefined)) remplirLigne47 (3);
+	remplirLigne5689 (4);
+	while (tableau[4].contains (undefined)) remplirLigne5689 (4);
+
+
+	/*
+	for (var x=1; x<9; x++){
+		while (case == tableau[0][y]) case = nombres.chooseRandomly();
+	*/
+	afficher();
+</script></html>
