@@ -103,6 +103,7 @@ git credential-manager
 git credential-store --file ~/git.store store
 username=deborah-powers
 password=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
+url = https://github.com/deborah-powers/html.git
 
 ======================== erreurs ========================*
 
