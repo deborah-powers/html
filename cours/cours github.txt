@@ -96,7 +96,14 @@ dans le menu gauche, cliquer sur developer settings / personnal acces token
 create new token
 
 pat de mon ordi de la maison: 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
+pat de mon ordi du boulot: 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
 
+git credential-manager
+
+git credential-store --file ~/git.store store
+username=deborah-powers
+password=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
+url = https://github.com/deborah-powers/html.git
 
 ======================== erreurs ========================*
 
@@ -104,3 +111,4 @@ github fatal "couldn't find remote ref" master
 fatal: impossible de trouver la référence distante master
 git remote rm origin
 git push --set-upstream origin master
+
