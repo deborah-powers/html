@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<svg version='1.1' width='150' height='142' xmlns='http://www.w3.org/2000/svg'>
-	<title>fleur</title>
-	<path fill='deeppink' id='petales' d='m 93,51 c 54,-60 90,51 11,33 75,33 -21,102 -30,21 -7.5,78 -102,11 -30,-21 -78,17 -44,-93 11,-34 -40,-67 75,-70 36,0 z'/>
-	<circle fill='orange' r='30' cx='72.5' cy='75'/>
-</svg>

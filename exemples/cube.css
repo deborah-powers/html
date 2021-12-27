@@ -158,9 +158,9 @@ volume.cylindre.va > *:nth-child(12) { transform: translateX(505.56%) rotateY(27
 volume.cylindre.va > *:nth-child(13) { transform: translateX(505.56%) rotateY(300deg) translateZ(calc(var(--long-x) /2)); }
 volume.cylindre.va > *:nth-child(14) { transform: translateX(505.56%) rotateY(330deg) translateZ(calc(var(--long-x) /2)); }
 /* les annimations */
-@keyframes volume-spin-y { to { transform: rotateY(360deg); }}
-volume.spin-x { animation-name: volume-spin-x; }
 @keyframes volume-spin-x { to { transform: rotateX(360deg); }}
+volume.spin-x { animation-name: volume-spin-x; }
+@keyframes volume-spin-y { to { transform: rotateY(360deg); }}
 volume.spin-y { animation-name: volume-spin-y; }
 @keyframes volume-spin-z { to { transform: rotateZ(360deg); }}
 volume.spin-z { animation-name: volume-spin-z; }

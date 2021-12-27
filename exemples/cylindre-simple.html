@@ -5,43 +5,34 @@
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/shapes.css'/>
 <style type='text/css'>
 	body { padding-bottom: 30em; }
 	a { display: block; }
-	cylindre {
-		display: block;
-		border-radius: 50%/var(--inclinaison);
-		width: 6em;
+cylindre.saute {
+	animation-name: cylindre-saute;
+	animation-duration: 6s;
+	animation-iteration-count: 3;
+}
+@keyframes cylindre-saute {
+	from {
+		border-radius: 50%/0%;
 		height: 10em;
-		background-color: pink;
 	}
-	cylindre >p {
-		content: "";
-		position: relative;
-		display: inline-block;
-		margin: 0;
-		width: inherit;
-		height: calc(2* var(--inclinaison));
+	to {
 		border-radius: 50%;
-		background-color: #FFF6;
-	}
-	cylindre >p:last-child {
-		top: calc(100% - 4* var(--inclinaison));
-		background-color: #0061;
-	}
-	cylindre.horizontal {
-		border-radius: var(--inclinaison)/50%;
-		width: 10em;
 		height: 6em;
 	}
-	cylindre.horizontal >p {
-		width: calc(2* var(--inclinaison));
-		height: inherit;
-	}
-	cylindre.horizontal >p:last-child {
-		top: 0;
-		left: calc(100% - 4* var(--inclinaison));
-	}
+}
+cylindre.saute >p {
+	animation-name: cylindre-saute-p;
+	animation-duration: 6s;
+	animation-iteration-count: 3;
+}
+@keyframes cylindre-saute-p {
+	from { height: 0.1em; }
+	to { height: 6em; }
+}
 </style></head><body>
-	<cylindre class='horizontal'><p></p><p></p></cylindre>
+	<cylindre class='saute'><p></p></cylindre>
 </body></html>
