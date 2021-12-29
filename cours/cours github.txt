@@ -95,9 +95,8 @@ ma photo en haut à droite de ma page / menu déroulant / settings
 dans le menu gauche, cliquer sur developer settings / personnal acces token
 create new token
 
-pat de mon ordi de la maison: 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
-pat de mon ordi du boulot: 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
 12/27	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
+12/29	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
 
 git credential-manager
 
@@ -109,7 +108,7 @@ url = https://github.com/deborah-powers/html.git
 dans /home/deborah/Bureau/Lien vers python/.git/config
 [remote "origin"]
 url = https://username:password@github.com/username/modulename.git
-https://deborah-powers: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@github.com/deborah-powers/html.git
+https://deborah-powers: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@github.com/deborah-powers/html.git
 
 
 ======================== erreurs ========================*

@@ -2,7 +2,8 @@
 	<title>soude au cou</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='blank' href='file:///C:/Users/deborah.powers/site-dp/'/>
+	<!-- base target='blank' href='file:///C:/Users/deborah.powers/site-dp/'/ -->
+	<base target='blank' href='/var/www/html/site-dp/'/>
 	<!--
 	<link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>">
 	-->
@@ -58,11 +59,11 @@
 		return this.splice (pos, 1)[0];
 	}
 	Array.prototype.delCroix = function(posX, posY){
-		for (var y= this.length; y>=0; y--) if (tableau[posX].contains (this[y])) this.pop (y);
+		for (var y= this.length; y>=0; y--) if (tableau[posX].contain (this[y])) this.pop (y);
 		for (var x=0; x< posX; x++) this.popItem (tableau[x][posY]);
 	}
 	Array.prototype.delTriplet = function(posX, posY){
-		for (var y= this.length; y>=0; y--) if (tableau[posX].contains (this[y])) this.pop (y);
+		for (var y= this.length; y>=0; y--) if (tableau[posX].contain (this[y])) this.pop (y);
 		x= 3* Math.floor (posX /3);
 		for (; x< posX; x++){
 			this.popItem (tableau[x][posY]);
@@ -99,20 +100,20 @@
 	var count =0;
 	tableau[0] = tableau[0].shuffle();
 	remplirLigne23 (1);
-	while (tableau[1].contains (undefined)) remplirLigne23 (1);
+	while (tableau[1].contain (undefined)) remplirLigne23 (1);
 	remplirLigne23 (2);
-	while (tableau[2].contains (undefined)) remplirLigne23 (2);
+	while (tableau[2].contain (undefined)) remplirLigne23 (2);
 	remplirLigne47 (3);
-	while (tableau[3].contains (undefined)) remplirLigne47 (3);
+	while (tableau[3].contain (undefined)) remplirLigne47 (3);
 	remplirLigne5689 (4);
-	while (tableau[4].contains (undefined)) remplirLigne5689 (4);
+	while (tableau[4].contain (undefined)) remplirLigne5689 (4);
 	remplirLigne5689 (5);
-	while (tableau[5].contains (undefined)) remplirLigne5689 (5);
+	while (tableau[5].contain (undefined)) remplirLigne5689 (5);
 	remplirLigne47 (6);
-	while (tableau[6].contains (undefined)) remplirLigne47 (6);
+	while (tableau[6].contain (undefined)) remplirLigne47 (6);
 	remplirLigne5689 (7);
-	while (tableau[7].contains (undefined)) remplirLigne5689 (7);
+	while (tableau[7].contain (undefined)) remplirLigne5689 (7);
 	remplirLigne5689 (8);
-	while (tableau[8].contains (undefined)) remplirLigne5689 (8);
+	while (tableau[8].contain (undefined)) remplirLigne5689 (8);
 	afficher();
 </script></html>
