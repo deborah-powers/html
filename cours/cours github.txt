@@ -104,7 +104,7 @@ C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
 	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
 
-ou git pull https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
+ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
 ======================== erreurs ========================
 
