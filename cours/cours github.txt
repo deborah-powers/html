@@ -98,6 +98,7 @@ create new token
 12/27	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
 12/29	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
 12/30	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
+01/04	boulot	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
 
 ne pas avoir à retaper le mot de passe à chaque fois
 C:/Users/deborah.powers/html/.git/config
