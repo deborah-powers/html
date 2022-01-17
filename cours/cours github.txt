@@ -11,6 +11,7 @@ git status
 
 dans mon dossier projet
 git init
+git config --global http.sslVerify false
 git config --global user.name "deborah-powers"
 git config --global user.email "deborah.powers.dev@gmail.com"
 
