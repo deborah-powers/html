@@ -20,6 +20,14 @@ sudo mysql
 
 ====== divers ======
 
+****** accéder aux json dans edge ******
+
+diseable cors policy
+https://answers.microsoft.com/en-us/microsoftedge/forum/all/disable-cors/55c89fb6-8d72-4318-9ee3-e9cdfc6fa708
+
+
+
+
 ****** accéder aux json dans chrome ******
 
 fermer toutes les fenêtres de chrome

@@ -10,7 +10,7 @@
 	body { padding-bottom: 30em; }
 	a { display: block; }
 cylindre.saute {
-	animation-name: cylindre-saute;
+	animation-name: cylindre-saute, tourne-cylindre;
 	animation-duration: 6s;
 	animation-iteration-count: 3;
 }
@@ -18,13 +18,13 @@ cylindre.saute {
 	from {
 		border-radius: 50%/0%;
 		height: 10em;
-	}
-	to {
+	} to {
 		border-radius: 50%;
 		height: 6em;
 	}
 }
-cylindre.saute >p {
+cylindre.saute >* {
+	top: 0;
 	animation-name: cylindre-saute-p;
 	animation-duration: 6s;
 	animation-iteration-count: 3;
@@ -34,5 +34,6 @@ cylindre.saute >p {
 	to { height: 6em; }
 }
 </style></head><body>
-	<cylindre class='saute'><p></p></cylindre>
+	<cylindre class='tourne'><p></p><p></p></cylindre>
+	<cylindre class='tourne saute'><p></p></cylindre>
 </body></html>

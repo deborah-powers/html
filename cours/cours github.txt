@@ -11,6 +11,7 @@ git status
 
 dans mon dossier projet
 git init
+git config --global http.sslVerify false
 git config --global user.name "deborah-powers"
 git config --global user.email "deborah.powers.dev@gmail.com"
 
@@ -97,21 +98,17 @@ create new token
 
 12/27	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
 12/29	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
+12/30	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
+01/04	boulot	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
 
-git credential-manager
-
-git credential-store --file ~/git.store store
-username=deborah-powers
-password=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
-url = https://github.com/deborah-powers/html.git
-
-dans /home/deborah/Bureau/Lien vers python/.git/config
+ne pas avoir à retaper le mot de passe à chaque fois
+C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
-url = https://username:password@github.com/username/modulename.git
-https://deborah-powers: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@github.com/deborah-powers/html.git
+	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
 
+ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
-======================== erreurs ========================*
+======================== erreurs ========================
 
 github fatal "couldn't find remote ref" master
 fatal: impossible de trouver la référence distante master
