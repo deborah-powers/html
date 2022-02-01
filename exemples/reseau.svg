@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type='text/css' href='../../site-dp/library-css/svg.css'?>
+<svg version='1.1' width='60em' height='40em' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='grid'>
+	<title>réseau</title>
+	<script xlink:href='../../site-dp/library-js/list.js'/>
+	<script xlink:href='../../site-dp/library-js/text.js'/>
+	<script xlink:href='../../site-dp/library-js/svg.js'/>
+	<script xlink:href='reseau.js'/>
+<style type='text/css'><![CDATA[
+	circle {
+		r: 1em;
+		fill: lightblue;
+		stroke: blue;
+		stroke-width: 2px;
+	}
+	text {
+		fill: blue;
+		stroke: none;
+		font-size: 1em;
+		dominant-baseline: middle;
+		text-anchor: middle;
+		font-family: serif;
+	}
+	line {
+		stroke: blue;
+		stroke-width: 4px;
+	}
+	line.double { stroke-width: 8px; }
+]]></style><defs>
+	<circle cx='20' cy='20'/><text x='20' y='20'>A</text>
+</defs>
+</svg>
