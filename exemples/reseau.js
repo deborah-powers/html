@@ -10,25 +10,30 @@ var lettresRel =[
 	[2,0,0,1,0]
 ];
 var posOld =[];
-var frereList =[];
 var point =[];
 var posX;
 var posY;
+var aFrere = [0,0];
 for (var l=0; l< lettres.length; l++){
-	frereList =[];
-	point = randomPoint();
-	posOld.push (point);
-	for (var m=0; m<l; m++){
-		if (lettresRel[l][m] ==1) createLine (point[0], point[1], posOld[m][0], posOld[m][1]);
-		else if (lettresRel[l][m] ==2) createLine (point[0], point[1], posOld[m][0], posOld[m][1], true);
+	aFrere = [0,0];
+	for (var m=0; m<l; m++) if (lettresRel[l][m] >0){
+		aFrere = posOld[m];
+		createLine (point[0], point[1], posOld[m][0], posOld[m][1]);
 	}
+	if (pointPlein (aFrere)) point = randomPointRef (aFrere[0], aFrere[1]);
+	else point = randomPoint();
+	posOld.push (point);
 }
 for (var l=0; l< lettres.length; l++) createNode (lettres[l], posOld[l][0], posOld[l][1]);
 
-function randomNb(){
+function pointPlein (point){
+	if (point[0] ==0 && point[1] ==0) return false;
+	else return true;
+}
+function randomNb (nb){
 	var pos =0;
 	while (pos <=0){
-		pos = 10* Math.random();
+		pos = nb* Math.random();
 		pos = Math.floor (pos);
 	}
 	return pos;
@@ -39,13 +44,36 @@ function posOldContain (posX, posY){
 	return poContain;
 }
 function randomPoint(){
-	posX = randomNb (10);
-	posY = randomNb (10);
+	var posX = randomNb (10);
+	var posY = randomNb (10);
 	while (posOldContain (posX, posY)){
 		posX = randomNb (10);
 		posY = randomNb (10);
 	}
 	return [ posX, posY ];
+}
+function randomPointRefChoice (refX, refY, deltaX, deltaY){
+	var point =[ refX + deltaX, refY + deltaY ];
+	if (posOldContain (point)){
+		point =[ refX + deltaX, refY - deltaY ];
+		if (posOldContain (point)){
+			point =[ refX - deltaX, refY + deltaY ];
+			if (posOldContain (point)){
+				point =[ refX - deltaX, refY - deltaY ];
+				if (posOldContain (point)) point =[0,0];
+	}}}
+	return point;
+}
+function randomPointRef (refX, refY){
+	var deltaX = randomNb (2);
+	var deltaY = randomNb (2);
+	var point = randomPointRefChoice (refX, refY, deltaX, deltaY);
+	while (pointPlein (point)){
+		deltaX = randomNb (2);
+		deltaY = randomNb (2);
+		point = randomPointRefChoice (refX, refY, deltaX, deltaY);
+	}
+	return point;
 }
 function createLine (posX, posY, posX2, posY2, double){
 	posX = svgWidth * posX -1;
