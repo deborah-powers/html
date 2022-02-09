@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <?xml-stylesheet type='text/css' href='../../library-css/svg.css'?>
-<svg width='650' height='1600' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
+<svg width='260' height='640' viewBox="0 0 650 1600" xmlns='http://www.w3.org/2000/svg'>
 	<title>fille</title>
 <style><![CDATA[
 	path, .peau					{	fill: #FC9;		stroke: #963;	}
@@ -8,30 +8,28 @@
 	.cheveux					{	fill: #963;		stroke: #630;	}
 	g.yeux circle				{	fill: green;	stroke: none;	}
 	g.yeux path, g.yeux ellipse	{	fill: ivory;	stroke: #963;	}
-	.habit						{	fill: #c7f5;		stroke: purple;	}
+	.habit						{	fill: #C7F;		stroke: purple;	}
 	.habit.masque				{	fill: none;		stroke: none;	}
 ]]></style><defs><!--
 	width='260' height='640' viewBox='0 0 130 320'
 	width='130' height='320'
 --></defs>
 <!-- la fille -->
-<path	class='cheveux' d='m 68,3 c -35,0 -46.5,99 -4,99 43,-4 35,-99 4,-99 z'/>
-<circle	class='peau' id='pouce' r='4' cy='178' cx='10'/>
+<path	class='cheveux' d='m 340,15 c -175,0 -233,500 -20,500 215,-20 175,-500 20,-500 z'/>
+<circle	class='peau' id='pouce' r='20' cy='890' cx='50'/>
 <path	class='peau' id='corps'
-	d='m 60,42 c 0,50 -35,-20 -47,80 -12,20 -5,40 -13,55 0,10 10,12 11,5 -2,-10 10,-40 11,-57 q 13,-30 15,-40
-	c 20,70 -15,20 5,135 -30,30 0,70 -8,92 -8,10 35,10 17,0 q -5,-2 2,-50 c 5,-60 5,0 16,-90 13,90 13,30 18,90 q 5,48 2,50 c -20,10 30,10 17,0 -8,-20 15,-70 -5,-92 15,-100 -30,-60 -5,-132 q -2,10 8,37 c 0,20 11,35 12,45 q -4,8 3,8 c -5,22 14,5 9,-5 -5,-10 -5,-30 -15,-50 -5,-102 -40,-30 -38,-85'/>
-<path	class='peau' id='seins' d='m 45,94.5 q 7.5,11.5 19.5,0 m 4,0 q 11.5,11.5 19.5,0'/>
-<circle	class='peau' id='nombril' r='1.5' cy='152' cx='68'/>
-<path	class='peau' id='tete' d='m 67,52.5 c 19.5,0 27,-46 0,-46 -27,0 -19.5,46 0,46 z'/>
-<path	class='peau' id='bouche' d='m 66.5,45 c 0,1 2.5,1 2.5,1'/>
-<path	class='peau' id='nez' d='m 66.5,37 c -2,-1.5 1,-4 1,-4'/>
+	d='m 300,210 c 0,250 -175,-100 -235,400 -60,100 -25,200 -65,275 0,50 50,60 55,25 -10,-50 50,-200 55,-285 q 65,-150 65,-200 c 100,350 -65,100 25,675 -150,150 0,350 -40,460 -40,50 175,50 85,0 q -25,-10 10,-250 c 25,-300 25,0 80,-450 65,450 65,150 90,450 q 25,240 10,250 c -100,50 150,50 85,0 -40,-100 75,-350 -25,-460 75,-500 -150,-300 -25,-660 q -10,50 40,185 c 0,100 55,175 60,225 q -20,40 15,40 c -25,110 70,25 45,-25 -25,-50 -25,-150 -75,-250 -25,-510 -200,-150 -190,-425'/>
+<path	class='peau' id='seins' d='m 225,473 q 37,57 87,0 m 20,0 q 57,57 87,0'/>
+<circle	class='peau' id='nombril' r='6' cy='760' cx='340'/>
+<path	class='peau' id='tete' d='m 335,263 c 97,0 135,-230 0,-230 -135,0 -97,230 0,230 z'/>
+<path	class='peau' id='bouche' d='m 333,225 c 0,5 8,5 8,5'/>
+<path	class='peau' id='nez' d='m 333,185 c -10,-6 5,-20 5,-20'/>
 <g		class='yeux'>
-	<path d='m 76,22 c -5.5,-2 -5,5.5 -3,5.5 9.5,0.5 7,-4.5 3,-5.5 z m -18,0.5 c 5.5,-1.5 4.5,5.5 2.5,6 -9.5,2 -6.5,-4.5 -2.5,-6 z'/>
-	<circle r='2' cy='26' cx='58'/><circle r='2' cy='24.9' cx='75'/></g>
-<path	class='cheveux' d='m 56.5,10.5 c 0,0 -7.5,15.5 -15.5,23 8,-46 46.5,-42 50.5,0 -19.5,-16.5 -34.8,-30 -34.8,-23'/>
+	<path d='m 380,110 c -30,-10 -25,30 -15,30 c 50,0 35,-25 15,-30 z m -93,0 c 30,-10 25,30 15,30 c -50,0 -35,-25 -15,-30 z'/>
+	<circle r='10' cy='125' cx='290'/><circle r='10' cy='125' cx='375'/></g>
+<path	class='cheveux' d='m 282,52 q -20,40 -80,115 c 40,-230 230,-210 250,0 q -100,-100 -170,-115'/>
 <!-- ses habits -->
-<path	class='habit masque'	id='robe' d='m 35,205 c -20,-80 20,-60 3,-110 q -15,25 -23,70 l -14,-4 c 20,-80 10,-100 50,-100 q 14,10 28,0 c 45,0 20,20 48,100 l -14,4 q -10,-25 -18,-70 c -8,60 20,50 13,110 z'/>
-<path	class='habit masque'	id='pantalon'	d='m 37,140 q -10,20 -10,160 l 25,0 l 17,-115 l 17,115 l 25,0 q 0,-140 -17,-160'/>
-<path	class='habit'	id='jupe'	d='m 37,140 q -10,20 -10,160 l 84,0 q 0,-140 -17,-160'/>
-<path	class='habit'	id='t-shirt'	d='m 55,60 c 0,0 0,0 -100,100'/>
+<path	class='habit'	id='robe' d='m 175,1025 c -110,-400 100,-300 0,-570 q -45,125 -100,380 l -75,-20 c 80,-400 80,-530 240,-510 q 70,50 180,0 c 140,0 100,100 200,490 l -70,20 q -70,-150 -85,-360 c -70,300 110,250 50,560'/>
+<path	class='habit masque'	id='pantalon'	d='m 178,700 q -50,100 -50,800 l 125,0 l 85,-575 l 85,575 l 125,0 q 0,-700 -85,-800'/>
+<path	class='habit masque'	id='jupe'	d='m 178,700 q -50,100 -50,800 l 420,0 q 0,-700 -85,-800'/>
 </svg>

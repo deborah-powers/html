@@ -3,32 +3,35 @@ const svgWidth = svg.getAttributeNb ('width') /10;
 const svgHeight = svg.getAttributeNb ('height') /10;
 var lettres =[ 'a', 'b', 'c', 'd', 'e' ];
 var lettresRel =[
-	[0,1],
-	[1,0],
-	[0,0,0],
-	[0,1,1,0],
-	[2,0,0,1,0]
+	[0],
+	[0,0],
+	[0,1,0],
+	[0,1,0,0],
+	[0,0,0,0,0]
 ];
 var posOld =[];
-var point =[];
 var posX;
 var posY;
-var aFrere = [0,0];
-for (var l=0; l< lettres.length; l++){
-	aFrere = [0,0];
-	for (var m=0; m<l; m++) if (lettresRel[l][m] >0){
-		aFrere = posOld[m];
-		createLine (point[0], point[1], posOld[m][0], posOld[m][1]);
+var aFrere =[];
+
+var point = randomPoint();
+posOld.push (point);
+
+for (var l=1; l< lettres.length; l++){
+	aFrere =[];
+	for (var m=0; m<l; m++) if (lettresRel[l][m] >0) aFrere.push (m);
+	if (aFrere.length >0){
+		point = randomPointRef (posOld[aFrere[0]][0], posOld[aFrere[0]][1]);
+		for (var m=0; m< aFrere.length; m++) createLine (point[0], point[1], posOld[aFrere[m]][0], posOld[aFrere[m]][1]);
 	}
-	if (pointPlein (aFrere)) point = randomPointRef (aFrere[0], aFrere[1]);
 	else point = randomPoint();
 	posOld.push (point);
 }
 for (var l=0; l< lettres.length; l++) createNode (lettres[l], posOld[l][0], posOld[l][1]);
 
-function pointPlein (point){
-	if (point[0] ==0 && point[1] ==0) return false;
-	else return true;
+function pointVide (point){
+	if (point[0] ==0 && point[1] ==0) return true;
+	else return false;
 }
 function randomNb (nb){
 	var pos =0;
@@ -53,24 +56,23 @@ function randomPoint(){
 	return [ posX, posY ];
 }
 function randomPointRefChoice (refX, refY, deltaX, deltaY){
-	var point =[ refX + deltaX, refY + deltaY ];
-	if (posOldContain (point)){
-		point =[ refX + deltaX, refY - deltaY ];
-		if (posOldContain (point)){
-			point =[ refX - deltaX, refY + deltaY ];
-			if (posOldContain (point)){
-				point =[ refX - deltaX, refY - deltaY ];
-				if (posOldContain (point)) point =[0,0];
-	}}}
-	return point;
+	if (! posOldContain (refX + deltaX, refY + deltaY)) return [ refX + deltaX, refY + deltaY ];
+	else if (! posOldContain (refX + deltaX, refY - deltaY)) return [ refX + deltaX, refY - deltaY ];
+	else if (! posOldContain (refX - deltaX, refY + deltaY)) return [ refX - deltaX, refY + deltaY ];
+	else if (! posOldContain (refX - deltaX, refY - deltaY)) return [ refX - deltaX, refY - deltaY ];
+	else return [0,0];
 }
 function randomPointRef (refX, refY){
-	var deltaX = randomNb (2);
-	var deltaY = randomNb (2);
+	var deltaX = randomNb (3);
+	deltaX -=1;
+	var deltaY = randomNb (3);
+	deltaY -=1;
 	var point = randomPointRefChoice (refX, refY, deltaX, deltaY);
-	while (pointPlein (point)){
-		deltaX = randomNb (2);
-		deltaY = randomNb (2);
+	while (point[0] ==0 && point[1] ==0){
+		deltaX = randomNb (3);
+		deltaX -=1;
+		deltaY = randomNb (3);
+		deltaY -=1;
 		point = randomPointRefChoice (refX, refY, deltaX, deltaY);
 	}
 	return point;
