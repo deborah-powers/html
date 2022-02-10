@@ -5,7 +5,7 @@
 	<script xlink:href='../../site-dp/library-js/list.js'/>
 	<script xlink:href='../../site-dp/library-js/text.js'/>
 	<script xlink:href='../../site-dp/library-js/svg.js'/>
-	<script xlink:href='reseau.js'/>
+	<script xlink:href='../../site-dp/library-js/reseau.js'/>
 <style type='text/css'><![CDATA[
 	circle {
 		r: 1em;
@@ -15,11 +15,6 @@
 	}
 	text {
 		fill: blue;
-		stroke: none;
-		font-size: 1em;
-		dominant-baseline: middle;
-		text-anchor: middle;
-		font-family: serif;
 	}
 	line {
 		stroke: blue;
@@ -29,4 +24,15 @@
 ]]></style><defs>
 	<circle cx='20' cy='20'/><text x='20' y='20'>A</text>
 </defs>
+<script>
+	var nomsPoints =[ 'a', 'b', 'c', 'd', 'e' ];
+	var relationsPoints =[
+		[0],
+		[1,0],
+		[0,1,0],
+		[0,1,0,0],
+		[0,0,0,1,0]
+	];
+	creerGraphe (nomsPoints, relationsPoints);
+</script>
 </svg>
