@@ -8,6 +8,7 @@ function selectElement (evt){
 	selectedElement = evt.target;
 	currentX = evt.clientX;
 	currentY = evt.clientY;
+	console.log (evt.target.x);
 	currentMatrix = selectedElement.getAttributeNS (null, 'transform').slice(7,-1).split(' ');
 	for(var i=0; i<currentMatrix.length; i++){ currentMatrix[i] = parseFloat(currentMatrix[i]); }
 	selectedElement.setAttributeNS (null, 'onmousemove', 'moveElement(evt)');
@@ -18,6 +19,7 @@ function moveElement (evt){
 	var dy= evt.clientY - currentY;
 	currentMatrix[4] += dx;
 	currentMatrix[5] += dy;
+//	console.log (currentMatrix[4]);
 	selectedElement.setAttributeNS (null, 'transform', 'matrix(' + currentMatrix.join(' ') + ')');
 	currentX = evt.clientX;
 	currentY = evt.clientY;
