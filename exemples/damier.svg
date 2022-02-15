@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <svg width='300' height='300' id='dammier' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
 	<title>damier interractif</title>
-	<script xlink:href='svg-drag.js'/>
+	<script xlink:href='../../site-dp/library-js/text.js'/>
+	<script xlink:href='../../site-dp/library-js/svg.js'/>
+	<script xlink:href='../../site-dp/library-js/svg-drag.js'/>
 <style><![CDATA[
 circle	{
 	stroke-width: 2;
-	cursor: move;
-	}
-.noir	{
 	fill: maroon;
 	stroke: #F0E68C;
+	r: 40;
+	cursor: move;
 	}
 .blanc	{
 	fill: #F0E68C;
@@ -20,13 +21,11 @@ circle	{
 	<rect width='100' height='100' fill='#F0E68C'/>
 	<polygon points='0,0 50,0 50,100 100,100 100,50 0,50'/>
 </pattern>
-<circle transform='matrix(1 0 0 1 0 0)' cursor='move' onmousedown='selectElement(evt)' r='40' cx='40' cy='40' id='pion_noir2' fill='maroon' stroke='#F0E68C' stroke-width='2'/>
-<circle r='40' cx='50' cy='50' id='pion'/>
-<g id='dame'><use xlink:href='#pion' x='-5'/><use xlink:href='#pion' x='5'/></g>
 </defs>
-<rect width='150' height='150' fill='url(#damier)' transform='scale(2,2)'/>
-<use xlink:href='#pion' class='noir' transform='matrix(1 0 0 1 0 0)' onmousedown='selectElement(evt)'/>
-<use xlink:href='#pion' class='blanc' transform='matrix(1 0 0 1 0 0)' onmousedown='selectElement(evt)' y='200'/>
-<use xlink:href='#pion' class='noir' transform='matrix(1 0 0 1 0 0)' onmousedown='selectElement(evt)' x='200'/>
-<use xlink:href='#pion' class='blanc' transform='matrix(1 0 0 1 0 0)' onmousedown='selectElement(evt)' x='200' y='200'/>
+	<rect width='150' height='150' fill='url(#damier)' transform='scale(2,2)'/>
+	<circle onmousedown='selectElement(evt)' cx='50' cy='50'/>
+	<circle onmousedown='selectElement(evt)' cx='50' cy='250' class='blanc'/>
+	<circle onmousedown='selectElement(evt)' cx='250' cy='50'/>
+	<circle onmousedown='selectElement(evt)' cx='250' cy='250' class='blanc'/>
+	<script xlink:href='temp.js'/>
 </svg>
