@@ -27,5 +27,4 @@ circle	{
 	<circle onmousedown='selectElement(evt)' cx='50' cy='250' class='blanc'/>
 	<circle onmousedown='selectElement(evt)' cx='250' cy='50'/>
 	<circle onmousedown='selectElement(evt)' cx='250' cy='250' class='blanc'/>
-	<script xlink:href='temp.js'/>
 </svg>
