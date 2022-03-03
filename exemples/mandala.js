@@ -1,10 +1,14 @@
 
-function createGroupFromPolygon (polygon){
-	var limits = polygon.limits();
-	var centerX = (limits.xmax + limits.xmin) /2;
-	var centerY = (3* limits.ymax - limits.ymin) /2;
+function drawMandala (pattern, horizontal){
+	var limit = pattern.getLimit();
+	var centerX = (limit.xmax + limit.xmin) /2;
+	var centerY = (3* limit.ymax - limit.ymin) /2;
+	if (horizontal && horizontal != undefined){
+		centerX = (3* limit.xmax - limit.xmin) /2;
+		centerY = (limit.ymax + limit.ymin) /2;
+	}
 	var group = createShape ('g', svg);
-	group.createGroup (polygon.id, centerX, centerY);
+	group.drawGroup (pattern.id, centerX, centerY);
 }
 SVGGElement.prototype.drawGroup = function (drawingId, centerX, centerY){
 	var use = createShape ('use', this);
@@ -20,7 +24,57 @@ SVGGElement.prototype.adduse = function (drawingId, centerX, centerY, angle){
 	use.setAttributeNS (xlinkNs, 'xlink:href', '#' + drawingId);
 	use.setAttribute ('transform', 'rotate('+ angle +', '+ centerX +','+ centerY +')');
 }
-SVGPolygonElement.prototype.limits = function(){
+SVGGElement.prototype.getLimit = function(){
+	var limit = this.children[0].getLimit();
+	var limitChild = { xmin: 0, ymin: 0, xmax: 0, ymax: 0 };
+	for (var c=1; c< this.children.length; c++){
+		limitChild = this.children[c].getLimit();
+		if (limitChild.xmin < limit.xmin) limit.xmin = limitChild.xmin;
+		else if (limitChild.xmax > limit.xmax) limit.xmax = limitChild.xmax;
+		if (limitChild.ymin < limit.ymin) limit.ymin = limitChild.ymin;
+		else if (limitChild.ymax > limit.ymax) limit.ymax = limitChild.ymax;
+	}
+	return limit;
+}
+SVGCircleElement.prototype.getLimit = function(){
+	var rayon = this.getAttributeNb ('r');
+	var cx = this.getAttributeNb ('cx');
+	var cy = this.getAttributeNb ('cy');
+	var limit ={
+		xmin: cx- rayon,
+		ymin: cy- rayon,
+		xmax: cx+ rayon,
+		ymax: cy+ rayon
+	};
+	return limit;
+}
+SVGEllipseElement.prototype.getLimit = function(){
+	var rx = this.getAttributeNb ('rx');
+	var ry = this.getAttributeNb ('ry');
+	var cx = this.getAttributeNb ('cx');
+	var cy = this.getAttributeNb ('cy');
+	var limit ={
+		xmin: cx-rx,
+		ymin: cy-ry,
+		xmax: cx+rx,
+		ymax: cy+ry
+	};
+	return limit;
+}
+SVGRectElement.prototype.getLimit = function(){
+	var limit ={
+		xmin: this.getAttributeNb ('x'),
+		ymin: this.getAttributeNb ('y'),
+		xmax: 0,
+		ymax: 0
+	};
+	var tmp = this.getAttributeNb ('width');
+	limit.xmax = limit.xmin;
+	tmp = this.getAttributeNb ('height');
+	limit.ymax = limit.ymin;
+	return limit;
+}
+SVGPolygonElement.prototype.getLimit = function(){
 	var points = this.getPoints();
 	var limit ={ xmin: points[0][0], ymin: points[0][1], xmax: points[0][0], ymax: points[0][1] };
 	for (var p=1; p< points.length; p++){
@@ -31,7 +85,7 @@ SVGPolygonElement.prototype.limits = function(){
 	}
 	return limit;
 }
-SVGPolylineElement.prototype.limits = function(){
+SVGPolylineElement.prototype.getLimit = function(){
 	var points = this.getPoints();
 	var limit ={ xmin: points[0][0], ymin: points[0][1], xmax: points[0][0], ymax: points[0][1] };
 	for (var p=1; p< points.length; p++){

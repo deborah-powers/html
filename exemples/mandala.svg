@@ -36,14 +36,16 @@
 	<use xlink:href='#hexagon-vertical' transform='rotate(300, 103.92,40)'/>
 </g>
 </defs>
+<g id='mandala-un'>
+	<polygon points='0,20 0,60 34.64,80 69.28,60 69.28,20 34.64,0' fill='blue'/>
+	<polygon points='20,0 60,0 80,34.64 60,69.28 20,69.28 0,34.64' fill='green'/>
+</g>
 <!--
 	mandala-horizontal
 	posX centre = (posX min + posX max) /2		= posX min + largeur /2
 	posY centre = (3* posY max - posY min) /2	= posY min + hauteur *1.5
 -->
 <script>
-	var hexagon = document.getElementById ('hexagon-vertical');
-	createGroupFromPolygon (hexagon);
-	var hexastyle = window.getComputedStyle (hexagon, null);
-	console.log (hexastyle);
+	var hexagon = document.getElementById ('mandala-un');
+	drawMandala (hexagon, false);
 </script></svg>
