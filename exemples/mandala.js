@@ -24,6 +24,22 @@ SVGGElement.prototype.adduse = function (drawingId, centerX, centerY, angle){
 	use.setAttributeNS (xlinkNs, 'xlink:href', '#' + drawingId);
 	use.setAttribute ('transform', 'rotate('+ angle +', '+ centerX +','+ centerY +')');
 }
+SVGPathElement.prototype.getLimit = function(){
+	const alphabet = 'achlmqvz';
+	var points = this.getPointsObj();
+	var pointX = points[0][1][0];
+	var pointY = points[0][1][1];
+	var limit ={ xmin: points[0][1][0], ymin: points[0][1][0], xmax: points[0][1][1], ymax: points[0][1][1] };
+	for (var p=1; p< points.length; p++){
+		if (alphabet.contain (points[p][0])){ pointX += points[p].get(-1)[0]; pointY += points[p].get(-1)[1]; }
+		else if (alphabet.toUpperCase().contain (points[p][0])){ pointX = points[p].get(-1)[0]; pointY = points[p].get(-1)[1]; }
+		if (pointX < limit.xmin) limit.xmin = pointX;
+		else if (pointX > limit.xmax) limit.xmax = pointX;
+		if (pointY < limit.ymin) limit.ymin = pointY;
+		else if (pointY > limit.ymax) limit.ymax = pointY;
+	}
+	return limit;
+}
 SVGGElement.prototype.getLimit = function(){
 	var limit = this.children[0].getLimit();
 	var limitChild = { xmin: 0, ymin: 0, xmax: 0, ymax: 0 };

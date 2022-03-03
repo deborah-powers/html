@@ -3,6 +3,7 @@
 <svg version='1.1' width='600' height='400' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
 	<title>mandala</title>
 	<script xlink:href='../../site-dp/library-js/text.js'/>
+	<script xlink:href='../../site-dp/library-js/list.js'/>
 	<script xlink:href='../../site-dp/library-js/svg.js'/>
 	<script xlink:href='mandala.js'/>
 <style type='text/css'><![CDATA[
@@ -36,6 +37,7 @@
 	<use xlink:href='#hexagon-vertical' transform='rotate(300, 103.92,40)'/>
 </g>
 </defs>
+<path d='M75,75 c 100,-120 100,120 10,-20' class='petal'/>
 <g id='mandala-un'>
 	<polygon points='0,20 0,60 34.64,80 69.28,60 69.28,20 34.64,0' fill='blue'/>
 	<polygon points='20,0 60,0 80,34.64 60,69.28 20,69.28 0,34.64' fill='green'/>
@@ -46,6 +48,10 @@
 	posY centre = (3* posY max - posY min) /2	= posY min + hauteur *1.5
 -->
 <script>
+	var mypath = document.getElementsByTagName ('path')[0];
+	console.log (mypath.getLimit());
+	/*
 	var hexagon = document.getElementById ('mandala-un');
 	drawMandala (hexagon, false);
+	*/
 </script></svg>
