@@ -1,6 +1,7 @@
 
 function drawMandala (pattern, horizontal){
 	var limit = pattern.getLimit();
+	console.log (limit);
 	var centerX = (limit.xmax + limit.xmin) /2;
 	var centerY = (3* limit.ymax - limit.ymin) /2;
 	if (horizontal && horizontal != undefined){
