@@ -87,6 +87,12 @@ récupérer les données de distant/random à local/deborah
 		checkout deborah
 		git merge random
 
+effacer en local les branches déjà éffacées sur le web
+C:/Users/deborah.powers/html/.git/config
+fetch.prune = true
+
+
+
 ======================== utiliser un personnal acces token ========================*
 
 

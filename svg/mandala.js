@@ -9,9 +9,9 @@ function drawMandala (pattern, horizontal){
 		centerY = (limit.ymax + limit.ymin) /2;
 	}
 	var group = createShape ('g', svg);
-	group.drawGroup (pattern.id, centerX, centerY);
+	group.draw (pattern.id, centerX, centerY);
 }
-SVGGElement.prototype.drawGroup = function (drawingId, centerX, centerY){
+SVGGElement.prototype.draw = function (drawingId, centerX, centerY){
 	var use = createShape ('use', this);
 	use.setAttributeNS (xlinkNs, 'xlink:href', '#' + drawingId);
 	this.adduse (drawingId, centerX, centerY, 60);
@@ -25,6 +25,7 @@ SVGGElement.prototype.adduse = function (drawingId, centerX, centerY, angle){
 	use.setAttributeNS (xlinkNs, 'xlink:href', '#' + drawingId);
 	use.setAttribute ('transform', 'rotate('+ angle +', '+ centerX +','+ centerY +')');
 }
+// trouver les limites des objets
 SVGPathElement.prototype.getLimit = function(){
 	const alphabet = 'achlmqvz';
 	var points = this.getPointsObj();
