@@ -1,6 +1,6 @@
 angular.module ('cssApp', ['ui.router']);
 // le routage
-angular.module ('cssApp').config (function ($stateProvider, $urlRouterProvider, $locationProvider){
+angular.module ('cssApp').config (function ($stateProvider, $urlRouterProvider, $location, $locationProvider){
 	$stateProvider.state ({ name: 'back', url: '/fond', templateUrl: 'page-back.html' });
 	$stateProvider.state ({ name: 'grid', url: '/grid', templateUrl: 'page-grid.html' });
 	$stateProvider.state ({ name: 'list', url: '/liste', templateUrl: 'page-list.html' });
@@ -16,4 +16,5 @@ angular.module ('cssApp').config (function ($stateProvider, $urlRouterProvider, 
 	$stateProvider.state ({ name: 'image', url: '/image-et-lien', templateUrl: 'page-image.html' });
 	$urlRouterProvider.otherwise ('/forme');
 	$locationProvider.hashPrefix ('');
+//	$locationProvider.html5Mode (true);
 });
