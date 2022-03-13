@@ -60,18 +60,18 @@
 		<ellipse rx='8' ry='10' cx='24' cy='28' transform='rotate(-12,24,28)' class='oeil' id='oeil-gh'/>
 		<circle r='4' cx='25.2' cy='30' class='pupille' id='pupille-gh'/>
 		<circle r='4' cx='40' cy='46' id='nez'/>
-		<path d='M20,56 c 8,20 32,20 40,0 c -8,4 -32,4 -40,0z' id='bouche' class='oeil'/>
+		<path d='M20,56 c 8,20 32,20 40,0 c -8,4 -32,4 -40,0 z' id='bouche' class='oeil'/>
 	</g>
 	<g id='flower-square-2p' transform='translate(450,90)'>
-		<path d='M75 75 c 120 -100, -120 -100, 0 0 c 120 100, -120 100, 0 0'/>
-		<path d='M75 75 c 100 -120, 100 120, 0 0 c -100 -120, -100 120, 0 0' class='petal'/>
+		<path d='m 75,75 c 120,-100 -120,-100 0,0 c 120,100 -120,100 0,0'/>
+		<path d='m 75,75 c 100,-120 100,120 0,0 c -100,-120 -100,120 0,0' class='petal'/>
 		<circle r='30' cx='75' cy='75'/>
 	</g>
 	<g id='flower-square-4p' transform='translate(610,90)'>
-		<path d='M75 75 c 120 -100, -120 -100, 0 0'/>
-		<path d='M75 75 c 100 -120, 100 120, 0 0' class='petal'/>
-		<path d='M75 75 c 120 100, -120 100, 0 0' class='petal-bis'/>
-		<path d='M75 75 c -100 -120, -100 120, 0 0' class='petal-ter'/>
+		<path d='m 75,75 c 120,-100 -120,-100 0,0'/>
+		<path d='m 75,75 c 100,-120 100,120 0,0' class='petal'/>
+		<path d='m 75,75 c 120,100 -120,100 0,0' class='petal-bis'/>
+		<path d='m 75,75 c -100,-120 -100,120 0,0' class='petal-ter'/>
 		<circle r='30' cx='75' cy='75'/>
 	</g>
 	<g id='flower-five' transform='translate(300,350)'>
