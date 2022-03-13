@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type='text/css' href='../../site-dp/library-css/svg.css'?>
+<svg version='1.1' width='600' height='400' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>cube</title>
+	<script xlink:href='../../site-dp/library-js/list.js'/>
+	<script xlink:href='../../site-dp/library-js/text.js'/>
+	<script xlink:href='../../site-dp/library-js/svg.js'/>
+<style type='text/css'><![CDATA[
+	svg * {
+		stroke: maroon;
+		stroke-width: 2px;
+		fill: pink;
+	}
+	polygon.fond {
+		stroke: blue;
+		fill: lightblue;
+	}
+]]></style><defs></defs>
+	<polygon id='gauche' points='34.64,40 34.64,80 0,60 0,20'/>
+	<polygon id='droite' points='34.64,40 34.64,80 69.28,60 69.28,20'/>
+	<polygon id='toit' points='34.64,40 69.28,20 34.64,0 0,20'/>
+	<script xlink:href='cube.js'/>
+</svg>
