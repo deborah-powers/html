@@ -1,0 +1,15 @@
+div { width: 14em; }
+div#calendar {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	--button-bg: ivory;
+	--button-bg-hover: #C36;
+	--button-color: var(--text-color);
+	--button-color-hover: ivory;
+}
+span { font-weight: bold; }
+div#calendar span:nth-child(1) { grid-column: 1/6; }
+div#calendar span:nth-child(2) { grid-column: 6/8; }
+div#day span, div#day button { display: inline-block; }
+div#day span { width: 10em; }
+div#day button { width: 4em; }
