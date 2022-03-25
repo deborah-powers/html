@@ -1,0 +1,251 @@
+<!DOCTYPE html><html><head>
+	<title>calendrier</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='site-dp/'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='library-js/tag.js'></script>
+<style type='text/css'>
+	div { width: 14em; }
+	div#calendar {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		--button-bg: ivory;
+		--button-bg-hover: #C36;
+		--button-color: var(--text-color);
+		--button-color-hover: ivory;
+	}
+	h3 {
+		grid-column: 1/8;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	h3 * { font-weight: bold; }
+</style></head><body>
+	<div id='calendar'>
+		<h3></h3>
+		<p>l</p><p>m</p><p>m</p><p>j</p><p>v</p><p>s</p><p>d</p>
+	</div>
+	<div id='day'><h3></h3></div>
+</body>
+<script type='text/javascript'>
+const year =2024;
+const firstDayYear =2;
+const eventList =[[ '01/02', 'coucou' ], [ '01/05', 'bonjour mon lapin' ], [ '01/05', 'bonsoir mon canard' ]];
+
+function closing (element){
+	element.parentElement.className ="";
+	element.parentElement.innerHTML ="";
+}
+function isYearBissextile (year){
+	var yearBissextile = false;
+	if (year %4 ==0){
+		yearBissextile = true;
+		if (year %100 ==0){
+			yearBissextile = false;
+			if (year %400 ==0) yearBissextile = true;
+	}}
+	return yearBissextile;
+}
+dateFromString = function (text){
+	var tableau = text.split ('/');
+	var monthId =0;
+	var dayId =0;
+	if (tableau.length ==2){
+		monthId = parseInt (tableau[0]);
+		dayId = parseInt (tableau[1]);
+	}
+	else if (tableau.length ==3){
+		monthId = parseInt (tableau[1]);
+		if (tableau[0].length ==4) dayId = parseInt (tableau[2]);
+		else dayId = parseInt (tableau[0]);
+	}
+	return [monthId, dayId];
+}
+class DayWeek{
+	static lundi = new DayWeek (1, 'lundi');
+	static mardi = new DayWeek (2, 'mardi');
+	static mercredi = new DayWeek (3, 'mercredi');
+	static jeudi = new DayWeek (4, 'jeudi');
+	static vendredi = new DayWeek (5, 'vendredi');
+	static samedi = new DayWeek (6, 'samedi');
+	static dimanche = new DayWeek (7, 'dimanche');
+
+	constructor (id, name){
+		this.id = id;
+		this.name = name;
+	}
+	get = function (id){
+		if (id ==1) return DayWeek.lundi;
+		else if (id ==2) return DayWeek.mardi;
+		else if (id ==3) return DayWeek.mercredi;
+		else if (id ==4) return DayWeek.jeudi;
+		else if (id ==5) return DayWeek.vendredi;
+		else if (id ==6) return DayWeek.samedi;
+		else if (id ==7 || id ==0) return DayWeek.dimanche;
+		else return null;
+	}
+	static getById = function (id){
+		return DayWeek.lundi.get (id);
+	}
+	nexDay = function (nbDays){
+		nbDays = nbDays %7;
+		if (nbDays ==0) return this;
+		else {
+			var id = this.id + nbDays;
+			id = id %7;
+			return this.get (id);
+	}}
+	lastDay = function (nbDays){
+		nbDays = nbDays %7;
+		if (nbDays ==0) return this;
+		else {
+			var id = this.id - nbDays;
+			id = id %7;
+			if (id <=0) id +=7;
+			return this.get (id);
+	}}
+}
+class Month{
+	static janvier = new Month (1, 'janvier', 31);
+	static fevrier = new Month (2, 'février', 28);
+	static mars = new Month (3, 'mars', 31);
+	static avril = new Month (4, 'avril', 30);
+	static mai = new Month (5, 'mai', 31);
+	static juin = new Month (6, 'juin', 30);
+	static juillet = new Month (7, 'juillet', 31);
+	static aout = new Month (8, 'août', 31);
+	static septembre = new Month (9, 'septembre', 30);
+	static octobre = new Month (10, 'octobre', 31);
+	static novembre = new Month (11, 'novembre', 30);
+	static decembre = new Month (12, 'décembre', 31);
+
+	constructor (id, name, duration){
+		this.id = id;
+		this.name = name;
+		this.duration = duration;
+		if (id==2 && isYearBissextile (year)) this.duration =29;
+		this.dayWeek = null;
+		this.getDayWeek (firstDayYear);
+	}
+	get = function (id){
+		if (id ==1) return Month.janvier;
+		else if (id ==2) return Month.fevrier;
+		else if (id ==3) return Month.mars;
+		else if (id ==4) return Month.avril;
+		else if (id ==5) return Month.mai;
+		else if (id ==6) return Month.juin;
+		else if (id ==7) return Month.juillet;
+		else if (id ==8) return Month.aout;
+		else if (id ==9) return Month.septembre;
+		else if (id ==10) return Month.octobre;
+		else if (id ==11) return Month.novembre;
+		else if (id ==12) return Month.decembre;
+		else return null;
+	}
+	static getById (id){
+		return Month.janvier.get (id);
+	}
+	nbDaySinceYearStart = function(){
+		var nbDays =0;
+		for (var m=1; m< this.id; m++){
+			var month = this.get (m);
+			nbDays += month.duration;
+		}
+		return nbDays;
+	}
+	getDayWeek = function (firstDayYear){
+		var nbDays = this.nbDaySinceYearStart();
+		nbDays += firstDayYear;
+		nbDays = nbDays %7;
+		this.dayWeek = DayWeek.getById (nbDays);
+	}
+	draw = function(){
+		var calendar = document.getElementById ('calendar');
+		var title = calendar.getElementsByTagName ('h3')[0];
+		title.innerHTML = '<span>' + this.name +'</span><span>'+ year + '</span>';
+		for (var d=1; d< this.dayWeek.id; d++) createNode ('p', "", calendar);
+		for (var d=1; d<= this.duration; d++){
+			var day = new Day (this.id, d);
+			day.getEvents (eventList);
+			var button = createNode ('button', d, calendar);
+			button.setAttribute ('onClick', 'openDay('+ this.id +', '+ d +')');
+			if (day.color) button.style.backgroundColor = day.color;
+		}
+	}
+}
+class Day{
+	constructor (monthId, id){
+		this.month = Month.getById (monthId);
+		this.id = id;
+		this.dayWeek = null;
+		this.getDayWeek();
+		this.color =""
+		this.events =[];
+	}
+	draw = function(){
+		var day = document.getElementById ('day');
+		day.innerHTML ="";
+		createNode ('h3',
+			'<span>' + this.dayWeek.name +' '+ this.id +' '+ this.month.name + "</span><button onClick='closing(this.parentElement)'>X</button>",
+			day);
+		for (var d=0; d<= this.events.length; d++) createNode ('p', this.events[d], day);
+	}
+	getDayWeek = function(){
+		var nbDays = this.month.dayWeek.id;
+		nbDays += this.id -1;
+		nbDays = nbDays %7;
+		this.dayWeek = DayWeek.getById (nbDays);
+	}
+	toString = function(){
+		var text = this.month.id +'/';
+		if (this.month.id <10) text = '0'+ text;
+		if (this.id <10) text = text +'0';
+		text = text + this.id;
+		return text;
+	}
+	fromString = function (text){
+		var ids = dateFromString (text);
+		this.month.id = ids[0];
+		this.id = ids[1];
+		this.getDayWeek();
+	}
+	getEvents = function (eventList){
+		var text = this.toString();
+		for (var e=0; e< eventList.length; e++) if (text == eventList[e][0]) this.events.push (eventList[e][1]);
+		if (this.events.length >0) this.color = 'red';
+	}
+}
+class DayList{
+	constructor(){ this.list =[]; }
+	get = function (monthId, id){
+		var day = -1;
+		for (var d=0; d< this.list.length; d++)
+			if (this.list[d].month.id == monthId && this.list[d].id == id) day =d;
+		return day;
+	}
+	addEvent = function (monthId, id, event){
+		var day = this.get (monthId, id);
+		if (day <0){
+			var today = new Day (monthId, id);
+			today.events.push (event);
+			this.list.push (today);
+		}
+		else this.list[day].events.push (event);
+	}
+}
+function openDay (monthId, id){
+	var today = new Day (monthId, id);
+	today.getEvents (eventList);
+	today.draw();
+}
+Month.janvier.draw();
+var today = new Day (5, 3);
+today.fromString ('06/03');
+
+
+</script>
+</html>
