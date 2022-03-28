@@ -2,28 +2,15 @@
 	<title>calendrier</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<link rel='icon' type='image/svg+xml' href='/var/www/html/site-dp/data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='/var/www/html/site-dp/library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='/var/www/html/site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='.js'></script>
-	<link rel='stylesheet' type='text/css' href='.css'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
 <style type='text/css'>
-	calendar {
-	/*	width: 18em; */
+	agenda {
 		border-style: double;
 		border-width: 4px;
 		border-radius: 1em;
 		padding-left: 1em;
-	}
-	calendar.agenda {
-		display: grid;
-		grid-template-columns: 8em 4em 1fr;
-		width: 20cm;
-	}
-	calendar h3 {
-		grid-column: 1/4;
-		width: 2em;
-		align-self: end;
 	}
 </style></head><body>
 </body>
@@ -83,7 +70,6 @@ function fromTsv (fileName, callback){
 	}
 }
 // dessiner les calendriers
-const agendaTemplate = "<calendar class='agenda'><h3></h3></calendar>";
 HTMLElement.prototype.closeCalendar = function(){
 	// <button onclick='this.closeCalendar()'>X</button>
 	var listEvent = this.parentElement.getElementsByTagName ('p');
@@ -98,6 +84,8 @@ HTMLElement.prototype.createNode = function (tag, text){
 	return this.children [this.children.length -1];
 }
 Array.prototype.pop = function (pos){ var trash = this.splice (pos, 1); }
+// dessiner l'agenda
+const agendaTemplate = "<style type='text/css'>agenda { grid-template-columns: 8em 4em 1fr; } agenda.day { grid-template-columns: 4em 1fr; } agenda h3 { grid-column-end 4; } agenda.day h3 { grid-column-end: 3; }</style><agenda style='display:grid'><h3 style='grid-column-start=1'></h3></agenda>";
 class EventGroup{
 	constructor (year, month, day){
 		this.events =[];
@@ -144,29 +132,40 @@ class EventGroup{
 		}
 		return events;
 	}
-	draw = function (events){
-		document.body.innerHTML = document.body.innerHTML + agendaTemplate;
-		var tagList = document.getElementsByClassName ('agenda');
+	draw = function (events, container){
+		var tagList =[];
+		if (container){
+			container.innerHTML = container.innerHTML + agendaTemplate;
+			tagList = container.getElementsByTagName ('agenda');
+		}else{
+			document.body.innerHTML = document.body.innerHTML + agendaTemplate;
+			tagList = document.getElementsByTagName ('agenda');
+		}
 		var tag = tagList [tagList.length -1];
 		var title = tag.getElementsByTagName ('h3')[0];
 		title.innerHTML = this.toDateString();
-		for (var e=0; e< this.events.length; e++){
+		if (this.day){
+			tag.className = 'day';
+			for (var e=0; e< this.events.length; e++){
+				tag.createNode ('p', this.events[e][1]);
+				tag.createNode ('p', this.events[e][2]);
+		}}
+		else for (var e=0; e< this.events.length; e++){
 			tag.createNode ('p', this.events[e][0]);
 			tag.createNode ('p', this.events[e][1]);
 			tag.createNode ('p', this.events[e][2]);
 		}
 	}
 }
-
-
+function drawAgenda (listCalendar){
+	while (listCalendar.length >0){
+		var groupEvent = new EventGroup (2022, 0, 0);
+		groupEvent.fromDateString (listCalendar[0][0]);
+		listCalendar = groupEvent.fromEvents (listCalendar);
+		groupEvent.draw();
+}}
 const fileCalendar = 'calendrier.tsv';
 var listCalendar = fromTsv (fileCalendar);
-var dayList =[];
-while (listCalendar.length >0){
-	var groupEvent = new EventGroup (2022, 0, 0);
-	groupEvent.fromDateString (listCalendar[0][0]);
-	listCalendar = groupEvent.fromEvents (listCalendar);
-	groupEvent.draw();
-}
+drawAgenda (listCalendar);
 </script>
 </html>
