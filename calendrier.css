@@ -1,15 +1,21 @@
-div { width: 14em; }
-div#calendar {
+calendar {
+	display: block;
+	width: 17em;
+}
+calendar.month {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	--button-bg: ivory;
-	--button-bg-hover: #C36;
 	--button-color: var(--text-color);
 	--button-color-hover: ivory;
 }
-span { font-weight: bold; }
-div#calendar span:nth-child(1) { grid-column: 1/6; }
-div#calendar span:nth-child(2) { grid-column: 6/8; }
-div#day span, div#day button { display: inline-block; }
-div#day span { width: 10em; }
-div#day button { width: 4em; }
+calendar button.full {
+	--button-bg: #C36;
+	--button-color: ivory;
+}
+calendar span { font-weight: bold; }
+calendar.month span:nth-child(1) { grid-column: 1/6; }
+calendar.month span:nth-child(2) { grid-column: 6/8; }
+calendar.day span, calendar.day button { display: inline-block; }
+calendar.day span { width: 10em; }
+calendar.day button { width: 4em; }
