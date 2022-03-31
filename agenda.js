@@ -1,4 +1,3 @@
-
 // récupérer le fichier tsv
 String.prototype.contain = function (word){
 	if (this.indexOf (word) >=0) return true;
@@ -69,7 +68,23 @@ HTMLElement.prototype.createNode = function (tag, text){
 }
 Array.prototype.pop = function (pos){ var trash = this.splice (pos, 1); }
 // dessiner l'agenda
-const agendaTemplate = "<style type='text/css'>agenda { grid-template-columns: 8em 4em 1fr; } agenda.day { grid-template-columns: 4em 1fr; } agenda h3 { grid-column-end 4; } agenda.day h3 { grid-column-end: 3; }</style><agenda style='display:grid'><h3 style='grid-column-start=1'></h3></agenda>";
+var stylePage = document.head.getElementsByTagName ('style')[0];
+if (! stylePage || stylePage == undefined) stylePage = document.head.createNode ('style', "");
+
+const templateAgendaCss =`
+agenda {
+	display: grid;
+	grid-template-columns: 8em 4em 1fr;
+}
+agenda.day { grid-template-columns: 4em 1fr; }
+agenda h3 {
+	grid-column-start: 1;
+	grid-column-end: 4;
+}
+agenda.day h3 { grid-column-end: 3; }
+`;
+const templateAgendaHtml = '<agenda><h3></h3></agenda>';
+
 class EventGroup{
 	constructor (year, month, day){
 		this.events =[];
@@ -118,11 +133,12 @@ class EventGroup{
 	}
 	draw = function (events, container){
 		var tagList =[];
+		stylePage.innerHTML = stylePage.innerHTML + templateAgendaCss;
 		if (container){
-			container.innerHTML = container.innerHTML + agendaTemplate;
+			container.innerHTML = container.innerHTML + templateAgendaHtml;
 			tagList = container.getElementsByTagName ('agenda');
 		}else{
-			document.body.innerHTML = document.body.innerHTML + agendaTemplate;
+			document.body.innerHTML = document.body.innerHTML + templateAgendaHtml;
 			tagList = document.getElementsByTagName ('agenda');
 		}
 		var tag = tagList [tagList.length -1];
@@ -140,10 +156,10 @@ class EventGroup{
 			tag.createNode ('p', this.events[e][2]);
 	}}
 }
-function drawAgenda (listCalendar){
-	while (listCalendar.length >0){
+function drawAgenda (eventList){
+	while (eventList.length >0){
 		var groupEvent = new EventGroup (2022, 0, 0);
-		groupEvent.fromDateString (listCalendar[0][0]);
-		listCalendar = groupEvent.fromEvents (listCalendar);
+		groupEvent.fromDateString (eventList[0][0]);
+		eventList = groupEvent.fromEvents (eventList);
 		groupEvent.draw();
 }}

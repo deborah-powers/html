@@ -1,14 +1,3 @@
-Array.prototype.pop = function (pos){ var trash = this.splice (pos, 1); }
-
-HTMLElement.prototype.createNode = function (tag, text, id, clazz, value){
-	var newElement = document.createElement (tag);
-	if (text) newElement.innerHTML = text;
-	if (clazz) newElement.className = clazz;
-	if (id) newElement.id = id;
-	if (value) newElement.value = value;
-	this.appendChild (newElement);
-	return this.children [this.children.length -1];
-}
 function closeDay (element){
 	var events = element.parentElement.getElementsByTagName ('p');
 	for (var p= events.length -1; p>=0; p--) element.parentElement.removeChild (events[p]);
