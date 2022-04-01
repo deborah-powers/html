@@ -36,6 +36,7 @@
 <script type='text/javascript'>
 const fileCalendar = 'calendrier.tsv';
 var eventList = fromTsv (fileCalendar);
+console.log (eventList);
 
 function isYearBissextile (year){
 	var yearBissextile = false;
@@ -70,14 +71,12 @@ class DayWeek{
 		else if (id ==7 || id ==0 || id == 'dimanche') return DayWeek.dimanche;
 		else return null;
 	}
-	static get = function (id){
-		return DayWeek.lundi.getById (id);
-	}
+	static get = function (id){ return DayWeek.lundi.getById (id); }
 	static getFirstDayYear = function(){
 		// référence: 2020 commençait un mercredi
 		const refYear = 2020;
 		var nbDays = DayWeek.mercredi.id;
-		nbDays +=1;
+		nbDays +=2;
 		for (var y= 2021; y< calYear; y++){
 			nbDays += 1;
 			if (isYearBissextile (y)) nbDays +=1;

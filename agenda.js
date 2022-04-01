@@ -40,6 +40,7 @@ String.prototype.cleanTsv = function(){
 function fromTsv (fileName, callback){
 	var xhttp = new XMLHttpRequest();
 	if (callback){
+		xhttp.responseType = 'text';
 		xhttp.onreadystatechange = function(){ if (xhttp.status ==0 || xhttp.status ==200) callback (this.responseText.cleanTsv()); };
 		xhttp.open ('GET', fileName, true);
 		xhttp.send();
@@ -47,6 +48,7 @@ function fromTsv (fileName, callback){
 	else{
 		xhttp.open ('GET', fileName, false);
 		xhttp.send();
+		console.log (xhttp);
 		var listRes =[];
 		if (xhttp.status ==0 || xhttp.status ==200) listRes = xhttp.responseText.cleanTsv();
 		return listRes;
