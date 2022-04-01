@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head>
+	<title>calendrier</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../html/calendrier.css'/>
+	<script type='text/javascript' src='../html/calendrier va.js'></script>
+<style type='text/css'>
+</style></head><body>
+	<calendar>
+		<span></span><span></span>
+		<p>l</p><p>m</p><p>m</p><p>j</p><p>v</p><p>s</p><p>d</p>
+	</calendar>
+</body>
+<script type='text/javascript'>
+const eventList =[[ '01/02', 'coucou' ], [ '01/05', 'bonjour mon lapin' ], [ '01/05', 'bonsoir mon canard' ]];
+calendar.getEvents (eventList);
+console.log (calendar);
+calendar.draw();
+</script>
+</html>

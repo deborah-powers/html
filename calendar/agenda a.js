@@ -48,7 +48,6 @@ function fromTsv (fileName, callback){
 	else{
 		xhttp.open ('GET', fileName, false);
 		xhttp.send();
-		console.log (xhttp);
 		var listRes =[];
 		if (xhttp.status ==0 || xhttp.status ==200) listRes = xhttp.responseText.cleanTsv();
 		return listRes;

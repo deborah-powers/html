@@ -1,24 +1,75 @@
 <!DOCTYPE html><html><head>
-	<title>calendrier</title>
+	<title></title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='blank' href='../site-dp/'/>
-	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
-	<link rel='stylesheet' type='text/css' href='../html/calendrier.css'/>
-	<script type='text/javascript' src='../html/calendrier va.js'></script>
-<style type='text/css'>
-</style></head><body>
-	<calendar>
-		<span></span><span></span>
-		<p>l</p><p>m</p><p>m</p><p>j</p><p>v</p><p>s</p><p>d</p>
-	</calendar>
+	<script type='text/javascript' src='openTsv.js'></script>
+	<style type='text/css'></style>
+</head><body>
 </body>
 <script type='text/javascript'>
-const eventList =[[ '01/02', 'coucou' ], [ '01/05', 'bonjour mon lapin' ], [ '01/05', 'bonsoir mon canard' ]];
-calendar.getEvents (eventList);
-console.log (calendar);
-calendar.draw();
+const fileCalendar = 'calendrier.tsv';
+var eventList = fromTsv (fileCalendar);
+console.log (eventList);
+
+class DateSimple{
+	constructor (day, month, year){
+		this.year = 2022;
+		this.month = 3;
+		this.day = 1;
+		this.hour = 0;
+		this.minute = 0;
+		if (year && year != undefined) this.year = year;
+		if (month && month != undefined) this.month = month;
+		if (day && day != undefined) this.day = day;
+	}
+	toString = function(){
+		var text = this.month +'/';
+		if (this.month <10) text = '0'+ text;
+		if (this.day <10) text = text +'0';
+		text = text + this.day;
+		text = this.year +'/'+ text;
+		return text;
+	}
+	toStringHour = function(){
+		var text = this.toString();
+		text = text +' ';
+		if (this.hour <10) text = text +'0';
+		text = text + this.hour +':';
+		if (this.minute <10) text = text +'0';
+		text = text + this.minute;
+		return text;
+	}
+	fromString = function (text){
+		text = text.replace (':', '/');
+		text = text.replace (' ', '/');
+		const textList = text.split ('/');
+		this.year = parseInt (textList[0]);
+		this.month = parseInt (textList[1]);
+		this.day = parseInt (textList[2]);
+		if (textList.length >4){
+			this.hour = parseInt (textList[3]);
+			this.minute = parseInt (textList[4]);
+		}
+	}
+}
+/*
+var today = new DateSimple();
+*/
+class EventSimple extends DateSimple{
+	constructor (title, description){
+		super();
+		this.title = title;
+		this.description = description;
+	}
+	toString = function(){
+		var text = DateSimple.toString.call (this);
+		console.log (text);
+		text = text +'\t'+ this.title;
+		return text;
+	}
+}
+var today = new EventSimple ('coucou', 'mon loulou');
+console.log (today.toString());
+
 </script>
 </html>
