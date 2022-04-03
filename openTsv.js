@@ -1,3 +1,8 @@
+// récupérer le fichier tsv
+Array.prototype.pop = function (pos){
+	if (pos <0) pos += this.length;
+	var trash = this.splice (pos, 1);
+}
 String.prototype.contain = function (word){
 	if (this.indexOf (word) >=0) return true;
 	else return false;
@@ -51,4 +56,11 @@ function fromTsv (fileName, callback){
 		if (xhttp.status ==0 || xhttp.status ==200) listRes = xhttp.responseText.cleanTsv();
 		return listRes;
 	}
+}
+// dessiner dans la page
+HTMLElement.prototype.createNode = function (tag, text){
+	var newElement = document.createElement (tag);
+	if (text) newElement.innerHTML = text;
+	this.appendChild (newElement);
+	return this.children [this.children.length -1];
 }

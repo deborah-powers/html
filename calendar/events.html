@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<script type='text/javascript' src='openTsv.js'></script>
+	<style type='text/css'></style>
+</head><body>
+</body>
+<script type='text/javascript'>
+const fileCalendar = 'calendrier.tsv';
+var eventList = fromTsv (fileCalendar);
+
+class DateSimple{
+	constructor (day, month, year){
+		this.year = 2022;
+		this.month = 3;
+		this.day = 1;
+		this.hour = 0;
+		this.minute = 0;
+		if (year && year != undefined) this.year = year;
+		if (month && month != undefined) this.month = month;
+		if (day && day != undefined) this.day = day;
+	}
+	toString (hour=false){
+		var text = this.month +'/';
+		if (this.month <10) text = '0'+ text;
+		if (this.day <10) text = text +'0';
+		text = text + this.day;
+		text = this.year +'/'+ text;
+		if (hour){
+			text = text +'\t';
+			if (this.hour <10) text = text +'0';
+			text = text + this.hour +':';
+			if (this.minute <10) text = text +'0';
+			text = text + this.minute;
+		}
+		return text;
+	}
+	fromString (text){
+		text = text.replace (':', '/');
+		text = text.replace (' ', '/');
+		text = text.replace ('\t', '/');
+		const textList = text.split ('/');
+		this.year = parseInt (textList[0]);
+		this.month = parseInt (textList[1]);
+		this.day = parseInt (textList[2]);
+		if (textList.length >4){
+			this.hour = parseInt (textList[3]);
+			this.minute = parseInt (textList[4]);
+		}
+	}
+}
+class EventSimple extends DateSimple{
+	constructor (title, description, tag, day, month, year){
+		super (day, month, year);
+		this.title = title;
+		this.description ="";
+		this.tag ="";
+		if (description) this.description = description;
+		if (tag) this.tag = tag;
+	}
+	toString (hour=false){
+		var text = super.toString (hour) +'\t'+ this.tag +'\t'+ this.title +'\t'+ this.description;
+		return text;
+	}
+	fromString (text){
+		var textList = text.split ('\t');
+		this.description = textList.pop (-1);
+		this.title = textList.pop (-1);
+		text = textList.join ('/');
+		super.fromString (text);
+	}
+}
+var event = new EventSimple ('coucou', 'mon loulou');
+var text = event.toString (true);
+console.log (text);
+</script>
+</html>

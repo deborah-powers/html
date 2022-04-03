@@ -3,73 +3,260 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<script type='text/javascript' src='openTsv.js'></script>
-	<style type='text/css'></style>
-</head><body>
-</body>
-<script type='text/javascript'>
+<style type='text/css'>
+	calendar {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		--button-bg: ivory;
+		--button-color: var(--text-color);
+		--button-color-hover: ivory;
+		width: 14em;
+		text-align: center;
+	}
+	calendar .full {
+		background-color: red;
+	}
+	calendar span { font-weight: bold; }
+	calendar span:nth-child(1) { grid-column: 1/6; }
+	calendar span:nth-child(2) { grid-column: 6/8; }
+	day {
+		display: block;
+		width: 14em;
+	}
+</style></head><body>
+	<calendar>
+		<span></span><span></span>
+		<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
+	</calendar>
+</body><script type='text/javascript'>
 const fileCalendar = 'calendrier.tsv';
 var eventList = fromTsv (fileCalendar);
-console.log (eventList);
 
-class DateSimple{
-	constructor (day, month, year){
-		this.year = 2022;
-		this.month = 3;
-		this.day = 1;
-		this.hour = 0;
-		this.minute = 0;
-		if (year && year != undefined) this.year = year;
-		if (month && month != undefined) this.month = month;
-		if (day && day != undefined) this.day = day;
+class EventSimple{
+	constructor (hour, title, description, tag){
+		this.hour = hour;
+		this.title = title;
+		this.description ="";
+		this.tag ="";
+		if (description) this.description = description;
+		if (tag) this.tag = tag;
 	}
-	toString = function(){
-		var text = this.month +'/';
-		if (this.month <10) text = '0'+ text;
-		if (this.day <10) text = text +'0';
-		text = text + this.day;
-		text = this.year +'/'+ text;
+	toString(){
+		var text = this.hour +'\t'+ this.tag +'\t'+ this.title +'\t'+ this.description;
 		return text;
 	}
-	toStringHour = function(){
-		var text = this.toString();
-		text = text +' ';
-		if (this.hour <10) text = text +'0';
-		text = text + this.hour +':';
-		if (this.minute <10) text = text +'0';
-		text = text + this.minute;
+	fromString (text){
+		var textList = text.split ('\t');
+		this.hour = textList[0];
+		this.tag = textList[1];
+		this.title = textList[2];
+		this.description = textList[3];
+	}
+	draw (parent){
+		var paragraph = parent.createNode ('p', this.title +': '+ this.description);
+		if (this.tag) paragraph.className = this.tag;
+	}
+}
+function isYearBissextile (year){
+	var yearBissextile = false;
+	if (year %4 ==0){
+		yearBissextile = true;
+		if (year %100 ==0){
+			yearBissextile = false;
+			if (year %400 ==0) yearBissextile = true;
+	}}
+	return yearBissextile;
+}
+class DayWeek{
+	static lundi = new DayWeek (1, 'lundi');
+	static mardi = new DayWeek (2, 'mardi');
+	static mercredi = new DayWeek (3, 'mercredi');
+	static jeudi = new DayWeek (4, 'jeudi');
+	static vendredi = new DayWeek (5, 'vendredi');
+	static samedi = new DayWeek (6, 'samedi');
+	static dimanche = new DayWeek (7, 'dimanche');
+
+	constructor (id, name){
+		this.id = id;
+		this.name = name;
+	}
+	getById (id){
+		if (typeof (id) == 'number') id= id%7;
+		if (id ==1 || id == 'lundi') return DayWeek.lundi;
+		else if (id ==2 || id == 'mardi') return DayWeek.mardi;
+		else if (id ==3 || id == 'mercredi') return DayWeek.mercredi;
+		else if (id ==4 || id == 'jeudi') return DayWeek.jeudi;
+		else if (id ==5 || id == 'vendredi') return DayWeek.vendredi;
+		else if (id ==6 || id == 'samedi') return DayWeek.samedi;
+		else if (id ==7 || id ==0 || id == 'dimanche') return DayWeek.dimanche;
+		else return null;
+	}
+	static get (id){ return DayWeek.lundi.getById (id); }
+	static getFirstDayYear (year){
+		// référence: 2020 commençait un mercredi
+		const refYear = 2020;
+		var nbDays = DayWeek.mercredi.id;
+		nbDays +=2;
+		for (var y= 2021; y< year; y++){
+			nbDays += 1;
+			if (isYearBissextile (y)) nbDays +=1;
+		}
+		nbDays = nbDays %7;
+		return DayWeek.mercredi.getById (nbDays);
+	}
+}
+class Day{
+	constructor (id){
+		this.id = id;
+		this.dayWeek ="";
+		this.events =[];
+	}
+	setDayWeek (montDayWeek){
+		var nbDays = this.id -1+ montDayWeek.id;
+		nbDays = nbDays %7;
+		this.dayWeek = DayWeek.get (nbDays).name;
+	}
+	getEvents (events, dateTag){
+		dateTag = dateTag + this.id;
+		var event = new EventSimple();
+		for (var e= events.length -1; e>=0; e--) if (dateTag == events[e][0]){
+			event = new EventSimple (events[e][1], events[e][3], events[e][4], events[e][2]);
+			this.events.push (event);
+			events.pop (e);
+		}
+		return events;
+	}
+	toString(){
+		var text = this.id +' '+ this.dayWeek;
+		for (var e=0; e< this.events.length; e++) text = text +'\n'+ this.events[e].toString();
 		return text;
 	}
-	fromString = function (text){
-		text = text.replace (':', '/');
-		text = text.replace (' ', '/');
-		const textList = text.split ('/');
-		this.year = parseInt (textList[0]);
-		this.month = parseInt (textList[1]);
-		this.day = parseInt (textList[2]);
-		if (textList.length >4){
-			this.hour = parseInt (textList[3]);
-			this.minute = parseInt (textList[4]);
+	fromString (text){
+		if (text.contain ('\n')){
+			var textList = text.split ('\n');
+			var event = null;
+			for (var e=1; e< textList.length; e++){
+				event = new EventSimple();
+				event.fromString (textList[e]);
+				this.events.push (event);
+			}
+			text = textList[0];
+		}
+		var textList = text.split (' ');
+		this.id = parseInt (textList[0]);
+		this.dayWeek = textList[1];
+	}
+	draw (monthName, parent){
+		if (! parent || parent == undefined) parent = document.body;
+		var paragraph = parent.createNode ('div', '<h3>'+ this.dayWeek +' '+ this.id +' '+ monthName +'</h3>');
+		if (this.events.length >0) for (var e=0; e< this.events.length; e++) this.events[e].draw (paragraph);
+	}
+}
+const calYear = 2022;
+const calDayYear = DayWeek.getFirstDayYear (calYear);
+class MonthEnum{
+	static janvier = new MonthEnum (1, 'janvier', 31);
+	static fevrier = new MonthEnum (2, 'février', 28);
+	static mars = new MonthEnum (3, 'mars', 31);
+	static avril = new MonthEnum (4, 'avril', 30);
+	static mai = new MonthEnum (5, 'mai', 31);
+	static juin = new MonthEnum (6, 'juin', 30);
+	static juillet = new MonthEnum (7, 'juillet', 31);
+	static aout = new MonthEnum (8, 'août', 31);
+	static septembre = new MonthEnum (9, 'septembre', 30);
+	static octobre = new MonthEnum (10, 'octobre', 31);
+	static novembre = new MonthEnum (11, 'novembre', 30);
+	static decembre = new MonthEnum (12, 'décembre', 31);
+
+	constructor (id, name, duration){
+		this.id = id;
+		this.name = name;
+		this.duration = duration;
+		if (id==2 && isYearBissextile (calYear)) this.duration =29;
+		this.dayWeek = null;
+		this.getDayWeek (calDayYear);
+	}
+	getById (id){
+		if (id ==1) return MonthEnum.janvier;
+		else if (id ==2) return MonthEnum.fevrier;
+		else if (id ==3) return MonthEnum.mars;
+		else if (id ==4) return MonthEnum.avril;
+		else if (id ==5) return MonthEnum.mai;
+		else if (id ==6) return MonthEnum.juin;
+		else if (id ==7) return MonthEnum.juillet;
+		else if (id ==8) return MonthEnum.aout;
+		else if (id ==9) return MonthEnum.septembre;
+		else if (id ==10) return MonthEnum.octobre;
+		else if (id ==11) return MonthEnum.novembre;
+		else if (id ==12) return MonthEnum.decembre;
+		else return null;
+	}
+	static get (id){ return MonthEnum.janvier.getById (id); }
+	nbDaySinceYearStart(){
+		var nbDays =0;
+		for (var m=1; m< this.id; m++){
+			var month = this.getById (m);
+			nbDays += month.duration;
+		}
+		return nbDays;
+	}
+	getDayWeek(){
+		var nbDays = this.nbDaySinceYearStart();
+		nbDays += calDayYear.id;
+		nbDays = nbDays %7;
+		this.dayWeek = DayWeek.get (nbDays);
+	}
+	draw(){
+		var calendar = document.getElementsByTagName ('calendar')[0];
+		var titleList = calendar.getElementsByTagName ('span');
+		titleList[0].innerHTML = this.name;
+		titleList[1].innerHTML = calYear;
+		for (var c=1; c< this.dayWeek.id; c++) calendar.createNode ('p', "");
+		for (var c=1; c<= this.duration; c++) calendar.createNode ('p', c);
+	}
+}
+class Month{
+	constructor (month){
+		this.month = month;
+		this.days =[];
+	}
+	getEvents (events, year){
+		var dateTag = year +'/'
+		if (this.month.id <10) dateTag = dateTag +'0';
+		dateTag = dateTag + this.month.id +'/';
+		var day = new Day();
+		for (var d=1; d<= this.month.duration; d++){
+			day = new Day (d);
+			events = day.getEvents (events, dateTag);
+			if (day.events.length >0){
+				day.setDayWeek (this.month.dayWeek);
+				this.days.push (day);
+			}
+		}
+	}
+	draw(){
+		this.month.draw();
+		var calendar = document.getElementsByTagName ('calendar')[0];
+		var cases = calendar.getElementsByTagName ('p');
+		var c=7;
+		while (cases[c].innerHTML =="") c++;
+		for (var d=0; d< this.days.length; d++){
+			while (cases[c].innerHTML < this.days[d].id) c++;
+			if (cases[c].innerHTML == this.days[d].id){
+				cases[c].className = 'full';
+				cases[c].setAttribute ('day', this.days[d]);
+				cases[c].setAttribute ('onClick', "openDay('" + this.month.name +"', '"+ encodeURI (this.days[d].toString()) +"')");
+			}
 		}
 	}
 }
-/*
-var today = new DateSimple();
-*/
-class EventSimple extends DateSimple{
-	constructor (title, description){
-		super();
-		this.title = title;
-		this.description = description;
-	}
-	toString = function(){
-		var text = DateSimple.toString.call (this);
-		console.log (text);
-		text = text +'\t'+ this.title;
-		return text;
-	}
+function openDay (monthName, dayStr){
+	dayStr = decodeURI (dayStr);
+	var day = new Day();
+	day.fromString (dayStr);
+	day.draw (monthName);
 }
-var today = new EventSimple ('coucou', 'mon loulou');
-console.log (today.toString());
-
-</script>
-</html>
+var month = new Month (MonthEnum.mars);
+month.getEvents (eventList, calYear);
+month.draw();
+</script></html>
