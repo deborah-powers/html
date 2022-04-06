@@ -153,7 +153,6 @@ class Day{
 	}
 }
 const calYear = 2022;
-const calDayYear = DayWeek.getFirstDayYear (calYear);
 class MonthEnum{
 	static janvier = new MonthEnum (1, 'janvier', 31);
 	static fevrier = new MonthEnum (2, 'février', 28);
@@ -174,7 +173,8 @@ class MonthEnum{
 		this.duration = duration;
 		if (id==2 && isYearBissextile (calYear)) this.duration =29;
 		this.dayWeek = null;
-		this.getDayWeek (calDayYear);
+		const dayWeekYear = DayWeek.getFirstDayYear (calYear);
+		this.getDayWeek (dayWeekYear);
 	}
 	getById (id){
 		if (id ==1) return MonthEnum.janvier;
@@ -200,9 +200,9 @@ class MonthEnum{
 		}
 		return nbDays;
 	}
-	getDayWeek(){
+	getDayWeek (dayWeekYear){
 		var nbDays = this.nbDaySinceYearStart();
-		nbDays += calDayYear.id;
+		nbDays += dayWeekYear.id;
 		nbDays = nbDays %7;
 		this.dayWeek = DayWeek.get (nbDays);
 	}
@@ -231,9 +231,7 @@ class Month{
 			if (day.events.length >0){
 				day.setDayWeek (this.month.dayWeek);
 				this.days.push (day);
-			}
-		}
-	}
+	}}}
 	draw(){
 		this.month.draw();
 		var calendar = document.getElementsByTagName ('calendar')[0];
@@ -246,9 +244,7 @@ class Month{
 				cases[c].className = 'full';
 				cases[c].setAttribute ('day', this.days[d]);
 				cases[c].setAttribute ('onClick', "openDay('" + this.month.name +"', '"+ encodeURI (this.days[d].toString()) +"')");
-			}
-		}
-	}
+	}}}
 }
 function openDay (monthName, dayStr){
 	dayStr = decodeURI (dayStr);
