@@ -1,4 +1,4 @@
-
+const modelCalendar = "<calendar><span></span><span></span><b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b></calendar>";
 
 function nbToStr (nb){
 	nbStr = nb.toString();
@@ -74,6 +74,7 @@ class EventSimple{
 		this.description = textList[3];
 	}
 	draw (parent){
+		if (! parent || parent == undefined) parent = document.body;
 		var paragraph = parent.createNode ('p', this.title +': '+ this.description);
 		if (this.tag) paragraph.className = this.tag;
 	}
@@ -122,8 +123,28 @@ class Day{
 	}
 	draw (monthName, parent){
 		if (! parent || parent == undefined) parent = document.body;
-		var paragraph = parent.createNode ('div', '<h3>'+ this.dayWeek +' '+ this.id +' '+ monthName +'</h3>');
+		var paragraph = parent.createNode ('day', '<h3>'+ this.dayWeek +' '+ this.id +' '+ monthName +'</h3>');
 		if (this.events.length >0) for (var e=0; e< this.events.length; e++) this.events[e].draw (paragraph);
+	}
+}
+class MonthEnum{
+	static janvier = new MonthEnum (1, 'janvier', 31);
+	static fevrier = new MonthEnum (2, 'février', 28);
+	static mars = new MonthEnum (3, 'mars', 31);
+	static avril = new MonthEnum (4, 'avril', 30);
+	static mai = new MonthEnum (5, 'mai', 31);
+	static juin = new MonthEnum (6, 'juin', 30);
+	static juillet = new MonthEnum (7, 'juillet', 31);
+	static aout = new MonthEnum (8, 'août', 31);
+	static septembre = new MonthEnum (9, 'septembre', 30);
+	static octobre = new MonthEnum (10, 'octobre', 31);
+	static novembre = new MonthEnum (11, 'novembre', 30);
+	static decembre = new MonthEnum (12, 'décembre', 31);
+
+	constructor (id, name, duration){
+		this.id = id;
+		this.name = name;
+		this.duration = duration;
 	}
 }
 class Month{
@@ -184,7 +205,9 @@ class Month{
 		return newMonth;
 	}
 	static get (id){ return MonthEnum.janvier.getById (id); }
-	draw(){
+	draw (parent){
+		if (! parent || parent == undefined) parent = document.body;
+		parent.innerHTML = parent.innerHTML + modelCalendar;
 		var calendar = document.getElementsByTagName ('calendar')[0];
 		var titleList = calendar.getElementsByTagName ('span');
 		titleList[0].innerHTML = this.name;
