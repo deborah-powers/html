@@ -20,9 +20,10 @@
 const fileCalendar = 'calendrier.tsv';
 var eventList = fromTsv (fileCalendar);
 eventList.sort();
+console.log (eventList);
 
 const year =2022;
-var month = new Month (year, 4);
+var month = new Month (year, MonthEnum.avril);
 month.getEvents (eventList);
 month.draw();
 </script></html>

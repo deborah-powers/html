@@ -9,8 +9,8 @@ calendar .full {
 	background-color: var(--button-bg);
 }
 calendar span { font-weight: bold; }
-calendar span:nth-child(1) { grid-column: 1/6; }
-calendar span:nth-child(2) { grid-column: 6/8; }
+calendar span:nth-child(2) { grid-column: 2/5; }
+calendar span:nth-child(4) { grid-column: 6/8; }
 day {
 	display: block;
 	width: 14em;
