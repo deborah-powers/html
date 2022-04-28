@@ -9,21 +9,60 @@
 	<script type='text/javascript' src='calendar.js'></script>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css'/>
-	<link rel='stylesheet' type='text/css' href='calendar.css'/>
 <style type='text/css'>
+	calendar {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		width: 14em;
+		text-align: center;
+	}
+	calendar .full {
+		color: var(--button-color);
+		background-color: var(--button-bg);
+	}
+	calendar span { font-weight: bold; }
+	calendar span:nth-child(2) { grid-column: 2/5; }
+	calendar span:nth-child(4) { grid-column: 6/8; }
 	day {
-		float: right;
-		clear: none;
+		display: block;
+		width: 14em;
+	}
+	day > h3 {
+		display: inline-block;
+		width: 80%;
+	}
+	day > button {
+		display: inline-block;
+		width: 20%;
 	}
 </style></head><body>
+	<calendar>
+		<button onClick='monthLast(this.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement, true)'>></button><span></span>
+		<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
+	</calendar>
 </body><script type='text/javascript'>
+/*
 const fileCalendar = 'calendrier.tsv';
-var eventList = fromTsv (fileCalendar);
-eventList.sort();
-console.log (eventList);
-
+calendarEventList = fromTsv (fileCalendar);
+calendarEventList.sort();
+console.log (calendarEventList);
 const year =2022;
-var month = new Month (year, MonthEnum.avril);
-month.getEvents (eventList);
-month.draw();
+var month = new Month (4, year);
+month.draw (calendarEventList, year);
+*/
+class TestEnum{
+	static test1 = new TestEnum (1);
+	static test2 = new TestEnum (2);
+	constructor (id){
+		this.id =id;
+		this.nb = 2*id;
+	}
+	static changeNb (nb){
+		this.test1.nb = this.test1.id *nb;
+		this.test2.nb = this.test2.id *nb;
+	}
+}
+console.log (TestEnum.test2);
+TestEnum.changeNb (3);
+console.log (TestEnum.test2);
 </script></html>
