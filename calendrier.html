@@ -37,32 +37,15 @@
 	}
 </style></head><body>
 	<calendar>
-		<button onClick='monthLast(this.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement, true)'>></button><span></span>
+		<button onClick='monthChange(this.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement, true)'>></button><span></span>
 		<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
 	</calendar>
 </body><script type='text/javascript'>
-/*
 const fileCalendar = 'calendrier.tsv';
 calendarEventList = fromTsv (fileCalendar);
 calendarEventList.sort();
 console.log (calendarEventList);
 const year =2022;
-var month = new Month (4, year);
-month.draw (calendarEventList, year);
-*/
-class TestEnum{
-	static test1 = new TestEnum (1);
-	static test2 = new TestEnum (2);
-	constructor (id){
-		this.id =id;
-		this.nb = 2*id;
-	}
-	static changeNb (nb){
-		this.test1.nb = this.test1.id *nb;
-		this.test2.nb = this.test2.id *nb;
-	}
-}
-console.log (TestEnum.test2);
-TestEnum.changeNb (3);
-console.log (TestEnum.test2);
+var month = Month.avril;
+month.draw (calendarEventList);
 </script></html>
