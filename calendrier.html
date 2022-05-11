@@ -2,50 +2,34 @@
 	<title>calendrier</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<script type='text/javascript' src='../site-dp/library-js/list.js'></script>
 	<script type='text/javascript' src='../site-dp/library-js/text.js'></script>
+	<!--
+	<script type='text/javascript' src='../site-dp/library-js/list.js'></script>
 	<script type='text/javascript' src='../site-dp/library-js/file.js'></script>
+-->
 	<script type='text/javascript' src='../site-dp/library-js/tag.js'></script>
-	<script type='text/javascript' src='calendar.js'></script>
+	<script type='text/javascript' src='cal-month.js'></script>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css'/>
 <style type='text/css'>
-	calendar {
+	cal-month div:nth-child(2){
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-		width: 14em;
-		text-align: center;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+		align-items: stretch;
+		justify-items: stretch;
+		height: 11em;
+		border: solid 2px maroon;
 	}
-	calendar .full {
-		color: var(--button-color);
-		background-color: var(--button-bg);
-	}
-	calendar span { font-weight: bold; }
-	calendar span:nth-child(2) { grid-column: 2/5; }
-	calendar span:nth-child(4) { grid-column: 6/8; }
-	day {
-		display: block;
-		width: 14em;
-	}
-	day > h3 {
-		display: inline-block;
-		width: 80%;
-	}
-	day > button {
-		display: inline-block;
-		width: 20%;
+	cal-month div:nth-child(2) >* {
+		border: solid 2px green;
+		margin: 0;
+		height: unset;
+		line-height: unset;
 	}
 </style></head><body>
-	<calendar>
-		<button onClick='monthChange(this.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement, true)'>></button><span></span>
-		<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
-	</calendar>
+	<p>coucou</p>
+	<a href='https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name'>les noms de tag</a>
+	<cal-month month='mai' year='2022'></cal-month>
 </body><script type='text/javascript'>
-const fileCalendar = 'calendrier.tsv';
-calendarEventList = fromTsv (fileCalendar);
-calendarEventList.sort();
-console.log (calendarEventList);
-const year =2022;
-var month = Month.avril;
-month.draw (calendarEventList);
 </script></html>

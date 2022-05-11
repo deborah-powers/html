@@ -1,20 +1,8 @@
-var calendarEventList =[];
-
-function exists (object){
-	if (object == null || object == undefined) return false;
-	else if (typeof (object) == Array && object.length ==0) return false;
-	else if (typeof (object) == 'string'){
-		var objectBis = object.strip();
-		if (objectBis.length ==0) return false;
-		else return true;
-	}
-	else return true;
-}
-function nbToStr (nb){
-	nbStr = nb.toString();
-	while (nbStr.length <2) nbStr = '0'+ nbStr;
-	return nbStr;
-}
+/* afficher un calendrier (mois)
+dans la vue: <cal-month month='mai' year='2022'></cal-month>
+dépendances: text.js, tag.js
+séparer l'objet calendar / Month, qui affiche un calendrier vide et l'objet eventList, qui contient la liste des évènement. eventList peut utiliser un calendar.
+*/
 function isYearBissextile (year){
 	var yearBissextile = false;
 	if (year %4 ==0){
@@ -24,12 +12,6 @@ function isYearBissextile (year){
 			if (year %400 ==0) yearBissextile = true;
 	}}
 	return yearBissextile;
-}
-function dayContainEvent (dateTag, dayNb, eventList){
-	dateTag = dateTag + nbToStr (dayNb);
-	var contain = false;
-	for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (dateTag) >=0) contain = true;
-	return contain;
 }
 class DayWeek{
 	static lundi = new DayWeek (1, 'lundi');
@@ -69,59 +51,30 @@ class DayWeek{
 		return DayWeek.mercredi.getById (nbDays);
 	}
 }
-class EventSimple{
-	constructor (hour, title, description, tag){
-		this.hour = hour;
-		this.title = title;
-		this.description ="";
-		this.tag ="";
-		if (description) this.description = description;
-		if (tag) this.tag = tag;
+const calendarModel = `<div>
+	<button onClick='monthChange(this.parentElement.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement.parentElement, true)'>></button>
+	<button onClick='yearChange(this.parentElement.parentElement, false)'><</button><span></span><button onClick='yearChange(this.parentElement.parentElement, true)'>></button>
+</div><div>
+	<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
+</div>`;
+const calendarStyle = `
+	cal-month {
+		display: block;
+		text-align: center;
+		width: 15em;
+		height: 10em;
 	}
-	draw (parent){
-		if (! parent || parent == undefined) parent = document.body;
-		var paragraph = parent.createNode ('p', this.title);
-		console.log (this.description);
-		console.log  (typeof (this.description));
-		if (exists (this.description)) paragraph.innerHTML = paragraph.innerHTML +': '+ this.description;
-		if (this.tag) paragraph.className = this.tag;
+	cal-month div:nth-child(1){
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: stretch;
 	}
-}
-class Day{
-	constructor (id){
-		this.id = id;
-		this.dayWeek ="";
-		this.eventList =[];
-	}
-	setDayWeek (monthId){
-		var month = Month.getById (monthId)
-		console.log (month.firstDay);
-		var nbDays = month.firstDay.id;
-		nbDays = nbDays + this.id;
-		nbDays = nbDays %7;
-		this.dayWeek = DayWeek.get (nbDays).name;
-	}
-	draw (eventList, dateTag, monthName, parent){
-		// récupérer les évenements
-		var event = new EventSimple();
-		for (var e= eventList.length -1; e>=0; e--) if (dateTag == eventList[e][0]){
-			event = new EventSimple (eventList[e][1], eventList[e][3], eventList[e][4], eventList[e][2]);
-			this.eventList.push (event);
-		}
-		// dessiner le calendrier
-		if (! exists (parent)) parent = document.body;
-		var paragraph = parent.createNode ('day', '<h3>'+ this.dayWeek +' '+ this.id +' '+ monthName + "</h3><button onClick='closeDay(this.parentElement)'>X</button>");
-		if (this.eventList.length >0) for (var e=0; e< this.eventList.length; e++) this.eventList[e].draw (paragraph);
-	}
-}
-function openDay (monthName, dayStr){
-	var dayLst = dayStr.split ('/');
-	var year = parseInt (dayLst[0]);
-	var day = new Day (parseInt (dayLst[2]), year);
-	day.setDayWeek (parseInt (dayLst[1]))
-	day.draw (calendarEventList, dayStr, monthName);
-}
-function closeDay (day){ day.parentElement.removeChild (day); }
+	cal-month div:nth-child(1) button {
+		width: 2em;
+		height: unset;
+	}`;
+
 class Month{
 	static janvier = new Month (1, 31, 'janvier', 2022);
 	static fevrier = new Month (2, 28, 'février', 2022);
@@ -189,32 +142,64 @@ class Month{
 		else if (id ==12 || id==0 || id== 'decembre' || id== 'décembre'){ return Month.decembre; }
 		else return null;
 	}
-	draw (eventList, parent){
-		if (! exists (parent)) parent = document.body;
-		var calendar = parent.getElementsByTagName ('calendar')[0];
-		if (! exists (calendar)){
-			parent.innerHTML = parent.innerHTML + modelCalendar;
-			calendar = parent.getElementsByTagName ('calendar')[0];
-		}
-		var dateTag = this.year +'/'+ nbToStr (this.id) +'/';
-		var titleList = calendar.getElementsByTagName ('span');
-		titleList[0].innerHTML = this.name;
-		titleList[1].innerHTML = this.year;
-		for (var c=1; c< this.firstDay.id; c++) calendar.createNode ('p', "");
-		for (var c=1; c<= this.duration; c++){
-			var day = calendar.createNode ('p', c);
-			if (dayContainEvent (dateTag, c, eventList)){
-				day.className = 'full';
-				day.setAttribute ('onClick', "openDay('" + this.name +"', '"+ dateTag + nbToStr (c) +"')");
-	}}}
 }
+class HTMLCalMonthElement extends HTMLElement{
+	constructor(){
+		super();
+		this.month = null;
+	}
+	connectedCallback(){
+		// appelée après le constructeur
+		var year = parseInt (this.getAttribute ('year'));
+		Month.setYear (year);
+		var month = this.getAttribute ('month');
+		this.month = Month.getById (month);
+		if (! exists (this.month)) this.innerHTML = 'erreur, vous avez entré un mauvais mois.';
+		else this.draw();
+	}
+	draw(){
+	//	console.log (document.head.getElementsByTagName ('style')[0]);
+		// les cases
+		this.innerHTML = calendarModel;
+		var titleList = this.getElementsByTagName ('span');
+		titleList[0].innerHTML = this.month.name;
+		titleList[1].innerHTML = this.month.year;
+		var blockList = this.getElementsByTagName ('div');
+		var day = null;
+		for (var c=1; c< this.month.firstDay.id; c++) blockList[1].createNode ('p', "");
+		for (var c=1; c<= this.month.duration; c++) day = blockList[1].createNode ('p', c);
+		this.removeAttribute ('year');
+		this.removeAttribute ('month');
+		document.setStyle (calendarStyle);
+	/*	titleList[0].addEventListener ('click', function (evt){ yearChange (evt.target.parentElement, false); });
+		// le style
+		this.style.display = 'block';
+		this.style.textAlign = 'center';
+		blockList[1].style.display = 'grid';
+		blockList[1].style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr 1fr 1fr';
+		blockList[0].style.display = 'flex';
+		blockList[0].style.flexDirection = 'row';
+		blockList[0].style.alignItems = 'stretch';
+		blockList[0].style.justifyContent = 'space-between';
+	*/
+	}
+}
+customElements.define('cal-month', HTMLCalMonthElement);
+
 function monthChange (calendar, next){
 	var monthTag = calendar.getElementsByTagName ('span')[0];
-	var year = calendar.getElementsByTagName ('span')[1].innerHTML;
-	year = parseInt (year);
 	var month = Month.getById (monthTag.innerHTML);
 	if (next) month = month.getNext();
 	else month = month.getLast();
-	calendar.innerHTML = "<button onClick='monthChange(this.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement, true)'>></button><span></span><b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>";
-	month.draw (calendarEventList, calendar.parentElement);
+	var yearTag = calendar.getElementsByTagName ('span')[1];
+	calendar.month = month;
+	calendar.draw();
+}
+function yearChange (calendar, next){
+	var yearTag = calendar.getElementsByTagName ('span')[1];
+	var year = parseInt (yearTag.innerHTML);
+	if (next) year +=1;
+	else year -=1;
+	Month.setYear (year);
+	calendar.draw();
 }
