@@ -1,6 +1,6 @@
 /* afficher un calendrier (mois)
 dans la vue: <cal-month month='mai' year='2022'></cal-month>
-dépendances: text.js, tag.js
+dépendances: tag.js
 séparer l'objet calendar / Month, qui affiche un calendrier vide et l'objet eventList, qui contient la liste des évènement. eventList peut utiliser un calendar.
 */
 function isYearBissextile (year){
@@ -51,29 +51,29 @@ class DayWeek{
 		return DayWeek.mercredi.getById (nbDays);
 	}
 }
-const calendarModel = `<div>
+const calendarTemplate = `<div>
 	<button onClick='monthChange(this.parentElement.parentElement, false)'><</button><span></span><button onClick='monthChange(this.parentElement.parentElement, true)'>></button>
 	<button onClick='yearChange(this.parentElement.parentElement, false)'><</button><span></span><button onClick='yearChange(this.parentElement.parentElement, true)'>></button>
 </div><div>
 	<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
 </div>`;
-const calendarStyle = `
+const calendarStyle =`
 	cal-month {
 		display: block;
 		text-align: center;
-		width: 15em;
-		height: 10em;
 	}
-	cal-month div:nth-child(1){
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+	cal-month div:nth-child(1) {
+		height: 2em;
+		display: grid;
+		grid-template-columns: 1fr 6fr 1fr 1fr 3fr 1fr;
+	}
+	cal-month div:nth-child(2){
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 		align-items: stretch;
+		justify-items: stretch;
 	}
-	cal-month div:nth-child(1) button {
-		width: 2em;
-		height: unset;
-	}`;
+	cal-month div:nth-child(2) >* { margin: 0; }`;
 
 class Month{
 	static janvier = new Month (1, 31, 'janvier', 2022);
@@ -100,17 +100,29 @@ class Month{
 	}
 	static setYear (year){
 		this.janvier.year = year;
+		this.janvier.setFisrtDay();
 		this.fevrier.year = year;
+		this.fevrier.setFisrtDay();
 		this.mars.year = year;
+		this.mars.setFisrtDay();
 		this.avril.year = year;
+		this.avril.setFisrtDay();
 		this.mai.year = year;
+		this.mai.setFisrtDay();
 		this.juin.year = year;
+		this.juin.setFisrtDay();
 		this.juillet.year = year;
+		this.juillet.setFisrtDay();
 		this.aout.year = year;
+		this.aout.setFisrtDay();
 		this.septembre.year = year;
+		this.septembre.setFisrtDay();
 		this.octobre.year = year;
+		this.octobre.setFisrtDay();
 		this.novembre.year = year;
+		this.novembre.setFisrtDay();
 		this.decembre.year = year;
+		this.decembre.setFisrtDay();
 		if (isYearBissextile (year)) this.fevrier.duration =29;
 		else this.fevrier.duration =28;
 	}
@@ -158,9 +170,7 @@ class HTMLCalMonthElement extends HTMLElement{
 		else this.draw();
 	}
 	draw(){
-	//	console.log (document.head.getElementsByTagName ('style')[0]);
-		// les cases
-		this.innerHTML = calendarModel;
+		this.innerHTML = calendarTemplate;
 		var titleList = this.getElementsByTagName ('span');
 		titleList[0].innerHTML = this.month.name;
 		titleList[1].innerHTML = this.month.year;
@@ -171,17 +181,6 @@ class HTMLCalMonthElement extends HTMLElement{
 		this.removeAttribute ('year');
 		this.removeAttribute ('month');
 		document.setStyle (calendarStyle);
-	/*	titleList[0].addEventListener ('click', function (evt){ yearChange (evt.target.parentElement, false); });
-		// le style
-		this.style.display = 'block';
-		this.style.textAlign = 'center';
-		blockList[1].style.display = 'grid';
-		blockList[1].style.gridTemplateColumns = '1fr 1fr 1fr 1fr 1fr 1fr 1fr';
-		blockList[0].style.display = 'flex';
-		blockList[0].style.flexDirection = 'row';
-		blockList[0].style.alignItems = 'stretch';
-		blockList[0].style.justifyContent = 'space-between';
-	*/
 	}
 }
 customElements.define('cal-month', HTMLCalMonthElement);
@@ -191,7 +190,6 @@ function monthChange (calendar, next){
 	var month = Month.getById (monthTag.innerHTML);
 	if (next) month = month.getNext();
 	else month = month.getLast();
-	var yearTag = calendar.getElementsByTagName ('span')[1];
 	calendar.month = month;
 	calendar.draw();
 }
