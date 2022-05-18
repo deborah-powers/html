@@ -2,20 +2,26 @@
 	<title>calendrier</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-<!--
 	<script type='text/javascript' src='../site-dp/library-js/text.js'></script>
 	<script type='text/javascript' src='../site-dp/library-js/list.js'></script>
 	<script type='text/javascript' src='../site-dp/library-js/file.js'></script>
+<!--
 -->
 	<script type='text/javascript' src='../site-dp/library-js/tag.js'></script>
 	<script type='text/javascript' src='cal-month.js'></script>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css'/>
 <style type='text/css'>
+	a { display: block; }
 </style></head><body>
-	<p>coucou</p>
+	<p>passer les informations par des attributs. les élements internes ne sont pas perçus.</p>
 	<a href='https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name'>les noms de tag</a>
-	<cal-month month='mai' year='2022'><p>coucou</p></cal-month>
-	<cal-month month='juillet' year='2021'>doudou</cal-month>
+	<a href='https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements'>les éléments perso</a>
+	<a href='https://fr.javascript.info/custom-elements'>les éléments perso, autre site</a>
+	<cal-month month='mai' year='2022'></cal-month>
 </body><script type='text/javascript'>
+	const fileName = 'calendrier.tsv';
+	const eventList = fromTsv (fileName);
+	var calendar = document.getElementsByTagName ('cal-month')[0];
+	calendar.isEvent (eventList);
 </script></html>
