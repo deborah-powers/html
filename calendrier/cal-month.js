@@ -1,8 +1,17 @@
 /* afficher un calendrier (mois)
 dans la vue: <cal-month month='mai' year='2022'></cal-month>
-dépendances: tag.js
+dépendances: tag.js, text.js et structure.css pour afficher les jour ayant un évenement
 séparer l'objet calendar / Month, qui affiche un calendrier vide et l'objet eventList, qui contient la liste des évènement. eventList peut utiliser un calendar.
 */
+String.prototype.addZero = function(){
+	if (this.length >=2) return this;
+	else return '0'+ this;
+}
+Number.prototype.addZero = function(){
+	var nb= this.toString();
+	nb= nb.addZero();
+	return nb;
+}
 function isYearBissextile (year){
 	var yearBissextile = false;
 	if (year %4 ==0){
@@ -73,7 +82,13 @@ const calendarStyle =`
 		align-items: stretch;
 		justify-items: stretch;
 	}
-	cal-month div:nth-child(2) >* { margin: 0; }`;
+	cal-month div:nth-child(2) >* { margin: 0; }
+	cal-month div:nth-child(2) p.full { background-color: var(--fond-color, #EEE); }
+	day { display: block; }
+	day >p> span { display: inline-block; }
+	day >p> span:nth-child(1) { width: 4em; }
+	day button { float: right; }
+	day p.important { background-color: var(--fond-color, #EEE); }`;
 
 class Month{
 	static janvier = new Month (1, 31, 'janvier', 2022);
@@ -182,8 +197,26 @@ class HTMLCalMonthElement extends HTMLElement{
 		this.removeAttribute ('month');
 		document.setStyle (calendarStyle);
 	}
+	isEvent (eventList){
+		const key = this.month.year +'/'+ this.month.id.addZero() +'/';
+		var eventListMonth ={};
+		for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (key) >=0){
+			var nvKey = eventList[e][0].replace (key);
+			if (! exists (eventListMonth [nvKey]))
+				eventListMonth [nvKey] = eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+			else eventListMonth [nvKey] = eventListMonth [nvKey] + eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+		}
+		var dayList = this.getElementsByTagName ('p');
+		for (var d=0; d< dayList.length; d++){
+			var nvKey = eventListMonth [dayList[d].innerHTML.addZero()];
+				if (exists (nvKey)){
+					dayList[d].className = 'full';
+					dayList[d].setAttribute ('events', nvKey);
+					dayList[d].addEventListener ('click', openDay);
+		}}
+	}
 }
-customElements.define('cal-month', HTMLCalMonthElement);
+customElements.define ('cal-month', HTMLCalMonthElement);
 
 function monthChange (calendar, next){
 	var monthTag = calendar.getElementsByTagName ('span')[0];
@@ -201,3 +234,18 @@ function yearChange (calendar, next){
 	Month.setYear (year);
 	calendar.draw();
 }
+const dayTemplate = "<h2><span></span><button onClick='closeDay(this.parentElement.parentElement)'>X</button></h2>";
+function openDay (event){
+	var table = event.target.getAttribute ('events').fromTsv();
+	var container = event.target.parentElement.parentElement.parentElement;
+	var todayTemplate = dayTemplate.replace ('<span></span>', '<span>' + 'coucou' + '</span>');
+	var day = container.createNode ('day', 'coucou');
+	var eventTemplate ="";
+	for (var e=0; e< table.length; e++){
+		eventTemplate = '<p><span>' + table[e][0] + '</span><span>' + table[e][2] + '</span></p>';
+		if (table[e][1] == 'important') eventTemplate = eventTemplate.replace ('<p>', "<p class='important'>");
+		todayTemplate = todayTemplate + eventTemplate;
+	}
+	day.innerHTML = todayTemplate;
+}
+function closeDay (element){ element.parentElement.removeChild (element); }
