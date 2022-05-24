@@ -6,56 +6,20 @@
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='../site-dp/library-js/util.js'></script>
+	<script type='text/javascript' src='selector.js'></script>
 <style type='text/css'>
 	a { display: block; }
-</style></head><body>
-	<a href='https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_shadow_DOM'>mozilla</a>
-	<select-perso id='test de liste', func='testFunc' list='tmp.ls'></select-perso>
-</body><script type='text/javascript'>
-
-var tmp ={
-	ls: [ 'u', 'v', 'w' ],
-	title: 'dada'
-};
-var lst =[ 'e', 'r', 't'];
-
-const selectorStyle =`
 	select-perso {
-		display: block;
-		border-style: solid;
+		border-style: dotted;
 		border-width: 6px;
 	}
-	select-perso h2 {
-		color: var(--age-color, white);
-		background-color: var(--bord-color, #AAA);
-		margin: 0;
-	}
-	select-perso p { display: none; }
-	select-perso:hover p { display: block; }`;
+	select-perso p { display: block; }
+</style></head><body>
+	<a href='https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_shadow_DOM'>mozilla</a>
+	<select-perso callback='testFunc' list='lst'></select-perso>
+</body><script type='text/javascript'>
 
-class Selector extends HTMLElement{
-	connectedCallback(){
-		// appelée après le constructeur
-		var title = this.createNode ('h2', this.getAttribute ('id'));
-		const listElement = this.getAttribute ('list').toVariable();
-		var paragraph = null;
-		var func = this.getAttribute ('func');
-		for (var l=0; l< listElement.length; l++){
-			paragraph = this.createNode ('p', listElement[l]);
-			paragraph.addEventListener ('click', testFunc);
-		}
-		this.removeAttribute ('func');
-		this.removeAttribute ('list');
-		this.removeAttribute ('id');
-		document.setStyle (selectorStyle);
-	}
-}
-customElements.define ('select-perso', Selector);
-function testFunc (event){
-	console.log ('rt', event.target.innerHTML);
-}
-
-
-
+var link = document.getElementsByTagName ('a')[0];
+var shadow = link.attachShadow ({ mode: open });
 
 </script></html>
