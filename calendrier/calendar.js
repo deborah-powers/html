@@ -1,17 +1,40 @@
 /* afficher un calendrier (mois)
-dans la vue: <cal-month month='mai' year='2022'></cal-month>
-dépendances: tag.js, text.js et structure.css pour afficher les jour ayant un évenement
+dans la vue: <calendar-db month='mai' year='2022'></calendar-db>
+code js:
+const fileName = 'calendrier.tsv';
+const eventList = fromTsv (fileName);
+var calendar = document.getElementsByTagName ('cal-month')[0];
+calendar.isEvent (eventList);
+
+dépendances: util.js, text.js, et structure.css pour afficher les jour ayant un évenement
 séparer l'objet calendar / Month, qui affiche un calendrier vide et l'objet eventList, qui contient la liste des évènement. eventList peut utiliser un calendar.
 */
-String.prototype.addZero = function(){
-	if (this.length >=2) return this;
-	else return '0'+ this;
-}
-Number.prototype.addZero = function(){
-	var nb= this.toString();
-	nb= nb.addZero();
-	return nb;
-}
+function fromTsv (tsvFile, callback){
+	var xhttp = new XMLHttpRequest();
+	if (callback){
+		// méthode assynchrone
+		xhttp.onreadystatechange = function(){
+			if (this.readyState ==4){
+				var textRes = this.responseText.clean();
+				var listRes =[];
+				if (textRes) listRes = textRes.fromTsv();
+				callback (listRes);
+		}};
+		xhttp.open ('GET', tsvFile, true);
+		xhttp.send();
+		return null;
+	}
+	else{
+		// méthode synchrone
+		xhttp.open ('GET', tsvFile, false);
+		xhttp.send();
+		var listRes =[];
+		if (xhttp.status ==0 || xhttp.status ==200){
+			var textRes = xhttp.responseText.clean();
+			if (textRes) listRes = textRes.fromTsv();
+		}
+		return listRes;
+}}
 function isYearBissextile (year){
 	var yearBissextile = false;
 	if (year %4 ==0){
@@ -67,23 +90,23 @@ const calendarTemplate = `<div>
 	<b>l</b><b>m</b><b>m</b><b>j</b><b>v</b><b>s</b><b>d</b>
 </div>`;
 const calendarStyle =`
-	cal-month {
+	calendar-db {
 		display: block;
 		text-align: center;
 	}
-	cal-month div:nth-child(1) {
+	calendar-db div:nth-child(1) {
 		height: 2em;
 		display: grid;
 		grid-template-columns: 1fr 6fr 1fr 1fr 3fr 1fr;
 	}
-	cal-month div:nth-child(2){
+	calendar-db div:nth-child(2){
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 		align-items: stretch;
 		justify-items: stretch;
 	}
-	cal-month div:nth-child(2) >* { margin: 0; }
-	cal-month div:nth-child(2) p.full { background-color: var(--fond-color, #EEE); }
+	calendar-db div:nth-child(2) >* { margin: 0; }
+	calendar-db div:nth-child(2) p.full { background-color: var(--fond-color, #EEE); }
 	day { display: block; }
 	day >p> span { display: inline-block; }
 	day >p> span:nth-child(1) { width: 4em; }
@@ -174,6 +197,8 @@ class HTMLCalMonthElement extends HTMLElement{
 	constructor(){
 		super();
 		this.month = null;
+		this.daysWevents =[];
+		this.events ={};
 	}
 	connectedCallback(){
 		// appelée après le constructeur
@@ -192,31 +217,40 @@ class HTMLCalMonthElement extends HTMLElement{
 		var blockList = this.getElementsByTagName ('div');
 		var day = null;
 		for (var c=1; c< this.month.firstDay.id; c++) blockList[1].createNode ('p', "");
-		for (var c=1; c<= this.month.duration; c++) day = blockList[1].createNode ('p', c);
+		for (var c=1; c<= this.month.duration; c++) day = blockList[1].createNode ('p', c.addZero());
 		this.removeAttribute ('year');
 		this.removeAttribute ('month');
-		document.setStyle (calendarStyle);
+		setStyle (calendarStyle);
+		if (exists (this.daysWevents)) this.isEvent();
+		// retarder l'initialisation du sélecteur. nécessaire si j'utilise des données javascript dans mes attributs
+		var calendar = this;
+		window.addEventListener ('load', function (event){
+			console.log ('load');
+			if (! exists (calendar.daysWevents)){
+				const eventList = calendar.getAttribute ('events').toVariable();
+				const key = calendar.month.year +'/'+ calendar.month.id.addZero() +'/';
+				for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (key) >=0){
+					var nvKey = eventList[e][0].replace (key);
+					if (! exists (calendar.events [nvKey])){
+						calendar.daysWevents.push (nvKey);
+						calendar.events [nvKey] = eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+					}
+					else calendar.events [nvKey] = calendar.events [nvKey] + eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+				}
+			}
+			calendar.isEvent();
+		});
 	}
-	isEvent (eventList){
-		const key = this.month.year +'/'+ this.month.id.addZero() +'/';
-		var eventListMonth ={};
-		for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (key) >=0){
-			var nvKey = eventList[e][0].replace (key);
-			if (! exists (eventListMonth [nvKey]))
-				eventListMonth [nvKey] = eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
-			else eventListMonth [nvKey] = eventListMonth [nvKey] + eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
-		}
+	isEvent(){
 		var dayList = this.getElementsByTagName ('p');
 		for (var d=0; d< dayList.length; d++){
-			var nvKey = eventListMonth [dayList[d].innerHTML.addZero()];
-				if (exists (nvKey)){
-					dayList[d].className = 'full';
-					dayList[d].setAttribute ('events', nvKey);
-					dayList[d].addEventListener ('click', openDay);
-		}}
-	}
+			if (this.daysWevents.indexOf (dayList[d].innerHTML) >=0){
+				dayList[d].className = 'full';
+				dayList[d].addEventListener ('click', openDay);
+				dayList[d].setAttribute ('events', this.events [dayList[d].innerHTML]);
+	}}}
 }
-customElements.define ('cal-month', HTMLCalMonthElement);
+customElements.define ('calendar-db', HTMLCalMonthElement);
 
 function monthChange (calendar, next){
 	var monthTag = calendar.getElementsByTagName ('span')[0];
