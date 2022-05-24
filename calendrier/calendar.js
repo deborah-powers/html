@@ -209,6 +209,9 @@ class HTMLCalMonthElement extends HTMLElement{
 		if (! exists (this.month)) this.innerHTML = 'erreur, vous avez entré un mauvais mois.';
 		else this.draw();
 	}
+	attributeChangedCallback(){
+		console.log ('attributeChangedCallback');
+	}
 	draw(){
 		this.innerHTML = calendarTemplate;
 		var titleList = this.getElementsByTagName ('span');
@@ -224,24 +227,21 @@ class HTMLCalMonthElement extends HTMLElement{
 		if (exists (this.daysWevents)) this.isEvent();
 		// retarder l'initialisation du sélecteur. nécessaire si j'utilise des données javascript dans mes attributs
 		var calendar = this;
-		window.addEventListener ('load', function (event){
-			console.log ('load');
-			if (! exists (calendar.daysWevents)){
-				const eventList = calendar.getAttribute ('events').toVariable();
-				const key = calendar.month.year +'/'+ calendar.month.id.addZero() +'/';
-				for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (key) >=0){
-					var nvKey = eventList[e][0].replace (key);
-					if (! exists (calendar.events [nvKey])){
-						calendar.daysWevents.push (nvKey);
-						calendar.events [nvKey] = eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
-					}
-					else calendar.events [nvKey] = calendar.events [nvKey] + eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
-				}
-			}
-			calendar.isEvent();
-		});
+		window.addEventListener ('load', function(){ calendar.isEvent(); });
 	}
 	isEvent(){
+		if (! exists (this.daysWevents)){
+			const eventList = this.getAttribute ('events').toVariable();
+			const key = this.month.year +'/'+ this.month.id.addZero() +'/';
+			for (var e=0; e< eventList.length; e++) if (eventList[e][0].indexOf (key) >=0){
+				var nvKey = eventList[e][0].replace (key);
+				if (! exists (this.events [nvKey])){
+					this.daysWevents.push (nvKey);
+					this.events [nvKey] = eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+				}
+				else this.events [nvKey] = this.events [nvKey] + eventList[e][1] +'\t'+ eventList[e][2] +'\t'+ eventList[e][3] +'\n';
+			}
+		}
 		var dayList = this.getElementsByTagName ('p');
 		for (var d=0; d< dayList.length; d++){
 			if (this.daysWevents.indexOf (dayList[d].innerHTML) >=0){
@@ -258,6 +258,8 @@ function monthChange (calendar, next){
 	if (next) month = month.getNext();
 	else month = month.getLast();
 	calendar.month = month;
+	calendar.daysWevents =[];
+	calendar.events ={};
 	calendar.draw();
 }
 function yearChange (calendar, next){
@@ -269,6 +271,7 @@ function yearChange (calendar, next){
 	calendar.draw();
 }
 const dayTemplate = "<h2><span></span><button onClick='closeDay(this.parentElement.parentElement)'>X</button></h2>";
+
 function openDay (event){
 	var table = event.target.getAttribute ('events').fromTsv();
 	var container = event.target.parentElement.parentElement.parentElement;
