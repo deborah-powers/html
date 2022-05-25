@@ -209,9 +209,6 @@ class HTMLCalMonthElement extends HTMLElement{
 		if (! exists (this.month)) this.innerHTML = 'erreur, vous avez entré un mauvais mois.';
 		else this.draw();
 	}
-	attributeChangedCallback(){
-		console.log ('attributeChangedCallback');
-	}
 	draw(){
 		this.innerHTML = calendarTemplate;
 		var titleList = this.getElementsByTagName ('span');
@@ -228,6 +225,7 @@ class HTMLCalMonthElement extends HTMLElement{
 		// retarder l'initialisation du sélecteur. nécessaire si j'utilise des données javascript dans mes attributs
 		var calendar = this;
 		window.addEventListener ('load', function(){ calendar.isEvent(); });
+		this.isEvent();
 	}
 	isEvent(){
 		if (! exists (this.daysWevents)){
