@@ -1,0 +1,72 @@
+<!DOCTYPE html><html><head>
+	<title>lettres en braille</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	b-letter {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		width: 3em;
+		height: 5em;
+		grid-gap: 1em;
+	}
+	b-letter hr {
+		margin: 0;
+		height: unset;
+		background-color: transparent;
+	}
+	b-letter hr.full { background-color: var(--text-color, black); }
+</style></head><body>
+	<d-letter letter='x'></b-letter>
+</body>
+<script type='text/javascript'>
+const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/>';
+
+class BrailleLetter extends HTMLElement{
+	constructor(){
+		super();
+		this.letter ="";
+	}
+	connectedCallback(){
+		// appelée après le constructeur
+		this.letter = this.getAttribute ('letter');
+		this.innerHTML = brickTemplate;
+		var points = this.getElementsByTagName ('hr');
+		if ('abcdefghklmnopqruvxyz'.indexOf (this.letter) >=0) points[0].className = 'full';
+		if ('cdfgijmnpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
+		if ('bfghijlpqrstvw'.indexOf (this.letter) >=0) points[2].className = 'full';
+		if ('deghjnoqrtwyz'.indexOf (this.letter) >=0) points[3].className = 'full';
+		if ('klmnopqrstuvwyz'.indexOf (this.letter) >=0) points[4].className = 'full';
+		if ('uvwxyz'.indexOf (this.letter) >=0) points[5].className = 'full';
+	}
+}
+class DoubleLetter extends HTMLElement{
+	constructor(){
+		super();
+		this.letter ="";
+		this.braille = null;
+		this.alphabet = null;
+	}
+	connectedCallback(){
+		this.letter = this.getAttribute ('letter');
+		this.braille = document.createElement ('b-letter');
+		this.braille.setAttribute ('letter', this.letter);
+		this.alphabet = document.createElement ('p');
+		this.alphabet.innerHTML = this.letter;
+		this.innerHTML = this.braille.outerHTML;
+		this.addEventListener ('click', function (event){
+			console.log (this);
+			if (event.target.innerHTML == this.alphabet.outerHTML) event.target.innerHTML = this.braille.outerHTML;
+			else event.target.innerHTML = this.alphabet.outerHTML;
+		});
+	}
+}
+customElements.define ('b-letter', BrailleLetter);
+customElements.define ('d-letter', DoubleLetter);
+</script>
+</html>
