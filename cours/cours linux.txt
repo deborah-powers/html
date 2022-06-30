@@ -13,6 +13,7 @@ ln -s <complete path to dir> <shortcut save location>
 ln -s /home/deborah/python /home/deborah/Bureau
 ln -s /var/www/html/site-dp /home/deborah/Bureau
 ln -s /usr/bin/google-chrome /home/deborah/Bureau
+ln -s trash:/// /home/deborah/Bureau
 
 
 ****** un raccourci vers une application ******
