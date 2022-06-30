@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <?xml-stylesheet type='text/css' href='../../library-css/svg.css'?>
-<svg width='260' height='640' viewBox="0 0 650 1600" xmlns='http://www.w3.org/2000/svg'>
+<svg width='260' height='640' viewBox='0 0 650 1600' xmlns='http://www.w3.org/2000/svg'>
 	<title>fille</title>
 <style><![CDATA[
 	path, .peau					{	fill: #FC9;		stroke: #963;	}
