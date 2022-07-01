@@ -8,24 +8,60 @@
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
 <style type='text/css'>
 	b-letter {
-		display: grid;
+		display: inline-grid;
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr;
 		width: 3em;
-		height: 5em;
+		height: 7em;
 		grid-gap: 1em;
+		margin: 1em;
+		text-align: center;
 	}
 	b-letter hr {
 		margin: 0;
 		height: unset;
 		background-color: transparent;
 	}
+	b-letter p {
+		margin: 0;
+		padding: 0;
+		grid-column: 1/3;
+	}
 	b-letter hr.full { background-color: var(--text-color, black); }
 </style></head><body>
-	<d-letter letter='x'></b-letter>
+	<section id='alphabet'>
+		<h2>l'alpabet en braille</h2>
+		<b-letter letter='a'></b-letter>
+		<b-letter letter='b'></b-letter>
+		<b-letter letter='c'></b-letter>
+		<b-letter letter='d'></b-letter>
+		<b-letter letter='e'></b-letter>
+		<b-letter letter='f'></b-letter>
+		<b-letter letter='g'></b-letter>
+		<b-letter letter='h'></b-letter>
+		<b-letter letter='i'></b-letter>
+		<b-letter letter='j'></b-letter>
+		<b-letter letter='k'></b-letter>
+		<b-letter letter='l'></b-letter>
+		<b-letter letter='m'></b-letter>
+		<b-letter letter='n'></b-letter>
+		<b-letter letter='o'></b-letter>
+		<b-letter letter='p'></b-letter>
+		<b-letter letter='q'></b-letter>
+		<b-letter letter='r'></b-letter>
+		<b-letter letter='s'></b-letter>
+		<b-letter letter='t'></b-letter>
+		<b-letter letter='u'></b-letter>
+		<b-letter letter='v'></b-letter>
+		<b-letter letter='w'></b-letter>
+		<b-letter letter='x'></b-letter>
+		<b-letter letter='y'></b-letter>
+		<b-letter letter='z'></b-letter>
+	</section>
 </body>
 <script type='text/javascript'>
-const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/>';
+const brickTemplateV1 = '<span><hr/><hr/><hr/><hr/><hr/><hr/></span><span></span>';
+const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/><p></p>';
 
 class BrailleLetter extends HTMLElement{
 	constructor(){
@@ -41,32 +77,41 @@ class BrailleLetter extends HTMLElement{
 		if ('cdfgijmnpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
 		if ('bfghijlpqrstvw'.indexOf (this.letter) >=0) points[2].className = 'full';
 		if ('deghjnoqrtwyz'.indexOf (this.letter) >=0) points[3].className = 'full';
-		if ('klmnopqrstuvwyz'.indexOf (this.letter) >=0) points[4].className = 'full';
+		if ('klmnopqrstuvxyz'.indexOf (this.letter) >=0) points[4].className = 'full';
 		if ('uvwxyz'.indexOf (this.letter) >=0) points[5].className = 'full';
+		var letterSimple = this.getElementsByTagName ('p')[0];
+		letterSimple.innerHTML = this.letter;
 	}
 }
-class DoubleLetter extends HTMLElement{
+class BrailleLetterV1 extends HTMLElement{
 	constructor(){
 		super();
 		this.letter ="";
-		this.braille = null;
-		this.alphabet = null;
 	}
 	connectedCallback(){
+		// appelée après le constructeur
 		this.letter = this.getAttribute ('letter');
-		this.braille = document.createElement ('b-letter');
-		this.braille.setAttribute ('letter', this.letter);
-		this.alphabet = document.createElement ('p');
-		this.alphabet.innerHTML = this.letter;
-		this.innerHTML = this.braille.outerHTML;
-		this.addEventListener ('click', function (event){
-			console.log (this);
-			if (event.target.innerHTML == this.alphabet.outerHTML) event.target.innerHTML = this.braille.outerHTML;
-			else event.target.innerHTML = this.alphabet.outerHTML;
-		});
+		this.innerHTML = brickTemplate;
+		var points = this.getElementsByTagName ('hr');
+		if ('abcdefghklmnopqruvxyz'.indexOf (this.letter) >=0) points[0].className = 'full';
+		if ('cdfgijmnpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
+		if ('bfghijlpqrstvw'.indexOf (this.letter) >=0) points[2].className = 'full';
+		if ('deghjnoqrtwyz'.indexOf (this.letter) >=0) points[3].className = 'full';
+		if ('klmnopqrstuvwyz'.indexOf (this.letter) >=0) points[4].className = 'full';
+		if ('uvwxyz'.indexOf (this.letter) >=0) points[5].className = 'full';
+		var letterSimple = this.getElementsByTagName ('span')[1];
+		letterSimple.innerHTML = this.letter;
 	}
 }
 customElements.define ('b-letter', BrailleLetter);
-customElements.define ('d-letter', DoubleLetter);
+function write (word){
+	for (var l=0; l< word.length; l++){
+		var letter = document.createElement ('b-letter');
+		letter.setAttribute ('letter', word[l]);
+		letter.connectedCallback();
+		document.body.appendChild (letter);
+	}
+}
+write ('coucou doudou');
 </script>
 </html>

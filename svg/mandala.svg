@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='600' height='600' viewBox='-300 -300 600 600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>mandala</title>
+<style type='text/css'><![CDATA[
+	svg { border: solid 4px red; }
+	* { fill: none; stroke: black; stroke-width: 2px; }
+]]></style>
+<defs>
+	<path class='part' id='part-quart'		d='m 0,0 h300 a 300,300 0 0,1 -300,300 z'/>
+	<path class='part' id='part-sixieme'	d='m 0,0 h300 a 300,300 0 0,1 -150,259.5 z'/>
+	<g id='motif'>
+		<rect x='10' y='-10' width='80' height='20'/>
+		<circle r='8' cx='50' cy='50'/>
+	</g>
+	<g id='mandala-six-horizontal'>
+		<use xlink:href='#motif'/>
+		<use xlink:href='#motif' transform='rotate(60, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(120, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(180, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(240, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(300, 0,0)'/>
+	</g>
+	<g id='mandala-six-vertical'>
+		<use xlink:href='#motif' transform='rotate(30, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(90, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(150, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(210, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(270, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(330, 0,0)'/>
+	</g>
+	<g id='mandala-douze'>
+		<use xlink:href='#motif'/>
+		<use xlink:href='#motif' transform='rotate(30, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(60, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(90, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(120, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(150, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(180, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(210, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(240, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(270, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(300, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(330, 0,0)'/>
+	</g>
+</defs>
+	<circle class='bord' r='300' cx='0' cy='0'/>
+	<g id='mandala-six-vertical'>
+		<use xlink:href='#motif' transform='rotate(30, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(90, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(150, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(210, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(270, 0,0)'/>
+		<use xlink:href='#motif' transform='rotate(330, 0,0)'/>
+	</g>
+</svg>
