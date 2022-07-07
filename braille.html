@@ -7,7 +7,7 @@
 	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
 <style type='text/css'>
-	b-letter {
+	b-letter, b-number {
 		display: inline-grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr 1fr 1fr 2fr;
@@ -17,18 +17,18 @@
 		margin: 0.5em;
 		text-align: center;
 	}
-	b-letter hr {
+	b-letter hr, b-number hr {
 		margin: 0;
 		height: unset;
 		background-color: transparent;
 	}
-	b-letter p {
+	b-letter p, b-number p {
 		margin: 0;
 		padding: 0;
 		grid-column: 1/3;
-		display: none;
+	/*	display: none; */
 	}
-	b-letter hr.full { background-color: var(--text-color, black); }
+	b-letter hr.full, b-number hr.full { background-color: var(--text-color, black); }
 	div#input {
 		display: flex;
 		flex-direction: row;
@@ -41,7 +41,7 @@
 		<div></div>
 	</section>
 	<section id='alphabet'>
-		<h2>l'alpabet en braille</h2>
+		<h2><a href='https://fr.wikipedia.org/wiki/Braille'>l'alpabet en braille</a></h2>
 		<b-letter letter='a'></b-letter>
 		<b-letter letter='b'></b-letter>
 		<b-letter letter='c'></b-letter>
@@ -69,31 +69,95 @@
 		<b-letter letter='y'></b-letter>
 		<b-letter letter='z'></b-letter>
 	</section>
+	<section id='ponctuation'>
+		<h2>ponctuation</h2>
+		<b-letter letter='.'></b-letter>
+		<b-letter letter=':'></b-letter>
+		<b-letter letter=';'></b-letter>
+		<b-letter letter=','></b-letter>
+		<b-letter letter='?'></b-letter>
+		<b-letter letter='!'></b-letter>
+		<b-letter letter='"'></b-letter>
+		<b-letter letter="'"></b-letter>
+		<b-letter letter='('></b-letter>
+		<b-letter letter=')'></b-letter>
+	</section>
+	<section id='num-antoine'>
+		<h2>numérotation antoine</h2>
+		<b-letter letter='nb'></b-letter>
+		<b-letter letter='0'></b-letter>
+		<b-letter letter='1'></b-letter>
+		<b-letter letter='2'></b-letter>
+		<b-letter letter='3'></b-letter>
+		<b-letter letter='4'></b-letter>
+		<b-letter letter='5'></b-letter>
+		<b-letter letter='6'></b-letter>
+		<b-letter letter='7'></b-letter>
+		<b-letter letter='8'></b-letter>
+		<b-letter letter='9'></b-letter>
+	</section>
+	<section id='num-braille'>
+		<h2>numérotation braille</h2>
+		<b-number number='nb'></b-number>
+		<b-number number='0'></b-number>
+		<b-number number='1'></b-number>
+		<b-number number='2'></b-number>
+		<b-number number='3'></b-number>
+		<b-number number='4'></b-number>
+		<b-number number='5'></b-number>
+		<b-number number='6'></b-number>
+		<b-number number='7'></b-number>
+		<b-number number='8'></b-number>
+		<b-number number='9'></b-number>
+	</section>
 </body>
 <script type='text/javascript'>
 const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/><p></p>';
 
 class BrailleLetter extends HTMLElement{
-	constructor(){
-		super();
-		this.letter ="";
-	}
 	connectedCallback(){
 		// appelée après le constructeur
-		this.letter = this.getAttribute ('letter');
+		var letter = this.getAttribute ('letter');
 		this.innerHTML = brickTemplate;
 		var points = this.getElementsByTagName ('hr');
-		if ('aàbcçdefghklmnopqruvxyz'.indexOf (this.letter) >=0) points[0].className = 'full';
-		if ('cdfgijmnpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
-		if ('bfghijlpqrstvw'.indexOf (this.letter) >=0) points[2].className = 'full';
-		if ('deghjnoqrtwyz'.indexOf (this.letter) >=0) points[3].className = 'full';
-		if ('klmnopqrstuvxyz'.indexOf (this.letter) >=0) points[4].className = 'full';
-		if ('uvwxyz'.indexOf (this.letter) >=0) points[5].className = 'full';
+		if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.indexOf (letter) >=0) points[0].className = 'full';
+		if ('cçdéèëfgiîïjmnôœpqstwxy'.indexOf (letter) >=0) points[1].className = 'full';
+		if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.indexOf (letter) >=0) points[2].className = 'full';
+		if ('àdeéghïjnoôqrtûwyz:.!")'.indexOf (letter) >=0) points[3].className = 'full';
+		if ('àçéèklmnopqrstuvxyz;!"\'-()'.indexOf (letter) >=0) points[4].className = 'full';
+		if ('àâçéèêëîïôœuûvwxyz.?"()-'.indexOf (letter) >=0) points[5].className = 'full';
+		// chiffres antoine
+		if (letter == 'nb') points[5].className = 'full';
+		if ('12345678'.indexOf (letter) >=0) points[0].className = 'full';
+		if ('034679'.indexOf (letter) >=0) points[1].className = 'full';
+		if ('26789'.indexOf (letter) >=0) points[2].className = 'full';
+		if ('04578'.indexOf (letter) >=0) points[3].className = 'full';
+		if (letter == '0') points[4].className = 'full';
+		if ('0123456789'.indexOf (letter) >=0) points[5].className = 'full';
 		var letterSimple = this.getElementsByTagName ('p')[0];
-		letterSimple.innerHTML = this.letter;
+		letterSimple.innerHTML = letter;
+	}
+}
+class BrailleNumber extends BrailleLetter{
+	connectedCallback(){
+		// chiffres braille
+		var letter = this.getAttribute ('number');
+		this.innerHTML = brickTemplate;
+		var points = this.getElementsByTagName ('hr');
+		if ('12345678'.indexOf (letter) >=0) points[0].className = 'full';
+		if ('034679nb'.indexOf (letter) >=0) points[1].className = 'full';
+		if ('026789'.indexOf (letter) >=0) points[2].className = 'full';
+		if ('04578nb'.indexOf (letter) >=0) points[3].className = 'full';
+		if (letter == 'nb'){
+			points[4].className = 'full';
+			points[5].className = 'full';
+		}
+		var letterSimple = this.getElementsByTagName ('p')[0];
+		letterSimple.innerHTML = letter;
 	}
 }
 customElements.define ('b-letter', BrailleLetter);
+customElements.define ('b-number', BrailleNumber);
 
 var container = document.getElementsByTagName ('div')[1];
 function writeBraille(){
