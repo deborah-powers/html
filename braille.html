@@ -34,16 +34,30 @@
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
+	section#drag-drop {
+		text-align: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-rows: 6em 4em;
+	}
 	section#drag-drop p {
+		display: inline-block;
 		border: solid 2px var(--bord-color);
 		padding: 0.5em;
-		width: 8em;
-		height: 3em;
 	}
+	section#drag-drop b-letter p { display: none; }
 </style></head><body>
 	<section id='drag-drop'>
-		<p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p><p>i</p><p>j</p><p>k</p><p>l</p><p>m</p>
+		<p onclick='selectLetter(this)'>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p><p>i</p><p>j</p><p>k</p><p>l</p><p>m</p>
 		<p>n</p><p>o</p><p>p</p><p>q</p><p>r</p><p>s</p><p>t</p><p>u</p><p>v</p><p>w</p><p>x</p><p>y</p><p>z</p>
+		<b-letter onclick='selectBraille(this)' letter='a'></b-letter>
+		<b-letter letter='b'></b-letter><b-letter letter='c'></b-letter><b-letter letter='d'></b-letter>
+		<b-letter letter='e'></b-letter><b-letter letter='f'></b-letter><b-letter letter='g'></b-letter><b-letter letter='h'></b-letter>
+		<b-letter letter='i'></b-letter><b-letter letter='j'></b-letter><b-letter letter='k'></b-letter><b-letter letter='l'></b-letter>
+		<b-letter letter='m'></b-letter><b-letter letter='n'></b-letter><b-letter letter='o'></b-letter><b-letter letter='p'></b-letter>
+		<b-letter letter='q'></b-letter><b-letter letter='r'></b-letter><b-letter letter='s'></b-letter><b-letter letter='t'></b-letter>
+		<b-letter letter='u'></b-letter><b-letter letter='v'></b-letter><b-letter letter='w'></b-letter>
+		<b-letter letter='x'></b-letter><b-letter letter='y'></b-letter><b-letter letter='z'></b-letter>
 	</section>
 	<section id='mot'>
 		<h2>entrez une phrase</h2>
@@ -52,73 +66,33 @@
 	</section>
 	<section id='alphabet'>
 		<h2><a href='https://fr.wikipedia.org/wiki/Braille'>l'alpabet en braille</a></h2>
-		<b-letter letter='a'></b-letter>
-		<b-letter letter='b'></b-letter>
-		<b-letter letter='c'></b-letter>
-		<b-letter letter='d'></b-letter>
-		<b-letter letter='e'></b-letter>
-		<b-letter letter='f'></b-letter>
-		<b-letter letter='g'></b-letter>
-		<b-letter letter='h'></b-letter>
-		<b-letter letter='i'></b-letter>
-		<b-letter letter='j'></b-letter>
-		<b-letter letter='k'></b-letter>
-		<b-letter letter='l'></b-letter>
-		<b-letter letter='m'></b-letter>
-		<b-letter letter='n'></b-letter>
-		<b-letter letter='o'></b-letter>
-		<b-letter letter='p'></b-letter>
-		<b-letter letter='q'></b-letter>
-		<b-letter letter='r'></b-letter>
-		<b-letter letter='s'></b-letter>
-		<b-letter letter='t'></b-letter>
-		<b-letter letter='u'></b-letter>
-		<b-letter letter='v'></b-letter>
-		<b-letter letter='w'></b-letter>
-		<b-letter letter='x'></b-letter>
-		<b-letter letter='y'></b-letter>
-		<b-letter letter='z'></b-letter>
+		<b-letter letter='a'></b-letter><b-letter letter='b'></b-letter><b-letter letter='c'></b-letter><b-letter letter='d'></b-letter>
+		<b-letter letter='e'></b-letter><b-letter letter='f'></b-letter><b-letter letter='g'></b-letter><b-letter letter='h'></b-letter>
+		<b-letter letter='i'></b-letter><b-letter letter='j'></b-letter><b-letter letter='k'></b-letter><b-letter letter='l'></b-letter>
+		<b-letter letter='m'></b-letter><b-letter letter='n'></b-letter><b-letter letter='o'></b-letter><b-letter letter='p'></b-letter>
+		<b-letter letter='q'></b-letter><b-letter letter='r'></b-letter><b-letter letter='s'></b-letter><b-letter letter='t'></b-letter>
+		<b-letter letter='u'></b-letter><b-letter letter='v'></b-letter><b-letter letter='w'></b-letter>
+		<b-letter letter='x'></b-letter><b-letter letter='y'></b-letter><b-letter letter='z'></b-letter>
 	</section>
 	<section id='ponctuation'>
 		<h2>ponctuation</h2>
-		<b-letter letter='.'></b-letter>
-		<b-letter letter=':'></b-letter>
-		<b-letter letter=';'></b-letter>
-		<b-letter letter=','></b-letter>
-		<b-letter letter='?'></b-letter>
-		<b-letter letter='!'></b-letter>
-		<b-letter letter='"'></b-letter>
-		<b-letter letter="'"></b-letter>
-		<b-letter letter='('></b-letter>
-		<b-letter letter=')'></b-letter>
+		<b-letter letter='.'></b-letter><b-letter letter=':'></b-letter><b-letter letter=';'></b-letter><b-letter letter=','></b-letter>
+		<b-letter letter='?'></b-letter><b-letter letter='!'></b-letter><b-letter letter='"'></b-letter>
+		<b-letter letter="'"></b-letter><b-letter letter='('></b-letter><b-letter letter=')'></b-letter>
 	</section>
 	<section id='num-antoine'>
 		<h2>numérotation antoine</h2>
 		<b-letter letter='nb'></b-letter>
-		<b-letter letter='0'></b-letter>
-		<b-letter letter='1'></b-letter>
-		<b-letter letter='2'></b-letter>
-		<b-letter letter='3'></b-letter>
-		<b-letter letter='4'></b-letter>
-		<b-letter letter='5'></b-letter>
-		<b-letter letter='6'></b-letter>
-		<b-letter letter='7'></b-letter>
-		<b-letter letter='8'></b-letter>
-		<b-letter letter='9'></b-letter>
+		<b-letter letter='0'></b-letter><b-letter letter='1'></b-letter><b-letter letter='2'></b-letter><b-letter letter='3'></b-letter>
+		<b-letter letter='4'></b-letter><b-letter letter='5'></b-letter><b-letter letter='6'></b-letter>
+		<b-letter letter='7'></b-letter><b-letter letter='8'></b-letter><b-letter letter='9'></b-letter>
 	</section>
 	<section id='num-braille'>
 		<h2>numérotation braille</h2>
 		<b-number number='nb'></b-number>
-		<b-number number='0'></b-number>
-		<b-number number='1'></b-number>
-		<b-number number='2'></b-number>
-		<b-number number='3'></b-number>
-		<b-number number='4'></b-number>
-		<b-number number='5'></b-number>
-		<b-number number='6'></b-number>
-		<b-number number='7'></b-number>
-		<b-number number='8'></b-number>
-		<b-number number='9'></b-number>
+		<b-number number='0'></b-number><b-number number='1'></b-number><b-number number='2'></b-number><b-number number='3'></b-number>
+		<b-number number='4'></b-number><b-number number='5'></b-number><b-number number='6'></b-number>
+		<b-number number='7'></b-number><b-number number='8'></b-number><b-number number='9'></b-number>
 	</section>
 </body>
 <script type='text/javascript'>
@@ -179,6 +153,13 @@ function writeBraille(){
 		letter.connectedCallback();
 		container.appendChild (letter);
 	}
+}
+var letter = null;
+var braille = null;
+function selectLetter (letterTmp){ letter = letterTmp; }
+function selectBraille (brailleTmp){
+	if (letter && letter != undefined) letter.appendChild (brailleTmp);
+	braille = brailleTmp;
 }
 </script>
 </html>
