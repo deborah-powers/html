@@ -9,8 +9,12 @@
 	<script type='text/javascript' src='/var/www/html/site-dp/library-js/text.js'></script>
 	<script type='text/javascript' src='/var/www/html/site-dp/library-js/list.js'></script>
 	<script type='text/javascript' src='/var/www/html/site-dp/library-js/file.js'></script>
-	<script type='text/javascript' src='personne.js'></script>
+	<script type='text/javascript' src='contacts.js'></script>
 <style type='text/css'>
+	section#liste {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
 </style></head><body>
 	<h1>mes contacts</h1>
 	<section>
@@ -19,15 +23,17 @@
 		<p>par nom</p><input type='text' id='nom'/>
 		<button onclick='rechercher()'>rechercher</button>
 	</section>
-	<section></section>
-	<template>
+	<section id='liste'></section>
+	<template><div>
 		<h2>$prenom $nom, $surnom</h2>
 		<p>couleurs préférées: $couleurs</p>
 		<p>aime: $aime</p>
 		<p>n'aime pas: $deteste</p>
 		<div><h3>infos</h3><p>$infos</p></div>
 		<div><h3>calendrier</h3><p>$evenementsDate: $evenementsNom</p></div>
-	</template>
+		<p>courriels: $courriels</p>
+		<p>numéros: $numeros</p>
+	</div></template>
 </body><script type='text/javascript'>
 	var personneHtml = document.getElementsByTagName ('template')[0].innerHTML;
 	var personneListTag = document.getElementsByTagName ('section')[1];

@@ -75,6 +75,8 @@ class Personne{
 		template = template.replace ('$couleurs', this.couleurs);
 		template = template.replace ('$aime', this.aime);
 		template = template.replace ('$deteste', this.deteste);
+		template = template.replace ('$numeros', this.numeros);
+		template = template.replace ('$courriels', this.courriels);
 		// écrire les infos
 		if (template.contain ('$infos')){
 			var f= template.index ('$infos');
@@ -125,7 +127,7 @@ function comparerPersonne (personneA, personneB){
 class PersonneList extends Array{
 	constructor(){
 		super();
-		this.fichier = 'b/personne.txt';
+		this.fichier = 'contacts.txt';
 	}
 	sortPersonne = function(){ this.sort (comparerPersonne); }
 	trouverParRelation = function (relation){
@@ -138,8 +140,8 @@ class PersonneList extends Array{
 		for (var p=0; p< this.length; p++) if (this[p].nom.contain (nom) || this[p].prenom.contain (nom) || this[p].surnom.contain (nom)) newList.push (this[p]);
 		return newList;
 	}
+	trier = function(){ this.sort (comparerPersonne); }
 	read = function(){
-		this.fichier = this.fichier.shortcut();
 		var resText = fromFile (this.fichier);
 		resText = resText.clean();
 		var resList = resText.split (' ======');
@@ -151,6 +153,7 @@ class PersonneList extends Array{
 			personne.fromText (resList[p]);
 			this.push (personne);
 		}
+		this.trier();
 	}
 	toTemplate (template){
 		var personneList ="";
