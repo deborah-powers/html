@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head>
+	<title>mes contacts</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='/var/www/html/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='/var/www/html/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='/var/www/html/site-dp/library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='/var/www/html/site-dp/library-js/text.js'></script>
+	<script type='text/javascript' src='/var/www/html/site-dp/library-js/list.js'></script>
+	<script type='text/javascript' src='/var/www/html/site-dp/library-js/file.js'></script>
+	<script type='text/javascript' src='personne.js'></script>
+<style type='text/css'>
+</style></head><body>
+	<h1>mes contacts</h1>
+	<section>
+		<h2>rechercher des personnes</h2>
+		<p>par relation</p><input type='text' id='relation'/>
+		<p>par nom</p><input type='text' id='nom'/>
+		<button onclick='rechercher()'>rechercher</button>
+	</section>
+	<section></section>
+	<template>
+		<h2>$prenom $nom, $surnom</h2>
+		<p>couleurs préférées: $couleurs</p>
+		<p>aime: $aime</p>
+		<p>n'aime pas: $deteste</p>
+		<div><h3>infos</h3><p>$infos</p></div>
+		<div><h3>calendrier</h3><p>$evenementsDate: $evenementsNom</p></div>
+	</template>
+</body><script type='text/javascript'>
+	var personneHtml = document.getElementsByTagName ('template')[0].innerHTML;
+	var personneListTag = document.getElementsByTagName ('section')[1];
+	var pList = new PersonneList();
+	pList.read();
+	function rechercher(){
+		var query = document.getElementById ('relation').value;
+		var newList = null;
+		if (query && query != undefined) newList = pList.trouverParRelation (query);
+		else{
+			query = document.getElementById ('nom').value;
+			if (query && query != undefined) newList = pList.trouverParNom (query);
+		}
+		var pText ="";
+		if (newList == null) pText = pList.toTemplate (personneHtml);
+		else pText = newList.toTemplate (personneHtml);
+		personneListTag.innerHTML = pText;
+	}
+	var pText = pList.toTemplate (personneHtml);
+	personneListTag.innerHTML = pText;
+</script></html>
