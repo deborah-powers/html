@@ -155,9 +155,15 @@ class PersonneList extends Array{
 		}
 		this.trier();
 	}
-	toTemplate (template){
+	toTemplate = function (template){
 		var personneList ="";
 		for (var p=0; p< this.length; p++) personneList = personneList + this[p].toTemplate (template);
 		return personneList;
+	}
+	listerRelations = function(){
+		var relationList =[];
+		for (var p=0; p< this.length; p++)
+			if (! relationList.contain (this[p].relation)) relationList.push (this[p].relation);
+		return relationList;
 	}
 }

@@ -39,6 +39,7 @@
 	var personneListTag = document.getElementsByTagName ('section')[1];
 	var pList = new PersonneList();
 	pList.read();
+	pList.listerRelations();
 	function rechercher(){
 		var query = document.getElementById ('relation').value;
 		var newList = null;
