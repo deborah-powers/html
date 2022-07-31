@@ -17,47 +17,55 @@ Array.prototype.deep = function(){
 	}
 	else return 1;
 }
-function printVarUnique (varName, varValue){
-	if (varValue.constructor.name == 'Array'){
-		// récupérer le tag de premier niveau
-		var d= document.body.innerHTML.index ('(('+ varName +'))');
-		var f=d;
-		var deep = varValue.deep();
-		while (deep >0){
-			f= document.body.innerHTML.index ('>',f) +1;
-			d= document.body.innerHTML.rindex ('<',d-1);
-			deep = deep -1;
-		}
-		var template = document.body.innerHTML.slice (d,f);
-		// gérer la profondeur
-		for (var l= varValue.length -1; l>0; l--){
-			printVarUnique (varName, varValue[l]);
-			document.body.innerHTML = document.body.innerHTML.insert (template, d);
-		}
-		printVarUnique (varName, varValue[0]);
+Array.prototype.print = function (varName, text){
+	console.log (text);
+	// récupérer le tag de premier niveau
+	var d= text.index ('(('+ varName +'))');
+	var f=d;
+	var deep = this.deep();
+	while (deep >0){
+		f= text.index ('>',f) +1;
+		d= text.rindex ('<',d-1);
+		deep = deep -1;
 	}
-	if (varValue.constructor.name == 'Object'){
-		var d= document.body.innerHTML.index ('(('+ varName +'))');
-		var f= document.body.innerHTML.index ('>',d) +1;
-		d= document.body.innerHTML.rindex ('<',d);
-		var template = document.body.innerHTML.slice (d,f);
-		document.body.innerHTML = document.body.innerHTML.slice (0,d) + document.body.innerHTML.slice (f);
+	var template = text.slice (d,f);
+	var message = null;
+	text = text.slice (0,d) + text.slice (f);
+	// gérer la profondeur
+	for (var l= this.length -1; l>=0; l--){
+		message = template.printVarUnique (varName, this[l]);
+		text = text.insert (message, d);
+	}
+	return text;
+}
+Object.prototype.print = function (varName, text){
+}
+String.prototype.printVarUnique = function (varName, varValue){
+	var text = null;
+	if (varValue.constructor.name == 'Array') text = varValue.print (varName, document.body.innerHTML);
+	else if (varValue.constructor.name == 'Object'){
+		var d= this.index ('(('+ varName +'))');
+		var f= this.index ('>',d) +1;
+		d= this.rindex ('<',d);
+		var template = this.slice (d,f);
+		var text = this.slice (0,d) + this.slice (f);
 		for (var l in varValue){
-			document.body.innerHTML = document.body.innerHTML.insert (template, d);
-			printVarUnique (varName, varValue[l]);
+			text = text.insert (template, d);
+			text = text.printVarUnique (varName, varValue[l]);
 		}
 	}
-	else document.body.innerHTML = document.body.innerHTML.replace ('(('+ varName +'))', varValue);
+	else text = this.replace ('(('+ varName +'))', varValue);
+	return text;
 }
 function printVarList (varList){
 	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
 	for (var v=0; v< varList.length; v++){
-		if (! varList[v].contain ('.')) printVarUnique (varList[v], this[varList[v]]);
+		if (! varList[v].contain ('.')) document.body.innerHTML = document.body.innerHTML.printVarUnique (varList[v], this[varList[v]]);
 		else{
 			var listName = varList[v].split ('.');
 			var varValue = this[listName[0]][listName[1]];
 			for (var w=2; w< listName.length; w++) varValue = varValue[listName[w]];
-			printVarUnique (varList[v], varValue);
+			document.body.innerHTML = document.body.innerHTML.printVarUnique (varList[v], varValue);
 		}
 	}
 }

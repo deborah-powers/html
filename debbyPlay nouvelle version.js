@@ -36,7 +36,7 @@ function printVarUnique (varName, varValue){
 		}
 		printVarUnique (varName, varValue[0]);
 	}
-	if (varValue.constructor.name == 'Object'){
+	else if (varValue.constructor.name == 'Object'){
 		var d= document.body.innerHTML.index ('(('+ varName +'))');
 		var f= document.body.innerHTML.index ('>',d) +1;
 		d= document.body.innerHTML.rindex ('<',d);
