@@ -2,13 +2,13 @@
 	<title>mes contacts</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='_blank'>
-	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='../site-dp/library-js/text.js'></script>
-	<script type='text/javascript' src='../site-dp/library-js/list.js'></script>
-	<script type='text/javascript' src='../site-dp/library-js/file.js'></script>
+	<base target='blank'>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='../../site-dp/library-js/text.js'></script>
+	<script type='text/javascript' src='../../site-dp/library-js/list.js'></script>
+	<script type='text/javascript' src='../../site-dp/library-js/file.js'></script>
 	<script type='text/javascript' src='contacts.js'></script>
 <style type='text/css'>
 	section#liste {
@@ -25,21 +25,18 @@
 	</section>
 	<section id='liste'></section>
 	<template><div>
-		<h2>$prenom $nom, $surnom</h2>
-		<p>couleurs préférées: $couleurs</p>
-		<p>aime: $aime</p>
-		<p>n'aime pas: $deteste</p>
-		<div><h3>infos</h3><p>$infos</p></div>
-		<div><h3>calendrier</h3><p>$evenementsDate: $evenementsNom</p></div>
-		<p>courriels: $courriels</p>
-		<p>numéros: $numeros</p>
+		<h2><a href='detail.html?prenom=$prenom&nom=$nom'>$prenom $nom, $surnom</a></h2>
+		<p>métier: $job</p>
+		<p>relation: $relation</p>
 	</div></template>
 </body><script type='text/javascript'>
 	var personneHtml = document.getElementsByTagName ('template')[0].innerHTML;
 	var personneListTag = document.getElementsByTagName ('section')[1];
+
 	var pList = new PersonneList();
 	pList.read();
 	pList.listerRelations();
+
 	function rechercher(){
 		var query = document.getElementById ('relation').value;
 		var newList = null;
@@ -53,6 +50,7 @@
 		else pText = newList.toTemplate (personneHtml);
 		personneListTag.innerHTML = pText;
 	}
+
 	var pText = pList.toTemplate (personneHtml);
 	personneListTag.innerHTML = pText;
 </script></html>

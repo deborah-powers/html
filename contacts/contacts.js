@@ -30,7 +30,7 @@ class Personne{
 		this.job ="";
 		this.id =0;
 	}
-	fromText (text){
+	read (text){
 		this.nom = text.sliceWords ('nom:\t', '\n');
 		this.prenom = text.sliceWords ('prénom:\t', '\n');
 		this.relation = text.sliceWords ('relation:\t', '\n');
@@ -72,11 +72,13 @@ class Personne{
 		template = template.replace ('$nom', this.nom);
 		template = template.replace ('$prenom', this.prenom);
 		template = template.replace ('$surnom', this.surnom);
+		template = template.replace ('$relation', this.relation);
 		template = template.replace ('$couleurs', this.couleurs);
 		template = template.replace ('$aime', this.aime);
 		template = template.replace ('$deteste', this.deteste);
 		template = template.replace ('$numeros', this.numeros);
 		template = template.replace ('$courriels', this.courriels);
+		template = template.replace ('$job', this.job);
 		// écrire les infos
 		if (template.contain ('$infos')){
 			var f= template.index ('$infos');
@@ -150,7 +152,7 @@ class PersonneList extends Array{
 		var personne = null;
 		for (var p=0; p< resList.length; p++){
 			personne = new Personne();
-			personne.fromText (resList[p]);
+			personne.read (resList[p]);
 			this.push (personne);
 		}
 		this.trier();
