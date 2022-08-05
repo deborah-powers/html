@@ -52,44 +52,15 @@ String.prototype.printVarUnique = function (varName, varValue){
 	else text = this.replace ('(('+ varName +'))', varValue);
 	return text;
 }
-function getValueFromName (varName){
-	var varValue = null;
-	if (! varName.contain ('.')) varValue = this[varName];
-	else{
-		var listName = varName.split ('.');
-		varValue = this[listName[0]][listName[1]];
-		for (var w=2; w< listName.length; w++) varValue = varValue[listName[w]];
-	}
-	if (varValue == undefined) varValue = null;
-	return varValue;
-}
-function setValueFromName (varName, varValue){
-	if (varValue == undefined) varValue = null;
-	if (! varName.contain ('.')) this[varName] = varValue;
-	else{
-		var listName = varName.split ('.');
-		// if (listName.length ==2) this[listName[0]][listName[1]] = varValue;
-		console.log (this[listName[0]],);
-		varName = this[listName[0]];
-		for (var w=1; w< listName.length -1; w++) varName = varName[listName[w]];
-		varName = varValue;
-	}
-}
 function printVarList (varList){
 	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
 	for (var v=0; v< varList.length; v++){
-		var varValue = getValueFromName (varList[v]);
-		document.body.innerHTML = document.body.innerHTML.printVarUnique (varList[v], varValue);
-	}
-	var inputList = document.getElementsByTagName ('input');
-	for (var i=0; i< inputList.length; i++){
-		var varValue = getValueFromName (inputList[i].name);
-		if (varValue){
-			inputList[i].value = varValue;
-			inputList[i].addEventListener ('change', function (event){
-				setValueFromName (event.target.name, event.target.value);
-				console.log (getValueFromName (event.target.name));
-			});
+		if (! varList[v].contain ('.')) document.body.innerHTML = document.body.innerHTML.printVarUnique (varList[v], this[varList[v]]);
+		else{
+			var listName = varList[v].split ('.');
+			var varValue = this[listName[0]][listName[1]];
+			for (var w=2; w< listName.length; w++) varValue = varValue[listName[w]];
+			document.body.innerHTML = document.body.innerHTML.printVarUnique (varList[v], varValue);
 		}
 	}
 }

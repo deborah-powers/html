@@ -22,6 +22,10 @@
 	<p>une entrée de dictionnaire imbriquée: ((dico.c.d))</p>
 	<p>deuxième occurence de mon message: ((message))...</p>
 	<p>deuxième affichage de ma liste: ((liste))</p>
+	<input type='text' name='paramUtilisateur'>
+	<input type='text' name='paUtiliteur'>
+	<input type='text' name='dico.b'>
+	<input type='text' name='dico.c.d'>
 </body><script type='text/javascript'>
 	// les données
 	var message = 'coucou, je suis un simple message';
@@ -29,6 +33,7 @@
 	var listeImbriquee =[ [4,5,6], [7,8,9] ];
 	var listeImbriqueeBis =[[ [10,11,12], [13,14,15] ], [ [16,17,18], [19,20,21] ]]
 	var dico ={ a: 'lettre a', b: 'lettre b', c: { d: 'lettres c et d' }};
+	var paramUtilisateur = 'champ de texte';
 	// l'affichage
 	listVar();
 	printVarList (dpVarList);
