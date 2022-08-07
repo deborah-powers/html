@@ -12,6 +12,10 @@
 </head><body>
 	<h1>debby play</h1>
 	<p>énième version de ma copie d'angular js</p>
+	<h2>les conditions</h2>
+	<p if='condiTrue'>coucou</p>
+	<p if='condiFalse'>loulou</p>
+	<h2>afficher des variables</h2>
 	<p>mon message: ((message))...</p>
 	<p>une liste: ((liste))</p>
 	<p>une liste imbriquée:<span> ((listeImbriquee)),</span></p>
@@ -22,10 +26,12 @@
 	<p>une entrée de dictionnaire imbriquée: ((dico.c.d))</p>
 	<p>deuxième occurence de mon message: ((message))...</p>
 	<p>deuxième affichage de ma liste: ((liste))</p>
+	<h2>les inputs</h2>
 	<input type='text' name='paramUtilisateur'>
 	<input type='text' name='paUtiliteur'>
 	<input type='text' name='dico.b'>
 	<input type='text' name='dico.c.d'>
+	<textarea name='textUtilisateur'></textarea>
 </body><script type='text/javascript'>
 	// les données
 	var message = 'coucou, je suis un simple message';
@@ -34,7 +40,9 @@
 	var listeImbriqueeBis =[[ [10,11,12], [13,14,15] ], [ [16,17,18], [19,20,21] ]]
 	var dico ={ a: 'lettre a', b: 'lettre b', c: { d: 'lettres c et d' }};
 	var paramUtilisateur = 'champ de texte';
+	var textUtilisateur = 'texte sur plusieurs lignes';
+	var condiTrue = true;
+	var condiFalse = false;
 	// l'affichage
-	listVar();
-	printVarList (dpVarList);
+	dpInit();
 </script></html>
