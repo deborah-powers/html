@@ -89,8 +89,17 @@ function printInput (type){
 function printCondition(){
 	if (document.body.innerHTML.contain ('if=')){
 		var condList = document.body.innerHTML.split ('if=');
-		console.log (condList);
-		for (var c=1; c< condList.length; c++)
+		var f=-1;
+		var afficher = true;
+		var condition = null;
+		for (var c=1; c< condList.length; c++){
+			f= condList[c].index ('"', 2);
+			condition = condList[c].slice (1,f);
+			if (condition.contain ('&quot;')) condition = condition.replace ('&quot;', "'");
+			afficher = eval (condition);
+			if (! afficher) condList[c-1] +" class='hidden'";
+		}
+		document.body.innerHTML = condList.join ('if=');
 	}
 }
 function printVarList(){
