@@ -94,7 +94,17 @@ HTMLElement.prototype.printCondition = function(){
 	}
 	else for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
 }
+
+HTMLElement.prototype.findVar = function(){
+	if (this.innerHTML.contain ('((')){
+		if (this.children.length ==0) console.log (this.tagName, this.innerHTML);
+		else for (var c=0; c< this.children.length; c++){
+			console.log (this.tagName, this.children, this.childNodes);
+			this.children[c].findVar();
+		}
+}}
 function printVarList(){
+	document.body.findVar();
 	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
 	for (var v=0; v< dpVarList.length; v++){
 		var varValue = getValueFromName (dpVarList[v]);
