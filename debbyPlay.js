@@ -86,21 +86,13 @@ function printInput (type){
 			inputList[i].addEventListener ('change', function (event){ event.target.reload(); });
 }}}
 // les conditions
-function printCondition(){
-	if (document.body.innerHTML.contain ('if=')){
-		var condList = document.body.innerHTML.split ('if=');
-		var f=-1;
-		var afficher = true;
-		var condition = null;
-		for (var c=1; c< condList.length; c++){
-			f= condList[c].index ('"', 2);
-			condition = condList[c].slice (1,f);
-			if (condition.contain ('&quot;')) condition = condition.replace ('&quot;', "'");
-			afficher = eval (condition);
-			if (! afficher) condList[c-1] +" class='hidden'";
-		}
-		document.body.innerHTML = condList.join ('if=');
+HTMLElement.prototype.printCondition = function(){
+	if (this.getAttribute ('if')){
+		var printBlock = eval (this.getAttribute ('if'));
+		if (printBlock) for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
+		else this.style.display = 'none';
 	}
+	else for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
 }
 function printVarList(){
 	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
@@ -110,7 +102,7 @@ function printVarList(){
 	}
 	printInput ('input');
 	printInput ('textarea');
-	printCondition();
+	document.body.printCondition();
 }
 function dpInit(){
 	bodyTemplate = document.body.innerHTML;
