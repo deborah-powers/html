@@ -1,7 +1,9 @@
-// dépendence: text.js
+/*
+dépendence:		text.js
+utilisation:	dpInit();
+*/
 var dpVarList =[];
 var bodyTemplate ="";
-
 
 Array.prototype.deep = function(){
 	if (this.length >0 && this[0].constructor.name == 'Array'){
@@ -94,13 +96,13 @@ HTMLElement.prototype.printCondition = function(){
 	}
 	else for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
 }
-
 HTMLElement.prototype.findVar = function(){
+	console.log (this.tagName);
 	if (this.innerHTML.contain ('((')){
 		if (this.children.length ==0) console.log (this.tagName, this.innerHTML);
-		else for (var c=0; c< this.children.length; c++){
-			console.log (this.tagName, this.children, this.childNodes);
-			this.children[c].findVar();
+		else{
+			for (var c=0; c< this.children.length; c++) this.children[c].findVar();
+			if (this.children.length < this.childNodes.length) console.log ('il y a du texte')
 		}
 }}
 function printVarList(){
