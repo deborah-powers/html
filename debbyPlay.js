@@ -15,6 +15,7 @@ Array.prototype.deep = function(){
 }
 String.prototype.printVarUnique = function (varName, varValue){
 	var text = null;
+	console.log (varName, varValue);
 	if (varValue.constructor.name == 'Array'){
 		// récupérer le tag de premier niveau
 		var d= this.index ('(('+ varName +'))');
@@ -97,18 +98,20 @@ HTMLElement.prototype.printCondition = function(){
 	else for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
 }
 HTMLElement.prototype.findVar = function(){
-	console.log (this.tagName);
 	if (this.innerHTML.contain ('((')){
-		if (this.children.length ==0) console.log (this.tagName, this.innerHTML);
-		else{
+		if (this.children.length >0){
 			for (var c=0; c< this.children.length; c++) this.children[c].findVar();
-			if (this.children.length < this.childNodes.length) console.log ('il y a du texte')
+			if (this.children.length < this.childNodes.length) for (var c=0; c< this.childNodes.length; c++)
+				if (this.childNodes[c].constructor.name == 'Text' && this.childNodes[c].textContent.contain ('(('))
+					console.log (this.childNodes[c].textContent);
 		}
+	//	else{ console.log (this.tagName, this.innerHTML); }
 }}
 function printVarList(){
-	document.body.findVar();
+	// document.body.findVar();
 	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
 	for (var v=0; v< dpVarList.length; v++){
+		console.log (dpVarList[v]);
 		var varValue = getValueFromName (dpVarList[v]);
 		document.body.innerHTML = document.body.innerHTML.printVarUnique (dpVarList[v], varValue);
 	}
@@ -121,6 +124,8 @@ function dpInit(){
 	document.body.innerHTML = document.body.innerHTML.replace ('\n');
 	document.body.innerHTML = document.body.innerHTML.replace ('\t');
 	document.body.innerHTML = document.body.innerHTML.clean();
+	document.body.innerHTML = document.body.innerHTML.replace ('(( ', '((');
+	document.body.innerHTML = document.body.innerHTML.replace (' ))', '))');
 	var bodyText = document.body.innerHTML.replace ('))', '((');
 	var bodyList = bodyText.split ('((');
 	for (var v=1; v< bodyList.length; v=v+2) dpVarList.push (bodyList[v]);

@@ -78,6 +78,7 @@ class Personne{
 		template = template.replace ('$deteste', this.deteste);
 		template = template.replace ('$numeros', this.numeros);
 		template = template.replace ('$courriels', this.courriels);
+		template = template.replace ('$adresse', this.adresse);
 		template = template.replace ('$job', this.job);
 		// écrire les infos
 		if (template.contain ('$infos')){
