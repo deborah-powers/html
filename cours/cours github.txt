@@ -102,17 +102,14 @@ ma photo en haut à droite de ma page / menu déroulant / settings
 dans le menu gauche, cliquer sur developer settings / personnal acces token
 create new token
 
-12/27	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
-12/29	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
-12/30	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
-01/04	boulot	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
+me donner les droits
 
 ne pas avoir à retaper le mot de passe à chaque fois
 C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
-	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
+	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
 
-ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
+ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
 ======================== erreurs ========================
 
