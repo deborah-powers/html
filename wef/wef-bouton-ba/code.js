@@ -1,4 +1,4 @@
-var cssCode = 'body { background-color: yellow; }';
+const cssCode = 'body { background-color: yellow; }';
 var cssInserre = false;
 
 browser.browserAction.onClicked.addListener (function(){
@@ -8,6 +8,11 @@ browser.browserAction.onClicked.addListener (function(){
 	}
 	else{
 		browser.tabs.insertCSS ({ code: cssCode });
+		/*
+		browser.tabs.insertCSS ({ file: cssFile });
+		browser.tabs.executeScript ({ code: jsCode });
+		browser.tabs.executeScript ({ file: jsFile });
+		*/
 		cssInserre = true;
 	}
 });

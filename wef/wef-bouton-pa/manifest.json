@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "wef avec bouton",
+	"version": "1.0",
+	"description": "we pour firefox qui se déclenche au clique sur un bouton",
+	"icons": { "48": "icon-128.png" },
+	"background": { "scripts": [ "code.js" ]},
+	"permissions": [ "activeTab", "tabs" ],
+	"page_action": {
+		"default_icon": "icon-128.png",
+		"default_title": "wef avec bouton"
+	}
+}
