@@ -98,6 +98,22 @@ modifier /home/deborah/.bashrc
 ajouter
 # mes alias perso
 alias truc="ma commande sans paramètres"
+actionAvecParam(){
+    ma commande avec des paramètres, $1 et $2;
+    cd $1;
+}
+actionAvecParam /my/path/
+
+alias goh="cd /var/www/html/html/"
+alias gos="cd /var/www/html/site-dp/"
+alias gob="cd /home/deborah/Bureau/"
+alias gop="cd /home/deborah/Bureau/python/"
+alias goph="cd /home/deborah/Bureau/photos/"
+alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
+alias pull="git pull origin master"
+alias push="git push origin master"
+
+
 
 
 ====== désinstaller une application ======
