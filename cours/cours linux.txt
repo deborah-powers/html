@@ -109,7 +109,7 @@ alias gos="cd /var/www/html/site-dp/"
 alias gob="cd /home/deborah/Bureau/"
 alias gop="cd /home/deborah/Bureau/python/"
 alias goph="cd /home/deborah/Bureau/photos/"
-alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
+alias cmmt="git add .; git commit -m 'date +`%m/%d %H:%M`'"
 alias pull="git pull origin master"
 alias push="git push origin master"
 
