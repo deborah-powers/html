@@ -1,7 +1,5 @@
 divers/
-*links-perso.json
-*liens-perso.html
-*contacts.txt
+*liens-*
 *.ico
 *.log
 *.zip
