@@ -15,6 +15,7 @@ Array.prototype.deep = function(){
 }
 String.prototype.printVarUnique = function (varName, varValue){
 	var text = null;
+	console.log (varName, varValue);
 	if (varValue.constructor.name == 'Array'){
 		// récupérer le tag de premier niveau
 		var d= this.index ('(('+ varName +'))');
@@ -104,10 +105,13 @@ HTMLElement.prototype.findVar = function(){
 				if (this.childNodes[c].constructor.name == 'Text' && this.childNodes[c].textContent.contain ('(('))
 					console.log (this.childNodes[c].textContent);
 		}
+	//	else{ console.log (this.tagName, this.innerHTML); }
 }}
 function printVarList(){
 	// document.body.findVar();
+	// for (var n=0; n< document.body.childNodes.length; n++) console.log (n, document.body.childNodes[n].textContent);
 	for (var v=0; v< dpVarList.length; v++){
+		console.log (dpVarList[v]);
 		var varValue = getValueFromName (dpVarList[v]);
 		document.body.innerHTML = document.body.innerHTML.printVarUnique (dpVarList[v], varValue);
 	}
@@ -115,74 +119,15 @@ function printVarList(){
 	printInput ('textarea');
 	document.body.printCondition();
 }
-HTMLElement.prototype.printVarUnique_va = function (varName){
-	var varValue = getValueFromName (varName);
-	var text = null;
-	if (varValue.constructor.name == 'Array'){
-		// récupérer le tag de premier niveau
-		var d= this.innerHTML.index ('(('+ varName +'))');
-		var f=d;
-		var deep = varValue.deep();
-		while (deep >0){
-			f= this.innerHTML.index ('>',f) +1;
-			d= this.innerHTML.rindex ('<',d-1);
-			deep = deep -1;
-		}
-		var template = this.innerHTML.slice (d,f);
-		var message = null;
-		text = this.innerHTML.slice (0,d) + this.innerHTML.slice (f);
-		// gérer la profondeur
-		for (var l= varValue.length -1; l>=0; l--){
-			message = template.printVarUnique (varName, varValue[l]);
-			text = text.insert (message, d);
-		}
-		this.innerHTML = text;
-	}
-	else if (varValue.constructor.name == 'Object'){
-		var d= this.innerHTML.index ('(('+ varName +'))');
-		var f= this.innerHTML.index ('>',d) +1;
-		d= this.innerHTML.rindex ('<',d);
-		var template = this.innerHTML.slice (d,f);
-		var text = this.innerHTML.slice (0,d) + this.innerHTML.slice (f);
-		for (var l in varValue) if (typeof (varValue[l]) != 'function'){
-			text = text.insert (template, d);
-			text = text.printVarUnique (varName, varValue[l]);
-		}
-		this.innerHTML = text;
-	}
-	else this.innerHTML = this.innerHTML.replace ('(('+ varName +'))', varValue);
-}
-HTMLElement.prototype.printVarUnique = function (varName){
-	var varValue = getValueFromName (varName);
-	if (varValue.constructor.name == 'Array'){
-		var deep = varValue.deep();
-		var container = this;
-		while (deep >1){
-			container = container.parentElement;
-			deep = deep -1;
-		}
-		console.log (varName, this.tagName, container.tagName);
-	}
-	else this.innerHTML = this.innerHTML.replace ('((' + varName + '))', 'toto');
-}
-HTMLElement.prototype.printVarList = function(){
-	if (this.innerHTML.contain ('((')){
-		for (var c=0; c< this.children.length; c++)
-			if (this.children[c].innerHTML.contain ('((')) this.children[c].printVarList();
-		if (this.innerHTML.contain ('((')) for (var v=0; v< dpVarList.length; v++) this.printVarUnique (dpVarList[v]);
-}}
-
 function dpInit(){
-	// nettoyer le texte
+	bodyTemplate = document.body.innerHTML;
 	document.body.innerHTML = document.body.innerHTML.replace ('\n');
 	document.body.innerHTML = document.body.innerHTML.replace ('\t');
 	document.body.innerHTML = document.body.innerHTML.clean();
-	bodyTemplate = document.body.innerHTML;
 	document.body.innerHTML = document.body.innerHTML.replace ('(( ', '((');
 	document.body.innerHTML = document.body.innerHTML.replace (' ))', '))');
-	// récupérer le nom des variables
 	var bodyText = document.body.innerHTML.replace ('))', '((');
 	var bodyList = bodyText.split ('((');
 	for (var v=1; v< bodyList.length; v=v+2) dpVarList.push (bodyList[v]);
-	document.body.printVarList();
+	printVarList();
 }
