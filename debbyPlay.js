@@ -84,7 +84,9 @@ function printInput (type){
 	for (var i=0; i< inputList.length; i++){
 		var varValue = getValueFromName (inputList[i].name);
 		if (varValue){
-			inputList[i].value = varValue;
+			if (inputList[i].tagName === 'TEXTAREA' || ! 'radio checkbox'.contain (inputList[i].getAttribute ('type')))
+				inputList[i].value = varValue;
+			else if (inputList[i].value === varValue && inputList[i].type === 'radio') inputList[i].checked = true;
 			inputList[i].addEventListener ('change', function (event){ event.target.reload(); });
 }}}
 // les conditions
@@ -101,8 +103,7 @@ HTMLElement.prototype.findVar = function(){
 		if (this.children.length >0){
 			for (var c=0; c< this.children.length; c++) this.children[c].findVar();
 			if (this.children.length < this.childNodes.length) for (var c=0; c< this.childNodes.length; c++)
-				if (this.childNodes[c].constructor.name == 'Text' && this.childNodes[c].textContent.contain ('(('))
-					console.log (this.childNodes[c].textContent);
+				if (this.childNodes[c].constructor.name == 'Text' && this.childNodes[c].textContent.contain ('((')){}
 		}
 }}
 function printVarList(){
@@ -115,74 +116,15 @@ function printVarList(){
 	printInput ('textarea');
 	document.body.printCondition();
 }
-HTMLElement.prototype.printVarUnique_va = function (varName){
-	var varValue = getValueFromName (varName);
-	var text = null;
-	if (varValue.constructor.name == 'Array'){
-		// récupérer le tag de premier niveau
-		var d= this.innerHTML.index ('(('+ varName +'))');
-		var f=d;
-		var deep = varValue.deep();
-		while (deep >0){
-			f= this.innerHTML.index ('>',f) +1;
-			d= this.innerHTML.rindex ('<',d-1);
-			deep = deep -1;
-		}
-		var template = this.innerHTML.slice (d,f);
-		var message = null;
-		text = this.innerHTML.slice (0,d) + this.innerHTML.slice (f);
-		// gérer la profondeur
-		for (var l= varValue.length -1; l>=0; l--){
-			message = template.printVarUnique (varName, varValue[l]);
-			text = text.insert (message, d);
-		}
-		this.innerHTML = text;
-	}
-	else if (varValue.constructor.name == 'Object'){
-		var d= this.innerHTML.index ('(('+ varName +'))');
-		var f= this.innerHTML.index ('>',d) +1;
-		d= this.innerHTML.rindex ('<',d);
-		var template = this.innerHTML.slice (d,f);
-		var text = this.innerHTML.slice (0,d) + this.innerHTML.slice (f);
-		for (var l in varValue) if (typeof (varValue[l]) != 'function'){
-			text = text.insert (template, d);
-			text = text.printVarUnique (varName, varValue[l]);
-		}
-		this.innerHTML = text;
-	}
-	else this.innerHTML = this.innerHTML.replace ('(('+ varName +'))', varValue);
-}
-HTMLElement.prototype.printVarUnique = function (varName){
-	var varValue = getValueFromName (varName);
-	if (varValue.constructor.name == 'Array'){
-		var deep = varValue.deep();
-		var container = this;
-		while (deep >1){
-			container = container.parentElement;
-			deep = deep -1;
-		}
-		console.log (varName, this.tagName, container.tagName);
-	}
-	else this.innerHTML = this.innerHTML.replace ('((' + varName + '))', 'toto');
-}
-HTMLElement.prototype.printVarList = function(){
-	if (this.innerHTML.contain ('((')){
-		for (var c=0; c< this.children.length; c++)
-			if (this.children[c].innerHTML.contain ('((')) this.children[c].printVarList();
-		if (this.innerHTML.contain ('((')) for (var v=0; v< dpVarList.length; v++) this.printVarUnique (dpVarList[v]);
-}}
-
 function dpInit(){
-	// nettoyer le texte
 	document.body.innerHTML = document.body.innerHTML.replace ('\n');
 	document.body.innerHTML = document.body.innerHTML.replace ('\t');
 	document.body.innerHTML = document.body.innerHTML.clean();
-	bodyTemplate = document.body.innerHTML;
 	document.body.innerHTML = document.body.innerHTML.replace ('(( ', '((');
 	document.body.innerHTML = document.body.innerHTML.replace (' ))', '))');
-	// récupérer le nom des variables
+	bodyTemplate = document.body.innerHTML;
 	var bodyText = document.body.innerHTML.replace ('))', '((');
 	var bodyList = bodyText.split ('((');
 	for (var v=1; v< bodyList.length; v=v+2) dpVarList.push (bodyList[v]);
-	document.body.printVarList();
+	printVarList();
 }
