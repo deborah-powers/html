@@ -5,6 +5,22 @@ utilisation:	dpInit();
 var dpVarList =[];
 var bodyTemplate ="";
 
+/* ======================== fonctions utilitaires ======================== */
+
+Array.prototype.contain = function (item){
+	var pos = this.indexOf (item);
+	if (pos >=0) return true;
+	else return false;
+}
+Array.prototype.pop = function (pos){
+	if (pos <0) pos += this.length;
+	var trash = this.splice (pos, 1);
+}
+Array.prototype.popItem = function (item){
+	if (this.contain (item)){
+		var pos = this.indexOf (item);
+		this.pop (pos);
+}}
 Array.prototype.deep = function(){
 	if (this.length >0 && this[0].constructor.name == 'Array'){
 		var degre =1;
@@ -13,7 +29,9 @@ Array.prototype.deep = function(){
 	}
 	else return 1;
 }
-String.prototype.printVarUnique = function (varName, varValue){
+/* ======================== fonctions d'affichage ======================== */
+
+String.prototype.printOne = function (varName, varValue){
 	var text = null;
 	if (varValue.constructor.name == 'Array'){
 		// récupérer le tag de premier niveau
@@ -30,7 +48,7 @@ String.prototype.printVarUnique = function (varName, varValue){
 		text = this.slice (0,d) + this.slice (f);
 		// gérer la profondeur
 		for (var l= varValue.length -1; l>=0; l--){
-			message = template.printVarUnique (varName, varValue[l]);
+			message = template.printOne (varName, varValue[l]);
 			text = text.insert (message, d);
 	}}
 	else if (varValue.constructor.name == 'Object'){
@@ -41,7 +59,7 @@ String.prototype.printVarUnique = function (varName, varValue){
 		var text = this.slice (0,d) + this.slice (f);
 		for (var l in varValue) if (typeof (varValue[l]) != 'function'){
 			text = text.insert (template, d);
-			text = text.printVarUnique (varName, varValue[l]);
+			text = text.printOne (varName, varValue[l]);
 	}}
 	else text = this.replace ('(('+ varName +'))', varValue);
 	return text;
@@ -59,7 +77,10 @@ function getValueFromName (varName){
 }
 function setValueFromName (varName, varValue){
 	if (varValue == undefined) varValue = null;
-	if (! varName.contain ('.')) this[varName] = varValue;
+	if (! varName.contain ('.')){
+		if (varValue.constructor.name != 'Array' && this[varName].constructor.name == 'Array') this[varName].push (varValue);
+		else this[varName] = varValue;
+	}
 	else{
 		var listName = varName.split ('.');
 		if (listName.length ==2) this[listName[0]][listName[1]] = varValue;
@@ -68,16 +89,20 @@ function setValueFromName (varName, varValue){
 		else if (listName.length ==5) this[listName[0]][listName[1]][listName[2]][listName[3]][listName[4]] = varValue;
 		else if (listName.length ==6) this[listName[0]][listName[1]][listName[2]][listName[3]][listName[4]][listName[5]] = varValue;
 }}
-// gérer les inputs
 HTMLInputElement.prototype.reload = function(){
-	setValueFromName (this.name, this.value);
+	if (this.type === 'checkbox' && this.checked === false){
+		var varValue = getValueFromName (this.name);
+		varValue.popItem (this.value);
+		setValueFromName (this.name, varValue);
+	}
+	else setValueFromName (this.name, this.value);
 	document.body.innerHTML = bodyTemplate;
-	printVarList();
+	printAll();
 }
 HTMLTextAreaElement.prototype.reload = function(){
 	setValueFromName (this.name, this.value);
 	document.body.innerHTML = bodyTemplate;
-	printVarList();
+	printAll();
 }
 function printInput (type){
 	var inputList = document.getElementsByTagName (type);
@@ -87,9 +112,9 @@ function printInput (type){
 			if (inputList[i].tagName === 'TEXTAREA' || ! 'radio checkbox'.contain (inputList[i].getAttribute ('type')))
 				inputList[i].value = varValue;
 			else if (inputList[i].value === varValue && inputList[i].type === 'radio') inputList[i].checked = true;
+			else if (varValue.contain (inputList[i].value) && inputList[i].type === 'checkbox') inputList[i].checked = true;
 			inputList[i].addEventListener ('change', function (event){ event.target.reload(); });
 }}}
-// les conditions
 HTMLElement.prototype.printCondition = function(){
 	if (this.getAttribute ('if')){
 		var printBlock = eval (this.getAttribute ('if'));
@@ -98,33 +123,26 @@ HTMLElement.prototype.printCondition = function(){
 	}
 	else for (var c=0; c< this.children.length; c++) this.children[c].printCondition();
 }
-HTMLElement.prototype.findVar = function(){
-	if (this.innerHTML.contain ('((')){
-		if (this.children.length >0){
-			for (var c=0; c< this.children.length; c++) this.children[c].findVar();
-			if (this.children.length < this.childNodes.length) for (var c=0; c< this.childNodes.length; c++)
-				if (this.childNodes[c].constructor.name == 'Text' && this.childNodes[c].textContent.contain ('((')){}
-		}
-}}
-function printVarList(){
-	// document.body.findVar();
+function printAll(){
 	for (var v=0; v< dpVarList.length; v++){
 		var varValue = getValueFromName (dpVarList[v]);
-		document.body.innerHTML = document.body.innerHTML.printVarUnique (dpVarList[v], varValue);
+		document.body.innerHTML = document.body.innerHTML.printOne (dpVarList[v], varValue);
 	}
 	printInput ('input');
 	printInput ('textarea');
 	document.body.printCondition();
 }
 function dpInit(){
+	// nettoyer le texte
 	document.body.innerHTML = document.body.innerHTML.replace ('\n');
 	document.body.innerHTML = document.body.innerHTML.replace ('\t');
 	document.body.innerHTML = document.body.innerHTML.clean();
 	document.body.innerHTML = document.body.innerHTML.replace ('(( ', '((');
 	document.body.innerHTML = document.body.innerHTML.replace (' ))', '))');
 	bodyTemplate = document.body.innerHTML;
+	// récupérer les variables
 	var bodyText = document.body.innerHTML.replace ('))', '((');
 	var bodyList = bodyText.split ('((');
 	for (var v=1; v< bodyList.length; v=v+2) dpVarList.push (bodyList[v]);
-	printVarList();
+	printAll();
 }

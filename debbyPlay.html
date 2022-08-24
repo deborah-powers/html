@@ -20,10 +20,11 @@
 	<input type='text' name='dico.c.d'>
 	<textarea name='textUtilisateur'></textarea>
 	<p>valeur du bouton radio: (( radio ))</p>
+	<p>valeur de la checkbox:<span> (( checkBox )),</span></p>
 	<table>
-		<tr><td><input type='checkbox' name='checkBox'></td><td>pomme</td></tr>
-		<tr><td><input type='checkbox' name='checkBox'></td><td>banane</td></tr>
-		<tr><td><input type='checkbox' name='checkBox'></td><td>framboise</td></tr>
+		<tr><td><input type='checkbox' name='checkBox' value='pomme'></td><td>pomme</td></tr>
+		<tr><td><input type='checkbox' name='checkBox' value='banane'></td><td>banane</td></tr>
+		<tr><td><input type='checkbox' name='checkBox' value='framboise'></td><td>framboise</td></tr>
 	</table>
 		<table>
 		<tr><td><input type='radio' name='radio' value='oui'></td><td>oui</td></tr>
@@ -57,7 +58,7 @@
 	var textUtilisateur = 'texte sur plusieurs lignes';
 	var condiTrue = true;
 	var condiFalse = false;
-	var checkBox = 'checkbox';
+	var checkBox =[ 'pomme', ];
 	var radio = 'peut-être';
 	// l'affichage
 	dpInit();
