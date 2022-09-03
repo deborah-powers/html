@@ -276,6 +276,19 @@ numeros:	0661481619, 0761275599
 entreprise:	lycée
 job:		professeure de cuisine
 
+
+************************ infos ************************
+
+allergique aux chats.
+sa fille travaille dans la r&d chez ikos, une moyenne entreprise des chemins de fer. elle travaille sur un projet de train magnétique.
+
+
+************************ évenements ************************
+
+2022/08/31	premier jour de retraite
+2022/08/31	sa fille jorel soutien son mémoire de stage
+
+
 ======================== patrick mouchet ========================
 
 nom:		mouchet
