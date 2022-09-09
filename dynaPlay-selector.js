@@ -30,9 +30,10 @@ const selectorStyle =`
 	}`;
 
 function loadSelector (event){
-	console.log (event.currentTarget.selector);
+	console.log (event.target);
 	event.currentTarget.selector.listName = event.currentTarget.selector.getAttribute ('list');
 	event.currentTarget.selector.choiceName = event.currentTarget.selector.getAttribute ('choice');
+	var selector = event.currentTarget.selector;
 	var title = event.currentTarget.selector.createNode ('h2', 'choisir: '+ getValueFromName (event.currentTarget.selector.choiceName));
 	var paragraph = null;
 	var liste = getValueFromName (event.currentTarget.selector.listName);
@@ -40,15 +41,12 @@ function loadSelector (event){
 		paragraph = event.currentTarget.selector.createNode ('p', liste[l]);
 		paragraph.addEventListener ('click', function (event){
 			event.target.parentElement.getElementsByTagName ('h2')[0].innerHTML = 'choisir: '+ event.target.innerHTML;
-			setValueFromName (event.currentTarget.selector.choiceName, event.target.innerHTML);
+			setValueFromName (selector.choiceName, event.target.innerHTML);
 			document.body.innerHTML = bodyTemplate;
 			printAll();
 		});
 	}
-	event.currentTarget.selector.removeAttribute ('choice');
-	event.currentTarget.selector.removeAttribute ('list');
 }
-
 class Selector extends HTMLElement{
 	constructor(){
 		super();
@@ -59,10 +57,10 @@ class Selector extends HTMLElement{
 		// appelée après le constructeur
 		setStyle (selectorStyle);
 		// retarder l'initialisation du sélecteur. nécessaire si j'utilise des données javascript dans mes attributs
-		console.log ('le callback');
 		this.choiceName = getValueFromName (this.getAttribute ('choice'));
 		this.listName = getValueFromName (this.getAttribute ('list'));
 		window.addEventListener ('load', loadSelector);
+		window.addEventListener ('change', loadSelector);
 		window.selector = this;
 	}
 }

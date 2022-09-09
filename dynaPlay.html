@@ -8,18 +8,18 @@
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='library-js/text.js'></script>
 	<script type='text/javascript' src='library-js/dynaPlay.js'></script>
-	<script type='text/javascript' src='library-js/util.js'></script>
-	<script type='text/javascript' src='../html/dynaPlay-selector.js'></script>
 <style type='text/css'>
-	div.selector {
+	selector {
+		display: block;
 		border-style: solid;
 		border-width: 4px;
 		padding: 0;
 	}
-	div.selector * { margin: 0; }
-	div.selector p { display: none; }
-	div.selector:hover p { display: block; }
-	div.selector h2 {
+	selector * { margin: 0; }
+	selector p { display: none; }
+	selector:hover p { display: block; }
+	selector p:hover { background-color: var(--fond-color, #EEE); }
+	selector h3 {
 		background-color: var(--bord-color);
 		color: var(--page-color);
 	}
@@ -27,8 +27,11 @@
 	<h1>debby play</h1>
 	coucou (( message ))
 	<p>énième version de ma copie d'angular js</p>
-	<dp-selector list='selecteur' choice='choix'></dp-selector>
 	<p>option choisie: (( choix ))</p>
+	<selector name='choix'>
+		<h3>choisir (( choix ))</h3>
+		<p>(( selecteur ))</p>
+	</selector>
 	<h2>les inputs</h2>
 	<input type='text' name='paramUtilisateur'>
 	<input type='text' name='paUtiliteur'>
