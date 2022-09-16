@@ -9,10 +9,7 @@
 		"match_origin_as_fallback": true,
 		"js": ["code.js"]
 	}],
+	"permissions": [ "activeTab", "scripting" ],
 	"background": { "service_worker": "code.js" },
-	"permissions": [ "activeTab", "tabs", "scripting", "notifications", "http://*/*", "https://*/*", "https://meteofrance.com/*" ],
-	"action": {
-		"default_icon": "icon-128.png",
-		"default_title": "nettoyeur"
-	}
+	"action": {}
 }

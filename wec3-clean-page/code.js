@@ -1,14 +1,16 @@
-chrome.tabs.query ({ currentWindow: true }, function (tabs){
-	for (var t=1; t< tabs.length; t++){
+chrome.action.onClicked.addListener (function (tab){
+	if (! tab.url.includes ('chrome://')){
 		chrome.scripting.executeScript ({
-			target: {tabId: tabs[t].id, allFrames: true},
-			files: ['text.js', 'cleanPage.js']
+			target: {tabId: tab.id, allFrames: true },
+			files: [ 'text.js', 'cleanPage.js' ]
 		});
 		chrome.scripting.insertCSS ({
-			target: {tabId: tabs[t].id, allFrames: true},
+			target: {tabId: tab.id, allFrames: true},
 			files: ['structure.css', 'perso.css'],
 		});
 }});
 /*
-Extension manifest must request permission to access this host
+function coucou(){ document.body.style.backgroundColor = 'red'; }
+function: coucou
+files: ['action.js']
 */
