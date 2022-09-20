@@ -5,7 +5,9 @@
 	<base target='blank' href='../site-dp/'/>
 	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/popup.css'/>
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='library-js/popup.js'></script>
 <style type='text/css'>
 	b-letter, b-number {
 		display: inline-grid;
@@ -45,19 +47,33 @@
 		border: solid 2px var(--bord-color);
 		padding: 0.5em;
 	}
+	section#drag-drop p.ok { background-color: springgreen; }
+	section#drag-drop p.ko { background-color: pink; }
 	section#drag-drop b-letter p { display: none; }
 </style></head><body>
 	<section id='drag-drop'>
-		<p onclick='selectLetter(this)'>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p><p>g</p><p>h</p><p>i</p><p>j</p><p>k</p><p>l</p><p>m</p>
-		<p>n</p><p>o</p><p>p</p><p>q</p><p>r</p><p>s</p><p>t</p><p>u</p><p>v</p><p>w</p><p>x</p><p>y</p><p>z</p>
-		<b-letter onclick='selectBraille(this)' letter='a'></b-letter>
-		<b-letter letter='b'></b-letter><b-letter letter='c'></b-letter><b-letter letter='d'></b-letter>
-		<b-letter letter='e'></b-letter><b-letter letter='f'></b-letter><b-letter letter='g'></b-letter><b-letter letter='h'></b-letter>
-		<b-letter letter='i'></b-letter><b-letter letter='j'></b-letter><b-letter letter='k'></b-letter><b-letter letter='l'></b-letter>
-		<b-letter letter='m'></b-letter><b-letter letter='n'></b-letter><b-letter letter='o'></b-letter><b-letter letter='p'></b-letter>
-		<b-letter letter='q'></b-letter><b-letter letter='r'></b-letter><b-letter letter='s'></b-letter><b-letter letter='t'></b-letter>
-		<b-letter letter='u'></b-letter><b-letter letter='v'></b-letter><b-letter letter='w'></b-letter>
-		<b-letter letter='x'></b-letter><b-letter letter='y'></b-letter><b-letter letter='z'></b-letter>
+		<p onclick='selectLetter(this)'>a</p><p onclick='selectLetter(this)'>b</p><p onclick='selectLetter(this)'>c</p>
+		<p onclick='selectLetter(this)'>d</p><p onclick='selectLetter(this)'>e</p><p onclick='selectLetter(this)'>f</p>
+		<p onclick='selectLetter(this)'>g</p><p onclick='selectLetter(this)'>h</p><p onclick='selectLetter(this)'>i</p>
+		<p onclick='selectLetter(this)'>j</p><p onclick='selectLetter(this)'>k</p><p onclick='selectLetter(this)'>l</p>
+		<p onclick='selectLetter(this)'>m</p><p onclick='selectLetter(this)'>n</p><p onclick='selectLetter(this)'>o</p>
+		<p onclick='selectLetter(this)'>p</p><p onclick='selectLetter(this)'>q</p><p onclick='selectLetter(this)'>r</p>
+		<p onclick='selectLetter(this)'>s</p><p onclick='selectLetter(this)'>t</p><p onclick='selectLetter(this)'>u</p>
+		<p onclick='selectLetter(this)'>v</p><p onclick='selectLetter(this)'>w</p><p onclick='selectLetter(this)'>x</p>
+		<p onclick='selectLetter(this)'>y</p><p onclick='selectLetter(this)'>z</p>
+		<b-letter onclick='selectBraille(this)' letter='a'></b-letter><b-letter onclick='selectBraille(this)' letter='b'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='c'></b-letter><b-letter onclick='selectBraille(this)' letter='d'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='e'></b-letter><b-letter onclick='selectBraille(this)' letter='f'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='g'></b-letter><b-letter onclick='selectBraille(this)' letter='h'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='i'></b-letter><b-letter onclick='selectBraille(this)' letter='j'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='k'></b-letter><b-letter onclick='selectBraille(this)' letter='l'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='m'></b-letter><b-letter onclick='selectBraille(this)' letter='n'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='o'></b-letter><b-letter onclick='selectBraille(this)' letter='p'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='q'></b-letter><b-letter onclick='selectBraille(this)' letter='r'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='s'></b-letter><b-letter onclick='selectBraille(this)' letter='t'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='u'></b-letter><b-letter onclick='selectBraille(this)' letter='v'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='w'></b-letter><b-letter onclick='selectBraille(this)' letter='x'></b-letter>
+		<b-letter onclick='selectBraille(this)' letter='y'></b-letter><b-letter onclick='selectBraille(this)' letter='z'></b-letter>
 	</section>
 	<section id='mot'>
 		<h2>entrez une phrase</h2>
@@ -99,45 +115,49 @@
 const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/><p></p>';
 
 class BrailleLetter extends HTMLElement{
+	constructor(){
+		super();
+		this.letter ="";
+	}
 	connectedCallback(){
 		// appelée après le constructeur
-		var letter = this.getAttribute ('letter');
+		this.letter = this.getAttribute ('letter');
 		this.innerHTML = brickTemplate;
 		var points = this.getElementsByTagName ('hr');
-		if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.indexOf (letter) >=0) points[0].className = 'full';
-		if ('cçdéèëfgiîïjmnôœpqstwxy'.indexOf (letter) >=0) points[1].className = 'full';
-		if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.indexOf (letter) >=0) points[2].className = 'full';
-		if ('àdeéghïjnoôqrtûwyz:.!")'.indexOf (letter) >=0) points[3].className = 'full';
-		if ('àçéèklmnopqrstuvxyz;!"\'-()'.indexOf (letter) >=0) points[4].className = 'full';
-		if ('àâçéèêëîïôœuûvwxyz.?"()-'.indexOf (letter) >=0) points[5].className = 'full';
+		if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.indexOf (this.letter) >=0) points[0].className = 'full';
+		if ('cçdéèëfgiîïjmnôœpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
+		if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.indexOf (this.letter) >=0) points[2].className = 'full';
+		if ('àdeéghïjnoôqrtûwyz:.!")'.indexOf (this.letter) >=0) points[3].className = 'full';
+		if ('àçéèklmnopqrstuvxyz;!"\'-()'.indexOf (this.letter) >=0) points[4].className = 'full';
+		if ('àâçéèêëîïôœuûvwxyz.?"()-'.indexOf (this.letter) >=0) points[5].className = 'full';
 		// chiffres antoine
-		if (letter == 'nb') points[5].className = 'full';
-		if ('12345678'.indexOf (letter) >=0) points[0].className = 'full';
-		if ('034679'.indexOf (letter) >=0) points[1].className = 'full';
-		if ('26789'.indexOf (letter) >=0) points[2].className = 'full';
-		if ('04578'.indexOf (letter) >=0) points[3].className = 'full';
-		if (letter == '0') points[4].className = 'full';
-		if ('0123456789'.indexOf (letter) >=0) points[5].className = 'full';
+		if (this.letter == 'nb') points[5].className = 'full';
+		if ('12345678'.indexOf (this.letter) >=0) points[0].className = 'full';
+		if ('034679'.indexOf (this.letter) >=0) points[1].className = 'full';
+		if ('26789'.indexOf (this.letter) >=0) points[2].className = 'full';
+		if ('04578'.indexOf (this.letter) >=0) points[3].className = 'full';
+		if (this.letter == '0') points[4].className = 'full';
+		if ('0123456789'.indexOf (this.letter) >=0) points[5].className = 'full';
 		var letterSimple = this.getElementsByTagName ('p')[0];
-		letterSimple.innerHTML = letter;
+		letterSimple.innerHTML = this.letter;
 	}
 }
 class BrailleNumber extends BrailleLetter{
 	connectedCallback(){
 		// chiffres braille
-		var letter = this.getAttribute ('number');
+		this.letter = this.getAttribute ('number');
 		this.innerHTML = brickTemplate;
 		var points = this.getElementsByTagName ('hr');
-		if ('12345678'.indexOf (letter) >=0) points[0].className = 'full';
-		if ('034679nb'.indexOf (letter) >=0) points[1].className = 'full';
-		if ('026789'.indexOf (letter) >=0) points[2].className = 'full';
-		if ('04578nb'.indexOf (letter) >=0) points[3].className = 'full';
-		if (letter == 'nb'){
+		if ('12345678'.indexOf (this.letter) >=0) points[0].className = 'full';
+		if ('034679nb'.indexOf (this.letter) >=0) points[1].className = 'full';
+		if ('026789'.indexOf (this.letter) >=0) points[2].className = 'full';
+		if ('04578nb'.indexOf (this.letter) >=0) points[3].className = 'full';
+		if (this.letter == 'nb'){
 			points[4].className = 'full';
 			points[5].className = 'full';
 		}
 		var letterSimple = this.getElementsByTagName ('p')[0];
-		letterSimple.innerHTML = letter;
+		letterSimple.innerHTML = this.letter;
 	}
 }
 customElements.define ('b-letter', BrailleLetter);
@@ -158,7 +178,17 @@ var letter = null;
 var braille = null;
 function selectLetter (letterTmp){ letter = letterTmp; }
 function selectBraille (brailleTmp){
-	if (letter && letter != undefined) letter.appendChild (brailleTmp);
+	if (letter && letter != undefined){
+		console.log (letter.innerText, brailleTmp.letter);
+		if (letter.innerText.toLowerCase() === brailleTmp.letter){
+			letter.className = 'ok';
+		}
+		else{
+			letter.className = 'ko';
+			openPopup ('les lettres ne correspondent pas', 'mauvaise attribution')
+		}
+		letter.appendChild (brailleTmp);
+	}
 	braille = brailleTmp;
 }
 </script>
