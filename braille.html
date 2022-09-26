@@ -5,8 +5,7 @@
 	<base target='blank' href='../site-dp/'/>
 	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/popup.css'/>
-	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css'/>
 	<script type='text/javascript' src='library-js/popup.js'></script>
 <style type='text/css'>
 	b-letter, b-number {
@@ -50,6 +49,9 @@
 	section#drag-drop p.ok { background-color: springgreen; }
 	section#drag-drop p.ko { background-color: pink; }
 	section#drag-drop b-letter p { display: none; }
+	popup {
+		background-color: red;
+	}
 </style></head><body>
 	<section id='drag-drop'>
 		<p onclick='selectLetter(this)'>a</p><p onclick='selectLetter(this)'>b</p><p onclick='selectLetter(this)'>c</p>
@@ -113,7 +115,7 @@
 </body>
 <script type='text/javascript'>
 const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/><p></p>';
-
+openPopup();
 class BrailleLetter extends HTMLElement{
 	constructor(){
 		super();
