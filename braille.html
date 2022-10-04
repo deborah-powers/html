@@ -8,74 +8,92 @@
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css'/>
 	<script type='text/javascript' src='library-js/popup.js'></script>
 <style type='text/css'>
-	b-letter, b-number {
+	b-letter, b-number, b-double {
 		display: inline-grid;
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr 2fr;
+		grid-template-rows: 1fr 1fr 1fr;
 		width: 1em;
-		height: 3em;
+		height: 2em;
 		grid-gap: 0.3em;
 		margin: 0.5em;
 		text-align: center;
 	}
-	b-letter hr, b-number hr {
+	b-double {
+		grid-template-rows: 1fr 1fr 1fr 2fr;
+		height: 3em;
+	}
+	b-letter hr, b-number hr, b-double hr {
 		margin: 0;
 		height: unset;
 		background-color: transparent;
 	}
-	b-letter p, b-number p {
+	b-double p {
 		margin: 0;
 		padding: 0;
 		grid-column: 1/3;
 	/*	display: none; */
 	}
-	b-letter hr.full, b-number hr.full { background-color: var(--text-color, black); }
-	div#input {
+	b-letter hr.full, b-number hr.full, b-double hr.full { background-color: var(--text-color, black); }
+	div#input{
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
-	section#drag-drop {
+	section#drag-drop{
 		text-align: center;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 		grid-template-rows: 6em 4em;
 	}
-	section#drag-drop p {
+	section#drag-drop p{
 		display: inline-block;
 		border: solid 2px var(--bord-color);
 		padding: 0.5em;
 	}
-	section#drag-drop p.ok { background-color: springgreen; }
-	section#drag-drop p.ko { background-color: pink; }
-	section#drag-drop b-letter p { display: none; }
-	popup {
-		background-color: red;
-	}
+	section#drag-drop p.ok{ background-color: springgreen; }
+	section#drag-drop p.ko{ background-color: pink; }
+	section#drag-drop b-letter p{ display: none; }
 </style></head><body>
-	<section id='drag-drop'>
-		<p onclick='selectLetter(this)'>a</p><p onclick='selectLetter(this)'>b</p><p onclick='selectLetter(this)'>c</p>
-		<p onclick='selectLetter(this)'>d</p><p onclick='selectLetter(this)'>e</p><p onclick='selectLetter(this)'>f</p>
-		<p onclick='selectLetter(this)'>g</p><p onclick='selectLetter(this)'>h</p><p onclick='selectLetter(this)'>i</p>
-		<p onclick='selectLetter(this)'>j</p><p onclick='selectLetter(this)'>k</p><p onclick='selectLetter(this)'>l</p>
-		<p onclick='selectLetter(this)'>m</p><p onclick='selectLetter(this)'>n</p><p onclick='selectLetter(this)'>o</p>
-		<p onclick='selectLetter(this)'>p</p><p onclick='selectLetter(this)'>q</p><p onclick='selectLetter(this)'>r</p>
-		<p onclick='selectLetter(this)'>s</p><p onclick='selectLetter(this)'>t</p><p onclick='selectLetter(this)'>u</p>
-		<p onclick='selectLetter(this)'>v</p><p onclick='selectLetter(this)'>w</p><p onclick='selectLetter(this)'>x</p>
-		<p onclick='selectLetter(this)'>y</p><p onclick='selectLetter(this)'>z</p>
-		<b-letter onclick='selectBraille(this)' letter='a'></b-letter><b-letter onclick='selectBraille(this)' letter='b'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='c'></b-letter><b-letter onclick='selectBraille(this)' letter='d'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='e'></b-letter><b-letter onclick='selectBraille(this)' letter='f'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='g'></b-letter><b-letter onclick='selectBraille(this)' letter='h'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='i'></b-letter><b-letter onclick='selectBraille(this)' letter='j'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='k'></b-letter><b-letter onclick='selectBraille(this)' letter='l'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='m'></b-letter><b-letter onclick='selectBraille(this)' letter='n'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='o'></b-letter><b-letter onclick='selectBraille(this)' letter='p'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='q'></b-letter><b-letter onclick='selectBraille(this)' letter='r'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='s'></b-letter><b-letter onclick='selectBraille(this)' letter='t'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='u'></b-letter><b-letter onclick='selectBraille(this)' letter='v'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='w'></b-letter><b-letter onclick='selectBraille(this)' letter='x'></b-letter>
-		<b-letter onclick='selectBraille(this)' letter='y'></b-letter><b-letter onclick='selectBraille(this)' letter='z'></b-letter>
+	<section id='drag-drop' ondrop='drop(event)' ondragover='allowDrop(event)'>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>a</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>b</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>c</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>d</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>e</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>f</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>g</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>h</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>i</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>j</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>k</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>l</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>m</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>n</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>o</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>p</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>q</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>r</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>s</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>t</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>u</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>v</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>w</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>x</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>y</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>z</p>
+		<b-letter id='letter-a' draggable='true' ondragstart='drag(event)' letter='a'></b-letter>
+		<b-letter id='letter-b' draggable='true' ondragstart='drag(event)' letter='b'></b-letter>
+		<b-letter id='letter-c' draggable='true' ondragstart='drag(event)' letter='c'></b-letter>
+		<b-letter id='letter-d' draggable='true' ondragstart='drag(event)' letter='d'></b-letter>
+		<b-letter id='letter-e' draggable='true' ondragstart='drag(event)' letter='e'></b-letter>
+		<b-letter id='letter-f' draggable='true' ondragstart='drag(event)' letter='f'></b-letter>
+		<b-letter id='letter-g' draggable='true' ondragstart='drag(event)' letter='g'></b-letter>
+		<b-letter id='letter-h' draggable='true' ondragstart='drag(event)' letter='h'></b-letter>
+		<b-letter id='letter-i' draggable='true' ondragstart='drag(event)' letter='i'></b-letter>
+		<b-letter id='letter-j' draggable='true' ondragstart='drag(event)' letter='j'></b-letter>
+		<b-letter id='letter-k' draggable='true' ondragstart='drag(event)' letter='k'></b-letter>
+		<b-letter id='letter-l' draggable='true' ondragstart='drag(event)' letter='l'></b-letter>
+		<b-letter id='letter-m' draggable='true' ondragstart='drag(event)' letter='m'></b-letter>
+		<b-letter id='letter-n' draggable='true' ondragstart='drag(event)' letter='n'></b-letter>
+		<b-letter id='letter-o' draggable='true' ondragstart='drag(event)' letter='o'></b-letter>
+		<b-letter id='letter-p' draggable='true' ondragstart='drag(event)' letter='p'></b-letter>
+		<b-letter id='letter-q' draggable='true' ondragstart='drag(event)' letter='q'></b-letter>
+		<b-letter id='letter-r' draggable='true' ondragstart='drag(event)' letter='r'></b-letter>
+		<b-letter id='letter-s' draggable='true' ondragstart='drag(event)' letter='s'></b-letter>
+		<b-letter id='letter-t' draggable='true' ondragstart='drag(event)' letter='t'></b-letter>
+		<b-letter id='letter-u' draggable='true' ondragstart='drag(event)' letter='u'></b-letter>
+		<b-letter id='letter-v' draggable='true' ondragstart='drag(event)' letter='v'></b-letter>
+		<b-letter id='letter-w' draggable='true' ondragstart='drag(event)' letter='w'></b-letter>
+		<b-letter id='letter-x' draggable='true' ondragstart='drag(event)' letter='x'></b-letter>
+		<b-letter id='letter-y' draggable='true' ondragstart='drag(event)' letter='y'></b-letter>
+		<b-letter id='letter-z' draggable='true' ondragstart='drag(event)' letter='z'></b-letter>
 	</section>
 	<section id='mot'>
 		<h2>entrez une phrase</h2>
@@ -84,26 +102,26 @@
 	</section>
 	<section id='alphabet'>
 		<h2><a href='https://fr.wikipedia.org/wiki/Braille'>l'alpabet en braille</a></h2>
-		<b-letter letter='a'></b-letter><b-letter letter='b'></b-letter><b-letter letter='c'></b-letter><b-letter letter='d'></b-letter>
-		<b-letter letter='e'></b-letter><b-letter letter='f'></b-letter><b-letter letter='g'></b-letter><b-letter letter='h'></b-letter>
-		<b-letter letter='i'></b-letter><b-letter letter='j'></b-letter><b-letter letter='k'></b-letter><b-letter letter='l'></b-letter>
-		<b-letter letter='m'></b-letter><b-letter letter='n'></b-letter><b-letter letter='o'></b-letter><b-letter letter='p'></b-letter>
-		<b-letter letter='q'></b-letter><b-letter letter='r'></b-letter><b-letter letter='s'></b-letter><b-letter letter='t'></b-letter>
-		<b-letter letter='u'></b-letter><b-letter letter='v'></b-letter><b-letter letter='w'></b-letter>
-		<b-letter letter='x'></b-letter><b-letter letter='y'></b-letter><b-letter letter='z'></b-letter>
+		<b-double letter='a'></b-double><b-double letter='b'></b-double><b-double letter='c'></b-double><b-double letter='d'></b-double>
+		<b-double letter='e'></b-double><b-double letter='f'></b-double><b-double letter='g'></b-double><b-double letter='h'></b-double>
+		<b-double letter='i'></b-double><b-double letter='j'></b-double><b-double letter='k'></b-double><b-double letter='l'></b-double>
+		<b-double letter='m'></b-double><b-double letter='n'></b-double><b-double letter='o'></b-double><b-double letter='p'></b-double>
+		<b-double letter='q'></b-double><b-double letter='r'></b-double><b-double letter='s'></b-double><b-double letter='t'></b-double>
+		<b-double letter='u'></b-double><b-double letter='v'></b-double><b-double letter='w'></b-double>
+		<b-double letter='x'></b-double><b-double letter='y'></b-double><b-double letter='z'></b-double>
 	</section>
 	<section id='ponctuation'>
 		<h2>ponctuation</h2>
-		<b-letter letter='.'></b-letter><b-letter letter=':'></b-letter><b-letter letter=';'></b-letter><b-letter letter=','></b-letter>
-		<b-letter letter='?'></b-letter><b-letter letter='!'></b-letter><b-letter letter='"'></b-letter>
-		<b-letter letter="'"></b-letter><b-letter letter='('></b-letter><b-letter letter=')'></b-letter>
+		<b-double letter='.'></b-double><b-double letter=':'></b-double><b-double letter=';'></b-double><b-double letter=','></b-double>
+		<b-double letter='?'></b-double><b-double letter='!'></b-double><b-double letter='"'></b-double>
+		<b-double letter="'"></b-double><b-double letter='('></b-double><b-double letter=')'></b-double>
 	</section>
 	<section id='num-antoine'>
 		<h2>numérotation antoine</h2>
-		<b-letter letter='nb'></b-letter>
-		<b-letter letter='0'></b-letter><b-letter letter='1'></b-letter><b-letter letter='2'></b-letter><b-letter letter='3'></b-letter>
-		<b-letter letter='4'></b-letter><b-letter letter='5'></b-letter><b-letter letter='6'></b-letter>
-		<b-letter letter='7'></b-letter><b-letter letter='8'></b-letter><b-letter letter='9'></b-letter>
+		<b-double letter='nb'></b-double>
+		<b-double letter='0'></b-double><b-double letter='1'></b-double><b-double letter='2'></b-double><b-double letter='3'></b-double>
+		<b-double letter='4'></b-double><b-double letter='5'></b-double><b-double letter='6'></b-double>
+		<b-double letter='7'></b-double><b-double letter='8'></b-double><b-double letter='9'></b-double>
 	</section>
 	<section id='num-braille'>
 		<h2>numérotation braille</h2>
@@ -114,8 +132,7 @@
 	</section>
 </body>
 <script type='text/javascript'>
-const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/><p></p>';
-openPopup();
+const brickTemplate = '<hr/><hr/><hr/><hr/><hr/><hr/>';
 class BrailleLetter extends HTMLElement{
 	constructor(){
 		super();
@@ -140,8 +157,6 @@ class BrailleLetter extends HTMLElement{
 		if ('04578'.indexOf (this.letter) >=0) points[3].className = 'full';
 		if (this.letter == '0') points[4].className = 'full';
 		if ('0123456789'.indexOf (this.letter) >=0) points[5].className = 'full';
-		var letterSimple = this.getElementsByTagName ('p')[0];
-		letterSimple.innerHTML = this.letter;
 	}
 }
 class BrailleNumber extends BrailleLetter{
@@ -157,13 +172,15 @@ class BrailleNumber extends BrailleLetter{
 		if (this.letter == 'nb'){
 			points[4].className = 'full';
 			points[5].className = 'full';
-		}
-		var letterSimple = this.getElementsByTagName ('p')[0];
-		letterSimple.innerHTML = this.letter;
-	}
-}
+}}}
+class BrailleDouble extends BrailleLetter{
+	connectedCallback(){
+		super.connectedCallback();
+		this.innerHTML = this.innerHTML + '<p>' + this.letter + '</p>';
+}}
 customElements.define ('b-letter', BrailleLetter);
 customElements.define ('b-number', BrailleNumber);
+customElements.define ('b-double', BrailleDouble);
 
 var container = document.getElementsByTagName ('div')[1];
 function writeBraille(){
@@ -174,24 +191,27 @@ function writeBraille(){
 		letter.setAttribute ('letter', word[l]);
 		letter.connectedCallback();
 		container.appendChild (letter);
-	}
+}}
+// code pris sur https://www.w3schools.com/html/html5_draganddrop.asp
+function allowDrop (evt){ evt.preventDefault(); }
+function drag (evt){
+	evt.target.parentElement.className ="";
+	evt.dataTransfer.setData ('idBraille', evt.target.id);
 }
-var letter = null;
-var braille = null;
-function selectLetter (letterTmp){ letter = letterTmp; }
-function selectBraille (brailleTmp){
-	if (letter && letter != undefined){
-		console.log (letter.innerText, brailleTmp.letter);
-		if (letter.innerText.toLowerCase() === brailleTmp.letter){
-			letter.className = 'ok';
-		}
-		else{
-			letter.className = 'ko';
-			openPopup ('les lettres ne correspondent pas', 'mauvaise attribution')
-		}
-		letter.appendChild (brailleTmp);
+function drop (evt){
+	evt.preventDefault();
+	var idBraille = evt.dataTransfer.getData ('idBraille');
+	var letter = document.getElementById (idBraille);
+	if ('HTMLParagraphElement' === evt.target.constructor.name && evt.target.innerText === letter.letter.toUpperCase()){
+		evt.target.className = 'ok';
+		evt.target.appendChild (letter);
 	}
-	braille = brailleTmp;
+	else if ('HTMLParagraphElement' === evt.target.constructor.name){
+		evt.target.className = 'ko';
+		evt.target.appendChild (letter);
+	//	openPopup ('les lettres ne correspondent pas', 'mauvaise attribution')
+	}
+	else evt.target.appendChild (letter);
 }
 </script>
 </html>

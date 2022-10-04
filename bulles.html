@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<script type='text/javascript' src='../site-dp/library-js/tag.js'></script>
+<style type='text/css'>
+	body { background-color: pink; }
+	body > * {
+		display: inline-block;
+		border-radius: 50%;
+		border: none;
+	}
+	script { display: none; }
+	button {
+		width: 3em;
+		height: 3em;
+		background-color: darkcyan;
+	}
+	p {
+		width: 1em;
+		height: 1em;
+		background-color: darkred;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-name: moving-a;
+	}
+	@keyframes moving-a {
+		from {
+			margin-top: 4em;
+			margin-left: 8em;
+		}
+		to {}
+	}
+	@keyframes moving-b {
+		from {
+			margin-top: 8em;
+			margin-left: 4em;
+		}
+		to {}
+	}
+</style></head><body>
+	<button onclick='createBuble()'>bulle</button>
+</body>
+<script type='text/javascript'>
+function randint (nbMax){ return Math.floor (Math.random() * nbMax); }
+function randList (listItem){
+	var pos = randint (listItem.length);
+	return listItem [pos];
+}
+function randsize(){
+	var size =0;
+	while (size ===0) size = randint (5);
+	return size +'em';
+}
+function randtime(){
+	var time =0;
+	while (time ===0) time = randint (10);
+	return time +'s';
+}
+const colors =[ 'red', 'darkred', 'indianred' ];
+const animNames =[ 'moving-a', 'moving-b' ];
+function createBuble(){
+	var buble = document.createElement ('p');
+	buble.style.backgroundColor = randList (colors);
+	var pos = randsize();
+	buble.style.width = pos;
+	buble.style.height = pos;
+	buble.style.animationName = randList (animNames);
+	buble.style.animationDuration = randtime();
+	document.body.appendChild (buble);
+}
+</script>
+</html>
