@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='300' height='200' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>proportions</title>
+<style type='text/css'><![CDATA[]]>
+	polygon, line {
+		fill: pink;
+		stroke: #222;
+		stroke-width: 2px;
+	}
+	text {
+		dominant-baseline: middle;
+		text-anchor: middle;
+		font-family: serif;
+		font-size: 1em;
+		stroke: none;
+		fill: #222;
+	}
+</style>
+	<g transform='translate(20,20)'>
+		<polygon id='trisocele-bas' points='0,86.6 100,86.6 50,0'/>
+		<line x1='50' x2='50' y1='0' y2='86.6'/>
+		<text x='70' y='50'>a</text>
+		<text x='60' y='50' transform='translate(90,-5) rotate(90)'>a*0.866</text>
+		<text x='160' y='20'>a= 12 cm, h= 10.39 cm</text>
+		<text x='160' y='40'>a= 10 cm, h= 8.66 cm</text>
+	</g>
+</svg>
