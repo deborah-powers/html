@@ -109,11 +109,21 @@ alias gos="cd /var/www/html/site-dp/"
 alias gob="cd /home/deborah/Bureau/"
 alias gop="cd /home/deborah/Bureau/python/"
 alias goph="cd /home/deborah/Bureau/photos/"
-alias cmmt="git add .; git commit -m 'date +`%m/%d %H:%M`'"
+alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
 alias pull="git pull origin master"
 alias push="git push origin master"
 
+https://forums.fedoraforum.org/showthread.php?232018-Where-are-aliases-defined
+sur fedora, les alias sont dans
+/etc/bashrc
 
+alias gob="cd /home/ent6904919/Bureau/"
+alias gop="cd /home/ent6904919/Bureau/python/"
+alias gos="cd /home/ent6904919/Bureau/site-dp/"
+alias goh="cd /home/ent6904919/Bureau/html/"
+alias cmmt="git add .; git commit -m `date +'%m/%d %H:%M'`"
+alias pull="git pull origin master"
+alias push="git push origin master"
 
 
 ====== désinstaller une application ======
