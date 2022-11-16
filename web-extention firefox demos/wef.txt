@@ -28,6 +28,17 @@ about:debugging#/runtime/this-firefox
 bouton "charger un module complémentaire temporaire"
 sélectionner un des fichiers de mon extension
 
+https://extensionworkshop.com/documentation/publish/
+penser à la signature gecko
+
+cd /home/ent6904919/Bureau/bnf-remplir-page/
+zip -r -FS ../bnf-test.zip * --exclude 'icon-128.bmp'
+renommer le .zip en .xpi
+
+l'uploader sur https://addons.mozilla.org/fr/developers/addons
+
+
+
 ************************ pour chrome ************************
 
 chrome://extensions/
