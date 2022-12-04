@@ -43,7 +43,3 @@ section#summary a {
 	width: 12em;
 	background-color: var(--fond-color);
 }
-iframe {
-	width: 100%;
-	height: 16cm;
-}

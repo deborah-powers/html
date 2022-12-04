@@ -15,6 +15,7 @@ document.body.innerHTML = document.body.innerHTML.cleanHtml();
 HTMLElement.prototype.clean = function(){
 	// rechercher le main
 	if (this.innerHTML.contain ('</main>')){
+		console.log ('main');
 		var c=0;
 		while (c< this.children.length){
 			if (this.children[c].tagName == 'MAIN'){

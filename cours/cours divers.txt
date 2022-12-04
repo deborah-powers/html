@@ -67,6 +67,15 @@ modification permanente qui nécessite les droits d'admin
 raccourci chrome du bureau /propriétés/target
 rajouter --allow-file-access-from-files en fin de ligne
 
+pour le chrome du lanceur d'ubuntu,
+rechercher et modifier /usr/bin/google-chrome
+
+https://askubuntu.com/questions/160245/how-do-i-make-the-google-chrome-flag-allow-file-access-from-files-permanent
+
+
+
+
+
 ****** accéder aux json dans firefox ******
 
 dans about:config
