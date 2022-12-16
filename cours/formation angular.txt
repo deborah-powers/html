@@ -1,0 +1,230 @@
+======================== organisation ========================
+
+du 2022/12/12 au 12/14
+prof samuel ronce. free-lance angular. villefranche sur saône. pédagogue.
+jsnews.fr
+
+un email de présence par demi-journée.
+
+09:00 - 12:30
+13:30 - 17:00
+pause en milieu de demi-journée
+
+github partagé
+https://github.com/RSamaium/angular-formation
+git remote add origin https://github.com/RSamaium/angular-formation
+
+said mohamed aouad. sg, php. travaille déjà avec angular, mais a peut de connaissances.
+benedicte mendy. front, js, jq, un peut de java.
+mohamed soilihi el had. domaine de l'énnergie, .net, jq. déjà travaillé avec angular.
+yann raynaud. connais peu angular.
+adrien souquere. a fait un projet avec angular mais manque de connaissances.
+
+======================== la mise en prod ========================
+
+ng build
+
+======================== les tu ========================
+
+======================== les routeurs ========================
+
+======================== les formulaires ========================
+
+dans les templates html, les éléments n'ont pas de this.
+<form (submit)='myfunc(this)'> devient <form (submit)='myfunc(myform)' #myform>
+ngModel a deux rôles:
+	récupérer les champs des formulaires
+	synchroniser la valeur d'un champ avec une variable de component
+
+validateurs
+
+************************ les directives ************************
+
+<p [ngClass]='{ ok: myform.invalid, ko: myform.valid }'>
+<p [ngStyle]="{ color: 'red', fontWeight: 'bold', 'background-color': 'orange' }">
+
+
+======================== l'assynchronie ========================
+
+service, injection de dépendance, requette à un serveur, promesse et observable
+
+************************ l'observable ************************
+
+flux d'évènements transformés par des opérateurs.
+librarie rxjs.
+
+
+************************ la promesse ************************
+
+éviter les callback hell, les super-imbrications de callback. les remplacer par un enchainement de promesses.
+angular utilise rarement les promesses.
+
+let promesse = new Promise ((resolve, reject) =>{
+	mon code
+	resolve ("message de succès")
+	// ou rejet ("message d'erreur")
+	fin du code
+}).then (() => console.log ('next')).then (...).then (...)
+.catch (error => console.log (error))
+
+let promesse = new Promise ((resolve, reject) =>{
+	mon code
+}).then (message =>{
+	console.log (message)
+	return 'message bis'
+}).then (message2 => console.log (message2))
+
+les instructions du then sont éffectuées en parallèle de celle du Promise
+
+function foo(){}		// foo renvoi undefined
+async function bar(){}	// bar renvoi une promesse résolue.
+async function dur(){ const res = await funcPromise() }
+dur attend la fin de funcPromise pour continuer. async et await remplacent Promise et then, c'est une façon moderne d'écrire des promesses.
+
+async function sib(){
+	try{}
+	catch (error => console.log ('a', error))
+}.then (...).catch (error => console.log ('b', error))
+
+utiliser un try - catch résoud sib.
+
+async function sib(){
+	try{}
+	catch (error =>{
+		console.log ('a', error)
+		throw error
+	})
+}.then (...).catch (error => console.log ('b', error))
+
+throw conserve l'erreur.
+
+
+
+
+======================== les routeurs ========================
+
+cd myapp
+npm install @angular/router
+faire des spa. gérer le routing avec angular plutôt que le back-end, qui ne gère plus que le routing vers la page index.
+
+cd myapp
+ng generate module login
+ng generate component login
+
+======================== les pipes ========================
+
+le pipe est dans CommonModule
+template: '<h3>{{ nom | uppercase }}</h3><p>{{ email }}</p>'
+<p>prix: {{ price | currency }}</p> --> <p>prix: $15</p>
+<p>prix: {{ price | currency: 'EUR' }}</p> --> <p>prix: € 15</p>
+<p>prix: {{ price | currency: 'EUR': 'code }}</p> --> <p>prix: EUR 15</p>
+les paramètres sont séparés par des :
+l'internationnalisation est mauvaise, mieux vaut passer par un json.
+
+src\app\shared\pipes\plural.pipe.ts
+le déclarer dans
+src\app\shared\shared.module.ts
+
+======================== les composants ========================
+
+composant = code html + style css + code ts / js. brique indépendante.
+src\index.html
+
+src\app\app.component.ts
+utilisation de décorateur @TrucMuche.
+
+import { Component } from '@angular/core';
+
+@Component({
+	selector: 'app-component', // conformation obligatoire en app-xxx
+//	templateUrl: './app.component.html',
+	template: '<p>coucou</p>',
+	styleUrls: ['./app.component.css']
+})
+export class AppComponent{}
+
+src\app\app.module.ts
+le module est l'enveloppe du ou des components. il permet d'organiser le code, de rendre certaines fonctionnalités indépendantes.
+
+src\main.ts
+redondant avec module.bootstrap, mais permet de faire tourner l'appli sur tout.
+
+src\app\search.component.ts
+
+[value]: les crochets indiquent que le paramètre est géré dynamiquement à partir de la classe.
+(onclick): on écoute / attend un évennement.
+[(ngModel)]: échanger avec la classe. double data-binding. mvvm.
+@Input() username: string = 'ana' username devient un attribut html pour son template. la valeur est reçue du component parent.
+
+src\app\navbar.module.ts
+declarations: [NavBarComponent, SearchComponent],
+src\app\navbar.component.ts
+template: '<p>{{ title }}. 1+1 = {{ 1+1 }}</p><app-search></app-search>',
+
+revoir les interfaces
+
+
+======================== installation d'angular ========================
+
+ts rajoute un controle en amont sur les types des variables. phase de compilation qui vérifie le ts et le transforme en js.
+
+https://nodejs.org/en/download/
+https://angular.io/cli
+C:\Program Files\nodejs\
+une nouvelle version d'angular tous les six mois. le cour est valable pour angular 9+.
+
+node et npm sont installés en même temps.
+nodejs 14+ + npm
+node -v
+
+npm install -g @angular/cli
+ng version
+
+ng new myapp
+routing: yes (pour le 13)
+css: css simple
+C:\Users\deborah.powers\myapp\src\app
+ce dossier contiendra la vrai code de l'application.
+
+cd myapp
+ng serve
+http://localhost:4200/
+
+https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh/related
+
+installer une librairie css
+npm install @picocss/pico
+pour l'utiliser automatiquement sur toutes mes pages, le déclarer dans angular.json
+
+
+======================== rappels de js ========================
+
+let != var, mieux adapté à l'assynchronie.
+const est plus léger, plus simple.
+
+function a(){
+	let message = 'coucou'
+	function b(){ console.log (this.message) }.bind (this)
+// le this de b devient celui de a.
+}
+function a(){
+	let message = 'coucou'
+	let self = this
+	function b(){ console.log (self.message) }
+}
+function a(){
+// fonction flechée
+	let message = 'coucou'
+	const b =()=>{ console.log (this.message) }
+// this réfère celui de a
+}
+const fFlechee = (nom, prenom) =>{
+	let message = 'coucou '+ prenom +' '+ nom
+	return message
+}
+const fUltraSlim = prenom => 'coucou '+ prenom
+const fSlim = (nom, prenom) => 'coucou '+ prenom +' '+ nom
+pas d'accolade. le return est implicite.
+
+const array = [1,2,3].map (function (value){ return value *2 })
+const array = [1,2,3].map (value => value *2)

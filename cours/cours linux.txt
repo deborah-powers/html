@@ -90,6 +90,13 @@ ctl +l
 ou, dans la console
 gsettings set org.gnome.nautilus.preferences always-use-location-entry true
 
+****** utiliser la dernière version de nodejs ******
+
+télécharger le .tar pour linux
+le dézipper dans /opt/BNF/
+modifier /home/deborah/.bashrc
+export PATH=/opt/BNF/node-v18.12/bin/:/opt/BNF/yarn-v1.12.3/bin/:/opt/BNF/apache-maven-3.2.1/bin:/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin
+
 
 ****** créer des alias ******
 
