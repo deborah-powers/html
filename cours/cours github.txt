@@ -110,9 +110,9 @@ me donner les droits
 ne pas avoir à retaper le mot de passe à chaque fois
 C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
-	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
+	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
 
-ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
+ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
 ======================== erreurs ========================
 
