@@ -2,7 +2,7 @@ chrome.action.onClicked.addListener (function (tab){
 	if (! tab.url.includes ('chrome://')){
 		chrome.scripting.executeScript ({
 			target: {tabId: tab.id, allFrames: true },
-			files: [ 'text.js', 'cleanPage.js' ]
+			files: [ 'cleanLib.js', 'cleanPage.js' ]
 		});
 		chrome.scripting.insertCSS ({
 			target: {tabId: tab.id, allFrames: true},

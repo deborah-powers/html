@@ -21,12 +21,11 @@ sudo mysql
 
 créer un fichier macros.doskey
 
-gor=cd C:\Users\deborah.powers
-gob=cd C:\Users\deborah.powers\Desktop
-gop=cd C:\Users\deborah.powers\Desktop\python
-goh=cd C:\Users\deborah.powers\Desktop\html
-gos=cd C:\Users\deborah.powers\Desktop\site-dp
-goy=cd C:\Users\deborah.powers\Desktop\synergie
+gor=cd C:\Users\LENOVO
+gob=cd C:\Users\LENOVO\Desktop
+gop=cd C:\Users\LENOVO\Desktop\python
+goh=cd C:\Users\LENOVO\Desktop\html
+gos=cd C:\Users\LENOVO\Desktop\site-dp
 
 ::cmmt=git add . $T git commit -m "boulot %date:~6,4%/%date:~3,2%/%date:~0,2% %time:~0,5% $1"
 cmmt=git add . $T git commit -m "boulot %date:~3,2%/%date:~0,2% %time:~0,5% $1"
@@ -44,7 +43,7 @@ statis=cd mantis $T python setup.py install $T cd ..
 
 raccourci console du bureau /propriétés/target
 rajouter en fin de ligne: /k doskey /macrofile=C:\path\my\file\macros.doskey
-/k doskey /macrofile=C:\Users\deborah.powers\macros.doskey
+/k doskey /macrofile=C:\Users\LENOVO\macros.doskey
 
 
 
