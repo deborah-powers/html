@@ -42,14 +42,8 @@ String.prototype.clean = function(){
 	text = text.replace ('\t');
 	text = text.strip();
 	while (text.includes ('  ')) text = text.replace ('  ', ' ');
-	text = text.replace ('\n ', '\n');
-	text = text.replace (' \n', '\n');
-	text = text.replace ('\t ', '\t');
-	text = text.replace (' \t', '\t');
-	while (text.includes ('\t\t')) text = text.replace ('\t\t', '\t');
-	text = text.replace ('\t\n', '\n');
-	while (text.includes ('\n\n')) text = text.replace ('\n\n', '\n');
-	text = text.strip();
+	text = text.replace ('> ','>');
+//	text = text.replace (' <','<');
 	return text;
 }
 String.prototype.cleanEmptyTags = function(){
@@ -73,7 +67,12 @@ HTMLInputElement.prototype.clean = function(){
 }
 HTMLElement.prototype.cleanBasic = function(){
 	// éliminer les commentaires
-	for (var c= this.childNodes.length -1; c>=0; c--) if (this.childNodes[c].constructor.name === 'Comment') this.removeChild (this.childNodes[c]);
+	for (var c= this.childNodes.length -1; c>=0; c--){
+		if (this.childNodes[c].constructor.name === 'Comment') this.removeChild (this.childNodes[c]);
+		else if (this.childNodes[c].constructor.name === 'Text' && this.childNodes[c].length <2
+				&& ! "0123456789abcdefghijklmnopqrstuvwxyz.:;,!?".includes (this.childNodes[c].textContent))
+			this.removeChild (this.childNodes[c]);
+	}
 	// éliminer les blocs inutiles
 	for (var c= this.children.length -1; c>=0; c--){
 		if (this.children[c].tagName == 'SCRIPT' || this.children[c].tagName == 'NOSCRIPT'
@@ -81,14 +80,15 @@ HTMLElement.prototype.cleanBasic = function(){
 			this.removeChild (this.children[c]);
 		else if (! exists (this.children[c].innerHTML) && ! "A IMG BR HR INPUT".includes (this.children[c].tagName))
 			this.removeChild (this.children[c]);
-	// nettoyer les enfants
+		// nettoyer les enfants
 		else this.children[c].clean();
 	}
-	if (this.children.length ===1 && this.childNodes.length ===1) this.innerHTML = this.children[0].innerHTML;
+	if (this.children.length ===1 && this.childNodes.length ===1 && ! "A IMG BR HR INPUT".includes (this.children[0].tagName))
+		this.innerHTML = this.children[0].innerHTML;
 }
 HTMLElement.prototype.clean = function(){
 	this.cleanBasic();
-//	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
+	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
 }
 HTMLAnchorElement.prototype.clean = function(){
 	this.cleanBasic();
