@@ -20,6 +20,16 @@ String.prototype.index = function (word, pos){
 	}
 	return posReal;
 }
+String.prototype.count = function (word){
+	if (! this.includes (word)) return 0;
+	var pos =0, nb=0;
+	while (pos >=0){
+		pos = this.index (word, pos);
+		if (pos <0) break;
+		pos +=1; nb +=1;
+	}
+	return nb;
+}
 String.prototype.replace = function (wordOld, wordNew){
 	if (this.indexOf (wordOld) >=0){
 		if (! wordNew) wordNew ="";
@@ -43,7 +53,12 @@ String.prototype.clean = function(){
 	text = text.strip();
 	while (text.includes ('  ')) text = text.replace ('  ', ' ');
 	text = text.replace ('> ','>');
-//	text = text.replace (' <','<');
+	text = text.replace (' <','<');
+	/*
+	text = text.replace ('<a ',' <a ');
+	text = text.replace ('</a>','</a> ');
+	text = text.replace ('> <','><');
+	*/
 	return text;
 }
 String.prototype.cleanEmptyTags = function(){
@@ -52,20 +67,13 @@ String.prototype.cleanEmptyTags = function(){
 	while (text.includes ('<br/><br/>')) text = text.replace ('<br/><br/>', '<br/>');
 	text = text.replace ('<br/><', '<');
 	text = text.replace ('><br/>', '>');
+	text = text.replace ('<br/>', '</p><p>');
 	text = text.replace ('<span></span>');
 	text = text.replace ('<p></p>');
 	text = text.replace ('<div></div>');
 	return text;
 }
-HTMLImageElement.prototype.clean = function(){
-	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'src' && this.attributes[a].name != 'alt')
-		this.removeAttribute (this.attributes[a].name);
-}
-HTMLInputElement.prototype.clean = function(){
-	for (var a= this.attributes.length -1; a>=0; a--) if (! 'type name value id'.includes (this.attributes[a].name))
-		this.removeAttribute (this.attributes[a].name);
-}
-HTMLElement.prototype.cleanBasic = function(){
+HTMLElement.prototype.clean = function(){
 	// éliminer les commentaires
 	for (var c= this.childNodes.length -1; c>=0; c--){
 		if (this.childNodes[c].constructor.name === 'Comment') this.removeChild (this.childNodes[c]);
@@ -80,30 +88,43 @@ HTMLElement.prototype.cleanBasic = function(){
 			this.removeChild (this.children[c]);
 		else if (! exists (this.children[c].innerHTML) && ! "A IMG BR HR INPUT".includes (this.children[c].tagName))
 			this.removeChild (this.children[c]);
-		// nettoyer les enfants
-		else this.children[c].clean();
 	}
-	if (this.children.length ===1 && this.childNodes.length ===1 && ! "A IMG BR HR INPUT".includes (this.children[0].tagName))
-		this.innerHTML = this.children[0].innerHTML;
+	// simplifier les emboîtements
+	if (this.children.length ===1 && this.childNodes.length ===1){
+		if ("A IMG BR HR INPUT svg".includes (this.children[0].tagName)){
+			this.parentElement.insertBefore (this.children[0], this);
+			this.parentElement.removeChild (this);
+		}
+		else this.innerHTML = this.children[0].innerHTML;
+	}
+	for (var c=0; c< this.children.length; c++) this.children[c].clean();
 }
-HTMLElement.prototype.clean = function(){
-	this.cleanBasic();
+HTMLImageElement.prototype.delAttribute = function(){
+	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'src' && this.attributes[a].name != 'alt')
+		this.removeAttribute (this.attributes[a].name);
+}
+HTMLInputElement.prototype.delAttribute = function(){
+	for (var a= this.attributes.length -1; a>=0; a--) if (! 'type name value id'.includes (this.attributes[a].name))
+		this.removeAttribute (this.attributes[a].name);
+}
+HTMLElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
+	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
-HTMLAnchorElement.prototype.clean = function(){
-	this.cleanBasic();
+HTMLAnchorElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'href')
 		this.removeAttribute (this.attributes[a].name);
+	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
-HTMLFormElement.prototype.clean = function(){
-	this.cleanBasic();
+HTMLFormElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (! 'action method'.includes (this.attributes[a].name))
 		this.removeAttribute (this.attributes[a].name);
+	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
-HTMLButtonElement.prototype.clean = function(){
-	this.cleanBasic();
+HTMLButtonElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'onclick')
 		this.removeAttribute (this.attributes[a].name);
+	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
 HTMLElement.prototype.findTag = function (tagName){
 	var container = this.getElementsByTagName (tagName)[0];
@@ -113,10 +134,11 @@ HTMLElement.prototype.findTag = function (tagName){
 	container = document.getElementById (tagName);
 	if (exists (container)) this.innerHTML = container.innerHTML;
 }
-HTMLBodyElement.prototype.clean = function(){
+HTMLBodyElement.prototype.cleanBody = function(){
 	this.innerHTML = this.innerHTML.clean();
 	this.findTag ('main');
+	if (this.innerHTML.count ('</article>') ===1) this.findTag ('article');
 	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
-	this.cleanBasic();
+	this.clean();
 	this.innerHTML = this.innerHTML.cleanEmptyTags();
 }
