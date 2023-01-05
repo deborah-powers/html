@@ -180,13 +180,24 @@ node -v
 npm install -g @angular/cli
 ng version
 
-ng new myapp
+ng new pierres
 routing: yes (pour le 13)
 css: css simple
 C:\Users\deborah.powers\myapp\src\app
-ce dossier contiendra la vrai code de l'application.
+ce dossier contiendra le vrai code de l'application.
 
 cd myapp
+
+sur les ordi de la bnf, il faut configurer les proxy de npm
+npm config list -a # afficher les configurations de npm actuelles
+npm config set http_proxy http://fw_in.bnf.fr:8080
+npm config set https_proxy http://fw_in.bnf.fr:8080
+npm config set noproxy[] 127.0.0.1,localhost,.bnf.fr
+npm config set registry http://artefacts.bnf.fr/repository/npm-bnf/
+
+ce fichier est modifié, /home/ent6904919/.npmrc
+
+npm install
 ng serve
 http://localhost:4200/
 
@@ -222,8 +233,8 @@ const fFlechee = (nom, prenom) =>{
 	let message = 'coucou '+ prenom +' '+ nom
 	return message
 }
-const fUltraSlim = prenom => 'coucou '+ prenom
 const fSlim = (nom, prenom) => 'coucou '+ prenom +' '+ nom
+const fUltraSlim = prenom => 'coucou '+ prenom
 pas d'accolade. le return est implicite.
 
 const array = [1,2,3].map (function (value){ return value *2 })
