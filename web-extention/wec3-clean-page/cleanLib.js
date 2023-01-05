@@ -91,7 +91,7 @@ HTMLElement.prototype.clean = function(){
 	}
 	// simplifier les emboîtements
 	if (this.children.length ===1 && this.childNodes.length ===1){
-		if ("A IMG BR HR INPUT svg".includes (this.children[0].tagName)){
+		if ("A IMG BR HR INPUT".includes (this.children[0].tagName)){
 			this.parentElement.insertBefore (this.children[0], this);
 			this.parentElement.removeChild (this);
 		}
@@ -137,7 +137,6 @@ HTMLElement.prototype.findTag = function (tagName){
 HTMLBodyElement.prototype.cleanBody = function(){
 	this.innerHTML = this.innerHTML.clean();
 	this.findTag ('main');
-	if (this.innerHTML.count ('</article>') ===1) this.findTag ('article');
 	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
 	this.clean();
 	this.innerHTML = this.innerHTML.cleanEmptyTags();
