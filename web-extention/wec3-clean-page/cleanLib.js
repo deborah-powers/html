@@ -89,15 +89,22 @@ HTMLElement.prototype.clean = function(){
 		else if (! exists (this.children[c].innerHTML) && ! "A IMG BR HR INPUT".includes (this.children[c].tagName))
 			this.removeChild (this.children[c]);
 	}
-	// simplifier les emboîtements
-	if (this.children.length ===1 && this.childNodes.length ===1){
-		if ("A IMG BR HR INPUT".includes (this.children[0].tagName)){
+	for (var c=0; c< this.children.length; c++) this.children[c].clean();
+}
+HTMLElement.prototype.simplifyNesting = function(){
+	for (var c=0; c< this.children.length; c++) this.children[c].simplifyNesting();
+	if (this.children.length ===0 && (!exists (this.textContent)
+		|| this.textContent.length <2 && ! "0123456789abcdefghijklmnopqrstuvwxyz.:;,!?".includes (this.textContent))){
+		this.parentElement.removeChild (this);
+		return;
+	}
+	else if (this.children.length ===1 && this.childNodes.length ===1){
+		if ("A IMG BR HR INPUT svg".includes (this.children[0].tagName)){
 			this.parentElement.insertBefore (this.children[0], this);
 			this.parentElement.removeChild (this);
 		}
 		else this.innerHTML = this.children[0].innerHTML;
 	}
-	for (var c=0; c< this.children.length; c++) this.children[c].clean();
 }
 HTMLImageElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'src' && this.attributes[a].name != 'alt')
@@ -127,6 +134,7 @@ HTMLButtonElement.prototype.delAttribute = function(){
 	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
 HTMLElement.prototype.findTag = function (tagName){
+	console.log (tagName);
 	var container = this.getElementsByTagName (tagName)[0];
 	if (exists (container)) this.innerHTML = container.innerHTML;
 	container = this.getElementsByClassName (tagName)[0];
@@ -137,6 +145,7 @@ HTMLElement.prototype.findTag = function (tagName){
 HTMLBodyElement.prototype.cleanBody = function(){
 	this.innerHTML = this.innerHTML.clean();
 	this.findTag ('main');
+	if (this.innerHTML.count ('</article>') ===1) this.findTag ('article');
 	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
 	this.clean();
 	this.innerHTML = this.innerHTML.cleanEmptyTags();

@@ -16,4 +16,6 @@ var title = document.head.getElementsByTagName ('title')[0].innerHTML;
 header = header.replace ('<title></title>', '<title>' + title + '</title>');
 // document.head.innerHTML = '<title>' + title + '</title>';
 document.head.innerHTML = header;
+document.body.cleanBody();
+document.body.delAttribute();
 document.body.clean();
