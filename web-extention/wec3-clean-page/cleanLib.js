@@ -134,18 +134,37 @@ HTMLButtonElement.prototype.delAttribute = function(){
 	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
 }
 HTMLElement.prototype.findTag = function (tagName){
-	console.log (tagName);
 	var container = this.getElementsByTagName (tagName)[0];
 	if (exists (container)) this.innerHTML = container.innerHTML;
-	container = this.getElementsByClassName (tagName)[0];
-	if (exists (container)) this.innerHTML = container.innerHTML;
-	container = document.getElementById (tagName);
-	if (exists (container)) this.innerHTML = container.innerHTML;
-}
+	else{
+		container = this.getElementsByClassName (tagName)[0];
+		if (exists (container)) this.innerHTML = container.innerHTML;
+		else{
+			container = document.getElementById (tagName);
+			if (exists (container)) this.innerHTML = container.innerHTML;
+}}}
+HTMLElement.prototype.findTagList = function (tagName){
+	var containerList = this.getElementsByTagName (tagName);
+	if (exists (containerList)){
+		if (containerList.length ===1) this.innerHTML = containerList[0].innerHTML;
+		else{
+			this.innerHTML = containerList[0].outerHTML;
+			for (var c=1; c< containerList.length; c++) this.innerHTML = this.innerHTML + containerList[c].outerHTML;
+	}} else{
+		containerList = this.getElementsByClassName (tagName);
+		if (exists (containerList)){
+			if (containerList.length ===1) this.innerHTML = containerList[0].innerHTML;
+			else{
+				this.innerHTML = containerList[0].outerHTML;
+				for (var c=1; c< containerList.length; c++) this.innerHTML = this.innerHTML + containerList[c].outerHTML;
+		}} else{
+			containerList = document.getElementById (tagName);
+			if (exists (containerList)) this.innerHTML = containerList.innerHTML;
+}}}
 HTMLBodyElement.prototype.cleanBody = function(){
 	this.innerHTML = this.innerHTML.clean();
 	this.findTag ('main');
-	if (this.innerHTML.count ('</article>') ===1) this.findTag ('article');
+	if (this.innerHTML.count ('</article>') >0) this.findTagList ('article');
 	for (var a= this.attributes.length -1; a>=0; a--) this.removeAttribute (this.attributes[a].name);
 	this.clean();
 	this.innerHTML = this.innerHTML.cleanEmptyTags();

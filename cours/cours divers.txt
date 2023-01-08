@@ -2,6 +2,7 @@
 
 https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/
 https://www.wampserver.com/
+https://wampserver.aviatechno.net/?lang=fr&prerequis=afficher
 
 créer un sous-dossier dans C:/wamp/www/
 C:/wamp64/www/
