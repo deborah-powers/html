@@ -46,17 +46,6 @@ String.prototype.strip = function(){
 	while (toStrip.index (text [text.length -1]) >=0) text = text.slice (0, text.length -1);
 	return text;
 }
-function sendToBackend(){
-	// ecrire le body propre dans un fichier grâce à un backend python
-	const urlBE = 'http://localhost:1407/';
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if (this.readyState ===4 && this.status === 200) console.log ("les données ont bien été envoyées au back-end.\nsa réponse:", this.responseText);
-		else console.log ("l'échange avec le back-end est en erreur.\nécoute-il sur le port 1407 ?\nétat =", this.readyState, 'status =', this.status);
-	};
-	xhttp.open ('POST', urlBE, true);
-	xhttp.send (document.body.innerHTML);
-}
 String.prototype.clean = function(){
 	var text = this.replace ('\r');
 	text = text.replace ('\n');
@@ -103,6 +92,14 @@ HTMLElement.prototype.clean = function(){
 	}
 	for (var c=0; c< this.children.length; c++) this.children[c].clean();
 }
+SVGSVGElement.prototype.clean = function(){
+	// éliminer les commentaires
+	for (var c= this.childNodes.length -1; c>=0; c--){
+		if (this.childNodes[c].constructor.name === 'Comment') this.removeChild (this.childNodes[c]);
+		else if (this.childNodes[c].constructor.name === 'Text' && this.childNodes[c].length <2
+				&& ! "0123456789abcdefghijklmnopqrstuvwxyz.:;,!?".includes (this.childNodes[c].textContent))
+			this.removeChild (this.childNodes[c]);
+}}
 HTMLElement.prototype.simplifyNesting = function(){
 	for (var c=0; c< this.children.length; c++) this.children[c].simplifyNesting();
 	if (this.children.length ===0 && (!exists (this.textContent)
@@ -116,8 +113,7 @@ HTMLElement.prototype.simplifyNesting = function(){
 			this.parentElement.removeChild (this);
 		}
 		else this.innerHTML = this.children[0].innerHTML;
-	}
-}
+}}
 HTMLImageElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'src' && this.attributes[a].name != 'alt')
 		this.removeAttribute (this.attributes[a].name);
@@ -144,6 +140,10 @@ HTMLButtonElement.prototype.delAttribute = function(){
 	for (var a= this.attributes.length -1; a>=0; a--) if (this.attributes[a].name != 'onclick')
 		this.removeAttribute (this.attributes[a].name);
 	for (var c=0; c< this.children.length; c++) this.children[c].delAttribute();
+}
+SVGSVGElement.prototype.delAttribute = function(){
+	for (var a= this.attributes.length -1; a>=0; a--) if (! 'version width height xmlns:xlink'.includes (this.attributes[a].name))
+		this.removeAttribute (this.attributes[a].name);
 }
 HTMLElement.prototype.findTag = function (tagName){
 	var container = this.getElementsByTagName (tagName)[0];
