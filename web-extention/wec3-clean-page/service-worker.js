@@ -13,4 +13,12 @@ chrome.action.onClicked.addListener (function (tab){
 function coucou(){ document.body.style.backgroundColor = 'red'; }
 function: coucou
 files: ['action.js']
+https://developer.chrome.com/docs/extensions/mv3/messaging/#external
 */
+blocklistedExtension = 'vide';
+chrome.runtime.onMessageExternal.addListener(
+	function (request, sender, sendResponse){
+		console.log ('sender', sender.id);
+		if (sender.id === blocklistedExtension) console.log ('id ko');
+		else console.log ('id ok');
+});

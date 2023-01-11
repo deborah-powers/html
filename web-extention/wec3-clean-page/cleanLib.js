@@ -38,14 +38,6 @@ String.prototype.replace = function (wordOld, wordNew){
 	}
 	else return this;
 }
-String.prototype.strip = function(){
-	var toStrip = '\n \t/';
-	var text = this;
-	var i=0, j=1;
-	while (toStrip.index (text[0]) >=0) text = text.slice (1);
-	while (toStrip.index (text [text.length -1]) >=0) text = text.slice (0, text.length -1);
-	return text;
-}
 function sendToBackend(){
 	// ecrire le body propre dans un fichier grâce à un backend python
 	const urlBE = 'http://localhost:1407/';
@@ -58,12 +50,17 @@ function sendToBackend(){
 	xhttp.send (document.body.innerHTML);
 }
 String.prototype.clean = function(){
+	// éliminer les caractères en trops
 	var text = this.replace ('\r');
 	text = text.replace ('\n');
 	text = text.replace ('\t');
 	text = text.replace ('&nbsp;'," ");
-	text = text.strip();
 	while (text.includes ('  ')) text = text.replace ('  ', ' ');
+	// nettoyer les bords du texte
+	var textEnd = text.length -1;
+	if (text[0] ===" ") text = text.slice (1);
+	if (text [text.length -1] ===" ") text = text.slice (0, textEnd);
+	// nettoyer les balises internes
 	text = text.replace ('> ','>');
 	text = text.replace (' <','<');
 	/*
@@ -71,6 +68,7 @@ String.prototype.clean = function(){
 	text = text.replace ('</a>','</a> ');
 	text = text.replace ('> <','><');
 	*/
+	while (text.includes ('<br/><br/>')) text = text.replace ('<br/><br/>', '<br/>');
 	return text;
 }
 String.prototype.cleanEmptyTags = function(){
@@ -98,13 +96,19 @@ HTMLElement.prototype.clean = function(){
 		if (this.children[c].tagName == 'SCRIPT' || this.children[c].tagName == 'NOSCRIPT'
 			|| this.children[c].tagName == 'HEADER' || this.children[c].tagName == 'FOOTER')
 			this.removeChild (this.children[c]);
-		else if (! exists (this.children[c].innerHTML) && ! "A IMG BR HR INPUT".includes (this.children[c].tagName))
+		else if (! exists (this.children[c].innerText) && ! "A IMG BR HR INPUT".includes (this.children[c].tagName))
 			this.removeChild (this.children[c]);
 	}
 	for (var c=0; c< this.children.length; c++) this.children[c].clean();
 }
 HTMLElement.prototype.simplifyNesting = function(){
-	for (var c=0; c< this.children.length; c++) this.children[c].simplifyNesting();
+	for (var c= this.children.length -1; c>=0; c--){
+		if (this.children[c].tagName == 'NOSCRIPT' || this.children[c].tagName == 'HEADER' || this.children[c].tagName == 'FOOTER')
+			this.removeChild (this.children[c]);
+		else if (! exists (this.children[c].innerText) && ! "A IMG BR HR INPUT svg".includes (this.children[c].tagName))
+			this.removeChild (this.children[c]);
+		else this.children[c].simplifyNesting();
+	}
 	if (this.children.length ===0 && (!exists (this.textContent)
 		|| this.textContent.length <2 && ! "0123456789abcdefghijklmnopqrstuvwxyz.:;,!?".includes (this.textContent))){
 		this.parentElement.removeChild (this);

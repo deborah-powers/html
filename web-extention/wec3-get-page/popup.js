@@ -38,3 +38,9 @@ document.addEventListener ('DOMContentLoaded', function(){
 	var title = document.body.getElementsByTagName ('h1')[0];
 	title.addEventListener ('click', sendToBackendFromEvent);
 });
+// https://developer.chrome.com/docs/extensions/mv3/messaging/#external
+var laserExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
+chrome.runtime.sendMessage (laserExtensionId, {getTargetData: true},
+	function (response){
+		console.log ("j'ai eu une réponse !");
+});
