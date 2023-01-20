@@ -18,6 +18,7 @@ git config --global http.sslVerify false
 git config --global pull.rebase true
 git config --global fetch.prune true
 git config --global diff.colorMoved zebra
+git config --global credential.helper store
 
 ======================== commiter des fichiers ========================
 
