@@ -13,6 +13,7 @@ dans mon dossier projet
 git init
 git config --global user.name "deborah-powers"
 git config --global user.email "deborah.powers.dev@gmail.com"
+git config credential.helper store
 git config --global http.sslVerify false
 git config --global pull.rebase true
 git config --global fetch.prune true
@@ -57,7 +58,7 @@ conflit lors d'un meging
 créer un répertoire sous github
 	faire le lien. origin est un nom par défaut, comme master en locale
 	git remote add origin https://github.com/nom-github/dossier.git
-	git remote add origin https://github.com/deborah-powers/html.git
+	git remote add origin https://github.com/deborah-powers/webext.git
 	git config credential.helper store
 	git config --global user.email "deborah.powers.dev@gmail.com"
 	git config --global user.name "deborah-powers"

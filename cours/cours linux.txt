@@ -48,16 +48,6 @@ Type=Application
 Terminal=false
 Categories=internet;
 
-[Desktop Entry]
-Version=1.0
-Name=eclipse
-Comment=ide pour java
-Icon=/opt/BNF/eclipse/eclipse/icon.xpm
-Exec=/opt/BNF/eclipse/eclipse/eclipse
-Terminal=false
-Type=Application
-Terminal=false
-Categories=Utility;developpement;
 
 ====== installer lamp-serveur ======
 
