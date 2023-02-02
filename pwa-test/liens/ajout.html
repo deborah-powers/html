@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head>
+	<title>Liens</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_self'>
+	<link rel='icon' type='image/svg' href='../../data/nounours-bonbon.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/debbyPlay.css'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/color.css' media='screen'/>
+	<script type='text/javascript' src='../../library-js/config.js'></script>
+	<script type='text/javascript' src='../../library-js/text.js'></script>
+	<script type='text/javascript' src='../../library-js/file.js'></script>
+	<script type='text/javascript' src='../../library-js/debbyPlay.js'></script>
+	<script type='text/javascript' src='../login/login.js'></script>
+<style type='text/css'>
+	a:hover, button:hover {
+		font-weight: normal;
+		background-color: var(--button-bg-hover);
+	}
+	form {
+		display: grid;
+		grid-template-columns: 30% 1fr;
+	}
+	/* affichage pour les smartphones */
+	@media (max-width: 768px){
+		form { display: block; }
+	}
+</style></head><body>
+	<nav>
+		<a href='..'>accueil</a>
+		<a href='..#!/tutoriels'>tutoriels</a>
+		<a href='.'>voir la liste</a>
+		<button onclick='addLink()'>Ajouter</button>
+	</nav>
+	<form>
+		<p>Catégorie</p><input type='text' name='category'/>
+		<p>Sous-catégorie. ce champ peut être vide</p><input type='text' name='subcategory'/>
+		<p>Nom</p><input type='text' name='name'/>
+		<p>Lien</p><input type='text' name='link'/>
+		<p>lien privé</p><input type='checkbox' name='privacy' value='oui'>
+	</form>
+</body><script type='text/javascript'>
+	debbyPlay.linkStored = paramFromUrl (window.location.href);
+	debbyPlay.category ="";
+	debbyPlay.subcategory ="";
+	debbyPlay.name ="";
+	debbyPlay.link ="";
+	debbyPlay.privacy = false;
+	debbyPlay.idus =0;
+
+	if (debbyPlay.linkStored.category) debbyPlay.category = debbyPlay.linkStored.category;
+	if (debbyPlay.linkStored.subcategory) debbyPlay.subcategory = debbyPlay.linkStored.subcategory;
+	if (debbyPlay.linkStored.name) debbyPlay.name = debbyPlay.linkStored.name;
+	if (debbyPlay.linkStored.link) debbyPlay.link = debbyPlay.linkStored.link;
+
+	document.body.init();
+	function addLink(){
+		var backUrl = pathBackend + 'perso/liens/';
+		var params ={
+			category: debbyPlay.category,
+			subcategory: debbyPlay.subcategory,
+			name: debbyPlay.name,
+			link: debbyPlay.link,
+			idus: 0
+		};
+		if (debbyPlay.privacy) params.idus = user;
+		if (debbyPlay.linkStored.id){
+			backUrl = backUrl + 'update.php';
+			params.id = debbyPlay.linkStored.id;
+		}
+		else backUrl = backUrl + 'add.php';
+		debbyPlay.linkStored = fromBackendSync (backUrl, params);
+		window.location.href = '.';
+	}
+</script></html>

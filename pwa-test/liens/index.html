@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head>
+	<title>Liens</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg' href='../../data/nounours-bonbon.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/debbyPlay.css'/>
+	<link rel='stylesheet' type='text/css' href='../../library-css/color.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='style.css'/>
+	<script type='text/javascript' src='../../library-js/config.js'></script>
+	<script type='text/javascript' src='../../library-js/text.js'></script>
+	<script type='text/javascript' src='../../library-js/file.js'></script>
+	<script type='text/javascript' src='../../library-js/debbyPlay.js'></script>
+	<script type='text/javascript' src='../login/login.js'></script>
+<style type='text/css'>
+</style></head><body>
+	<nav>
+		<a target='_self' href='../..'>accueil</a>
+		<a target='_self' href='../..#/portfolio'>portfolio</a>
+		<a target='_self' href='..'>me logger</a>
+		<a target='_self' if='user' href='ajout.html?category=(( option ))'>ajouter un lien</a>
+	</nav>
+	<selection name='option' callback='getLinks'>options</selection>
+	<section id='music-unlogged' if="toShow=='music-unlogged'">
+		<p class='music' style='grid-section-columns: 1fr 1fr 25% 25%' for='linkList'>
+			<span>(( subcategory ))</span>
+			<a id='(( id ))' href='(( link ))'>(( name ))</a>
+		</p>
+	</section>
+	<section if="toShow=='music-logged'">
+		<p class='music logged' style='grid-section-columns: 1fr 1fr 25% 25%' for='linkList'>
+			<span>(( subcategory ))</span>
+			<a id='(( id ))' href='(( link ))'>(( name ))</a>
+			<button class='icon modify' onclick='modLinkMusic(this)'></button>
+			<button class='icon delete' onclick='delLink(this)'></button>
+		</p>
+	</section>
+	<section if="toShow=='all-unlogged'">
+		<div class='unlogged' for='linkList'>
+			<h2>(( title ))</h2>
+			<p for='links'>
+				<a id='(( id ))' href='(( link ))'>(( name ))</a>
+			</p>
+		</div>
+	</section>
+	<section if="toShow=='all-logged'">
+		<div class='logged' for='linkList'>
+			<h2>(( title ))</h2>
+			<p for='links'>
+				<a id='(( id ))' href='(( link ))'>(( name ))</a>
+				<button class='icon modify' onclick='modLink(this)'></button>
+				<button class='icon delete' onclick='delLink(this)'></button>
+			</p>
+			<a target='_self' class='center' href='ajout.html?category=(( option ))&subcategory=(( title ))'>ajouter un lien</a>
+		</div>
+	</section>
+</body>
+	<script type='text/javascript' src='show-links.js'></script>
+</html>
