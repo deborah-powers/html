@@ -1,11 +1,4 @@
 <?php
-/*
-author: Deborah Powers
-job: Dev Web
-school: Simplon Lieusaint
-creation: 2018/03/07
-update: 2018/03/07
-*/
 session_start();
 
 $day = date ('d/m/Y');
