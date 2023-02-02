@@ -1,0 +1,70 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='library-css/dynaPlay.css'/>
+	<script type='text/javascript' src='library-js/text.js'></script>
+	<script type='text/javascript' src='library-js/dynaPlay.js'></script>
+<style type='text/css'>
+	input { display: block; }
+</style></head><body>
+web app
+les données vont du téléphonne à la bdd en ligne.
+
+	<table>
+		<caption>liste de mes dépenses</caption>
+		<tr>
+			<th>date</th>
+			<th>ville</th>
+			<th>catagorie</th>
+			<th>destinataire</th>
+			<th>montant (euro)</th>
+			<th>commentaire</th>
+		</tr>
+		<th>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</th>
+	</table>
+	<form>
+		<h2>entrer une nouvelle dépense</h2>
+		<label for='date'></label><input type='date' id='date'/>
+		<label for=''></label><input type='text' id=''/>
+		<label for=''></label><input type='text' id=''/>
+		<label for=''></label><input type='text' id=''/>
+		<p>Votre prénom</p>
+		<input type='text' id='f-name' value='Claudia'/>
+		<input type='submit' onmouseleave='printName()'/>
+		<input type='reset'/>
+	</form>
+	<p id='showLname'>Votre nom est:</p>
+	<p id='showFname'>Votre prénom est:</p>
+</body><script type='text/javascript'>
+	var Fname = document.getElementById ('f-name');
+	var Lname = document.getElementById ('l-name');
+			var showFname = document.getElementById ('showFname');
+			var showLname = document.getElementById ('showLname');
+	function printName(){
+		var txtFname = Fname.value;
+		var txtLname = Lname.value;
+		showFname.innerHTML = 'Votre prénom est: '+ txtFname;
+		showLname.innerHTML = 'Votre nom est: '+ txtLname;
+	}
+class Depense{
+	constructor(){
+		this.date = new Date();
+		this.ville ="";
+		this.montant =0.0;
+		this.catagorie ="";
+		this.destinataire ="";
+		this.commentaire ="";
+	}
+}
+</script></html>
