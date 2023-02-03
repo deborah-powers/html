@@ -27,7 +27,6 @@ Name=mon appli
 Comment=details sur l'appli
 Icon=/path/to/icon.svg
 Exec=path/to/myapp -arg
-Terminal=false
 Type=Application
 Terminal=false
 Categories=Utility;divers;

@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head>
+	<title>test de pwa</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<meta name='theme-color' content='ivory'/>
+	<link rel='icon' type='image/svg+xml' href='static/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='static/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='static/perso.css' media='screen'/>
+	<script type='text/javascript' src='static/text.js'></script>
+<style type='text/css'>
+	input { display: block; }
+	* {
+		margin-bottom: 6mm;
+	}
+</style></head><body>
+	<h1>bonjour je suis un test de pwa</h1>
+	<p id='etat-connection-internet'>la connection internet</p>
+</body><script type='text/javascript'>
+// détecter si la connection internet est ouverte
+var pConnection = document.getElementById ('etat-connection-internet');
+console.log (window.navigator.onLine);
+if (window.navigator.onLine) pConnection.innerHTML = 'la connection internet est ouverte';
+else pConnection.innerHTML = 'la connection internet est fermée';
+window.addEventListener ('online', function(){ pConnection.innerHTML = "la connection internet vient de s'ouvrir"; });
+window.addEventListener ('offline', function(){ pConnection.innerHTML = 'la connection internet vient de se fermer'; });
+
+
+</script></html>
