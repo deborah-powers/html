@@ -218,8 +218,9 @@ img#banner {
 		padding-top: 0;
 	}
 }
-/* pour mes pwa */
+/* pour mes pwa /
 button#install-pwa { display: none; }
+*/
 .hidden { display: none; }
 /* styles pour les scrollbar
 truc {

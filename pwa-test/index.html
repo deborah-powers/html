@@ -1,29 +1,51 @@
-<!DOCTYPE html><html><head>
-	<title>test de pwa</title>
+<!doctype html><html><head>
+	<title>test pwa</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='_blank'>
+	<link rel='manifest' href='manifest.webmanifest'/>
+	<link rel='icon' type='image/png' href='static/icone-192.png'/>
+	<link rel='apple-touch-icon' type='image/png' href='static/icone-192.png'/>
+	<meta name='msapplication-TileImage' content='static/icone-192.png'>
 	<meta name='theme-color' content='ivory'/>
-	<link rel='icon' type='image/svg+xml' href='static/nounours-perso.svg'/>
+	<meta name='msapplication-TileColor' content='ivory'>
+	<meta name='apple-mobile-web-app-capable' content='yes'>
+	<meta name='apple-mobile-web-app-status-bar-style' content='black'>
+	<meta name='apple-mobile-web-app-title' content='test pwa'>
 	<link rel='stylesheet' type='text/css' href='static/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='static/perso.css' media='screen'/>
-	<script type='text/javascript' src='static/text.js'></script>
-<style type='text/css'>
-	input { display: block; }
-	* {
-		margin-bottom: 6mm;
-	}
-</style></head><body>
-	<h1>bonjour je suis un test de pwa</h1>
+	<link rel='stylesheet' type='text/css' href='static/perso.css'/>
+	<script type='text/javascript' src='static/indexed-db.js'></script>
+</head><body>
+	<h1>ma liste de courses</h1>
 	<p id='etat-connection-internet'>la connection internet</p>
-</body><script type='text/javascript'>
+	<p>je veux entrer en base ce message: coucou je suis deborah</p>
+	<p id='message-idb'>le message: $message</p>
+	<p id='message-idb-bis'>le message: $message</p>
+	<button id='install-pwa'>installer l'application</button>
+	<script type='text/javascript' src='service-launcher.js'></script>
+	<script type='text/javascript'>
 // détecter si la connection internet est ouverte
 var pConnection = document.getElementById ('etat-connection-internet');
-console.log (window.navigator.onLine);
 if (window.navigator.onLine) pConnection.innerHTML = 'la connection internet est ouverte';
 else pConnection.innerHTML = 'la connection internet est fermée';
 window.addEventListener ('online', function(){ pConnection.innerHTML = "la connection internet vient de s'ouvrir"; });
 window.addEventListener ('offline', function(){ pConnection.innerHTML = 'la connection internet vient de se fermer'; });
+// échanger avec indexed-db
+var messageOrigine ={ message: 'coucou je suis deborah' };
+var messageIdb ={ id: 0, message: "le message n'a pas été récupéré" };
+var containerIdb = document.getElementById ('message-idb');
+var containerIdbBis = document.getElementById ('message-idb-bis');
 
-
-</script></html>
+function addCallback (res){ console.log ('res add', res); }
+function getCallback (res){
+	console.log ('res get', res);
+	res.message = 'je suis le message modifié';
+	console.log ('res get bis', res);
+	put (res, addCallback);
+}
+add (messageOrigine, addCallback);
+get (5, getCallback);
+del (8)
+getAll (addCallback);
+	</script>
+</body></html>
