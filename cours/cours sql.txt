@@ -32,7 +32,9 @@ sgbd: Système de Gestion de Base de Donnée. mySQL, postgreSQL, oracle sont des
 ________________________ opérations sur une bdd ________________________
 
 créer une bdd
-CREATE DATABASE 'mybdd'
+CREATE DATABASE mybdd;
+GRANT ALL ON mybdd.* TO 'user_name'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
+
 
 supprimer une bdd
 DROP DATABASE 'mybdd'
@@ -40,7 +42,7 @@ DROP DATABASE 'mybdd'
 ________________________ opérations sur une table ________________________
 
 créer une table
-$CREATE TABLE myTable(
+CREATE TABLE myTable(
 	name data type,
 	country data type,
 	city data type,
