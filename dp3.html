@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head>
+	<title>dp3, énième version de debbyPlay</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='/var/www/html/site-dp/'/>
+	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='library-js/text.js'></script>
+	<script type='text/javascript' src='file:///home/ent6904919/Bureau/dp3.js'></script>
+<style type='text/css'>
+	form {
+		display: grid;
+		grid-template-columns: 4em 1fr;
+		grid-gap: 0.5em;
+	}
+</style></head><body>
+	<h1>nouvelle itération de debbyPlay, dp3</h1>
+	<h2>les variables simples</h2>
+	<p>un mot: (( prenom ))</p>
+	<p>un nombre: (( age ))</p>
+	<p>une liste simple:<span> bonjour (( enfants )),</span></p>
+	<p>un dictionnaire - objet:<span> le (( sacAmain )),</span></p>
+	<h3>une liste imbriquée</h3>
+	<p>à faire:<span> - (( taches )),</span></p>
+	<h2>l'interractivité</h2>
+	<input type='text' name='prenom'/><button>entrez votre nom</button>
+	<h3>plusieurs champs</h3>
+	<input type='text' name='enfants'/>
+</body>
+<script type='text/javascript'>
+	var prenom = 'deborah sylvie';
+	var age = 12;
+	var enfants =[ 'camille', 'david', 'laura', 'martin' ];
+	var sacAmain ={ stylo: [ 'rose', 'noir' ], porteFeuille: 'gris et rouge', trousse: 'verte-bleue' };
+	var taches =[
+		[ 'laver la vaisselle', 'balayer le salon' ],
+		[ 'pendre le linge', 'nettoyer la salle de bain' ],
+		[ 'récurer le four', 'descendre la poubelle' ]
+	];
+	dpInit();
+</script>
+</html>
