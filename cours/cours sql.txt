@@ -5,9 +5,8 @@ https://www.adminer.org/
 placer le php dans /var/www/html/
 y accéder dans le navigateur,
 via http://localhost/adminer.php
-ou http://localhost/adminer-ma-version.php
+ou http://localhost/adminer-ma.version.php
 http://localhost/adminer-4.8.1.php
-
 
 https://www.mysqltutorial.org/mysql-create-database/
 
@@ -35,17 +34,20 @@ créer une bdd
 CREATE DATABASE mybdd;
 GRANT ALL ON mybdd.* TO 'user_name'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
 
-
 supprimer une bdd
 DROP DATABASE 'mybdd'
+
+alter user 'root'@'localhost' identified by 'root';
+flush privileges;
 
 ________________________ opérations sur une table ________________________
 
 créer une table
 CREATE TABLE myTable(
-	name data type,
+	name data type not null,
 	country data type,
 	city data type,
+	primary key (name)
 );
 
 supprimer une table

@@ -16,7 +16,6 @@ Voir le fichier : wamp(64)\mariadb_mysql.txt
 
 service mysql restart
 service apache2 restart
-sudo mysql
 
 ====== macro pour window ======
 
