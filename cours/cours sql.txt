@@ -13,14 +13,14 @@ https://www.mysqltutorial.org/mysql-create-database/
 select user, authentication_string from mysql.user;
 show databases;
 
-________________________ général ________________________
+====== général ======
 
 risque de piratage avec injection de sql. par exemple, formulaire utilisant get, sql dans l'url.
 pdo de php pour communiquer avec sql. pdo est un objet.
 activer pdo: dans php.ini, décommenter la ligne ;extension=php_pdo_mysql.dll (le ;)
 quatre opérations de bases, le crud
 
-________________________ vocabulaire ________________________
+====== vocabulaire ======
 
 clef primaire: une colone de la table. chaque objet possède une valeur unique qui permet de l'identiier. l'id est une clef primaire parfaite.
 
@@ -28,7 +28,7 @@ clef étrangère: deux classes sont reliées, comme les marques de voiture et le
 
 sgbd: Système de Gestion de Base de Donnée. mySQL, postgreSQL, oracle sont des sgbd.
 
-________________________ opérations sur une bdd ________________________
+====== opérations sur une bdd ======
 
 créer une bdd
 CREATE DATABASE mybdd;
@@ -40,9 +40,8 @@ DROP DATABASE 'mybdd'
 alter user 'root'@'localhost' identified by 'root';
 flush privileges;
 
-________________________ opérations sur une table ________________________
+====== opérations sur une table ======
 
-créer une table
 CREATE TABLE myTable(
 	name data type not null,
 	country data type,
@@ -53,7 +52,7 @@ CREATE TABLE myTable(
 supprimer une table
 DROP TABLE myTable
 
-________________________ opérations sur les objets dans une table ________________________
+====== opérations sur les objets dans une table ======
 
 récupérer tous les objets d'une table
 SELECT * FROM 'table_name'
@@ -101,7 +100,7 @@ Value1 et 2 sont toujours entre guillemets
 modifier un objet
 UPDATE 'table_name' SET Col1=newValue1, Col2=newValue2 WHERE Col3=Value3
 
-________________________ les opérateurs ________________________
+====== les opérateurs ======
 
 
 utilisés dans la commande WHERE
@@ -114,7 +113,7 @@ thing1 AND thing2
 thing1 OR thing2
 thing LIKE '%Pattern_'
 
-________________________ ordre des commandes ________________________
+====== ordre des commandes ======
 
 SELECT *
 FROM mabdd
