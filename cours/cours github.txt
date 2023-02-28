@@ -19,6 +19,7 @@ git config --global pull.rebase true
 git config --global fetch.prune true
 git config --global diff.colorMoved zebra
 git config --global credential.helper store
+git commit --allow-empty -m "Initialization"
 
 ======================== commiter des fichiers ========================
 
@@ -59,38 +60,40 @@ conflit lors d'un meging
 créer un répertoire sous github
 	faire le lien. origin est un nom par défaut, comme master en locale
 	git remote add origin https://github.com/nom-github/dossier.git
-	git remote add origin https://github.com/deborah-powers/webext.git
+	git remote add origin https://github.com/deborah-powers/html.git
 	git config credential.helper store
 	git config --global user.email "deborah.powers.dev@gmail.com"
 	git config --global user.name "deborah-powers"
 
+git remote add origin https://github.com/deborah-powers/node-todo.git
+
 vérifier que le lien a été fait. renvoi origin normalement
-	git remote
+git remote
 
 déposer le contenu de la branche master dans origin
-	git push origin master
+git push origin master
 
 récupérer un projet chez moi. git demande nom et mdp de github
-	git pull origin master
-	git push origin <local-branch-name>:<remote-branch-name>
+git pull origin master
+git push origin <local-branch-name>:<remote-branch-name>
 
 me connecter chez quelqu'un d'autre
-	git remote add nom-autre master adresse
+git remote add nom-autre master adresse
 
 aller sur une branche du remote
-	git fetch origin
-	git checkout mabranche
+git fetch origin
+git checkout mabranche
 
 voir les infos du site distant
-	git remote show origin
+git remote show origin
 
 récupérer les données de distant/random à local/deborah
 	les récupérer sur local/random
-		git checkout random
-		git pull origin random
+git checkout random
+git pull origin random
 	merger local/random dans local/deborah
-		checkout deborah
-		git merge random
+checkout deborah
+git merge random
 
 effacer en local les branches déjà éffacées sur le web
 C:/Users/deborah.powers/html/.git/config
@@ -112,9 +115,9 @@ me donner les droits
 ne pas avoir à retaper le mot de passe à chaque fois
 C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
-	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
+	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
 
-ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
+ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
 ======================== erreurs ========================
 
