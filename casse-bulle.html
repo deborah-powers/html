@@ -27,9 +27,6 @@
 		margin: 0;
 	}
 	p.vider { border-color: blue; }
-	p.vider-a { border-color: green; }
-	p.vider-b { border-color: red; }
-	p.vider-c { border-color: deeppink; }
 	p.rose { background-color: pink; }
 	p.jaune { background-color: orange; }
 	p.vert { background-color: lightgreen; }
@@ -42,8 +39,11 @@
 </body>
 <script type='text/javascript'>
 //	console.log (document.getElementsByTagName ('p')[0].constructor.name);
-
-const classList =[ 'rose', 'jaune', 'bleu' ];
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const classList =[ 'rose', 'jaune' ];
+const len =6;
+const len2 = len * len;
+let idDelete =[];
 
 Array.prototype.chooseRandomly = function(){
 	var pos = Math.random();
@@ -51,46 +51,81 @@ Array.prototype.chooseRandomly = function(){
 	pos = Math.floor (pos);
 	return this[pos];
 }
-HTMLElement.prototype.createChild = function(){
+HTMLElement.prototype.createBall = function (pos){
+	const x= Math.floor (pos / len);
+	const y= pos % len;
 	var newElement = document.createElement ('p');
 	newElement.className = classList.chooseRandomly();
+	newElement.id = alphabet[x] + alphabet[y];
 	this.appendChild (newElement);
 }
-HTMLElement.prototype.getByPosX = function (color, posX){
+HTMLElement.prototype.getByX = function (color, posX){
+	// posX est une lettre, a,b,c
 	var items =[];
-	for (var c=0; c< this.children; c++) if (this.children[c].className === color) items.push (this.children[c]);
+	for (var c=0; c< this.children.length; c++)
+		if (this.children[c].className === color && this.children[c].id[0] === posX)
+			items.push (this.children[c]);
+	return items;
+}
+HTMLElement.prototype.getByY = function (color, posY){
+	// posX est une lettre, a,b,c
+	var items =[];
+	for (var c=0; c< this.children.length; c++)
+		if (this.children[c].className === color && this.children[c].id[1] === posY)
+			items.push (this.children[c]);
+	return items;
+}
+HTMLElement.prototype.getByRef = function (itemRef){
+	var items =[];
+	for (var c=0; c< this.children.length; c++)
+		if (this.children[c].className === itemRef.className && this.children[c].id !== itemRef.id
+		&& (this.children[c].id[0] === itemRef.id[0] || this.children[c].id[1] === itemRef.id[1])){
+			console.log ('b', c);
+			items.push (this.children[c]);
+		}
 	return items;
 }
 var cadre = document.getElementsByTagName ('section')[0];
-const len =6;
-const len2 = len * len;
-for (var c=0; c< len2; c++) cadre.createChild();
+for (var c=0; c< len2; c++) cadre.createBall (c);
 document.getElementsByTagName ('section')[1].innerHTML = cadre.innerHTML;
 
-function effacer(){
-	var nb=1;
+for (var c=0; c< len2; c++) cleanByRef (cadre.children[c]);
+
+function cleanByRef (itemRef){
 	// lignes verticales
-	for (var c=0; c< len; c++){
-		nb=1;
-		for (var d=c+ len; d< len2; d+= len){
-			if (cadre.children[d].classList[0] === cadre.children[d-len].classList[0]) nb+=1;
-			else if (nb>2){
-				for (var e=d-nb* len; e<d; e+= len) cadre.children[e].classList.add ('vider-a');
-				nb=1;
-		}}
-		if (nb>2) for (var e=d-nb* len; e<d; e+= len) cadre.children[e].classList.add ('vider-b');
-	//	if (nb>2) for (var e=d-nb* len; e<d; e+= len) cadre.children[e].className ="";
+	let itemsLikeFirst = cadre.getByX (itemRef.className, itemRef.id[0]);
+	let nb=1;
+	for (var c=1; c< itemsLikeFirst.length; c++){
+		if (alphabet.includes (itemsLikeFirst[c-1].id[1] + itemsLikeFirst[c].id[1])) nb+=1;
+		else if (nb>2){
+			for (var e=c-nb; e<c; e++) if (! idDelete.includes (itemsLikeFirst[e].id)){
+				idDelete.push (itemsLikeFirst[e].id)
+				itemsLikeFirst[e].classList.add ('vider');
+			}
+			nb=1;
+	}}
+	if (nb>2) for (var e=c-nb; e<c; e++)
+		if (! idDelete.includes (itemsLikeFirst[e].id)){
+			idDelete.push (itemsLikeFirst[e].id)
+			itemsLikeFirst[e].classList.add ('vider');
 	}
 	// lignes horizontales
-	for (var c=0; c< len2; c+= len){
-		nb=1;
-		for (var d=c+1; d<c+ len; d++){
-			if (cadre.children[d].classList[0] === cadre.children[d-1].classList[0]) nb+=1;
-			else if (nb>2){
-				for (var e=d-nb; e<d; e++) cadre.children[e].classList.add ('vider-c');
-				nb=1;
-		}}
-		if (nb>2) for (var e=d-nb; e<d; e++) cadre.children[e].classList.add ('vider');
+	itemsLikeFirst = cadre.getByY (itemRef.className, itemRef.id[1]);
+	nb=1;
+	for (var c=1; c< itemsLikeFirst.length; c++){
+		if (alphabet.includes (itemsLikeFirst[c-1].id[0] + itemsLikeFirst[c].id[0])) nb+=1;
+		else if (nb>2){
+			for (var e=c-nb; e<c; e++) if (! idDelete.includes (itemsLikeFirst[e].id)){
+				idDelete.push (itemsLikeFirst[e].id)
+				itemsLikeFirst[e].classList.add ('vider');
+			}
+			nb=1;
+	}}
+	if (nb>2) for (var e=c-nb; e<c; e++)
+		if (! idDelete.includes (itemsLikeFirst[e].id)){
+			idDelete.push (itemsLikeFirst[e].id)
+			itemsLikeFirst[e].classList.add ('vider');
 	}
 }
+
 </script></html>
