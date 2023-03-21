@@ -1,0 +1,51 @@
+============ express ============
+
+https://www.youtube.com/watch?v=Q8wacXNngXs
+
+npm init
+npm i --save express
+npm i --save mongodb
+
+npm i -g nodemon
+npm i --save ejs
+npm run start
+
+npm run commandName
+commandName est dans package.json / scripts
+
+nodemon permet de recharger automatiquement mes scripts après modification
+ejs est un moteur de template
+npm i --save machin
+    installe machin dans mon projet
+    il apparait dans package.json
+npm i --global machin
+    installe machin sur mon ordi
+    il est disponible pour tous mes projets
+    il est dans projet/node_modules/
+adapter package.json
+
+barre d'outil / run / add configuration /
+
+============ mongodb ============
+
+C:\Program Files\MongoDB\Server\6.0\data\
+mongodb://localhost:27017
+https://www.youtube.com/watch?v=tbsM7hb1UUc
+https://www.youtube.com/watch?v=kHixZQNeFE8
+https://www.mongodb.com/docs/manual/core/schema-validation/
+gérer mongo avec compass.
+
+
+
+============ bases ============
+
+https://grafikart.fr/tutoriels/http-795#autoplay
+http://localhost:1407/
+
+Error: listen EACCES 0.0.0.0:8080
+le port 8080 est déjà utilisé par une application, alors que mon appli l'utilise.
+modifier mon port.
+
+requete.url
+requete.method
+var message = `hello ${prenom}`
