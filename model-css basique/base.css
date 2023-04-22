@@ -19,11 +19,11 @@ xmp {
 	margin: 0;
 	padding: 0;
 }
-section.list3 {
+body.list3 {
 	column-count: 3;
 	break-inside: column;
 }
-section.list2 {
+body.list2 {
 	column-count: 2;
 	break-inside: column;
 }

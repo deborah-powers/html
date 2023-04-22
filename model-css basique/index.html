@@ -8,36 +8,31 @@
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/shapes.css'/>
 	<link rel='stylesheet' type='text/css' href='base.css'/>
-	<script type='text/javascript' src='../../site-dp/library-js-ext/angular.js'></script>
-	<script type='text/javascript' src='../../site-dp/library-js-ext/angular-ui-router.js'></script>
-</head><body ng-app='cssApp'>
+</head><body>
 	<header>
 		<h1>page de référence pour démontrer des styles css basiques</h1>
 		<p>rappel: un grand titre par page</p>
 		<p>les feuilles de style: structure.css et perso.css</p>
 		<p>structure apporte l'affichage de base, perso les couleurs de la page.</p>
 		<section id='summary' style='border:none;text-align:center;'>
-			<a ui-sref='grid()'>le framework grid</a>
-			<a ui-sref='flex()'>le framework flex</a>
-			<a ui-sref='form()'>les formulaire</a>
-			<a ui-sref='space()'>l'espace entre les boîtes</a>
-			<a ui-sref='bord()'>les bordures</a>
-			<a ui-sref='back()'>les fonds</a>
-			<a ui-sref='table()'>les tables</a>
-			<a ui-sref='list()'>les listes</a>
-			<a ui-sref='image()'>les images</a>
-			<a ui-sref='math()'>le framework mathml</a>
-			<a ui-sref='query()'>les media queries</a>
-			<a ui-sref='shape()'>les formes</a>
-			<a ui-sref='anim()'>les animations</a>
-			<a ui-sref='gnrl()'>généralités</a>
+			<a href='page-anim.html'>animation</a>
+			<a href='page-back.html'>fond</a>
+			<a href='page-bord.html'>bordure</a>
+			<a href='page-flex.html'>framework flex</a>
+			<a href='page-grid.html'>framework grid</a>
+			<a href='page-form.html'>formulaire</a>
+			<a href='page-list.html'>liste</a>
+			<a href='page-general.html'>généralité</a>
+			<a href='page-image.html'>image</a>
+			<a href='page-math.html'>math ml</a>
+			<a href='page-query.html'>média query</a>
+			<a href='page-shape.html'>formes</a>
+			<a href='page-table.html'>tableau</a>
+			<a href='page-space.html'>espacement</a>
 		</section>
 	</header>
-	<main><ui-view><p>allumage</p></ui-view></main>
 	<footer>
 		<p>pied de page</p>
 		<a href='#summary'>revenir au sommaire</a>
 	</footer>
-</body>
-	<script type='text/javascript' src='action.js'></script>
-</html>
+</body></html>
