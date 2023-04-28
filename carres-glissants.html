@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank' href='///C:\Users\dpowers-consultant01\Desktop\site-deborah\'/>
+	<link rel='icon' type='image/svg+xml' href='data\nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css\structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css\perso.css' media='screen'/>
+<style type='text/css'>
+	div {
+		display: inline-block;
+		width: 4em;
+		height: 14em;
+		border-style: solid;
+		border-radius: 1em;
+		overflow: hidden;
+	}
+	p {
+		width: 3em;
+		height: 3em;
+		border-radius: 1em;
+		padding: 1em;
+		margin: auto;
+		margin-top: 0.5em;
+		text-align: center;
+		color: ivory;
+		background-color: deeppink;
+	}
+	p.n1:before { content: '1'; }
+	p.n2 { background-color: cadetblue; }
+	p.n2:before { content: '2'; }
+</style></head><body>
+	<div>
+		<p class='n2'></p>
+		<p class='n1'></p>
+		<p class='n1'></p>
+	</div>
+</body>
+<script type='text/javascript'>
+	const couloir = document.body.getElementsByTagName ('div')[0];
+	var nb=0;
+	var nbStr ="";
+	console.log (couloir.children);
+	for (var c= couloir.children.length -1; c>0; c--){
+		if (couloir.children[c].className === couloir.children[c-1].className){
+			nbStr = couloir.children[c].className.slice (1);
+			console.log ('oui', nbStr);
+		}
+		else console.log ('non');
+	}
+</script>
+</html>
