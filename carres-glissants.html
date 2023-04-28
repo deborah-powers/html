@@ -2,51 +2,81 @@
 	<title></title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<base target='blank' href='///C:\Users\dpowers-consultant01\Desktop\site-deborah\'/>
+	<base target='blank' href='///C:\Users\dpowers-consultant01\Desktop\site-dp\'/>
 	<link rel='icon' type='image/svg+xml' href='data\nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='library-css\structure.css'/>
 	<link rel='stylesheet' type='text/css' href='library-css\perso.css' media='screen'/>
 <style type='text/css'>
 	div {
-		display: inline-block;
+		display: inline-flex;
+		justify-content: flex-end;
+		align-items: stretch;
+		flex-direction: column-reverse;
 		width: 4em;
-		height: 14em;
+		height: 18em;
 		border-style: solid;
 		border-radius: 1em;
-		overflow: hidden;
+		padding: 0.5em;
 	}
-	p {
-		width: 3em;
+	p, span {
+		display: block;
 		height: 3em;
 		border-radius: 1em;
-		padding: 1em;
-		margin: auto;
-		margin-top: 0.5em;
 		text-align: center;
 		color: ivory;
 		background-color: deeppink;
 	}
-	p.n1:before { content: '1'; }
-	p.n2 { background-color: cadetblue; }
-	p.n2:before { content: '2'; }
+	p {
+		width: 5em;
+		border-style: solid;
+	}
+	.n2 { background-color: cadetblue; }
+	.n4 { background-color: orange; }
+	.n8 { background-color: teal; }
 </style></head><body>
-	<div>
-		<p class='n2'></p>
-		<p class='n1'></p>
-		<p class='n1'></p>
+	<div onclick='ajouter(this)'></div>
+	<div onclick='ajouter(this)'>
+		<span class='n1'>1</span>
+		<span class='n1'>1</span>
+		<span class='n4'>4</span>
 	</div>
+	<div onclick='ajouter(this)'></div>
+	<p class='n2'>2</p>
 </body>
 <script type='text/javascript'>
-	const couloir = document.body.getElementsByTagName ('div')[0];
+	const blocNb =[ 1,2,4,8,16,32 ];
+	const chercheCouloir = document.getElementsByTagName ('p')[0];
+	const couloirs = document.body.getElementsByTagName ('div');
 	var nb=0;
-	var nbStr ="";
-	console.log (couloir.children);
-	for (var c= couloir.children.length -1; c>0; c--){
-		if (couloir.children[c].className === couloir.children[c-1].className){
-			nbStr = couloir.children[c].className.slice (1);
-			console.log ('oui', nbStr);
-		}
-		else console.log ('non');
+
+	Array.prototype.chooseRandomly = function() {
+		var pos = Math.random();
+		pos = pos * this.length;
+		pos = Math.floor (pos);
+		return this[pos];
 	}
+	function regrouper (couloir){
+		while (couloir.children.length >1 && couloir.children[0].className === couloir.children[1].className){
+			nb= parseInt (couloir.children[0].innerHTML);
+			nb= nb*2;
+			couloir.children[1].className = 'n'+ nb;
+			couloir.children[1].innerHTML = nb;
+			couloir.removeChild (couloir.children[0]);
+	}}
+	function chooseNewBlock(){
+		const nvNb = blocNb.chooseRandomly();
+		chercheCouloir.innerHTML = nvNb;
+		chercheCouloir.className = 'n'+ nvNb;
+	}
+	function ajouter (couloir){
+		console.log (couloir.children);
+		const nvbloc = document.createElement ('span');
+		nvbloc.className = chercheCouloir.className;
+		nvbloc.innerHTML = chercheCouloir.innerHTML;
+		couloir.prepend (nvbloc);
+		regrouper (couloir);
+		chooseNewBlock();
+	}
+	for (var c=0; c<3; c++) regrouper (couloirs[c]);
 </script>
 </html>
