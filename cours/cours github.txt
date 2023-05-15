@@ -13,12 +13,11 @@ dans mon dossier projet
 git init
 git config --global user.name "deborah-powers"
 git config --global user.email "deborah.powers.dev@gmail.com"
-git config credential.helper store
+git config --global credential.helper store
 git config --global http.sslVerify false
 git config --global pull.rebase true
 git config --global fetch.prune true
 git config --global diff.colorMoved zebra
-git config --global credential.helper store
 git commit --allow-empty -m "Initialization"
 
 ======================== commiter des fichiers ========================
