@@ -8,7 +8,7 @@
 	<link rel='stylesheet' type='text/css' href='library-css/perso.css'/>
 	<script type='text/javascript' src='library-js/popup.js'></script>
 <style type='text/css'>
-	b-letter, b-number, b-double {
+	b-letter, b-double {
 		display: inline-grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr 1fr 1fr;
@@ -22,18 +22,21 @@
 		grid-template-rows: 1fr 1fr 1fr 2fr;
 		height: 3em;
 	}
-	b-letter hr, b-number hr, b-double hr {
-		margin: 0;
-		height: unset;
-		background-color: transparent;
-	}
 	b-double p {
 		margin: 0;
 		padding: 0;
 		grid-column: 1/3;
 	/*	display: none; */
 	}
-	b-letter hr.full, b-number hr.full, b-double hr.full { background-color: var(--text-color, black); }
+	b-letter hr, b-double hr {
+		margin: 0;
+		height: unset;
+		background-color: var(--text-color, black);
+		opacity: 0.1;
+	}
+	b-letter hr.full, b-double hr.full {
+		opacity: 1;
+	}
 	div#input{
 		display: flex;
 		flex-direction: row;
@@ -116,19 +119,12 @@
 		<b-double letter='?'></b-double><b-double letter='!'></b-double><b-double letter='"'></b-double>
 		<b-double letter="'"></b-double><b-double letter='('></b-double><b-double letter=')'></b-double>
 	</section>
-	<section id='num-antoine'>
-		<h2>numérotation antoine</h2>
-		<b-double letter='nb'></b-double>
+	<section id='numero'>
+		<h2>numérotation antoine et braille</h2>
+		<b-double letter='nba'></b-double><b-double letter='nbb'></b-double>
 		<b-double letter='0'></b-double><b-double letter='1'></b-double><b-double letter='2'></b-double><b-double letter='3'></b-double>
 		<b-double letter='4'></b-double><b-double letter='5'></b-double><b-double letter='6'></b-double>
 		<b-double letter='7'></b-double><b-double letter='8'></b-double><b-double letter='9'></b-double>
-	</section>
-	<section id='num-braille'>
-		<h2>numérotation braille</h2>
-		<b-number number='nb'></b-number>
-		<b-number number='0'></b-number><b-number number='1'></b-number><b-number number='2'></b-number><b-number number='3'></b-number>
-		<b-number number='4'></b-number><b-number number='5'></b-number><b-number number='6'></b-number>
-		<b-number number='7'></b-number><b-number number='8'></b-number><b-number number='9'></b-number>
 	</section>
 </body>
 <script type='text/javascript'>
@@ -143,43 +139,36 @@ class BrailleLetter extends HTMLElement{
 		this.letter = this.getAttribute ('letter');
 		this.innerHTML = brickTemplate;
 		var points = this.getElementsByTagName ('hr');
-		if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.indexOf (this.letter) >=0) points[0].className = 'full';
-		if ('cçdéèëfgiîïjmnôœpqstwxy'.indexOf (this.letter) >=0) points[1].className = 'full';
-		if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.indexOf (this.letter) >=0) points[2].className = 'full';
-		if ('àdeéghïjnoôqrtûwyz:.!")'.indexOf (this.letter) >=0) points[3].className = 'full';
-		if ('àçéèklmnopqrstuvxyz;!"\'-()'.indexOf (this.letter) >=0) points[4].className = 'full';
-		if ('àâçéèêëîïôœuûvwxyz.?"()-'.indexOf (this.letter) >=0) points[5].className = 'full';
-		// chiffres antoine
-		if (this.letter == 'nb') points[5].className = 'full';
-		if ('12345678'.indexOf (this.letter) >=0) points[0].className = 'full';
-		if ('034679'.indexOf (this.letter) >=0) points[1].className = 'full';
-		if ('26789'.indexOf (this.letter) >=0) points[2].className = 'full';
-		if ('04578'.indexOf (this.letter) >=0) points[3].className = 'full';
-		if (this.letter == '0') points[4].className = 'full';
-		if ('0123456789'.indexOf (this.letter) >=0) points[5].className = 'full';
-	}
-}
-class BrailleNumber extends BrailleLetter{
-	connectedCallback(){
-		// chiffres braille
-		this.letter = this.getAttribute ('number');
-		this.innerHTML = brickTemplate;
-		var points = this.getElementsByTagName ('hr');
-		if ('12345678'.indexOf (this.letter) >=0) points[0].className = 'full';
-		if ('034679nb'.indexOf (this.letter) >=0) points[1].className = 'full';
-		if ('026789'.indexOf (this.letter) >=0) points[2].className = 'full';
-		if ('04578nb'.indexOf (this.letter) >=0) points[3].className = 'full';
-		if (this.letter == 'nb'){
-			points[4].className = 'full';
+		if (this.letter === 'nba' || this.letter === 'nbb'){
+			// nba = chiffres antoine, nbb = chiffres braille
 			points[5].className = 'full';
-}}}
+			if (this.letter === 'nbb') points[4].className = 'full';
+		}
+		else if ('0123456789'.includes (this.letter)){
+			// chiffres
+			if ('12345678'.includes (this.letter)) points[0].className = 'full';
+			if ('034679'.includes (this.letter)) points[1].className = 'full';
+			if ('26789'.includes (this.letter)) points[2].className = 'full';
+			if ('04578'.includes (this.letter)) points[3].className = 'full';
+			if (this.letter == '0') points[4].className = 'full';
+			points[5].className = 'full';
+		}
+		else{
+			// lettres
+			if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.includes (this.letter)) points[0].className = 'full';
+			if ('cçdéèëfgiîïjmnôœpqstwxy'.includes (this.letter)) points[1].className = 'full';
+			if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.includes (this.letter)) points[2].className = 'full';
+			if ('àdeéghïjnoôqrtûwyz:.!")'.includes (this.letter)) points[3].className = 'full';
+			if ('àçéèklmnopqrstuvxyz;!"\'-()'.includes (this.letter)) points[4].className = 'full';
+			if ('àâçéèêëîïôœuûvwxyz.?"()-'.includes (this.letter)) points[5].className = 'full';
+		}
+}}
 class BrailleDouble extends BrailleLetter{
 	connectedCallback(){
 		super.connectedCallback();
 		this.innerHTML = this.innerHTML + '<p>' + this.letter + '</p>';
 }}
 customElements.define ('b-letter', BrailleLetter);
-customElements.define ('b-number', BrailleNumber);
 customElements.define ('b-double', BrailleDouble);
 
 var container = document.getElementsByTagName ('div')[1];
