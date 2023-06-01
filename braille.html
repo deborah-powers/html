@@ -9,34 +9,11 @@
 	<script type='text/javascript' src='library-js/popup.js'></script>
 <style type='text/css'>
 	b-letter, b-double {
-		display: inline-grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr 1fr;
 		width: 1em;
 		height: 2em;
-		grid-gap: 0.3em;
 		margin: 0.5em;
-		text-align: center;
 	}
-	b-double {
-		grid-template-rows: 1fr 1fr 1fr 2fr;
-		height: 3em;
-	}
-	b-double p {
-		margin: 0;
-		padding: 0;
-		grid-column: 1/3;
-	/*	display: none; */
-	}
-	b-letter hr, b-double hr {
-		margin: 0;
-		height: unset;
-		background-color: var(--text-color, black);
-		opacity: 0.1;
-	}
-	b-letter hr.full, b-double hr.full {
-		opacity: 1;
-	}
+	b-double { height: 3em; }
 	div#input{
 		display: flex;
 		flex-direction: row;
@@ -139,34 +116,58 @@ class BrailleLetter extends HTMLElement{
 		this.letter = this.getAttribute ('letter');
 		this.innerHTML = brickTemplate;
 		var points = this.getElementsByTagName ('hr');
+		// style
+		this.style.display = 'inline-grid';
+		this.style.gridTemplateColumns = '1fr 1fr';
+		this.style.gridTemplateRows = '1fr 1fr 1fr';
+		this.style.gridGap = '0.3em';
+		this.style.textAlign = 'center';
+	//	console.log ('color', this.style.color);
+		const style = window.getComputedStyle (this);
+		for (var c=0; c<6; c++){
+			this.children[c].style.margin = '0';
+			this.children[c].style.height = 'unset';
+			this.children[c].style.opacity = '0.1';
+			this.children[c].style.backgroundColor = style.color;
+		}
 		if (this.letter === 'nba' || this.letter === 'nbb'){
 			// nba = chiffres antoine, nbb = chiffres braille
-			points[5].className = 'full';
-			if (this.letter === 'nbb') points[4].className = 'full';
+			points[5].style.opacity = '1';
+			if (this.letter === 'nbb'){
+				points[1].style.opacity = '1';
+				points[3].style.opacity = '1';
+				points[4].style.opacity = '1';
+			}
 		}
 		else if ('0123456789'.includes (this.letter)){
 			// chiffres
-			if ('12345678'.includes (this.letter)) points[0].className = 'full';
-			if ('034679'.includes (this.letter)) points[1].className = 'full';
-			if ('26789'.includes (this.letter)) points[2].className = 'full';
-			if ('04578'.includes (this.letter)) points[3].className = 'full';
-			if (this.letter == '0') points[4].className = 'full';
-			points[5].className = 'full';
+			if ('12345678'.includes (this.letter)) points[0].style.opacity = '1';
+			if ('034679'.includes (this.letter)) points[1].style.opacity = '1';
+			if ('26789'.includes (this.letter)) points[2].style.opacity = '1';
+			if ('04578'.includes (this.letter)) points[3].style.opacity = '1';
+			if (this.letter == '0') points[4].style.opacity = '1';
+		//	points[5].style.opacity = '1';	pour la numérotation antoine
 		}
 		else{
-			// lettres
-			if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.includes (this.letter)) points[0].className = 'full';
-			if ('cçdéèëfgiîïjmnôœpqstwxy'.includes (this.letter)) points[1].className = 'full';
-			if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.includes (this.letter)) points[2].className = 'full';
-			if ('àdeéghïjnoôqrtûwyz:.!")'.includes (this.letter)) points[3].className = 'full';
-			if ('àçéèklmnopqrstuvxyz;!"\'-()'.includes (this.letter)) points[4].className = 'full';
-			if ('àâçéèêëîïôœuûvwxyz.?"()-'.includes (this.letter)) points[5].className = 'full';
+			// lettres et ponctuation
+			if ('aàbcçdeéèêëfghîïklmnoôpqruûvxyz'.includes (this.letter)) points[0].style.opacity = '1';
+			if ('cçdéèëfgiîïjmnôœpqstwxy'.includes (this.letter)) points[1].style.opacity = '1';
+			if ('àbçéèêëfghiïjlœpqrstvw,;:.?!"('.includes (this.letter)) points[2].style.opacity = '1';
+			if ('àdeéghïjnoôqrtûwyz:.!")'.includes (this.letter)) points[3].style.opacity = '1';
+			if ('àçéèklmnopqrstuvxyz;!"\'-()'.includes (this.letter)) points[4].style.opacity = '1';
+			if ('àâçéèêëîïôœuûvwxyz.?"()-'.includes (this.letter)) points[5].style.opacity = '1';
 		}
-}}
+	}
+}
 class BrailleDouble extends BrailleLetter{
 	connectedCallback(){
 		super.connectedCallback();
 		this.innerHTML = this.innerHTML + '<p>' + this.letter + '</p>';
+		// style
+		this.style.gridTemplateRows = '1fr 1fr 1fr 2fr';
+		this.children[6].style.margin = '0';
+		this.children[6].style.padding = '0';
+		this.children[6].style.gridColumn = '1/3';
 }}
 customElements.define ('b-letter', BrailleLetter);
 customElements.define ('b-double', BrailleDouble);
