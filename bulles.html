@@ -34,8 +34,7 @@
 	var currentY =0;
 
 	function selectElement (paragraph){
-		currentY = event.clientY;
-		console.dir (event);
+		currentY = event.screenY;
 		paragraph.setAttribute ('onmousemove', 'moveElement(this)');
 		paragraph.setAttribute ('onmouseup', 'deselectElement(this)');
 	}
@@ -44,8 +43,9 @@
 		paragraph.removeAttribute ('onmouseup');
 	}
 	function moveElement (paragraph){
-		var dy= event.clientY - currentY;
+		var dy= event.screenY - currentY;
 		paragraph.drag (dy);
+		currentY = event.screenY;
 	}
 HTMLElement.prototype.drag = function (dy){
 	dy = this.getPosY() + dy;
