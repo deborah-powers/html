@@ -1,0 +1,76 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<!--
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/x-icon' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>">
+	-->
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	p {
+		width: 4em;
+		height: 4em;
+		border-radius: 50%;
+		background-color: green;
+		cursor: move;
+		position: absolute;
+		top: 0px;
+	}
+</style></head><body>
+	<p onmousedown='selectElement(this)'></p>
+</body><script type='text/javascript'>
+	HTMLElement.prototype.getPosY = function(){
+		var strY = window.getComputedStyle (this).top;
+		strY = strY.slice (0, -2);
+		intY = parseInt (strY);
+		return intY;
+	}
+	var paragraph = document.getElementsByTagName ('p')[0];
+	var currentX =0;
+	var currentY =0;
+
+	function selectElement (paragraph){
+		currentY = event.clientY;
+		console.dir (event);
+		paragraph.setAttribute ('onmousemove', 'moveElement(this)');
+		paragraph.setAttribute ('onmouseup', 'deselectElement(this)');
+	}
+	function deselectElement (paragraph){
+		paragraph.removeAttribute ('onmousemove');
+		paragraph.removeAttribute ('onmouseup');
+	}
+	function moveElement (paragraph){
+		var dy= event.clientY - currentY;
+		paragraph.drag (dy);
+	}
+HTMLElement.prototype.drag = function (dy){
+	dy = this.getPosY() + dy;
+	this.style.top = dy + 'px';
+}
+HTMLElement.prototype.dragToucheBord = function (dx, dy){
+	var toucheBord = false;
+	if (dx > this.limit.maxX){
+		toucheBord = true;
+		dx= this.limit.maxX;
+	}
+	else if (dx < this.limit.minX){
+		toucheBord = true;
+		dx= this.limit.minX;
+	}
+	if (dy > this.limit.maxY){
+		toucheBord = true;
+		dy= this.limit.maxY;
+	}
+	else if (dy < this.limit.minY){
+		toucheBord = true;
+		dy= this.limit.minY;
+	}
+	if (toucheBord) deselectElement (this);
+}
+
+
+</script></html>
