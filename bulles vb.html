@@ -95,11 +95,10 @@
 		for (var c=0; c< this.parentElement.children.length; c++){
 			if (this.parentElement.children[c] !== this){
 				const coordsBro = this.parentElement.children[c].getPos();
-				if (coords[0] < coordsBro[0] && coordsBro[0] < coords[0] + this.clientWidth){
-					if (coords[1] < coordsBro[1] && coordsBro[1] < coords[1] + this.clientHeight)
-						console.log ('xya', coords);
-					else if (coords[1] < coordsBro[1] + this.parentElement.children[c].clientHeight && coordsBro[1] + this.parentElement.children[c].clientHeight < coords[1] + this.clientHeight)
-						console.log ('xyb', coords);				}
+				if (coords[0] < coordsBro[0] && coordsBro[0] < coords[0] + this.clientWidth)
+					console.log ('x', coords);
+				if (coords[1] < coordsBro[1] && coordsBro[1] < coords[1] + this.clientHeight)
+					console.log ('y', coords);
 			}
 		}
 	}

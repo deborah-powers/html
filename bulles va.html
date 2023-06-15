@@ -13,25 +13,17 @@
 <style type='text/css'>
 	body {
 		width: 18cm;
-		height: 18cm;
-		padding: 0;
+		padding: 50px;
 	}
 	p {
-		width: 60px;
-		height: 60px;
-		margin: 0;
-		margin-bottom: 0;
+		width: 4em;
+		height: 4em;
 	/*	border-radius: 50%; */
 		background-color: green;
 		cursor: move;
-		position: absolute;
+		position: relative;
 		left: 0px;
 		top: 0px;
-	}
-	p.obstacle {
-		background-color: cadetblue;
-		left: 100px;
-		top: 100px;
 	}
 </style></head><body>
 	<p onmousedown='selectElement(this)'></p>
@@ -64,7 +56,24 @@
 		dy = pos[1] + dy;
 		this.style.left = dx + 'px';
 		this.style.top = dy + 'px';
-		this.senseObstacle();
+	}
+	HTMLElement.prototype.getPos = function(){
+		const style = window.getComputedStyle (this);
+		var dx= style.left.fromPxToNb();
+		var dy= style.top.fromPxToNb();
+		// vérifier que l'on reste dans le cadre
+		const parentStyle = window.getComputedStyle (this.parentElement);
+		if (dx <0) dx=0;
+		else{
+			const tmp = this.parentElement.clientWidth - this.offsetWidth - parentStyle.paddingRight.fromPxToNb() - parentStyle.paddingLeft.fromPxToNb();
+			if (dx > tmp) dx= tmp;
+		}
+		if (dy <0) dy=0;
+		else{
+			const tmp = this.parentElement.clientHeight - this.offsetHeight - parentStyle.paddingTop.fromPxToNb() - parentStyle.paddingBottom.fromPxToNb();
+			if (dy > tmp) dy= tmp;
+		}
+		return [ dx, dy ];
 	}
 	String.prototype.fromPxToNb = function(){
 		// nbStr = 12px
@@ -72,36 +81,4 @@
 		var nbInt = parseInt (nbStr);
 		return nbInt;
 	}
-	HTMLElement.prototype.getPos = function(){
-		const style = window.getComputedStyle (this);
-		var dx= style.left.fromPxToNb();
-		var dy= style.top.fromPxToNb();
-		/*/ vérifier que l'on reste dans le cadre
-		const parentStyle = window.getComputedStyle (this.parentElement);
-		if (dx <0) dx=0;
-		else{
-			const tmp = this.parentElement.clientWidth - this.offsetWidth;
-			if (dx > tmp) dx= tmp;
-		}
-		if (dy <0) dy=0;
-		else{
-			const tmp = this.parentElement.clientHeight - this.offsetHeight;
-			if (dy > tmp) dy= tmp;
-		}*/
-		return [ dx, dy ];
-	}
-	HTMLElement.prototype.senseObstacle = function(){
-		const coords = this.getPos();
-		for (var c=0; c< this.parentElement.children.length; c++){
-			if (this.parentElement.children[c] !== this){
-				const coordsBro = this.parentElement.children[c].getPos();
-				if (coords[0] < coordsBro[0] && coordsBro[0] < coords[0] + this.clientWidth){
-					if (coords[1] < coordsBro[1] && coordsBro[1] < coords[1] + this.clientHeight)
-						console.log ('xya', coords);
-					else if (coords[1] < coordsBro[1] + this.parentElement.children[c].clientHeight && coordsBro[1] + this.parentElement.children[c].clientHeight < coords[1] + this.clientHeight)
-						console.log ('xyb', coords);				}
-			}
-		}
-	}
-	console.log (document.getElementsByTagName ('p')[1].getPos());
 </script></html>
