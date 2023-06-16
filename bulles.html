@@ -40,6 +40,8 @@
 	var paragraph = document.getElementsByTagName ('p')[0];
 	var currentX =0;
 	var currentY =0;
+	// console.dir (window.getComputedStyle (document.body));
+	console.dir (document.body);
 
 	function selectElement (paragraph){
 		currentX = event.screenX;
@@ -60,11 +62,11 @@
 	}
 	HTMLElement.prototype.drag = function (dx, dy){
 		var pos = this.getPos();
-		dx = pos[0] + dx;
+		dx = pos[0] + dx + this.parentElement.clientWidth;
 		dy = pos[1] + dy;
-		this.style.left = dx + 'px';
-		this.style.top = dy + 'px';
-		this.senseObstacle();
+		pos = this.senseObstacle (dx, dy);
+		this.style.left = pos[0] + 'px';
+		this.style.top = pos[1] + 'px';
 	}
 	String.prototype.fromPxToNb = function(){
 		// nbStr = 12px
@@ -90,18 +92,24 @@
 		}*/
 		return [ dx, dy ];
 	}
-	HTMLElement.prototype.senseObstacle = function(){
-		const coords = this.getPos();
+	HTMLElement.prototype.senseObstacle = function (dx, dy){
+		var pos =[ dx, dy ];
 		for (var c=0; c< this.parentElement.children.length; c++){
 			if (this.parentElement.children[c] !== this){
 				const coordsBro = this.parentElement.children[c].getPos();
-				if (coords[0] < coordsBro[0] && coordsBro[0] < coords[0] + this.clientWidth){
-					if (coords[1] < coordsBro[1] && coordsBro[1] < coords[1] + this.clientHeight)
-						console.log ('xya', coords);
-					else if (coords[1] < coordsBro[1] + this.parentElement.children[c].clientHeight && coordsBro[1] + this.parentElement.children[c].clientHeight < coords[1] + this.clientHeight)
-						console.log ('xyb', coords);				}
-			}
-		}
+				if (dx < coordsBro[0] && coordsBro[0] < dx + this.clientWidth){
+					if (dy < coordsBro[1] && coordsBro[1] < dy + this.clientHeight)
+						pos[0] = coordsBro[0] - this.clientWidth;
+					else if (dy < coordsBro[1] + this.parentElement.children[c].clientHeight && coordsBro[1] + this.parentElement.children[c].clientHeight < dy + this.clientHeight)
+						pos[0] = coordsBro[0] - this.clientWidth;
+				}
+				else if (dx < coordsBro[0] + this.parentElement.children[c].clientWidth && coordsBro[0] + this.parentElement.children[c].clientWidth < dx + this.clientWidth){
+					if (dy < coordsBro[1] && coordsBro[1] < dy + this.clientHeight)
+						pos[0] = coordsBro[0] + this.parentElement.children[c].clientWidth;
+					else if (dy < coordsBro[1] + this.parentElement.children[c].clientHeight && coordsBro[1] + this.parentElement.children[c].clientHeight < dy + this.clientHeight)
+						pos[0] = coordsBro[0] + this.parentElement.children[c].clientWidth;
+		}}}
+		return pos;
 	}
 	console.log (document.getElementsByTagName ('p')[1].getPos());
 </script></html>
