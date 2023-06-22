@@ -29,20 +29,27 @@
 		left: 200px;
 		top: 60px;
 	}
-	p.select {
+	p.drag {
 		background-color: cadetblue;
 		left: 200px;
 		top: 260px;
 	}
 	p.obstacle {
 		background-color: var(--bord-color);
+		position: relative;
 		left: 300px;
 		top: 300px;
 	}
+	@keyframes moving-heart {
+		from {}
+		to {}
+		0% { background-color: red; }
+		50% { background-color: pink; }
+	}
 </style></head><body>
-	<p class='move' onmousedown='moveElementAuto(this)'></p>
-	<p class='select' onmousedown='selectElement(this)'></p>
+	<p class='auto'></p>
+	<p class='drag'></p>
 	<p class='obstacle'></p>
 </body><script type='text/javascript'>
-	document.body.setBoundaries();
+	document.body.isContainer();
 </script></html>
