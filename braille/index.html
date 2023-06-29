@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head>
+	<title>lettres en braille</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css'/>
+	<link rel='stylesheet' type='text/css' href='braille.css'/>
+	<script type='text/javascript' src='../../site-dp/library-js-ext/angular.js'></script>
+	<script type='text/javascript' src='../../site-dp/library-js-ext/angular-ui-router.js'></script>
+	<script type='text/javascript' src='braille-class.js'></script>
+	<script type='text/javascript' src='braille-interractive.js'></script>
+<style type='text/css'>
+	div#input{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	section#drag-drop{
+		text-align: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-rows: 6em 4em;
+	}
+	section#drag-drop p{
+		display: inline-block;
+		border-style: solid;
+		padding: 0.5em;
+	}
+	section#drag-drop p.ok{ background-color: springgreen; }
+	section#drag-drop p.ko{ background-color: pink; }
+	section#drag-drop b-letter p{ display: none; }
+</style></head><body>
+	<a class='title' href='alphabet.html'>alphabet</a>
+	<section id='devinette'>
+		<h2>devinez la lettre</h2>
+		<b-letter letter='a'></b-letter>
+		<input type='text'><button onclick='devine(this.parentElement)'>validez</button>
+		<p></p>
+	</section>
+	<h2>poser la lettre braille dans la case de la bonne lettre</h2>
+	<section id='drag-drop' ondrop='drop(event)' ondragover='allowDrop(event)'>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>a</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>b</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>c</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>d</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>e</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>f</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>g</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>h</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>i</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>j</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>k</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>l</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>m</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>n</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>o</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>p</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>q</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>r</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>s</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>t</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>u</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>v</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>w</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>x</p>
+		<p ondrop='drop(event)' ondragover='allowDrop(event)'>y</p><p ondrop='drop(event)' ondragover='allowDrop(event)'>z</p>
+		<b-letter id='letter-a' draggable='true' ondragstart='drag(event)' letter='a'></b-letter>
+		<b-letter id='letter-b' draggable='true' ondragstart='drag(event)' letter='b'></b-letter>
+		<b-letter id='letter-c' draggable='true' ondragstart='drag(event)' letter='c'></b-letter>
+		<b-letter id='letter-d' draggable='true' ondragstart='drag(event)' letter='d'></b-letter>
+		<b-letter id='letter-e' draggable='true' ondragstart='drag(event)' letter='e'></b-letter>
+		<b-letter id='letter-f' draggable='true' ondragstart='drag(event)' letter='f'></b-letter>
+		<b-letter id='letter-g' draggable='true' ondragstart='drag(event)' letter='g'></b-letter>
+		<b-letter id='letter-h' draggable='true' ondragstart='drag(event)' letter='h'></b-letter>
+		<b-letter id='letter-i' draggable='true' ondragstart='drag(event)' letter='i'></b-letter>
+		<b-letter id='letter-j' draggable='true' ondragstart='drag(event)' letter='j'></b-letter>
+		<b-letter id='letter-k' draggable='true' ondragstart='drag(event)' letter='k'></b-letter>
+		<b-letter id='letter-l' draggable='true' ondragstart='drag(event)' letter='l'></b-letter>
+		<b-letter id='letter-m' draggable='true' ondragstart='drag(event)' letter='m'></b-letter>
+		<b-letter id='letter-n' draggable='true' ondragstart='drag(event)' letter='n'></b-letter>
+		<b-letter id='letter-o' draggable='true' ondragstart='drag(event)' letter='o'></b-letter>
+		<b-letter id='letter-p' draggable='true' ondragstart='drag(event)' letter='p'></b-letter>
+		<b-letter id='letter-q' draggable='true' ondragstart='drag(event)' letter='q'></b-letter>
+		<b-letter id='letter-r' draggable='true' ondragstart='drag(event)' letter='r'></b-letter>
+		<b-letter id='letter-s' draggable='true' ondragstart='drag(event)' letter='s'></b-letter>
+		<b-letter id='letter-t' draggable='true' ondragstart='drag(event)' letter='t'></b-letter>
+		<b-letter id='letter-u' draggable='true' ondragstart='drag(event)' letter='u'></b-letter>
+		<b-letter id='letter-v' draggable='true' ondragstart='drag(event)' letter='v'></b-letter>
+		<b-letter id='letter-w' draggable='true' ondragstart='drag(event)' letter='w'></b-letter>
+		<b-letter id='letter-x' draggable='true' ondragstart='drag(event)' letter='x'></b-letter>
+		<b-letter id='letter-y' draggable='true' ondragstart='drag(event)' letter='y'></b-letter>
+		<b-letter id='letter-z' draggable='true' ondragstart='drag(event)' letter='z'></b-letter>
+	</section>
+	<section id='mot'>
+		<h2>entrez une phrase</h2>
+		<div id='input'><input type='text'><button onclick='writeBraille()'>validez</button></div>
+		<div></div>
+	</section>
+</body>
+<script type='text/javascript'>
+var container = document.getElementsByTagName ('div')[1];
+</script>
+</html>
