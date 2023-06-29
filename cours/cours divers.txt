@@ -72,13 +72,11 @@ rechercher et modifier /usr/bin/google-chrome
 https://askubuntu.com/questions/160245/how-do-i-make-the-google-chrome-flag-allow-file-access-from-files-permanent
 
 
-
-
-
 ****** accéder aux json dans firefox ******
 
 dans about:config
 privacy.file_unique_origin, le passer à false.
+security.fileuri.strict_origin_policy
 
 ****** autoriser l'accès à mutu dans chrome ******
 
