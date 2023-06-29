@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head>
+	<title>lettres en braille</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css'/>
+	<link rel='stylesheet' type='text/css' href='braille.css'/>
+	<script type='text/javascript' src='braille-class.js'></script>
+	<script type='text/javascript' src='braille-interractive.js'></script>
+<style type='text/css'>
+	b-letter { font-size: 2em; }
+	p { margin-top: 1em; }
+</style></head><body>
+	<h1>devinez la lettre</h1>
+	<b-letter letter='a'></b-letter>
+	<input type='text'><button onclick='devine(this.parentElement)'>validez</button>
+	<p></p>
+	<nav>
+		<a href='index.html'>accueil</a>
+		<a href='alphabet.html'>alphabet</a>
+	</nav>
+</body></html>
