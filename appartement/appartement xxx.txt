@@ -1,4 +1,8 @@
-Annonce: http//site.com
+Sujet:	logement
+Auteur:	agence
+Lien:	https://www.logic-immo.com/
+Laut:	o
+
 
 ============ réponse 07/12 ============
 
@@ -49,6 +53,7 @@ Merci d'avoir pris le temps de me contacter.
 Prix:
 taxe foncière:
 Charges:
+dpe:
 Superficie:
 Chambre indépendante:
 Nb logements dans la co-propriété:
@@ -59,6 +64,7 @@ Cave ou place de parking:
 Procédure en cours:
 Travaux dans l'appartement:
 Travaux dans la co-propriété:
+état des étages:
 Ravalement et toiture:
 Visiter la cave, même si je n'en ai pas
 Pv sur 1 an

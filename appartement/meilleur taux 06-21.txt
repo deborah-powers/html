@@ -37,17 +37,6 @@ Apport	105 000
 Montant du prêt	141 930
 Prêt réalisé sur 25 ans, mensualité de 825€ avec assurance.
 
-Paris (75)
-Vincennes (94300)
-Boulogne billancourt (92100)
-Rueil malmaison (92500)
-Maisons alfort (94700)
-Alfortville (94140)
-Charenton le pont (94220)
-Saint mande (94160)
-Issy les moulineaux (92130)
-Levallois perret (92300)
-
 ================================================================================================
 
 Bonjour,
