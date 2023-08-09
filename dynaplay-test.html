@@ -15,6 +15,7 @@
 	<p>afficher (( phrase ))</p>
 	<p>afficher un nombre: (( nombre ))</p>
 	<p>afficher une liste simple: <span>(( listeSimple )), </span></p>
+	<p>afficher une liste d'objets: <span for='listeObjets'>bonjour (( prenom )) (( nom )), </span></p>
 	<p>affichage basique: <span>(( objetSimple )), </span></p>
 	<p>affichage par clef: Bonjour je suis (( objetSimple.prenom )), j'ai (( objetSimple.age )) ans. mes couleurs préférées sont <span> (( objetSimple.couleurs )),</span>.</p>
 	<p>liste imbriquée: <span><strong><i>(( listeImbriquee )), </i>- </strong>| </span></p>
@@ -32,6 +33,11 @@
 	var phrase = 'une phrase simple';
 	var nombre = 22.9;
 	var listeSimple =[ 'a', 'b', 'c' ];
+	var listeObjets =[
+		{ prenom: 'david', nom: 'caroussi' },
+		{ prenom: 'gilbert', nom: 'joseph' },
+		{ prenom: 'edna', nom: 'magnedone' },
+	];
 	var listeImbriquee =[
 		[[ 'a', 'b', 'c', 'd' ], [ 'e', 'f', 'g', 'h' ]], [[ 'i', 'j', 'k', 'l' ], [ 'm', 'n', 'o', 'p' ]], [[ 'q', 'r', 's', 't' ], [ 'u', 'v', 'w', 'x' ]]
 	];
