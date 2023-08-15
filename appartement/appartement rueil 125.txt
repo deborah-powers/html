@@ -1,40 +1,121 @@
-Sujet:	logement
+Sujet: 	logement
 Auteur:	dv immobilier
-Lien:	https://www.logic-immo.com/detail-vente-e4f5c90c-4d67-1855-ddff-f3778305ae7e.htm
-Laut:	o
+Lien: 	https://www.logic-immo.com/detail-vente-e4f5c90c-4d67-1855-ddff-f3778305ae7e.htm
+Laut: 	o
 
-============ contact ============
+============ Contact ============
 
-agence dv immobilier, 01 43 70 43 19
-personne serge prazowsky, 06 26 27 12 64
+Agence dv immobilier, 01 43 70 43 19
+Personne serge prazowsky, 06 26 27 12 64
 serge.p@dv-immo.com
 
-============ visite ============
+============ Visite ============
 
-visite originale le 5 août à 9h
-contre-visite le 7 août à 18h30
-rdv sur place,
+Visite originale le 5 Août à 9h
+Contre-visite le 7 Août à 18h30
+Rdv sur place,
 125 rue pierre brossolette
-l'appartement est inhabité depuis 2020.
-les enfant du propriétaire le vendent pour payer son ehpad.
-le vendeur m'a dit que faire les travaux réhausserai la note dpe. est-ce que c'est vrai ?
+L'appartement est inhabité depuis 2020.
+Les enfant du propriétaire le vendent pour payer son ehpad.
+Le vendeur m'a dit que faire les travaux réhausserai la note dpe. Est-ce que c'est vrai ?
+
+============ Diagnostique ============
+
+Environ 1300 e d'énnergie par ans.
+L'isolation, la chaudière datent de 1980. Refaire l'isolation tous les 20 ans.
+Isoler les murs, grande perte financière pour le chauffage
+Isoler aussi le sol
+Chauffage actuel au gaz
+16 000 e de travaux importants
+Isolation par l'intérieur des murs extérieurs
+Remplacer la chaudière par un modèle à condensation
+Associer une pac à ma chaudière pour l'eau chaude
+Refaire l'électricité
+
+============ Pré-lettre ============
+
+Bonjour,
+J'ai visité votre bien immobilier situé au 125 rue pierre brossolette, rueil-malmaison
+Et je souhaiterais vous faire une offre d'achat.
+
+L'appartement fait 51.34 m2
+Il est accompagné
+- de la cave numéro 18
+- de la place de parking en extérieur numéro 41
+
+Mon prix est de 215 000 euros (deux-cent quinze mille euros).
+
+Certaines conditions sont importantes pour moi:
+- infestation parasitaire (termites, cafards)
+- nuisances sonores
+- servitude sur la place de parking
+
+Le bien étant mis à la vente pour 230 000 euros,
+Mon prix de 215 000 euros se justifie de la façon suivante:
+
+Nombreux travaux à réaliser dans le logement, dont le montant tôtal avoisine les 15 000 euros
+- mettre l'électricité aux normes
+- remplacer la chaudière
+- isoler le logement par l'intérieur
+
+Travaux à réaliser dans la copropriété
+- remplacement des portes vitrées
+- remplacement des clôtures
+
+Dans l'attente d'une réponse positive de votre part, je vous prie, madame, monsieur, d'agréer l'expression de mes sentiments distingués.
+Deborah Powers
+
+============ Lettre ============
+
+Deborah Powers,
+deborah.powers89@gmail.com
+06 22 39 55 25
+62 rue pierre brossolette,
+92500 rueil-malmaison
+Objet: Offre d'achat du bien immobilier de rueil-malmaison
+Monsieur,
+J'ai visité votre bien immobilier situé au 125 rue pierre brossolette, rueil-malmaison et je souhaiterais vous faire une offre d'achat.
+L'acquéreur, madame Deborah Powers,
+Résidant au 62 rue pierre brossolette, née le 14/07/1989 à fontainebleau
+S'engage à acheter le bien immobilier dont les caractéristiques sont les suivantes:
+L'appartement de 51.34 m2
+Situé au 125 rue pierre brossolette, rueil-malmaison
+Accompagné
+- de la cave numéro 18
+- de la place de parking en extérieur numéro 41
+Au prix de 215 000 euros (deux-cent quinze mille euros)
+Cependant, la vente sera soumise à certaines conditions suspensives:
+pas d'infestation parasitaire (termites, cafards)
+pas de nuisances sonores
+pas de servitude sur la place de parking
+Le bien étant mis à la vente pour 230 000 euros,
+Mon prix proposé de 215 000 euros se justifie de la façon suivante:
+Nombreux travaux à réaliser dans le logement
+- mettre l'électricité aux normes
+- remplacer la chaudière
+- isoler le logement par l'intérieur
+Travaux à réaliser dans la copropriété
+- remplacement des portes vitrées
+- remplacement des clôtures
+Dans l'attente d'une réponse positive de votre part, je vous prie, madame, monsieur, d'agréer l'expression de mes sentiments distingués.
+Deborah powers
 
 ============ Questions ============
 
-adresse: 125 rue pierre brossolette, rueil. zone A bis.
+Adresse: 125 rue pierre brossolette, Rueil. Zone a bis.
 Prix: 230 e
-taxe foncière: 910 e/and
+Taxe foncière: 910 e/and
 Charges: 1800 ans = 150 mois
-dpe: e --> impossible de le louer en 2034
+Dpe: E --> impossible de le louer en 2034
 Superficie:51 m2
-Chambre indépendante: oui
+Chambre indépendante: Oui
 Nb logements dans la co-propriété:40 dans deux batiments
-étage: rdc /2
-noms sur les boîtes au lettres: ok
-Cave ou place de parking: parking en extérieur
-Procédure en cours: non
-Travaux dans l'appartement: électricité, tableau électrique, chaudière
-Travaux dans la co-propriété: non
-Ravalement et toiture: batiment propre et refais, même les caves
+Etage: Rdc /2
+Noms sur les boîtes au lettres: Ok
+Cave ou place de parking: Parking en extérieur
+Procédure en cours: Non
+Travaux dans l'appartement: Electricité, tableau électrique, chaudière
+Travaux dans la co-propriété: Non
+Ravalement et toiture: Batiment propre et refais, même les caves
 Visiter la cave, même si je n'en ai pas
 Pv sur 1 an
