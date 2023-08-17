@@ -90,6 +90,7 @@ boutons "sites de confiance" et "site"
 dir:				affiche la liste de fichiers dans le répertoire courant
 copy con myfile:	modifier le contenu d'un fichier
 
+
 ****** racourcis clavier ******
 
 console js	f12 = ctl+shift+c
