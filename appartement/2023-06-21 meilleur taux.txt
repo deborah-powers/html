@@ -4,7 +4,7 @@ Lien:	o
 Laut:	m.alves@meilleurtaux.com
 Date:	2023-06-21
 
-==== l'appartement ======
+==== l'appartement type ======
 
 prix appart		225 000
 Apport			105 000
@@ -14,6 +14,18 @@ Garantie		2 130
 Courtage		2 500
 total			246 930
 mensualité		825
+durée			25 ans
+
+==== l'appartement rueillois ======
+
+prix appart		215 000
+Apport			110 000
+prêt			126 930
+Notaire			17 300
+Garantie		2 130
+Courtage		2 500
+total			236 930
+mensualité		705
 durée			25 ans
 
 ====== Marília ======
@@ -54,11 +66,16 @@ Pouvez-vous m'aider ?
 A. Est-on obligé de remplir entièrement les fiches avant de les remettre au vendeur ?
 B. Ai-je fais des erreurs en commençant à remplir les fiches ?
 
+Pas d’obligation, mais les vendeurs souhaitent être sur que votre projet est réalisable et surtout finançable, il est parfois demande une attestation de faisabilité qui  moins d’informations personnels comme le salaire par exemple.
+
 C. Dans la fiche de renseignement
 - Quel est le montant du taux de remboursement envisagé ?
 - Faut-il préciser l'organisme financier du prêt ?
 - Que représente le montant tôtal à financer ?
 - Que représente les fonds propres ?
+
+En général le taux est indiqué sur le compromis, par le notaire, au stade d’une offre d’achat cela n’a pas besoin d’être précisé.
+Au 17 Août il est entre 4.10 et 4.50
 
 D. Dans la proposition d'achat
 - Comment remplir la rubrique financement ?
