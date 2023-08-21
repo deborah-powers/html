@@ -18,13 +18,17 @@
 	<p>affichage par clef: Bonjour je suis (( objetSimple.prenom )), j'ai (( objetSimple.age )) ans. mes couleurs préférées sont <span> (( objetSimple.couleurs )),</span>.</p>
 	<p>affichage basique: <span>(( objetSimple )), </span></p>
 	<p>liste imbriquée: <span><strong><i>(( listeImbriquee )), </i>- </strong>| </span></p>
-	<p>affichage optionnel: <span if='dicoPlay.nombre === 22.9'>cas A</span><span if='dicoPlay.nombre === 229'>cas B</span></p>
+	<p>affichage optionnel:
+		<span if='nombre === 22.9'>ce message doit s'afficher</span>
+		<span if='nombre === 229'>si ce message s'affiche l'affichage est ko</span>
+	</p>
 	<h2>affichages interractifs</h2>
 	<select name='choix' callback='choisirOption'>
 		<option value='(( listeSimple ))'>(( listeSimple ))</option>
 	</select>
 	<input name='listeSimple' value='choix'/>
 	<input type='text' name='choix'/>
+	<input type='number' name='nombre'/>
 	<p>option choisie: (( choix ))</p>
 	<textarea name='phrase'></textarea>
 </body>
