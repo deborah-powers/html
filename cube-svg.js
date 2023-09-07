@@ -36,12 +36,17 @@ const cote =100;
 const posX =150;
 const posY =150;
 <<<<<<< HEAD
+<<<<<<< HEAD
 var anglex =60;
 var angley =0;
 =======
 var anglex =30;
 var angley =40;
 >>>>>>> 2b0f2cc (boulot 09/07 17:07)
+=======
+var anglex =60;
+var angley =0;
+>>>>>>> eb9782a (boulot 09/07 17:35)
 
 SVGCircleElement.prototype.setPos = function (posX, posY){
 	this.setAttributeNb ('cx', posX);
@@ -201,11 +206,53 @@ var c6y =0;
 	cubes[5].setPos (posX - cote + anglex * (cote - diagDemi), posY);
 	cubes[6].setPos (posX - cote + anglex * (cote + diagDemi), posY);
 }
-function moveX(){
+
+const pasBas = diagDemi /60;
+const pasGauch = (cote - diagDemi) /60;
+const pasDroit = (cote + diagDemi) /60;
+const pasQuartDroit = (cote - diagQuart) /60;
+const pasQuartGauch = (diagDemi - diagQuart) /60;
+
+function moveY(){
 	animationNbSec +=1;
 	if (animationNbSec <61){
+		cubes[1].move (0, pasGauch);
+	//	cubes[2].move (0, pasBas);
+		cubes[3].move (0, pasGauch);
+	//	cubes[4].move (0, pasBas);
+		requestAnimationFrame (moveY);
+	}/*
+	else if (animationNbSec <121){
+		cubes[1].move (0, - pasGauch);
+		cubes[2].move (0, - pasBas);
+		cubes[3].move (0, - pasGauch);
+		cubes[4].move (0, - pasBas);
+		requestAnimationFrame (moveY);
+	}*/
+}
+function moveX(){
+	// mouvement simple, comme un manège
+	animationNbSec +=1;
+	if (animationNbSec <61){
+		cubes[3].move (pasGauch, 0);
+		cubes[4].move (pasDroit, 0);
+		cubes[5].move (pasGauch, 0);
+		cubes[6].move (pasDroit, 0);
+		requestAnimationFrame (moveX);
+	}
+	else if (animationNbSec <121){
+		cubes[3].move (- pasGauch, 0);
+		cubes[4].move (- pasDroit, 0);
+		cubes[5].move (- pasGauch, 0);
+		cubes[6].move (- pasDroit, 0);
+		requestAnimationFrame (moveX);
 	}
 }
+<<<<<<< HEAD
 setPosX();
 moveX();
 >>>>>>> 2b0f2cc (boulot 09/07 17:07)
+=======
+setPosX (0,0);
+moveY();
+>>>>>>> eb9782a (boulot 09/07 17:35)
