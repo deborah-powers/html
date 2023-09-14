@@ -49,21 +49,23 @@ Merci d'avoir pris le temps de me contacter.
 
 ============ Questions ============
 
-Prix: 245
+Prix: 245 ke
 taxe foncière:
-Charges:
-dpe:
+Charges: 90 e/m
+coût énergique: 1000 e/a
+dpe: d
 Superficie: 46
-Chambre indépendante:
-Nb logements dans la co-propriété:
+Chambre indépendante: oui
+Nb logements dans la co-propriété: 46
 étage: rdc / 5
 noms sur les boîtes au lettres:
-Box vélo:
+>>>>>>> 7b52188 (maison 09/14 21:17)
 Cave ou place de parking: oui
 Procédure en cours:
 Travaux dans l'appartement:
 Travaux dans la co-propriété:
 état des étages:
-Ravalement et toiture:
+Ravalement: 2020
+toiture:
 Visiter la cave, même si je n'en ai pas
 Pv sur 1 an
