@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='cube.css'/>
+<style type='text/css'>
+	a { display: block; }
+	body {
+		perspective: 800px;
+		perspective-origin: -100% 100px;
+		text-align: center;
+	}
+	rect {
+		--cote-x: 8cm;
+		--cote-y: 4cm;
+		--cote-z: 2cm;
+		--cote-z-demi: calc(var(--cote-z) / 2);
+		width: var(--cote-x);
+		height: var(--cote-y);
+		--bord: double 10px yellow;
+		--fond: teal;
+		margin-left: 6cm;
+		animation: spin-horizontal 5s infinite linear;
+	}
+	rect >* {
+		border: var(--bord);
+		background: var(--fond);
+		margin: 0;
+		color: inherit;
+		padding-top: inherit;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	rect >*:nth-child(1){
+		width: var(--cote-x);
+		height: var(--cote-y);
+		transform: translateZ(var(--cote-z-demi));
+	}
+	rect >*:nth-child(2){
+		transform: rotateX(90deg) translateY(-50%);
+		transform-origin: top center;
+	}
+	rect >*:nth-child(3){
+		transform: rotateX(-90deg) translateY(50%);
+		transform-origin: bottom center;
+	}
+	/* >*:nth-child(4){
+		width: var(--cote-z);
+		height: var(--cote-y);
+		transform: translateX(50%) rotateY(270deg);
+		transform-origin: center left;
+	}*/
+	rect >*:nth-child(4){
+		width: var(--cote-z);
+		height: var(--cote-y);
+		transform: rotateY(270deg) translateX(-50%);
+		transform-origin: center left;
+	}
+	rect >*:nth-child(5){
+		width: var(--cote-z);
+		height: var(--cote-y);
+		transform: translateX(-50%) rotateY(-270deg);
+		transform-origin: center right;
+	}
+	rect >*:nth-child(6){
+		width: var(--cote-x);
+		height: var(--cote-y);
+		transform: rotateY(180deg) translateZ(var(--cote-z-demi));
+	}
+</style></head><body>
+	<a href='https://la-cascade.io/articles/creer-un-div-en-css'>David Walsh</a>
+	<rect>
+		<p id='front'>front</p>
+		<p id='top'>top</p>
+		<p id='bottom'>bottom</p>
+		<p id='left'>left</p>
+		<p id='right'>right</p>
+		<p id='back'>back</p>
+	</rect>
+</body></html>

@@ -32,5 +32,5 @@
 	<circle cx='0' cy='0' id='c4'/>
 	<circle cx='0' cy='0' id='c5'/>
 	<circle cx='0' cy='0' id='c6'/>
-	<script xlink:href='cube-svg.js'/>
+	<script xlink:href='cube-points.js'/>
 </svg>

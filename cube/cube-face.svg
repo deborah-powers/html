@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg version='1.1' width='600' height='400' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<title>cube</title>
+	<script xlink:href='../site-dp/library-js/list.js'/>
+	<script xlink:href='../site-dp/library-js/text.js'/>
+	<script xlink:href='../site-dp/library-js/svg.js'/>
+<style type='text/css'><![CDATA[
+	svg * {
+		stroke: maroon;
+		stroke-width: 2px;
+		fill: pink;
+	}
+	polygon#pa { fill: lightblue; }
+	polygon#pb { fill: violet; }
+	polygon#pc { fill: pink; }
+]]></style><defs></defs>
+	<polygon id='pa' points=''/>
+	<polygon id='pb' points=''/>
+	<polygon id='pc' points=''/>
+	<script xlink:href='cube-face.js'/>
+</svg>
