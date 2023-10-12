@@ -15,8 +15,12 @@
 		margin-bottom: 1em;
 	}
 </style></head><body>
+	<h2>congés divers</h2>
+	<p>RTT Q2: 10 / an</p>
+	<p>CET: 0 jours</p>
+	<p id='jours'>j'ai $ jours à poser d'ici fin janvier prochain.</p>
 	<h2>les congés payés, CP1 et CP2</h2>
-	<p>2.25/mois = 27/an</p>
+	<p>29/an = $/mois</p>
 	<div class='temporalite'>
 		<span>accumule</span>
 		<span>du</span>
@@ -51,14 +55,17 @@
 	<p id='nb-rtt'>il me reste $ RTT</p>
 </body>
 <script type='text/javascript'>
-	nbRttPris = 1;
-	nbCpPris = 5;
+	const nbRttPris = 1;
+	const nbCpPris = 21.5;
+	const nbCpTotal = 29;
 
-	var today = new Date();
+	const today = new Date();
 	var moisCourrant =1+ today.getMonth();
+	const nbCpMois = nbCpTotal /12.0;
 	document.body.innerHTML = document.body.innerHTML.replaceAll ('Y1', today.getFullYear());
 	document.body.innerHTML = document.body.innerHTML.replaceAll ('Y0', today.getFullYear() -1);
 	document.body.innerHTML = document.body.innerHTML.replaceAll ('Y2', today.getFullYear() +1);
+	document.body.innerHTML = document.body.innerHTML.replace ('$/mois', nbCpMois + ' / mois');
 
 	function calculRtt(){
 		var nbJdispo = moisCourrant - nbRttPris;
@@ -67,14 +74,15 @@
 		rttTag.innerHTML = rttTag.innerHTML.replace ('$', nbJdispo);
 		var rttPauses = document.getElementById ('rtt-pauses');
 		rttPauses.innerHTML = rttPauses.innerHTML.replace ('$', nbRttPris);
+		return nbJdispo;
 	}
 	function calculCp1(){
 		var nbJdispo =0;
-		if (moisCourrant >5) nbJdispo = 27;
+		if (moisCourrant >5) nbJdispo = nbCpTotal;
 		else{
 			moisCourrant = moisCourrant +7;
-			nbJdispo = 2.25 * moisCourrant;
-			if (moisCourrant ===8) nbJdispo = nbJdispo + 27;
+			nbJdispo = nbCpMois * moisCourrant;
+			if (moisCourrant ===8) nbJdispo = nbJdispo + nbCpTotal;
 		}
 		nbJdispo = nbJdispo - nbCpPris;
 		var cpTag = document.getElementById ('nb-cp');
@@ -82,11 +90,11 @@
 	}
 	function calculCp2(){
 		var nbJdispo =0;
-		if (moisCourrant >5) nbJdispo = 27;
+		if (moisCourrant >5) nbJdispo = nbCpTotal;
 		else{
 			moisCourrant = moisCourrant +7;
-			nbJdispo = 2.25 * moisCourrant;
-			if (moisCourrant ===8) nbJdispo = nbJdispo + 27;
+			nbJdispo = nbCpMois * moisCourrant;
+			if (moisCourrant ===8) nbJdispo = nbJdispo + nbCpTotal;
 		}
 		nbJdispo = nbJdispo - nbCpPris;
 		var cpTag = document.getElementById ('nb-cp');
@@ -95,19 +103,22 @@
 	function calculCp(){
 		// les CP1 et CP2 sont réunis
 		var nbJdispo =0;
-		if (moisCourrant >5) nbJdispo = 27;
+		if (moisCourrant >5) nbJdispo = nbCpTotal;
 		else{
 			moisCourrant = moisCourrant +7;
-			nbJdispo = 2.25 * moisCourrant;
-			if (moisCourrant ===8) nbJdispo = nbJdispo + 27;
+			nbJdispo = nbCpMois * moisCourrant;
+			if (moisCourrant ===8) nbJdispo = nbJdispo + nbCpTotal;
 		}
 		nbJdispo = nbJdispo - nbCpPris;
 		var cpTag = document.getElementById ('nb-cp');
 		cpTag.innerHTML = cpTag.innerHTML.replace ('$', nbJdispo);
 		var cpPauses = document.getElementById ('cp-pauses');
 		cpPauses.innerHTML = cpPauses.innerHTML.replace ('$', nbCpPris);
+		return nbJdispo;
 	}
-	calculRtt();
-	calculCp();
+	var nbJdispo = calculRtt();
+	nbJdispo += calculCp();
+	var joursTotal = document.getElementById ('jours');
+	joursTotal.innerHTML = joursTotal.innerHTML.replace ('$', nbJdispo);
 </script>
 </html>

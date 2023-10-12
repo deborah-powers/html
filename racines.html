@@ -1,0 +1,41 @@
+<div>
+<style type='text/css'>
+	body {
+		color: darkmagenta;
+		border-style: none;
+		border-width: 8px;
+		border-color: darkmagenta;
+	}
+	table, tr { width: 100%; }
+	h2, caption {
+		font-weight: bold;
+		font-size: 1.2em;
+		text-align: center;
+	}
+h2:first-letter, caption:first-letter { text-transform: uppercase; }
+</style>
+	<table>
+		<caption>les racines</caption>
+		<tr><td>r(2) = $r2</td><td>r2 /2 = $r22</td><td>1/ r2 = $r2i</td></tr>
+		<tr><td>r(3) = $r3</td><td>r3 /2 = $r32</td><td>1/ r3 = $r3i</td></tr>
+	</table>
+	<h2>triangle rectangle d'hypoténuse a et de coté b</h2>
+	<p>a2 = 2* b2</p>
+	<p>a= b* r2 = b* $r2</p>
+	<p>b= a / r2 = a * $r2i</p>
+	<h2>triangle isocèle de coté a et de hauteur b</h2>
+	<p>a2 = a2 /4 + b2</p>
+	<p>b2 = a2 * 3/4</p>
+	<p>b= a* 3r /2 = a* $r32</p>
+<script type='text/javascript'>
+	const r2 = Math.sqrt (2);
+	const r3 = Math.sqrt (3);
+	document.body.innerHTML = document.body.innerHTML.replace ('$r22', r2 /2);
+	document.body.innerHTML = document.body.innerHTML.replaceAll ('$r2i', 1/ r2);
+	document.body.innerHTML = document.body.innerHTML.replaceAll ('$r2', r2);
+	document.body.innerHTML = document.body.innerHTML.replaceAll ('$r32', r3 /2);
+	document.body.innerHTML = document.body.innerHTML.replace ('$r3i', 1/ r3);
+	document.body.innerHTML = document.body.innerHTML.replace ('$r3', r3);
+	console.log (Math.atan(2) * 180 / Math.PI);
+	console.log (360 - Math.atan(2) * 180 / Math.PI);
+</script></div>
