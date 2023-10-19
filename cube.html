@@ -10,10 +10,10 @@
 <style type='text/css'>
 	body {
 		perspective: 800px;
-		perspective-origin: 0% 100px;
+		perspective-origin: 15% 150px;
 /*		perspective-origin: 15% 150px; */
 		padding-left: 3cm;
-		--bord: solid 6px blue;
+		--bord: solid 1px blue;
 		--fond: #0888;
 	}
 	iframe {
@@ -21,32 +21,34 @@
 		height: 20em;
 		color: blue;
 	}
-toblerone {
-	--width: 8em;
-/*	transform: rotateX(90deg); */
+
+cylindre {
 	animation: spin-vertical 10s infinite linear;
+	transform: rotateX(-90deg);
 }
-toblerone >*:nth-child(4){
-	width: 111.8%;
-	transform: rotateY(-63.435deg);
+cylindre >*:nth-child(1), cylindre >*:nth-child(2){ border-radius: 50%; }
+cylindre >*:nth-child(n+3){
+	left: calc(var(--width-half) - 20.71065%);
+	width: calc(var(--width) * 0.414213);
+	border: none;
 }
-toblerone >*:nth-child(6){
-	transform: rotateY(-63.435deg) translateX(calc(var(--width-half) * -0.354)) translateZ(calc(var(--width-half) * 0.354));
-	border-color: purple;
-}
-toblerone >*:nth-child(5){
-	width: 111.8%;
-}
-b2 = 2 c2 = 2 a2 / 16
-b= r2 a /4
+cylindre >*:nth-child(3){ transform: translateZ(var(--width-half)); }
+cylindre >*:nth-child(4){ transform: translateZ(calc(-1* var(--width-half))); }
+cylindre >*:nth-child(5){ transform: rotateY(90deg) translateZ(var(--width-half)); }
+cylindre >*:nth-child(6){ transform: rotateY(90deg) translateZ(calc(-1* var(--width-half))); }
+cylindre >*:nth-child(7){ transform: rotateY(45deg) translateZ(var(--width-half)); }
+cylindre >*:nth-child(8){ transform: rotateY(45deg) translateZ(calc(-1* var(--width-half))); }
+cylindre >*:nth-child(9){ transform: rotateY(-45deg) translateZ(var(--width-half)); }
+cylindre >*:nth-child(10){ transform: rotateY(-45deg) translateZ(calc(-1* var(--width-half))); }
+/*
+	left: calc(var(--width-half) - 50% * var(--diminution));
+	width: calc(var(--width) * var(--diminution));
+*/
 </style></head><body>
-	<toblerone>
+	<cylindre>
 		<p id='top'>top</p>
 		<p id='bottom'>bottom</p>
-		<p id='back'>back</p>
-		<p id='left'>left</p>
-		<p id='right'>right</p>
-		<p></p>
-	</toblerone>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+</cylindre>
 	<iframe src='racines.html'></iframe>
 </body></html>
