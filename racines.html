@@ -1,19 +1,10 @@
-<div>
-<style type='text/css'>
-	body {
-		color: darkmagenta;
-		border-style: none;
-		border-width: 8px;
-		border-color: darkmagenta;
-	}
-	table, tr { width: 100%; }
-	h2, caption {
-		font-weight: bold;
-		font-size: 1.2em;
-		text-align: center;
-	}
-h2:first-letter, caption:first-letter { text-transform: uppercase; }
-</style>
+<!DOCTYPE html><html><head>
+	<title>formes 3D</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+</head><body>
 	<table>
 		<caption>les racines</caption>
 		<tr><td>r(2) = $r2</td><td>r2 /2 = $r22</td><td>1/ r2 = $r2i</td></tr>
@@ -27,7 +18,7 @@ h2:first-letter, caption:first-letter { text-transform: uppercase; }
 	<p>a2 = a2 /4 + b2</p>
 	<p>b2 = a2 * 3/4</p>
 	<p>b= a* 3r /2 = a* $r32</p>
-<script type='text/javascript'>
+</body><script type='text/javascript'>
 	const r2 = Math.sqrt (2);
 	const r3 = Math.sqrt (3);
 	document.body.innerHTML = document.body.innerHTML.replace ('$r22', r2 /2);
@@ -38,4 +29,4 @@ h2:first-letter, caption:first-letter { text-transform: uppercase; }
 	document.body.innerHTML = document.body.innerHTML.replace ('$r3', r3);
 	console.log (Math.atan(2) * 180 / Math.PI);
 	console.log (360 - Math.atan(2) * 180 / Math.PI);
-</script></div>
+</script></html>
