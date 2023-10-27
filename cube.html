@@ -6,7 +6,7 @@
 	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cube.css'/>
+	<script type='text/javascript' src='cube.js'></script>
 <style type='text/css'>
 	body {
 		perspective: 800px;
@@ -21,23 +21,43 @@
 		height: 20em;
 		color: blue;
 	}
-cylindre {
-	animation: spin-vertical 10s infinite linear;
-	transform: rotateX(-90deg);
-	border-style: none;
+@keyframes spin-horizontal {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
 }
+@keyframes spin-vertical {
+	from { transform: rotateX(0); }
+	to { transform: rotateX(-360deg); }
+}
+pole-3d, pave-3d {
+	width: 5em;
+	height: 8em;
+	color: limegreen;
+	border: double 8px limegreen;
+	background-color: #F0F8;
+	animation: spin-vertical 10s infinite linear;
+}
+pave-3d { --depth: 4em; }
 /*
 	left: calc(var(--width-half) - 50% * var(--diminution));
 	width: calc(var(--width) * var(--diminution));
 */
 </style></head><body>
-	<cylindre>
-		<p id='top'>top</p>
-		<p id='bottom'>bottom</p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	</cylindre>
+<pave-3d>
+	<p>top</p>
+	<p>bottom</p>
+	<p>back</p>
+	<p>left</p>
+	<p>right</p>
+	<p>front</p>
+</pave-3d>
+<pole-3d>
+	<p>top</p>
+	<p>bottom</p>
+	<p>back</p>
+	<p>left</p>
+	<p>right</p>
+	<p>front</p>
+</pole-3d>
 	<iframe src='racines.html'></iframe>
 </body></html>
