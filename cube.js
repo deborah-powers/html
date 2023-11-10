@@ -4,13 +4,14 @@ container {
 	perspective: 800px;
 	perspective-origin: 15% 150px;
 }
-cube-3d {
+cube-3d, pave-3d {
 	width: 8em;
 	height: 8em;
 	color: limegreen;
 	border: double 8px limegreen;
 	background-color: #F0F8;
 }
+pave-3d { --depth: 3cm; }
 <cube-3d>
 	<p>top</p>
 	<p>bottom</p>
@@ -47,18 +48,31 @@ function mutationNb (mutations){
 	});
 	return nbChildren;
 }
-class Cube extends HTMLElement{
+String.prototype.coordToNb = function(){
+	const extention = this.slice (-2);
+	const nbStr = this.slice (0, -2);
+	var nb = parseInt (nbStr);
+	if (extention === 'em') nb = nb * sizeEm;
+	else if (extention === 'cm') nb = nb * sizeCm;
+	return nb;
+}
+class Pole extends HTMLElement{
 	constructor(vertical){
 		super();
 		this.sens = 'horizontal';
-		this.vraiStyle = null;
 		this.nbFaces =6;	// modifier selon la forme. une pyramide a cinq faces
+		// les faces
 		this.front = null;
 		this.back = null;
 		this.top = null;
 		this.bottom = null;
 		this.left = null;
 		this.right = null;
+		// mise en forme
+		this.vraiStyle = null;
+		this.background ="";
+		this.border ="";
+		this.depth =0;
 	}
 	connectedCallback(){
 		conversionVersPx();
@@ -74,35 +88,49 @@ class Cube extends HTMLElement{
 		}
 		// infos pour styler les enfants
 		this.vraiStyle = getComputedStyle (this);
-		const background = this.vraiStyle.background;
-		const border = this.vraiStyle.border;
+		this.background = this.vraiStyle.background;
+		this.border = this.vraiStyle.border;
 		this.style.background = 'none';
 		this.style.border = 'none';
-		const self = this;
-		var nbChildren =0;
 
 		// styler les enfants et corriger leur nombre
+		const self = this;
+		var nbChildren =0;
 		var observer = new MutationObserver (function (mutations){
 			nbChildren = nbChildren + mutationNb (mutations);
 			if (nbChildren < self.nbFaces) self.appendChild (document.createElement ('p'));
-			else self.createShape (border, background);
+			else self.createShape();
 		});
 		observer.observe (this, { childList: true });
 	}
-	createShape (border, background){
+	createShape(){
 		// modifier selon la forme
-		const widthStr = this.vraiStyle.width.slice (0, -2);
-		const width = parseInt (widthStr) /2;
-		this.top = this.createFace (this.children[0], 'top', 'rotateX(90deg) translateZ(' + width + 'px)', border, background);
-		this.bottom = this.createFace (this.children[1], 'bottom', 'rotateX(-90deg) translateZ(' + width + 'px)', border, background);
-		if (this.sens === 'vertical')
-			this.back = this.createFace (this.children[2], 'back', 'rotateX(180deg) translateZ(' + width + 'px)', border, background);
-		else this.back = this.createFace (this.children[2], 'back', 'rotateY(180deg) translateZ(' + width + 'px)', border, background);
-		this.left = this.createFace (this.children[3], 'left', 'rotateY(-90deg) translateZ(' + width + 'px)', border, background);
-		this.right = this.createFace (this.children[4], 'right', 'rotateY(90deg) translateZ(' + width + 'px)', border, background);
-		this.front = this.createFace (this.children[5], 'front', 'translateZ(' + width + 'px)', border, background);
+		this.depth = this.vraiStyle.width.coordToNb() /2;
+		this.createTop();
+		this.createBottom();
+		this.createBack();
+		this.createLeft();
+		this.createRight();
+		this.createFront();
 	}
-	createFace (face, name, transform, border, background){
+	createTop(){
+		this.top = this.createFace (this.children[0], 'top', 'rotateX(90deg) translateZ(' + this.depth + 'px)');
+		this.top.style.height = 2* this.depth + 'px';
+	}
+	createBottom(){
+		const height = this.vraiStyle.height.coordToNb();
+		this.bottom = this.createFace (this.children[1], 'bottom', 'rotateX(-90deg) translateZ(' + (height - this.depth) + 'px)');
+		this.bottom.style.height = 2* this.depth + 'px';
+	}
+	createBack(){
+		if (this.sens === 'vertical')
+			this.back = this.createFace (this.children[2], 'back', 'rotateX(180deg) translateZ(' + this.depth + 'px)');
+		else this.back = this.createFace (this.children[2], 'back', 'rotateY(180deg) translateZ(' + this.depth + 'px)');
+	}
+	createLeft(){ this.left = this.createFace (this.children[3], 'left', 'rotateY(-90deg) translateZ(' + this.depth + 'px)'); }
+	createRight(){ this.right = this.createFace (this.children[4], 'right', 'rotateY(90deg) translateZ(' + this.depth + 'px)'); }
+	createFront(){ this.front = this.createFace (this.children[5], 'front', 'translateZ(' + this.depth + 'px)'); }
+	createFace (face, name, transform){
 		face.style.transform = transform;
 		face.style.margin = '0';
 		face.style.textAlign = 'center';
@@ -113,54 +141,75 @@ class Cube extends HTMLElement{
 		face.style.width = this.vraiStyle.width;
 		face.style.height = this.vraiStyle.height;
 		face.style.color = this.vraiStyle.color;
-		face.style.background = background;
+		face.style.background = this.background;
 		face.style.backgroundPosition = 'center';
 		face.style.backgroundSize = 'contain';
-		face.style.border = border;
+		face.style.border = this.border;
 		face.id = name;
 		return face;
 }}
-class Pole extends Cube{
-	createShape (border, background){
-		// modifier selon la forme
-		const widthStr = this.vraiStyle.width.slice (0, -2);
-		const width = parseInt (widthStr) /2;
-		const heightStr = this.vraiStyle.height.slice (0, -2);
-		const height = parseInt (heightStr);
-
-		this.top = this.createFace (this.children[0], 'top', 'rotateX(90deg) translateZ(' + width + 'px)', border, background);
-		this.bottom = this.createFace (this.children[1], 'bottom', 'rotateX(-90deg) translateZ('+ (height - width) + 'px)', border, background);
-		if (this.sens === 'vertical')
-			this.back = this.createFace (this.children[2], 'back', 'rotateX(180deg) translateZ(' + width + 'px)', border, background);
-		else this.back = this.createFace (this.children[2], 'back', 'rotateY(180deg) translateZ(' + width + 'px)', border, background);
-		this.left = this.createFace (this.children[3], 'left', 'rotateY(-90deg) translateZ(' + width + 'px)', border, background);
-		this.right = this.createFace (this.children[4], 'right', 'rotateY(90deg) translateZ(' + width + 'px)', border, background);
-		this.front = this.createFace (this.children[5], 'front', 'translateZ(' + width + 'px)', border, background);
-		this.top.style.height = this.vraiStyle.width;
-		this.bottom.style.height = this.vraiStyle.width;
-}}
+class Cube extends Pole{
+	createShape(){
+		this.style.height = this.style.width;
+		this.vraiStyle = getComputedStyle (this);
+		this.depth = this.vraiStyle.width.coordToNb() /2;
+		this.createTop();
+		this.createBottom();
+		this.createBack();
+		this.createLeft();
+		this.createRight();
+		this.createFront();
+	}
+}
 class Pave extends Pole{
 	createShape (border, background){
-		const heightStr = this.vraiStyle.height.slice (0, -2);
-		const height = parseInt (heightStr);
-		const depthExt = this.vraiStyle.getPropertyValue ('--depth').slice (-2);
-		const depthStr = this.vraiStyle.getPropertyValue ('--depth').slice (0, -2);
-		var depth = parseInt (depthStr) /2;
-		if (depthExt === 'em') depth = depth * sizeEm;
-		else if (depthExt === 'cm') depth = depth * sizeCm;
-		console.log (depth, height, sizeEm, (height - depth));
-
-		this.top = this.createFace (this.children[0], 'top', 'rotateX(90deg) translateZ(' + depth + 'px)', border, background);
-		this.bottom = this.createFace (this.children[1], 'bottom', 'rotateX(-90deg) translateZ('+ (height - depth) + 'px)', border, background);
-		if (this.sens === 'vertical')
-			this.back = this.createFace (this.children[2], 'back', 'rotateX(180deg) translateZ(' + depth + 'px)', border, background);
-		else this.back = this.createFace (this.children[2], 'back', 'rotateY(180deg) translateZ(' + depth + 'px)', border, background);
-		this.left = this.createFace (this.children[3], 'left', 'rotateY(-90deg) translateZ(' + depth + 'px)', border, background);
-		this.right = this.createFace (this.children[4], 'right', 'rotateY(90deg) translateZ(' + depth + 'px)', border, background);
-		this.front = this.createFace (this.children[5], 'front', 'translateZ(' + depth + 'px)', border, background);
-		this.top.style.height = this.vraiStyle.width;
-		this.bottom.style.height = this.vraiStyle.width;
+		this.depth = this.vraiStyle.getPropertyValue ('--depth').coordToNb() /2;
+		this.createTop();
+		this.createBottom();
+		this.createBack();
+		this.createLeft();
+		this.createRight();
+		this.createFront();
+		const depthStr = 2* this.depth + 'px';
+		this.left.style.width = depthStr;
+		this.right.style.width = depthStr;
+	}
+	createRight(){
+		const width = this.vraiStyle.width.coordToNb();
+		this.right = this.createFace (this.children[4], 'right', 'rotateY(90deg) translateZ(' + (width - this.depth) + 'px)');
 }}
+class Tequi extends Pole{
+	constructor(vertical){
+		super();
+		this.nbFaces =5;
+	}
+	createShape(){
+		this.depth = this.vraiStyle.width.coordToNb() * 0.433;
+		this.createTop();
+		this.createBottom();
+		this.createBack();
+		this.top.style.clipPath = 'polygon(0 0, 100% 0, 50% 100%)';
+		this.bottom.style.clipPath = 'polygon(0 100%, 100% 100%, 50% 0)';
+		this.left = this.createFace (this.children[3], 'left', 'rotateY(-60deg) translateZ(' + this.depth /2 + 'px) translateX(-12.5%)');
+		this.right = this.createFace (this.children[4], 'right', 'rotateY(60deg) translateZ(' + this.depth /2 + 'px) translateX(12.5%)');
+}}
+class Hexa extends Tequi{
+	constructor(vertical){
+		super();
+		this.nbFaces =8;
+	}
+	createShape(){
+}}
+/*
+toblerone >*:nth-child(4){
+	transform: rotateY(-63.435deg) translateX(-12.5%) translateZ(calc(var(--width) * 0.25));
+}
+toblerone >*:nth-child(5){
+	transform: rotateY(63.435deg) translateX(8.75%) translateZ(calc(var(--width) * 0.175));
+}*/
+
 customElements.define ('cube-3d', Cube);
 customElements.define ('pole-3d', Pole);
 customElements.define ('pave-3d', Pave);
+customElements.define ('equi-3d', Tequi);
+customElements.define ('hexa-3d', Hexa);

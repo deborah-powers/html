@@ -6,7 +6,7 @@
 	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='cube.js'></script>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cube.css'/>
 <style type='text/css'>
 	body {
 		perspective: 800px;
@@ -21,43 +21,23 @@
 		height: 20em;
 		color: blue;
 	}
-@keyframes spin-horizontal {
-	from { transform: rotateY(0); }
-	to { transform: rotateY(360deg); }
-}
-@keyframes spin-vertical {
-	from { transform: rotateX(0); }
-	to { transform: rotateX(-360deg); }
+cylindre {
+	animation: spin-vertical 10s infinite linear;
+	transform: rotateX(-90deg);
+	border-style: none;
 }
 /*
 	left: calc(var(--width-half) - 50% * var(--diminution));
 	width: calc(var(--width) * var(--diminution));
 */
-cube-3d, pole-3d, pave-3d, equi-3d {
-	width: 12em;
-	height: 14em;
-	border-style: solid;
-	border-width: 4px;
-	background-color: #0FF8;
-	animation: spin-vertical 10s infinite linear;
-	margin-top: 3em;
-}
-pave-3d { --depth: 9em; }
 </style></head><body>
-<equi-3d>
-	<p>top</p>
-	<p>bottom</p>
-	<p>back</p>
-	<p>left</p>
-	<p>right</p>
-</equi-3d>
-<pole-3d>
-	<p>top</p>
-	<p>bottom</p>
-	<p>back</p>
-	<p>left</p>
-	<p>right</p>
-	<p>front</p>
-</pole-3d>
+	<cylindre>
+		<p id='top'>top</p>
+		<p id='bottom'>bottom</p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</cylindre>
 	<iframe src='racines.html'></iframe>
 </body></html>
