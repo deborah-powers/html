@@ -3,9 +3,11 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='blank'/>
-	<link rel='icon' type='image/svg+xml' href='data/nounours-perso.svg'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cube.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cylindre.css'/>
 	<script type='text/javascript' src='cube.js'></script>
 <style type='text/css'>
 	body {
@@ -33,31 +35,37 @@
 	left: calc(var(--width-half) - 50% * var(--diminution));
 	width: calc(var(--width) * var(--diminution));
 */
-cube-3d, pole-3d, pave-3d, equi-3d {
-	width: 12em;
-	height: 14em;
+hexa-3d, trec-3d {
+	width: 9em;
+	height: 2cm;
+	--depth: 4cm;
 	border-style: solid;
 	border-width: 4px;
 	background-color: #0FF8;
 	animation: spin-vertical 10s infinite linear;
 	margin-top: 3em;
 }
-pave-3d { --depth: 9em; }
+cylindre {
+	animation: spin-vertical 20s infinite linear;
+	margin-top: 2em;
+}
 </style></head><body>
-<equi-3d>
-	<p>top</p>
-	<p>bottom</p>
-	<p>back</p>
-	<p>left</p>
-	<p>right</p>
-</equi-3d>
-<pole-3d>
-	<p>top</p>
-	<p>bottom</p>
-	<p>back</p>
-	<p>left</p>
-	<p>right</p>
-	<p>front</p>
-</pole-3d>
+	<cylindre>
+		<p>top</p>
+		<p>bottom</p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</cylindre>
+	<trec-3d>
+		<p>top</p>
+		<p>bottom</p>
+		<p>a</p>
+		<p>b</p>
+		<p>c</p>
+	</trec-3d>
+	<hexa-3d>
+		<p>top</p>
+		<p>bottom</p>
+		<p>coucou</p>
+	</hexa-3d>
 	<iframe src='racines.html'></iframe>
 </body></html>
