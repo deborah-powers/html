@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<!--
+	<base target='blank' href='../site-dp/'/>
+	<link rel='icon' type='image/x-icon' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='icon' type='image/svg+xml' href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='16' height='16'><circle cx='8' cy='8' r='6' style='fill:#FBD;stroke:#C36'/></svg>">
+	-->
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='../site-dp/library-js/carousel.js'></script>
+<style type='text/css'>
+	carousel-dp {
+		width: 100%;
+		height: 12cm;
+		background-color: var(--text-color);
+	}
+</style></head><body>
+	<carousel>
+		<button onclick='goLeft()'><</button>
+		<img src='C:\wamp64\www\html\model-css\exemple-img.bmp'>
+		<button onclick='goRight()'>></button>
+	</carousel>
+	<carousel-dp images='images'> </carousel-dp>
+</body>
+<script type='text/javascript'>
+var images =[
+	'C:\\wamp64\\www\\html\\model-css\\exemple-img.bmp',
+	'C:\\Users\\LENOVO\\Desktop\\images divers\\mec - inconnu - motard.jpg',
+	'C:\\Users\\LENOVO\\Desktop\\images divers\\theatre 2023.png',
+	'C:\\Users\\LENOVO\\Desktop\\images divers\\nuancier 16 couleurs.bmp',
+	'C:\\Users\\LENOVO\\Desktop\\images divers\\jessica rae 3 sharkboy and shrimpgirl.jpg'
+];
+	const img = document.body.getElementsByTagName ('img')[0];
+	var posRef =0;
+	function goLeft(){
+		posRef -=1;
+		if (posRef <0) posRef = images.length -1;
+		img.src = images [posRef];
+	}
+	function goRight(){
+		posRef +=1;
+		if (posRef >= images.length) posRef =0;
+		img.src = images [posRef];
+	}
+	setCarouselImages()
+</script>
+</html>

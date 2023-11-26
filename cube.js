@@ -115,6 +115,7 @@ class Shape3d extends HTMLElement{
 				self.createSides();
 			}
 		});
+		console.log (this, observer);
 		observer.observe (this, { childList: true });
 	}
 	// modifier selon la forme
