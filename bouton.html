@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head>
+	<title>formes 3D</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='blank'/>
+	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cube.css'/>
+	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cylindre.css'/>
+<style type='text/css'>
+</style></head><body>
+	<button onclick='testClic()'>cliquez</button>
+	<p>bonjour</p>
+</body><script type='text/javascript'>
+	const couleurs =[ 'blue', 'green', 'red', 'orange', 'pink' ];
+	const parag = document.getElementsByTagName ('p')[0];
+	const button = document.getElementsByTagName ('button')[0];
+	button.click();
+	var id=0;
+	function testClic(){
+		console.log ("j'ai cliqué");
+		id = id +1;
+		if (id === couleurs.length) id =0;
+		parag.style.backgroundColor = couleurs[id];
+	}
+</script></html>

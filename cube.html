@@ -35,7 +35,7 @@
 	left: calc(var(--width-half) - 50% * var(--diminution));
 	width: calc(var(--width) * var(--diminution));
 */
-hexa-3d, trec-3d {
+hexa-3d, trec-3d, equi-3d {
 	width: 9em;
 	height: 2cm;
 	--depth: 4cm;
@@ -48,13 +48,10 @@ hexa-3d, trec-3d {
 cylindre {
 	animation: spin-vertical 20s infinite linear;
 	margin-top: 2em;
+	--width: 6em;
+	--height: 2em;
 }
 </style></head><body>
-	<cylindre>
-		<p>top</p>
-		<p>bottom</p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	</cylindre>
 	<trec-3d>
 		<p>top</p>
 		<p>bottom</p>
@@ -62,10 +59,12 @@ cylindre {
 		<p>b</p>
 		<p>c</p>
 	</trec-3d>
-	<hexa-3d>
+	<equi-3d>
 		<p>top</p>
 		<p>bottom</p>
-		<p>coucou</p>
-	</hexa-3d>
+		<p>a</p>
+		<p>b</p>
+		<p>c</p>
+	</equi-3d>
 	<iframe src='racines.html'></iframe>
 </body></html>

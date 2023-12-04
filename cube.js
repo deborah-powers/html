@@ -115,7 +115,6 @@ class Shape3d extends HTMLElement{
 				self.createSides();
 			}
 		});
-		console.log (this, observer);
 		observer.observe (this, { childList: true });
 	}
 	// modifier selon la forme
@@ -198,6 +197,7 @@ class Trect extends Tequi{
 		const width = this.vraiStyle.width.coordToNb() * -0.145;
 		this.children[3].style.width = '71%';
 		this.children[3].style.left = width + 'px';
+		this.children[3].style.transform = 'rotateY(-45deg) translateX(-10%) translateZ(' + width + 'px)';
 		/*
 		this.children[3].style.left = '-14.5%';
 		this.children[3].style.transform = 'rotateY(-45deg) translateX(-10%) translateZ(' + width + 'px)';
