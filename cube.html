@@ -12,59 +12,74 @@
 <style type='text/css'>
 	body {
 		perspective: 800px;
-		perspective-origin: 15% 150px;
+		perspective-origin: 50% 150px;
 /*		perspective-origin: 15% 150px; */
 		padding-left: 3cm;
 		--bord: solid 1px blue;
-		--fond: #0888;
+		--fond: #0886;
+		--width: 6cm;
+		--height: 8cm;
+		--depth: 4cm;
 	}
 	iframe {
 		width: 100%;
 		height: 20em;
 		color: blue;
 	}
-@keyframes spin-horizontal {
-	from { transform: rotateY(0); }
-	to { transform: rotateY(360deg); }
-}
-@keyframes spin-vertical {
-	from { transform: rotateX(0); }
-	to { transform: rotateX(-360deg); }
-}
-/*
-	left: calc(var(--width-half) - 50% * var(--diminution));
-	width: calc(var(--width) * var(--diminution));
-*/
-hexa-3d, trec-3d, equi-3d {
+pole-3d, pave-3d, hexa-3d, octo-3d, trec-3d, equi-3d, cyld-3d {
 	width: 9em;
-	height: 2cm;
-	--depth: 4cm;
+	height: 8cm;
 	border-style: solid;
 	border-width: 4px;
-	background-color: #0FF8;
+	background-color: #0AA;
 	animation: spin-vertical 10s infinite linear;
 	margin-top: 3em;
 }
-cylindre {
-	animation: spin-vertical 20s infinite linear;
-	margin-top: 2em;
-	--width: 6em;
-	--height: 2em;
+cylbis {
+	--width-half: calc(var(--width) /2);
+	width: var(--width);
+	display: block;
+	transform-style: preserve-3d;
+	padding: 0;
+	text-align: center;
+	background-position: center;
+	margin: 14em;
+	border-style: none;
+	animation: spin-vertical 10s infinite linear;
+}
+cylbis >* {
+	border: var(--bord);
+	background: var(--fond);
+	width: inherit;
+	height: inherit;
+	margin: 0;
+	color: inherit;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	background-position: center;
+	background-size: contain;
+	transform-origin: center center;
+}
+cylbis >*:nth-child(1), cylbis >*:nth-child(2){
+	border-radius: 50%;
+	height: var(--width);
+}
+cylbis >*:nth-child(1){ transform: rotateX(90deg) translateZ(var(--width-half)); }
+cylbis >*:nth-child(2){ transform: rotateX(-90deg) translateZ(calc(var(--height) - var(--width-half))); }
+cylbis >*:nth-child(3){
+	height: var(--height);
+	border-top: none;
+	border-bottom: none;
+	box-shadow: inset 0 1em 3em var(--fond);
 }
 </style></head><body>
-	<trec-3d>
-		<p>top</p>
-		<p>bottom</p>
-		<p>a</p>
-		<p>b</p>
-		<p>c</p>
-	</trec-3d>
-	<equi-3d>
-		<p>top</p>
-		<p>bottom</p>
-		<p>a</p>
-		<p>b</p>
-		<p>c</p>
-	</equi-3d>
-	<iframe src='racines.html'></iframe>
+	<p>ok</p>
+	<cylbis>
+		<p>haut</p>
+		<p>bas</p>
+		<p>milieu</p>
+	</cylbis>
+	<!-- iframe src='racines.html'></iframe -->
 </body></html>

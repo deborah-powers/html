@@ -190,25 +190,17 @@ class Tequi extends Shape3d{
 		this.children[4].style.transform = 'rotateY(240deg) translateZ(' + this.depth /2 + 'px) translateX(12.5%)';
 }}
 class Trect extends Tequi{
-	setDepth(){ this.depth = this.vraiStyle.width.coordToNb() * 0.353553; }
-//	setSide(){ this.side = this.vraiStyle.width.coordToNb() * 0.71; }
+	setDepth(){ this.depth = this.vraiStyle.width.coordToNb() * 0.25; }
 	createSides(){
 		super.createSides();
 		const width = this.vraiStyle.width.coordToNb() * -0.145;
 		this.children[3].style.width = '71%';
-		this.children[3].style.left = width + 'px';
-		this.children[3].style.transform = 'rotateY(-45deg) translateX(-10%) translateZ(' + width + 'px)';
-		/*
-		this.children[3].style.left = '-14.5%';
-		this.children[3].style.transform = 'rotateY(-45deg) translateX(-10%) translateZ(' + width + 'px)';
+		this.children[3].style.transform = 'rotateY(-45deg)';
+		this.children[3].style.left = 1.6* this.depth + 'px';
 		this.children[4].style.width = '71%';
-		this.children[4].style.left = '14.5%';
-		this.children[4].style.transform = 'rotateY(225deg) translateZ(' + this.depth /2 + 'px) translateX(12.5%)';
-		const width = this.vraiStyle.width.coordToNb() * 0.0625;
-		this.children[2].style.width = this.style.width;
-		*/
-	}
-}
+		this.children[4].style.transform = 'rotateY(45deg)';
+		this.children[4].style.left = -0.4* this.depth + 'px';
+}}
 class Octo extends Shape3d{
 	constructor(){ super (10); }
 	setSide(){ this.side = this.vraiStyle.width.coordToNb() * 0.414213; }
@@ -217,9 +209,29 @@ class Octo extends Shape3d{
 		this.children[0].style.clipPath = 'polygon(29.28935% 0, 70.71065% 0, 100% 29.28935%, 100% 70.71065%, 70.71065% 100%, 29.28935% 100%, 0 70.71065%, 0 29.28935%)';
 		this.children[1].style.clipPath = 'polygon(29.28935% 0, 70.71065% 0, 100% 29.28935%, 100% 70.71065%, 70.71065% 100%, 29.28935% 100%, 0 70.71065%, 0 29.28935%)';
 }}
+class Cylindre extends Shape3d{
+	constructor(){ super (50); }
+	createHat(){
+		super.createHat();
+		this.children[0].style.borderRadius = '50%';
+		this.children[1].style.borderRadius = '50%';
+	}
+	setSide(){ this.side = this.vraiStyle.width.coordToNb() * 0.065;  }
+	createSides(){
+		const angle = 360 / (this.nbFaces -2);
+		var angleTmp =0;
+		const ecartLeft = (this.vraiStyle.width.coordToNb() - this.side) /2;
+		for (var c=2; c< this.nbFaces; c++){
+			this.children[c].createSide (this.side, ecartLeft, this.depth, angleTmp, this.background, this.border);
+			this.children[c].style.borderLeft = 'none';
+			this.children[c].style.borderRight = 'none';
+			angleTmp += angle;
+		}
+}}
 customElements.define ('pole-3d', Pole);
 customElements.define ('hexa-3d', Hexa);
 customElements.define ('equi-3d', Tequi);
 customElements.define ('trec-3d', Trect);
 customElements.define ('octo-3d', Octo);
 customElements.define ('pave-3d', Pave);
+customElements.define ('cyld-3d', Cylindre);
