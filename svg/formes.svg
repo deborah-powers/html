@@ -126,6 +126,8 @@
 	<polygon id='trisocele-gauche' points='34.64,0 34.64,40 0,20' transform='translate(770,200)'/>
 	<polygon id='octogon' points='20,0 48.3,0 68.3,20 68.3,48.3 48.3,68.3 20,68.3 0,48.3 0,20' transform='translate(825,40)'/>
 	<polygon id='pentagon' points='0,47.5 15.5,0 65.5,0 80.9,47.5 40.5,80' transform='translate(800,410)'/>
+	<path id='pentagon-path' d='m 4,128.648 l 37.221,-109.549 l 117.557,0 l 36,109.549 l -94,71.352 z'/>
+	<path id='pentagram-path' d='m 4,128.648 l 154.778,-109.549 l -58,180.901 l -58,-180.901 l 153.557,109.549 z'/>
 
 	<path id='heart' d='m0,38 c 0,50 50,50 50,80 c 0,-30 50,-30 50,-80 c 0,-50 -50,-50 -50,0 c 0,-50 -50,-50 -50,0 z' transform='scale(1,0.8) translate(650,350)'/>
 	<path id='cloud-cross' d='M 38,88 c 0,50 50,50 50,0 c 50,0 50,-50 0,-50 c 0,-50 -50,-50 -50,0 c -50,0 -50,50 0,50 z' transform='translate(720,320)'/>
