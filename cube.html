@@ -6,8 +6,6 @@
 	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cube.css'/>
-	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/cylindre.css'/>
 	<script type='text/javascript' src='cube.js'></script>
 <style type='text/css'>
 	body {
@@ -16,43 +14,50 @@
 /*		perspective-origin: 15% 150px; */
 		padding-left: 3cm;
 		--bord: solid 1px blue;
-		--fond: #0886;
-		--width: 6cm;
-		--height: 8cm;
-		--depth: 4cm;
+		--fond: #0FF;
 	}
 	iframe {
 		width: 100%;
 		height: 20em;
 		color: blue;
 	}
-pole-3d, pave-3d, hexa-3d, octo-3d, trec-3d, equi-3d, cyld-3d {
-	width: 9em;
-	height: 8cm;
-	border-style: solid;
-	border-width: 4px;
-	background-color: #0AA;
-	animation: spin-vertical 10s infinite linear;
-	margin-top: 3em;
+@keyframes spin-horizontal {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
 }
-cylbis {
-	--width-half: calc(var(--width) /2);
+@keyframes spin-vertical {
+	from { transform: rotateX(0); }
+	to { transform: rotateX(-360deg); }
+}
+@keyframes spin-transversal {
+	from { transform: rotateZ(0); }
+	to { transform: rotateZ(-360deg); }
+}
+piece {
+	--width: 8cm;
+	--height: 10cm;
+	--depth: 6cm;
+	--frise: 24px;
+	--depth-half: calc(var(--depth) /2);
 	width: var(--width);
+	height: var(--height);
+	box-sizing: border-box;
 	display: block;
 	transform-style: preserve-3d;
 	padding: 0;
 	text-align: center;
 	background-position: center;
-	margin: 14em;
+	margin-bottom: 4em;
 	border-style: none;
-	animation: spin-vertical 10s infinite linear;
+	animation: spin-horizontal 5s infinite linear;
 }
-cylbis >* {
-	border: var(--bord);
+piece >*, piece >*:nth-child(1):before, piece >*:nth-child(1):after {
+	box-sizing: border-box;
 	background: var(--fond);
 	width: inherit;
 	height: inherit;
 	margin: 0;
+	padding: 0;
 	color: inherit;
 	position: absolute;
 	top: 0;
@@ -62,24 +67,38 @@ cylbis >* {
 	background-size: contain;
 	transform-origin: center center;
 }
-cylbis >*:nth-child(1), cylbis >*:nth-child(2){
-	border-radius: 50%;
-	height: var(--width);
+/* fond, gauche, droite, sol, plafond */
+piece >*:nth-child(1){
+	width: var(--width);
+	transform: translateZ(var(--depth-half));
+	transform-style: preserve-3d;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid 8px red;
+	border-top: solid var(--frise) blue;
 }
-cylbis >*:nth-child(1){ transform: rotateX(90deg) translateZ(var(--width-half)); }
-cylbis >*:nth-child(2){ transform: rotateX(-90deg) translateZ(calc(var(--height) - var(--width-half))); }
-cylbis >*:nth-child(3){
-	height: var(--height);
-	border-top: none;
-	border-bottom: none;
-	box-shadow: inset 0 1em 3em var(--fond);
+piece >*:nth-child(1):before, piece >*:nth-child(1):after {
+	content: "";
+	border-left: inherit;
+	border-right: inherit;
+	border-bottom: inherit;
+	border-top: inherit;
+	background: inherit;
+	top: calc(-1 * var(--frise));
+	width: var(--depth);
+}
+piece >*:nth-child(1):before { transform: rotateY(90deg) translateZ(calc(var(--width) - var(--depth-half))) translateX(50%); }
+piece >*:nth-child(1):after { transform: rotateY(90deg) translateZ(calc(-1 * var(--depth-half))) translateX(50%); }
+piece >*:nth-child(2){
+	width: var(--width);
+	height: var(--depth);
+	background-image: url("C:\\Users\\LENOVO\\Desktop\\images divers\\effet d'optique - papier peint 70 (2).bmp");
+	transform: rotateX(90deg) translateZ(var());
 }
 </style></head><body>
-	<p>ok</p>
-	<cylbis>
-		<p>haut</p>
-		<p>bas</p>
-		<p>milieu</p>
-	</cylbis>
+	<piece>
+		<p></p>
+		<p></p>
+	</piece>
 	<!-- iframe src='racines.html'></iframe -->
 </body></html>
