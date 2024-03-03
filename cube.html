@@ -6,6 +6,8 @@
 	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='cube-simple.css'/>
+	<link rel='stylesheet' type='text/css' href='piece.css'/>
 <style type='text/css'>
 	body {
 		background-color: wheat;
@@ -34,94 +36,14 @@
 	from { transform: rotateZ(0); }
 	to { transform: rotateZ(-360deg); }
 }
-piece {
-	--width: 12cm;
-	--height: 12cm;
-	--depth: 7cm;
-	--depth-half: calc(var(--depth) /2);
-	--plainte: solid 8px blue;
-	width: var(--width);
-	height: var(--height);
-	box-sizing: border-box;
-	display: block;
-	transform-style: preserve-3d;
-	padding: 0;
-	text-align: center;
-	background-position: center;
-	margin-left: 6cm;
-	margin-bottom: 4em;
-	border-style: none;
-	animation: spin-horizontal 5s infinite linear;
-	animation-direction: alternate;
-}
-piece >*, piece >*:nth-child(1):before, piece >*:nth-child(1):after, piece >*:nth-child(2):before, piece >*:nth-child(2):after {
-	box-sizing: border-box;
-	background: var(--fond);
-	width: inherit;
-	height: inherit;
-	margin: 0;
-	padding: 0;
-	color: inherit;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: center;
-	background-position: center;
-	background-size: contain;
-	transform-origin: center center;
-}
-/* fond, gauche, droite, sol, plafond */
-piece >*:nth-child(1){
-	width: inherit;
-	transform: translateZ(calc(-1* var(--depth-half)));
-	transform-style: preserve-3d;
-	border-left: none;
-	border-right: none;
-	border-top: none;
-	border-bottom: var(--plainte);
-}
-piece >*:nth-child(1):before, piece >*:nth-child(1):after {
-	content: "";
-	border-left: inherit;
-	border-right: inherit;
-	border-bottom: inherit;
-	border-top: inherit;
-	background: inherit;
-	width: var(--depth);
-}
-piece >*:nth-child(2):after {
-	content: "";
-	transform: rotateX(-90deg) translateY(-50%) translateZ(calc(var(--depth) - var(--height) /2));
-	width: var(--width);
-	height: var(--height);
-	border-left: none;
-	border-right: none;
-	border-top: none;
-	border-bottom: var(--plainte);
-	background-color: #F084;
-/* calc(var(--height) /2 - var(--depth)) */
-}
-piece >*:nth-child(1):before { transform: rotateY(90deg) translateZ(calc(var(--width) - var(--depth-half))) translateX(-50%); }
-piece >*:nth-child(1):after { transform: rotateY(90deg) translateZ(calc(-1 * var(--depth-half))) translateX(-50%); }
-piece >*:nth-child(2){
-	transform-style: preserve-3d;
-	width: inherit;
-	height: var(--depth);
-	background-image: url("C:\\Users\\LENOVO\\Desktop\\images divers\\effet d'optique - papier peint 70 (2).bmp");
-	background-color: deepskyblue;
-	transform: rotateX(90deg) translateZ(calc(var(--depth-half) - var(--height)));
-}
-piece >*:nth-child(2):before {
-	content: "";
-	background-color: white;
-	width: inherit;
-	height: inherit;
-	transform: translateZ(var(--height));
+h1:before { content: 'ah ! '; }
+h1 {
+	background-color: teal;
+	box-shadow: 0 2em teal;
 }
 </style></head><body>
-	<piece>
-		<p></p>
-		<p></p>
-	</piece>
+	<h1>coucou</h1>
+	<piece><p></p><p></p></piece>
+	<pave class='poteau'><p></p><p></p></pave>
 	<!-- iframe src='racines.html'></iframe -->
 </body></html>

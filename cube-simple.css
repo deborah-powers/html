@@ -1,0 +1,67 @@
+/* https://la-cascade.io/articles/creer-un-cube-en-css
+pas de texte ni de bord autour des formes,
+car j'utilise les :before et :after
+*/
+pave {
+	--width: 8cm;
+	--height: 2cm;
+	--depth: 4cm;
+	--fond: #B0B4;
+	--height-half: calc(var(--height) /2);
+	--depth-half: calc(var(--depth) /2);
+	width: var(--width);
+	height: var(--height);
+	box-sizing: border-box;
+	display: block;
+	transform-style: preserve-3d;
+	padding: 0;
+	text-align: center;
+	border: none;
+	background-position: center;
+}
+pave >*, pave >*:before, pave >*:after {
+	width: inherit;
+	height: inherit;
+	background: var(--fond);
+	border: none;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	text-align: center;
+	background-position: center;
+	background-size: contain;
+	transform-origin: center center;
+}
+pave >* {
+	transform-style: preserve-3d;
+	height: var(--depth);
+}
+pave >*:before, pave >*:after { content: ""; }
+pave >*:nth-child(1){ transform: rotateX(90deg) translateZ(var(--depth-half)); }
+pave >*:nth-child(1):before, pave >*:nth-child(1):after { width: var(--height); }
+pave >*:nth-child(1):before { transform: rotateY(-90deg) translateZ(var(--height-half)) translateX(-50%); }
+pave >*:nth-child(1):after { transform: rotateY(-90deg) translateZ(calc(var(--height-half) - var(--width))) translateX(-50%); }
+pave >*:nth-child(2){ transform: rotateX(-90deg) translateZ(calc(var(--height) - var(--depth-half))); }
+pave >*:nth-child(2):before, pave >*:nth-child(2):after { height: var(--height); }
+pave >*:nth-child(2):before { transform: rotateX(-90deg) translateZ(calc(var(--depth) - var(--height-half))) translateY(50%); }
+pave >*:nth-child(2):after { transform: rotateX(-90deg) translateZ(calc(-1* var(--height-half))) translateY(50%); }
+pave.poteau { --depth: var(--width); }
+pave.cube {
+	--height: var(--width);
+	--depth: var(--width);
+}
+/*
+pave {
+	--width: 12cm;
+	--height: 12cm;
+	--depth: 7cm;
+	--fond: #B0B4;
+	animation: spin-horizontal 5s infinite linear;
+	animation-direction: alternate;
+	margin-left: 6cm;
+	margin-bottom: 4em;
+}
+<pave><p></p><p></p></pave>
+*/
