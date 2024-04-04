@@ -6,18 +6,17 @@
 	<link rel='icon' type='image/svg+xml' href='../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-	<link rel='stylesheet' type='text/css' href='cube-simple.css'/>
-	<link rel='stylesheet' type='text/css' href='piece.css'/>
+	<link rel='stylesheet' type='text/css' href='pole.css'/>
 <style type='text/css'>
 	body {
 		background-color: wheat;
 		perspective: 1000px;
-		perspective-origin: 50% 150px;
+		perspective-origin: 40% 150px;
 /*		perspective-origin: 15% 150px; */
 		padding-left: 3cm;
-		--bord: solid 1px blue;
+		--bord: solid;
 		--fond: #0FF;
-		text-align: center;
+		text-align: left;
 	}
 	iframe {
 		width: 100%;
@@ -25,8 +24,8 @@
 		color: blue;
 	}
 @keyframes spin-horizontal {
-	from { transform: rotateY(-45deg); }
-	to { transform: rotateY(45deg); }
+	from { transform: rotateY(0deg); }
+	to { transform: rotateY(-360deg); }
 }
 @keyframes spin-vertical {
 	from { transform: rotateX(0); }
@@ -41,9 +40,11 @@ h1 {
 	background-color: teal;
 	box-shadow: 0 2em teal;
 }
+pole {
+	animation: spin-vertical 10s infinite linear;
+}
 </style></head><body>
 	<h1>coucou</h1>
-	<piece><p></p><p></p></piece>
-	<pave class='poteau'><p></p><p></p></pave>
+	<pole class='toblerone'><p>a</p><p>b</p><p>c</p><p>d</p><p>e</p></pole>
 	<!-- iframe src='racines.html'></iframe -->
 </body></html>

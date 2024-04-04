@@ -1,0 +1,94 @@
+pole {
+	/* propriétés modifiables */
+	--width: 10cm;
+	--height: 5cm;
+	--bord: solid 2px maroon;
+	--fond: lightgreen;
+	color: maroon;
+	/* ------ */
+	--width-half: calc(var(--width) /2);
+	width: var(--width);
+	height: var(--height);
+	display: block;
+	transform-style: preserve-3d;
+	padding: 0;
+	text-align: center;
+	background-position: center;
+	border: none;
+}
+pole.cube { height: var(--width); }
+pole >* {
+	border: var(--bord);
+	background: var(--fond);
+	width: inherit;
+	height: inherit;
+	margin: 0;
+	color: inherit;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	background-position: center;
+	background-size: contain;
+	transform-origin: center center;
+}
+pole >*:nth-child(1){
+	height: var(--width);
+	transform: rotateX(90deg) translateZ(var(--width-half));
+}
+pole >*:nth-child(2){
+	height: var(--width);
+	transform: rotateX(-90deg) translateZ(calc(var(--height) - var(--width-half)));
+}
+pole >*:nth-child(3) { transform: translateZ(var(--width-half)); }
+pole >*:nth-child(4){ transform: rotateY(180deg) translateZ(var(--width-half)); }
+pole >*:nth-child(5) {
+	transform: rotateY(-90deg) translateZ(var(--width-half));
+}
+pole >*:nth-child(6) {
+	transform: rotateY(90deg) translateZ(calc(var(--width) - var(--width-half)));
+}
+/* pavé qui tourne selon spin-vertical */
+pole.vertical >*:nth-child(3){ transform: rotateX(180deg) translateZ(var(--width-half)); }
+/* octogone */
+pole.octogone >*:nth-child(1), pole.octogone >*:nth-child(2){
+	clip-path: polygon(29.28935% 0, 70.71065% 0, 100% 29.28935%, 100% 70.71065%, 70.71065% 100%, 29.28935% 100%, 0 70.71065%, 0 29.28935%);
+}
+pole.octogone >*:nth-child(n+3){
+	width: 41.4213%;
+	left: calc(var(--width-half) - 20.71065%);
+}
+pole.octogone >*:nth-child(7){ transform: rotateY(45deg) translateZ(var(--width-half)); }
+pole.octogone >*:nth-child(8){ transform: rotateY(45deg) translateZ(calc(-1* var(--width-half))); }
+pole.octogone >*:nth-child(9){ transform: rotateY(-45deg) translateZ(var(--width-half)); }
+pole.octogone >*:nth-child(10){ transform: rotateY(-45deg) translateZ(calc(-1* var(--width-half))); }
+/* hexagone */
+pole.hexagone { --width-half: calc(0.433 * var(--width)); }
+pole.hexagone >*:nth-child(1), pole.hexagone >*:nth-child(2){
+	clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+	height: calc(2* var(--width-half));
+}
+pole.hexagone >*:nth-child(n+3){
+	width: 50%;
+	left: calc(0.25 * var(--width));
+}
+pole.hexagone >*:nth-child(5){ transform: rotateY(60deg) translateZ(var(--width-half)); }
+pole.hexagone >*:nth-child(6){ transform: rotateY(60deg) translateZ(calc(-1* var(--width-half))); }
+pole.hexagone >*:nth-child(7){ transform: rotateY(120deg) translateZ(var(--width-half)); }
+pole.hexagone >*:nth-child(8){ transform: rotateY(120deg) translateZ(calc(-1* var(--width-half))); }
+/* toblerone */
+pole.toblerone >*:nth-child(1){ clip-path: polygon(0 100%, 100% 100%, 50% 0); }
+pole.toblerone >*:nth-child(2){ clip-path: polygon(0 0, 100% 0, 50% 100%); }
+pole.toblerone >*:nth-child(4){
+	width: 111.8%;
+	transform: rotateY(116.565deg) translateX(-7.5%) translateZ(calc(var(--width) *0.17));
+}
+pole.toblerone >*:nth-child(5){
+	width: 111.8%;
+	transform: rotateY(-116.565deg) translateX(12%) translateZ(calc(var(--width) *0.28));
+}
+/*
+20 = 3.4
+10 = 1.7
+0.17
+*/
