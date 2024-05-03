@@ -7,7 +7,27 @@
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/shapes.css'/>
 	<link rel='stylesheet' type='text/css' href='base.css'/>
-</head><body>
+<style type='text/css'>
+	#moving-heart {
+		animation-name: moving-heart;
+		animation-duration: 10s;
+		animation-iteration-count: 2;
+	}
+	@keyframes moving-heart {
+		from {
+			margin-left: 50%;
+			margin-top: 20%;
+		}
+		to {}
+		0% { background-color: red; }
+		50% { background-color: pink; }
+	}
+	.boule {
+		background-color: var(--button-bg);
+		width: 6em;
+		height: 6em;
+	}
+</style></head><body>
 	<h2>les animations</h2>
 	<p class='shape heart' id='moving-heart'></p>
 	<h3>id= animated</h3>

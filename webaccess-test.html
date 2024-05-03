@@ -1,0 +1,110 @@
+<!DOCTYPE html><html><head>
+	<title>accessibilité web</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<!-- chrome base target='_blank' href='C:\wamp64\www\site-dp\' -->
+	<base target='_blank' href='file:///C:/wamp64/www/site-dp/'>
+	<link rel='icon' type='image/svg+xml' href='data\nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css\structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css\perso.css' media='screen'/>
+<style type='text/css'>
+	* { margin-bottom: 6mm; }
+	input, a, img { display: block; }
+	img {
+		max-width: 10cm;
+		max-height: 10cm;
+	}
+	/* la barre de progression */
+	progress {
+		background-color: var(--fond-color);
+		height: 2em;
+		width: 100%;
+		color: teal;
+	}
+	::-moz-progress-bar { background-color: var(--text-color); }
+	progress::-webkit-progress-value {
+		background-color: var(--text-color);
+		color: orange;
+	}
+	progress::-webkit-progress-bar {
+		background-color: var(--fond-color);
+		color: black;
+	}
+	/* l'animation */
+	div#anim, canvas {
+		height: 10cm;
+		width: 100%;
+		border-style: double;
+		border-width: 0.5em;
+	}
+	div#anim >p {
+		display: inline-block;
+		text-align: center;
+		padding: auto;
+		width: 2em;
+		height: 2em;
+		line-height: 2em;
+		border-radius: 50%;
+		background-color: var(--text-color);
+		color: ivory;
+	}
+	div#anim >p:nth-child(2) {
+		background-color: var(--bord-color);
+		animation-name: moving-css;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+	}
+	@keyframes moving-css {
+		from {
+			margin-left: 50%;
+			margin-top: 20%;
+		}
+		to {}
+		0% { background-color: magenta; }
+		50% { background-color: lightseagreen; }
+	}
+</style></head><body>
+	<h1>page de test pour l'accessibilité web</h1>
+	<h2>image et lien</h2>
+	<img src='https://lh3.googleusercontent.com/pw/AP1GczO9zdj0xAuEfkRE-XMJqiyQu3HWIAXG6bgHxVecJbg_MHu0cUQ9EIEwRrYFW1uw4Uc1yQnXKxDoZewz2JkWJOh7rErDyMl8TfkreWs43XJZnQ7u4qfB49N4pKVLuB_OxSbC1VNa9LIgSo8lj0InrPkE=w739-h739' alt='une fleur rose qui fait de la boxe'>
+	<a href='https://www.w3.org/translations/wcag20-fr/'>les spécifications du wcag</a>
+	<progress value='32' max='40'></progress>
+	<h2>l'annimation</h2>
+	<div id='anim'><p>js</p><p>css</p></div>
+	<h2>un formulaire</h2>
+	<form>
+		<p>Votre nom</p>
+		<input type='text' id='l-name' value='Carroussi'/>
+		<p>Votre prénom</p>
+		<input type='text' id='f-name' value='Claudia'/>
+		<input type='button' value='envoyer' onclick='printName()'/>
+		<input type='reset'/>
+	</form>
+	<p id='showName'>Bonjour</p>
+	<h2>canvas</h2>
+	<canvas></canvas>
+</body><script type='text/javascript'>
+	// l'annimation js
+	const animJs = document.getElementById ('anim').children[0];
+	const colorsBg =[ 'var(--text-color)', 'teal', 'orangered' ];
+	var colorId =0;
+	function changeBgColor(){
+		animJs.style.backgroundColor = colorsBg[colorId];
+		colorId +=1;
+		if (colorId >2) colorId =0;
+		window.setTimeout (changeBgColor, 2000);
+	}
+	changeBgColor();
+	// le formulaire
+	const Fname = document.getElementById ('f-name');
+	const Lname = document.getElementById ('l-name');
+	const showName = document.getElementById ('showName');
+	function printName(){
+		var txtFname = Fname.value;
+		var txtLname = Lname.value;
+		showName.innerHTML = 'Bonjour '+ txtFname +" "+ txtLname;
+	}
+	// le canvas
+	const myCanvas = document.getElementsByTagName ('canvas')[0];
+	var context = myCanvas.getContext ('2d');
+</script></html>

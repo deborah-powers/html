@@ -1,0 +1,315 @@
+Sujet:	programmation
+Auteur:	cgi, jamie campbell
+Lien:	https://cgi.percipio.com/channels/3d4ceff0-d5c7-11e7-ae2d-137394599a70
+Laut:	o
+
+============ O ============
+
+************ O ************
+
+============ L'accessibilité dans html5 ============
+
+Hyper text markup language
+Lien hyper text: Pointe et clique pour accéder à la page du lien.
+Markup language: Annoter du texte dans un document.
+Chaque browser affiche le html à sa façon. Il traite html et css selon sa méthode propre.
+Les utilisateur mettent rarement à jour leur browser.
+Je me retrouve avec plein de versions de beaucoup de browsers.
+Html5 impose tout de même une standardisation, ainsi que les normes aria.
+* Canvas: Participe beaucoup à l'accessibilité. On peut même faire du dessin 3d avec. Il s'adapte rapidement aux différents browsers et aux utilisateurs déficients.
+* Quelques api: Par exemple canvas, drag and drop, media element, local storage, web worker...
+Doctype est une instruction pour le browser.
+<!doctype...>
+Pour html5: <!doctype html>
+
+************ Quelques balises ************
+
+Section: Une section d'un ensemble.
+Article: Block important et indépendant, qui peut être compris si on l'extrait de la page.
+Aside: Contenu relié de loin au reste. Par exemple un encart informatif sur un sujet mentionné ou une note de bas de page.
+Nav: Barre de navigation. Son contenu reste à peut près le même d'une page à l'autre. Les lecteurs d'écran peuvent le sauter.
+Header: Il contient les meta de la page ou de la section. Il peut contenir le nav, le titre, le logo, des infos sur l'auteur... Une page peut contenir plusieurs headers, tant qu'il ne sont pas dans des header, footer, address.
+Footer: Il contient les meta de la page ou de la section les moins utiles. Il peut contenir le copyright, les mentions légales... Une page peut en avoir plusieurs.
+Figure et figcaption: Destinées aux images indépendantes. Hors du flow de la page.
+Progress: Barre de progrès. Modifier la progression via js. <progress value='32' max='40'></progress>
+Media: Les outils pour lesquels cette feuille de style est adaptée. <style media='braille'>
+Time: Afficher une heure lisible par les machines.
+<p>bonjour il est <time>08: 25</time>. Quel beau temps !</p>
+<p>nous somme le <time datetime='2024-04-30 17:25'>lundi</time> soir.</p>
+
+------------ La balise audio ------------
+
+<audio controls>
+	<source src='my/audio.mp3' type='audio/mpeg'/>
+	<source src='my/audio.ogg' type='audio/ogg'/>
+	<source src='my/audio.wav' type='audio/wav'/>
+	Votre browser ne supprte pas la lecture audio.
+</audio>
+Controls: Ajouter les boutons de contrôle avec le lecteur.
+Mettre plusieurs sources permet d'avoir des alternatives si mon navigateur ne supporte pas un format.
+
+------------ La balise video ------------
+
+<video controls autoplay>
+	<source src='my/video.mp4' type='video/mp4'/>
+	<source src='my/video.ogg' type='video/ogg'/>
+	<source src='my/video.webm' type='video/webm'/>
+	<track src='st/anglais.vtt' kind='subtitles' srclang='en' label='english'/>
+	<track src='st/francais.vtt' kind='subtitles' srclang='fr' label='français'/>
+	Votre browser ne supprte pas la lecture de vidéos.
+</video>
+Controls: Ajouter les boutons de contrôle avec le lecteur.
+Mettre plusieurs sources permet d'avoir des alternatives si mon navigateur ne supporte pas un format.
+Track: Sous-titres.
+
+************ Le rôle de js ************
+
+============ Accessibilité des outils de création ============
+
+Atag, authoring tool accessibility guidelines
+https://www.w3.org/wai/standards-guidelines/atag/fr
+https://www.w3.org/wai/standards-guidelines/atag/glance/fr
+Les outils de création sont les logiciels utilisés par les créateurs de pages web et d'applications, comme les développeurs, les rédacteurs, les désigners, etc. Les atag veulent rendre ces outils accessibles. Elles sont appairées avec les standards wcag.
+Les atag sont divisées en deux parties:
+	A. Rendre les outils d'édition accesssibles
+	B. Inclure aux outils des fonctionnalités d'aide à la réalisation de contenu adapté aux handicapés
+Chaque atag contient un principe, ses règles de mep et ses critères de succès. Les critères ont trois niveaux, a, aa, aaa.
+* A.1. L'interface utilisateur suis les règles d'accessibilité: Les fonctionnalités sont accessibles.
+
+************ A.2. Les pages du mode édition sont perceptibles ************
+
+La présentation et la navigation peuvent être déterminés programmaticalement.
+Trucs des contenus non textuels et temporels.
+
+************ A.3. Les pages du mode édition sont utilisables ************
+
+Navigation et accès aux fonctionnalités via le clavier.
+Temps de manipulation.
+Eviter le contenu succeptible de provoquer une crise d'épilepsie.
+Bonne structure de la page, de la vue.
+Fournir une fonctionnalité de recherche textuelle.
+Le logiciel est adaptable, configurable.
+Les apperçuts sont aussi accessibles que le reste.
+
+************ A.4. Les pages du mode édition sont compréhensibles ************
+
+Aide à la correction des érreurs.
+Documentation de l'interface utilisateur, y compris des fonctionnalités d'accessibilité.
+
+************ B.1. Les processus automatisés produisent du contenu accessible ************
+
+Le contenu géré automatiquement est accessible.
+Les informations sont conservées.
+
+************ B.2. Les auteurs sont encouragés à créer du contenu accessible ************
+
+Vérifier si le contenu créé est accessible.
+Guider les auteurs dans la production de contenu accessible. Accorder une attention aux éauivalent textuels.
+Fournir des modèles de contenu accessible, voir du contenu pré-défini.
+
+************ B.3. Les auteurs sont encouragés à améliorer le contenu existant ************
+
+Vérifier s'il y a des problèmes d'accessibilité dans le contenu existant.
+Aider les auteurs à mettre le contenu existant en conformité.
+
+************ B.4. Faire connaitre mes outils d'accessibilité ************
+
+Les outils d'accessibilité sont facilement utilisables et bien documentés.
+La docs incite à faire du contenu accessible.
+
+************ La publication en directe ************
+
+Il est nécessaire d'utiliser différents outils pour respecter la partie b. Pour une présentation, il faut préparer des slides adaptés, utiliser un sous-titreur live, transcrire l'enregistrement après...
+
+************ La conformité ************
+
+Un outil d'édition est conforme si je peux créer du contenu accessible sans utiliser d'autre outil.
+Il est possible de déclarer une conformité partielle dans le cas contraire.
+Si mon outils produit différent types de contenus, je peut déclarer une conformité partielle pour certains. Les format provisoires sont pris en compte.
+Si un point du barème n'est pas applicable à mon appli, le justifier dans la déclaration.
+
+============ Les standards wcag ============
+
+https://wcag.com/resource/what-is-wcag/
+https://www.w3.org/translations/wcag20-fr/
+Le w3c défini les standards du web. Ils ont mit en place la wai.
+Ils ont rédigé le wcag, wew content accessibility guideline.
+En France, nous avons le rgaa.
+Il y a douze règles réparties en quatre grands principes. Chaque règle est évaluée au travers de critères de succès, notés a, aa, aaa.
+
+************ 1. La percevabilité ************
+
+L'utilisateur perçoivent et comprennent ce qui est sur mon site, même s'ils ont des déficiences sur certains sens.
+
+------------ Les règles ------------
+
+Fournir une description textuelle pour tous les contenus non textuels (vidéo, image). Cette description doit pouvoir être lue par les outils d'assistance.
+Pour les média temporel, fournir une description via un média temporel supplémentaire (sous-titre, audio-description)
+Le contenu peut être représenté de différentes façon sans perdre d'information. Quand l'utilisateur agrandi le texte ou passe en mode paysage, ou utilise une extension pour simplifier la mise en page.
+Faciliter la perception visuelle et auditive des infos sur la page. Signaler l'info par plus que la mise en page, donner la possibilité de couper les annimations et les sons.
+
+------------ Quelques exemples ------------
+
+Ordre logique de présentation des éléments de la page.
+Contraste élevé entre le texte et le fond (7: 1).
+Le contenu audio doit avoir un titre, être accompagné d'une transcription.
+Indiquer une information par plus que les couleurs (lien, bouton, etc).
+Le texte peut être agrandi en conservant l'information et les fonctionnalités du site.
+La page peut passer entre les modes portraits et paysages.
+
+************ 2. L'operabilité ************
+
+L'utilisateur navigue sur mon site et interragis avec sereinement.
+
+------------ Les règles ------------
+
+La navigation est possible au clavier seul. L'utilisateur manoeuvre à sa vitesse personnelle.
+L'utilisateur a le temps de lire mon contenu. Si j'impose une limite de temps, il peut la faire sauter ou la retarder. Il peut arrêter les animations.
+Eviter le contenu succeptible de provoquer des crises. Eviter les flash, pour l'épilepsie.
+Aider à la navigation. Mettre un titre, contourner les blocs répétés entre pages, parcours du focus.
+
+------------ Quelques exemples ------------
+
+Les animations et actions automatiques de plus de 5s peuvent être stoppées.
+Le texte des liens permet de savoir vers où il mènent.
+Attention à l'ordre des focus.
+
+************ 3. La compréhension ************
+
+L'utilisateur comprend l'info de mon site ainsi que sa façon de fonctionner.
+
+------------ Les règles ------------
+
+Mon contenu textuel est lisible et compréhensible. Sa langue est déterminable par un programme (lang=fr). Idem pour un passage est dans une autre langue. Attention aux handicaps intellectuel. Mad une version en français simplifié, ou donner la définition des mots rares.
+L'apparition et le fonctionnement des pages est prévisible. La navigation est cohérente, le style est cohérent.
+Aider à la saisie. Prévention des erreurs, étiquettes pour les champs de saisies, instructions. Pour les actions importantes (virement), les actions sont confirmées, vérifiées (erreur de saisie) et réversibles.
+
+------------ Quelques exemples ------------
+
+Les inputs sont associés à des labels.
+Les éléments communs à plusieurs pages sont navigables de la même façon sur toutes.
+
+************ 4. La robustesse ************
+
+Mon contenu est compréhensibles par des personnes atteintes de différents handicaps ainsi qu'interprêtable par différents outils d'assistance.
+
+------------ Les règles ------------
+
+Optimiser la compatibilité avec les outils d'assistance actuels et ceux pouvant apparaître.
+
+------------ Quelques exemples ------------
+
+La page html est bien structurée.
+Le nom et le rôle de chaque interface peut être déterminée programmatiquement.
+
+************ Les notes ************
+
+Un site reçoit une note pour chaque critère de succès. Trois niveau de note, a, aa, aaa.
+Le niveau aa est celui que la pluspart des sites ont besoin d'atteindre.
+Il est possible de faire une déclaration de conformité. La note correspond à la note minimale obtenue par la page pour une règle. La page entière est utilisée pour le calcul de la note. Si une page prend en charge plusieurs langues, mais n'est conforme que pour certaines, elle peut déclarer une conformité partielle. Idem si la page contient du contenu généré programmatiquement.
+
+============ Les régulations ============
+
+************ Les standards ************
+
+Retrouver
+	Lois et régulations du pays ?
+	Référentiels de ma boîte, de mon client
+	Régulations futures
+	Standards de l'entreprise vis-à-vis de l'accessibilité ?
+	Repérer les décideurs
+	Désigner des référents
+Temps de plannification
+Standards d'accessibilité itc (information and communication technologie)
+https://accessibilite.numerique.gouv.fr/doc/fr_301549v020102p.pdf
+
+************ Les normes aria ************
+
+Accessible rich internet application
+https://www.w3.org/wai/standards-guidelines/aria/
+Spécification technique pour créer des appli web.
+Prise en charge des outils d'accessibilité (lecteur d'écran, etc)
+Normes de désign facilitant la compréhension des pages et la navigation
+
+************ L'accessibilité sous windows ************
+
+https://support.microsoft.com/fr-fr/windows/d%c3%a9couvrir-les-fonctionnalit%c3%a9s-d-accessibilit%c3%a9-de-windows-8b1068e6-d3b8-4ba8-b027-133dd8911df9
+Depuis windows 7.
+Control pannel / settings / ease of access
+Optimiser l'affichage, changer le comportement de la souris...
+Narrateur, loupe, cortana
+Braille beta
+https://support.microsoft.com/fr-fr/windows/chapitre-8-utilisation-du-narrateur-avec-du-braille-3e5f065b-1c9d-6eb2-ec6d-1d07c9e94b20
+
+============ Introduction ============
+
+Rgaa
+Leadership
+Inclusivité
+Améliore l'ux
+Site plus éfficace
+
+************ Les handicaps ************
+
+------------ Visuels ------------
+
+Il existe plusieurs niveaux d'atteinte. Certains sont totalement aveugles quand d'autres ont du mal à discerner les détails.
+Pas de vision
+Vue en tunnel
+Vision super floue
+Daltonisme et difficulté de perception des couleurs
+Ces troubles peuvent affecter tous les aspects de la navigation
+Lecture
+Manipulation de la souris
+Frappe
+Cliquage
+
+------------ Physiques ------------
+
+Ils affectent la capacité de mouvement fins ou gros.
+Tremblement
+Lenteur
+Abscence de membre
+Lenteur
+Difficulté à cliquer ou faire du drag-drop
+Besoin d'outils adaptés
+Difficulté à manier les outils d'input
+
+------------ Mentaux ------------
+
+Ils sont liés aux autres formes de handicaps et peuvent apparaître avec l'age.
+Troubles de l'attention
+Troubles de la mémoire
+Difficultés de compréhension
+Difficultés à reconnaitre les formes, etc
+Difficultés à organiser et éffectuer des tâches
+Difficultés d'apprentissage
+
+************ Les technologies d'assistance ************
+
+Nous utilisons déjà des technologies pour les valides (écran, souris, etc).
+* Navigation via le clavier: Les navigateurs proposent une option pour utiliser le clavier, mais elles sont incomplètes.
+
+------------ Loupe d'écran ------------
+
+Utiliser des images en haute résolution ou svg.
+Attention à l'ergonomie du site. Un désign simple est le mieux adapté.
+
+------------ Le lecteur d'écran ------------
+
+Préciser une description pour les éléments importants.
+Structure de la page.
+Utiliser un langage simple, car il sera lu par une machine.
+
+------------ Le smartphone ------------
+
+Attention au petit écran, qui empire tous les problèmes. Idem pour le petit clavier.
+Les personnes atteintes de tremblement ont des difficultés à les utiliser.
+
+------------ Le syntétiseur de voix ------------
+
+Speech to text.
+Il existe plusieurs méthodes de synthèse:
+* Par concaténation de discour pré-enregistré: La plus naturelle.
+* Par soustraction: Se base sur un modèle accoustique.
+* Par articulation: Se base sur des modèles de voie humaine.
