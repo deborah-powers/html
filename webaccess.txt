@@ -7,6 +7,83 @@ Laut:	o
 
 ************ O ************
 
+============ L'accessibilité dans le désign ============
+
+
+************ l'amélioration progressive ************
+
+progressive enhancement.
+
+un contenu principal par-dessus lequel du contenu secondaire vient se greffer, couche après couche.
+m'assurer que le contenu est toujours accessible, quel que soit la mise en page ou les scripts qui se lance. prévoir les éventuels extensions.
+trois couches
+	contenu en html
+	présentation en ccs
+	comportement en js
+utiliser des fichiers séparer pour le js et le css.
+éviter drag-drop ou fournir des alternatives.
+
+************ le code propre ************
+
+clean code.
+rend le code maintenable, facile à adapter et reprendre.
+attention aux commentaire, au nom des fonctions, variables et classes, même à l'indentation.
+les noms sont parlants.
+si possible, placer le code principal en début de fichier et les fonctions appelées après. séparer le code principal des fonctions utilitaires.
+
+certains utilisateurs éteignent js, surtout les handicapés.
+fonctionnalité bonne à avoire contre nécessaire.
+
+************ Les normes aria ************
+
+Accessible rich internet application
+https://www.w3.org/wai/standards-guidelines/aria/
+Spécification technique pour créer des appli web.
+Prise en charge des outils d'accessibilité (lecteur d'écran, etc)
+Normes de désign facilitant la compréhension des pages et la navigation.
+
+utiliser des scripts coté client, sans avoir besoin de se reconnecter au serveur.
+gérer les contenus dynamique et interractif. les identifier, modéliser leurs relations et connaitre leurs états.
+
+form factor detection, déterminer la configuration des outils de l'utilisateur. son navigateur, etc. formfactor.js
+
+*** le test ***
+
+utiliser un service de validation html - css.
+powerMapper.com, validator.w3.org, deque.com (axe)
+https://www.w3.org/WAI/test-evaluate/tools/list/
+
+tester pour les principaux handicaps. faire appel à des testeurs handicapés.
+vérifier
+	le site à un plan
+	le code est bien fait, propre
+	les fonctionnalités sont réfléchies et bien faites
+
+texte alternatif
+labels
+
+*** les compétences necessaires ***
+
+faire appel à des testeurs handicapés.
+certification iaap, internationnal association of accessibility professionnals.
+https://iapp.org/join/?utm_medium=Paid_Campaigns&utm_source=Bing_Ads&utm_campaign=Membership2020
+
+*** rédiger une police d'accessibilité ***
+
+impliquer les employés, la direction, les clients, toutes les parties prenantes.
+tout mettre par écris.
+accorder la polices aux standards en vigueurs, notament aux obligations légales.
+quel objectif de niveau. a, aa, aaa.
+
+
+
+
+
+
+
+
+
+
 ============ L'accessibilité dans html5 ============
 
 Hyper text markup language
@@ -62,7 +139,13 @@ Controls: Ajouter les boutons de contrôle avec le lecteur.
 Mettre plusieurs sources permet d'avoir des alternatives si mon navigateur ne supporte pas un format.
 Track: Sous-titres.
 
-************ Le rôle de js ************
+************ Le rôle de js et de css ************
+
+css3 est divisé en modules.
+js n'est pas toujours utilisé de façon à permettre l'accessibilité, surtout pour les développeurs défficients.
+éviter les animations.
+ne pas me reposer que sur les events handlers. ils préfèrent la souris au clavier. utiliser les évenements key (onkeyup, onkeypress, ...).
+
 
 ============ Accessibilité des outils de création ============
 
