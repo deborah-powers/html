@@ -47,8 +47,66 @@
 		0% { background-color: magenta; }
 		50% { background-color: lightseagreen; }
 	}
+	section#navigation-clavier {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 0.5em;
+	}
+	section#navigation-clavier > h2, section#navigation-clavier > h3 {
+		grid-column: 1/3;
+	}
+	section#navigation-clavier > div {
+		border: solid 2px var(--bord-color);
+		padding: 0.5em;
+		border-radius: 0.5em;
+	}
 </style></head><body>
 	<h1>page de test pour l'accessibilité web</h1>
+	<section tabindex='1' id='navigation-clavier'>
+		<h2>la navigation via le clavier</h2>
+		<h3>les enfants de louxor, de bernard dimey</h3>
+		<div tabindex='2'>
+			<p tabindex='3'>Quand je sens, certains soirs, ma vie qui s'effiloche</p>
+			<p tabindex='3'>Et qu'un vol de vautours s'agite autour de moi,</p>
+			<p tabindex='3'>Pour garder mon sang froid, je tâte dans ma poche</p>
+			<p tabindex='3'>Un caillou ramassé dans la Vallée des Rois.</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>Si je mourrais demain, j'aurais dans la mémoire</p>
+			<p tabindex='3'>L'impeccable dessin d'un sarcophage d'or</p>
+			<p tabindex='3'>Et pour m'accompagner au long des rives noires</p>
+			<p tabindex='3'>Le sourire éclatant des enfants de Louxor.</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>À l'intérieur de soi, je sais qu'il faut descendre</p>
+			<p tabindex='3'>À pas lents, dans le noir et sans lâcher le fil,</p>
+			<p tabindex='3'>Calme et silencieux, sans chercher à comprendre,</p>
+			<p tabindex='3'>Au rythme des bateaux qui glissent sur le Nil,</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>C'est vrai, la vie n'est rien, le songe est trop rapide,</p>
+			<p tabindex='3'>On s'aime, on se déchire, on se montre les dents,</p>
+			<p tabindex='3'>J'aurais aimé pourtant bâtir ma Pyramide</p>
+			<p tabindex='3'>Et que tous mes amis puissent dormir dedans.</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>Combien de papyrus enroulés dans ma tête</p>
+			<p tabindex='3'>Ne verront pas le jour... ou seront oubliés</p>
+			<p tabindex='3'>Aussi vite que moi ?... Ma légende s'apprête,</p>
+			<p tabindex='3'>Je suis comme un désert qu'on aurait mal fouillé.</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>Si je mourais demain, je n'aurais plus la crainte</p>
+			<p tabindex='3'>Ni du bec du vautour ni de l'oeil du cobra.</p>
+			<p tabindex='3'>Ils ont régné sur tant de dynasties éteintes...</p>
+			<p tabindex='3'>Et le temps, comme un fleuve, à la force des bras...</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>Les enfants de Louxor ont quatre millénaires,</p>
+			<p tabindex='3'>Ils dansent sur les murs et toujours de profil,</p>
+			<p tabindex='3'>Mais savent sans effort se dégager des pierres</p>
+			<p tabindex='3'>À l'heure où le soleil se couche sur le Nil.</p>
+		</div><div tabindex='2'>
+			<p tabindex='3'>Je pense m'en aller sans que nul ne remarque</p>
+			<p tabindex='3'>Ni le bien ni le mal que l'on dira de moi</p>
+			<p tabindex='3'>Mais je déposerai tout au fond de ma barque</p>
+			<p tabindex='3'>Le caillou ramassé dans la Vallée des Rois</p>
+		</div>
+	</section>
 	<h2>image et lien</h2>
 	<img src='https://lh3.googleusercontent.com/pw/AP1GczO9zdj0xAuEfkRE-XMJqiyQu3HWIAXG6bgHxVecJbg_MHu0cUQ9EIEwRrYFW1uw4Uc1yQnXKxDoZewz2JkWJOh7rErDyMl8TfkreWs43XJZnQ7u4qfB49N4pKVLuB_OxSbC1VNa9LIgSo8lj0InrPkE=w739-h739' alt='une fleur rose qui fait de la boxe'>
 	<a href='https://www.w3.org/translations/wcag20-fr/'>les spécifications du wcag</a>

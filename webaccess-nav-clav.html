@@ -1,0 +1,101 @@
+<!DOCTYPE html><html><head>
+	<title>navigation au clavier, accessibilité web</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<!-- chrome base target='_blank' href='C:\wamp64\www\site-dp\' -->
+	<base target='_blank' href='file:///C:/wamp64/www/site-dp/'>
+	<link rel='icon' type='image/svg+xml' href='data\nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='library-css\structure.css'/>
+	<link rel='stylesheet' type='text/css' href='library-css\perso.css' media='screen'/>
+<style type='text/css'>
+	section {
+		display: grid;
+		grid-gap: 0.5em;
+	}
+	section#consigne { grid-template-columns: 1fr 2fr; }
+	h2 {
+		grid-column: 1/3;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	p.long { grid-column: 1/3; }
+	section#navigation-clavier { grid-template-columns: 1fr 1fr; }
+	div {
+		border: solid 2px var(--bord-color);
+		padding: 0.5em;
+		border-radius: 0.5em;
+	}
+	div:hover { border-width: 6px; }
+	div:focus {
+		border-width: 6px;
+		border-color: #088;
+	}
+	section#navigation-clavier p:hover { background-color: var(--fond-color); }
+	section#navigation-clavier p:focus { background-color: #0CC; }
+</style></head><body>
+	<h1>accessibilité web, navigation via le clavier</h1>
+	<section id='generalite'>
+		<h2>généralités</h2>
+		<p class='long'>rendre un élement sélectionnable via le clavier</p>
+		<p>tabulation:</p><p>navigation classique, dans un seul sens</p>
+		<p>entrer:</p><p>sélectionner un élément, aller sur un lien</p>
+	</section>
+	<section id='consigne'>
+		<h2>consigne</h2>
+		<p>tabulation:</p><p>navigation classique</p>
+		<p>flèche vers le bas:</p><p>navigation classique</p>
+		<p>flèche vers le haut:</p><p>remonter la liste des élement</p>
+		<p>shift:</p><p>entrer ou sortir d'un bloc</p>
+	</section>
+	<section id='navigation-clavier'>
+		<h2>exemple, le poème des enfants de louxor, de Bernard Dimey</h2>
+		<div tabindex='1'>
+			<p tabindex='2'>Quand je sens, certains soirs, ma vie qui s'effiloche</p>
+			<p tabindex='2'>Et qu'un vol de vautours s'agite autour de moi,</p>
+			<p tabindex='2'>Pour garder mon sang froid, je tâte dans ma poche</p>
+			<p tabindex='2'>Un caillou ramassé dans la Vallée des Rois.</p>
+		</div><div tabindex='1'>
+			<p tabindex='2'>Si je mourrais demain, j'aurais dans la mémoire</p>
+			<p tabindex='2'>L'impeccable dessin d'un sarcophage d'or</p>
+			<p tabindex='2'>Et pour m'accompagner au long des rives noires</p>
+			<p tabindex='2'>Le sourire éclatant des enfants de Louxor.</p>
+		</div><div tabindex='1'>
+			<p tabindex='2'>À l'intérieur de soi, je sais qu'il faut descendre</p>
+			<p tabindex='2'>À pas lents, dans le noir et sans lâcher le fil,</p>
+			<p tabindex='2'>Calme et silencieux, sans chercher à comprendre,</p>
+			<p tabindex='2'>Au rythme des bateaux qui glissent sur le Nil,</p>
+		</div><div tabindex='1'>
+			<p tabindex='2'>C'est vrai, la vie n'est rien, le songe est trop rapide,</p>
+			<p tabindex='2'>On s'aime, on se déchire, on se montre les dents,</p>
+			<p tabindex='2'>J'aurais aimé pourtant bâtir ma Pyramide</p>
+			<p tabindex='2'>Et que tous mes amis puissent dormir dedans.</p>
+		</div>
+	</section>
+</body><script type='text/javascript'>
+// gérer la navigation via le clavier, avec les touches tab, 
+const sectionNavClavier = document.getElementById ('navigation-clavier');
+
+sectionNavClavier.addEventListener ('keyup', function (event){
+	// changer le focus en appuyant sur les fleches haut et bas
+	console.log (event.key);
+	if (event.key === 'ArrowUp'){
+		if (event.target.tagName === 'P' && event.target.previousElementSibling === null) event.target.parentElement.focus();
+		else event.target.previousElementSibling.focus();
+	//	document.activeElement = event.target.previousElementSibling;
+	}
+	else if (event.key === 'ArrowDown'){
+		if (event.target.tagName === 'P' && event.target.nextElementSibling === null) event.target.parentElement.focus();
+		else event.target.nextElementSibling.focus();
+	}
+	else if (event.key === 'Shift'){
+		if (event.target.tagName === 'DIV') event.target.children[0].focus();
+		else if (event.target.tagName === 'P') event.target.parentElement.focus();
+	}
+});
+/* autres évenements
+parent.addEventListener ('keydown',  function (event){ console.log ('down', event);	 });
+parent.addEventListener ('keypress', function (event){ console.log ('press', event); });
+parent.addEventListener ('keyup',	 function (event){ console.log ('up', event);	 });
+child.addEventListener  ('focus',	 function (event){ console.log ('focus', event); });
+*/
+</script></html>

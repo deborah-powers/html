@@ -9,30 +9,27 @@ Laut:	o
 
 ============ L'accessibilité dans le désign ============
 
+************ L'amélioration progressive ************
 
-************ l'amélioration progressive ************
+Progressive enhancement.
+Un contenu principal par-dessus lequel du contenu secondaire vient se greffer, couche après couche.
+M'assurer que le contenu est toujours accessible, quel que soit la mise en page ou les scripts qui se lance. Prévoir les éventuels extensions.
+Trois couches
+	Contenu en html
+	Présentation en ccs
+	Comportement en js
+Utiliser des fichiers séparer pour le js et le css.
+Eviter drag-drop ou fournir des alternatives.
 
-progressive enhancement.
+************ Le code propre ************
 
-un contenu principal par-dessus lequel du contenu secondaire vient se greffer, couche après couche.
-m'assurer que le contenu est toujours accessible, quel que soit la mise en page ou les scripts qui se lance. prévoir les éventuels extensions.
-trois couches
-	contenu en html
-	présentation en ccs
-	comportement en js
-utiliser des fichiers séparer pour le js et le css.
-éviter drag-drop ou fournir des alternatives.
-
-************ le code propre ************
-
-clean code.
-rend le code maintenable, facile à adapter et reprendre.
-attention aux commentaire, au nom des fonctions, variables et classes, même à l'indentation.
-les noms sont parlants.
-si possible, placer le code principal en début de fichier et les fonctions appelées après. séparer le code principal des fonctions utilitaires.
-
-certains utilisateurs éteignent js, surtout les handicapés.
-fonctionnalité bonne à avoire contre nécessaire.
+Clean code.
+Rend le code maintenable, facile à adapter et reprendre.
+Attention aux commentaire, au nom des fonctions, variables et classes, même à l'indentation.
+Les noms sont parlants.
+Si possible, placer le code principal en début de fichier et les fonctions appelées après. Séparer le code principal des fonctions utilitaires.
+Certains utilisateurs éteignent js, surtout les handicapés.
+Fonctionnalité bonne à avoire contre nécessaire.
 
 ************ Les normes aria ************
 
@@ -41,47 +38,85 @@ https://www.w3.org/wai/standards-guidelines/aria/
 Spécification technique pour créer des appli web.
 Prise en charge des outils d'accessibilité (lecteur d'écran, etc)
 Normes de désign facilitant la compréhension des pages et la navigation.
+Utiliser des scripts coté client, sans avoir besoin de se reconnecter au serveur.
+Gérer les contenus dynamique et interractif. Les identifier, modéliser leurs relations et connaitre leurs états.
+Form factor detection, déterminer la configuration des outils de l'utilisateur. Son navigateur, etc. Formfactor.js
 
-utiliser des scripts coté client, sans avoir besoin de se reconnecter au serveur.
-gérer les contenus dynamique et interractif. les identifier, modéliser leurs relations et connaitre leurs états.
+************ Le test ************
 
-form factor detection, déterminer la configuration des outils de l'utilisateur. son navigateur, etc. formfactor.js
+Utiliser un service de validation html - css.
+Powermapper.com, validator.w3.org, deque.com (axe)
+https://www.w3.org/wai/test-evaluate/tools/list/
+Tester pour les principaux handicaps. Faire appel à des testeurs handicapés.
+Vérifier
+	Le site à un plan
+	Le code est bien fait, propre
+	Les fonctionnalités sont réfléchies et bien faites
+Texte alternatif
+Labels
 
-*** le test ***
+************ Les compétences necessaires ************
 
-utiliser un service de validation html - css.
-powerMapper.com, validator.w3.org, deque.com (axe)
-https://www.w3.org/WAI/test-evaluate/tools/list/
+Faire appel à des testeurs handicapés.
+Certification iaap, internationnal association of accessibility professionnals.
+https://iapp.org/join/?utm_medium=paid_campaigns&utm_source=bing_ads&utm_campaign=membership2020
 
-tester pour les principaux handicaps. faire appel à des testeurs handicapés.
-vérifier
-	le site à un plan
-	le code est bien fait, propre
-	les fonctionnalités sont réfléchies et bien faites
+************ Rédiger une police d'accessibilité ************
 
-texte alternatif
-labels
+Impliquer les employés, la direction, les clients, toutes les parties prenantes.
+Tout mettre par écris. Rédiger des standars.
+Accorder la polices aux standards en vigueurs, notament aux obligations légales.
+Quel objectif de niveau. A, aa, aaa.
+Quel est le périmètre de la police. Seulement le nouveau code, l'ancien ? Quels sites et pages ?
+Etablir un échéancier.
+Attention aux contenus des partenaires tierce (tird-party)
+Obtenir des retours.
+Evaluer la police au cours du temps.
+Metre à jour la police.
 
-*** les compétences necessaires ***
+************ Désign contre développement ************
 
-faire appel à des testeurs handicapés.
-certification iaap, internationnal association of accessibility professionnals.
-https://iapp.org/join/?utm_medium=Paid_Campaigns&utm_source=Bing_Ads&utm_campaign=Membership2020
+Si l'accessibilité ruine ton site, tu fais mal quelque chose. La police est pourrie, ou le site est pourri.
+Tester les outils d'assistance afin de connaitre leur fonctionnement.
 
-*** rédiger une police d'accessibilité ***
+************ Les bonnes pratiques ************
 
-impliquer les employés, la direction, les clients, toutes les parties prenantes.
-tout mettre par écris.
-accorder la polices aux standards en vigueurs, notament aux obligations légales.
-quel objectif de niveau. a, aa, aaa.
+Maj les contenus alternatifs quand le contenu principal est modifié.
+Eviter le focus forcé quand l'utilisateur ne s'en sert pas.
+Faire de la veille sur les technologies d'assistance.
+Indiquer les balises à changements de contenus.
+Rendre les animations, les contenus s'updatant seuls optionnels.
 
+************ Les outils de js ************
 
+Jquery - jaria
+Dojo - aria, pour la navigation au clavier et le contraste.
+Tota11y, visionner comment un site rend avec les technologies d'assistance
+Jquery - fluide infusion
+Ally.js
+Bbc glow widgets
+Extjs
+Google web toolkit
 
+*** les popups ***
 
+les éviter autant que possible. une popup dois avoir sa propre url, accessible si js est désactivé.
+prévenir l'utilisateur de l'ouverture. il doit pouvoir fermer la popup, y compris sans utiliser la souris.
 
+*** les bonnes pratiques du css ***
 
+css3
+créer des fichiers css séparés. éviter le code css inline, avec l'attribut stye="".
+les pages doivent pouvoir être lues sans aucun style. beaucoup d'outils désactivent le css par nécéssité.
+le css permet de contrôler le style de la page, mais aussi la position des composants et leur comportement.
+il permet aussi de faire du désigne répondant, responsive design.
+rajouter du texte alternatif pour les icones et les images.
+rendre possible et lisible l'augmentation de la taille de la police.
 
+*** le focus ***
 
+il rends la navigation au clavier possible, via la touche de tabulation.
+indiquer visuellement quel est l'élément sélectionné.
 
 
 ============ L'accessibilité dans html5 ============
@@ -100,6 +135,8 @@ Doctype est une instruction pour le browser.
 Pour html5: <!doctype html>
 
 ************ Quelques balises ************
+
+https://www.w3schools.com/tags/
 
 Section: Une section d'un ensemble.
 Article: Block important et indépendant, qui peut être compris si on l'extrait de la page.
@@ -141,10 +178,19 @@ Track: Sous-titres.
 
 ************ Le rôle de js et de css ************
 
-css3 est divisé en modules.
-js n'est pas toujours utilisé de façon à permettre l'accessibilité, surtout pour les développeurs défficients.
-éviter les animations.
-ne pas me reposer que sur les events handlers. ils préfèrent la souris au clavier. utiliser les évenements key (onkeyup, onkeypress, ...).
+Css3 est divisé en modules.
+Js n'est pas toujours utilisé de façon à permettre l'accessibilité, surtout pour les développeurs défficients.
+Eviter les animations.
+Ne pas me reposer que sur les events handlers. Ils préfèrent la souris au clavier. Utiliser les évenements key (onkeyup, onkeypress,...).
+
+*** les bonnes pratiques du contenu ***
+
+fournir du texte alternatif !
+utiliser un langage naturel en évitant les mots trops compliqués ou ambigu. le texte est lu par les handicapés mentaux et par les machines. si besoin rajouter des précisions. proposer du contenu alternatif en langage simplifié (utile aussi pour les personnes parlant mal la langue).
+être clair et explicite dans les consignes.
+fournir du contenu alternatif pour les utilisateurs défficients, qui met en jeu un autre sens. sous-titre, audio-description, etc.
+maj les contenus alternatifs.
+dans le texte, éviter les coupure dans les mots.
 
 
 ============ Accessibilité des outils de création ============
