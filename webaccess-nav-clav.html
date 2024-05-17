@@ -18,6 +18,10 @@
 		font-size: 1em;
 		font-weight: bold;
 	}
+	p {
+		padding: 0.5em;
+		margin: 0;
+	}
 	p.long { grid-column: 1/3; }
 	section#navigation-clavier { grid-template-columns: 1fr 1fr; }
 	div {
@@ -25,13 +29,12 @@
 		padding: 0.5em;
 		border-radius: 0.5em;
 	}
-	div:hover { border-width: 6px; }
-	div:focus {
-		border-width: 6px;
-		border-color: #088;
-	}
+	div:hover, div:focus, div:active { border-width: 6px; }
+	div:focus { border-color: #088; }
+	div::selection { border-color: #808; }
 	section#navigation-clavier p:hover { background-color: var(--fond-color); }
 	section#navigation-clavier p:focus { background-color: #0CC; }
+	section#navigation-clavier p:active { background-color: #CC0; }
 </style></head><body>
 	<h1>accessibilité web, navigation via le clavier</h1>
 	<section id='generalite'>
@@ -77,17 +80,22 @@ const sectionNavClavier = document.getElementById ('navigation-clavier');
 
 sectionNavClavier.addEventListener ('keyup', function (event){
 	// changer le focus en appuyant sur les fleches haut et bas
-	console.log (event.key);
 	if (event.key === 'ArrowUp'){
-		if (event.target.tagName === 'P' && event.target.previousElementSibling === null) event.target.parentElement.focus();
+		if (event.target.previousElementSibling === null || event.target.previousElementSibling.tagName === 'H2'){
+			if (event.target.tagName === 'P') event.target.parentElement.focus();
+			else event.target.parentElement.lastElementChild.focus();
+		}
 		else event.target.previousElementSibling.focus();
 	//	document.activeElement = event.target.previousElementSibling;
 	}
 	else if (event.key === 'ArrowDown'){
-		if (event.target.tagName === 'P' && event.target.nextElementSibling === null) event.target.parentElement.focus();
+		if (event.target.nextElementSibling === null){
+			if (event.target.tagName === 'P') event.target.parentElement.focus();
+			else event.target.parentElement.children[1].focus();
+		}
 		else event.target.nextElementSibling.focus();
 	}
-	else if (event.key === 'Shift'){
+	else if (event.key === 'Shift' || event.key === 'Enter'){
 		if (event.target.tagName === 'DIV') event.target.children[0].focus();
 		else if (event.target.tagName === 'P') event.target.parentElement.focus();
 	}

@@ -3,9 +3,58 @@ Auteur:	cgi, jamie campbell
 Lien:	https://cgi.percipio.com/channels/3d4ceff0-d5c7-11e7-ae2d-137394599a70
 Laut:	o
 
-============ O ============
+============ bonnes pratiques pour les jeux en ligne ============
 
-************ O ************
+************ batir une expérience adaptable ************
+
+l'utilisateur doit pouvoir adapter les éléments de différentes natures
+	visuel
+	audio
+	niveau de difficulté du jeux
+	notifications et distraction visuelles
+	les inputs et la cartographie ??
+	méchanismes du jeux
+
+--- les éléments visuels ---
+
+les joueurs doivent pouvoir adapter la taille, la couleur, le style et la position des éléments. comme la console des navigateurs.
+ils peuvent modifier la taille du texte, notament des sous-titres.
+pour les sous-titres, rendre adaptable le style, la taille de police, les couleurs du texte et du fond, ainsi que la transparence du fond. penser aux st de youtube, qui sont compliqués à gérer. fond du st et fenêtre du st.
+
+il peuvent agrandir ou rétrécir le menu du jeux, les outils apparaissant à l'écran.
+les éléments du jeux peuvent être customisé. par exemple, ajouter une aura colorée aux ennemis, une autre aux alliés, aux objets collectables...
+
+--- les éléments audio ---
+
+il est recommandé de rendre indépendant les différents type de sons.
+	musique d'ambiance
+	bruitage
+	dialogue avec les personnages
+	échanges entre joueurs
+
+on pense d'abbord au volume. il y a aussi le choix entre mono et stéréo. les utilisateurs ayant des niveaux d'ouie différent à chaque oreille aiment le mono.
+
+--- la difficulté du jeux ---
+
+certains joueurs préfèrent se concentrer sur l'histoire et l'univers que sur l'action. proposer plusieurs niveaux de difficultés, éventuellement un mode histoire (story mode). cela permet également aux joueurs qui ont déjà fini la partie de retrouver du challenge.
+il faut aussi rendre adaptable les méchanismes au détail, tel que les ressources disponibles, la dangeurosité des ennemis, etc.
+
+--- les notifications et autres distraction ---
+
+offrir la possibilité de couper les notifications, ou de ne garder que les notifications importantes. leurs positions sur l'écran aussi doivent être modifiables.
+
+--- les animations ---
+
+séparer les passages animés des passages de lecture et de collection d'information. une vidéo se doit d'être posable, rembobinable etc. les animations d'arrière-plan doivent être blocables.
+
+*** représenter les informations clefs via plusieurs canaux ***
+
+il est possible de transmettre des informations via la vue, l'ouie, le toucher (technologies haptiques).
+rendre la lecture méchanique des textes possibles, et fournir du texte de remplacement pour les images, les sons, les vidéos. associer un son à la présence d'un ennemi, d'items à collecter, etc.
+guider les déplacements via l'audio. l'indiquer explicitement ou rajouter des bruitages.
+
+
+
 
 ============ L'accessibilité dans le désign ============
 
