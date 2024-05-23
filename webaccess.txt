@@ -3,58 +3,70 @@ Auteur:	cgi, jamie campbell
 Lien:	https://cgi.percipio.com/channels/3d4ceff0-d5c7-11e7-ae2d-137394599a70
 Laut:	o
 
-============ bonnes pratiques pour les jeux en ligne ============
+============ Bonnes pratiques pour les jeux en ligne ============
 
-************ batir une expérience adaptable ************
+************ Batir une expérience adaptable ************
 
-l'utilisateur doit pouvoir adapter les éléments de différentes natures
-	visuel
-	audio
-	niveau de difficulté du jeux
-	notifications et distraction visuelles
-	les inputs et la cartographie ??
-	méchanismes du jeux
+L'utilisateur doit pouvoir adapter les éléments de différentes natures
+	Visuel
+	Audio
+	Niveau de difficulté du jeux
+	Notifications et distraction visuelles
+	Les inputs et la cartographie ??
+	Méchanismes du jeux
 
---- les éléments visuels ---
+------------ Les éléments visuels ------------
 
-les joueurs doivent pouvoir adapter la taille, la couleur, le style et la position des éléments. comme la console des navigateurs.
-ils peuvent modifier la taille du texte, notament des sous-titres.
-pour les sous-titres, rendre adaptable le style, la taille de police, les couleurs du texte et du fond, ainsi que la transparence du fond. penser aux st de youtube, qui sont compliqués à gérer. fond du st et fenêtre du st.
+Les joueurs doivent pouvoir adapter la taille, la couleur, le style et la position des éléments. Comme la console des navigateurs.
+Ils peuvent modifier la taille du texte, notament des sous-titres.
+Pour les sous-titres, rendre adaptable le style, la taille de police, les couleurs du texte et du fond, ainsi que la transparence du fond. Penser aux st de youtube, qui sont compliqués à gérer. Fond du st et fenêtre du st.
+Il peuvent agrandir ou rétrécir le menu du jeux, les outils apparaissant à l'écran.
+Les éléments du jeux peuvent être customisé. Par exemple, ajouter une aura colorée aux ennemis, une autre aux alliés, aux objets collectables...
 
-il peuvent agrandir ou rétrécir le menu du jeux, les outils apparaissant à l'écran.
-les éléments du jeux peuvent être customisé. par exemple, ajouter une aura colorée aux ennemis, une autre aux alliés, aux objets collectables...
+------------ Les éléments audio ------------
 
---- les éléments audio ---
+Il est recommandé de rendre indépendant les différents type de sons.
+	Musique d'ambiance
+	Bruitage
+	Dialogue avec les personnages
+	Echanges entre joueurs
+On pense d'abbord au volume. Il y a aussi le choix entre mono et stéréo. Les utilisateurs ayant des niveaux d'ouie différent à chaque oreille aiment le mono.
 
-il est recommandé de rendre indépendant les différents type de sons.
-	musique d'ambiance
-	bruitage
-	dialogue avec les personnages
-	échanges entre joueurs
+------------ La difficulté du jeux ------------
 
-on pense d'abbord au volume. il y a aussi le choix entre mono et stéréo. les utilisateurs ayant des niveaux d'ouie différent à chaque oreille aiment le mono.
+Certains joueurs préfèrent se concentrer sur l'histoire et l'univers que sur l'action. Proposer plusieurs niveaux de difficultés, éventuellement un mode histoire (story mode). Cela permet également aux joueurs qui ont déjà fini la partie de retrouver du challenge.
+Il faut aussi rendre adaptable les méchanismes au détail, tel que les ressources disponibles, la dangeurosité des ennemis, etc.
 
---- la difficulté du jeux ---
+------------ Les notifications et autres distraction ------------
 
-certains joueurs préfèrent se concentrer sur l'histoire et l'univers que sur l'action. proposer plusieurs niveaux de difficultés, éventuellement un mode histoire (story mode). cela permet également aux joueurs qui ont déjà fini la partie de retrouver du challenge.
-il faut aussi rendre adaptable les méchanismes au détail, tel que les ressources disponibles, la dangeurosité des ennemis, etc.
+Offrir la possibilité de couper les notifications, ou de ne garder que les notifications importantes. Leurs positions sur l'écran aussi doivent être modifiables.
 
---- les notifications et autres distraction ---
+------------ Les animations ------------
 
-offrir la possibilité de couper les notifications, ou de ne garder que les notifications importantes. leurs positions sur l'écran aussi doivent être modifiables.
+Séparer les passages animés des passages de lecture et de collection d'information. Une vidéo se doit d'être posable, rembobinable etc. Les animations d'arrière-plan doivent être blocables.
 
---- les animations ---
+************ Représenter les informations clefs via plusieurs canaux ************
 
-séparer les passages animés des passages de lecture et de collection d'information. une vidéo se doit d'être posable, rembobinable etc. les animations d'arrière-plan doivent être blocables.
+Il est possible de transmettre des informations via la vue, l'ouie, le toucher (technologies haptiques).
+Rendre la lecture méchanique des textes possibles, et fournir du texte de remplacement pour les images, les sons, les vidéos. Associer un son à la présence d'un ennemi, d'items à collecter, etc.
+Guider les déplacements via l'audio. L'indiquer explicitement ou rajouter des bruitages.
 
-*** représenter les informations clefs via plusieurs canaux ***
+************ Offrir plusieurs façons d'accomplir une action ************
 
-il est possible de transmettre des informations via la vue, l'ouie, le toucher (technologies haptiques).
-rendre la lecture méchanique des textes possibles, et fournir du texte de remplacement pour les images, les sons, les vidéos. associer un son à la présence d'un ennemi, d'items à collecter, etc.
-guider les déplacements via l'audio. l'indiquer explicitement ou rajouter des bruitages.
+Menu d'accessibilité facile d'accès. Exp, appuyer sur deux touches sans quitter la partie. Afficher un accès dès l'écran d'ouverture.
+Accomplir une mission. Exp, collecter 5 objets parmis 6, etc. Il doit y avoir plusieurs façons d'obtenir un objet.
+Les combats et les qte (quick time event) nécéssitent une capacité de mouvement rapide. Créer une nouvelle façon de se battre, comme les armes longues portée. Rendre certains qte accessoires.
+Obtenir les inputs de l'utilisateur.
 
+************ Xbox accessibility guidelines ************
 
-
+https://learn.microsoft.com/en-us/gaming/accessibility/guidelines
+23 thème régulièrement maj.
+Chaque thème se divise en:
+Périmètre, est-ce que cette règle s'applique à mon jeu ?
+Guide d'implémentation
+Présentation des utilisateurs nécéssitant cette règle
+Ressources externes
 
 ============ L'accessibilité dans le désign ============
 
@@ -147,26 +159,25 @@ Bbc glow widgets
 Extjs
 Google web toolkit
 
-*** les popups ***
+************ Les popups ************
 
-les éviter autant que possible. une popup dois avoir sa propre url, accessible si js est désactivé.
-prévenir l'utilisateur de l'ouverture. il doit pouvoir fermer la popup, y compris sans utiliser la souris.
+Les éviter autant que possible. Une popup dois avoir sa propre url, accessible si js est désactivé.
+Prévenir l'utilisateur de l'ouverture. Il doit pouvoir fermer la popup, y compris sans utiliser la souris.
 
-*** les bonnes pratiques du css ***
+************ Les bonnes pratiques du css ************
 
-css3
-créer des fichiers css séparés. éviter le code css inline, avec l'attribut stye="".
-les pages doivent pouvoir être lues sans aucun style. beaucoup d'outils désactivent le css par nécéssité.
-le css permet de contrôler le style de la page, mais aussi la position des composants et leur comportement.
-il permet aussi de faire du désigne répondant, responsive design.
-rajouter du texte alternatif pour les icones et les images.
-rendre possible et lisible l'augmentation de la taille de la police.
+Css3
+Créer des fichiers css séparés. Eviter le code css inline, avec l'attribut stye="".
+Les pages doivent pouvoir être lues sans aucun style. Beaucoup d'outils désactivent le css par nécéssité.
+Le css permet de contrôler le style de la page, mais aussi la position des composants et leur comportement.
+Il permet aussi de faire du désigne répondant, responsive design.
+Rajouter du texte alternatif pour les icones et les images.
+Rendre possible et lisible l'augmentation de la taille de la police.
 
-*** le focus ***
+************ Le focus ************
 
-il rends la navigation au clavier possible, via la touche de tabulation.
-indiquer visuellement quel est l'élément sélectionné.
-
+Il rends la navigation au clavier possible, via la touche de tabulation.
+Indiquer visuellement quel est l'élément sélectionné.
 
 ============ L'accessibilité dans html5 ============
 
@@ -186,7 +197,6 @@ Pour html5: <!doctype html>
 ************ Quelques balises ************
 
 https://www.w3schools.com/tags/
-
 Section: Une section d'un ensemble.
 Article: Block important et indépendant, qui peut être compris si on l'extrait de la page.
 Aside: Contenu relié de loin au reste. Par exemple un encart informatif sur un sujet mentionné ou une note de bas de page.
@@ -232,15 +242,14 @@ Js n'est pas toujours utilisé de façon à permettre l'accessibilité, surtout 
 Eviter les animations.
 Ne pas me reposer que sur les events handlers. Ils préfèrent la souris au clavier. Utiliser les évenements key (onkeyup, onkeypress,...).
 
-*** les bonnes pratiques du contenu ***
+************ Les bonnes pratiques du contenu ************
 
-fournir du texte alternatif !
-utiliser un langage naturel en évitant les mots trops compliqués ou ambigu. le texte est lu par les handicapés mentaux et par les machines. si besoin rajouter des précisions. proposer du contenu alternatif en langage simplifié (utile aussi pour les personnes parlant mal la langue).
-être clair et explicite dans les consignes.
-fournir du contenu alternatif pour les utilisateurs défficients, qui met en jeu un autre sens. sous-titre, audio-description, etc.
-maj les contenus alternatifs.
-dans le texte, éviter les coupure dans les mots.
-
+Fournir du texte alternatif !
+Utiliser un langage naturel en évitant les mots trops compliqués ou ambigu. Le texte est lu par les handicapés mentaux et par les machines. Si besoin rajouter des précisions. Proposer du contenu alternatif en langage simplifié (utile aussi pour les personnes parlant mal la langue).
+Etre clair et explicite dans les consignes.
+Fournir du contenu alternatif pour les utilisateurs défficients, qui met en jeu un autre sens. Sous-titre, audio-description, etc.
+Maj les contenus alternatifs.
+Dans le texte, éviter les coupure dans les mots.
 
 ============ Accessibilité des outils de création ============
 
