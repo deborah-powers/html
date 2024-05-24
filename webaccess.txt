@@ -3,6 +3,13 @@ Auteur:	cgi, jamie campbell
 Lien:	https://cgi.percipio.com/channels/3d4ceff0-d5c7-11e7-ae2d-137394599a70
 Laut:	o
 
+=== accessibilité en css ===
+
+si je veux séparer les lettres d'un mot, comme un sigle, utiliser letter-spacing plustôt que " ". les lecteurs d'écran lisent chaque espace.
+
+
+
+
 ============ Bonnes pratiques pour les jeux en ligne ============
 
 ************ Batir une expérience adaptable ************
