@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type='text/css' href='../../site-dp/library-css/svg.css'?>
+<svg version='1.1' width='240' height='240' viewBox='-60 -60 120 120' xmlns='http://www.w3.org/2000/svg' class='grid'>
+	<title>roue chromatique</title>
+<style type='text/css'><![CDATA[
+	* {
+		fill: ivory;
+		stroke: #633;
+		stroke-width: 2px;
+	}
+	path:nth-child(1) { fill: #F00; }
+	path:nth-child(2) { fill: #B40; }
+	path:nth-child(3) { fill: #880; }
+	path:nth-child(4) { fill: #4B0; }
+
+	path:nth-child(5) { fill: #0F0; }
+	path:nth-child(6) { fill: #0B4; }
+	path:nth-child(7) { fill: #088; }
+	path:nth-child(8) { fill: #04B; }
+
+	path:nth-child(9) { fill: #00F; }
+	path:nth-child(10) { fill: #40B; }
+	path:nth-child(11) { fill: #808; }
+	path:nth-child(12) { fill: #B04; }
+]]></style>
+	<g id='roue-couleur'>
+		<path d='m 0,0	l 0,60		a 60,60 0 0,0 30,-8		z'/>
+		<path d='m 0,0	l 0,60		a 60,60 0 0,1 -30,-8	z'/>
+		<path d='m 0,0	l -52,30	a 60,60 0 0,0 22,22		z'/>
+		<path d='m 0,0	l -60,0		a 60,60 0 0,0 8,30		z'/>
+		<path d='m 0,0	l -60,0		a 60,60 0 0,1 8,-30		z'/>
+		<path d='m 0,0	l -52,-30	a 60,60 0 0,1 22,-22	z'/>
+		<path d='m 0,0	l 0,-60		a 60,60 0 0,0 -30,8		z'/>
+		<path d='m 0,0	l 0,-60		a 60,60 0 0,1 30,8		z'/>
+		<path d='m 0,0	l 52,-30	a 60,60 0 0,0 -22,-22	z'/>
+		<path d='m 0,0	l 60,0		a 60,60 0 0,0 -8,-30	z'/>
+		<path d='m 0,0	l 60,0		a 60,60 0 0,1 -8,30		z'/>
+		<path d='m 0,0	l 52,30		a 60,60 0 0,1 -22,22	z'/>
+		<circle r='30' cx='0' cy='0' />
+	</g>
+</svg>
