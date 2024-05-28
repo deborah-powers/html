@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <?xml-stylesheet type='text/css' href='../../site-dp/library-css/svg.css'?>
-<svg version='1.1' width='240' height='240' viewBox='-60 -60 120 120' xmlns='http://www.w3.org/2000/svg' class='grid'>
+<svg version='1.1' width='360' height='240' viewBox='-60 -60 180 120' xmlns='http://www.w3.org/2000/svg' class='grid'>
 	<title>roue chromatique</title>
 <style type='text/css'><![CDATA[
 	* {
@@ -8,34 +8,78 @@
 		stroke: #633;
 		stroke-width: 2px;
 	}
+	polygon { fill: #844; }
 	path:nth-child(1) { fill: #F00; }
 	path:nth-child(2) { fill: #B40; }
 	path:nth-child(3) { fill: #880; }
 	path:nth-child(4) { fill: #4B0; }
-
 	path:nth-child(5) { fill: #0F0; }
 	path:nth-child(6) { fill: #0B4; }
 	path:nth-child(7) { fill: #088; }
 	path:nth-child(8) { fill: #04B; }
-
 	path:nth-child(9) { fill: #00F; }
 	path:nth-child(10) { fill: #40B; }
 	path:nth-child(11) { fill: #808; }
 	path:nth-child(12) { fill: #B04; }
-]]></style>
+	rect {
+		width: 30px;
+		height: 30px;
+		x: 75;
+	}
+]]></style><defs>
+	<polygon id='aiguille-deux-a' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-trois-a' points='-50,0 0,-5 43.3,-25 10,0 43.3,25 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-trois-b' points='-50,0 0,-5 25,-43.3 10,0 25,43.3 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-quatre' points='-50,0 -5,-5 0,-50 5,-5 50,0 5,5 0,50 -5,5' transform='rotate(75)' />
+</defs>
 	<g id='roue-couleur'>
-		<path d='m 0,0	l 0,60		a 60,60 0 0,0 30,-8		z'/>
-		<path d='m 0,0	l 0,60		a 60,60 0 0,1 -30,-8	z'/>
-		<path d='m 0,0	l -52,30	a 60,60 0 0,0 22,22		z'/>
-		<path d='m 0,0	l -60,0		a 60,60 0 0,0 8,30		z'/>
-		<path d='m 0,0	l -60,0		a 60,60 0 0,1 8,-30		z'/>
-		<path d='m 0,0	l -52,-30	a 60,60 0 0,1 22,-22	z'/>
-		<path d='m 0,0	l 0,-60		a 60,60 0 0,0 -30,8		z'/>
-		<path d='m 0,0	l 0,-60		a 60,60 0 0,1 30,8		z'/>
-		<path d='m 0,0	l 52,-30	a 60,60 0 0,0 -22,-22	z'/>
-		<path d='m 0,0	l 60,0		a 60,60 0 0,0 -8,-30	z'/>
-		<path d='m 0,0	l 60,0		a 60,60 0 0,1 -8,30		z'/>
-		<path d='m 0,0	l 52,30		a 60,60 0 0,1 -22,22	z'/>
+		<path d='m 0,0	l 0,60		a 60,60 0 0,0 30,-8		z' />
+		<path d='m 0,0	l 0,60		a 60,60 0 0,1 -30,-8	z' />
+		<path d='m 0,0	l -52,30	a 60,60 0 0,0 22,22		z' />
+		<path d='m 0,0	l -60,0		a 60,60 0 0,0 8,30		z' />
+		<path d='m 0,0	l -60,0		a 60,60 0 0,1 8,-30		z' />
+		<path d='m 0,0	l -52,-30	a 60,60 0 0,1 22,-22	z' />
+		<path d='m 0,0	l 0,-60		a 60,60 0 0,0 -30,8		z' />
+		<path d='m 0,0	l 0,-60		a 60,60 0 0,1 30,8		z' />
+		<path d='m 0,0	l 52,-30	a 60,60 0 0,0 -22,-22	z' />
+		<path d='m 0,0	l 60,0		a 60,60 0 0,0 -8,-30	z' />
+		<path d='m 0,0	l 60,0		a 60,60 0 0,1 -8,30		z' />
+		<path d='m 0,0	l 52,30		a 60,60 0 0,1 -22,22	z' />
 		<circle r='30' cx='0' cy='0' />
 	</g>
-</svg>
+	<polygon id='aiguille-deux' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
+	<rect y='-50' /><rect y='-10' />
+<script type="text/ecmascript"><![CDATA[
+/* pour l'animation en js
+source du script:
+http://samples.msdn.microsoft.com/workshop/samples/svg/svgAnimation/basic/02scriptSquare.html
+*/
+// couleurs
+const couleurs =[ 'F00', 'B40', '880', '4B0', '0F0', '0B4', '088', '04B', '00F', '40B', '808', 'B04' ];
+const couleursId =[ 0, 6 ];
+const echantillons = document.getElementsByTagName ('rect');
+// rotation
+var angle =75;
+var nbRotation =0;
+const saut =3;
+var obj = document.getElementById ('aiguille-deux');
+var tourner = null;
+obj.addEventListener ('mouseover', rotationEvent);
+function rotationEvent (event){
+	obj = event.target;
+	couleursId[0] +=1;
+	if (couleursId[0] >= couleurs.length) couleursId[0] =0;
+	couleursId[1] = couleursId[0] +6;
+	if (couleursId[1] >= couleurs.length) couleursId[1] -= couleurs.length;
+	tourner = requestAnimationFrame (rotationAnimation);
+	echantillons[0].style.fill = '#'+ couleurs[couleursId[0]];
+	echantillons[1].style.fill = '#'+ couleurs[couleursId[1]];
+}
+function rotationAnimation(){
+	nbRotation +=1;
+	angle = angle + saut;
+	obj.setAttributeNS (null, 'transform', 'rotate(' + angle + ',0,0)');
+	if (nbRotation >9) nbRotation =0;
+	else tourner = requestAnimationFrame (rotationAnimation);
+}
+]]></script></svg>
