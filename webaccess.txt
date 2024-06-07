@@ -3,6 +3,8 @@ Auteur:	cgi, jamie campbell
 Lien:	https://cgi.percipio.com/channels/3d4ceff0-d5c7-11e7-ae2d-137394599a70
 Laut:	o
 
+https://www.w3.org/WAI/tutorials/
+
 === accessibilité en css ===
 
 si je veux séparer les lettres d'un mot, comme un sigle, utiliser letter-spacing plustôt que " ". les lecteurs d'écran lisent chaque espace.
@@ -326,6 +328,7 @@ Si un point du barème n'est pas applicable à mon appli, le justifier dans la d
 
 https://wcag.com/resource/what-is-wcag/
 https://www.w3.org/translations/wcag20-fr/
+https://www.numerique.gouv.fr/publications/rgaa-accessibilite-numerique/
 Le w3c défini les standards du web. Ils ont mit en place la wai.
 Ils ont rédigé le wcag, wew content accessibility guideline.
 En France, nous avons le rgaa.
@@ -415,6 +418,7 @@ Retrouver
 	Désigner des référents
 Temps de plannification
 Standards d'accessibilité itc (information and communication technologie)
+https://www.numerique.gouv.fr/publications/rgaa-accessibilite-numerique/
 https://accessibilite.numerique.gouv.fr/doc/fr_301549v020102p.pdf
 
 ************ Les normes aria ************

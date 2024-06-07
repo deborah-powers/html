@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg version='1.1' width='360' height='240' viewBox='-60 -60 180 120' xmlns='http://www.w3.org/2000/svg'>
+<svg version='1.1' width='1440' height='480' viewBox='-60 -60 720 240' xmlns='http://www.w3.org/2000/svg'>
 	<title>roue chromatique</title>
 <style type='text/css'><![CDATA[
+	svg { border: double 4px red; }
 	* {
 		fill: ivory;
 		stroke: #633;
@@ -29,8 +30,13 @@
 		stroke: none;
 		fill: ivory;
 	}
+	rect.button {
+		width: 120px;
+		x: 175px;
+		fill: maroon;
+	}
 ]]></style><defs>
-	<polygon id='aiguille-deux-a' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-complementaire-a' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
 	<polygon id='aiguille-trois-a' points='-50,0 0,-5 43.3,-25 10,0 43.3,25 0,5' transform='rotate(75)' />
 	<polygon id='aiguille-trois-b' points='-50,0 0,-5 25,-43.3 10,0 25,43.3 0,5' transform='rotate(75)' />
 	<polygon id='aiguille-quatre' points='-50,0 -5,-5 0,-50 5,-5 50,0 5,5 0,50 -5,5' transform='rotate(75)' />
@@ -50,9 +56,13 @@
 		<path d='m 0,0	l 52,30		a 60,60 0 0,1 -22,22	z'/>
 		<circle r='30' cx='0' cy='0' />
 	</g>
-	<polygon id='aiguille-deux' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-complementaire' points='-50,0 0,-5 50,0 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-trois-a' points='-50,0 0,-5 43.3,-25 10,0 43.3,25 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-trois-b' points='-50,0 0,-5 25,-43.3 10,0 25,43.3 0,5' transform='rotate(75)' />
+	<polygon id='aiguille-quatre' points='-50,0 -5,-5 0,-50 5,-5 50,0 5,5 0,50 -5,5' transform='rotate(75)' />
 	<rect y='-50' /><text x='79' y='-30'>hello</text>
 	<rect y='-10' /><text x='79' y='10'>coco</text>
+	<rect y='-10' class='button' /><text x='179' y='10'>aiguille double</text>
 <script type="text/ecmascript"><![CDATA[
 /* pour l'animation en js
 source du script:
@@ -60,17 +70,29 @@ http://samples.msdn.microsoft.com/workshop/samples/svg/svgAnimation/basic/02scri
 */
 // couleurs
 const couleurs =[ 'F00', 'B40', '880', '4B0', '0F0', '0B4', '088', '04B', '00F', '40B', '808', 'B04' ];
-const couleursId =[ 0, 6 ];
+const couleursId =[ 0, 6, 0, 0 ];
 const echantillons = document.getElementsByTagName ('rect');
 const couleursNoms = document.getElementsByTagName ('text');
 // rotation
 var angle =75;
 var nbRotation =0;
 const saut =3;
-var obj = document.getElementById ('aiguille-deux');
+var obj = document.getElementById ('aiguille-complementaire');
 var tourner = null;
-obj.addEventListener ('mouseover', rotationEvent);
-function rotationEvent (event){
+obj.addEventListener ('mouseover', rotationEventAiguilleDeux);
+function rotationEventAiguilleTroisA (event){
+	obj = event.target;
+	couleursId[0] +=1;
+	if (couleursId[0] >= couleurs.length) couleursId[0] =0;
+	couleursId[1] = couleursId[0] +6;
+	if (couleursId[1] >= couleurs.length) couleursId[1] -= couleurs.length;
+	tourner = requestAnimationFrame (rotationAnimation);
+	echantillons[0].style.fill = '#'+ couleurs[couleursId[0]];
+	echantillons[1].style.fill = '#'+ couleurs[couleursId[1]];
+	couleursNoms[0].innerHTML = '#'+ couleurs[couleursId[0]];
+	couleursNoms[1].innerHTML = '#'+ couleurs[couleursId[1]];
+}
+function rotationEventAiguilleDeux (event){
 	obj = event.target;
 	couleursId[0] +=1;
 	if (couleursId[0] >= couleurs.length) couleursId[0] =0;
