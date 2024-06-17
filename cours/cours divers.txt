@@ -39,13 +39,24 @@ pym=python -m mantis $*
 pystall=python setup.py install $T cd ..
 statis=cd mantis $T python setup.py install $T cd ..
 
-************
+*** l'installer sérieusement ***
+
+créer C:\Users\deborah.powers\Documents\macros.doskey
+
+dans l'éditeur du registre
+HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\
+clique droit / nouveau / valeur chaine
+la nommer Autorun
+clique droit / modifier / données de la valeur
+DOSKEY /MACROFILE="C:\Users\deborah.powers\Documents\macros.doskey"
+
+*** l'installer sans droits d'admin ***
+
+créer C:\Users\deborah.powers\Documents\macros.doskey
 
 raccourci console du bureau /propriétés/target
-rajouter en fin de ligne: /k doskey /macrofile=C:\path\my\file\macros.doskey
-/k doskey /macrofile=C:\Users\LENOVO\macros.doskey
-
-
+rajouter en fin de ligne: /k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
+/k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
 
 
 ====== divers ======
