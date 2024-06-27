@@ -10,7 +10,8 @@ https://www.w3.org/WAI/tutorials/
 les abréviations
 <abbr></abbr>
 
-
+https://www.ceciaa.com/jaws
+https://dequeuniversity.com/validator
 
 ============ Bonnes pratiques pour les jeux en ligne ============
 
