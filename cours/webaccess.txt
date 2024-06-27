@@ -7,8 +7,8 @@ https://www.w3.org/WAI/tutorials/
 
 === accessibilité en css ===
 
-si je veux séparer les lettres d'un mot, comme un sigle, utiliser letter-spacing plustôt que " ". les lecteurs d'écran lisent chaque espace.
-
+les abréviations
+<abbr></abbr>
 
 
 
