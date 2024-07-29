@@ -1,0 +1,81 @@
+Sujet:	programmation
+Auteur:	o
+Lien:	o
+Laut:	o
+date:	2024/07
+
+=== présentation ===
+
+t recette = t acceptation.
+deux étapes. je peux être ammenée à faire les deux.
+	t usine, chez le développeur.
+	t acceptation utilisateur, chez le client.
+
+t usine = t système
+la recette usine comporte trois étapes
+	tu
+	ti
+	t validation
+
+la recette d'acceptation comporte plusieurs étapes
+	r fonctionnelle
+	r technique
+
+*** les livrables ***
+
+protocole de recette
+cahier de recette
+Fiches de faits techniques
+pv
+
+protocole (ou stratégie):
+	tâches du client
+	tâches du fournisseur
+	liste des documents à communiquer
+	ordre et planning des tests
+	seuils d’acceptation du produit
+
+cahier: liste des tests pratiqués par le fournisseur (moi) avant la livraison. indiquer ceux que le client doit faire lui-même.
+fiche de fait technique: constater les erreurs et écarts du produit livré.
+	ano / bug: le logiciel livré n'a pas le comportement attendu, à cause d'une défaillance du fournisseur
+	évo: le logiciel livré n'a pas le comportement attendu, à cause de consignes floues du client
+
+pv: la recette est validée. client et fournisseur indiquent leurs réserves, les éventuelles améliorations à faire.
+
+=== le cahier de recette ===
+
+https://blog-gestion-de-projet.com/cahier-de-recette/
+Le but ultime du cahier de test est de s’assurer que le produit est solide, fiable et que surtout il correspond aux souhaits du client.
+Le cahier de recette a donc pour but d'officialiser le résultat des tests en confirmant, noir sur blanc, que le client approuve le produit tel qu’il lui a été donné correspond à son attente.
+il est normal d'avoir des ano au momment de la rédaction du cr.
+
+On va donc tester le produit :
+	Dans sa phase prototype
+	Dans sa phase d’intégration
+	Dans sa phase de consolidation si applicable 
+	Et une dernière fois avant la livraison finale
+
+du tu aux tests plus généraux.
+
+*** plan ***
+
+contexte
+généralités, organisation du déroulement des tests
+détails sur les tests, y compris les personnes qui les feront
+plan de test
+execution du plan: détails sur comment chaque étape du plan sera executée
+résultats des tests
+approbation
+commentaires, suites
+
+=== les types de tests ===
+
+tu, ti, t de consolidation, t de non-régression
+
+
+
+=== outil cucumber ===
+
+=== liens ===
+
+https://fr.wikipedia.org/wiki/Test_d%27acceptation
