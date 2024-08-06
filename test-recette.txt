@@ -1,81 +1,139 @@
-Sujet:	programmation
-Auteur:	o
-Lien:	o
-Laut:	o
-date:	2024/07
+Sujet: 	programmation
+Auteur: 	o
+Lien: 	o
+Laut: 	o
+Date: 	2024/07
 
-=== présentation ===
+============ Présentation ============
 
-t recette = t acceptation.
-deux étapes. je peux être ammenée à faire les deux.
-	t usine, chez le développeur.
-	t acceptation utilisateur, chez le client.
+T recette = t acceptation.
+Deux étapes. Je peux être ammenée à faire les deux.
+	T usine, chez le développeur.
+	T acceptation utilisateur, chez le client.
+T usine = t système
+La recette usine comporte trois étapes
+	Tu
+	Ti
+	T validation
+La recette d'acceptation comporte plusieurs étapes
+	R fonctionnelle
+	R technique
 
-t usine = t système
-la recette usine comporte trois étapes
-	tu
-	ti
-	t validation
+************ Les livrables ************
 
-la recette d'acceptation comporte plusieurs étapes
-	r fonctionnelle
-	r technique
-
-*** les livrables ***
-
-protocole de recette
-cahier de recette
+Protocole de recette
+Cahier de recette
 Fiches de faits techniques
-pv
+Pv
+Protocole (ou stratégie): 
+	Tâches du client
+	Tâches du fournisseur
+	Liste des documents à communiquer
+	Ordre et planning des tests
+	Seuils d'acceptation du produit
+Cahier: Liste des tests pratiqués par le fournisseur (moi) avant la livraison. Indiquer ceux que le client doit faire lui-même.
+Fiche de fait technique: Constater les erreurs et écarts du produit livré.
+	Ano / bug: Le logiciel livré n'a pas le comportement attendu, à cause d'une défaillance du fournisseur
+	Evo: Le logiciel livré n'a pas le comportement attendu, à cause de consignes floues du client
+Pv: La recette est validée. Client et fournisseur indiquent leurs réserves, les éventuelles améliorations à faire.
 
-protocole (ou stratégie):
-	tâches du client
-	tâches du fournisseur
-	liste des documents à communiquer
-	ordre et planning des tests
-	seuils d’acceptation du produit
+============ Test fonctionnel et non fonctionnel ============
 
-cahier: liste des tests pratiqués par le fournisseur (moi) avant la livraison. indiquer ceux que le client doit faire lui-même.
-fiche de fait technique: constater les erreurs et écarts du produit livré.
-	ano / bug: le logiciel livré n'a pas le comportement attendu, à cause d'une défaillance du fournisseur
-	évo: le logiciel livré n'a pas le comportement attendu, à cause de consignes floues du client
+https://cgi.percipio.com/videos/7d7aa096-1387-47a9-9849-fffe66c8b5d1
+https://cgi.percipio.com/courses/2b93e3a7-96dc-4b49-9906-e6d7c228cb32/videos/6b115e03-1b99-4d8e-9c35-56c0e89e1385
+Test fonctionnel: Comparer le fonctionnement de l'appli au cahier des charges et aux exigences fonctionnelles.
+Test non fonctionnel: Evaluer la manière dont l'appli éffectue sa fonction. Convivialité, respect des reglementations, rapidité, ect.
 
-pv: la recette est validée. client et fournisseur indiquent leurs réserves, les éventuelles améliorations à faire.
+************ Boîte noire ************
 
-=== le cahier de recette ===
+Test comportementale.
+Le testeur a accès aux specs et ignore le fonctionnement interne de l'appli.
+Ce test est surtout utilisé pour les tests fonctionnels.
+T interface utilisateur.
+
+************ Boîte blanche ************
+
+Test de la boîte ouverte, de la boîte transparente.
+Le testeur connais le code, du moins son fonctionnement. Il faut analyser la structure interne de l'application.
+Efficacité du code.
+Tu, certains ti.
+
+************ Boîte grise ************
+
+Le test de la boîte grise est entre les deux.
+Certains ti
+
+============ Tests logiciel ============
+
+https://cgi.percipio.com/videos/28d66781-25d6-4888-887a-573aec5edbed
+https://cgi.percipio.com/courses/1cbd0296-1462-4505-b64c-1ac0732f1167/videos/f85a4bdc-2ec7-4c10-8bab-57b7ea27f7ab
+
+************ Principes ************
+
+Choisir les fonctionnalités et les cas à tester.
+Tester tôt.
+Attention au contexte des bogues.
+Me concentrer sur la partie du code où il y a le plus de bogues.
+Les tests doivent évoluer avec leur code associé.
+Un test ne peut prouver que la présence de bogues, pas leur absence.
+
+************ Test fonctionnel ************
+
+Tu: Tf. Ecris par les dev. Tester la logique. Dans un environnement de dev.
+Ti: Vérifier les interractions entre les modules. Api, micro-services, bdd. Dans un environnement similaire à la prod.
+T fumée: Repérer les problèmes.
+T acceptation par l'utilisateur: Tester le vrai comportement des utilisateurs. Vérifié par le client et l'équipe. Dans la pré-prod.
+
+************ Test non fonctionnel ************
+
+T résistance: Repérer les conditions dans lesquelles l'appli plante.
+T performance: Repérer les lenteurs. Besoin de limites définies dans le cahier des charges.
+T évolutivité: Capacité de l'appli à s'adapter à l'évolution de la demande. Plus d'utilisateur, etc.
+
+************ T de maintenance ************
+
+Vérifier que la maj des dépendances n'ont pas cassé l'appli.
+T régréssion: Vérifier que les anciennes fonctionnalités n'ont pas été cassé par les changements.
+T fonctionnalité: Vérifier que les nouvelles fonctionnalités marchent.
+
+============ Lexique ============
+
+Cas de test
+Rapport de test
+Test en parallèle: Plusieurs parties de l'application sont testées en même temps. L'objectif est de réduire la durée des tests et la quantité de ressource consommée.
+
+============ Le cahier de recette ============
 
 https://blog-gestion-de-projet.com/cahier-de-recette/
-Le but ultime du cahier de test est de s’assurer que le produit est solide, fiable et que surtout il correspond aux souhaits du client.
-Le cahier de recette a donc pour but d'officialiser le résultat des tests en confirmant, noir sur blanc, que le client approuve le produit tel qu’il lui a été donné correspond à son attente.
-il est normal d'avoir des ano au momment de la rédaction du cr.
-
-On va donc tester le produit :
+Le but ultime du cahier de test est de s'assurer que le produit est solide, fiable et que surtout il correspond aux souhaits du client.
+Le cahier de recette a donc pour but d'officialiser le résultat des tests en confirmant, noir sur blanc, que le client approuve le produit tel qu'il lui a été donné correspond à son attente.
+Il est normal d'avoir des ano au momment de la rédaction du cr.
+On va donc tester le produit: 
 	Dans sa phase prototype
-	Dans sa phase d’intégration
-	Dans sa phase de consolidation si applicable 
+	Dans sa phase d'intégration
+	Dans sa phase de consolidation si applicable
 	Et une dernière fois avant la livraison finale
+Du tu aux tests plus généraux.
 
-du tu aux tests plus généraux.
+************ Plan ************
 
-*** plan ***
+Contexte
+Généralités, organisation du déroulement des tests
+Détails sur les tests, y compris les personnes qui les feront
+Plan de test
+Execution du plan: Détails sur comment chaque étape du plan sera executée
+Résultats des tests
+Approbation
+Commentaires, suites
 
-contexte
-généralités, organisation du déroulement des tests
-détails sur les tests, y compris les personnes qui les feront
-plan de test
-execution du plan: détails sur comment chaque étape du plan sera executée
-résultats des tests
-approbation
-commentaires, suites
+============ Les types de tests ============
 
-=== les types de tests ===
+Tu, ti, t de consolidation, t de non-régression
 
-tu, ti, t de consolidation, t de non-régression
+============ Outil cucumber ============
 
+============ Liens ============
 
-
-=== outil cucumber ===
-
-=== liens ===
-
-https://fr.wikipedia.org/wiki/Test_d%27acceptation
+https://fr.wikipedia.org/wiki/test_d%27acceptation
+https://blog-gestion-de-projet.com/cahier-de-recette/
+https://latavernedutesteur.fr/

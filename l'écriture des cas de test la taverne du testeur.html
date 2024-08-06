@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head>
+<title>l'écriture des cas de test la taverne du testeur</title>
+<base target='_blank'>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<meta name='link' content='https://latavernedutesteur.fr/2018/01/11/lecriture-des-cas-de-test-2/'/>
+<meta name='author' content='Marc Hage Chahine'/>
+<meta name='autlink' content='https://latavernedutesteur.fr/author/marchagechahine/'/>
+<meta name='subject' content='programmation'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+</head><body>
+<h1>l'écriture des cas de test</h1>
+<p>Je tenais à écrire cet article car trop souvent j'ai travaillé avec des cas de tests mal écrits et que cela peut coûter très cher (en temps et en argent) au projet.</p><p>Les cas de tests sont la base de travail des testeurs et donc le<a href="http://www.linkedin.com/pulse/les-livrables-du-test-marc-hage-chahine?trk=pulse_spock-articles">livrable de test</a>le plus important. Pour les tests comme pour tout il faut partir sur de bonnes bases (cela ne sert à rien d'apprendre les multiplications lorsque l'on ne sait pas encore compter) c'est pourquoi il faut faire très attention et être rigoureux dans l'écriture de ces cas (manuels ou automatisés). Ce n'est pas parce que c'est simple qu'il faut le négliger !</p>
+<h2>Les inconvénients des cas de tests mal écrits sont nombreux</h2>
+<p>voici les plus importants</p>
+<ul>
+	<li><strong>Les tests sont sujets à interprétation</strong>selon la personne qui les exécute.</li><li><strong>Les tests ne vérifient pas ce que l'on veut et ne sont donc pas fiable</strong>, vérifier la présence d'un mot pour s'assurer l'affichage d'une page peut être une bonne idée... sauf si ce mot apparaît sur la page précédente</li><li><strong>Les tests ne sont pas stables</strong>: vérifier le titre du premier mail d'une boite de réception est une mauvaise idée, rien ne prouve que d'autres mails ne soient pas arrivés.</li><li><strong>Les tests sont difficilement maintenables</strong>, il faut souvent les réécrire totalement lorsque la fonctionnalité évolue.</li><li><strong>Beaucoup de temps perdus avec des bugs rejetés</strong>. C'est principalement pour mesurer la qualité des tests que l'indicateur des bugs rejetés est particulièrement intéressant.</li>
+	<li><strong>Les tests sont difficilement automatisables:</strong>C'est le résultat de l'ensemble des problèmes relevés précédemment.</li>
+</ul>
+<p>Des cas de tests mal écrits impactent donc la qualité de l'application, son temps avant mise sur le marché (Time to Market) et souvent les relations entre les différents membres de l'équipe.</p>
+<h2>Comment bien écrire un cas de test manuel ?</h2>
+<p>Pour écrire un cas de test il faut que l'écriture soit standardisé, qu'elle soit sensiblement la même quel que soit le testeur qui ait écrit le cas. Il faut également que n'importe quelle personne du projet soit capable d'exécuter ce cas, l'exécution des cas de test ne doit pas être un goulot d'étranglement ni dépendre de la personne qui l'exécute (cela arrive malheureusement assez fréquemment)!</p><p>Le principe de base de toute écriture d'un cas de test manuel est:</p><figure><img src="https://latavernedutesteur.fr/wp-content/uploads/2024/07/0.jpg" alt=""></figure><p>C'est-à-dire que chaque étape d'un cas se définit par 1 action précise engendre 1 résultat précis.</p><p>Exemple de cas de test: lire un mail sur une application android:</p><figure><img src="https://latavernedutesteur.fr/wp-content/uploads/2024/07/1.jpg" alt=""></figure><p>Ici l'exemple est simple mais si le principe de cet exemple est appliqué rigoureusement alors les cas de tests écrits ne seront pas sujets à interprétation. En appliquant ce principe j'ai réussi à faire exécuter du premier coup des cas complexes (15+ étapes, à un testeur envoyé en renfort (qui travaillait à distance) et ayant rejoint le projet 1 semaine avant et ne connaissant pas l'application sur laquelle je travaillais).</p><p>Pour tout cas de test manuel je recommande vivement une revue. Une revue même informelle peut permettre d'éviter certaines erreurs, il ne faut jamais négliger les<a href="http://www.linkedin.com/pulse/les-tests-statiques-rois-du-roi-marc-hage-chahine?trk=pulse_spock-articles">tests statiques</a>.</p>
+<h2>Comment bien écrire un cas de test automatisé ?</h2>
+<p>Pour écrire de bon cas de tests automatisés il faut partir d'une bonne base... et donc de tests manuels bien écrits. En effet, encore plus que pour les tests manuels les tests automatisés font une action puis une vérification (il peut y avoir plusieurs actions avant la vérification, par exemple lorsque l'on remplit un formulaire).</p><p>Ensuite, les cas de tests automatisés sont des cas de tests "codés", il faut donc comme pour le code des développeurs, avoir:</p>
+<ul>
+	<li>Des conventions d'écritures, le cas doit être rapidement compris de tous.</li>
+	<li>Des bonnes pratiques communes à l'équipe.</li>
+	<li>Des cas bien commentés</li>
+	<li>Un revue lorsque le cas est écrit</li>
+</ul>
+<p>Tout cela permet d'avoir des cas plus facilement analysable en cas d'échec et plus facilement maintenable (la connaissance n'étant pas que chez la personne ayant développé le cas)</p>
+<h2>conclusion</h2>
+<p>Avoir des cas de tests bien écrits ne coûte pas forcément plus cher à l'écriture, par contre cela permet d'éviter de nombreux déboire et de travailler dans de meilleures conditions. Je ne compte plus ne nombre de bugs rejetés que j'ai eu car l'erreur venait du test ou que ce dernier était sujet à interprétation, je ne compte plus les cas que j'ai dû totalement réécrire et malheureusement je ne compte plus le nombre de bugs passés en production car le cas de test qui devait le couvrir était soit mal écrit soit non maintenu.</p><p>N'hésitez pas à rejoindre le groupe<a href="http://www.linkedin.com/groups/8592377">Le métier du test</a></p><p>N'hésitez pas à me suivre et lire mes autres<a href="http://www.linkedin.com/today/author/0_1Hp7R4R2fjIK1wvZ-LvnzG?trk=prof-sm">articles</a>si vous voulez en apprendre plus sur le test ou venir partager vos connaissances</p><p>Merci à tous ceux qui mettent " j'aime ", partagent ou commentent mes articles</p>
+</body></html>
