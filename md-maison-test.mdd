@@ -1,0 +1,59 @@
+============ Test de mon markdown maison ============
+
+Transformer un texte utiliser markdown en html.
+Attention, c'est une version maison de markdown.
+Je rédige et lis mon texte sur un éditeur classique.
+Dans un navigateur, cette extension le transforme en texte html.
+Fichier xxx.mdd
+j'ai également un script python qui transforme le fichier .mdd en un fichier .html.
+
+============ Les titres ============
+
+============ Titre niveau 1 ============
+
+************ Titre niveau 2 ************
+
+------------ Titre niveau 3 ------------
+
+____________ Titre niveau 4 ____________
+
+============ Les listes ============
+
+liste non ordonnée
+La ligne commence par une tabulation
+	Un item
+	Un second
+		des items
+		imbriqués
+	Un troisième
+
+liste ordonnée
+	# Un item
+	Un second
+		des items
+		imbriqués
+	Un troisième
+		# des items
+		numérotés
+		imbriqués
+	un quatrième
+
+============ Les tableaux ============
+
+Les cases sont séparées par des tabulations.
+Un point. Représente une case vide.
+Fruit	nombre de p	nombre de o:
+Pêche:	1	.
+Pomme:	1	1
+Poire:	1	1
+Abricot:	.	1
+
+============ Les liens ============
+
+Le nom du lien est calculé par défaut à partir de l'url.
+https://www.google.com/
+Un titre entre parenthèse après le lien lui sert de nom.
+https://www.google.com/ (moteur de recherche)
+ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne
+
+============ Les images ============
