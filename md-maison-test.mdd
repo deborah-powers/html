@@ -48,12 +48,28 @@ Pomme:	1	1
 Poire:	1	1
 Abricot:	.	1
 
+============ Les images ============
+
+cinq formats reconnus. l'url doit contenir un ":", comme C://mon-image.xyz ou http://mon-image.xyz
+
+c://fichier/mon-image-bmp.bmp
+c://fichier/mon-image-gif.gif
+c://fichier/mon-image-jpg.jpg
+c://fichier/mon-image-jpeg.jpeg
+c://fichier/mon-image-png.png
+http://site.fr/mon-image-internet.png
+
+cette image c://fichier/mon-image.bmp est incluse dans un paragraphe.
+
+Un titre entre parenthèse après l'image lui sert de nom.
+c://fichier/mon-image.bmp (texte alternatif)
+
 ============ Les liens ============
 
 Le nom du lien est calculé par défaut à partir de l'url.
 https://www.google.com/
 Un titre entre parenthèse après le lien lui sert de nom.
 https://www.google.com/ (moteur de recherche)
-ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne
-
-============ Les images ============
+ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne.
+lien affichant une image.
+https://www.google.com/ (http://site.fr/mon-image.bmp)
