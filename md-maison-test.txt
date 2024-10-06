@@ -1,4 +1,4 @@
-=== Test de mon markdown maison ===
+============ Test de mon markdown maison ============
 
 Transformer un texte utiliser markdown en html.
 Attention, c'est une version maison de markdown.
@@ -7,17 +7,17 @@ Dans un navigateur, cette extension le transforme en texte html.
 Fichier xxx.mdd
 j'ai également un script python qui transforme le fichier .mdd en un fichier .html.
 
-*** Les titres ***
+============ Les titres ============
 
-=== Titre niveau 1 ===
+============ Titre niveau 1 ============
 
-*** Titre niveau 2 ***
+************ Titre niveau 2 ************
 
---- Titre niveau 3 ---
+------------ Titre niveau 3 ------------
 
-___ Titre niveau 4 ___
+____________ Titre niveau 4 ____________
 
-*** Les listes ***
+============ Les listes ============
 
 liste non ordonnée
 La ligne commence par une tabulation
@@ -38,7 +38,7 @@ liste ordonnée
 		imbriqués
 	un quatrième
 
-*** Les tableaux ***
+============ Les tableaux ============
 
 Les cases sont séparées par des tabulations.
 Un point. Représente une case vide.
@@ -48,20 +48,23 @@ Pomme:	1	1
 Poire:	1	1
 Abricot:	.	1
 
-*** Les images ***
+============ Les images ============
 
-cinq formats reconnus: bmp, png, jpg, jpeg, gif.
-l'url doit contenir un ":", comme C://mon-image.xyz ou http://mon-image.xyz
+cinq formats reconnus. l'url doit contenir un ":", comme C://mon-image.xyz ou http://mon-image.xyz
 
-c://fichier/image-perdue.bmp
-https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png (scoubidous formant le mot "google")
+c://fichier/mon-image-bmp.bmp
+c://fichier/mon-image-gif.gif
+c://fichier/mon-image-jpg.jpg
+c://fichier/mon-image-jpeg.jpeg
+c://fichier/mon-image-png.png
+http://site.fr/mon-image-internet.png
 
 cette image c://fichier/mon-image.bmp est incluse dans un paragraphe.
 
 Un titre entre parenthèse après l'image lui sert de nom.
-c://fichier/image-perdue.bmp (cette image est indisponible, vous lisez le texte alternatif)
+c://fichier/mon-image.bmp (texte alternatif)
 
-*** Les liens ***
+============ Les liens ============
 
 Le nom du lien est calculé par défaut à partir de l'url.
 https://www.google.com/
@@ -69,4 +72,4 @@ Un titre entre parenthèse après le lien lui sert de nom.
 https://www.google.com/ (moteur de recherche)
 ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne.
 lien affichant une image.
-https://doodles.google/doodle/bastille-day-2022/ (https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png)
+https://www.google.com/ (http://site.fr/mon-image.bmp)
