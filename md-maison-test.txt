@@ -1,6 +1,6 @@
 === Test de mon markdown maison ===
 
-Transformer un texte utiliser markdown en html.
+Transformer un texte utilisant markdown en html.
 Attention, c'est une version maison de markdown.
 Je rédige et lis mon texte sur un éditeur classique. mon fichier est en .md ou .txt.
 Dans un navigateur, cette extension le transforme en texte html.
