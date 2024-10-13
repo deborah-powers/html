@@ -69,3 +69,23 @@ https://www.google.com/ (moteur de recherche)
 ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne.
 lien affichant une image.
 https://doodles.google/doodle/bastille-day-2022/ (https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png)
+
+================================================
+
+ma-meta:	contenu de ma métadonnée
+Script:	mon-script.js
+Script bas:	mon-script-bas.js
+Style:	ma-feuille.css
+
+h1 {
+	background-color: crimson;
+	color: white;
+}
+h2 {
+	background-color: lime;
+	color: black;
+}
+Script:
+const h1 = document.getElementsByTagName ('h1')[0];
+console.log (h1);
+h1.innerHTML = h1.innerHTML +' coucou !';
