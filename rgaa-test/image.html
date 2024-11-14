@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head>
+	<title>rgaa test</title>
+	<base target='_self' href='file:///C:/'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='stylesheet' type='text/css' href='wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	body {
+		display: grid;
+		grid-template-columns: 2fr 3fr 2fr 3fr 2fr 3fr;
+		grid-gap: 0.5em;
+	}
+	h1 { grid-column: 1/6; }
+	svg {
+		width: 72px;
+		height: 92px;
+	}
+	svg.texte { width: 150px; }
+	circle, ellipse {
+		fill: #C29FC2;
+		stroke: #342C37;
+	}
+	canvas {}
+</style></head><body>
+	<h1>tester les images</h1>
+	<a href='Users/deborah.powers/Desktop/rgaa-test/index.html'>retour à l'index</a>
+	<p>image sans alt</p>
+	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' />
+	<p>image avec alt vide</p>
+	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='' />
+	<p>image avec alt plein</p>
+	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='ma photo' />
+	<p>image dans un lien</p>
+	<a href='https://deborah-powers.fr/cv.html'><img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='ma photo' /></a>
+	<p>svg sans rôle</p>
+	<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+		<ellipse id='corps' cx='36' cy='62' rx='20' ry='25'/><circle id='jambe-d' cx='12' cy='80' r='12'/>
+		<circle id='jambe-g' cx='60' cy='80' r='12'/><circle id='bras-d' cx='10' cy='50' r='10'/><circle id='bras-g' cx='62' cy='50' r='10'/>
+		<circle id='oreille-d' cx='18' cy='10' r='10'/><circle id='oreille-g' cx='54' cy='10' r='10'/><circle id='tete' cx='36' cy='20' r='18'/>
+	</svg>
+	<p>svg avec rôle innadapté</p>
+	<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' role='divers'>
+		<ellipse id='corps' cx='36' cy='62' rx='20' ry='25'/><circle id='jambe-d' cx='12' cy='80' r='12'/>
+		<circle id='jambe-g' cx='60' cy='80' r='12'/><circle id='bras-d' cx='10' cy='50' r='10'/><circle id='bras-g' cx='62' cy='50' r='10'/>
+		<circle id='oreille-d' cx='18' cy='10' r='10'/><circle id='oreille-g' cx='54' cy='10' r='10'/><circle id='tete' cx='36' cy='20' r='18'/>
+	</svg>
+	<p>svg avec rôle</p>
+	<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' role='presentation'>
+		<ellipse id='corps' cx='36' cy='62' rx='20' ry='25'/><circle id='jambe-d' cx='12' cy='80' r='12'/>
+		<circle id='jambe-g' cx='60' cy='80' r='12'/><circle id='bras-d' cx='10' cy='50' r='10'/><circle id='bras-g' cx='62' cy='50' r='10'/>
+		<circle id='oreille-d' cx='18' cy='10' r='10'/><circle id='oreille-g' cx='54' cy='10' r='10'/><circle id='tete' cx='36' cy='20' r='18'/>
+	</svg>
+	<p>svg avec texte</p>
+	<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' role='presentation' class='texte'>
+		<ellipse id='corps' cx='36' cy='62' rx='20' ry='25'/><circle id='jambe-d' cx='12' cy='80' r='12'/>
+		<circle id='jambe-g' cx='60' cy='80' r='12'/><circle id='bras-d' cx='10' cy='50' r='10'/><circle id='bras-g' cx='62' cy='50' r='10'/>
+		<circle id='oreille-d' cx='18' cy='10' r='10'/><circle id='oreille-g' cx='54' cy='10' r='10'/><circle id='tete' cx='36' cy='20' r='18'/>
+		<text x='20' y='65'>coucou</text>
+	</svg>
+	<p>canvas</p>
+	<canvas>image canvas, qui n'est pas supportée par votre ordinateur.</canvas>
+	<script type='text/javascript'>
+		const canvas = document.getElementsByTagName ('canvas')[0];
+		var context = canvas.getContext ('2d');
+		context.fillStyle = 'pink';
+		context.strokeStyle = 'blue';
+		context.fillRect (10,10,70,90);
+		context.clearRect (40,40,60,70);
+		context.strokeRect (20,20,70,90);
+		context.strokeStyle = 'green';
+		context.beginPath();
+		context.moveTo (75, 50);
+		context.lineTo (100, 75);
+		context.lineTo (100, 25);
+		context.arc (75, 75, 35, 0, Math.PI /1.5, false);
+	//	context.fill();
+		context.stroke();
+	</script>
+	<p>pdf object</p>
+	<object type='application/pdf' src='Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'>pdf object, qui n'est pas supportée par votre ordinateur.</object>
+	<p>pdf object sans contenu</p>
+	<object type='application/pdf' src='Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'></object>
+	<p>image object</p>
+	<object type='image/png' src='Users/deborah.powers/Desktop/cgi/photo-deborah.png'>image object, qui n'est pas supportée par votre ordinateur.</object>
+</body></html>
