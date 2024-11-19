@@ -1,3 +1,15 @@
+=== afficher une image de google photo sur mon site ===
+
+https://www.benjamin-mary.com/fr/outil/google-photos#:~:text=Une%20fois%20l'album%20cr%C3%A9%C3%A9,%22%2C%20puis%20on%20le%20copie.
+le mieux est de créer un album google contenant les photos que je veux partager.
+partager la photo ou l'album, obtenir un lien.
+vérifier que le lien est bien accessible en l'ouvrant dans une fenêtre de navigation privée.
+dans la fenêtre privée, afficher mon image.
+copier l'adresse de l'image.
+je dois obtenir un lien du type "https://lh3.googleusercontent.com/..."
+
+
+
 ====== wamp ======
 
 https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/

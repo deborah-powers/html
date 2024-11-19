@@ -1,10 +1,10 @@
 <!DOCTYPE html><html><head>
-	<title>rgaa test</title>
-	<base target='_self' href='file:///C:/'>
+	<title>images | rgaa test</title>
+	<base target='_self'>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
-	<link rel='stylesheet' type='text/css' href='wamp64/www/site-dp/library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 <style type='text/css'>
 	body {
 		display: grid;
@@ -21,18 +21,20 @@
 		fill: #C29FC2;
 		stroke: #342C37;
 	}
-	canvas {}
+	img, input { width: 100%; }
 </style></head><body>
 	<h1>tester les images</h1>
-	<a href='Users/deborah.powers/Desktop/rgaa-test/index.html'>retour à l'index</a>
+	<a href='./index.html'>retour à l'index</a>
 	<p>image sans alt</p>
-	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' />
+	<img src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm' />
 	<p>image avec alt vide</p>
-	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='' />
+	<img src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm' alt='' />
 	<p>image avec alt plein</p>
-	<img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='ma photo' />
+	<img src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm' alt='ma photo' />
 	<p>image dans un lien</p>
-	<a href='https://deborah-powers.fr/cv.html'><img src='Users/deborah.powers/Desktop/cgi/photo-deborah.png' alt='ma photo' /></a>
+	<a href='https://deborah-powers.fr/cv.html'><img src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm' alt='ma photo' /></a>
+	<p>input image</p>
+	<input type='image' src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm' alt='ma photo' />
 	<p>svg sans rôle</p>
 	<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
 		<ellipse id='corps' cx='36' cy='62' rx='20' ry='25'/><circle id='jambe-d' cx='12' cy='80' r='12'/>
@@ -59,7 +61,7 @@
 		<text x='20' y='65'>coucou</text>
 	</svg>
 	<p>canvas</p>
-	<canvas>image canvas, qui n'est pas supportée par votre ordinateur.</canvas>
+	<canvas>image canvas, qui n'est pas supportée par votre navigateur.</canvas>
 	<script type='text/javascript'>
 		const canvas = document.getElementsByTagName ('canvas')[0];
 		var context = canvas.getContext ('2d');
@@ -78,9 +80,9 @@
 		context.stroke();
 	</script>
 	<p>pdf object</p>
-	<object type='application/pdf' src='Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'>pdf object, qui n'est pas supportée par votre ordinateur.</object>
+	<object type='application/pdf' src='file:///C:/Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'>pdf object, qui n'est pas supportée par votre navigateur.</object>
 	<p>pdf object sans contenu</p>
-	<object type='application/pdf' src='Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'></object>
+	<object type='application/pdf' src='file:///C:/Users/deborah.powers/Desktop/cgi/convocation-test-2024-10-30.pdf'></object>
 	<p>image object</p>
-	<object type='image/png' src='Users/deborah.powers/Desktop/cgi/photo-deborah.png'>image object, qui n'est pas supportée par votre ordinateur.</object>
+	<object type='image/png' src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm'>image object, qui n'est pas supportée par votre navigateur.</object>
 </body></html>
