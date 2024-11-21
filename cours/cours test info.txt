@@ -1,0 +1,249 @@
+============ Place du test ============
+
+Proof of concept
+Vérifier la conformité
+Identifier les ano à corriger
+Triangle d'or des projet: Qualité, coût, délais.
+
+************ Ce qui est recherché ************
+
+Adéquation au besoin de l'utilisateur. Est-ce que l'appli fait ce qu'elle est censée faire ?
+Ergonomie et accessibilité.
+Conformité fonctionnelles, specs et normes
+Performances
+Sécurité. Intrusion, protection des données.
+Fiabilité, durabilité, résilience. Résistance aux pannes, etc.
+
+************ Acteurs ************
+
+Utilisateurs finaux
+Designer ux
+Testeurs fonctionnels
+Experts performances, automates
+Experts en sécurité
+Experts tech, automates
+
+************ Quatre objectifs ************
+
+Produit répond au besoin
+Combien de fonctionnalités fonctionnent
+Peut-on déployer l'appli
+??
+
+************ Place du test dans le projet ************
+
+Seconde phase d'un cycle en v.
+Ut, ti, t système, t acceptation sur site client et sur site de dev.
+Fin d'un sprint selon la méthode agile. Chaque sprint est un mini cycle en v rapide.
+Une ano détectée au sprint 1 est priorisée puis traitée au spring 2 ou plus.
+
+************ Quatre niveaux ************
+
+Tu, unitaire, t composants
+Ti, intégration
+Ts, système
+Ta, acceptation
+Nombreux tests de bas niveaux, peut de tests de haut niveaux.
+Attention, je peux passer du temps à corriger les anos détectées par les t de bas niveaux, pour que mon appli soit recalée au ta. Histoire du puzzle avec les pyramides qui n'étaient pas au louvre. Utilité de la méthode agile.
+Norme iso 25010
+
+************ Definitions ************
+
+Test statique: Relecture de code, spec.
+Test dynamique: Lancer un programme.
+Moe: Maîtrise d'oeuvre, technique.
+Moa: Maîtrise d'ouvrage, fonctionnel.
+T acceptation client: T utilisateur, t
+T acceptation dev: Recette usine
+
+============ Principes fondamentaux ============
+
+************ Istqb ************
+
+Internationnal sowtware testing qualification board
+Différents niveaux et spécialités.
+Formation de base de trois jours.
+Mettre en place un langage et des processus uniformisés et internationnaux pour les test.
+
+************ Sept principes ************
+
+Les tests prouvent l'existence d'ano mais ne peuvent pas en prouver l'absence.
+Il est impossible de tester exhaustivement une appli. Couverture de test, priorisation.
+Tester tôt afin de détecter les anomalies tôt. Prévenir plutôt que guérir. Faire des revues de code et de specs, des tests statiques.
+Adapter le processus de test afin de concentrer l'effort sur les modules les plus bogués ou susecptible d'être bogués ou les plus critiques.
+La validité d'un test diminue quand il vielli. Les faire évoluer. Changement de spec, etc. Changer de jeu de données.
+Les tests dépendent du contexte. Criticité, support comme l'ordi ou le smartphone.
+Le test est bon selon les objetifs fixés. L'absence d'erreur est une illusion.
+
+************ Exigences ************
+
+Exigence: Ce que l'appli doit faire pour répondre au besoin de l'utilisateur. Elle est définie dans les specs. Un besoin et les moyens de l'atteindre. Elle est testable.
+Cas de test: Pré-conditions et post-conditions. Ce qu'on fait, ce qu'on attend, ce qu'on obtien. Vérifier que l'exigence est complétée. Il en faut souvent plusieurs pour tester une exigence. Pré-requis, jeu de données, étapes, attente.
+Vérification: Confirmation que les exigences sont remplies.
+Validation: Confirmation que les exigences sont remplies dans un cas particulier, avec des pré-conditions définies.
+
+************ Anomalies ************
+
+Selon le istqb, tous les incidents ne sont pas des anomalies.
+Un incident arrive pendant un test. L'erreur provient d'une action humaine, le défaut de l'appli. Quand un défaut est analysé, caractérisé, il devient une ano.
+
+************************************************
+
+Trois documents importants.
+Politique de test: Principes et objectifs concernant les tests. Automatiser 80% des tu, faire des mep tous les mois, etc.
+Stratégie de test: Programme de tests. Quelle couverture pour chaque niveaux de tests, par quelle équipe.
+Plan de test: Planning des tests, ressources, qui fait quoi, etc.
+La moe, voir les testeurs, définissent le plan de test.
+Le mot recette ne fait pas partie du vocabulaire de l'istqb. Il désigne deux notions, la phase de test et sa validation.
+Vérification d'aptitude.
+Vérification d'aptitude au bon fonctionnent.
+Vérification de service régulier. Faite sur la prod, en condition d'utilisation normale.
+Pv
+
+************ Critères de tests ************
+
+Critères d'entrée
+Critères de sortie
+Indicateur de réussite
+
+============ Mon rôle ============
+
+************ Qualités du testeur ************
+
+Parler avec les dev et les fonctionels.
+Connaitre le fonctionnent de l'appli.
+Remonter les ano de façon exhaustive. Donner les conditions de tests. Faire une pré-analyse.
+Résister au stress quand aux délais.
+Persévérance et curiosité.
+Curiosité de faire des tests hors scénarios. Fouiller pour comprendre ce qui se passe.
+Septicisme, rien n'est acquis.
+
+************ Difficultés ************
+
+------------ Problèmes ------------
+
+Ambiance de l'équipe
+Spec insuffisante
+Retard dans les dev
+...
+
+------------ Solutions ------------
+
+Constat
+Diagnostique des pratiques
+...
+
+============ Les exigences ============
+
+************ Qu'est-ce qu'une exigence ************
+
+Ce que l'appli doit faire pour répondre au besoin de l'utilisateur. Elle est définie dans les specs. Un besoin et les moyens de l'atteindre. Elle est testable.
+Exigence fonctionnelle: Une fonction que l'appli doit faire
+Exigence non-fonctionnelle: Façon de fonctionner. Autre caractéristique de l'appli. Montée de charge, rapidité, ergonomie, maintenabilité...
+
+************ Prioriser les exigences ************
+
+Maîtrise des coûts et des délais.
+Qu'est-ce qui gêne le plus les utilisateurs ?
+Qu'est-ce qui risque de faire sauter l'appli ?
+Loi de pareto. 80% des effets sont produits par 20% des causes. Il faut concentrer les tests sur les aspects risquant le plus d'entrainer des anos.
+Attention aux interdépandences.
+
+************ Si je n'ai pas d'exigences ************
+
+============ Scénarios ============
+
+Cas de test
+Cahier --> campagne --> suite et ses cas --> preuves de test
+Un cas peut être passant ou non.
+
+============ Jeux de données ============
+
+Un jeu de données, jdd, doit être pertinent et représentatif.
+
+************ Les difficultés ************
+
+Pas de données
+Anonymisation des données
+Rotation des environnement. Purge, modif des bdd...
+
+============ Documenter les ano ============
+
+Vérifier qu'il y a bien une non-conformité
+Rédiger une description conforme aux normes du projet
+Titre explicite
+Identifiant, numéro du ticket, généré par mantis
+Criticité
+	Blocante, etc
+	Niveau de priorité
+Infos techniques
+	Environnement
+	Heure
+	Appli
+	Version de l'appli
+	Navigateur
+	Jdd
+Description
+	Comment reproduire l'ano
+
+************ Trier les ano ************
+
+Urgence et importance
+
+============ Reporting ============
+
+Nbt réalisés
+Nbt ko, ok, non testable
+Indiquer aux parties prenantes que le logiciel fonctionne ou pas.
+Réajuster le planning
+Réajuster les campagnes de tests
+Alerter en cas de gros problème
+
+************ Les indicateurs ************
+
+Ils sont partagés avec les parties prenantes.
+
+============ Outils ============
+
+Squash, testdirector, jira, hp quality center, selenium, agilitest
+
+============ Noms ============
+
+Alexandre calves, alternant
+Loic del, interco
+Lamou rimy, ants
+Linh n' guienn, dev, archives nat. On a déjeuné ensemble.
+Lindsay jean-philippe, o
+Aroula tour, ants
+Serge simon, dev
+Bao ??, istqb
+Pria coquel, amoa, conformité
+Marc vu, dev puis testeur, istqb
+Teddy babry, compta puis amoa
+
+============ Divers ============
+
+Pour les recetteurs
+Reprise vers 13:30 - 14:00
+Certif istqb
+Agilitest, squach, selenium
+Stratégie
+Cahier
+Fiche ano
+
+============ Demande ============
+
+Référence session: 25-act14336-001
+Libellé de la session: Fic - tpshrm - Paris carré michelet - les fondamentaux du test
+Référence demande: Dem66367 - fic - les fondamentaux du test
+
+================================================
+
+Sujet:	Programmation
+Auteur:	Cgi
+Lien:	https://cgi.egos-online.com/login_saml#/dossier-coll_fo_1
+Laut:	O
+Titre:	Les fondamentaux du test
+Date:	2024/10/30	09:30 - 17:30
+Lieux:	Carré michelet, salle chardon d4 d06
+Intervenante:	Stéphanie otto et anne clois

@@ -1,0 +1,17 @@
+
+
+dotnet est un framework qui fonctionne avec plusieurs langages, dont C#.
+C# est un langage orienté objet, entre C et java.
+
+=== articles ===
+
+https://fr.wikipedia.org/wiki/.NET
+https://fr.wikipedia.org/wiki/C_Sharp
+
+================================================
+
+Sujet:	programmation
+Auteur:	deborah à partir de plusieurs sources
+Lien:	o
+Laut:	o
+contexte:	rejoindre éventuellement un projet dotnet - C#
