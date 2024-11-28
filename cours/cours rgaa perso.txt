@@ -1,61 +1,149 @@
-=== les images ===
+============ Les images ============
 
-file:///C:/Users/deborah.powers/Desktop/formation%20rgaa%202024/formation/index.html#D38 (source acces 42)
-balises considérées comme des images: img, area, < input type='image'>, svg, object, embed, canvas.
-img et area possèdent un attribut alt, même vide.
-les autres doivent avoir un rôle. < x role='img'>. img ou presentation.
+file:///C://// // /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
+Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
+Img et area possèdent un attribut alt, même vide.
+Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
 
-*** l'image de décoration doit être ignorée par les techno d'assistance ***
-img et area: < img alt=""/> ou < img alt="divers" aria-hidden='true'/> ou < img alt="divers" role='presentation'/>
-les autres: < x aria-hidden='true'>
+************ L'image de décoration doit être ignorée par les techno d'assistance ************
+
+Img et area: < img alt=""/> ou < img alt="divers" aria-hidden='true'/> ou < img alt="divers" role='presentation'/>
+Les autres: < x aria-hidden='true'>
 < conteneur aria-hidden='true'>toutes les images sont masquées</>
-les images liens sont traitées avant tout comme des liens.
+Les images liens sont traitées avant tout comme des liens.
 
-**** l'image informative a un nom accessible ***
+************ L'image informative a un nom accessible ************
 
-attribut pouvant contenir l'alternative
-	alt="message alternatif"
-	title="message alternatif"
-	aria-label="message alternatif"
-	aria-labelledby="id-bloc-alternatif"
+Attribut pouvant contenir l'alternative
+	Alt="message alternatif"
+	Title="message alternatif"
+	Aria-label="message alternatif"
+	Aria-labelledby="id-bloc-alternatif"
+Cette alternative s'appele le nom accessible.
+Si plusieurs attributs sont présents, les outils d'assistance en choisissent un selon une règle de surcharge.
+Surcharge: Aria-labelledby > aria-label > alt > title
+Aria-labelledby permet de contenir un long texte structuré. Cas où l'image contient une infographie.
 
-cette alternative s'appele le nom accessible.
-si plusieurs attributs sont présents, les outils d'assistance en choisissent un selon une règle de surcharge.
-surcharge: aria-labelledby > aria-label > alt > title
-
-aria-labelledby permet de contenir un long texte structuré. cas où l'image contient une infographie.
-
-*** l'image svg ***
+************ L'image svg ************
 
 < svg role='img' aria-label='message alternatif'>
-aria-label est remplaçable par aria-labelledby.
-*** la captcha ***
-pour les captcha et les images de tests.
-l'alternative informe sur la fonction de captcha.
+Aria-label est remplaçable par aria-labelledby.
+
+************ Le captcha ************
+
+Pour les captcha et les images de tests.
+L'alternative informe sur la fonction de captcha.
 < img alt='code captcha à saisir'/>
-une méthode de captcha alternative est disponible. captcha sonore, confirmation par sms, etc.
+Une méthode de captcha alternative est disponible. Captcha sonore, confirmation par sms, etc.
 
-*** la description détaillée ***
+************ La description détaillée ************
 
-pour les infographies, les schémas, etc.
-un long discour vaut mieux qu'une image.
-il y a besoin d'une longue description structurée lisible sur la page. faire un rapport.
-cette description peut être une div qui contient le texte.
-mettre à coté de l'image
-	un lien vers la page descriptive
-	un bouton dépliant la div
-	un texte toujours visible, s'il est court.
-éviter l'attribut longdesc.
+Pour les infographies, les schémas, etc.
+Un long discour vaut mieux qu'une image.
+Il y a besoin d'une longue description structurée lisible sur la page. Faire un rapport.
+Cette description peut être une div qui contient le texte.
+Mettre à coté de l'image
+	Un lien vers la page descriptive
+	Un bouton dépliant la div
+	Un texte toujours visible, s'il est court.
+Eviter l'attribut longdesc.
+Transformer une affiche en une div avec un fond. L'idéal est que l'utilisateur puisse adapter le style du texte.
+https://accessconfig.a11y.fr/
 
-=== les iframes ===
+************ La figure ************
 
-=== divers ===
+< figure role='figure' aria-label='ma figure'>
+Role group ou figure.
+Aria-label ou title.
+La légende contient les métadonnées de l'image ou complète les infos qu'elle donne.
+La légende reprend le label.
 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
+============ Les iframes ============
+
+file:///C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
+Le titre est obligatoire.
+Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
+
+============ Les couleurs ============
+
+file:///C:///users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
+
+************ La couleur de signalement ************
+
+Pour l'onglet actif, etc.
+Elle doit avoir une alternative. Pensez aux aveugles et aux différents types de daltonniens.
+Doubler la couleur par un marquage et un attribut aria
+Marquage par une icône, le passage du texte en gras, etc...
+< a title='ma page - page active' class='is-active'...>
+Texte en-dehors de l'écran. < span class='sr-only'>
+Dans les captcha, proposer une méthode alternative.
+
+------------ Propriétés aria ------------
+
+Aria-pressed	pour les bouton toggle (on-off)	<button id='my-toggle-button' aria-pressed='false'>
+Aria-selected	indique que l'option est selectionnée	option et les rôles gridcell, row, tab
+Aria-current	indique l'élément où je suis	pleins de cas
+Dans une barre de navigation	< a aria-current='page'...>	le lien mène à la page actuelle
+Dans un gros formulaire, un parcours	<a class='step-indicator' aria-current='step'...>
+Il accompagne un marquage visible par l'utilisateur. S'il n'y a pas de marquage, il n'est pas nécessaire non plus.
+Exemple: https://accessibilite.public.lu/fr/raam1/methodologie.html
+
+------------ Sr-only ------------
+
+Un texte invisible pour l'utilisateur mais accessible au lecteur d'écran. < x class='sr-only'>
+.sr-only {
+	/* source: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034 */
+	Clip: Rect(1px, 1px, 1px, 1px)!important;
+	-webkit-clip-path: Inset(50%)!important;
+	Clip-path: Inset(50%)!important;
+	Overflow: Hidden !important;
+	Width: 1px !important;
+	Height: 1px !important;
+	Margin: -1px !important;
+	White-space: Nowrap !important;
+	Padding: 0 !important;
+	Border: 0 !important;
+	Position: Absolute !important;
+}
+
+************ Ratio de contraste selon la taille du texte ************
+
+Le contraste va de 1: 1 (même couleur) à 21: 1 (noir et blanc).
+le logiciel cca analyse les couleurs du texte en image.
+C:\Program Files\Colour Contrast Analyser
+
+Petit texte:
+	Texte de moins de 24px
+	Texte de moins de 18.5px en gras
+Grand texte:
+	Texte d'au moins 24px
+	Texte d'au moins 18.5px en gras
+.	aa		aaa:
+Pt:	4.5: 1	7: 1
+Gd:	3: 1		4.5: 1
+je prends en compte la taille calculée via windows.getComputedStyle. la taille déclarée dans le css ne veut rien dire.
+
+--- le contenu non textuel ---
+
+contraste minimum de 3:1 pour les éléments porteurs d'information autre que le texte. ils sont comparés aux couleurs environnantes, pas que le fond.
+les images, les icônes, les couleurs de signalement, les étoiles de notation, les éléments interractifs (formulaires, etc).
+
+--- les cas particuliers ---
+
+le texte et l'image décoratifs, le logo et le nom de marque, l'élément de formulaire innactif (disabled).
+l'extension WCAG Contrast Checker analyse les couleurs des textes en html et css.
+
+
+
+============ Divers ============
+
+Le nom accessible est celui restitué par les technologies d'assistance.
+Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
+https://developer.mozilla.org/en-us/docs/web/html/element/area
 
 ================================================
 
 Sujet:	Programmation, formation
-Auteur:	Access42 et deborah
+Auteur:	Access42 et Deborah
 Lien:	https://formations.access42.net/formations/formation-audit-accessibilite/
 Laut:	https://formations.access42.net/
