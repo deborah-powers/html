@@ -1,6 +1,6 @@
 ============ Les images ============
 
-file:///C://// // /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
+C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
 Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
 Img et area possèdent un attribut alt, même vide.
 Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
@@ -108,6 +108,9 @@ Un texte invisible pour l'utilisateur mais accessible au lecteur d'écran. < x c
 
 ************ Ratio de contraste selon la taille du texte ************
 
+s'il y a une version alternative pour le rgaa, c'est elle que je dois auditer. exemple sur https://www.communaute-paysbasque.fr/
+
+--- le texte ---
 Le contraste va de 1: 1 (même couleur) à 21: 1 (noir et blanc).
 le logiciel cca analyse les couleurs du texte en image.
 C:\Program Files\Colour Contrast Analyser
@@ -121,7 +124,7 @@ Grand texte:
 .	aa		aaa:
 Pt:	4.5: 1	7: 1
 Gd:	3: 1		4.5: 1
-je prends en compte la taille calculée via windows.getComputedStyle. la taille déclarée dans le css ne veut rien dire.
+je prends en compte la taille calculée via windows.getComputedStyle.
 
 --- le contenu non textuel ---
 
@@ -133,6 +136,8 @@ les images, les icônes, les couleurs de signalement, les étoiles de notation, 
 le texte et l'image décoratifs, le logo et le nom de marque, l'élément de formulaire innactif (disabled).
 l'extension WCAG Contrast Checker analyse les couleurs des textes en html et css.
 
+tester le changement de style avec https://accessconfig.a11y.fr/
+C:\Users\deborah.powers\AppData\Local\AccessConfig-1
 
 
 ============ Divers ============
