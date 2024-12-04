@@ -60,13 +60,13 @@ La légende reprend le label.
 
 ============ Les iframes ============
 
-file:///c:\\ //users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
+C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
 Le titre est obligatoire.
 Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
 
 ============ Les couleurs ============
 
-file:///c:\\ ///users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
+C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
 
 ************ La couleur de signalement ************
 
@@ -114,7 +114,7 @@ S'il y a une version alternative pour le rgaa, c'est elle que je dois auditer. E
 
 Le contraste va de 1: 1 (même couleur) à 21: 1 (noir et blanc).
 Le logiciel cca analyse les couleurs du texte en image.
-C:/program files/colour contrast analyser
+C://program files/colour contrast analyser
 Petit texte:
 	Texte de moins de 24px
 	Texte de moins de 18.5px en gras
@@ -136,33 +136,52 @@ Les images, les icônes, les couleurs de signalement, les étoiles de notation, 
 Le texte et l'image décoratifs, le logo et le nom de marque, l'élément de formulaire innactif (disabled).
 L'extension wcag contrast checker analyse les couleurs des textes en html et css.
 Tester le changement de style avec https://accessconfig.a11y.fr/
-C:/users/deborah.powers/appdata/local/accessconfig-1
+C://users/deborah.powers/appdata/local/accessconfig-1
 
 ============ Structure du document html ============
 
-file:///c:\\ /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d82
+C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 
 ************ La langue du texte est précisée ************
 
 Si un passage est dans une autre langue, il est dans une div contenant son propre attribut langue. Les mots isolés doivent être dans une span avec attribut lang, sauf s'ils figurent au dictionnaire de l'académie française.
-Html: Lang	<!doctype html><html lang='fr'>
+https://www.dictionnaire-academie.fr/article/A9M2217 (dico académie)
+https://fr.wikipedia.org/wiki/ISO_639
+https://learn.microsoft.com/fr-fr/partner-center/developer/partner-center-supported-languages-and-locales
+les mots étrangers peuvent être détectés à l'aide d'outils de correction de la grammaire, comme l'extension firefox grammalecte-fr.
+Html: Lang	< !doctype html>< html lang='fr-FR'>
 Xhtml: Xml: Lang
 Xhtml en texte: Xml: Lang + lang
 
 ------------ Xhtml 1.0 servi en texte ------------
 
-<!doctype html public '-//w3c//dtd xhtml 1.0 strict//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml: Lang='fr' lang='fr'>
-<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+< !doctype html public '-//w3c//dtd xhtml 1.0 strict//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd'>
+< html xmlns='http://www.w3.org/1999/xhtml' xml: Lang='fr' lang='fr'>
+< meta http-equiv='content-type' content='text/html; charset=utf-8' />
 
 ------------ Xhtml 1.0 servi en application ou 1.1 ------------
 
-<?xml version="1.0" encoding="utf-8"?>
-<!doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml: Lang="fr">
-<head><meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+< ?xml version="1.0" encoding="utf-8"?>
+< !doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
+< html xmlns="http://www.w3.org/1999/xhtml" xml: Lang="fr">
+< head>< meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+
+*** le sens de lecture est précisé ***
+
+< html dir='rtl'>
+< div dir='ltr'>
+ltr: left to right
+rtl: right to left
+obligatoire si:
+	le sens de lecture de la langue est ltr, comme pour les langues arabes.
+	un encart rtl est au milieu d'un texte ltr.
+sur l'élément html, dir='ltr' peut être ommi.
+
+=== la sémentique de balisage ===
+
+utiliser une balise pour son rôle prévu. éviter les balises vides, notament les paragraphes.
 
 ============ Divers ============
 
