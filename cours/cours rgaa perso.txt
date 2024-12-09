@@ -147,41 +147,42 @@ Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour cha
 ************ La langue du texte est précisée ************
 
 Si un passage est dans une autre langue, il est dans une div contenant son propre attribut langue. Les mots isolés doivent être dans une span avec attribut lang, sauf s'ils figurent au dictionnaire de l'académie française.
-https://www.dictionnaire-academie.fr/article/A9M2217 (dico académie)
-https://fr.wikipedia.org/wiki/ISO_639
+https://www.dictionnaire-academie.fr/article/a9m2217 (dico académie)
+https://fr.wikipedia.org/wiki/iso_639
 https://learn.microsoft.com/fr-fr/partner-center/developer/partner-center-supported-languages-and-locales
-les mots étrangers peuvent être détectés à l'aide d'outils de correction de la grammaire, comme l'extension firefox grammalecte-fr.
-Html: Lang	< !doctype html>< html lang='fr-FR'>
+Les mots étrangers peuvent être détectés à l'aide d'outils de correction de la grammaire, comme l'extension firefox grammalecte-fr.
+Html: Lang	<!doctype html>< html lang='fr-fr'>
 Xhtml: Xml: Lang
 Xhtml en texte: Xml: Lang + lang
 
 ------------ Xhtml 1.0 servi en texte ------------
 
-< !doctype html public '-//w3c//dtd xhtml 1.0 strict//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd'>
+<!doctype html public '-//w3c//dtd xhtml 1.0 strict//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd'>
 < html xmlns='http://www.w3.org/1999/xhtml' xml: Lang='fr' lang='fr'>
 < meta http-equiv='content-type' content='text/html; charset=utf-8' />
 
 ------------ Xhtml 1.0 servi en application ou 1.1 ------------
 
-< ?xml version="1.0" encoding="utf-8"?>
-< !doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
 < html xmlns="http://www.w3.org/1999/xhtml" xml: Lang="fr">
 < head>< meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
 
-*** le sens de lecture est précisé ***
+************ Le sens de lecture est précisé ************
 
 < html dir='rtl'>
 < div dir='ltr'>
-ltr: left to right
-rtl: right to left
-obligatoire si:
-	le sens de lecture de la langue est ltr, comme pour les langues arabes.
-	un encart rtl est au milieu d'un texte ltr.
-sur l'élément html, dir='ltr' peut être ommi.
+Ltr: Left to right
+Rtl: Right to left
+Obligatoire si:
+	Le sens de lecture de la langue est ltr, comme pour les langues arabes.
+	Un encart rtl est au milieu d'un texte ltr.
+Sur l'élément html, dir='ltr' peut être ommi.
 
-=== la sémentique de balisage ===
+============ La sémentique de balisage ============
 
-utiliser une balise pour son rôle prévu. éviter les balises vides, notament les paragraphes.
+Eviter les balises vides, notament les paragraphes.
+Utiliser une balise pour son rôle prévu. les titres ne servent pas au référencement, les conteneurs (div, section, etc) doivent avoir des noeuds enfants.
 
 ============ Divers ============
 

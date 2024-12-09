@@ -29,7 +29,7 @@ J'ai besoin d'un tiers-temps pour les épreuves écrites, comment le mettre en p
 
 ============ Questions ============
 
-site-jouet
+Site-jouet
 https://www.ccomptes.fr/fr/laccessibilite-de-ccomptesfr
 
 ============ Le métier ============
@@ -123,7 +123,7 @@ Changement de contexte: Déplacement automatique du focus, changement de page, d
 L'ouverture d'une modale n'est pas considérée comme un changement de contexte.
 Design system: Bibliothèque de composants. https://www.systeme-de-design.gouv.fr/
 Aria-live
-File:///c:\\ // // // // // // /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d262
+file:///c:\\ // // // // // // // /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d262
 
 ************ Exercice ************
 
