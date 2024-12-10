@@ -179,10 +179,22 @@ Obligatoire si:
 	Un encart rtl est au milieu d'un texte ltr.
 Sur l'élément html, dir='ltr' peut être ommi.
 
-============ La sémentique de balisage ============
+============ La sémantique de balisage ============
 
 Eviter les balises vides, notament les paragraphes.
 Utiliser une balise pour son rôle prévu. les titres ne servent pas au référencement, les conteneurs (div, section, etc) doivent avoir des noeuds enfants.
+si deux main dans la page, l'un doit avoir un attribut hidden.
+les header et footer ne doivent pas contenir de header et footer.
+article représente une section autonome de son parent. il doit avoir un titre. https://developer.mozilla.org/fr/docs/Web/HTML/Element/article
+section représente une partie de son parent. elle est sensée avoir un titre.
+aside représente un bloc indépendant du contenu de son parent.
+
+=== le css ===
+
+ma page doit être lisible et opérable quand le css est supprimé. les navigateurs d'écran sautent le pluspart du css, certains humains le désactivent ou le modifient.
+utiliser les balises link, style ou l'attribut style='...'.
+les attributs width et height sont autorisés pour les images (au sens du rgaa). size est autorisé pour les select. sinon, pas de style inline tel que color='...'.
+https://accessibilite.numerique.gouv.fr/methode/glossaire/#presentation-de-l-information (balises et attributs interdits), https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u (cas de l'élément u)
 
 ============ Divers ============
 
