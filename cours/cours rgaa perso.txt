@@ -192,6 +192,7 @@ aside représente un bloc indépendant du contenu de son parent.
 === le css ===
 
 ma page doit être lisible et opérable quand le css est supprimé. les navigateurs d'écran sautent le pluspart du css, certains humains le désactivent ou le modifient.
+le css seul est utilisé pour la mise en forme.
 utiliser les balises link, style ou l'attribut style='...'.
 les attributs width et height sont autorisés pour les images (au sens du rgaa). size est autorisé pour les select. sinon, pas de style inline tel que color='...'.
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#presentation-de-l-information (balises et attributs interdits), https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u (cas de l'élément u)
