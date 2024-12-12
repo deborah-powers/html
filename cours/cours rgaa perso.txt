@@ -1,3 +1,16 @@
+============ Le css ============
+
+Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
+Le css seul est utilisé pour la mise en forme.
+Utiliser les balises link, style ou l'attribut style='...'.
+Les attributs width et height sont autorisés pour les images (au sens du rgaa). Size est autorisé pour les select. Sinon, pas de style inline tel que color='...'.
+https://accessibilite.numerique.gouv.fr/methode/glossaire/#presentation-de-l-information (balises et attributs interdits), https://developer.mozilla.org/en-us/docs/web/html/element/u (cas de l'élément u)
+Les informations apportées par le css doivent avoir une alternative dans le html.
+	Marqueur de lien: Before --> emoticone, title, sr-only...
+	background-image --> vraie image. Faire des affiches en rajoutant du texte html par-dessus un conteneur avec image de fond.
+l'ordre de succession des éléments css désactivé doit être logique. grid est magique.
+
+
 ============ Les images ============
 
 C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
@@ -182,20 +195,12 @@ Sur l'élément html, dir='ltr' peut être ommi.
 ============ La sémantique de balisage ============
 
 Eviter les balises vides, notament les paragraphes.
-Utiliser une balise pour son rôle prévu. les titres ne servent pas au référencement, les conteneurs (div, section, etc) doivent avoir des noeuds enfants.
-si deux main dans la page, l'un doit avoir un attribut hidden.
-les header et footer ne doivent pas contenir de header et footer.
-article représente une section autonome de son parent. il doit avoir un titre. https://developer.mozilla.org/fr/docs/Web/HTML/Element/article
-section représente une partie de son parent. elle est sensée avoir un titre.
-aside représente un bloc indépendant du contenu de son parent.
-
-=== le css ===
-
-ma page doit être lisible et opérable quand le css est supprimé. les navigateurs d'écran sautent le pluspart du css, certains humains le désactivent ou le modifient.
-le css seul est utilisé pour la mise en forme.
-utiliser les balises link, style ou l'attribut style='...'.
-les attributs width et height sont autorisés pour les images (au sens du rgaa). size est autorisé pour les select. sinon, pas de style inline tel que color='...'.
-https://accessibilite.numerique.gouv.fr/methode/glossaire/#presentation-de-l-information (balises et attributs interdits), https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u (cas de l'élément u)
+Utiliser une balise pour son rôle prévu. Les titres ne servent pas au référencement, les conteneurs (div, section, etc) doivent avoir des noeuds enfants.
+Si deux main dans la page, l'un doit avoir un attribut hidden.
+Les header et footer ne doivent pas contenir de header et footer.
+Article représente une section autonome de son parent. Il doit avoir un titre. https://developer.mozilla.org/fr/docs/web/html/element/article
+Section représente une partie de son parent. Elle est sensée avoir un titre.
+Aside représente un bloc indépendant du contenu de son parent.
 
 ============ Divers ============
 
