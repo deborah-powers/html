@@ -19,4 +19,33 @@
 		<a href='structure.html'>la structure de la page</a>
 		<a href='balisage.html'>le balisage</a>
 	</nav>
-</body></html>
+</body>
+<script type="text/javascript">
+/*
+console.log ('user', navigator.userAgent);
+console.log ('ordinateur', navigator.oscpu);
+console.log ('browser', browser);
+console.log ('navigator', navigator);
+console.log ('window', window);
+console.log ('document', document);
+console.log ('screen', Screen);
+console.log ('performance', window.performance);
+console.log ('screen', window.screen);
+*/
+const title = document.getElementsByTagName ('h1')[0];
+const trueStyleText = window.getComputedStyle (title);
+const baseStyleText = window.getDefaultComputedStyle (title);
+const link = document.getElementsByTagName ('a')[0];
+const trueStyleLink = window.getComputedStyle (link);
+const baseStyleLink = window.getDefaultComputedStyle (link);
+const baseStyleLinkVisited = window.getDefaultComputedStyle (link, ':visited');
+console.dir (baseStyleLink.color);
+console.dir (baseStyleLinkVisited.color);
+/*
+console.log ('true style text', trueStyleText.color, trueStyleText.backgroundColor);
+console.log ('base style text', baseStyleText.color, baseStyleText.backgroundColor);
+console.log ('true style link', trueStyleLink.color, trueStyleLink.backgroundColor);
+console.log ('base style link', baseStyleLink.color, baseStyleLink.backgroundColor);
+*/
+</script>
+</html>

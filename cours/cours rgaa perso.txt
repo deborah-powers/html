@@ -1,6 +1,6 @@
 ============ Le css ============
 
-C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d96
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d96
 Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
 Le css seul est utilisé pour la mise en forme.
 Utiliser les balises link, style ou l'attribut style='...'.
@@ -13,12 +13,13 @@ L'ordre de succession des éléments css désactivé doit être logique. Grid es
 
 ************ Les couleurs ************
 
-file:///c:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d106
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d106
 Si une couleur de fond est déclarée ou héritée, une couleur de texte doit être déclarée ou héritée aussi. Et vice-versa.
 Vérifier à partir de la balise html si color et background-color sont déclarés. Sinon, descendre dans l'arborescence du document.
 Modifier les couleurs par défaut de la page et vérifier quels éléments gardent leurs teintes originelles.
 Quand background-color: Transparent ?
 si le fond est une image (Background-image), mettre une couleur de fond par sécurité, afin de maintenir le contraste avec le texte si elle est désactivée.
+je n'ai pas trouvé comment faire dans edge et chrome. celà semble impossible.
 
 ------------ Dans firefox ------------
 
@@ -27,13 +28,14 @@ Définir des couleurs
 Décocher "utiliser les couleurs du système"
 Menu "outrepasser les couleurs spécifiées" à jamais
 
+
 ============ Les titres ============
 
 Titre h1 vide, contenant une image ?
 
 ============ Les images ============
 
-C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
 Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
 Img et area possèdent un attribut alt, même vide.
 Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
@@ -93,13 +95,13 @@ La légende reprend le label.
 
 ============ Les iframes ============
 
-C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
 Le titre est obligatoire.
 Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
 
 ============ Les couleurs ============
 
-C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
 
 ************ La couleur de signalement ************
 
@@ -147,7 +149,7 @@ S'il y a une version alternative pour le rgaa, c'est elle que je dois auditer. E
 
 Le contraste va de 1: 1 (même couleur) à 21: 1 (noir et blanc).
 Le logiciel cca analyse les couleurs du texte en image.
-C://program files/colour contrast analyser
+C:/program files/colour contrast analyser
 Petit texte:
 	Texte de moins de 24px
 	Texte de moins de 18.5px en gras
@@ -169,11 +171,11 @@ Les images, les icônes, les couleurs de signalement, les étoiles de notation, 
 Le texte et l'image décoratifs, le logo et le nom de marque, l'élément de formulaire innactif (disabled).
 L'extension wcag contrast checker analyse les couleurs des textes en html et css.
 Tester le changement de style avec https://accessconfig.a11y.fr/
-C://users/deborah.powers/appdata/local/accessconfig-1
+C:/users/deborah.powers/appdata/local/accessconfig-1
 
 ============ Structure du document html ============
 
-C://users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d82
+C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 
