@@ -70,6 +70,20 @@ raccourci console du bureau /propriétés/target
 rajouter en fin de ligne: /k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
 /k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
 
+=== effacer les coockies et le cache ===
+
+*** dans firefox ***
+
+about:preferences#privacy
+Cookies et données de sites / bouton pour éffacer les données
+intervalle: tout (de préférence)
+cocher les types de données à supprimer
+
+*** dans chrome ***
+
+chrome://settings/clearBrowserData
+période: toutes les données (de préférence)
+cocher les types de données à supprimer
 
 ====== divers ======
 

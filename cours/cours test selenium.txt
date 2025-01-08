@@ -60,3 +60,68 @@ assert permet de vérifier certaines valeurs.
 page de selenium / tableau principal
 les commandes de selenium s'appellent des selenies. open, click, assert title...
 il est possible de supprimer certaines selenies. si j'ai fait une fausse manip, si j'ai du scroller pour trouver un bouton...
+
+=== selenium avec python ===
+
+https://pypi.org/project/selenium/
+https://selenium-python.readthedocs.io/
+https://datascientest.com/selenium-python-web-scraping
+
+pip install -U selenium
+pip install webdriver_manager
+
+démo dans b/python/selen-tuto.py
+
+common.by.By précise l'attribut par lequel récupérer un élément. By.ID, XPATH, NAME, TAG_NAME, CLASS_NAME, CSS_SELECTOR
+XPATH est le chemin pour retrouver une balise quelquonque. //p[@class="ma-classe"]/strong[1]
+//p[@class="ma-classe"]/strong	un seul élément strong dans mon p. je le récupère.
+//p[@class="ma-classe"]/strong[1]	plusieurs éléments strong dans mon p. je récupère le premier. l'indice commence à 1.
+//tag[@attribut="valeur"]/enfants[1]
+
+*** divers ***
+
+https://gist.github.com/sujit/578d577c3f5a74a9f183c92a2c18c5b5
+
+*** erreurs ***
+
+cannot import name 'webdriver' from partially initialized module 'selenium'
+renommer mon script selenium.py --> nawak.py
+
+---
+
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+options = webdriver.ChromeOptions()
+options.add_argument('ignore-certificate-errors')
+options.add_argument ('accept_insecure_certs')
+driver = webdriver.Chrome (ChromeDriverManager().install(), options=options)
+
+---
+
+requests.exceptions.ConnectionError: Could not reach host. Are you offline?
+service = Service()
+options = webdriver.ChromeOptions()
+options.add_argument('--enable-unsafe-swiftshader')
+options.add_argument ('--ignore-certificate-errors')
+options.add_argument ('--accept_insecure_certs')
+driver = webdriver.Chrome (service=service, options=options)
+
+---
+
+[16140:10700:0108/121417.009:ERROR:ssl_client_socket_impl.cc(878)] handshake failed; returned -1, SSL error code 1, net_error -101
+
+https://stackoverflow.com/questions/37883759/errorssl-client-socket-openssl-cc1158-handshake-failed-with-chromedriver-chr
+
+options.add_argument('--enable-unsafe-swiftshader')
+options.add_argument('--ignore-certificate-errors')
+options.add_argument('--ignore-ssl-errors')
+options.add_argument ('--log-level=3')
+
+cette erreur ne bloque pas le déroulement de mon script, je peux l'ignorer.
+
+=== selenium avec python pour tester l'accessibilité numérique ===
+
+https://github.com/axe-selenium-python/axe-selenium-python
+pip install axe-selenium-python
+démo dans b/python/selen-rgaa.py
+

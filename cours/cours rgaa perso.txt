@@ -1,3 +1,15 @@
+============ Mes questions ============
+
+Couleurs:
+J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
+Y-a-t-il une erreur quand background-color = transparent ?
+Tîtres:
+Y-a-t-il une erreur quand le tître ne contient pas de texte, mais une image sans texte ? Pour les tîtres h1, h2, etc.
+Focus:
+Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tabindex=0). Ma page utilise le focus natif du navigateur.
+Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
+Mon navigateur devrait-il les prendre en compte ?
+
 ============ Le css ============
 
 C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d96
@@ -8,8 +20,10 @@ Les attributs width et height sont autorisés pour les images (au sens du rgaa).
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#presentation-de-l-information (balises et attributs interdits), https://developer.mozilla.org/en-us/docs/web/html/element/u (cas de l'élément u)
 Les informations apportées par le css doivent avoir une alternative dans le html.
 	Marqueur de lien: Before --> emoticone, title, sr-only...
-	Background-image --> vraie image. Faire des affiches en rajoutant du texte html par-dessus un conteneur avec image de fond.
-L'ordre de succession des éléments css désactivé doit être logique. Grid est magique.
+	Background-image --> vraie image. Faire des affiches en rajoutant du texte html par-dessus un conteneur avec image de fond. Prévoir une couleur de fond afin de conserver le contraste avec le texte.
+L'ordre de succession des éléments css désactivé doit être logique. Grid est magique. Le bandeau des coockies doit être lu en début de page.
+Tester en comparant la page classique avec sa version css désactivée. Vérifier que tous les éléments porteurs d'information sont présents, que les infos sont compréhensibles.
+Vérifier s'il y a du texte hors écran.
 
 ************ Les couleurs ************
 
@@ -18,16 +32,38 @@ Si une couleur de fond est déclarée ou héritée, une couleur de texte doit ê
 Vérifier à partir de la balise html si color et background-color sont déclarés. Sinon, descendre dans l'arborescence du document.
 Modifier les couleurs par défaut de la page et vérifier quels éléments gardent leurs teintes originelles.
 Quand background-color: Transparent ?
-si le fond est une image (Background-image), mettre une couleur de fond par sécurité, afin de maintenir le contraste avec le texte si elle est désactivée.
-je n'ai pas trouvé comment faire dans edge et chrome. celà semble impossible.
+Si le fond est une image (background-image), mettre une couleur de fond par sécurité, afin de maintenir le contraste avec le texte si elle est désactivée. Tester en désactivant les images de fond.
+Je n'ai pas trouvé comment faire dans edge et chrome. Celà semble impossible.
 
 ------------ Dans firefox ------------
 
-About:preferences / section des couleurs / bouton gérer les couleurs
+About: Preferences / section des couleurs / bouton gérer les couleurs
 Définir des couleurs
 Décocher "utiliser les couleurs du système"
 Menu "outrepasser les couleurs spécifiées" à jamais
 
+************ Agrandissement du texte ************
+
+Je dois pouvoir agrandir le texte de 200% sans perte d'information. 6 fois ctl+. Les éléments sont visibles et atteignables à la souris.
+https://marieguillaumet.com/refonte-mon-portfolio-du-responsive-en-em-premiere-partie/
+En css:
+Zoom: 200%;
+-moz-transform: Scale(2);
+Attention au texte en image et aux sous-tîtres
+
+************ Le focus ************
+
+Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
+Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
+
+------------ Forcer le focus pour les tests ------------
+
+Sur firefox et chrome.
+Console / inspecteur
+Sélectionner mon élément
+Onglet des règles /: Hov
+Cocher les cases: Focus: Focus-visible et focus-within
+https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
 
 ============ Les titres ============
 
@@ -82,7 +118,7 @@ Mettre à coté de l'image
 	Un bouton dépliant la div
 	Un texte toujours visible, s'il est court.
 Eviter l'attribut longdesc.
-Transformer une affiche en une div avec un fond. L'idéal est que l'utilisateur puisse adapter le style du texte. ajouter une couleur de fond par sécurité, afin de conserver le contraste de lecture si l'image est désactivée.
+Transformer une affiche en une div avec un fond. L'idéal est que l'utilisateur puisse adapter le style du texte. Ajouter une couleur de fond par sécurité, afin de conserver le contraste de lecture si l'image est désactivée.
 https://accessconfig.a11y.fr/
 
 ************ La figure ************
