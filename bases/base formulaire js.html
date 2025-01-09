@@ -7,30 +7,60 @@
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/perso.css' media='screen'/>
 <style type='text/css'>
-	input { display: block; }
-	* {
-		margin-bottom: 6mm;
+	input, label { display: block; }
+	* { margin-bottom: 6mm; }
+	form#hidden-boxes label:hover, form#hidden-boxes label:focus { border: solid 2px deeppink; }
+	form#hidden-boxes input[type='radio'] {
+		Clip: Rect(1px, 1px, 1px, 1px)!important;
+		-webkit-clip-path: Inset(50%)!important;
+		Clip-path: Inset(50%)!important;
+		Overflow: Hidden !important;
+		Width: 1px !important;
+		Height: 1px !important;
+		Margin: -1px !important;
+		White-space: Nowrap !important;
+		Padding: 0 !important;
+		Border: 0 !important;
+		Position: Absolute !important;
 	}
 </style></head><body>
-	<form>
-		<p>Votre nom</p>
+	<h1>exemple de formulaires en js</h1>
+	<form method='get' onsubmit='return false'>
+		<label for='l-name'>Votre nom</label>
 		<input type='text' id='l-name' value='Carroussi'/>
-		<p>Votre prénom</p>
+		<label for='f-name'>Votre prénom</label>
 		<input type='text' id='f-name' value='Claudia'/>
 		<input type='submit' onmouseleave='printName()'/>
 		<input type='reset'/>
 	</form>
+	<form method='get' onsubmit='return false' id='hidden-boxes'>
+		<h2>êtes-vous</h2>
+		<label for='sexe-homme'>un homme</label>
+		<input type='radio' name='sex' id='sexe-homme' value='homme'/>
+		<label for='sexe-femme'>une femme</label>
+		<input type='radio' name='sex' id='sexe-femme' value='femme'/>
+		<label for='sexe-autre'>un autre</label>
+		<input type='radio' name='sex' id='sexe-autre' value='autre'/>
+		<input type='submit' onmouseleave='printSex()'/>
+	</form>
 	<p id='showLname'>Votre nom est:</p>
 	<p id='showFname'>Votre prénom est:</p>
+	<p id='showSex'>vous êtes:</p>
 </body><script type='text/javascript'>
-	var Fname = document.getElementById ('f-name');
-	var Lname = document.getElementById ('l-name');
-			var showFname = document.getElementById ('showFname');
-			var showLname = document.getElementById ('showLname');
+	const showFname = document.getElementById ('showFname');
+	const showLname = document.getElementById ('showLname');
+	const showSex = document.getElementById ('showSex');
 	function printName(){
-		var txtFname = Fname.value;
-		var txtLname = Lname.value;
-		showFname.innerHTML = 'Votre prénom est: '+ txtFname;
-		showLname.innerHTML = 'Votre nom est: '+ txtLname;
+		const Fname = document.getElementById ('f-name');
+		const Lname = document.getElementById ('l-name');
+		showFname.innerHTML = 'Votre prénom est: '+ Fname.value;
+		showLname.innerHTML = 'Votre nom est: '+ Lname.value;
 	}
+	function printSex(){
+		const checked = document.querySelector ('input[name="sex"]:checked');
+		if (! checked) showSex.innerHTML = 'veuillez choisir une option.';
+		else{
+			var message = 'vous êtes: '+ checked.value;
+			showSex.innerHTML = message;
+	}}
 </script></html>

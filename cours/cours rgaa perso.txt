@@ -12,7 +12,7 @@ Mon navigateur devrait-il les prendre en compte ?
 
 ============ Le css ============
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d96
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D96
 Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
 Le css seul est utilisé pour la mise en forme.
 Utiliser les balises link, style ou l'attribut style='...'.
@@ -27,7 +27,7 @@ Vérifier s'il y a du texte hors écran.
 
 ************ Les couleurs ************
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d106
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D106
 Si une couleur de fond est déclarée ou héritée, une couleur de texte doit être déclarée ou héritée aussi. Et vice-versa.
 Vérifier à partir de la balise html si color et background-color sont déclarés. Sinon, descendre dans l'arborescence du document.
 Modifier les couleurs par défaut de la page et vérifier quels éléments gardent leurs teintes originelles.
@@ -53,6 +53,8 @@ Attention au texte en image et aux sous-tîtres
 
 ************ Le focus ************
 
+file:///C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D112
+
 Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
 Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
 
@@ -65,13 +67,53 @@ Onglet des règles /: Hov
 Cocher les cases: Focus: Focus-visible et focus-within
 https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
 
+*** les liens au sein du texte ***
+
+un lien se distingue du texte autour.
+le contraste entre le lien et le texte autour doit être >= 3:1, en conservant les ratios avec le fond. une marque autre que la couleur doit la doubler.
+une marque autre que la couleur indique le survol ou le focus.
+
+*** le contenu caché ***
+
+nous parlons du contenu caché pour tous les utilisateurs.
+
+css {
+	display: none;	/* erreur typique des cases à cocher ou boutons radio */
+	visibility: hidden;
+	font-size: 0;
+}
+<tag aria-hidden='true' hidden>
+
+progression: file:///C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D117
+
+--- boutons radio stylisés, cas en erreur ---
+
+l'utilisateur clique sur le label
+
+input[type='radio'] { display: none; }
+<form>
+	<h3>que choisissez-vous ?</h3>
+	<label id='option-a' tabindex='0'>option a</label><input type='radio' for='option-a' />
+	<label id='option-b' tabindex='0'>option b</label><input type='radio' for='option-b' />
+</form>
+
+--- boutons radio stylisés, correction ---
+
+input[type='radio'] { propriétés de la classe sr-only; }
+<form>
+	<h3>que choisissez-vous ?</h3>
+	<label id='option-a'>option a</label><input type='radio' for='option-a' class='sr-only' />
+	<label id='option-b'>option b</label><input type='radio' for='option-b' class='sr-only' />
+</form>
+
+
 ============ Les titres ============
 
 Titre h1 vide, contenant une image ?
 
 ============ Les images ============
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d38 (source acces 42)
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D38 (source acces 42)
 Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
 Img et area possèdent un attribut alt, même vide.
 Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
@@ -131,13 +173,13 @@ La légende reprend le label.
 
 ============ Les iframes ============
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d63
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D63
 Le titre est obligatoire.
 Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
 
 ============ Les couleurs ============
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d67
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D67
 
 ************ La couleur de signalement ************
 
@@ -211,7 +253,7 @@ C:/users/deborah.powers/appdata/local/accessconfig-1
 
 ============ Structure du document html ============
 
-C:/users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d82
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 
