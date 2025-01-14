@@ -35,12 +35,12 @@
 	</form>
 	<form method='get' onsubmit='return false' id='hidden-boxes'>
 		<h2>êtes-vous</h2>
-		<label for='sexe-homme'>un homme</label>
-		<input type='radio' name='sex' id='sexe-homme' value='homme'/>
-		<label for='sexe-femme'>une femme</label>
-		<input type='radio' name='sex' id='sexe-femme' value='femme'/>
-		<label for='sexe-autre'>un autre</label>
-		<input type='radio' name='sex' id='sexe-autre' value='autre'/>
+		<label tabIndex='0' for='sexe-homme'>un homme</label>
+		<input tabIndex='-1' type='radio' name='sex' id='sexe-homme' value='homme'/>
+		<label tabIndex='0' for='sexe-femme'>une femme</label>
+		<input tabIndex='-1' type='radio' name='sex' id='sexe-femme' value='femme'/>
+		<label tabIndex='0' for='sexe-autre'>un autre</label>
+		<input tabIndex='-1' type='radio' name='sex' id='sexe-autre' value='autre'/>
 		<input type='submit' onmouseleave='printSex()'/>
 	</form>
 	<p id='showLname'>Votre nom est:</p>
