@@ -10,7 +10,11 @@ Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tab
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
 
-============ Le css ============
+============ La présentation ============
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d95
+
+************ Le css ************
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d96
 Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
@@ -53,7 +57,7 @@ Attention au texte en image et aux sous-tîtres
 
 ************ Le focus ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
 Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
 Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
 
@@ -81,7 +85,7 @@ Css {
 	Font-size: 0;
 }
 <tag aria-hidden='true' hidden>
-Progression: file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d117
+Aria-hidden cache aux lecteurs d'écran les éléments décoratifs. Ils restent visibles à l'écran. Il ne doit pas être donné aux éléments focusables ou à leurs ancêtres.
 
 ------------ Boutons radio stylisés, cas en erreur ------------
 
@@ -101,6 +105,41 @@ Input[type='radio'] { propriétés de la classe sr-only; }
 	<label id='option-a'>option a</label><input type='radio' for='option-a' class='sr-only' />
 	<label id='option-b'>option b</label><input type='radio' for='option-b' class='sr-only' />
 </form>
+
+************ L'information non-textuelle ************
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d119
+Hauteur des barres d'un histogramme, mise en gras afin de montrer l'importance d'un ingrédient.
+Rendre les infos disponibles pour une personne aveugle.
+Attribut title des barres
+Description textuelle alternative, éventuellement positionnée hors écran.
+
+************ La linéarisation ************
+
+Si je réduis la taille de ma fenêtre, je dois pouvoir lire la page n'ayant qu'un seul ascenseur.
+Pour les fenêtres de 320 * 256 px minimum.
+Exceptions pour les images, les tableaux, les graphiques, les vidéos, les jeux, les diaporamas, les cartes...
+Tester en zoomant à 400% dans une fenêtre de 1280px. Utiliser la vue adaptative du navigateur. Sur windows, ctl + shift + m.
+
+************ Le texte reste lisible en modifiant son css ************
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d122
+Line-height: 1.5 * fontsize;
+Margin-bottom: 2* fontsize;
+Letter-spacing: 1.12 * fontsize;
+Word-spacing: 1.16 * fontsize;
+Exceptions pour les images-texte, les balises canvas, les sous-titres incrustés dans la vidéo.
+
+************ Contrôle des contenus apparaissant au survol et autres ************
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d124
+Survol, focus, etc.
+je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
+il reste en place quand je le survole.
+
+l'attribut title est un cas particulier.
+
+Progression: c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D124
 
 ============ Les titres ============
 
