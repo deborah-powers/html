@@ -137,13 +137,51 @@ Survol, focus, etc.
 je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
 il reste en place quand je le survole.
 
+https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
+https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
+
 l'attribut title est un cas particulier.
 
-Progression: c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D124
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D124
 
-============ Les titres ============
+=== point sur la navigation au clavier ===
 
-Titre h1 vide, contenant une image ?
+je saute d'un élément focusable à l'autre.
+certains éléments sont focusables par défaut.
+rendre un élément focusable en lui rajoutant l'attribut tabindex='0'. si tabindex >0, l'élément sera sélectionné en priorité. prio = 1 > 2 > 3 > 0.
+rendre un élément infocusable en lui ajoutant tabindex='-1'.
+il vaut mieux conserver le marquage du focus par défaut.
+
+*** les touches ***
+https://webaim.org/techniques/keyboard/
+
+basique:
+	avancer: tab
+	reculer: tab + shift
+lien: suivre: entrer
+bouton classique: cliquer: entrer ou barre d'espace
+boutons radio:
+	sélectionner: flèches horizontales
+	cocher: espace
+	quitter le groupe: tab
+bouton coche: cocher: espace
+select:
+	déplier: espace
+	sélectionner une option: flèches verticales
+	cocher une option: entrer
+auto-complétion lors de la frappe:
+	lancer: tab
+	sélectionner: flèches verticales
+	valider une option: entrer
+boîte de dialogue:
+	echappe: fermer
+
+***
+
+https://fr.wikipedia.org/wiki/Navigation_au_clavier
+https://en.wikipedia.org/wiki/Tabbing_navigation
+https://www.alsacreations.com/article/lire/1866-Le-clavier-un-moyen-de-navigation-a-ne-pas-negliger.html
+https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
 
 ============ Les images ============
 

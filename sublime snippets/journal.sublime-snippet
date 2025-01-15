@@ -2,7 +2,7 @@
 	<content><![CDATA[
 ======================== $1 ========================
 
-date: 2021/$2/$3
+date: 2025/0$2/$3
 lieu: $4
 tags: $5
 personnes: $6
@@ -10,5 +10,5 @@ personnes: $6
 $7
 ]]></content>
 	<tabTrigger>journal</tabTrigger>
-	<scope>text.txt</scope>
+	<scope>text</scope>
 </snippet>

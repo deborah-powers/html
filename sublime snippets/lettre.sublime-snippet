@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[Deborah Powers
+deborah.powers89@gmail.com
+06 22 39 55 25
+62 rue Pierre Brossolette,
+92500 Rueil-Malmaison
+
+Objet: $1
+
+Bonjour,
+
+$2
+
+Cordialement,
+Deborah Powers
+]]></content>
+	<tabTrigger>lettre</tabTrigger>
+	<scope>text</scope>
+</snippet>

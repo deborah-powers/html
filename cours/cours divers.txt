@@ -8,7 +8,33 @@ dans la fenêtre privée, afficher mon image.
 copier l'adresse de l'image.
 je dois obtenir un lien du type "https://lh3.googleusercontent.com/..."
 
+=== créer un template pour sublime text ===
+https://stackoverflow.com/questions/27675067/create-snippet-for-txt-scope
 
+1. créer un fichier mon-truc.sublime-snippet
+
+pour du texte .txt
+<snippet>
+	<content><![CDATA[
+== 2025/$1/$2 ==
+
+$3
+]]></content>
+	<tabTrigger>jour</tabTrigger>
+	<scope>text</scope>
+</snippet>
+
+pour du code python
+<snippet>
+	<content><![CDATA[
+	print ('hello')
+]]></content>
+	<tabTrigger>hello</tabTrigger>
+	<scope>source.python</scope>
+</snippet>
+
+2. sauver ce fichier dans
+C:\Users\deborah.powers\AppData\Roaming\Sublime Text\Packages\User
 
 ====== wamp ======
 
