@@ -10,6 +10,13 @@ Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tab
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
 
+
+=== les tableaux ===
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D129
+
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D129
+
 ============ La présentation ============
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d95
@@ -142,7 +149,6 @@ https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de
 
 l'attribut title est un cas particulier.
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D124
 
 === point sur la navigation au clavier ===
 

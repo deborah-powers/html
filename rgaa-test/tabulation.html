@@ -11,9 +11,18 @@
 		flex-direction: row;
 		justify-content: space-around;
 	}
-	[tabindex]:focus {
-		border-style: dotted;
-	}
+	[tabindex]:focus { border-style: dotted; }
+
+p {
+	animation-name: effacer;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+@keyframes effacer {
+	from {}
+	to { width: 1em; }
+}
 </style></head><body>
 	<h1>l'enfer de la tabulation</h1>
 	<p>tester le fonctionnement de la tabulation.</p>
@@ -87,15 +96,41 @@
 			showShape.innerHTML = message;
 	}}
 	// l'infobulle. une infobulle close avec js (escape) doit être ré-ouverte avec js aussi. js masque le css.
+	Element.prototype.AttributePresent = function (attrName){
+		if (this.attributes[attrName] === undefined) return false;
+		else if (this.attributes[attrName].value ==="" || " \t".includes (this.attributes[attrName].value)) return false;
+		else return true;
+	}
+	HTMLElement.prototype.getByAttribute = function (attrName, attrValue){
+		var element = null;
+		if (this.AttributePresent (attrName) && this.getAttribute (attrName) === attrValue) return this;
+		else{
+			var c=0;
+			while (c< this.children.length){
+				element = this.children[c].getByAttribute (attrName, attrValue);
+				if (element === null) c+=1;
+				else c= this.children.length;
+		}}	
+		return element;
+	}
 	window.addEventListener ('keydown', function (event){
 		if (event.key === 'Escape'){
-			const tooltip = document.querySelectorAll ('[role="tooltip"]:focus');
-			if (tooltip) tooltip.style.display = 'none';
-	}});
+			var activeElement = document.querySelector ('[role="tooltip"]:focus');
+			if (activeElement){
+				const reference = activeElement.parentElement.getByAttribute ('aria-describedby', activeElement.id);
+				reference.focus();
+				activeElement.style.display = 'none';
+			}else{
+				activeElement = document.querySelector ('[aria-describedby]:focus');
+				if (activeElement){
+					const tooltip = document.getElementById (activeElement.getAttribute ('aria-describedby'));
+					tooltip.style.display = 'none';
+	}}}});
 	var paragraphe = document.getElementById ('aria-js');
 	function showTooltip (event){
-		var tooltip = document.getElementById ('description-js');
+		const tooltip = document.getElementById (event.target.getAttribute ('aria-describedby'));
 		tooltip.style.display = 'inline-block';
+	//	tooltip.focus();
 	}
 	paragraphe.addEventListener ('focus', showTooltip);
 </script></body></html>
