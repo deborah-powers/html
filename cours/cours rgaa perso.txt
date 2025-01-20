@@ -15,7 +15,12 @@ Mon navigateur devrait-il les prendre en compte ?
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D129
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D129
+
+tableau de mise en forme: role = presentation ou none. ces tableaux servaient à mettre en forme les infos sur une page, à l'époque où le css était plus limité. il ne contient que des tr et des td
+tableau de donnée:
+
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D130
+
 
 ============ La présentation ============
 
@@ -61,21 +66,6 @@ En css:
 Zoom: 200%;
 -moz-transform: Scale(2);
 Attention au texte en image et aux sous-tîtres
-
-************ Le focus ************
-
-C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
-Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
-Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
-
------------- Forcer le focus pour les tests ------------
-
-Sur firefox et chrome.
-Console / inspecteur
-Sélectionner mon élément
-Onglet des règles /: Hov
-Cocher les cases: Focus: Focus-visible et focus-within
-https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
 
 ************ Les liens au sein du texte ************
 
@@ -137,6 +127,26 @@ Letter-spacing: 1.12 * fontsize;
 Word-spacing: 1.16 * fontsize;
 Exceptions pour les images-texte, les balises canvas, les sous-titres incrustés dans la vidéo.
 
+************ Le focus ************
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
+Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
+Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
+
+--- tester le focus ---
+
+1. survoler tous les éléments à la souris afin de voir ce qui apparaît.
+2. parcourir la page en tabulant afin de vérifier si ces éléments apparaissent.
+
+------------ Forcer le focus pour les tests ------------
+
+Sur firefox et chrome.
+Console / inspecteur
+Sélectionner mon élément
+Onglet des règles /: Hov
+Cocher les cases: Focus: Focus-visible et focus-within
+https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus
+
 ************ Contrôle des contenus apparaissant au survol et autres ************
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d124
@@ -146,6 +156,7 @@ il reste en place quand je le survole.
 
 https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
+https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 
 l'attribut title est un cas particulier.
 

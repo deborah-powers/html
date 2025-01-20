@@ -12,17 +12,7 @@
 		justify-content: space-around;
 	}
 	[tabindex]:focus { border-style: dotted; }
-
-p {
-	animation-name: effacer;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-@keyframes effacer {
-	from {}
-	to { width: 1em; }
-}
+[aria-describedby].aria-js:hover + [role='tooltip'], [aria-describedby].aria-js:focus + [role='tooltip'] { display: none; }
 </style></head><body>
 	<h1>l'enfer de la tabulation</h1>
 	<p>tester le fonctionnement de la tabulation.</p>
@@ -80,7 +70,7 @@ p {
 	<p id='resultat'>répondez au questionnaire.</p>
 	<p tabindex='0' aria-describedby='description-aria'>paragraphe survolable avec une description aria. le block contenant la description doit obligatoirement suivre son référent.</p>
 	<p tabindex='0' id='description-aria' role='tooltip' aria-hidden='true'>je suis la description.</p>
-	<p tabindex='0' aria-describedby='description-js' id='aria-js'>paragraphe survolable dont l'infobulle est gérée par js.</p>
+	<p tabindex='0' aria-describedby='description-js' class='aria-js'>paragraphe survolable dont l'infobulle est gérée par js.</p>
 	<p tabindex='0' id='description-js' role='tooltip' aria-hidden='true'>je suis la description gérée avec js.</p>
 <script type='text/javascript'>
 	// le formulaire
@@ -118,19 +108,35 @@ p {
 			var activeElement = document.querySelector ('[role="tooltip"]:focus');
 			if (activeElement){
 				const reference = activeElement.parentElement.getByAttribute ('aria-describedby', activeElement.id);
-				reference.focus();
-				activeElement.style.display = 'none';
-			}else{
-				activeElement = document.querySelector ('[aria-describedby]:focus');
+				console.log (reference.className, reference);
+				if (reference.className.includes ('aria-js')){
+					reference.focus();
+					activeElement.style.display = 'none';
+			}}else{
+				activeElement = document.querySelector ('[aria-describedby].aria-js:focus');
 				if (activeElement){
 					const tooltip = document.getElementById (activeElement.getAttribute ('aria-describedby'));
 					tooltip.style.display = 'none';
 	}}}});
-	var paragraphe = document.getElementById ('aria-js');
 	function showTooltip (event){
 		const tooltip = document.getElementById (event.target.getAttribute ('aria-describedby'));
 		tooltip.style.display = 'inline-block';
-	//	tooltip.focus();
+		tooltip.focus();
 	}
+	var paragraphes = document.getElementsByClassName ('aria-js');
+	for (var p=0; p< paragraphes.length; p++) paragraphes[p].addEventListener ('click', showTooltip);
+	/*
+	var paragraphe = document.getElementById ('aria-js');
 	paragraphe.addEventListener ('focus', showTooltip);
+	*/
+	window.addEventListener ('click', function (event){
+/*		console.log (event.screenX, event.layerX, event.offsetX, event.pageX, event.x);
+		console.log ('page', event.pageX, event.pageY, document.elementFromPoint (event.pageX, event.pageY));
+		console.log ('coordonnée', event.x, event.y, document.elementFromPoint (event.x, event.y));
+		element.style.backgroundColor = 'lightgreen';
+		const element = document.elementFromPoint (event.x, event.y);
+		*/
+		const elements = document.elementsFromPoint (event.x, event.y);
+		console.log (elements);
+	});
 </script></body></html>
