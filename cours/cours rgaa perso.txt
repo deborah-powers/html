@@ -10,17 +10,24 @@ Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tab
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
 
+============ Les tableaux ============
 
-=== les tableaux ===
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d129
 
-C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D129
+************ Tableau de mise en forme ************
 
+Role = presentation ou none.
+Il ne contient que des tr et des td.
+Ces tableaux servaient à mettre en forme les infos sur une page, à l'époque où le css était plus limité.
+Le contenu reste compréhensible quand on le linéarise, en éffaçant le style (lecteurs d'écran, modification du style.
+les cases sont considérées comme des div. il faut mettre les balises normales du html en elles. paragraphes, h2, etc.
 
-tableau de mise en forme: role = presentation ou none. ces tableaux servaient à mettre en forme les infos sur une page, à l'époque où le css était plus limité. il ne contient que des tr et des td
-tableau de donnée:
+************ Tableau de donnée ************
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D130
+besoin d'un titre. caption, title, aria-label, aria-labelledby.
+si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
 
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d130
 
 ============ La présentation ============
 
@@ -133,10 +140,10 @@ C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
 Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
 Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
 
---- tester le focus ---
+------------ Tester le focus ------------
 
-1. survoler tous les éléments à la souris afin de voir ce qui apparaît.
-2. parcourir la page en tabulant afin de vérifier si ces éléments apparaissent.
+1. Survoler tous les éléments à la souris afin de voir ce qui apparaît.
+2. Parcourir la page en tabulant afin de vérifier si ces éléments apparaissent.
 
 ------------ Forcer le focus pour les tests ------------
 
@@ -151,53 +158,50 @@ https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focu
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d124
 Survol, focus, etc.
-je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
-il reste en place quand je le survole.
-
+Je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
+Il reste en place quand je le survole.
 https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
-https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+https://developer.mozilla.org/en-us/docs/web/api/document/elementfrompoint
+L'attribut title est un cas particulier.
 
-l'attribut title est un cas particulier.
+============ Point sur la navigation au clavier ============
 
+Je saute d'un élément focusable à l'autre.
+Certains éléments sont focusables par défaut.
+Rendre un élément focusable en lui rajoutant l'attribut tabindex='0'. Si tabindex >0, l'élément sera sélectionné en priorité. Prio = 1 > 2 > 3 > 0.
+Rendre un élément infocusable en lui ajoutant tabindex='-1'.
+Il vaut mieux conserver le marquage du focus par défaut.
 
-=== point sur la navigation au clavier ===
+************ Les touches ************
 
-je saute d'un élément focusable à l'autre.
-certains éléments sont focusables par défaut.
-rendre un élément focusable en lui rajoutant l'attribut tabindex='0'. si tabindex >0, l'élément sera sélectionné en priorité. prio = 1 > 2 > 3 > 0.
-rendre un élément infocusable en lui ajoutant tabindex='-1'.
-il vaut mieux conserver le marquage du focus par défaut.
-
-*** les touches ***
 https://webaim.org/techniques/keyboard/
+Basique:
+	Avancer: Tab
+	Reculer: Tab + shift
+Lien: Suivre: Entrer
+Bouton classique: Cliquer: Entrer ou barre d'espace
+Boutons radio:
+	Sélectionner: Flèches horizontales
+	Cocher: Espace
+	Quitter le groupe: Tab
+Bouton coche: Cocher: Espace
+Select:
+	Déplier: Espace
+	Sélectionner une option: Flèches verticales
+	Cocher une option: Entrer
+Auto-complétion lors de la frappe:
+	Lancer: Tab
+	Sélectionner: Flèches verticales
+	Valider une option: Entrer
+Boîte de dialogue:
+	Echappe: Fermer
 
-basique:
-	avancer: tab
-	reculer: tab + shift
-lien: suivre: entrer
-bouton classique: cliquer: entrer ou barre d'espace
-boutons radio:
-	sélectionner: flèches horizontales
-	cocher: espace
-	quitter le groupe: tab
-bouton coche: cocher: espace
-select:
-	déplier: espace
-	sélectionner une option: flèches verticales
-	cocher une option: entrer
-auto-complétion lors de la frappe:
-	lancer: tab
-	sélectionner: flèches verticales
-	valider une option: entrer
-boîte de dialogue:
-	echappe: fermer
+************************************************
 
-***
-
-https://fr.wikipedia.org/wiki/Navigation_au_clavier
-https://en.wikipedia.org/wiki/Tabbing_navigation
-https://www.alsacreations.com/article/lire/1866-Le-clavier-un-moyen-de-navigation-a-ne-pas-negliger.html
+https://fr.wikipedia.org/wiki/navigation_au_clavier
+https://en.wikipedia.org/wiki/tabbing_navigation
+https://www.alsacreations.com/article/lire/1866-le-clavier-un-moyen-de-navigation-a-ne-pas-negliger.html
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
 
 ============ Les images ============
