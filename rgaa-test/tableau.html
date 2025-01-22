@@ -15,7 +15,7 @@
 	<h1>les tableaux</h1>
 	<a href='./index.html'>retour à l'index</a>
 	<h2>tableaux de présentation</h2>
-	<table role='presentation' rale>
+	<table role='presentation' class='coco' id='lolo'>
 		<tr><td>aa</td><td>ab</td><td>ac</td></tr>
 		<tr><td>ba</td><td>bb</td><td>bc</td></tr>
 	</table>
@@ -71,4 +71,19 @@
 		<tr><th scope='row'>ba</th><td>bb</td><td>bc</td><td>bd</td></tr>
 		<tr><th scope='row'>ca</th><td>cb</td><td>cc</td><td>cd</td></tr>
 	</table>
+	<div role='table' aria-labelledby='tab-div'>
+	<div id='tab-div'>table faite en div</div>
+	<div role='rowgroup'>
+	<div role='row'>
+	<span role='columnheader' aria-sort='descending'>Country</span>
+	<span role='columnheader' aria-sort='none'>Population</span>
+	</div></div>
+	<div role='rowgroup'>
+	<div role='row'>
+	<span role='rowheader'>Finland</span>
+	<span role='cell'>5.5 million</span>
+	</div><div role='row'>
+	<span role='rowheader'>France</span>
+	<span role='cell'>67 million</span>
+	</div></div></div>
 <script type='text/javascript'></script></body></html>
