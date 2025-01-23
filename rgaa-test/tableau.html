@@ -72,18 +72,22 @@
 		<tr><th scope='row'>ca</th><td>cb</td><td>cc</td><td>cd</td></tr>
 	</table>
 	<div role='table' aria-labelledby='tab-div'>
-	<div id='tab-div'>table faite en div</div>
-	<div role='rowgroup'>
-	<div role='row'>
-	<span role='columnheader' aria-sort='descending'>Country</span>
-	<span role='columnheader' aria-sort='none'>Population</span>
-	</div></div>
-	<div role='rowgroup'>
-	<div role='row'>
-	<span role='rowheader'>Finland</span>
-	<span role='cell'>5.5 million</span>
-	</div><div role='row'>
-	<span role='rowheader'>France</span>
-	<span role='cell'>67 million</span>
-	</div></div></div>
+		<div id='tab-div'>table faite en div</div>
+		<div role='row'>
+			<span role='columnheader' aria-sort='descending'>Country</span><span role='columnheader' aria-sort='none'>Population</span>
+		</div>
+		<div role='rowgroup'>
+			<div role='row'><span role='rowheader'>Finland</span><span role='cell'>5.5 million</span></div>
+			<div role='row'><span role='rowheader'>France</span><span role='cell'>67 million</span></div>
+		</div>
+	</div>
+	<div role='table-cassee' aria-labelledby='tab-div'>
+		<div role='row'>
+			<span role='columnheader' aria-sort='descending'>Country</span><span role='columnheader' aria-sort='none'>Population</span>
+		</div>
+		<div role='rowgroup'>
+			<div role='row'><span role='rowheader'>Finland</span><span role='cell'>5.5 million</span></div>
+			<div role='row'><span role='rowheader'>France</span><span role='cell'>67 million</span></div>
+		</div>
+	</div>
 <script type='text/javascript'></script></body></html>

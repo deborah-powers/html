@@ -20,14 +20,29 @@ Role = presentation ou none.
 Il ne contient que des tr et des td.
 Ces tableaux servaient à mettre en forme les infos sur une page, à l'époque où le css était plus limité.
 Le contenu reste compréhensible quand on le linéarise, en éffaçant le style (lecteurs d'écran, modification du style.
-les cases sont considérées comme des div. il faut mettre les balises normales du html en elles. paragraphes, h2, etc.
+Les cases sont considérées comme des div. Il faut mettre les balises normales du html en elles. Paragraphes, h2, etc.
 
 ************ Tableau de donnée ************
 
-besoin d'un titre. caption, title, aria-label, aria-labelledby.
-si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
+Besoin d'un titre. Caption, title, aria-label, aria-labelledby.
+Si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d130
+************ Tableau hors structure ************
+
+< div role='table' />
+Besoin d'un titre. Aria-label ou aria-labelledby.
+
+************ Tableau complèxe ************
+
+Deux rangs d'en-têtes en ligne, ou deux colonne. Les tableaux à double entrée n'en font pas partie.
+Besoin d'un résumé précisant à quoi servent les en-têtes. Caption ou aria-labelledby. Rappeler le nom des en-têtes dans le résumé.
+Le résumé est utilisé par les aveugles et par les personnes ayant un retard mental.
+<caption>mon tableau
+<span>les industries agro-alimentaires et manufacturière sont présentées sur deux colonnes, indiquant pour chacune la quantité (tonnes) et le pourcentage.</span></caption>
+Industries agro-alimentaires	industries manufacturière
+Quantité	%					quantité	%
+Chaque th à un id, chaque cellule est liée à ses headers. < td headers='id-a id-b' />
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d139
 
 ============ La présentation ============
 
