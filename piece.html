@@ -10,15 +10,31 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece.css'/>
 <style type='text/css'>
+	p {
+		width: 2em;
+		height: 2em;
+		border-radius: 0.5em;
+		border-style: solid;
+		background-color: pink;
+		display: inline-block;
+	}
+/*	p:nth-child(n-5) { background-color: lightblue; }	/ les quatre premiers éléments sont roses, le cinquième et les suivants sont bleus /
+	p:nth-child(-n+5) { background-color: lightblue; }	/ les cinq premiers éléments sont bleus, les suivants roses /
+	*/
+	div#dodo {
+		border-radius: 4em;
+		background-color: lightgreen;
+	}
 </style></head><body>
-<piece>
+<piece class='frec'>
 	<div class='fond'>fond</div>
 	<div class='sol'>sol</div>
 	<div class='toit'>toit</div>
 	<div class='murg'>gauche</div>
 	<div class='murd'>droit</div>
+	<div id='dodo'>ok</div>
 </piece>
-<piece class='frec'>
+<piece>
 	<div class='fond'>fond</div>
 	<div class='sol'>sol</div>
 	<div class='toit'>toit</div>
