@@ -9,6 +9,37 @@ Focus:
 Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tabindex=0). Ma page utilise le focus natif du navigateur.
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
+il y a des règles rgaa différentes pour les site web, les applications mobiles et les pdf.
+
+=== structure de l'information ===
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D143
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d144
+
+*** les listes ***
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D147
+ul, ol, dl
+< div role='list'>< p role='listitem'/>
+
+*** les tîtres ***
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D144
+
+important:
+	hyérarchie cohérente des tîtres.
+	pertinence des tîtres.
+	manque ou exès de tîtres.
+
+erreur:
+	tîtres vides
+
+autorisé:
+	plusieurs h1
+	aucun h1 mais les autres hx
+	saut hyérarchique (h1 chapeaute h3)
+	tîtrage débutant par autre chose qu'un h1
+
 
 ============ Les tableaux ============
 
@@ -27,6 +58,7 @@ Les cases sont considérées comme des div. Il faut mettre les balises normales 
 Besoin d'un titre. Caption, title, aria-label, aria-labelledby.
 Si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
 
+
 ************ Tableau hors structure ************
 
 < div role='table' />
@@ -42,7 +74,6 @@ Le résumé est utilisé par les aveugles et par les personnes ayant un retard m
 Industries agro-alimentaires	industries manufacturière
 Quantité	%					quantité	%
 Chaque th à un id, chaque cellule est liée à ses headers. < td headers='id-a id-b' />
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d139
 
 ============ La présentation ============
 

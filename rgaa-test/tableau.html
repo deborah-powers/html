@@ -10,6 +10,34 @@
 <style type='text/css'>
 	table, tr { width: 100%; }
 	table { margin: 1em 0; }
+	caption {
+		font-size: 1em;
+		font-weight: bold;
+	}
+	[role='table'] {
+		width: 100%;
+		border-style: solid;
+	}
+	[role='row'] {
+		width: 100%;
+		border-style: inherit;
+		display: flex;
+		justify-content: space-around;
+		align-items: stretch;
+	}
+	[role='rowheader'], [role='columnheader'] {
+		border-style: inherit;
+		font-weight: bold;
+		flex-grow: 1;
+	}
+	[role='cell'] {
+		border-style: inherit;
+		flex-grow: 1;
+	}
+	[role='rowgroup'] {
+		width: 100%;
+		border-style: inherit;
+	}
 </style>
 </head><body>
 	<h1>les tableaux</h1>
@@ -71,23 +99,48 @@
 		<tr><th scope='row'>ba</th><td>bb</td><td>bc</td><td>bd</td></tr>
 		<tr><th scope='row'>ca</th><td>cb</td><td>cc</td><td>cd</td></tr>
 	</table>
+	<table>
+		<caption>tableau complèxe mal annoté</caption>
+		<tr><th colspan='2'>aab</th><th>ac</th></tr>
+		<tr><th>ba</th><th>bb</th><th>bc</th></tr>
+		<tr><td>ca</td><td>cb</td><td>cc</td></tr>
+		<tr><td>da</td><td>db</td><td>dc</td></tr>
+	</table>
+	<table>
+		<caption>tableau complèxe. les deux rangs de tître ont des valeurs bidons. les tîtres et les données ne servent que pour l'exemple.</caption>
+		<tr><th id='aab' colspan='2'>aab</th><th id='ac'>ac</th></tr>
+		<tr><th id='ba'>ba</th><th id='bb'>bb</th><th id='bc'>bc</th></tr>
+		<tr><td headers='aab ba'>ca</td><td headers='aab bb'>cb</td><td headers='ac bc'>cc</td></tr>
+		<tr><td headers='aab ba'>da</td><td headers='aab bb'>db</td><td headers='ac bc'>dc</td></tr>
+	</table>
 	<div role='table' aria-labelledby='tab-div'>
-		<div id='tab-div'>table faite en div</div>
-		<div role='row'>
-			<span role='columnheader' aria-sort='descending'>Country</span><span role='columnheader' aria-sort='none'>Population</span>
+		<h2 id='tab-div'>tableau fait en div</h2>
+		<p role='row'>
+			<span role='columnheader'>aa</span><span role='columnheader'>ab</span>
+			<span role='columnheader'>ac</span><span role='columnheader'>ad</span>
+		</p>
+		<div role='rowgroup'>
+			<p role='row'><span role='rowheader'>ba</span><span role='cell'>bb</span><span role='cell'>bc</span><span role='cell'>bd</span></p>
+			<p role='row'><span role='rowheader'>ca</span><span role='cell'>cb</span><span role='cell'>cc</span><span role='cell'>cd</span></p>
 		</div>
 		<div role='rowgroup'>
-			<div role='row'><span role='rowheader'>Finland</span><span role='cell'>5.5 million</span></div>
-			<div role='row'><span role='rowheader'>France</span><span role='cell'>67 million</span></div>
+			<p role='row'><span role='rowheader'>da</span><span role='cell'>db</span><span role='cell'>dc</span><span role='cell'>dd</span></p>
+			<p role='row'><span role='rowheader'>ea</span><span role='cell'>eb</span><span role='cell'>ec</span><span role='cell'>ed</span></p>
 		</div>
 	</div>
-	<div role='table-cassee' aria-labelledby='tab-div'>
-		<div role='row'>
-			<span role='columnheader' aria-sort='descending'>Country</span><span role='columnheader' aria-sort='none'>Population</span>
+	<div role='table-casse' aria-labelledby='tab-div-casse'>
+		<h2 id='tab-div-casse'>tableau fait en div mal annoté</h2>
+		<p role='row'>
+			<span role='columnheader'>aa</span><span role='columnheader'>ab</span>
+			<span role='columnheader'>ac</span><span role='columnheader'>ad</span>
+		</p>
+		<div role='rowgroup'>
+			<p role='row'><span role='rowheader'>ba</span><span role='cell'>bb</span><span role='cell'>bc</span><span role='cell'>bd</span></p>
+			<p role='row'><span role='rowheader'>ca</span><span role='cell'>cb</span><span role='cell'>cc</span><span role='cell'>cd</span></p>
 		</div>
 		<div role='rowgroup'>
-			<div role='row'><span role='rowheader'>Finland</span><span role='cell'>5.5 million</span></div>
-			<div role='row'><span role='rowheader'>France</span><span role='cell'>67 million</span></div>
+			<p role='row'><span role='rowheader'>da</span><span role='cell'>db</span><span role='cell'>dc</span><span role='cell'>dd</span></p>
+			<p role='row'><span role='rowheader'>ea</span><span role='cell'>eb</span><span role='cell'>ec</span><span role='cell'>ed</span></p>
 		</div>
 	</div>
 <script type='text/javascript'></script></body></html>
