@@ -1,6 +1,6 @@
 === afficher une image de google photo sur mon site ===
 
-https://www.benjamin-mary.com/fr/outil/google-photos#:~:text=Une%20fois%20l'album%20cr%C3%A9%C3%A9,%22%2C%20puis%20on%20le%20copie.
+https://www.benjamin-mary.com/fr/outil/google-photos
 le mieux est de créer un album google contenant les photos que je veux partager.
 partager la photo ou l'album, obtenir un lien.
 vérifier que le lien est bien accessible en l'ouvrant dans une fenêtre de navigation privée.

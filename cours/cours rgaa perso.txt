@@ -11,16 +11,66 @@ Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés
 Mon navigateur devrait-il les prendre en compte ?
 il y a des règles rgaa différentes pour les site web, les applications mobiles et les pdf.
 
-=== structure de l'information ===
+=== les contenus multimédias ===
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D160
+
+titre permettant d'identifier ce qu'est le média. "chanson - patati patata", "vidéo sur le bloubiboulga".
+média temporel: apporte des informations via les canaux audio, vidéo, synchro. synchro = audio + vidéo
+média non - temporel: svg, canva, élément accessible via un plug-in (flash, java, etc). oui, certains sont en fait temporels.
+
+alternative textuelle pour les médias temporaux simples et ceux accessibles via un plug-in. elle est à coté du média, ou accessible via un bouton à coté.
+si le média est juste vidéo, il est possible de la remplacer par une description audio.
+si c'est une vidéo parlante, elle dispose de sous-tîtres synchronisés et activables, etc.
+
+média exemptés: captcha, alternative, média décoratifs (role = presentation)
+
+< video>
+	< source src='https://photos.google.com/share/AF1QipPS8QqOLFwKaHPJXIDdlnBT90sP458HZ7CRT7Z7o4IIW1u9fpRgq6s5wTmsn4n3mg/photo/AF1QipNSDxjjhAZzWdTBu6ESrYglbNZtgsfKwA9VJci2?key=MUxJc2NpcUJvcW43RF8yOVJRRU9xb3Vub05ET1Rn' type='video/mp4' />
+	< track kind='captions' label='Français' src='stitre.srt' />
+</video>
+
+
+
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
+
+=== la structure de la page ===
 
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D143
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d144
+
+*** la structure de la page ***
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D153
+compte si le doctype est html5.
+
+pour la plupart des conteneurs, on peut trouver plusieurs balises sur la page.
+nav: elle est réservée pour
+	la navigation interpages
+	la navigation dans la pagination
+	les liens d'accèss rapide
+	le fil d'ariane
+	la table des matière
+header: l'en-tête doit être dans un header. pas dans le footer.
+footer: le pied de page doit être dans un footer. pas dans le header.
+main: unique et obligatoire. contient les éléments propres à la page, qui ne sont pas répétés sur les autres pages.
+
+*** les citations ***
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D151
+
+< p>paragraphe avec < q>une ligne de citation</q></p>
+< blockquote>< p>bloc</p>< p>de citation</p></blockquote>
+< blockquote cite='http://source.html'>< p>bloc</p>< p>de citation</p></blockquote><p>— moi, <cite>mon bouquin</cite></p>
+
 
 *** les listes ***
 
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D147
 ul, ol, dl
 < div role='list'>< p role='listitem'/>
+les suites de liens doivent être dans une liste.
+pas de role = presentation
+
 
 *** les tîtres ***
 
@@ -430,6 +480,8 @@ Obligatoire si:
 	Le sens de lecture de la langue est ltr, comme pour les langues arabes.
 	Un encart rtl est au milieu d'un texte ltr.
 Sur l'élément html, dir='ltr' peut être ommi.
+si la valeur de dir est inconnue, celle du parent est utilisée par défaut.
+
 
 ============ La sémantique de balisage ============
 
@@ -446,6 +498,8 @@ Aside représente un bloc indépendant du contenu de son parent.
 Le nom accessible est celui restitué par les technologies d'assistance.
 Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
 https://developer.mozilla.org/en-us/docs/web/html/element/area
+https://disic.github.io/guide-concepteur/8-multimedia.html
+
 
 ================================================
 
