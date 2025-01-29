@@ -20,15 +20,18 @@ média temporel: apporte des informations via les canaux audio, vidéo, synchro.
 média non - temporel: svg, canva, élément accessible via un plug-in (flash, java, etc). oui, certains sont en fait temporels.
 
 alternative textuelle pour les médias temporaux simples et ceux accessibles via un plug-in. elle est à coté du média, ou accessible via un bouton à coté.
-si le média est juste vidéo, il est possible de la remplacer par une description audio.
-si c'est une vidéo parlante, elle dispose de sous-tîtres synchronisés et activables, etc.
+audiodescription pour une vidéo simple. elle décrit l'action et les informations visuelles importantes.
+sous-tîtres pour une vidéo parlante. synchronisés, controllables, etc.
 
 média exemptés: captcha, alternative, média décoratifs (role = presentation)
 
-< video>
-	< source src='https://photos.google.com/share/AF1QipPS8QqOLFwKaHPJXIDdlnBT90sP458HZ7CRT7Z7o4IIW1u9fpRgq6s5wTmsn4n3mg/photo/AF1QipNSDxjjhAZzWdTBu6ESrYglbNZtgsfKwA9VJci2?key=MUxJc2NpcUJvcW43RF8yOVJRRU9xb3Vub05ET1Rn' type='video/mp4' />
-	< track kind='captions' label='Français' src='stitre.srt' />
+< video controls>
+	< source src='ma-video.mp4' type='video/mp4' />
+	< track kind='captions' label='français' src='mes-soutitres.srt' />
 </video>
+< audio controls src='ma-chanson.mp3'>
+	< source src='ma-chanson.mp3' />
+</audio>
 
 
 
