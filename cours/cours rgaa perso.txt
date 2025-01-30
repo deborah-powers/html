@@ -1,30 +1,82 @@
 ============ Mes questions ============
 
-Couleurs:
+************ Couleurs ************
+
 J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
 Y-a-t-il une erreur quand background-color = transparent ?
-Tîtres:
+
+************ Tîtres ************
+
 Y-a-t-il une erreur quand le tître ne contient pas de texte, mais une image sans texte ? Pour les tîtres h1, h2, etc.
-Focus:
+
+************ Focus ************
+
 Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (tabindex=0). Ma page utilise le focus natif du navigateur.
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
-il y a des règles rgaa différentes pour les site web, les applications mobiles et les pdf.
+Il y a des règles rgaa différentes pour les site web, les applications mobiles et les pdf.
 
-=== les contenus multimédias ===
+************ Média non temporel ************
 
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D160
+Quid des gif animés ?
 
-titre permettant d'identifier ce qu'est le média. "chanson - patati patata", "vidéo sur le bloubiboulga".
-média temporel: apporte des informations via les canaux audio, vidéo, synchro. synchro = audio + vidéo
-média non - temporel: svg, canva, élément accessible via un plug-in (flash, java, etc). oui, certains sont en fait temporels.
+=== consultation de la page ===
 
-alternative textuelle pour les médias temporaux simples et ceux accessibles via un plug-in. elle est à coté du média, ou accessible via un bouton à coté.
-audiodescription pour une vidéo simple. elle décrit l'action et les informations visuelles importantes.
-sous-tîtres pour une vidéo parlante. synchronisés, controllables, etc.
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d173
 
-média exemptés: captcha, alternative, média décoratifs (role = presentation)
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
 
+les limites de temps éssentielles sont exemptes des règles, comme les sites de réservation.
+
+*** le rafraîchissement ***
+
+s'applique au rafraîchissement et à la redirection.
+l'utilisateur
+arrête et relance le rafraîchissement
+ralenti le rythme de rafraîchissement. jusqu'à dix fois plus long
+est prévenu avant rafraîchissement
+retarde le rafraîchissement. jusqu'à dix fois le délais prévu
+
+*** la session ***
+
+dure au moins vingt heures.
+l'utilisateur rallonge ou supprime la limite de temps.
+
+*** les nouvelles fenêtres ***
+
+ouvertes par une action de l'utilisateur.
+vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "espace".
+
+*** les documents ***
+
+file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D177
+pdf et autres.
+un document doit être accessible, ou avoir une alternative accessible.
+vérifier en rescençant les moyens de télécharger des documents.
+
+https://accessibilite.public.lu/fr/rapdf1/index.html (accessibilité des pdf)
+https://pac.pdf-accessibility.org/en/download (pdf ch accessibility checker)
+
+le doc doit avoir un tître et des balises.
+mon doc est ouvert dans adobe reader
+clique droit au milieu de la page, onglet description
+titre: doit contenir une valeur
+pdf balisé: oui
+
+
+============ Les contenus multimédias ============
+
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d160
+Titre permettant d'identifier ce qu'est le média. "chanson - patati patata", "vidéo sur le bloubiboulga".
+Média temporel: Apporte des informations via les canaux audio, vidéo, synchro. Synchro = audio + vidéo
+Média non - temporel: Svg ou canva contenant des animations, élément accessible via un plug-in (flash, java, etc). Oui, certains sont en fait temporels.
+
+************ Les alternatives ************
+
+Alternative textuelle pour les médias temporaux simples et ceux accessibles via un plug-in. Elle est à coté du média, ou accessible via un bouton à coté.
+L'audiodescription elle décrit l'action et les informations visuelles importantes. Balise audio.
+Sous-tîtres pour une vidéo parlante. Synchronisés, controllables, etc.
+Média exemptés: Captcha, alternative, média décoratifs (role = presentation)
 < video controls>
 	< source src='ma-video.mp4' type='video/mp4' />
 	< track kind='captions' label='français' src='mes-soutitres.srt' />
@@ -33,66 +85,83 @@ média exemptés: captcha, alternative, média décoratifs (role = presentation)
 	< source src='ma-chanson.mp3' />
 </audio>
 
+************ Les controles ************
 
+Pour les média temporels
+Les controles doivent être accessibles à l'utilisateur. Ils sont controllables à la souris et au clavier.
+Les noms sont pertinents et accessibles aux techno d'assistance, maj au besoin.
+Controles obligatoires:
+	Lecture
+	Pause / stop
+	Varier le volume
+	Couper le son
+	Afficher les sous-tîtres
+	Masquer les sous-tîtres
+	Lancer l'audiodescription
+	Arrêter l'audiodescription
+Lecteurs vidéos conformes:
+	https://ableplayer.github.io/ableplayer/
+	https://videojs.com/
+	https://register.brightcove.com/
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
+************ Les sons automatiques ************
 
-=== la structure de la page ===
+Les sons déclanchés automatiquement sont controllables par l'utilisateur. Alarmes, etc.
+L'utilisateur contrôle le volume ou arrête le bruit.
+Placer le bouton de coupe du son au début de la page.
+Les sons de moins de 3s en sont exemptés.
+Exceptions à déclarer dans la déclaration d'accessibilité:
+	Média publiés avant le 2020/09/23
+	Médias en direct
 
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D143
+============ La structure de la page ============
 
-*** la structure de la page ***
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d143
 
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D153
-compte si le doctype est html5.
+************ La structure de la page ************
 
-pour la plupart des conteneurs, on peut trouver plusieurs balises sur la page.
-nav: elle est réservée pour
-	la navigation interpages
-	la navigation dans la pagination
-	les liens d'accèss rapide
-	le fil d'ariane
-	la table des matière
-header: l'en-tête doit être dans un header. pas dans le footer.
-footer: le pied de page doit être dans un footer. pas dans le header.
-main: unique et obligatoire. contient les éléments propres à la page, qui ne sont pas répétés sur les autres pages.
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d153
+Compte si le doctype est html5.
+Pour la plupart des conteneurs, on peut trouver plusieurs balises sur la page.
+Nav: Elle est réservée pour
+	La navigation interpages
+	La navigation dans la pagination
+	Les liens d'accèss rapide
+	Le fil d'ariane
+	La table des matière
+Header: L'en-tête doit être dans un header. Pas dans le footer.
+Footer: Le pied de page doit être dans un footer. Pas dans le header.
+Main: Unique et obligatoire. Contient les éléments propres à la page, qui ne sont pas répétés sur les autres pages.
 
-*** les citations ***
+************ Les citations ************
 
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D151
-
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
 < p>paragraphe avec < q>une ligne de citation</q></p>
 < blockquote>< p>bloc</p>< p>de citation</p></blockquote>
 < blockquote cite='http://source.html'>< p>bloc</p>< p>de citation</p></blockquote><p>— moi, <cite>mon bouquin</cite></p>
 
+************ Les listes ************
 
-*** les listes ***
-
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D147
-ul, ol, dl
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d147
+Ul, ol, dl
 < div role='list'>< p role='listitem'/>
-les suites de liens doivent être dans une liste.
-pas de role = presentation
+Les suites de liens doivent être dans une liste.
+Pas de role = presentation
 
+************ Les tîtres ************
 
-*** les tîtres ***
-
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D144
-
-important:
-	hyérarchie cohérente des tîtres.
-	pertinence des tîtres.
-	manque ou exès de tîtres.
-
-erreur:
-	tîtres vides
-
-autorisé:
-	plusieurs h1
-	aucun h1 mais les autres hx
-	saut hyérarchique (h1 chapeaute h3)
-	tîtrage débutant par autre chose qu'un h1
-
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d144
+Important:
+	Hyérarchie cohérente des tîtres.
+	Pertinence des tîtres.
+	Manque ou exès de tîtres.
+Erreur:
+	Tîtres vides
+Autorisé:
+	Plusieurs h1
+	Aucun h1 mais les autres hx
+	Saut hyérarchique (h1 chapeaute h3)
+	Tîtrage débutant par autre chose qu'un h1
 
 ============ Les tableaux ============
 
@@ -110,7 +179,6 @@ Les cases sont considérées comme des div. Il faut mettre les balises normales 
 
 Besoin d'un titre. Caption, title, aria-label, aria-labelledby.
 Si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
-
 
 ************ Tableau hors structure ************
 
@@ -483,8 +551,7 @@ Obligatoire si:
 	Le sens de lecture de la langue est ltr, comme pour les langues arabes.
 	Un encart rtl est au milieu d'un texte ltr.
 Sur l'élément html, dir='ltr' peut être ommi.
-si la valeur de dir est inconnue, celle du parent est utilisée par défaut.
-
+Si la valeur de dir est inconnue, celle du parent est utilisée par défaut.
 
 ============ La sémantique de balisage ============
 
@@ -502,7 +569,6 @@ Le nom accessible est celui restitué par les technologies d'assistance.
 Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
 https://developer.mozilla.org/en-us/docs/web/html/element/area
 https://disic.github.io/guide-concepteur/8-multimedia.html
-
 
 ================================================
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head>
+	<title>images | rgaa test</title>
+	<base target='_blank'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	a { display: block; }
+</style></head><body>
+	<h1>tester les téléchargements</h1>
+	<a href='http://deborah-powers.fr'>lien simple</a>
+	<a href='http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf' download>lien de téléchargement anoté</a>
+	<a href='http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf'>lien de téléchargement</a>
+	<button onclick='downloadCV()'>bouton de téléchargement</button>
+	<script type='text/javascript'>
+		function downloadCV(){
+			window.location.href = 'http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf';
+		}
+	</script>
+</body></html>

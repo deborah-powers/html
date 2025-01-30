@@ -1,8 +1,0 @@
-1
-00:00:02 --> 00:00:07
-bonjour,
-je suis le premier sous-tître
-
-2
-00:00:10 --> 00:00:12
-deborah sait faire des sous-tîtres !!!
