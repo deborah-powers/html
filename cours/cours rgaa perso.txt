@@ -63,6 +63,26 @@ clique droit au milieu de la page, onglet description
 titre: doit contenir une valeur
 pdf balisé: oui
 
+les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être cités dans la déclaration de conformité. les documents nécéssaires à l'accomplissement d'une démarchent doivent absolument être accessibles et à jour.
+
+*** les éffets flash ***
+
+file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D181
+
+moins de 3 flash /s
+ou <= 21842 pixels flashants sur la page.
+21842 = 2* 10921 = 2* 67* 163 = 134 * 163
+
+détection avec peat, https://trace.umd.edu/peat/
+C:\Users\deborah.powers\AppData\Local\peat
+https://www.useragentman.com/blog/2017/04/02/using-peat-to-create-seizureless-web-animations/ (tuto)
+https://ffmpeg.org/
+C:\Users\deborah.powers\AppData\Local\ffmpeg\bin
+faire une capture vidéo avi de la page
+convertion en ligne de commande
+ffmpeg -i C:\Users\deborah.powers\Desktop\video.mp4 -an -vcodec rawvideo -y -r 25 C:\Users\deborah.powers\Desktop\video.avi
+
+
 
 ============ Les contenus multimédias ============
 
