@@ -5,6 +5,7 @@
 	<meta charset='utf-8'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<script type='text/javascript'></script>
 <style type='text/css'>
 	a { display: block; }
 </style></head><body>
@@ -15,14 +16,23 @@
 	<a href='http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf'>lien de téléchargement</a>
 	<button onclick='downloadCV()'>bouton de téléchargement</button>
 	<button onclick='downloadCV()'>bouton sans mot-clef</button>
+	<button onmousedown='sayHello()'>bouton en mouse down</button>
+	<button onmouseover='sayHello()'>bouton en mouse over</button>
 	<form method='get' onsubmit='return false'>
 		<input type='submit' onclick='downloadCV()' value='téléchargez mon cv via un bouton submit'/>
 		<input type='button' onclick='downloadCV()' value='téléchargez mon cv via un bouton input'/>
 		<input type='submit' onclick='downloadCV()' value='input sans mot-clef'/>
+		<input type='submit' onmousedown='sayHello()' value='input en mouse down'/>
+		<input type='submit' onmouseover='sayHello()' value='input en mouse over'/>
 	</form>
+	<p onclick='sayHello()'>paragraphe cliquable</p>
+	<p>paragraphe attaché à un évênement</p>
 	<script type='text/javascript'>
 		function downloadCV(){
 			window.location.href = 'http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf';
 		}
+		function sayHello(){ alert ('hello !'); }
+		const paragraph = document.getElementsByTagName ('p')[1];
+		paragraph.addEventListener ('dblclick', sayHello);
 	</script>
 </body></html>

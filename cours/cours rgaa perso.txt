@@ -20,68 +20,121 @@ Il y a des règles rgaa différentes pour les site web, les applications mobiles
 
 Quid des gif animés ?
 
-=== consultation de la page ===
+============ Consultation de la page ============
 
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d173
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d190
+Les limites de temps éssentielles sont exemptes des règles, comme les sites de réservation.
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
+************ Le rafraîchissement ************
 
-les limites de temps éssentielles sont exemptes des règles, comme les sites de réservation.
+S'applique au rafraîchissement et à la redirection.
+L'utilisateur
+Arrête et relance le rafraîchissement
+Ralenti le rythme de rafraîchissement. Jusqu'à dix fois plus long
+Est prévenu avant rafraîchissement
+Retarde le rafraîchissement. Jusqu'à dix fois le délais prévu
 
-*** le rafraîchissement ***
+************ La session ************
 
-s'applique au rafraîchissement et à la redirection.
-l'utilisateur
-arrête et relance le rafraîchissement
-ralenti le rythme de rafraîchissement. jusqu'à dix fois plus long
-est prévenu avant rafraîchissement
-retarde le rafraîchissement. jusqu'à dix fois le délais prévu
+Dure au moins vingt heures.
+L'utilisateur rallonge ou supprime la limite de temps.
 
-*** la session ***
+************ Les nouvelles fenêtres ************
 
-dure au moins vingt heures.
-l'utilisateur rallonge ou supprime la limite de temps.
+Ouvertes par une action de l'utilisateur.
+Vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "espace".
 
-*** les nouvelles fenêtres ***
+************ Les documents ************
 
-ouvertes par une action de l'utilisateur.
-vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "espace".
-
-*** les documents ***
-
-file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D177
-pdf et autres.
-un document doit être accessible, ou avoir une alternative accessible.
-vérifier en rescençant les moyens de télécharger des documents.
-
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
+Pdf et autres.
+Un document doit être accessible, ou avoir une alternative accessible.
+Vérifier en rescençant les moyens de télécharger des documents.
 https://accessibilite.public.lu/fr/rapdf1/index.html (accessibilité des pdf)
 https://pac.pdf-accessibility.org/en/download (pdf ch accessibility checker)
+Le doc doit avoir un tître et des balises.
+Mon doc est ouvert dans adobe reader
+Clique droit au milieu de la page, onglet description
+Titre: Doit contenir une valeur
+Pdf balisé: Oui
+Les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être cités dans la déclaration de conformité. Les documents nécéssaires à l'accomplissement d'une démarchent doivent absolument être accessibles et à jour.
 
-le doc doit avoir un tître et des balises.
-mon doc est ouvert dans adobe reader
-clique droit au milieu de la page, onglet description
-titre: doit contenir une valeur
-pdf balisé: oui
+************ Les éffets flash ************
 
-les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être cités dans la déclaration de conformité. les documents nécéssaires à l'accomplissement d'une démarchent doivent absolument être accessibles et à jour.
-
-*** les éffets flash ***
-
-file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D181
-
-moins de 3 flash /s
-ou <= 21842 pixels flashants sur la page.
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
+Les vidéos et animations sont potentiellement flashy.
+Moins de 3 flash /s
+Ou <= 21842 pixels flashants sur la page.
 21842 = 2* 10921 = 2* 67* 163 = 134 * 163
+Le contenu clignotant est arrêtable s'il fait plus de cinq secondes. Chaque élément est arrêtable indépendament.
+	Arrêt et relance
+	Masquage et affichage
+	Affichable sans mouvement
 
-détection avec peat, https://trace.umd.edu/peat/
-C:\Users\deborah.powers\AppData\Local\peat
-https://www.useragentman.com/blog/2017/04/02/using-peat-to-create-seizureless-web-animations/ (tuto)
+------------ Détection avec peat ------------
+
+https://trace.umd.edu/peat/
+https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/
+https://www.useragentman.com/blog/2017/04/02/using-peat-to-create-seizureless-web-animations/
 https://ffmpeg.org/
-C:\Users\deborah.powers\AppData\Local\ffmpeg\bin
-faire une capture vidéo avi de la page
-convertion en ligne de commande
-ffmpeg -i C:\Users\deborah.powers\Desktop\video.mp4 -an -vcodec rawvideo -y -r 25 C:\Users\deborah.powers\Desktop\video.avi
+C:/users/deborah.powers/appdata/local/peat
+C:/users/deborah.powers/appdata/local/ffmpeg/bin
+Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
+Convertion en ligne de commande via ffmpeg
+Ffmpeg -i c:/users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 c:/users/deborah.powers/desktop/video.avi
+Ouvrir un fichier sous peat
+Analysis / analyse video
+Télécharger ou visionner le rapport de peat via file /...
+/ save html report ou / print report ou / preview
 
+************ Le contenu cryptique ************
+
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
+Dessin ascii, émoticônes, abréviations ou orthographes non conventionnelles, comme s41ut ou slt.
+Les # ou les urls sont assez communes pour ne pas être condidérées comme cryptiques.
+Besoin d'un title ou d'une définition dans le contexte.
+
+------------ Exemple, deux fleurs ------------
+
+https://deuxfleurs.fr/
+
+____________ Ascii de présentation ____________
+
+< div role='img' aria-label='deux fleurs dessinées en ascii animées'>
+< pre/>
+Le div contient une animation faite en pre.
+Role Evite que le lecteur d'écran ne lise le texte ascii.
+Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
+
+____________ Ascii dans un lien ____________
+
+< a href='https://guide.deuxfleurs.fr/' role='menuitem' aria-label='wiki'>
+< pre aria-hidden='true' />
+Le lien contient un pre.
+Aria-hidden empêche le lecteur d'écran de lire le texte ascii.
+Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
+
+*** l'orientation ***
+
+file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D186
+
+le contenu est consultable en mode portrait ou paysage. il reste le même.
+Exception si l'orientation est éssentielle.
+firefox et chrome ont une vue adaptative. outils de développement web / bouton tablette - smartphone
+choisir une taille d'écran de smartphone et faire varier l'orientation.
+
+*** les gestes complèxes ***
+
+file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D188
+
+les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
+geste simple: appuyer sur un bouton.
+geste à trajectoire: swiper, certaines façon de dévérouiller le téléphone.
+geste multipoint: pincer une carte pour zoomer.
+
+les évènements sont lancés au relâchement du pointeur. un méchanisme permet d'abandonner ou d'annuler l'action.
+les Exceptions: gestes du système d'exploitation (scroll), geste nécessaire (signature, captcha), émulateur de clavier.
 
 
 ============ Les contenus multimédias ============
