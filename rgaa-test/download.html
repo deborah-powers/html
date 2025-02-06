@@ -8,6 +8,7 @@
 <script type='text/javascript'></script>
 <style type='text/css'>
 	a { display: block; }
+	.rgaa-highlight { background-color: greenyellow; }
 </style></head><body>
 	<h1>tester les téléchargements</h1>
 	<a href='./index.html'>retour à l'index</a>
@@ -28,11 +29,14 @@
 	<p onclick='sayHello()'>paragraphe cliquable</p>
 	<p>paragraphe attaché à un évênement</p>
 	<script type='text/javascript'>
+
 		function downloadCV(){
 			window.location.href = 'http://deborah-powers.fr/data/CV%20developpeur%20deborah%20powers.pdf';
 		}
 		function sayHello(){ alert ('hello !'); }
 		const paragraph = document.getElementsByTagName ('p')[1];
 		paragraph.addEventListener ('dblclick', sayHello);
+		const scripts = document.getElementsByTagName ('script');
+		for (var s=0; s< scripts.length; s++) if (scripts[s].innerText.includes ('.addEventListener')){ console.log (scripts[s].innerText); }
 	</script>
 </body></html>

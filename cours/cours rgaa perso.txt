@@ -47,7 +47,7 @@ Vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "esp
 
 ************ Les documents ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
+file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
 Pdf et autres.
 Un document doit être accessible, ou avoir une alternative accessible.
 Vérifier en rescençant les moyens de télécharger des documents.
@@ -62,7 +62,7 @@ Les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être 
 
 ************ Les éffets flash ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
+file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
 Les vidéos et animations sont potentiellement flashy.
 Moins de 3 flash /s
 Ou <= 21842 pixels flashants sur la page.
@@ -82,7 +82,7 @@ C:/users/deborah.powers/appdata/local/peat
 C:/users/deborah.powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Ffmpeg -i c:/users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 c:/users/deborah.powers/desktop/video.avi
+Ffmpeg -i C:\ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:\ /users/deborah.powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
@@ -90,7 +90,7 @@ Télécharger ou visionner le rapport de peat via file /...
 
 ************ Le contenu cryptique ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
+file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
 Dessin ascii, émoticônes, abréviations ou orthographes non conventionnelles, comme s41ut ou slt.
 Les # ou les urls sont assez communes pour ne pas être condidérées comme cryptiques.
 Besoin d'un title ou d'une définition dans le contexte.
@@ -104,7 +104,7 @@ ____________ Ascii de présentation ____________
 < div role='img' aria-label='deux fleurs dessinées en ascii animées'>
 < pre/>
 Le div contient une animation faite en pre.
-Role Evite que le lecteur d'écran ne lise le texte ascii.
+Role evite que le lecteur d'écran ne lise le texte ascii.
 Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 
 ____________ Ascii dans un lien ____________
@@ -115,27 +115,23 @@ Le lien contient un pre.
 Aria-hidden empêche le lecteur d'écran de lire le texte ascii.
 Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 
-*** l'orientation ***
+************ L'orientation ************
 
-file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D186
-
-le contenu est consultable en mode portrait ou paysage. il reste le même.
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d186
+Le contenu est consultable en mode portrait ou paysage. Il reste le même.
 Exception si l'orientation est éssentielle.
-firefox et chrome ont une vue adaptative. outils de développement web / bouton tablette - smartphone
-choisir une taille d'écran de smartphone et faire varier l'orientation.
+Firefox et chrome ont une vue adaptative. Outils de développement web / bouton tablette - smartphone
+Choisir une taille d'écran de smartphone et faire varier l'orientation.
 
-*** les gestes complèxes ***
+************ Les gestes complèxes ************
 
-file:///C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D188
-
-les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
-geste simple: appuyer sur un bouton.
-geste à trajectoire: swiper, certaines façon de dévérouiller le téléphone.
-geste multipoint: pincer une carte pour zoomer.
-
-les évènements sont lancés au relâchement du pointeur. un méchanisme permet d'abandonner ou d'annuler l'action.
-les Exceptions: gestes du système d'exploitation (scroll), geste nécessaire (signature, captcha), émulateur de clavier.
-
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d188
+Les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
+Geste simple: Appuyer sur un bouton.
+Geste à trajectoire: Swiper, certaines façon de dévérouiller le téléphone.
+Geste multipoint: Pincer une carte pour zoomer.
+Les évènements sont lancés au relâchement du pointeur. Un méchanisme permet d'abandonner ou d'annuler l'action.
+Les exceptions: Gestes du système d'exploitation (scroll), geste nécessaire (signature, captcha), émulateur de clavier.
 
 ============ Les contenus multimédias ============
 
