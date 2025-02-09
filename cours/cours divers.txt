@@ -1,268 +1,241 @@
-=== afficher une image de google photo sur mon site ===
+============ Afficher une image de google photo sur mon site ============
 
 https://www.benjamin-mary.com/fr/outil/google-photos
-le mieux est de créer un album google contenant les photos que je veux partager.
-partager la photo ou l'album, obtenir un lien.
-vérifier que le lien est bien accessible en l'ouvrant dans une fenêtre de navigation privée.
-dans la fenêtre privée, afficher mon image.
-copier l'adresse de l'image.
-je dois obtenir un lien du type "https://lh3.googleusercontent.com/..."
+Le mieux est de créer un album google contenant les photos que je veux partager.
+Partager la photo ou l'album, obtenir un lien.
+Vérifier que le lien est bien accessible en l'ouvrant dans une fenêtre de navigation privée.
+Dans la fenêtre privée, afficher mon image.
+Copier l'adresse de l'image.
+Je dois obtenir un lien du type "https://lh3.googleusercontent.com/..."
 
-=== créer un template pour sublime text ===
+============ Créer un template pour sublime text ============
+
 https://stackoverflow.com/questions/27675067/create-snippet-for-txt-scope
-
-1. créer un fichier mon-truc.sublime-snippet
-
-pour du texte .txt
+1. Créer un fichier mon-truc.sublime-snippet
+Pour du texte.txt
 <snippet>
-	<content><![CDATA[
+	<content><![cdata[
 == 2025/$1/$2 ==
-
 $3
 ]]></content>
-	<tabTrigger>jour</tabTrigger>
+	<tabtrigger>jour</tabtrigger>
 	<scope>text</scope>
 </snippet>
-
-pour du code python
+Pour du code python
 <snippet>
-	<content><![CDATA[
-	print ('hello')
+	<content><![cdata[
+	Print ('hello')
 ]]></content>
-	<tabTrigger>hello</tabTrigger>
+	<tabtrigger>hello</tabtrigger>
 	<scope>source.python</scope>
 </snippet>
+2. Sauver ce fichier dans
+C:/users/deborah.powers/appdata/roaming/sublime text/packages/user
 
-2. sauver ce fichier dans
-C:\Users\deborah.powers\AppData\Roaming\Sublime Text\Packages\User
-
-====== wamp ======
+============ Wamp ============
 
 https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/
 https://www.wampserver.com/
 https://wampserver.aviatechno.net/?lang=fr&prerequis=afficher
-
-créer un sous-dossier dans C:/wamp/www/
+Créer un sous-dossier dans c:/wamp/www/
 C:/wamp64/www/
+Installer visual c++, surtout les packages vc9, vc10, vc11, vc15, vc17 et vs16
+Quelques explications sur le fonctionnement de wampserver
+Voir le fichier: Wamp(64)/instructions_utilisation.pdf
+Pour l'utilisation de mariadb et mysql
+Voir le fichier: Wamp(64)/mariadb_mysql.txt
+Service mysql restart
+Service apache2 restart
 
-installer visual C++, surtout les packages VC9, VC10, VC11, VC15, VC17 et VS16
+============ Macro pour window ============
 
-quelques explications sur le fonctionnement de Wampserver
-Voir le fichier : wamp(64)\instructions_utilisation.pdf
-Pour l'utilisation de MariaDB et MySQL
-Voir le fichier : wamp(64)\mariadb_mysql.txt
+Créer un fichier macros.doskey
+Gor=cd c:/users/lenovo
+Gob=cd c:/users/lenovo/desktop
+Gop=cd c:/users/lenovo/desktop/python
+Goh=cd c:/users/lenovo/desktop/html
+Gos=cd c:/users/lenovo/desktop/site-dp
+: : Cmmt=git add. $t git commit -m "boulot %date: ~6,4%/%date: ~3,2%/%date: ~0,2% %time: ~0,5% $1"
+Cmmt=git add. $t git commit -m "boulot %date: ~3,2%/%date: ~0,2% %time: ~0,5% $1"
+Mrng=git add. $t git commit -m "boulot%date: ~3,2%/%date: ~0,2% %time: ~0,5%" $t git pull origin master
+Pull=git pull origin master
+Push=git push origin master
+Gnew=git init $t git remote add origin https://github.com/deborah-powers/$1.git $t git pull origin master
+Pymod=python -m $*
+Pym=python -m mantis $*
+Pystall=python setup.py install $t cd..
+Statis=cd mantis $t python setup.py install $t cd..
 
-service mysql restart
-service apache2 restart
+************ L'installer sérieusement ************
 
-====== macro pour window ======
+Créer c:/users/deborah.powers/documents/macros.doskey
+Dans l'éditeur du registre
+Hkey_local_machine/software/microsoft/command processor/
+Clique droit / nouveau / valeur chaine
+La nommer autorun
+Clique droit / modifier / données de la valeur
+Doskey /macrofile="c:/users/deborah.powers/documents/macros.doskey"
 
-créer un fichier macros.doskey
+************ L'installer sans droits d'admin ************
 
-gor=cd C:\Users\LENOVO
-gob=cd C:\Users\LENOVO\Desktop
-gop=cd C:\Users\LENOVO\Desktop\python
-goh=cd C:\Users\LENOVO\Desktop\html
-gos=cd C:\Users\LENOVO\Desktop\site-dp
+Créer c:/users/deborah.powers/documents/macros.doskey
+Raccourci console du bureau /propriétés/target
+Rajouter en fin de ligne:/k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
+/k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
 
-::cmmt=git add . $T git commit -m "boulot %date:~6,4%/%date:~3,2%/%date:~0,2% %time:~0,5% $1"
-cmmt=git add . $T git commit -m "boulot %date:~3,2%/%date:~0,2% %time:~0,5% $1"
-mrng=git add . $T git commit -m "boulot%date:~3,2%/%date:~0,2% %time:~0,5%" $T git pull origin master
-pull=git pull origin master
-push=git push origin master
-gnew=git init $T git remote add origin https://github.com/deborah-powers/$1.git $T git pull origin master
+============ Effacer les coockies et le cache ============
 
-pymod=python -m $*
-pym=python -m mantis $*
-pystall=python setup.py install $T cd ..
-statis=cd mantis $T python setup.py install $T cd ..
+************ Dans firefox ************
 
-*** l'installer sérieusement ***
-
-créer C:\Users\deborah.powers\Documents\macros.doskey
-
-dans l'éditeur du registre
-HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\
-clique droit / nouveau / valeur chaine
-la nommer Autorun
-clique droit / modifier / données de la valeur
-DOSKEY /MACROFILE="C:\Users\deborah.powers\Documents\macros.doskey"
-
-*** l'installer sans droits d'admin ***
-
-créer C:\Users\deborah.powers\Documents\macros.doskey
-
-raccourci console du bureau /propriétés/target
-rajouter en fin de ligne: /k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
-/k doskey /macrofile=C:\Users\deborah.powers\Documents\macros.doskey
-
-=== effacer les coockies et le cache ===
-
-*** dans firefox ***
-
-about:preferences#privacy
+About: Preferences#privacy
 Cookies et données de sites / bouton pour éffacer les données
-intervalle: tout (de préférence)
-cocher les types de données à supprimer
+Intervalle: Tout (de préférence)
+Cocher les types de données à supprimer
 
-*** dans chrome ***
+************ Dans chrome ************
 
-chrome://settings/clearBrowserData
-période: toutes les données (de préférence)
-cocher les types de données à supprimer
+Chrome://settings/clearbrowserdata
+Période: Toutes les données (de préférence)
+Cocher les types de données à supprimer
 
-====== divers ======
+============ Divers ============
 
-****** accéder aux json dans edge ******
+************ Accéder aux json dans edge ************
 
-diseable cors policy
+Diseable cors policy
 https://answers.microsoft.com/en-us/microsoftedge/forum/all/disable-cors/55c89fb6-8d72-4318-9ee3-e9cdfc6fa708
 
+************ Accéder aux json dans chrome ************
 
-
-****** accéder aux json dans chrome ******
-
-fermer toutes les fenêtres de chrome
-
-dans la console
-C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --allow-file-access-from-files
-
-modification permanente qui nécessite les droits d'admin
-raccourci chrome du bureau /propriétés/target
-rajouter --allow-file-access-from-files en fin de ligne
-
-pour le chrome du lanceur d'ubuntu,
-rechercher et modifier /usr/bin/google-chrome
-
+Fermer toutes les fenêtres de chrome
+Dans la console
+C:/program files (x86)/google/chrome/application/chrome.exe --allow-file-access-from-files
+Modification permanente qui nécessite les droits d'admin
+Raccourci chrome du bureau /propriétés/target
+Rajouter --allow-file-access-from-files en fin de ligne
+Pour le chrome du lanceur d'ubuntu,
+Rechercher et modifier /usr/bin/google-chrome
 https://askubuntu.com/questions/160245/how-do-i-make-the-google-chrome-flag-allow-file-access-from-files-permanent
 
+************ Accéder aux json dans firefox ************
 
-****** accéder aux json dans firefox ******
+Dans about:config
+Privacy.file_unique_origin, le passer à false.
+Security.fileuri.strict_origin_policy
 
-dans about:config
-privacy.file_unique_origin, le passer à false.
-security.fileuri.strict_origin_policy
+************ Autoriser l'accès à mutu dans chrome ************
 
-****** autoriser l'accès à mutu dans chrome ******
-
-dans chrome/paramètres/paramètres avancés
-dans système/ouvrir les paramètres proxy/sécurité
-boutons "sites de confiance" et "site"
+Dans chrome/paramètres/paramètres avancés
+Dans système/ouvrir les paramètres proxy/sécurité
+Boutons "sites de confiance" et "site"
 "ajouter ce site web à la zone" accepte les *
 
-****** commande window ******
+************ Commande window ************
 
-dir:				affiche la liste de fichiers dans le répertoire courant
-copy con myfile:	modifier le contenu d'un fichier
+Dir:				affiche la liste de fichiers dans le répertoire courant
+Copy con myfile:	Modifier le contenu d'un fichier
 
+************ Racourcis clavier ************
 
-****** racourcis clavier ******
+Console js	f12 = ctl+shift+c
+Rafraîchir	f5
+Commenter	ctl+shift+/
+Annuler		ctl+z
 
-console js	f12 = ctl+shift+c
-rafraîchir	f5
-commenter	ctl+shift+/
-annuler		ctl+z
-
-====== mongo db ======
+============ Mongo db ============
 
 https://mongodb.github.io/node-mongodb-native/
 http://mongodb.github.io/node-mongodb-native/3.0/
 http://mongodb.github.io/node-mongodb-native/3.0/quick-start/quick-start/
 
-****** installer mongoDB ******
+************ Installer mongodb ************
 
 https://docs.mongodb.com/
 https://docs.mongodb.com/v3.4/tutorial/install-mongodb-on-ubuntu/
-pas de dépendances
-sudo apt-get install -y mongodb
-sudo apt-get update
-démarer le serveur
-sudo service mongodb start
+Pas de dépendances
+Sudo apt-get install -y mongodb
+Sudo apt-get update
+Démarer le serveur
+Sudo service mongodb start
 http://localhost:27017/
 
-****** installer robot3t ******
+************ Installer robot3t ************
 
 = robot mongo
 http://urlm.co/www.robot3t.com
 https://robomongo.org/
-outil de management pour mongodb, interface graphique
-le mettre dans /usr/bin/
-ouvrir "téléchargement" en mode root
-ou
-sudo tar -xzf robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -C /opt
-rm robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
-sudo mkdir /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/BKP/
-sudo mv /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/BKP/
-sudo ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t /usr/bin/robo3t
-cat > ~/.local/share/applications/robo3t.desktop <<EOL
-[Desktop Entry]
-Encoding=UTF-8
-Name=Robo3T
+Outil de management pour mongodb, interface graphique
+Le mettre dans /usr/bin/
+Ouvrir "téléchargement" en mode root
+Ou
+Sudo tar -xzf robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz -c /opt
+Rm robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
+Sudo mkdir /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/bkp/
+Sudo mv /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/lib/libstdc++* /opt/robo3t-1.1.1-linux-x86_64-c93c6b0//lib/bkp/
+Sudo ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0/bin/robo3t /usr/bin/robo3t
+Cat > ~/.local/share/applications/robo3t.desktop <<eol
+[desktop entry]
+Encoding=utf-8
+Name=robo3t
 Exec=robo3t
 Terminal=false
-Type=Application
-Categories=Development;
-EOL
-ou
-wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
+Type=application
+Categories=development;
+Eol
+Ou
+Wget https://download.robomongo.org/1.1.1/linux/robo3t-1.1.1-linux-x86_64-c93c6b0.tar.gz
 
-	
-****** lancer mongodb ******
+************ Lancer mongodb ************
 
-dans la console
-	npm install mongodb --save
-	mongo
+Dans la console
+	Npm install mongodb --save
+	Mongo
 
-****** fonctions utiles ******
+************ Fonctions utiles ************
 
 https://docs.mongodb.com/manual/mongo/
 https://docs.mongodb.com/manual/reference/mongo-shell/
+Aide pour les bdd
+	Db.help()
+Voir la liste des bdd
+	Db.admincommand( { listdatabases: 1 } )
+	Show databases
+Supprimer une bdd
+	Use dbtodelete
+	Db.db.dropdatabase()
+Aller dans une bdd
+	Use dbname
+Voir la liste des collections
+	Show collections
+Aide pour les collections
+	Db.collectionname.help()
+Créer une collection
+	Db.createcollection ('colname', json_object)
+Voir le contenu d'une collection
+	Db.collectionname.find()
+Reperer un element dans une collection
+	Db.collectionname.findone ({ field: 'value' })
+Supprimer un element d'une collection
+	Db.collectionname.remove ({ field: 'value' }, true)
 
-aide pour les bdd
-	db.help()
-voir la liste des bdd
-	db.adminCommand( { listDatabases: 1 } )
-	show databases
-supprimer une bdd
-	use dbToDelete
-	db.db.dropDatabase()
-aller dans une bdd
-	use dbName
-voir la liste des collections
-	show collections
-aide pour les collections
-	db.collectionName.help()
-créer une collection
-	db.createCollection ('ColName', json_object)
-voir le contenu d'une collection
-	db.collectionName.find()
-reperer un element dans une collection
-	db.collectionName.findOne ({ field: 'value' })
-supprimer un element d'une collection
-	db.collectionName.remove ({ field: 'value' }, true)
-
-
-****** tutoriels ******
+************ Tutoriels ************
 
 https://www.tutorialspoint.com/mongodb/mongodb_limit_record.htm
-lancer mongodb
-lancer robo3t
-créer / aller dans une bdd
-use dbName
-créer une table
-db.createCollection ('name', [options])
-méthode pour mettre des trucs dans une collection, du terminal et pas de mongo
-sudo mongoimport --jsonArray --db projet10 --collection docs --file /chemin/absolu/users.json
+Lancer mongodb
+Lancer robo3t
+Créer / aller dans une bdd
+Use dbname
+Créer une table
+Db.createcollection ('name', [options])
+Méthode pour mettre des trucs dans une collection, du terminal et pas de mongo
+Sudo mongoimport --jsonarray --db projet10 --collection docs --file /chemin/absolu/users.json
+Sudo mongoimport --jsonarray --db projet_12_13 --collection test --file /home/deborah/bureau/node/node-12-06-deborah-loic-matthieu-karim/api/listusers.json
 
-sudo mongoimport --jsonArray --db projet_12_13 --collection test --file /home/deborah/Bureau/node/node-12-06-deborah-loic-matthieu-karim/api/listUsers.json
+============ Docker ************
 
-====== docker ******
-
-user	deborahpowers
+User	deborahpowers
 https://hub.docker.com/
 https://docs.docker.com/engine/reference/commandline/
-
-l'installer
-	sudo apt install docker.io
-	docker --version
-
+L'installer
+	Sudo apt install docker.io
+	Docker --version
