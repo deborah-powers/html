@@ -20,14 +20,34 @@ Il y a des règles rgaa différentes pour les site web, les applications mobiles
 
 Quid des gif animés ?
 
+============ Les liens ============
+
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d194
+Rgaa 6
+file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d193
+Lien texte, image et composite.
+< a href='truc'>lien
+< a role='link' tabindex='0'>lien géré en js. Rgaa 7.01
+< a>ancre
+
+************ Le nom accessible ************
+
+Rgaa 6.01
+Il décrit sa destination et sa fonction. Si le lien est ambigu pour les valides, pas besoin de nom accessible.
+Le lien image a un nom accessible.
+Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'écran.
+Si du texte est visible sur le lien, le nom accessible le contien. Texte ou texte dans une image.
+
 ============ Consultation de la page ============
 
+Rgaa 13
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d173
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d190
 Les limites de temps éssentielles sont exemptes des règles, comme les sites de réservation.
 
 ************ Le rafraîchissement ************
 
+Rgaa 13.01
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d174
 S'applique au rafraîchissement et à la redirection.
 L'utilisateur
 Arrête et relance le rafraîchissement
@@ -37,17 +57,22 @@ Retarde le rafraîchissement. Jusqu'à dix fois le délais prévu
 
 ************ La session ************
 
+Rgaa 13.01
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d175
 Dure au moins vingt heures.
 L'utilisateur rallonge ou supprime la limite de temps.
 
 ************ Les nouvelles fenêtres ************
 
+Rgaa 13.02
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d176
 Ouvertes par une action de l'utilisateur.
 Vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "espace".
 
 ************ Les documents ************
 
-file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
+Rgaa 13.03 et 13.04
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d177
 Pdf et autres.
 Un document doit être accessible, ou avoir une alternative accessible.
 Vérifier en rescençant les moyens de télécharger des documents.
@@ -62,7 +87,8 @@ Les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être 
 
 ************ Les éffets flash ************
 
-file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
+Rgaa 13.07
+C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
 Les vidéos et animations sont potentiellement flashy.
 Moins de 3 flash /s
 Ou <= 21842 pixels flashants sur la page.
@@ -82,7 +108,7 @@ C:/users/deborah.powers/appdata/local/peat
 C:/users/deborah.powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Ffmpeg -i C:\ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:\ /users/deborah.powers/desktop/video.avi
+Ffmpeg -i C:/ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:/ /users/deborah.powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
@@ -90,7 +116,8 @@ Télécharger ou visionner le rapport de peat via file /...
 
 ************ Le contenu cryptique ************
 
-file:///c:\ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
+Rgaa 13.05
+C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
 Dessin ascii, émoticônes, abréviations ou orthographes non conventionnelles, comme s41ut ou slt.
 Les # ou les urls sont assez communes pour ne pas être condidérées comme cryptiques.
 Besoin d'un title ou d'une définition dans le contexte.
@@ -117,7 +144,8 @@ Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 
 ************ L'orientation ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d186
+Rgaa 13.09
+C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d186
 Le contenu est consultable en mode portrait ou paysage. Il reste le même.
 Exception si l'orientation est éssentielle.
 Firefox et chrome ont une vue adaptative. Outils de développement web / bouton tablette - smartphone
@@ -125,7 +153,8 @@ Choisir une taille d'écran de smartphone et faire varier l'orientation.
 
 ************ Les gestes complèxes ************
 
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d188
+Rgaa 13.10
+C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d188
 Les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
 Geste simple: Appuyer sur un bouton.
 Geste à trajectoire: Swiper, certaines façon de dévérouiller le téléphone.
@@ -133,8 +162,28 @@ Geste multipoint: Pincer une carte pour zoomer.
 Les évènements sont lancés au relâchement du pointeur. Un méchanisme permet d'abandonner ou d'annuler l'action.
 Les exceptions: Gestes du système d'exploitation (scroll), geste nécessaire (signature, captcha), émulateur de clavier.
 
+------------ Tester ------------
+
+Repérer les boutons, liens et éléments interractifs.
+Constituer un échantillon.
+Sur chacun de mes éléments:
+	Clique gauche
+	Laisser le bouton enclenché
+	Eloigner la souris
+	Libérer le bouton
+	L'action ne se lance pas
+
+************ L'activation par le mouvement ************
+
+Rgaa 12.13
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d191
+Pour les smartphones, ou avec la caméra, les hauts-parleurs de l'ordi.
+Ces fonctionnalités peuvent être désactivées et ont une alternative simple.
+Exception si le mouvement est nécessaire à la fonctionnalité, comme dans le cas des podomètres.
+
 ============ Les contenus multimédias ============
 
+Rgaa 4
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d160
 Titre permettant d'identifier ce qu'est le média. "chanson - patati patata", "vidéo sur le bloubiboulga".
 Média temporel: Apporte des informations via les canaux audio, vidéo, synchro. Synchro = audio + vidéo
@@ -185,10 +234,12 @@ Exceptions à déclarer dans la déclaration d'accessibilité:
 
 ============ La structure de la page ============
 
+Rgaa 9
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d143
 
 ************ La structure de la page ************
 
+Rgaa 9.02
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d153
 Compte si le doctype est html5.
 Pour la plupart des conteneurs, on peut trouver plusieurs balises sur la page.
@@ -204,6 +255,7 @@ Main: Unique et obligatoire. Contient les éléments propres à la page, qui ne 
 
 ************ Les citations ************
 
+Rgaa 9.04
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
 < p>paragraphe avec < q>une ligne de citation</q></p>
 < blockquote>< p>bloc</p>< p>de citation</p></blockquote>
@@ -211,6 +263,7 @@ C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
 
 ************ Les listes ************
 
+Rgaa 9.03
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d147
 Ul, ol, dl
 < div role='list'>< p role='listitem'/>
@@ -219,6 +272,7 @@ Pas de role = presentation
 
 ************ Les tîtres ************
 
+Rgaa 9.01
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d144
 Important:
 	Hyérarchie cohérente des tîtres.
@@ -234,6 +288,7 @@ Autorisé:
 
 ============ Les tableaux ============
 
+Rgaa 5
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d129
 
 ************ Tableau de mise en forme ************
@@ -267,10 +322,12 @@ Chaque th à un id, chaque cellule est liée à ses headers. < td headers='id-a 
 
 ============ La présentation ============
 
+Rgaa 10
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d95
 
 ************ Le css ************
 
+Rgaa 10.01
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d96
 Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
 Le css seul est utilisé pour la mise en forme.
@@ -286,6 +343,7 @@ Vérifier s'il y a du texte hors écran.
 
 ************ Les couleurs ************
 
+Rgaa 10.05
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d106
 Si une couleur de fond est déclarée ou héritée, une couleur de texte doit être déclarée ou héritée aussi. Et vice-versa.
 Vérifier à partir de la balise html si color et background-color sont déclarés. Sinon, descendre dans l'arborescence du document.
@@ -348,6 +406,7 @@ Input[type='radio'] { propriétés de la classe sr-only; }
 
 ************ L'information non-textuelle ************
 
+Rgaa 10.09 et 10.10
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d119
 Hauteur des barres d'un histogramme, mise en gras afin de montrer l'importance d'un ingrédient.
 Rendre les infos disponibles pour une personne aveugle.
@@ -363,6 +422,7 @@ Tester en zoomant à 400% dans une fenêtre de 1280px. Utiliser la vue adaptativ
 
 ************ Le texte reste lisible en modifiant son css ************
 
+Rgaa 10.12
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d122
 Line-height: 1.5 * fontsize;
 Margin-bottom: 2* fontsize;
@@ -372,6 +432,7 @@ Exceptions pour les images-texte, les balises canvas, les sous-titres incrustés
 
 ************ Le focus ************
 
+Rgaa 10.07
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d112
 Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
 Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
@@ -392,6 +453,7 @@ https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focu
 
 ************ Contrôle des contenus apparaissant au survol et autres ************
 
+Rgaa 10.13
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d124
 Survol, focus, etc.
 Je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
@@ -442,6 +504,7 @@ https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de
 
 ============ Les images ============
 
+Rgaa 1
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d38 (source acces 42)
 Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
 Img et area possèdent un attribut alt, même vide.
@@ -502,12 +565,14 @@ La légende reprend le label.
 
 ============ Les iframes ============
 
+Rgaa 2
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d63
 Le titre est obligatoire.
 Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
 
 ============ Les couleurs ============
 
+Rgaa 3
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d67
 
 ************ La couleur de signalement ************
@@ -582,6 +647,7 @@ C:/users/deborah.powers/appdata/local/accessconfig-1
 
 ============ Structure du document html ============
 
+Rgaa 8
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
