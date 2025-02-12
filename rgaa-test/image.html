@@ -100,4 +100,18 @@
 	<p>image object</p>
 	<object type='image/png' src='https://lh3.googleusercontent.com/pw/AP1GczOT7pmJXrqv3kGhNKdNz94vGTfNx75GiyNx9ltDhL1Cvu_kcfbzIU_cQFsTDb7h164rRkck5suVWHpALAlI5zuSDuaWEs8hvv-I-mN2V3qAmVwOYytYIG57Vb75Tviv4nVHgej8bhRXVGpw9CCk4AHw=w800-h800-s-no-gm'>image object, qui n'est pas supportée par votre navigateur.</object>
 <script type='text/javascript'>
+const blankChars = '\n \t';
+String.prototype.exists = function(){
+	var newString = this.replaceAll (blankChars[0], "");
+	for (var c=1; c< blankChars.length; c++) newString = newString.replaceAll (blankChars[c], "");
+	if (newString ==="") return false;
+	else return true;
+}
+String.prototype.isEmpty = function(){
+	if (! this.exists()) return true;
+	else if ([ 'absent', 'vide' ].includes (this)) return true;
+	else return false;
+}
+	const svg = document.getElementsByTagName ('svg')[1];
+	console.log (svg.textContent.isEmpty(), svg.textContent);
 </script></body></html>

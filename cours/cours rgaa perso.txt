@@ -33,10 +33,16 @@ Lien texte, image et composite.
 ************ Le nom accessible ************
 
 Rgaa 6.01
+ou intitulé.
+https://accessibilite.numerique.gouv.fr/methode/glossaire/#intitule-ou-nom-accessible-de-lien
+intitulé: Aria-labelledby > aria-label > texte visible > title
 Il décrit sa destination et sa fonction. Si le lien est ambigu pour les valides, pas besoin de nom accessible.
 Le lien image a un nom accessible.
 Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'écran.
-Si du texte est visible sur le lien, le nom accessible le contien. Texte ou texte dans une image.
+Si du texte est visible sur le lien, le nom accessible le contien. Texte ou texte dans une image, alternative à l'image.
+intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink:title > < text/>
+
+
 
 ============ Consultation de la page ============
 
