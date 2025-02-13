@@ -20,9 +20,17 @@ Il y a des règles rgaa différentes pour les site web, les applications mobiles
 
 Quid des gif animés ?
 
+*** calculer l'intitulé d'un lien ***
+
+--- rappel du calcul de l'intitulé (ou nom accessible) ---
+aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut title du lien.
+--- mon cas de figure ---
+< a title='tître du lien'>< img title="tître de l'image" />
+l'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
+
 ============ Les liens ============
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d194
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d199
 Rgaa 6
 file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d193
 Lien texte, image et composite.
@@ -35,6 +43,8 @@ Lien texte, image et composite.
 Rgaa 6.01
 ou intitulé.
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#intitule-ou-nom-accessible-de-lien
+https://www.w3.org/TR/html-aam-1.0/
+https://www.w3.org/TR/accname-1.2/#mapping_additional_nd_te
 intitulé: Aria-labelledby > aria-label > texte visible > title
 Il décrit sa destination et sa fonction. Si le lien est ambigu pour les valides, pas besoin de nom accessible.
 Le lien image a un nom accessible.
