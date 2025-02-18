@@ -4,10 +4,16 @@
 
 J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
 Y-a-t-il une erreur quand background-color = transparent ?
+code	<div role='list'><p role='listitem'/>
 
 ************ Tîtres ************
 
 Y-a-t-il une erreur quand le tître ne contient pas de texte, mais une image sans texte ? Pour les tîtres h1, h2, etc.
+code
+<a href='truc'>lien
+<a role='link' tabindex='0'>lien géré en js. Rgaa 7.01
+<a>ancre
+/
 
 ************ Focus ************
 
@@ -20,39 +26,69 @@ Il y a des règles rgaa différentes pour les site web, les applications mobiles
 
 Quid des gif animés ?
 
-*** calculer l'intitulé d'un lien ***
+************ Calculer l'intitulé d'un lien ************
 
---- rappel du calcul de l'intitulé (ou nom accessible) ---
-aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut title du lien.
---- mon cas de figure ---
+------------ Rappel du calcul de l'intitulé (ou nom accessible) ------------
+
+Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut title du lien.
+
+------------ Mon cas de figure ------------
+
 < a title='tître du lien'>< img title="tître de l'image" />
-l'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
+L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d214
+
+============ La navigation ============
+
+Rgaa 12
+c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d206
+Un ensemble de page est un groupe de pages reliées entre elles par des liens et constituant un ensemble cohérent. Souvent, la page d'accueil constitue à elle seule un ensemble.
+Deux systèmes de navigation pour chaque ensemble, parmi: Menu, plan du site, moteur de recherche.
+Toutes les pages doivent être accessibles, y compris les mentions légales.
+Exception pour les petits sites, dont toutes les pages sont accessibles via la page d'accueil, et les pages d'un processus.
+Le menu et la barre de navigation, le plan du site et la zone de recherche sont toujours à la même place sur les pages et dans le code.
+Les rôles rendrent certaines zones évitables ou facilement accessibles.
+code
+<header role='banner'>
+<nav role='navigation'>
+<main role='main'>
+<footer role='contentinfo'>
+<input type='text' role='search' name='barre de recherche' />
+/
+Banner, main et contentinfo sont uniques dans la page.
+Liens ou boutons d'évitement, d'accès rapide, etc.
+Banner représente le vrai header de la page. Une page pouvant contenir plusieurs headers, header.banner indique son vrai header. Idem pour footer.contentinfo.
+Le lien d'accès rapide est visible à la prise de focus (positionnement hors écran).
 
 ============ Les liens ============
 
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d199
 Rgaa 6
-file:///c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d193
+c://users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d193
 Lien texte, image et composite.
-< a href='truc'>lien
-< a role='link' tabindex='0'>lien géré en js. Rgaa 7.01
-< a>ancre
+code
+<a href='truc'>lien
+<a role='link' tabindex='0'>lien géré en js. Rgaa 7.01
+<a>ancre
+/
+Chaque lien a un nom accessible (intitulé) pertinent qui reprend le nom visible. Le contexte peut aider à la pertinence. Si des liens menant vers des pages différentes ont le même intitulé, le contexte permet de les différencier.
+S'il est présent, l'attribut title reprend l'intitulé.
+L'intitulé décrit la destination et la fonction du lien. Si le lien est ambigu pour les valides, pas besoin de nom accessible.
+Le nom visible est le texte lisible dans le lien, y compris celui dans une image.
 
 ************ Le nom accessible ************
 
 Rgaa 6.01
-ou intitulé.
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#intitule-ou-nom-accessible-de-lien
-https://www.w3.org/TR/html-aam-1.0/
-https://www.w3.org/TR/accname-1.2/#mapping_additional_nd_te
-intitulé: Aria-labelledby > aria-label > texte visible > title
-Il décrit sa destination et sa fonction. Si le lien est ambigu pour les valides, pas besoin de nom accessible.
-Le lien image a un nom accessible.
+Calculer l'intitulé: Aria-labelledby > aria-label > texte visible > title
 Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'écran.
-Si du texte est visible sur le lien, le nom accessible le contien. Texte ou texte dans une image, alternative à l'image.
-intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink:title > < text/>
+Intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink: Title > < text/>
+https://www.w3.org/tr/html-aam-1.0/
+https://www.w3.org/tr/accname-1.2/#mapping_additional_nd_te
 
+************************************************
 
+Le contexte peut rendre un lien explicite. Présence d'un tître au-dessus du lien, etc.
+Le tître du lien (attribut title) reprend le nom accessible. Un title vide est valable.
 
 ============ Consultation de la page ============
 
@@ -104,7 +140,7 @@ Les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être 
 ************ Les éffets flash ************
 
 Rgaa 13.07
-C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d181
 Les vidéos et animations sont potentiellement flashy.
 Moins de 3 flash /s
 Ou <= 21842 pixels flashants sur la page.
@@ -124,7 +160,7 @@ C:/users/deborah.powers/appdata/local/peat
 C:/users/deborah.powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Ffmpeg -i C:/ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:/ /users/deborah.powers/desktop/video.avi
+Ffmpeg -i c:/users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 c:/users/deborah.powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
@@ -133,7 +169,7 @@ Télécharger ou visionner le rapport de peat via file /...
 ************ Le contenu cryptique ************
 
 Rgaa 13.05
-C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d185
 Dessin ascii, émoticônes, abréviations ou orthographes non conventionnelles, comme s41ut ou slt.
 Les # ou les urls sont assez communes pour ne pas être condidérées comme cryptiques.
 Besoin d'un title ou d'une définition dans le contexte.
@@ -144,16 +180,20 @@ https://deuxfleurs.fr/
 
 ____________ Ascii de présentation ____________
 
-< div role='img' aria-label='deux fleurs dessinées en ascii animées'>
-< pre/>
+code
+<div role='img' aria-label='deux fleurs dessinées en ascii animées'>
+<pre/>
+/
 Le div contient une animation faite en pre.
 Role evite que le lecteur d'écran ne lise le texte ascii.
 Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 
 ____________ Ascii dans un lien ____________
 
-< a href='https://guide.deuxfleurs.fr/' role='menuitem' aria-label='wiki'>
-< pre aria-hidden='true' />
+code
+<a href='https://guide.deuxfleurs.fr/' role='menuitem' aria-label='wiki'>
+<pre aria-hidden='true' />
+/
 Le lien contient un pre.
 Aria-hidden empêche le lecteur d'écran de lire le texte ascii.
 Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
@@ -161,7 +201,7 @@ Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 ************ L'orientation ************
 
 Rgaa 13.09
-C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d186
+c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d186
 Le contenu est consultable en mode portrait ou paysage. Il reste le même.
 Exception si l'orientation est éssentielle.
 Firefox et chrome ont une vue adaptative. Outils de développement web / bouton tablette - smartphone
@@ -170,7 +210,7 @@ Choisir une taille d'écran de smartphone et faire varier l'orientation.
 ************ Les gestes complèxes ************
 
 Rgaa 13.10
-C:/ /users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d188
+c:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d188
 Les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
 Geste simple: Appuyer sur un bouton.
 Geste à trajectoire: Swiper, certaines façon de dévérouiller le téléphone.
@@ -211,13 +251,15 @@ Alternative textuelle pour les médias temporaux simples et ceux accessibles via
 L'audiodescription elle décrit l'action et les informations visuelles importantes. Balise audio.
 Sous-tîtres pour une vidéo parlante. Synchronisés, controllables, etc.
 Média exemptés: Captcha, alternative, média décoratifs (role = presentation)
-< video controls>
-	< source src='ma-video.mp4' type='video/mp4' />
-	< track kind='captions' label='français' src='mes-soutitres.srt' />
+code
+<video controls>
+	<source src='ma-video.mp4' type='video/mp4' />
+	<track kind='captions' label='français' src='mes-soutitres.srt' />
 </video>
-< audio controls src='ma-chanson.mp3'>
-	< source src='ma-chanson.mp3' />
+<audio controls src='ma-chanson.mp3'>
+	<source src='ma-chanson.mp3' />
 </audio>
+/
 
 ************ Les controles ************
 
@@ -273,16 +315,17 @@ Main: Unique et obligatoire. Contient les éléments propres à la page, qui ne 
 
 Rgaa 9.04
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d151
-< p>paragraphe avec < q>une ligne de citation</q></p>
-< blockquote>< p>bloc</p>< p>de citation</p></blockquote>
-< blockquote cite='http://source.html'>< p>bloc</p>< p>de citation</p></blockquote><p>— moi, <cite>mon bouquin</cite></p>
-
+code
+<p>paragraphe avec <q>une ligne de citation</q></p>
+<blockquote><p>bloc</p><p>de citation</p></blockquote>
+<blockquote cite='http://source.html'><p>bloc</p><p>de citation</p></blockquote><p>— moi, <cite>mon bouquin</cite></p>
+/
 ************ Les listes ************
 
 Rgaa 9.03
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d147
 Ul, ol, dl
-< div role='list'>< p role='listitem'/>
+code	<div role='list'><p role='listitem'/>
 Les suites de liens doivent être dans une liste.
 Pas de role = presentation
 
@@ -318,11 +361,12 @@ Les cases sont considérées comme des div. Il faut mettre les balises normales 
 ************ Tableau de donnée ************
 
 Besoin d'un titre. Caption, title, aria-label, aria-labelledby.
-Si double entrée, les th son marqués par les scopes. < th scope='row'/>, < th scope='col'/>
+Si double entrée, les th son marqués par les scopes.
+code	<th scope='row'/>, <th scope='col'/>
 
 ************ Tableau hors structure ************
 
-< div role='table' />
+code	<div role='table' />
 Besoin d'un titre. Aria-label ou aria-labelledby.
 
 ************ Tableau complèxe ************
@@ -334,7 +378,8 @@ Le résumé est utilisé par les aveugles et par les personnes ayant un retard m
 <span>les industries agro-alimentaires et manufacturière sont présentées sur deux colonnes, indiquant pour chacune la quantité (tonnes) et le pourcentage.</span></caption>
 Industries agro-alimentaires	industries manufacturière
 Quantité	%					quantité	%
-Chaque th à un id, chaque cellule est liée à ses headers. < td headers='id-a id-b' />
+Chaque th à un id, chaque cellule est liée à ses headers.
+code	<td headers='id-a id-b' />
 
 ============ La présentation ============
 
@@ -393,33 +438,37 @@ Une marque autre que la couleur indique le survol ou le focus.
 ************ Le contenu caché ************
 
 Nous parlons du contenu caché pour tous les utilisateurs.
+code
 Css {
 	Display: None;	/* erreur typique des cases à cocher ou boutons radio */
 	Visibility: Hidden;
 	Font-size: 0;
 }
 <tag aria-hidden='true' hidden>
+/
 Aria-hidden cache aux lecteurs d'écran les éléments décoratifs. Ils restent visibles à l'écran. Il ne doit pas être donné aux éléments focusables ou à leurs ancêtres.
 
 ------------ Boutons radio stylisés, cas en erreur ------------
 
 L'utilisateur clique sur le label
+code
 Input[type='radio'] { display: None; }
 <form>
 	<h3>que choisissez-vous ?</h3>
 	<label id='option-a' tabindex='0'>option a</label><input type='radio' for='option-a' />
 	<label id='option-b' tabindex='0'>option b</label><input type='radio' for='option-b' />
 </form>
-
+/
 ------------ Boutons radio stylisés, correction ------------
 
+code
 Input[type='radio'] { propriétés de la classe sr-only; }
 <form>
 	<h3>que choisissez-vous ?</h3>
 	<label id='option-a'>option a</label><input type='radio' for='option-a' class='sr-only' />
 	<label id='option-b'>option b</label><input type='radio' for='option-b' class='sr-only' />
 </form>
-
+/
 ************ L'information non-textuelle ************
 
 Rgaa 10.09 et 10.10
@@ -547,14 +596,14 @@ Aria-labelledby permet de contenir un long texte structuré. Cas où l'image con
 
 ************ L'image svg ************
 
-< svg role='img' aria-label='message alternatif'>
+code	<svg role='img' aria-label='message alternatif'>
 Aria-label est remplaçable par aria-labelledby.
 
 ************ Le captcha ************
 
 Pour les captcha et les images de tests.
 L'alternative informe sur la fonction de captcha.
-< img alt='code captcha à saisir'/>
+code	<img alt='code captcha à saisir'/>
 Une méthode de captcha alternative est disponible. Captcha sonore, confirmation par sms, etc.
 
 ************ La description détaillée ************
@@ -573,7 +622,7 @@ https://accessconfig.a11y.fr/
 
 ************ La figure ************
 
-< figure role='figure' aria-label='ma figure'>
+code	<figure role='figure' aria-label='ma figure'>
 Role group ou figure.
 Aria-label ou title.
 La légende contient les métadonnées de l'image ou complète les infos qu'elle donne.
@@ -682,20 +731,21 @@ Xhtml en texte: Xml: Lang + lang
 ------------ Xhtml 1.0 servi en texte ------------
 
 <!doctype html public '-//w3c//dtd xhtml 1.0 strict//en' 'http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd'>
-< html xmlns='http://www.w3.org/1999/xhtml' xml: Lang='fr' lang='fr'>
-< meta http-equiv='content-type' content='text/html; charset=utf-8' />
-
+code
+<html xmlns='http://www.w3.org/1999/xhtml' xml: Lang='fr' lang='fr'>
+<meta http-equiv='content-type' content='text/html; charset=utf-8' />
+/
 ------------ Xhtml 1.0 servi en application ou 1.1 ------------
 
+code
 <?xml version="1.0" encoding="utf-8"?>
-<!doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
-< html xmlns="http://www.w3.org/1999/xhtml" xml: Lang="fr">
-< head>< meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-
+<!doctype html public "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml: Lang="fr'>
+<head><meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+/
 ************ Le sens de lecture est précisé ************
+code	<html dir='rtl'> ou <div dir='ltr'>
 
-< html dir='rtl'>
-< div dir='ltr'>
 Ltr: Left to right
 Rtl: Right to left
 Obligatoire si:
