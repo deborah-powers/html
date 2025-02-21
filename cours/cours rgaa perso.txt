@@ -64,6 +64,7 @@ Banner représente le vrai header de la page. Une page pouvant contenir plusieur
 Rgaa 12.08, 12.11
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d215
 
+
 ------------ Fonctionnement ------------
 
 Je saute d'un élément focusable à l'autre.
@@ -84,6 +85,11 @@ Dans une spa, la tabulation revient en début de page à chaque rechargement.
 Si une infobulle contient un élément interractif (bouton, formulaire, etc), elle est accessible au clavier.
 Les contenus cachés sont innaccessibles à la tabulation.
 Pour les spa: https://access42.net/accessibilite-rechargement-page-single-page-applications/
+les pièges au clavier, ou méchanismes de tabulations particuliers, sont présentés, ainsi que la solution pour s'en défaire.
+pour les raccourcis claviers constitués de caractères imprimables:
+	fonctionnel uniquement quand le focus est mit sur certains éléments
+	configurable via une touche de modification
+	rgaa 12.10
 
 ------------ Visualiser l'ordre de tabulation dans firefox ------------
 
@@ -95,7 +101,9 @@ Cocher la case "afficher l'ordre de tabulation", en haut à droite.
 https://webaim.org/techniques/keyboard/
 Basique:
 	Avancer: Tab
-	Reculer: Tab + shift
+	Reculer:
+		Tab + shift
+		Tab + maj
 Lien: Suivre: Entrer
 Bouton classique: Cliquer: Entrer ou barre d'espace
 Boutons radio:
@@ -113,6 +121,23 @@ Auto-complétion lors de la frappe:
 	Valider une option: Entrer
 Boîte de dialogue:
 	Echappe: Fermer
+
+--- raccourcis clavier dans firefox ---
+
+https://support.mozilla.org/fr/kb/raccourcis-clavier#firefox:win11:fx136
+ctl + i: ouvrir la console
+ctl + j: ouvrir la console dans une nouvelle fenêtre
+ctl + o: ouvrir un fichier dans le navigateur
+ctl + s: enregistrer la page dans un fichier
+ctl + r: rafraîchir la page
+ctl + maj + r: rafraîchir la page en ignorant le cache
+ctl + +: zoomer
+ctl + -: dé-zoomer
+ctl + 0: taille normale
+échap: arrêter un processus
+alt + <: retour arrière
+alt + >: retour avant
+tab: tabulation avant
 
 ------------------------------------------------
 
