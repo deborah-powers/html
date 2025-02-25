@@ -36,7 +36,7 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d221
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d224
 
 ============ La navigation ============
 
@@ -64,7 +64,6 @@ Banner représente le vrai header de la page. Une page pouvant contenir plusieur
 Rgaa 12.08, 12.11
 C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d215
 
-
 ------------ Fonctionnement ------------
 
 Je saute d'un élément focusable à l'autre.
@@ -85,11 +84,11 @@ Dans une spa, la tabulation revient en début de page à chaque rechargement.
 Si une infobulle contient un élément interractif (bouton, formulaire, etc), elle est accessible au clavier.
 Les contenus cachés sont innaccessibles à la tabulation.
 Pour les spa: https://access42.net/accessibilite-rechargement-page-single-page-applications/
-les pièges au clavier, ou méchanismes de tabulations particuliers, sont présentés, ainsi que la solution pour s'en défaire.
-pour les raccourcis claviers constitués de caractères imprimables:
-	fonctionnel uniquement quand le focus est mit sur certains éléments
-	configurable via une touche de modification
-	rgaa 12.10
+Les pièges au clavier, ou méchanismes de tabulations particuliers, sont présentés, ainsi que la solution pour s'en défaire.
+Pour les raccourcis claviers constitués de caractères imprimables:
+	Fonctionnel uniquement quand le focus est mit sur certains éléments
+	Configurable via une touche de modification
+	Rgaa 12.10
 
 ------------ Visualiser l'ordre de tabulation dans firefox ------------
 
@@ -102,8 +101,8 @@ https://webaim.org/techniques/keyboard/
 Basique:
 	Avancer: Tab
 	Reculer:
-		Tab + shift
-		Tab + maj
+		tab + shift
+		tab + maj
 Lien: Suivre: Entrer
 Bouton classique: Cliquer: Entrer ou barre d'espace
 Boutons radio:
@@ -122,22 +121,22 @@ Auto-complétion lors de la frappe:
 Boîte de dialogue:
 	Echappe: Fermer
 
---- raccourcis clavier dans firefox ---
+------------ Raccourcis clavier dans firefox ------------
 
-https://support.mozilla.org/fr/kb/raccourcis-clavier#firefox:win11:fx136
-ctl + i: ouvrir la console
-ctl + j: ouvrir la console dans une nouvelle fenêtre
-ctl + o: ouvrir un fichier dans le navigateur
-ctl + s: enregistrer la page dans un fichier
-ctl + r: rafraîchir la page
-ctl + maj + r: rafraîchir la page en ignorant le cache
-ctl + +: zoomer
-ctl + -: dé-zoomer
-ctl + 0: taille normale
-échap: arrêter un processus
-alt + <: retour arrière
-alt + >: retour avant
-tab: tabulation avant
+https://support.mozilla.org/fr/kb/raccourcis-clavier#firefox: Win11: Fx136
+Ctl + i: Ouvrir la console
+Ctl + j: Ouvrir la console dans une nouvelle fenêtre
+Ctl + o: Ouvrir un fichier dans le navigateur
+Ctl + s: Enregistrer la page dans un fichier
+Ctl + r: Rafraîchir la page
+Ctl + maj + r: Rafraîchir la page en ignorant le cache
+Ctl + +: Zoomer
+Ctl + -: Dé-zoomer
+Ctl + 0: Taille normale
+Echap: Arrêter un processus
+Alt + <: Retour arrière
+Alt + >: Retour avant
+Tab: Tabulation avant
 
 ------------------------------------------------
 
@@ -247,7 +246,7 @@ C:/users/deborah.powers/appdata/local/peat
 C:/users/deborah.powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Code	ffmpeg -i c:/users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 c:/users/deborah.powers/desktop/video.avi
+Code	ffmpeg -i C:\ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:\ /users/deborah.powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
