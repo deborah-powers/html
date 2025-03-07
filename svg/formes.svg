@@ -27,6 +27,14 @@
 	/* nounours */
 	.oeil { fill: white; }
 	.pupille { fill: black; }
+	/* afficher l'id */
+	text#message-id {
+		stroke: none;
+		fill: #633;
+		font-size: 2em;
+		text-anchor: start;
+		dominant-baseline: middle;
+	}
 ]]></style><defs>
 	<info name='root(2)' value='1.414214'/>
 	<info name='root(3)' value='1.732051'/>
@@ -133,17 +141,31 @@
 	<path id='cloud-cross' d='M 38,88 c 0,50 50,50 50,0 c 50,0 50,-50 0,-50 c 0,-50 -50,-50 -50,0 c -50,0 -50,50 0,50 z' transform='translate(720,320)'/>
 	<path id='cloud' d='M 38,88 c 0,50 50,50 50,0 c 0,50 50,50 50,0 c 0,50 50,50 50,0 c 50,0 50,-50 0,-50 c 0,-50 -50,-50 -50,0 c 0,-50 -50,-50 -50,0 c 0,-50 -50,-50 -50,0 c -50,0 -50,50 0,50 z' transform='translate(450,320)'/>
 
-	<path id='path-line-simple' d='m0,0 h40 v40 h-40 z' transform='translate(670,400)'/>
-	<path id='path-line-coord' d='m40,0 l40,40 l-40,40 l-40,-40 z' transform='translate(710,210)'/>
-	<path id='path-curve-quadratic' d='m0,0 q 40,80 80,0 z' transform='translate(720,90)'/>
-	<path id='path-curve-bezier' d='m6,0 c -40,60 120,60 80,0 z' transform='translate(760,0)'/>
-	<path id='path-hole' fill-rule='evenodd' d='m220,0 h80 v80 h-80 z m20,20 h40 v40 h-40 z' transform='translate(450,0)'/>
+	<path id='line-simple' d='m0,0 h40 v40 h-40 z' transform='translate(670,400)'/>
+	<path id='line-coord' d='m40,0 l40,40 l-40,40 l-40,-40 z' transform='translate(710,210)'/>
+	<path id='curve-quadratic' d='m0,0 q 40,80 80,0 z' transform='translate(720,90)'/>
+	<path id='curve-bezier' d='m6,0 c -40,60 120,60 80,0 z' transform='translate(760,0)'/>
+	<path id='hole' fill-rule='evenodd' d='m220,0 h80 v80 h-80 z m20,20 h40 v40 h-40 z' transform='translate(450,0)'/>
 	<path id='moon' d='m 0,0 c 80,0 80,100 0,100 c 40,-10 40,-90 0,-100' transform='translate(838,300)'/>
-	<g class='path-arc' transform='translate(360,250)'>
+	<g id='arc' transform='translate(360,250)'>
 		<path d='m 50,40 a 20,40 -20 1,0 0,40 z'/>
 		<path d='m 50,40 a 20,40 -20 1,1 0,40 z' class='d'/>
 		<path d='m 50,40 a 20,40 -20 0,0 0,40 z' class='e'/>
 		<path d='m 50,40 a 20,40 -20 0,1 0,40 z' class='c'/>
 	</g>
-
-</svg>
+	<text id='message-id' x='20' y='450'>survoler un élément</text>
+<script type='text/javascript'>
+	const textContainer = document.getElementById ('message-id');
+	const svg = document.getElementsByTagName ('svg')[0];
+	SVGElement.prototype.lastContainer = function(){
+		if ('svg' === this.tagName) return null;
+		else if ('svg' === this.parentElement.tagName || "" === this.parentElement.id) return this;
+		else return this.parentElement.lastContainer();
+	}
+	function showId (event){
+		const parent = event.target.lastContainer();
+		if (parent) textContainer.innerHTML = parent.tagName +" "+ parent.id;
+		else textContainer.innerHTML = 'survoler un élément';
+	}
+	svg.addEventListener ('mouseover', showId);
+</script></svg>

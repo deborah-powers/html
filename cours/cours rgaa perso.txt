@@ -42,7 +42,8 @@ Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index
 
 rgaa 11
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D228
-les champs ont des étiquettes visibles et pertinentes.
+chaque champ à un intitulé visible et pertinent. label, innerText, title.
+placeholder est inadapté pour contenir l'intitulé.
 
 
 
