@@ -28,21 +28,23 @@
 	<p>exemples de formulaires en js</p>
 <form method='get' onsubmit='return false'>
 	<h3>formulaire js classique</h3>
+	<label for='prenom'>prénom</label>
+	<input type='text' id='prenom' name='prenom' />
 	<label for='option-1a'>option a</label><input type='radio' name='option-choix-1' ib='option-1a' value='option a' />
 	<label for='option-1b'>option b</label><input type='radio' name='option-choix-1' id='option-1b' value='option b' />
-	<input type='submit' value='allez-y' onclick='printChoice("1")'>
+	<input type='submit' value='allez-y' onclick='printChoice("1")' />
 </form>
 <form method='get' onsubmit='return false' id='hidden-boxes'>
 	<h3>coches masquées par une méthode classique, innadaptée au rgaa</h3>
 	<label for='option-2a' tabIndex='0'>option a</label><input type='radio' name='option-choix-2' id='option-2a' value='option a' />
 	<label for='option-2b' tabIndex='0'>option b</label><input type='radio' name='option-choix-2' id='option-2b' value='option b' />
-	<input type='submit' value='allez-y' onclick='printChoice("2")'>
+	<input type='submit' value='allez-y' onclick='printChoice("2")' />
 </form>
 <form method='get' onsubmit='return false' id='hidden-boxes-rgaa'>
 	<h3>coches masquées par une méthode adaptée au rgaa</h3>
 	<label for='option-3a'>option a</label><input type='radio' name='option-choix-3' id='option-3a' value='option a' />
 	<label for='option-3b'>option b</label><input type='radio' name='option-choix-3' id='option-3b' value='option b' />
-	<input type='submit' value='allez-y' onclick='printChoice("3")'>
+	<input type='submit' value='allez-y' onclick='printChoice("3")' />
 </form>
 <p>option à choisir</p>
 </body>
