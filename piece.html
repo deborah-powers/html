@@ -10,29 +10,32 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece.css'/>
 <style type='text/css'>
-	p {
-		width: 2em;
-		height: 2em;
-		border-radius: 0.5em;
-		border-style: solid;
-		background-color: pink;
-		display: inline-block;
+	piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) {
+		background-color: lightcoral;
+		background-image: repeating-linear-gradient(90deg, lightblue 25px, wheat 25px 30px, lightblue 30px 55px);
 	}
-/*	p:nth-child(n-5) { background-color: lightblue; }	/ les quatre premiers éléments sont roses, le cinquième et les suivants sont bleus /
-	p:nth-child(-n+5) { background-color: lightblue; }	/ les cinq premiers éléments sont bleus, les suivants roses /
-	*/
-	div#dodo {
+	piece >*:nth-child(2) { background-color: lightbrown; }
+	piece >*:nth-child(3) { background-color: white; }
+	div.item {
 		border-radius: 4em;
 		background-color: lightgreen;
 	}
 </style></head><body>
+<piece>
+	<div>fond</div>
+	<div>sol</div>
+	<div>toit</div>
+	<div>gauche</div>
+	<div>droit</div>
+	<div class='item'>ok</div>
+</piece>
 <piece>
 	<div class='fond'>fond</div>
 	<div class='sol'>sol</div>
 	<div class='toit'>toit</div>
 	<div class='murg'>gauche</div>
 	<div class='murd'>droit</div>
-	<div id='dodo'>ok</div>
+	<div class='item'>ok</div>
 </piece>
 <piece class='fmed'>
 	<div class='fond'>fond</div>
@@ -40,5 +43,6 @@
 	<div class='toit'>toit</div>
 	<div class='murg'>gauche</div>
 	<div class='murd'>droit</div>
+	<div class='item'>ok</div>
 </piece>
 </body></html>
