@@ -42,9 +42,18 @@ Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index
 
 rgaa 11
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D228
-chaque champ à un intitulé visible et pertinent. label, innerText, title.
-placeholder est inadapté pour contenir l'intitulé.
+https://www.w3.org/TR/html-aam-1.0/#accessible-name-and-description-computation (nom accessible)
 
+nom accessible: aria-labelledby > aria-label > label > innerText > value > title.
+placeholder est inadapté pour contenir le nom accessible car il disparaît à la frappe. si title et placeholder sont présents ensemble, title reprend le placeholder.
+si le label est hors-écran, le champ a une alternative visible.
+chaque élément n'a qu'un seul et unique < label />.
+
+*** à faire ***
+
+pour chaque champ
+	repérer l'étiquette visible, contenant le nom visible
+	Calculer le nom accessible
 
 
 ============ La navigation ============
@@ -174,6 +183,7 @@ Le lien d'accès rapide est visible à la prise de focus (positionnement hors é
 
 Rgaa 6.01
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#intitule-ou-nom-accessible-de-lien
+nom
 Calculer l'intitulé: Aria-labelledby > aria-label > texte visible > title
 Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'écran.
 Intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink: Title > < text/>
@@ -834,7 +844,9 @@ Aside représente un bloc indépendant du contenu de son parent.
 
 ============ Divers ============
 
-Le nom accessible est celui restitué par les technologies d'assistance.
+le nom visible est lisible à l'écran. l'attribut title suffit comme nom visible.
+Le nom accessible est celui restitué par les technologies d'assistance. il reprend le nom visible.
+les deux noms doivent être pertinents et peuvent correspondre à la même balise.
 Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
 https://developer.mozilla.org/en-us/docs/web/html/element/area
 https://disic.github.io/guide-concepteur/8-multimedia.html
