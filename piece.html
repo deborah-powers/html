@@ -15,53 +15,20 @@
 piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) {
 	background-color: coral;
 }
-piece >*:nth-child(4), piece >*:nth-child(5) {
-	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 60%, 70% 60%, 70% 10%, 30% 10%, 30% 60%, 50% 60%, 50% 100%, 0% 100%);
-	clip-rule: evenodd;
-}
-piece >*:nth-child(4):before, piece >*:nth-child(5):before {
-	display: inline-block;
-	content: "";
-	width: 48%;
-	height: 58%;
-	margin: 6% 26%;
-	background-color: brown;
-}
-piece >*:nth-child(2) {
-	background-color: rosybrown;
-}
+piece >*:nth-child(2) { background-color: rosybrown; }
 piece >*:nth-child(3) { background-color: white; }
 div.item {
 	border-radius: 4em;
 	background-color: lightgreen;
 }
-fenetre {
-	display: block;
-	padding: 0;
-	margin: auto;
-	margin-top: 5em;
-	text-align: center;
-	width: 8em;
-	height: 12em;
-	background-position: center;
-	background-color: skyblue;
-	background-image:
-		linear-gradient(90deg, transparent calc(50% - 0.2em), brown calc(50% - 0.2em) calc(50% + 0.2em), transparent calc(50% + 0.2em) 100%),
-		linear-gradient(transparent calc(50% - 0.2em), brown calc(50% - 0.2em) calc(50% + 0.2em), transparent calc(50% + 0.2em) 100%);
-	border-style: solid;
-	border-color: brown;
-	border-width: 0.4em;
-	transform-origin: center center;
-	transform: rotateY(45deg) translateX(5em);
-}
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
 <piece class='semi-point'>
-	<div>fond</div>
-	<div>sol</div>
-	<div>toit</div>
+	<div><fenetre></fenetre></div>
 	<div></div>
 	<div></div>
+	<div class='fenetre'></div>
+	<div><fenetre></fenetre></div>
 	<div class='item'>ok</div>
 </piece>
 </body></html>
