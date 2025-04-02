@@ -15,20 +15,31 @@
 piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) {
 	background-color: coral;
 }
-piece >*:nth-child(2) { background-color: rosybrown; }
-piece >*:nth-child(3) { background-color: white; }
+piece >*:nth-child(2) { background-color: var(--color-bois); }
+piece >*:nth-child(4).fenetre, piece >*:nth-child(5).fenetre {
+	clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 70% 100%, 70% 2em, 30% 2em, 30% 12em, 70% 12em, 70% 100%);
+	text-align: center;
+}
+fenetre, piece >*:nth-child(4).fenetre:before, piece >*:nth-child(5).fenetre:before {
+	border-color: var(--color-bois);
+}
+fenetre { background-color: deepskyblue; }
+piece >*:nth-child(4).fenetre:before, piece >*:nth-child(5).fenetre:before {
+	content: "";
+	background-color: rosybrown;
+}
 div.item {
 	border-radius: 4em;
 	background-color: lightgreen;
 }
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-<piece class='semi-point'>
+<piece class='semi-losange'>
 	<div><fenetre></fenetre></div>
 	<div></div>
 	<div></div>
 	<div class='fenetre'></div>
-	<div><fenetre></fenetre></div>
+	<div class='fenetre'></div>
 	<div class='item'>ok</div>
 </piece>
 </body></html>

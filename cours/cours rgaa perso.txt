@@ -36,25 +36,44 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d228
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d243
 
-=== les formulaires ===
+============ Les formulaires ============
 
-rgaa 11
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D228
-https://www.w3.org/TR/html-aam-1.0/#accessible-name-and-description-computation (nom accessible)
+Rgaa 11
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d228
+https://www.w3.org/tr/html-aam-1.0/#accessible-name-and-description-computation (nom accessible)
+Nom accessible: Aria-labelledby > aria-label > label > innertext > bouton > value > title.
+Placeholder est inadapté pour contenir le nom accessible car il disparaît à la frappe.
+Si title et placeholder sont présents ensemble, title reprend le placeholder.
+Si le label est hors-écran, le champ a une alternative visible.
+Chaque élément n'a qu'un seul et unique < label />.
+Le champ et son étiquette sont accolés. Si celà est impossible, le title reprend le texte de l'étiquette.
+Regroupement par
+Code
+<fieldset><legend>tître du groupe</legend>...
+<div role='group' aria-label='groupe de champs'>...
+<select><optgroup label="groupe d'options">options partageant un sous-thème
+/
 
-nom accessible: aria-labelledby > aria-label > label > innerText > value > title.
-placeholder est inadapté pour contenir le nom accessible car il disparaît à la frappe. si title et placeholder sont présents ensemble, title reprend le placeholder.
-si le label est hors-écran, le champ a une alternative visible.
-chaque élément n'a qu'un seul et unique < label />.
+************ A faire ************
 
-*** à faire ***
+Pour chaque champ
+Repérer l'étiquette visible, contenant le nom visible
+Calculer le nom accessible
+Vérifier les critères
 
-pour chaque champ
-	repérer l'étiquette visible, contenant le nom visible
-	Calculer le nom accessible
+************ Nom accessible dans firefox ************
 
+Sur mon élément de formulaire,
+Clique droit / inspecter les propriétés d'accessibilité
+Le champ name contient le nom accessible.
+
+************ Nom accessible dans chrome ************
+
+Sur mon élément de formulaire,
+Clique droit / inspecter / onglet élément / panneau d'accessibilité
+Le champ name contient le nom accessible.
 
 ============ La navigation ============
 
@@ -110,7 +129,7 @@ Pour les raccourcis claviers constitués de caractères imprimables:
 
 ------------ Visualiser l'ordre de tabulation dans firefox ------------
 
-Console / onglet d'accèssibilité
+Console / onglet d'accessibilité
 Cocher la case "afficher l'ordre de tabulation", en haut à droite.
 
 ------------ Les touches ------------
@@ -183,7 +202,7 @@ Le lien d'accès rapide est visible à la prise de focus (positionnement hors é
 
 Rgaa 6.01
 https://accessibilite.numerique.gouv.fr/methode/glossaire/#intitule-ou-nom-accessible-de-lien
-nom
+Nom
 Calculer l'intitulé: Aria-labelledby > aria-label > texte visible > title
 Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'écran.
 Intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink: Title > < text/>
@@ -265,7 +284,7 @@ C:/users/deborah.powers/appdata/local/peat
 C:/users/deborah.powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Code	ffmpeg -i C:\ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:\ /users/deborah.powers/desktop/video.avi
+Code	ffmpeg -i C:/ /users/deborah.powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 C:/ /users/deborah.powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
@@ -844,9 +863,9 @@ Aside représente un bloc indépendant du contenu de son parent.
 
 ============ Divers ============
 
-le nom visible est lisible à l'écran. l'attribut title suffit comme nom visible.
-Le nom accessible est celui restitué par les technologies d'assistance. il reprend le nom visible.
-les deux noms doivent être pertinents et peuvent correspondre à la même balise.
+Le nom visible est lisible à l'écran. L'attribut title suffit comme nom visible.
+Le nom accessible est celui restitué par les technologies d'assistance. Il reprend le nom visible.
+Les deux noms doivent être pertinents et peuvent correspondre à la même balise.
 Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
 https://developer.mozilla.org/en-us/docs/web/html/element/area
 https://disic.github.io/guide-concepteur/8-multimedia.html

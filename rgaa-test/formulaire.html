@@ -23,6 +23,15 @@
 		Position: Absolute !important;
 	}
 	form#hidden-boxes-rgaa label:hover, form#hidden-boxes-rgaa label:focus { border: solid 2px deeppink; }
+	div#colors {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		justify-content: stretch;
+	}
+	div#colors >* {
+		flex-grow: 1;
+	}
 </style></head><body>
 	<h1>que choisirez-vous ?</h1>
 	<p>exemples de formulaires en js</p>
@@ -30,6 +39,24 @@
 	<h3>formulaire js classique</h3>
 	<label for='prenom'>prénom</label>
 	<input type='text' id='prenom' name='prenom' />
+	<select>
+		<optgroup label='voyels'>
+		<option value='b'>option b</option>
+			<option value='a'>option a</option>
+			<option value='e'>option e</option>
+			<option value='i'>option i</option>
+			<option value='o'>option e</option>
+			<option value='u'>option u</option>
+		</optgroup>
+		<option value='d'>la réponse d</option>
+		<optgroup label='consomnes'>
+			<option value='r'>option r</option>
+			<option value='s'>option s</option>
+			<option value='t'>option t</option>
+		</optgroup>
+		<option value='w'>option w</option>
+		<option value='y'>option y</option>
+	</select>
 	<label for='option-1a'>option a</label><input type='radio' name='option-choix-1' ib='option-1a' value='option a' />
 	<label for='option-1b'>option b</label><input type='radio' name='option-choix-1' id='option-1b' value='option b' />
 	<input type='submit' value='allez-y' onclick='printChoice("1")' />
@@ -47,6 +74,18 @@
 	<input type='submit' value='allez-y' onclick='printChoice("3")' />
 </form>
 <p>option à choisir</p>
+	<div id='colors'>
+		<p style='background-color:violet'>o</p>
+		<p style='background-color:purple'>o</p>
+		<p style='background-color:magenta'>o</p>
+		<p style='background-color:deeppink'>o</p>
+		<p style='background-color:hotpink'>o</p>
+		<p style='background-color:royalblue;'>o</p>
+		<p style='background-color:dodgerblue;'>o</p>
+		<p style='background-color:deepskyblue'>o</p>
+		<p style='background-color:blue'>o</p>
+		<p style='background-color:darkred;'>o</p>
+	</div>
 </body>
 <script type='text/javascript'>
 	function printChoice (formNum){
