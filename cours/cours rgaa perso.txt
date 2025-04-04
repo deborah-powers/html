@@ -49,19 +49,15 @@ Si title et placeholder sont présents ensemble, title reprend le placeholder.
 Si le label est hors-écran, le champ a une alternative visible.
 Chaque élément n'a qu'un seul et unique < label />.
 Le champ et son étiquette sont accolés. Si celà est impossible, le title reprend le texte de l'étiquette.
-Regroupement par
+Les champs doivent obligatoirement avoir un nom visible, les boutons peuvent s'en passer.
+
+************ Regroupement par ************
+
 Code
 <fieldset><legend>tître du groupe</legend>...
 <div role='group' aria-label='groupe de champs'>...
 <select><optgroup label="groupe d'options">options partageant un sous-thème
 /
-
-************ A faire ************
-
-Pour chaque champ
-Repérer l'étiquette visible, contenant le nom visible
-Calculer le nom accessible
-Vérifier les critères
 
 ************ Nom accessible dans firefox ************
 
@@ -74,6 +70,26 @@ Le champ name contient le nom accessible.
 Sur mon élément de formulaire,
 Clique droit / inspecter / onglet élément / panneau d'accessibilité
 Le champ name contient le nom accessible.
+
+************ Les champs obligatoires sont marqués ************
+
+En début de formulaire, un texte comme "tous les champs sont obligatoires".
+Une astérisque * devant chaque champ, définie en début de formulaire, par "champ obligatoire: *".
+Précision dans les noms accessible et visible.
+Pour les lecteurs d'écran, les attributs required ou aria-required='true'.
+Exceptions: Il n'y a qu'un seul champ, les champs facultatifs sont marqués.
+
+************ Le contrôle de saisie ************
+
+certains champs ont un format de saisie contrôlé. le format attendu est précisé avant la saisie. en cas d'erreur, un message de retour décris un exemple réel de saisie.
+
+************ A faire ************
+
+Pour chaque champ
+Repérer l'étiquette visible, contenant le nom visible
+Calculer le nom accessible
+Vérifier les critères
+Vérifier si les champs obligatoires sont marqués.
 
 ============ La navigation ============
 

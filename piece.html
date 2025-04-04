@@ -12,34 +12,37 @@
 <script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/piece.js'></script>
 <style type='text/css'>
 
-piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) {
-	background-color: coral;
-}
-piece >*:nth-child(2) { background-color: var(--color-bois); }
-piece >*:nth-child(4).fenetre, piece >*:nth-child(5).fenetre {
-	clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%, 70% 100%, 70% 2em, 30% 2em, 30% 12em, 70% 12em, 70% 100%);
-	text-align: center;
-}
-fenetre, piece >*:nth-child(4).fenetre:before, piece >*:nth-child(5).fenetre:before {
-	border-color: var(--color-bois);
-}
-fenetre { background-color: deepskyblue; }
+piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) { background-color: coral; }
+piece >*:nth-child(2) { background-color: rosybrown; }
+fenetre { background-color: #0CF; }
 piece >*:nth-child(4).fenetre:before, piece >*:nth-child(5).fenetre:before {
 	content: "";
 	background-color: rosybrown;
 }
+piece > fenetre {
+	text-align: center;
+	background-position: center;
+	background-size: contain;
+	transform-origin: center center;
+	background-color: #0CF2;
+	transform: rotateY(90deg) translateZ(-20em);
+}
+piece > fenetre.droite { transform: rotateY(90deg) translateZ(20em); }
+
+
 div.item {
 	border-radius: 4em;
 	background-color: lightgreen;
 }
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-<piece class='semi-losange'>
+<piece class='semi-point'>
 	<div><fenetre></fenetre></div>
 	<div></div>
 	<div></div>
 	<div class='fenetre'></div>
 	<div class='fenetre'></div>
+	<fenetre class='droite'></fenetre>
 	<div class='item'>ok</div>
 </piece>
 </body></html>
