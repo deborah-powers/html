@@ -4,7 +4,24 @@
 	<meta charset='utf-8'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
-</head><body>
+<style type='text/css'>
+	polygon, line {
+		fill: var(--fond-color);
+		stroke: var(--text-color);
+		stroke-width: 2px;
+	}
+	circle {
+		stroke: none;
+		fill: var(--text-color);
+	}
+	line.big { stroke-width: 4px; }
+</style></head><body>
+<svg version='1.1' width='100' height='100' xmlns='http://www.w3.org/2000/svg'>
+	<polygon points='50,0 100,100 0,100' />
+	<circle r='4px' cx='50' cy='50' />
+	<line y1='0' y2='100' x1='50' x2='50' />
+	<line y1='0' y2='100' x1='75' x2='25' class='big' />
+</svg>
 	<table>
 		<caption>les racines</caption>
 		<tr><td>r(2) = $r2</td><td>r2 /2 = $r22</td><td>1/ r2 = $r2i</td></tr>
