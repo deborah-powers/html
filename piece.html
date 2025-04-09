@@ -26,10 +26,10 @@ fenetre { background-color: #0CF; }
 bevel {
 	margin-left: 4cm;
 	margin-top: 4cm;
-	--width: 12cm;
-	--bevwidth: 0.8;
+	--width: 10cm;
+	--bevwidth: 0.6;
 	--height: 4cm;
-	transform: rotateX(90deg);
+	animation: spin-vertical 8s infinite linear;
 /*
 	animation: spin-vertical 8s infinite linear;
 	transform: rotateX(90deg);
@@ -37,32 +37,17 @@ bevel {
 }
 /**/
 bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
-	content: "";
-	width: 4%;
-	height: var(--height);
-	border: none;
-	background: inherit;
-	display: block;
-	position: absolute;
-	text-align: center;
-	background-position: center;
-	background-size: contain;
-	left: calc(var(--width) *0.48);
+	width: 2%;
+	left: calc(var(--width) *0.49);
 	top: calc(var(--depth-half) - 0.5 * var(--height));
-	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--width) * 0.25 * (2.242640687119285 + var(--bevwidth) * 0.4142135623730951)));
-	background-color: orange;
 	transform-origin: center center;
 }
-/*
-longueur de la surface:
-ls = r (w/2-c) +c = wr/2 - cr + c = wr/2 + c (1-r)
-c= w-bw /4 = w/4 (1-b)
-ls = wr/2 + (1-r)(1-b) w/4
-ls 2/w = r + (1-r)(1-b) /2
-ls 4/w = 2r + (1-r)(1-b) = 2r + 1-b-r+br = r+1-b+br = r+1 +b (r-1)
-
-
-*/
+bevel >*:nth-child(1):after, bevel >*:nth-child(2):after {
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * (1 + var(--bevwidth) * 0.4142135623730951)));
+}
+bevel >*:nth-child(1):before, bevel >*:nth-child(2):before  {
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * -1 * (1 + var(--bevwidth) * 0.4142135623730951)));
+}
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
 

@@ -1,24 +1,44 @@
 <!DOCTYPE html><html><head>
-	<title>formes 3D</title>
+	<title>notes de géométrie</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='../site-dp/library-css/perso.css' media='screen'/>
 <style type='text/css'>
-	polygon, line {
+	svg {
+		border-style: double;
+		border-width: 8px;
+	}
+	svg >* {
 		fill: var(--fond-color);
 		stroke: var(--text-color);
 		stroke-width: 2px;
 	}
-	circle {
+	circle.point {
 		stroke: none;
 		fill: var(--text-color);
 	}
 	line.big { stroke-width: 4px; }
+	text {
+		stroke: none;
+		fill: var(--text-color);
+		font-size: 1em;
+		text-anchor: start;
+		dominant-baseline: middle;
+	}
 </style></head><body>
+<svg id='cercle-trigo' version='1.1' width='400' height='400' xmlns='http://www.w3.org/2000/svg'>
+	<circle r='400' cx='0' cy='400' />
+	<line x1='0' y1='400' x2='400' y2='0' />
+	<line x1='0' y1='117.15728752538098' x2='400' y2='117.15728752538098' /><text x='10' y='140'>syn(45) ou r(2)</text>
+	<path d='m 0,380 a 20,20 -45 0,1 20,0'/><text x='10' y='350'>45°</text>
+	<line x1='165.685424949238' y1='0' x2='400' y2='234.31457505076196' />
+	<line class='big' x1='0' y1='117.15728752538098' x2='165.685424949238' y2='0' />
+</svg>
 <svg version='1.1' width='100' height='100' xmlns='http://www.w3.org/2000/svg'>
+	<rect x='0' y='0' width='200' height='200' />
 	<polygon points='50,0 100,100 0,100' />
-	<circle r='4px' cx='50' cy='50' />
+	<circle class='point' r='4' cx='50' cy='50' />
 	<line y1='0' y2='100' x1='50' x2='50' />
 	<line y1='0' y2='100' x1='75' x2='25' class='big' />
 </svg>
