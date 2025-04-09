@@ -26,79 +26,47 @@ fenetre { background-color: #0CF; }
 bevel {
 	margin-left: 4cm;
 	margin-top: 4cm;
-	--fond: #B084;
-	--width: 10cm;
-	--bevwidth: 0.6;
-	animation: spin-horizontal 8s infinite linear;
+	--width: 12cm;
+	--bevwidth: 0.8;
+	--height: 4cm;
+	transform: rotateX(90deg);
 /*
 	animation: spin-vertical 8s infinite linear;
 	transform: rotateX(90deg);
 */
 }
-bevel >*:nth-child(1), bevel >*:nth-child(2){
-	border-radius: calc((1 - var(--bevwidth)) *50%);
-	transform-style: preserve-3d;
-}
-bevel >*:nth-child(n+3){
-	border: none;
-	transform-style: preserve-3d;
-	width: calc(100% * var(--bevwidth));
-	left: calc(var(--width) * (1 - var(--bevwidth)) /2);
-}
-bevel >*:nth-child(n+3):before, bevel >*:nth-child(n+3):after {
-	content: "";
-	width: calc(var(--width) * (1 - var(--bevwidth)) * 0.3826834323650897717284599840304);
-	height: inherit;
-	border: inherit;
-	background: inherit;
-	display: block;
-	position: absolute;
-	top: 0;
-	text-align: center;
-	background-position: center;
-	background-size: contain;
-}
-bevel >*:nth-child(n+3):before {
-	transform-origin: center left;
-	left: calc(var(--width) * (var(--bevwidth)) );
-	transform: rotateY(22.5deg);
-}
-bevel >*:nth-child(n+3):after {
-	transform-origin: center right;
-	left: calc(var(--width) * (var(--bevwidth) - 1) * 0.3826834323650897717284599840304);
-	transform: rotateY(-22.5deg);
-}
-/*
+/**/
 bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
 	content: "";
-	width: 10%;
+	width: 4%;
 	height: var(--height);
-	border: inherit;
+	border: none;
 	background: inherit;
 	display: block;
 	position: absolute;
-	top: var(--width)
-	left: var(--width)
 	text-align: center;
 	background-position: center;
 	background-size: contain;
-	border: none;
-	transform: rotateX(90deg) rotateY(45deg) translateY(-50%);
+	left: calc(var(--width) *0.48);
+	top: calc(var(--depth-half) - 0.5 * var(--height));
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--width) * 0.25 * (2.242640687119285 + var(--bevwidth) * 0.4142135623730951)));
 	background-color: orange;
-	transform-origin: center left;
+	transform-origin: center center;
 }
-*/
 /*
-b-c, b+ c* 0.35355339059327376220042218105242
-0,5857864376269049511983112757903
-0,7653668647301795434569199680608
-0,3826834323650897717284599840304
-*/
+longueur de la surface:
+ls = r (w/2-c) +c = wr/2 - cr + c = wr/2 + c (1-r)
+c= w-bw /4 = w/4 (1-b)
+ls = wr/2 + (1-r)(1-b) w/4
+ls 2/w = r + (1-r)(1-b) /2
+ls 4/w = 2r + (1-r)(1-b) = 2r + 1-b-r+br = r+1-b+br = r+1 +b (r-1)
 
+
+*/
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
 
-<bevel>
+<bevel class='mesure'>
 	<p>top</p>
 	<p>bottom</p>
 	<p>back</p>
