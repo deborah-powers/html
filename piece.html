@@ -23,42 +23,8 @@ div.item {
 	background-color: lightgreen;
 }
 fenetre { background-color: #0CF; }
-bevel {
-	margin-left: 4cm;
-	margin-top: 4cm;
-	--width: 10cm;
-	--bevwidth: 0.6;
-	--height: 4cm;
-	animation: spin-vertical 8s infinite linear;
-/*
-	animation: spin-vertical 8s infinite linear;
-	transform: rotateX(90deg);
-*/
-}
-/**/
-bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
-	width: 2%;
-	left: calc(var(--width) *0.49);
-	top: calc(var(--depth-half) - 0.5 * var(--height));
-	transform-origin: center center;
-}
-bevel >*:nth-child(1):after, bevel >*:nth-child(2):after {
-	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * (1 + var(--bevwidth) * 0.4142135623730951)));
-}
-bevel >*:nth-child(1):before, bevel >*:nth-child(2):before  {
-	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * -1 * (1 + var(--bevwidth) * 0.4142135623730951)));
-}
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-
-<bevel class='mesure'>
-	<p>top</p>
-	<p>bottom</p>
-	<p>back</p>
-	<p>left</p>
-	<p>right</p>
-	<p>front</p>
-</bevel>
 <piece class='semi-point'>
 	<div><fenetre></fenetre></div>
 	<div></div>

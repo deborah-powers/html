@@ -1,0 +1,89 @@
+<!DOCTYPE html><html><head>
+<title>formes géométriques 3d</title>
+<base target='_blank'/>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<meta name='subject' content='loisir, maison de poupée'/>
+<meta name='author' content='deborah'/>
+<meta name='link' content='o'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/cylindre.css'/>
+<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/piece.js'></script>
+<style type='text/css'>
+body {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+}
+bevel {
+	margin-left: 4cm;
+	margin-top: 10cm;
+	--width: 20cm;
+	--bevwidth: 0.3;
+	--height: 1cm;
+	--bord: solid 20px red;
+	transform: rotateX(90deg);
+/*
+	animation: spin-horizontal 8s infinite linear;
+	animation: spin-vertical 8s infinite linear;
+	transform: rotateX(90deg);
+*/
+}
+/*
+bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
+	width: 2%;
+	left: calc(var(--width) *0.49);
+	left: calc(var(--depth-half) *0.98);
+	top: calc(var(--depth-half) - 0.5 * var(--height));
+	transform-origin: center center;
+}
+bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
+	width: calc(6.25% * (1 - var(--bevwidth)));
+	left: calc(var(--depth-half) * (1 - 0.0625* (1- var(--bevwidth))));
+	top: calc(var(--depth-half) - 0.5 * var(--height));
+	transform-origin: center center;
+	background-color: skyblue;
+}
+bevel >*:nth-child(1):after, bevel >*:nth-child(2):after {
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * (1 + var(--bevwidth) * 0.4142135623730951)));
+}
+bevel >*:nth-child(1):before, bevel >*:nth-child(2):before {
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * -1 * (1 + var(--bevwidth) * 0.4142135623730951)));
+}*/
+bevel >*:nth-child(1):before, bevel >*:nth-child(1):after, bevel >*:nth-child(2):before, bevel >*:nth-child(2):after {
+	width: calc(var(--depth-half) * (1 - var(--bevwidth)) * sqrt(2 - 2 * cos(30deg)));
+	left: calc(var(--depth-half) * (1 - 0.5* (1 - var(--bevwidth)) * sqrt(2 - 2 * cos(30deg))));
+	top: calc(var(--depth-half) - 0.5 * var(--height));
+	transform-origin: center center;
+	background-color: deeppink;
+}
+/*
+c2= h2+b2/4
+h2= c2- b2/4 = 1- b2/4 = 1- (2-2cos) /4 = 1- (1-cos) /2
+2h2 = 2-1+ cos = 1+ cos
+h2 = 0.5 + 0.5 cos
+h2 = 0.5 + 0.5* cos(30deg)
+
+ = 1- (2-2*cos) /4 = 1- (1-cos) /2 = 0.5 + 0.5 cos
+h2= 0.5 + 0.5 cos
+h2= 0.5 + 0.5 * cos(30deg)
+
+h2= 1- 2+2* cos = 2* cos -1
+
+s= co/hy = h/1 =h
+
+*/
+bevel >*:nth-child(1):after, bevel >*:nth-child(2):after {
+	transform: rotateX(90deg) translateY(-50%) rotateY(45deg) translateZ(calc(var(--depth-half) * (var(--bevwidth) - 1) *2* sin(30deg)));
+}
+</style></head><body>
+<bevel class='mesure'>
+	<p>top</p>
+	<p>bottom</p>
+	<p>back</p>
+	<p>left</p>
+	<p>right</p>
+	<p>front</p>
+</bevel>
+</body></html>
