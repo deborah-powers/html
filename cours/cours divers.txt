@@ -87,7 +87,7 @@ Rajouter en fin de ligne:/k doskey /macrofile=c:/users/deborah.powers/documents/
 
 ************ Dans firefox ************
 
-About: Preferences#privacy
+about:preferences#privacy
 Cookies et données de sites / bouton pour éffacer les données
 Intervalle: Tout (de préférence)
 Cocher les types de données à supprimer
@@ -231,7 +231,7 @@ Méthode pour mettre des trucs dans une collection, du terminal et pas de mongo
 Sudo mongoimport --jsonarray --db projet10 --collection docs --file /chemin/absolu/users.json
 Sudo mongoimport --jsonarray --db projet_12_13 --collection test --file /home/deborah/bureau/node/node-12-06-deborah-loic-matthieu-karim/api/listusers.json
 
-============ Docker ************
+============ Docker ============
 
 User	deborahpowers
 https://hub.docker.com/
