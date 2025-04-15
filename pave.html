@@ -9,162 +9,47 @@
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/boule.css'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/cylindre.css'/>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-boule {
+bol {
 	--width: 10cm;
-	--height: var(--width);
 	margin-left: 4cm;
 	margin-top: 4cm;
-	border: solid 4px maroon;
-	animation: spin-horizontal 8s infinite linear;
+	animation: spin-vertical 8s infinite linear;
 /*
 	animation: spin-horizontal 8s infinite linear;
 	animation: spin-vertical 8s infinite linear;
 	transform: rotateX(90deg);
 */
 }
-boule >*{
-	width: 6.5%;
-	height: 6.5%;
-	top: 46.75%;
-	left: 46.75%; /* calc((var(--width) - width) /2) */
-	border: none;
-	transform-style: preserve-3d;
+bol {
+	/* propriétés modifiables */
+	--fond: pink;
+	/* ------ */
+	--width-half: calc(var(--width) /2);
+	width: var(--width);
+	height: var(--width-half);
+	border-top-left-radius: 0%;
+	border-top-right-radius: 0%;
 }
-boule >*:before, boule >*:after {
-	content: "";
-	width: 100%;
-	height: 100%;
-	border: inherit;
-	background: inherit;
-	display: block;
-	position: absolute;
-	left: 0;
+bol:before, bol:after {
+	border-top-left-radius: 0%;
+	border-top-right-radius: 0%;
 }
-boule >*:before {
-	transform-origin: top center;
-	transform: rotateX(-7.5deg);
-	top: 100%;
+bol >*:nth-child(1) {
+	border-radius: 50%;
+	width: inherit;
+	height: var(--width);
+	background: var(--fond);
+	transform: rotateX(90deg) translateZ(var(--width-half));
 }
-boule >*:after {
-	transform-origin: bottom center;
-	transform: rotateX(7.5deg);
-	top: -100%;
-}
-boule >*:nth-child(1){ transform: rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(2){ transform: rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(3){ transform: rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(4){ transform: rotateX(78.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(5){ transform: rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(6){ transform: rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(7){ transform: rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(8){ transform: rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(9){ transform: rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(10){ transform: rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(11){ transform: rotateX(258.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(12){ transform: rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(13){ transform: rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(14){ transform: rotateX(348.75deg) translateZ(var(--depth-half)); }
-
-boule >*:nth-child(15){ transform: rotateY(7.5deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(16){ transform: rotateY(7.5deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(17){ transform: rotateY(7.5deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(18){ transform: rotateY(7.5deg) rotateX(101.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(19){ transform: rotateY(7.5deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(20){ transform: rotateY(7.5deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(21){ transform: rotateY(7.5deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(22){ transform: rotateY(7.5deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(23){ transform: rotateY(7.5deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(24){ transform: rotateY(7.5deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(25){ transform: rotateY(7.5deg) rotateX(281.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(26){ transform: rotateY(7.5deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(27){ transform: rotateY(7.5deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(28){ transform: rotateY(7.5deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-
-boule >*:nth-child(29){ transform: rotateY(15deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(30){ transform: rotateY(15deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(31){ transform: rotateY(15deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(32){ transform: rotateY(15deg) rotateX(78.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(33){ transform: rotateY(15deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(34){ transform: rotateY(15deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(35){ transform: rotateY(15deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(36){ transform: rotateY(15deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(37){ transform: rotateY(15deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(38){ transform: rotateY(15deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(39){ transform: rotateY(15deg) rotateX(258.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(40){ transform: rotateY(15deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(41){ transform: rotateY(15deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(42){ transform: rotateY(15deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-
-boule >*:nth-child(43){ transform: rotateY(22.5deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(44){ transform: rotateY(22.5deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(45){ transform: rotateY(22.5deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(46){ transform: rotateY(22.5deg) rotateX(101.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(47){ transform: rotateY(22.5deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(48){ transform: rotateY(22.5deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(49){ transform: rotateY(22.5deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(50){ transform: rotateY(22.5deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(51){ transform: rotateY(22.5deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(52){ transform: rotateY(22.5deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(53){ transform: rotateY(22.5deg) rotateX(281.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(54){ transform: rotateY(22.5deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(55){ transform: rotateY(22.5deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(56){ transform: rotateY(22.5deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-
-boule >*:nth-child(57){ transform: rotateY(30deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(58){ transform: rotateY(30deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(59){ transform: rotateY(30deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(60){ transform: rotateY(30deg) rotateX(78.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(61){ transform: rotateY(30deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(62){ transform: rotateY(30deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(63){ transform: rotateY(30deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(64){ transform: rotateY(30deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(65){ transform: rotateY(30deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(66){ transform: rotateY(30deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(67){ transform: rotateY(30deg) rotateX(258.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(68){ transform: rotateY(30deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(69){ transform: rotateY(30deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(70){ transform: rotateY(30deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(71){ transform: rotateY(37.5deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(72){ transform: rotateY(37.5deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(73){ transform: rotateY(37.5deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(74){ transform: rotateY(37.5deg) rotateX(101.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(75){ transform: rotateY(37.5deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(76){ transform: rotateY(37.5deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(77){ transform: rotateY(37.5deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(78){ transform: rotateY(37.5deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(79){ transform: rotateY(37.5deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(80){ transform: rotateY(37.5deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(81){ transform: rotateY(37.5deg) rotateX(281.25deg) translateZ(var(--depth-half)); background-color: darkorange; }
-boule >*:nth-child(82){ transform: rotateY(37.5deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(83){ transform: rotateY(37.5deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(84){ transform: rotateY(37.5deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-/*
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(11.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(33.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(56.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(78.75deg) translateZ(var(--depth-half)); background-color: deeppink; }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(101.25deg) translateZ(var(--depth-half)); background-color: darkorange; }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(123.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(146.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(168.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(191.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(213.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(236.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(258.75deg) translateZ(var(--depth-half)); background-color: deeppink; }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(281.25deg) translateZ(var(--depth-half)); background-color: darkorange; }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(303.75deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(326.25deg) translateZ(var(--depth-half)); }
-boule >*:nth-child(){ transform: rotateY(85deg) rotateX(348.75deg) translateZ(var(--depth-half)); }
-*/
-
 </style></head><body>
-<boule class='mesure'>
+<bol>
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
@@ -177,10 +62,5 @@ boule >*:nth-child(){ transform: rotateY(85deg) rotateX(348.75deg) translateZ(va
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-</boule>
+</bol>
 </body></html>
