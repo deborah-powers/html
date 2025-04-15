@@ -36,7 +36,7 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d246
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D254
 
 ============ Les formulaires ============
 
@@ -82,6 +82,7 @@ Exceptions: Il n'y a qu'un seul champ, les champs facultatifs sont marqués.
 ************ Le contrôle de saisie ************
 
 certains champs ont un format de saisie contrôlé. le format attendu est précisé avant la saisie. en cas d'erreur, un message de retour décris un exemple réel de saisie.
+en cas d'erreur de saisie, le retour est correctement relié au champ. aria-describedby='id-aide-champ id-erreur-champ'
 
 ************ A faire ************
 
@@ -90,6 +91,7 @@ Repérer l'étiquette visible, contenant le nom visible
 Calculer le nom accessible
 Vérifier les critères
 Vérifier si les champs obligatoires sont marqués.
+remplir le formulaire avec des valeurs mal formattées.
 
 ============ La navigation ============
 

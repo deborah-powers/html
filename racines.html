@@ -8,6 +8,8 @@
 	svg {
 		border-style: double;
 		border-width: 8px;
+		width: 400px;
+		height: 400px;
 	}
 	svg >* {
 		fill: var(--fond-color);
@@ -17,6 +19,7 @@
 	circle.point {
 		stroke: none;
 		fill: var(--text-color);
+		r: 4px;
 	}
 	line.big { stroke-width: 4px; }
 	text {
@@ -27,7 +30,7 @@
 		dominant-baseline: middle;
 	}
 </style></head><body>
-<svg id='cercle-trigo' version='1.1' width='400' height='400' xmlns='http://www.w3.org/2000/svg'>
+<svg id='cercle-trigo' version='1.1' xmlns='http://www.w3.org/2000/svg'>
 	<circle r='400' cx='0' cy='400' />
 	<line x1='0' y1='400' x2='400' y2='0' />
 	<line x1='0' y1='117.15728752538098' x2='400' y2='117.15728752538098' /><text x='10' y='140'>syn(45)</text>
@@ -36,12 +39,17 @@
 	<line class='big' x1='0' y1='117.15728752538098' x2='215.685424949238' y2='50' />
 	<line x1='140' y1='20' x2='380' y2='260' />	
 </svg>
+<svg id='carre-trigo' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+	<circle r='100' cx='300' cy='100' />
+	<circle class='point' cx='300' cy='100' />
+	<circle class='point' cx='200' cy='200' />
+	<line x1='0' y1='400' x2='400' y2='0' />
+</svg>
 <svg version='1.1' width='100' height='100' xmlns='http://www.w3.org/2000/svg'>
-	<rect x='0' y='0' width='200' height='200' />
-	<polygon points='50,0 100,100 0,100' />
-	<circle class='point' r='4' cx='50' cy='50' />
-	<line y1='0' y2='100' x1='50' x2='50' />
-	<line y1='0' y2='100' x1='75' x2='25' class='big' />
+	<polygon points='200,0 400,400 0,400' />
+	<circle class='point' cx='200' cy='200' />
+	<line y1='0' y2='400' x1='200' x2='200' />
+	<line y1='0' y2='400' x1='300' x2='100' class='big' />
 </svg>
 	<table>
 		<caption>les racines</caption>
