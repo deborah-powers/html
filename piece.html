@@ -14,22 +14,21 @@ body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-piece >*:nth-child(1), piece >*:nth-child(4), piece >*:nth-child(5) { background-color: coral; }
-piece >*:nth-child(2) { background-color: rosybrown; }
-div.item {
-	border-radius: 4em;
-	background-color: lightgreen;
+piece {
+	animation: spin-vertical 8s infinite linear;
 }
-fenetre { background-color: #0CF; }
+/*
+	animation: spin-horizontal 8s infinite linear;
+	animation: spin-vertical 8s infinite linear;
+	transform: rotateX(90deg);
+*/
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
 <piece class='semi-point'>
-	<div><fenetre></fenetre></div>
-	<div></div>
-	<div></div>
-	<div class='fenetre'></div>
-	<div class='fenetre'></div>
-	<fenetre class='droite'>hello</fenetre>
-	<div class='item'>ok</div>
+	<div>fond</div>
+	<div>sol</div>
+	<div>toit</div>
+	<div>gauche</div>
+	<div>droit</div>
 </piece>
 </body></html>
