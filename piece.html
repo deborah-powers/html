@@ -8,27 +8,55 @@
 <meta name='link' content='o'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
-<link rel='stylesheet' type='text/css' href='piece.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/cylindre.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/boule.css'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble.css'/>
+<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/piece.js'></script>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
 piece {
-	animation: spin-vertical 8s infinite linear;
+	animation-name: spin-room-vertical;
+	--plafond: transparent;
 }
 /*
-	animation: spin-horizontal 8s infinite linear;
-	animation: spin-vertical 8s infinite linear;
+	animation: spin-horizontal 8s infinite alternate;
+	animation: spin-vertical 8s infinite alternate;
 	transform: rotateX(90deg);
 */
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-<piece class='semi-point'>
-	<div>fond</div>
+<piece class='rayure'>
+	<div><fenetre></fenetre></div>
 	<div>sol</div>
 	<div>toit</div>
-	<div>gauche</div>
+	<div class='fenetre'>gauche</div>
 	<div>droit</div>
+	<fenetre class='gauche'></fenetre>
+	<pave class='poteau table'>
+		<p>top</p>
+		<p>bottom</p>
+		<p>back</p>
+		<p>left</p>
+		<p>right</p>
+		<p>front</p>
+	</pave>
+	<bol><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</bol>
 </piece>
 </body></html>

@@ -17,64 +17,112 @@ body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-bol, boule {
-	--width: 10cm;
+pave-simple, cylindre-simple {
 	margin-left: 8cm;
 	margin-top: 2cm;
-	animation: spin-vertical 8s infinite linear;
+	animation: spin-horizontal 8s infinite linear;
+}
 /*
 	animation: spin-horizontal 8s infinite linear;
 	animation: spin-vertical 8s infinite linear;
 	transform: rotateX(90deg);
+	background-image: radial-gradient(circle, red 1em, blue);
 */
+pave-simple, cylindre-simple {
+	/* propriétés modifiables */
+	width: 16em;
+	height: 12em;
+	--depth: 8em;
+	background-color: #C0C4;
+	color: var(--text-color);
+	/* ------ */
+	border-style: none;
+	display: inline-block;
+	transform-style: preserve-3d;
+	padding: 0;
+	text-align: center;
+	background-position: center;
+	background-size: contain;
 }
-div {
-	width: 10cm;
-	height: 6cm;
-	background-color: pink;
-	border-style: double;
+pave-simple:before, pave-simple:after, pave-simple >*:nth-child(1), pave-simple >*:nth-child(1):before, pave-simple >*:nth-child(1):after,
+cylindre-simple:after, cylindre-simple >* {
+	/* valeurs par défaut à adapter */
+	width: inherit;
+	height: inherit;
+	top: 0;
+	left: 0;
+	transform-origin: center center;
+	/* valeurs communes */
+	content: "";
+	display: inline-block;
+	position: absolute;
+	border: none;
+	margin: 0;
+	text-align: inherit;
+	color: inherit;
+	background: inherit;
+	background-position: center;
+	background-size: contain;
+}
+pave-simple >*:nth-child(1) {
+	transform-style: preserve-3d;
+	transform: translateZ(calc(-1* var(--depth)));
+}
+pave-simple:before, pave-simple:after {
+	left: calc(-0.5* var(--depth));
+	content: "";
+	width: var(--depth);
+	transform: rotateY(90deg) translateX(50%);
+}
+pave-simple:after { left: calc(100% - 0.5* var(--depth)); }
+pave-simple >*:nth-child(1):before, pave-simple >*:nth-child(1):after {
+	content: "";
+	width: 100%;
+	height: var(--depth);
+	left: 0%;
+	top: calc(-0.5* var(--depth));
+	transform: rotateX(90deg) translateY(calc(0.5* var(--depth)));
+}
+pave-simple >*:nth-child(1):after { top: calc(100% - 0.5* var(--depth)); }
+
+cylindre-simple {
+	/* propriétés modifiables */
+	height: 16em;
+	/* ------ */
 	border-radius: 50%;
-	clip-path: circle(50% at 50% 0%);
 }
+cylindre-simple:after {
+	transform: translateZ(calc(-1* var(--depth)));
+	border-radius: 50%;
+}
+cylindre-simple >* {
+	height: 6.5%;
+	width: var(--depth);
+	transform-style: preserve-3d;
+	transform: translateZ(calc(-0.5* var(--depth))) rotateY(90deg);
+}
+/*
+	left: 25%;
+	transform: rotateY(90deg);
+cylindre-simple >*:nth-child(1){ transform: translateY(50%); }
+cylindre-simple >*:nth-child(2){ transform: rotateZ(22.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(3){ transform: rotateZ(45deg) translateY(50%); }
+cylindre-simple >*:nth-child(4){ transform: rotateZ(67.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(5){ transform: rotateZ(90deg) translateY(50%); }
+cylindre-simple >*:nth-child(6){ transform: rotateZ(112.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(7){ transform: rotateZ(135deg) translateY(50%); }
+cylindre-simple >*:nth-child(8){ transform: rotateZ(157.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(9){ transform: rotateZ(180deg) translateY(50%); }
+cylindre-simple >*:nth-child(10){ transform: rotateZ(202.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(11){ transform: rotateZ(225deg) translateY(50%); }
+cylindre-simple >*:nth-child(12){ transform: rotateZ(247.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(13){ transform: rotateZ(270deg) translateY(50%); }
+cylindre-simple >*:nth-child(14){ transform: rotateZ(292.5deg) translateY(50%); }
+cylindre-simple >*:nth-child(15){ transform: rotateZ(315deg) translateY(50%); }
+cylindre-simple >*:nth-child(16){ transform: rotateZ(337.5deg) translateY(50%); }
+*/
 </style></head><body>
-<bol>
-	<p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-</bol>
-<boule>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-</boule>
+<cylindre-simple>
+	<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></cylindre-simple>
+<pave-simple><p></p></pave-simple>
 </body></html>
