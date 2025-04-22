@@ -36,7 +36,20 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D254
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D263
+
+=== les scripts ===
+
+C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D263
+un élément interractif possède un role pertinent.
+
+ouverture de page ou d'onglet:	lien a.
+déclenchement d'un évênement sur la page ou lancement d'une fonction js:	bouton ou role='aria-button'.
+les modales sont ouvertes par des boutons.
+le nom accessible est pertinent, le basique.
+l'état et le changement d'état sont transmits de façon pertinente.
+
+
 
 ============ Les formulaires ============
 
@@ -82,7 +95,31 @@ Exceptions: Il n'y a qu'un seul champ, les champs facultatifs sont marqués.
 ************ Le contrôle de saisie ************
 
 certains champs ont un format de saisie contrôlé. le format attendu est précisé avant la saisie. en cas d'erreur, un message de retour décris un exemple réel de saisie.
-en cas d'erreur de saisie, le retour est correctement relié au champ. aria-describedby='id-aide-champ id-erreur-champ'
+en cas d'erreur de saisie, le retour est correctement relié au champ. aria-describedby='id-aide-champ id-erreur-champ'.
+les labels et attribut title aident aussi.
+
+*** les données sensibles ***
+
+pour les données financières, juridiques, résultats d'examen ou réponse à un contrôle, etc,
+l'utilisateur est informé explicitement de l'envoi du formulaire, il a le contrôle des données envoyées.
+trois moyens:
+	étape de confirmation avant l'envoi.
+	avant la validation, présentation des données pour vérification et correction.
+	après la validation, possibiliter de corriger les données, voir d'annuler l'envoi.
+
+confirmation explicite: popup, case à cocher (j'accepte les cgu).
+
+pour remplacer les données financières, juridiques etc,
+l'utilisateur contrôle la modification.
+	accès à l'historique.
+	confirmation explicite rappelant que les anciennes données seront éffacées.
+
+--- autocomplete ---
+les champs recevant des données personnelles ont la propriété autocomplete. <input autocomplete='given-name' .../>
+ses valeurs sont pré-définies et nombreuses. il concerne les éléments input, select, textarea ou form. l'élément doit avoir un id ou un name, être dans un formulaire contenant un bouton submit.
+détails sur autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete
+autocomplete selon le wcag: https://www.w3.org/Translations/WCAG21-fr/#input-purposes
+
 
 ************ A faire ************
 
