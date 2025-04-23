@@ -36,7 +36,7 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D263
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D268
 
 === les scripts ===
 
