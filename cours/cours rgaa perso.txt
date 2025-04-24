@@ -43,11 +43,15 @@ Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D263
 un élément interractif possède un role pertinent.
 
-ouverture de page ou d'onglet:	lien a.
-déclenchement d'un évênement sur la page ou lancement d'une fonction js:	bouton ou role='aria-button'.
+ouverture de page:	lien a ou role='link'.
+déclenchement d'un évênement ou lancement d'une fonction js:	bouton ou role='aria-button'.
 les modales sont ouvertes par des boutons.
 le nom accessible est pertinent, le basique.
+*** état de l'élément ***
 l'état et le changement d'état sont transmits de façon pertinente.
+un bouton possède l'attribut aria-pressed = true ou false. il peut aussi changer de noms visible et accessible, de description, etc.
+un élément inactif porte l'attribut disabled.
+
 
 
 
@@ -931,3 +935,5 @@ Sujet:	Programmation, formation
 Auteur:	Access42 et Deborah
 Lien:	https://formations.access42.net/formations/formation-audit-accessibilite/
 Laut:	https://formations.access42.net/
+style:
+dl { grid-template-columns: 3fr 1fr; }

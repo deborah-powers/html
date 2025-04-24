@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+<!DOCTYPE html><html><head>
+	<title>$1</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+<style type='text/css'>$3</style></head><body>
+$2
+</body></html>
+]]></content>
+	<tabTrigger>page</tabTrigger>
+	<scope>text</scope>
+</snippet>
