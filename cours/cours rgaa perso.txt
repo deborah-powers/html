@@ -38,7 +38,7 @@ Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
 Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D268
 
-=== les scripts ===
+=== les éléments interractifs ===
 
 C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D263
 un élément interractif possède un role pertinent.
@@ -47,12 +47,44 @@ ouverture de page:	lien a ou role='link'.
 déclenchement d'un évênement ou lancement d'une fonction js:	bouton ou role='aria-button'.
 les modales sont ouvertes par des boutons.
 le nom accessible est pertinent, le basique.
+ils sont accessibles via la souris et le clavier. vérifier qu'ils reçoivent le focus.
+si un élément ne peut pas être rendu accessible, il a une alternative qui l'est. exemple du champ datepicker. cette alternative est évaluée.
 *** état de l'élément ***
 l'état et le changement d'état sont transmits de façon pertinente.
 un bouton possède l'attribut aria-pressed = true ou false. il peut aussi changer de noms visible et accessible, de description, etc.
 un élément inactif porte l'attribut disabled.
 
+**** le changement de contexte ***
 
+redirection, rechargement de la page, action ajax, soumission d'un formulaire.
+pour les changements liés au focus.
+le changement est lié à un lien ou à un bouton explicite.
+ou un texte explique le changement.
+
+*** message d'alerte ***
+
+https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Guides/Live_regions
+
+aria-live = off, assertive, polite ou role = xxx. actuellement, il est recommander de doubler les rôles avec aria-live.
+
+--- quelques rôles ---
+
+alert:	comme son nom l'indique
+log:	journalisation ??
+status:	état, status de quelque chose
+progressbar:	progression d'un évênement, comme un téléchargement
+timer:	minuterie
+marquee:	infos secondaires variant souvent
+
+
+--- aria-controls ---
+code
+<input aria-controls='zone-a zone-b' />
+<p id='zone-a'>
+<div id='zone-b'>
+/
+préciser que modifier input à un éffet sur le paragraphe et la div.
+cette méthode n'est pas recomandée.
 
 
 ============ Les formulaires ============
