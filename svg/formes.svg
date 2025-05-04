@@ -9,9 +9,7 @@
 		stroke: #633;
 		stroke-width: 2px;
 	}
-	old {
-		transform-origin: center;
-	}
+	old { transform-origin: center; }
 	/* fleurs */
 	.petal { fill: darkcyan; }
 	.petal-bis { fill: purple; }
