@@ -36,56 +36,55 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#D268
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d268
 
-=== les éléments interractifs ===
+============ Les éléments interractifs ============
 
-C:/users/deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D263
-un élément interractif possède un role pertinent.
+C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d263
+Un élément interractif possède un role pertinent.
+Ouverture de page:	Lien a ou role='link'.
+Déclenchement d'un évênement ou lancement d'une fonction js:	Bouton ou role='aria-button'.
+Les modales sont ouvertes par des boutons.
+Le nom accessible est pertinent, le basique.
+Ils sont accessibles via la souris et le clavier. Vérifier qu'ils reçoivent le focus.
+Si un élément ne peut pas être rendu accessible, il a une alternative qui l'est. Exemple du champ datepicker. Cette alternative est évaluée.
 
-ouverture de page:	lien a ou role='link'.
-déclenchement d'un évênement ou lancement d'une fonction js:	bouton ou role='aria-button'.
-les modales sont ouvertes par des boutons.
-le nom accessible est pertinent, le basique.
-ils sont accessibles via la souris et le clavier. vérifier qu'ils reçoivent le focus.
-si un élément ne peut pas être rendu accessible, il a une alternative qui l'est. exemple du champ datepicker. cette alternative est évaluée.
-*** état de l'élément ***
-l'état et le changement d'état sont transmits de façon pertinente.
-un bouton possède l'attribut aria-pressed = true ou false. il peut aussi changer de noms visible et accessible, de description, etc.
-un élément inactif porte l'attribut disabled.
+************ Etat de l'élément ************
 
-**** le changement de contexte ***
+L'état et le changement d'état sont transmits de façon pertinente.
+Un bouton possède l'attribut aria-pressed = true ou false. Il peut aussi changer de noms visible et accessible, de description, etc.
+Un élément inactif porte l'attribut disabled.
 
-redirection, rechargement de la page, action ajax, soumission d'un formulaire.
-pour les changements liés au focus.
-le changement est lié à un lien ou à un bouton explicite.
-ou un texte explique le changement.
+************ Le changement de contexte ************
 
-*** message d'alerte ***
+Redirection, rechargement de la page, action ajax, soumission d'un formulaire.
+Pour les changements liés au focus.
+Le changement est lié à un lien ou à un bouton explicite.
+Ou un texte explique le changement.
 
-https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Guides/Live_regions
+************ Message d'alerte ************
 
-aria-live = off, assertive, polite ou role = xxx. actuellement, il est recommander de doubler les rôles avec aria-live.
+https://developer.mozilla.org/fr/docs/web/accessibility/aria/guides/live_regions
+Aria-live = off, assertive, polite ou role = xxx. Actuellement, il est recommander de doubler les rôles avec aria-live.
 
---- quelques rôles ---
+------------ Quelques rôles ------------
 
-alert:	comme son nom l'indique
-log:	journalisation ??
-status:	état, status de quelque chose
-progressbar:	progression d'un évênement, comme un téléchargement
-timer:	minuterie
-marquee:	infos secondaires variant souvent
+Alert:	Comme son nom l'indique
+Log:	Journalisation ??
+Status:	Etat, status de quelque chose
+Progressbar:	Progression d'un évênement, comme un téléchargement
+Timer:	Minuterie
+Marquee:	Infos secondaires variant souvent
 
+------------ Aria-controls ------------
 
---- aria-controls ---
-code
+Code
 <input aria-controls='zone-a zone-b' />
 <p id='zone-a'>
 <div id='zone-b'>
 /
-préciser que modifier input à un éffet sur le paragraphe et la div.
-cette méthode n'est pas recomandée.
-
+Préciser que modifier input à un éffet sur le paragraphe et la div.
+Cette méthode n'est pas recomandée.
 
 ============ Les formulaires ============
 
@@ -130,32 +129,30 @@ Exceptions: Il n'y a qu'un seul champ, les champs facultatifs sont marqués.
 
 ************ Le contrôle de saisie ************
 
-certains champs ont un format de saisie contrôlé. le format attendu est précisé avant la saisie. en cas d'erreur, un message de retour décris un exemple réel de saisie.
-en cas d'erreur de saisie, le retour est correctement relié au champ. aria-describedby='id-aide-champ id-erreur-champ'.
-les labels et attribut title aident aussi.
+Certains champs ont un format de saisie contrôlé. Le format attendu est précisé avant la saisie. En cas d'erreur, un message de retour décris un exemple réel de saisie.
+En cas d'erreur de saisie, le retour est correctement relié au champ. Aria-describedby='id-aide-champ id-erreur-champ'.
+Les labels et attribut title aident aussi.
 
-*** les données sensibles ***
+************ Les données sensibles ************
 
-pour les données financières, juridiques, résultats d'examen ou réponse à un contrôle, etc,
-l'utilisateur est informé explicitement de l'envoi du formulaire, il a le contrôle des données envoyées.
-trois moyens:
-	étape de confirmation avant l'envoi.
-	avant la validation, présentation des données pour vérification et correction.
-	après la validation, possibiliter de corriger les données, voir d'annuler l'envoi.
+Pour les données financières, juridiques, résultats d'examen ou réponse à un contrôle, etc,
+L'utilisateur est informé explicitement de l'envoi du formulaire, il a le contrôle des données envoyées.
+Trois moyens:
+	Etape de confirmation avant l'envoi.
+	Avant la validation, présentation des données pour vérification et correction.
+	Après la validation, possibiliter de corriger les données, voir d'annuler l'envoi.
+Confirmation explicite: Popup, case à cocher (j'accepte les cgu).
+Pour remplacer les données financières, juridiques etc,
+L'utilisateur contrôle la modification.
+	Accès à l'historique.
+	Confirmation explicite rappelant que les anciennes données seront éffacées.
 
-confirmation explicite: popup, case à cocher (j'accepte les cgu).
+------------ Autocomplete ------------
 
-pour remplacer les données financières, juridiques etc,
-l'utilisateur contrôle la modification.
-	accès à l'historique.
-	confirmation explicite rappelant que les anciennes données seront éffacées.
-
---- autocomplete ---
-les champs recevant des données personnelles ont la propriété autocomplete. <input autocomplete='given-name' .../>
-ses valeurs sont pré-définies et nombreuses. il concerne les éléments input, select, textarea ou form. l'élément doit avoir un id ou un name, être dans un formulaire contenant un bouton submit.
-détails sur autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/autocomplete
-autocomplete selon le wcag: https://www.w3.org/Translations/WCAG21-fr/#input-purposes
-
+Les champs recevant des données personnelles ont la propriété autocomplete. <input autocomplete='given-name'.../>
+Ses valeurs sont pré-définies et nombreuses. Il concerne les éléments input, select, textarea ou form. L'élément doit avoir un id ou un name, être dans un formulaire contenant un bouton submit.
+Détails sur autocomplete: https://developer.mozilla.org/en-us/docs/web/html/reference/attributes/autocomplete
+Autocomplete selon le wcag: https://www.w3.org/translations/wcag21-fr/#input-purposes
 
 ************ A faire ************
 
@@ -164,7 +161,7 @@ Repérer l'étiquette visible, contenant le nom visible
 Calculer le nom accessible
 Vérifier les critères
 Vérifier si les champs obligatoires sont marqués.
-remplir le formulaire avec des valeurs mal formattées.
+Remplir le formulaire avec des valeurs mal formattées.
 
 ============ La navigation ============
 
@@ -967,5 +964,5 @@ Sujet:	Programmation, formation
 Auteur:	Access42 et Deborah
 Lien:	https://formations.access42.net/formations/formation-audit-accessibilite/
 Laut:	https://formations.access42.net/
-style:
-dl { grid-template-columns: 3fr 1fr; }
+Style:
+Dl { grid-template-columns: 3fr 1fr; }
