@@ -36,7 +36,7 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code	<a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d268
+Progression: C:/users/deborah.powers/desktop/formation-rgaa-2024/formation/index.html#d276
 
 ============ Les éléments interractifs ============
 
@@ -47,7 +47,8 @@ Déclenchement d'un évênement ou lancement d'une fonction js:	Bouton ou role='
 Les modales sont ouvertes par des boutons.
 Le nom accessible est pertinent, le basique.
 Ils sont accessibles via la souris et le clavier. Vérifier qu'ils reçoivent le focus.
-Si un élément ne peut pas être rendu accessible, il a une alternative qui l'est. Exemple du champ datepicker. Cette alternative est évaluée.
+Si un élément ne peut pas être rendu accessible, il a une alternative qui l'est et ne contient pas d'infos importantes. Cette alternative est évaluée.
+Exemple du champ datepicker: il est remplaçable par un champ de texte, et les éventuelles infos qu'il contient, comme les dates d'indisponibilité sont notées ailleurs.
 
 ************ Etat de l'élément ************
 
