@@ -32,6 +32,38 @@ Pour du code python
 2. Sauver ce fichier dans
 C:/users/deborah.powers/appdata/roaming/sublime text/packages/user
 
+*** insérer la date du jour dans mon template ***
+
+https://topic.alibabacloud.com/a/sublime-text-3-insert-date-time-etc_1_56_31383282.html
+
+tous les fichiers sont dans
+C:/users/deborah.powers/appdata/roaming/sublime text/packages/user
+
+dans Default.sublime-keymap
+[{
+	"keys": ["ctrl+shift+d"],
+	"command": "add_date",
+},]
+s'il existe déjà, rajouter la clef dans la liste.
+
+dans add_date.py
+import time
+import datetime
+import sublime_plugin
+
+class AddDateCommand (sublime_plugin.TextCommand):
+	def run (self, edit):
+		utc_offset_sec = None
+		if time.localtime().tm_isdst: utc_offset_sec = time.altzone
+		else: utc_offset_sec = time.timezone
+		utc_offset = datetime.timedelta (seconds=-utc_offset_sec)
+		formatted_string = datetime.datetime.now().replace (tzinfo=datetime.timezone (offset=utc_offset)).strftime ('%Y-%m-%dT%H:%M%z')
+		self.view.run_command ('insert_snippet', { 'contents': formatted_string })
+
+la commande add_date et la classe AddDateCommand ont obligatoirement des noms similaires.
+
+
+
 ============ Wamp ============
 
 https://www.c-sharpcorner.com/article/how-to-install-wamp-server-in-windows-10/
