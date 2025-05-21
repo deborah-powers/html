@@ -1,33 +1,48 @@
-=== Test de mon markdown maison ===
+== Test de mon markdown maison
 
 Transformer un texte utilisant markdown en html.
 Attention, c'est une version maison de markdown.
-Je rédige et lis mon texte sur un éditeur classique. mon fichier est en .md ou .txt.
+Je rédige et lis mon texte sur un éditeur classique. Mon fichier est en.md ou.txt.
 Dans un navigateur, cette extension le transforme en texte html.
-j'ai également un script python qui transforme le fichier en un fichier .html.
+J'ai également un script python qui transforme le fichier en un fichier.html.
 
-*** Les titres ***
+== Les titres
 
-=== Titre niveau 1 ===
+== Titre niveau 1
 
-*** Titre niveau 2 ***
+** Titre niveau 2
 
---- Titre niveau 3 ---
+-- Titre niveau 3
 
-___ Titre niveau 4 ___
+__ Titre niveau 4
 
-*** Les listes ***
+## titre niveau 5
 
-liste non ordonnée
+++ titre niveau 6
+
+== Les sauts de lignes
+
+Entre tîtres de niveau 1
+
+==
+
+Entre tîtres de niveau 2
+
+**
+
+Ainsi de suite
+
+== Les listes
+
+Liste non ordonnée
 La ligne commence par une tabulation
 	Un item
 	Un second
 		des items
 		imbriqués
 	Un troisième
-
-liste ordonnée
-	# Un item
+Liste ordonnée
+	# un item
 	Un second
 		des items
 		imbriqués
@@ -35,9 +50,16 @@ liste ordonnée
 		# des items
 		numérotés
 		imbriqués
-	un quatrième
+	Un quatrième
 
-*** Les tableaux ***
+== Les listes de définition
+
+Pêche: Fruit du pêcher
+Pomme: Fruit du pommier
+Poire: Fruit du poirier
+Abricot: Fruit de l'abricotier
+
+== Les tableaux
 
 Les cases sont séparées par des tabulations.
 Un point. Représente une case vide.
@@ -47,45 +69,65 @@ Pomme:	1	1
 Poire:	1	1
 Abricot:	.	1
 
-*** Les images ***
+== Les images
 
-cinq formats reconnus: bmp, png, jpg, jpeg, gif.
-l'url doit contenir un ":", comme C://mon-image.xyz ou http://mon-image.xyz
-
-c://fichier/image-perdue.bmp
+Cinq formats reconnus: Bmp, png, jpg, jpeg, gif.
+L'url doit contenir un ": ", comme C:/ //mon-image.xyz ou http://mon-image.xyz
+C://fichier/image-perdue.bmp
 https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png (scoubidous formant le mot "google")
-
-cette image c://fichier/mon-image.bmp est incluse dans un paragraphe.
-
+Cette image C:\ //fichier/mon-image.bmp est incluse dans un paragraphe.
 Un titre entre parenthèse après l'image lui sert de nom.
-c://fichier/image-perdue.bmp (cette image est indisponible, vous lisez le texte alternatif)
+C://fichier/image-perdue.bmp (cette image est indisponible, vous lisez le texte alternatif)
+Si l'image prend une ligne à elle toute seule, son nom peut être affiché en début de ligne.
+Google en scoubidou: https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png
 
-*** Les liens ***
+== Les liens
 
 Le nom du lien est calculé par défaut à partir de l'url.
 https://www.google.com/
 Un titre entre parenthèse après le lien lui sert de nom.
 https://www.google.com/ (moteur de recherche)
-ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne.
-lien affichant une image.
+Ici, le lien https://www.google.com/ (vers google) est inclu dans une ligne.
+Si le lien prend une ligne à lui tout seul, son nom peut être affiché en début de ligne.
+Moteur de recherche: https://www.google.com/
+Lien affichant une image.
 https://doodles.google/doodle/bastille-day-2022/ (https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png)
+https://doodles.google/doodle/bastille-day-2022/ (https://www.google.com/logos/doodles/2022/bastille-day-2022-6715546835105463.2-2x.png (doodle de la bastille))
 
-================================================
+== Les figures
 
-ma-meta:	contenu de ma métadonnée
-Script:	mon-script.js
-Script bas:	mon-script-bas.js
-Style:	ma-feuille.css
+Fig
+https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png
+Doodle de la bastille
+/
 
-h1 {
-	background-color: crimson;
-	color: white;
+== Le code sans formattage
+
+Code: Code sur une ligne
+Code
+Code sur
+Plusieur lignes
+/
+
+==
+
+Sujet: Programmation
+Auteur: Deborah
+Lien: Rien
+Ma-meta: Contenu de ma métadonnée
+Script: Mon-script.js
+Script bas: Mon-script-bas.js
+Style: Ma-feuille.css
+Style:
+H1 {
+	Background-color: Crimson;
+	Color: White;
 }
-h2 {
-	background-color: lime;
-	color: black;
+H2 {
+	Background-color: Lime;
+	Color: Black;
 }
 Script:
-const h1 = document.getElementsByTagName ('h1')[0];
+Const h1 = document.getelementsbytagname ('h1')[0];
 console.log (h1);
-h1.innerHTML = h1.innerHTML +' coucou !';
+H1.innerhtml = h1.innerhtml +' coucou !';
