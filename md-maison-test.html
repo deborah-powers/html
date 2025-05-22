@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>md maison test</title>
+	<base target='_blank'/>
+	<meta charset='utf-8'/>
+	<meta name='viewport' content='width=device-width, initial-scale=1'/>
+	<meta name='subject' content='programmation'/>
+	<meta name='author' content='deborah'/>
+	<meta name='link' content='rien'/>
+<meta name='ma-meta' content='contenu de ma métadonnée'/>
+<meta name='script bas' content='mon-script-bas.js'/>
+<style type='text/css'>ma-feuille.css</style>
+<script type='text/javascript'>mon-script.js</script>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+</head><body>
+<h1>Test de mon markdown maison</h1>
+<p>Transformer un texte utilisant markdown en html.</p>
+<p>Attention, c'est une version maison de markdown.</p>
+<p>Je rédige et lis mon texte sur un éditeur classique. Mon fichier est en.md ou.txt.</p>
+<p>Dans un navigateur, cette extension le transforme en texte html.</p>
+<p>J'ai également un script python qui transforme le fichier en un fichier.html.</p>
+<h1>Les titres</h1>
+<h1>Titre niveau 1</h1>
+<h2>Titre niveau 2</h2>
+<h3>Titre niveau 3</h3>
+<h4>Titre niveau 4</h4>
+<h5>titre niveau 5</h5>
+<h6>titre niveau 6</h6>
+<h1>Les sauts de lignes</h1>
+<p>Entre tîtres de niveau 1</p>
+<hr class='h1'/>
+<p>Entre tîtres de niveau 2</p>
+<hr class='h2'/>
+<p>Ainsi de suite</p>
+<h1>Les listes</h1>
+<p>Liste non ordonnée</p>
+<p>La ligne commence par une tabulation</p>
+<ul>
+	<li>Un item</li>
+	<li>Un second</li>
+<ul>
+	<li>des items</li>
+	<li>imbriqués</li>
+</ul>
+	<li>Un troisième</li>
+</ul>
+<p>Liste ordonnée</p>
+<ol>
+	<li>un item</li>
+	<li>Un second</li>
+<ul>
+	<li>des items</li>
+	<li>imbriqués</li>
+</ul>
+	<li>Un troisième</li>
+<ol>
+	<li>des items</li>
+	<li>numérotés</li>
+	<li>imbriqués</li>
+</ol>
+	<li>Un quatrième</li>
+</ol>
+<h1>Les listes de définition</h1>
+<dl>
+<dt>Pêche</dt>
+<dd>Fruit du pêcher</dd>
+<dt>Pomme</dt>
+<dd>Fruit du pommier</dd>
+<dt>Poire</dt>
+<dd>Fruit du poirier</dd>
+<dt>Abricot</dt>
+<dd>Fruit de l'abricotier</dd>
+</dl>
+<h1>Les tableaux</h1>
+<p>Les cases sont séparées par des tabulations.</p>
+<p>Un point. Représente une case vide.</p>
+<table><tr>
+	<th>Fruit</th><th>nombre de p</th><th>nombre de o</th>
+</tr><tr>
+	<th>Pêche</th><td>1</td><td>
+</td>
+</tr><tr>
+	<th>Pomme</th><td>1</td><td>1</td>
+</tr><tr>
+	<th>Poire</th><td>1</td><td>1</td>
+</tr><tr>
+	<th>Abricot</th><td>
+</td><td>1</td>
+</tr></table>
+<h1>Les images</h1>
+<p>Cinq formats reconnus: Bmp, png, jpg, jpeg, gif.</p>
+<p>L'url doit contenir un double point, comme C:/ //mon-image.xyz ou<a href='http://mon-image.xyz'>mon image</a>
+</p>
+<p>
+	<img src='C://fichier/image-perdue.bmp' alt='image perdue'/>
+</p>
+<p>
+	<img src='https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png' alt='scoubidous formant le mot "google"'/>
+</p>
+<p>Cette image<img src='C:/ //fichier/mon-image.bmp' alt='mon image'/>est incluse dans un paragraphe.</p>
+<p>Un titre entre parenthèse après l'image lui sert de nom.</p>
+<p>
+	<img src='C://fichier/image-perdue.bmp' alt='cette image est indisponible, vous lisez le texte alternatif'/>
+</p>
+<p>Si l'image prend une ligne à elle toute seule, son nom peut être affiché en début de ligne.</p>
+<p>Google en scoubidou:<img src='https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png' alt='celebrating scoubidous 6753651837110288 2x'/>
+</p>
+<h1>Les liens</h1>
+<p>Le nom du lien est calculé par défaut à partir de l'url.</p>
+<p><a href='https://www.google.com'>google</a>
+</p>
+<p>Un titre entre parenthèse après le lien lui sert de nom.</p>
+<p><a href='https://www.google.com'>moteur de recherche</a>
+</p>
+<p>Ici, le lien<a href='https://www.google.com'>vers google</a>est inclu dans une ligne.</p>
+<p>Si le lien prend une ligne à lui tout seul, son nom peut être affiché en début de ligne.</p>
+<p><a href='https://www.google.com'>Moteur de recherche</a>
+</p>
+<p>Lien affichant une image.</p>
+<p><a href='https://doodles.google/doodle/bastille-day-2022'>
+	<img src='https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png' alt='bastille day 2022 6753651837109463'/>
+</a>
+</p>
+<p><a href='https://doodles.google/doodle/bastille-day-2022'>
+	<img src='https://www.google.com/logos/doodles/2022/bastille-day-2022-6715546835105463.2-2x.png' alt='doodle de la bastille'/>
+</a>
+</p>
+<h1>Les figures</h1>
+<figure>
+<figcaption>
+	<img src='https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png' alt='bastille day 2022 6753651837109463'/>
+</figcaption>Doodle de la bastille</figure>
+<h1>Le code sans formattage</h1>
+<xmp>Code sur une ligne</xmp>
+<xmp>Code sur
+Plusieur lignes</xmp>
+</body>
+</html>

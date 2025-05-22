@@ -72,7 +72,7 @@ Abricot:	.	1
 == Les images
 
 Cinq formats reconnus: Bmp, png, jpg, jpeg, gif.
-L'url doit contenir un ": ", comme C:/ //mon-image.xyz ou http://mon-image.xyz
+L'url doit contenir un double point, comme C:\ //mon-image.xyz ou http://mon-image.xyz
 C://fichier/image-perdue.bmp
 https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png (scoubidous formant le mot "google")
 Cette image C:\ //fichier/mon-image.bmp est incluse dans un paragraphe.
