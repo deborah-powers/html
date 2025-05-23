@@ -129,6 +129,7 @@ H2 {
 	Background-color: Lime;
 	Color: Black;
 }
+img { max-width: 50%; }
 Script:
 Const h1 = document.getelementsbytagname ('h1')[0];
 console.log (h1);
