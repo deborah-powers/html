@@ -1,7 +1,7 @@
-== Test de mon markdown maison
+== Test de mon markdown Maison
 
 Transformer un texte utilisant markdown en html.
-Attention, c'est une version maison de markdown.
+Attention, c'est une version Maison de markdown.
 Je rédige et lis mon texte sur un éditeur classique. Mon fichier est en.md ou.txt.
 Dans un navigateur, cette extension le transforme en texte html.
 J'ai également un script python qui transforme le fichier en un fichier.html.
@@ -72,12 +72,12 @@ Abricot:	.	1
 == Les images
 
 Cinq formats reconnus: Bmp, png, jpg, jpeg, gif.
-L'url doit contenir un double point, comme C:\ //mon-image.xyz ou http://mon-image.xyz
-C://fichier/image-perdue.bmp
+L'url doit contenir un double point, comme file:///C://mon-image.xyz ou http://mon-image.xyz
+file:///C://fichier/image-perdue.bmp
 https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png (scoubidous formant le mot "google")
-Cette image C:\ //fichier/mon-image.bmp est incluse dans un paragraphe.
+Cette image file:///C://fichier/mon-image.bmp est incluse dans un paragraphe.
 Un titre entre parenthèse après l'image lui sert de nom.
-C://fichier/image-perdue.bmp (cette image est indisponible, vous lisez le texte alternatif)
+file:///C://fichier/image-perdue.bmp (cette image est indisponible, vous lisez le texte alternatif)
 Si l'image prend une ligne à elle toute seule, son nom peut être affiché en début de ligne.
 Google en scoubidou: https://www.google.com/logos/doodles/2024/celebrating-scoubidous-6753651837110288-2x.png
 
@@ -99,6 +99,8 @@ https://doodles.google/doodle/bastille-day-2022/ (https://www.google.com/logos/d
 Fig
 https://www.google.com/logos/doodles/2022/bastille-day-2022-6753651837109463.2-2x.png
 Doodle de la bastille
+Seconde image: file:///C://image-manquante.png
+Seconde description
 /
 
 == Le code sans formattage
@@ -115,9 +117,9 @@ Sujet: Programmation
 Auteur: Deborah
 Lien: Rien
 Ma-meta: Contenu de ma métadonnée
-Script: Mon-script.js
-Script bas: Mon-script-bas.js
-Style: Ma-feuille.css
+Js: Mon-script.js
+Js bas: Mon-script-bas.js
+Css: Ma-feuille.css
 Style:
 H1 {
 	Background-color: Crimson;
