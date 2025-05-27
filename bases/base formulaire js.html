@@ -24,6 +24,11 @@
 		Position: Absolute !important;
 	}
 </style></head><body>
+	<button onclick='openModal()'>afficher la modale</button>
+	<dialog open>
+		<p>coucou je suis la boîte de dialogue.</p>
+		<button title='OK fermer' onclick='closeModal(this.parentElement)'>OK</button>
+	</dialog>
 	<h1>exemple de formulaires en js</h1>
 	<form method='get' onsubmit='return false'>
 		<label for='l-name'>Votre nom</label>
@@ -63,4 +68,9 @@
 			var message = 'vous êtes: '+ checked.value;
 			showSex.innerHTML = message;
 	}}
+	function openModal(){
+		const modal = document.getElementsByTagName ('dialog')[0];
+		modal.showModal();
+	}
+	function closeModal (modal){ modal.close(); }
 </script></html>
