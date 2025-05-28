@@ -36,18 +36,57 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code: <a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d283
+Progression: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d288
 
-== aria, accessible rich internet application
+== Aria, accessible rich internet application
 
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#D279
-spécification afin d'harmoniser le fonctionnement des pages web et des navigateurs.
-page d'aria: https://www.w3.org/TR/wai-aria/
-les motifs de conception: https://www.w3.org/WAI/ARIA/apg/patterns/
-attention, certains motifs sont incompatibles avec les technologies d'assistance. par exemple, les rôles menu, https://www.w3.org/WAI/ARIA/apg/patterns/slider/ (slider)
+file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d279
+Spécification afin d'harmoniser le fonctionnement des pages web et des navigateurs.
+Page d'aria: https://www.w3.org/tr/wai-aria/
+Kit de survie du développeur aria p1: https://access42.net/kit-de-survie-aria-1-3/
+Kit de survie du développeur aria p2: https://access42.net/kit-de-survie-aria-2-3/
+Kit de survie du développeur aria p3: https://access42.net/kit-de-survie-aria-3-3/
+Les motifs de conception: https://www.w3.org/wai/aria/apg/patterns/
+Attention, certains motifs sont incompatibles avec les technologies d'assistance. Par exemple, les rôles menu, https://www.w3.org/wai/aria/apg/patterns/slider/ (Slider)
+https://www.w3.org/wai/aria/apg/#keyboard
 
-faire des tests de restitution et d'utilisation avec les https://disic.github.io/guide-lecteurs_ecran/ (lecteurs d'écran).
+** Les cinq principes d'aria
 
+Utiliser aria: https://www.w3.org/tr/using-aria/
+
+-- Utiliser une technologie native en priorité
+
+Pas d'aria est mieux qu'un mauvais aria. Les rôles, etc sont nécessaires si aucune technologie assure la fonction désirée, etc.
+Exeption en cas de limite de style, de contrainte technique, etc.
+Tester la restitution
+
+-- Conserver la sémentique native
+
+Exeption en cas de contrainte technique, de plan b.
+Si un élément basique est utilisé pour créer de l'interractivité (Rôle button), rajouter l'aria et les attributs nécessaires.
+Certains couple balise - rôle sont interdits. Conflit entre le rôle natif et celui imposé. https://www.w3.org/tr/html-aria/#docconformance, https://www.w3.org/tr/wai-aria-1.2/#prohibitedattributes
+
+-- Toutes les actions sont faisables au clavier.
+Si nécessaire activer le focus de l'élément. Tabindex='0'.
+
+-- Les éléments masqués ou à rôle de présentation ne sont pas focusables
+
+Si nécessaire désactiver le focus de l'élément. Tabindex='-1'.
+
+-- Tous les éléments ont un nom accessible.
+
+** Les lecteurs d'écran
+
+Faire des tests de restitution et d'utilisation avec les https://disic.github.io/guide-lecteurs_ecran/ (Lecteurs d'écran).
+Lecteurs pour ordi
+Lecteur		navigateur:
+Nvda		firefox
+Jaws		firefox
+Voiceover	safari
+Lecteurs pour smartphone
+Os		lecteur		navigateur:
+Ios		voiceover	safari
+Android	talkback	chrome
 
 == Les éléments interractifs
 
@@ -978,11 +1017,11 @@ Lien: https://formations.access42.net/formations/formation-audit-accessibilite/
 Laut: https://formations.access42.net/
 Style
 Dl { grid-template-columns: 3fr 1fr; }
-h1 {
-	color: var(--page-color);
-	background-color: var(--bord-color);
+H1 {
+	Color: Var(--page-color);
+	Background-color: Var(--bord-color);
 }
-h2 {
-	border-top-style: double;
-	border-top-width: 8px;
+H2 {
+	Border-top-style: Double;
+	Border-top-width: 8px;
 }
