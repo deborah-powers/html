@@ -38,6 +38,83 @@ Code: <a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
 Progression: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d288
 
+== Le métier d'auditeur
+
+Norme iso 19011:2018
+
+** Conduire un audit
+
+Echantillonner
+Etablir les dérogations prévisibles
+Auditer
+Restituer
+Arbitrer
+
+** Echantillonner
+
+Choisir 10 à 15 pages.
+Pages obligatoire (Acceuil, aide, plan, mentions légales)
+Pages représentatives
+10% de pages choisies au hazard
+
+** Les dérrogations
+
+Sur chaque page.
+Les lister
+Moyen de compensation
+Justification si nécessaire
+
+** Les exemptions de conformités
+
+https://accessibilite.numerique.gouv.fr/obligations/champ-application/#contenus-exemptes
+https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#4
+Fichiers bureautiques publiés avant le 23 Septembre 2018 sauf s'ils sont essentiels à l'accomplissement d'une tâche.
+Les contenus audios et vidéos publiés avant le 23 Septembre 2020 et les contenus audios et vidéos en direct.
+Les cartes et services de cartographie en ligne sous réserve d'alternative pour les localisations et les itinéraires.
+Les contenus de tiers ni financés, ni développés, ni contrôlés par l'entité.
+Les reproductions de pièces de collection patrimoniales.
+Les contenus des intranets et des extranets publiés avant le 23 Septembre 2019 jusqu'à la prochaine refonte.
+Les contenus des sites internet et mobiles qui ne sont plus mis à jour après le 23 Septembre 2019 (Archives) sauf s'ils sont essentiels.
+https://accessibilite.numerique.gouv.fr/obligations/champ-application/#derogation-pour-charge-disproportionnee (Charge disproportionnée). Une alternative est obligatoire, sauf si elle-même relève aussi de la charge disproportionnée.
+
+** Les documents à fournir
+
+Outils: https://accessibilite.numerique.gouv.fr/ressources/kit-audit/
+Relevé des non-conformités
+Rapport d'audit
+Déclaration d'accessibilité
+
+** La déclaration d'accessibilité
+
+Identité du déclarant et lien vers le schéma pluriannuel. Je crois que c'est moi.
+Nom du site ou de l'application.
+Etat de conformité (Non conforme, partiellement conforme, conforme).
+Résultat des tests: Taux de conformité mesuré (Taux global sur l'échantillon) et taux moyen par page (Optionnel)
+Liste des dérogations et des exemptions.
+Liste des technologies utilisées pour les tests (Base de référence)
+Mécanisme de retour d'information et voie de recours.
+La déclaration est valable trois ans sauf modification substantielle des contenus.
+
+** Les ressources
+
+file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d311
+https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
+http://www.w3.org/wai/
+https://www.w3.org/tr/wcag21/
+https://www.w3.org/wai/wcag21/techniques/
+http://www.w3.org/tr/html401/
+https://www.w3.org/tr/html/
+https://www.w3.org/tr/wai-aria-1.1/
+https://www.w3.org/wai/aria/apg/
+https://w3c.github.io/using-aria/
+https://disic.github.io/guide-auditeur/
+https://disic.github.io/guide-impacts_utilisateurs/index.html
+https://disic.github.io/guide-integrateur/
+http://disic.github.io/guide-contribuer_accessible/
+https://disic.github.io/guide-lecteurs_ecran/
+http://disic.github.io/rgaa_methodologie/
+Contact: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d316
+
 == Aria, accessible rich internet application
 
 file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d279
@@ -46,9 +123,6 @@ Page d'aria: https://www.w3.org/tr/wai-aria/
 Kit de survie du développeur aria p1: https://access42.net/kit-de-survie-aria-1-3/
 Kit de survie du développeur aria p2: https://access42.net/kit-de-survie-aria-2-3/
 Kit de survie du développeur aria p3: https://access42.net/kit-de-survie-aria-3-3/
-Les motifs de conception: https://www.w3.org/wai/aria/apg/patterns/
-Attention, certains motifs sont incompatibles avec les technologies d'assistance. Par exemple, les rôles menu, https://www.w3.org/wai/aria/apg/patterns/slider/ (Slider)
-https://www.w3.org/wai/aria/apg/#keyboard
 
 ** Les cinq principes d'aria
 
@@ -65,8 +139,11 @@ Tester la restitution
 Exeption en cas de contrainte technique, de plan b.
 Si un élément basique est utilisé pour créer de l'interractivité (Rôle button), rajouter l'aria et les attributs nécessaires.
 Certains couple balise - rôle sont interdits. Conflit entre le rôle natif et celui imposé. https://www.w3.org/tr/html-aria/#docconformance, https://www.w3.org/tr/wai-aria-1.2/#prohibitedattributes
+Les boutons ne peuvent pas avoir le rôle presentation ou aria-hidden true.
 
 -- Toutes les actions sont faisables au clavier.
+
+Rgaa 7.3
 Si nécessaire activer le focus de l'élément. Tabindex='0'.
 
 -- Les éléments masqués ou à rôle de présentation ne sont pas focusables
@@ -74,6 +151,22 @@ Si nécessaire activer le focus de l'élément. Tabindex='0'.
 Si nécessaire désactiver le focus de l'élément. Tabindex='-1'.
 
 -- Tous les éléments ont un nom accessible.
+
+Rgaa 7.1
+Calculer le nom accessible: https://www.w3.org/tr/accname-1.1/
+Visionneuse d'arborescence d'accessibilité
+
+** Quelques motifs de conception
+
+Présentation: https://www.w3.org/wai/aria/apg/patterns/
+Aria-disclosure, afin de masquer ou afficher un élément en appuyant sur un bouton: https://www.w3.org/wai/aria/apg/patterns/disclosure/
+https://dev.access42.net/chat/ (Exemple de discussion) à tester avec un lecteur d'écran
+Exercice de discussion: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d298
+Aria-tabs, pour les onglets: https://www.w3.org/wai/aria/apg/patterns/tabs/
+Exemple d'onglet: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/tabs.html
+https://disic.github.io/guide-lecteurs_ecran/4-tabpanel.html
+Attention, certains motifs sont incompatibles avec les technologies d'assistance. Par exemple, les rôles menu, https://www.w3.org/wai/aria/apg/patterns/slider/ (Slider)
+https://www.w3.org/wai/aria/apg/#keyboard
 
 ** Les lecteurs d'écran
 
