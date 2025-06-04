@@ -167,6 +167,7 @@ Exemple d'onglet: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/fo
 https://disic.github.io/guide-lecteurs_ecran/4-tabpanel.html
 Attention, certains motifs sont incompatibles avec les technologies d'assistance. Par exemple, les rôles menu, https://www.w3.org/wai/aria/apg/patterns/slider/ (Slider)
 https://www.w3.org/wai/aria/apg/#keyboard
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/structural_roles
 
 ** Les lecteurs d'écran
 
