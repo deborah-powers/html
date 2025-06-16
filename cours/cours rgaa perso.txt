@@ -441,6 +441,7 @@ Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'éc
 Intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink: Title > < text/>
 https://www.w3.org/tr/html-aam-1.0/
 https://www.w3.org/tr/accname-1.2/#mapping_additional_nd_te
+https://www.w3.org/WAI/tutorials/images/functional/#image-used-alone-as-a-linked-logo
 
 --
 
