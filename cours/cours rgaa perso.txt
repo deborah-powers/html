@@ -112,6 +112,7 @@ https://disic.github.io/guide-impacts_utilisateurs/index.html
 https://disic.github.io/guide-integrateur/
 http://disic.github.io/guide-contribuer_accessible/
 https://disic.github.io/guide-lecteurs_ecran/
+https://support.mozilla.org/en-US/kb/accessibility-features-firefox#w_screen-reader
 http://disic.github.io/rgaa_methodologie/
 Contact: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d316
 
@@ -888,9 +889,11 @@ Survol, focus, etc.
 Je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
 Il reste en place quand je le survole.
 https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
+https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
 https://developer.mozilla.org/en-us/docs/web/api/document/elementfrompoint
 L'attribut title est un cas particulier.
+https://accessibilite.public.lu/fr/rgaa4/criteres.html
 
 == Les images
 
