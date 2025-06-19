@@ -321,7 +321,7 @@ Le menu et la barre de navigation, le plan du site et la zone de recherche sont 
 Les rôles rendrent certaines zones évitables ou facilement accessibles.
 Code
 <header role='banner'>
-<nav role='navigation'>
+<nav role='navigation'>liens internes au site
 <main role='main'>
 <footer role='contentinfo'>
 <input type='text' role='search' name='barre de recherche' />
@@ -329,6 +329,7 @@ Code
 Banner, main et contentinfo sont uniques dans la page.
 Liens ou boutons d'évitement, d'accès rapide, etc.
 Banner représente le vrai header de la page. Une page pouvant contenir plusieurs headers, header.banner indique son vrai header. Idem pour footer.contentinfo.
+nav ne contient que des liens internes au site. une liste de liens classiques n'a pas besoin d'être dans une nav.
 
 ** Navigation par tabulation
 
