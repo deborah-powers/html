@@ -1,4 +1,4 @@
-============ Certif ============
+== Certif
 
 https://formations.access42.net/certifications/audit-accessibilite-numerique-rgaa/
 9h - 16h, qcm, audit, oral.
@@ -15,11 +15,11 @@ Exercice d'audit blanc avant la certif !
 Tiers-temps: Contacter contact de access42, la personne qui m'envoi les mails.
 71% de réussite
 
-************************************************
+**
 
 Deborah Powers
-deborah.powers89@gmail.com
-deborah.powers@cgi.com
+Deborah.Powers89@gmail.com
+Deborah.Powers@cgi.com
 Formations@access42.net
 Sujet: Certification "rgaa: Auditer l'accessibilité numérique des sites web" - Deborah Powers
 Bonjour,
@@ -27,12 +27,12 @@ J'ai suivi votre formation "rgaa: Auditer l'accessibilité numérique des sites 
 Je souhaite passer l'examen blanc le xx et la certification le xx.
 J'ai besoin d'un tiers-temps pour les épreuves écrites, comment le mettre en place ?
 
-============ Questions ============
+== Questions
 
 Site-jouet
 https://www.ccomptes.fr/fr/laccessibilite-de-ccomptesfr
 
-============ Le métier ============
+== Le métier
 
 Norme iso 19011:2018
 Encadrer et conseiller.
@@ -46,7 +46,7 @@ Auditer
 Restituer
 Arbitrer
 
-************ Méthodologie ************
+** Méthodologie
 
 Echantillonner
 10 - 20 pages au max.
@@ -59,14 +59,14 @@ Etat de conformité, % de conformité.
 Nombreuses exemptions.
 La déclaration est valable trois ans. Si le site est refondu, elle ne sera plus valable.
 
-************ Livrables ************
+** Livrables
 
 Relevé de non-conformité, grille xslx
 Rapport, souvent en word. Justifier ce qui est dit dans la grille.
 Déclaration d'accessibilité. C'est moi qui le fournit. Date, version du référentiel, etc.
 Kit d'audit.
 
-============ Atelier aria ============
+== Atelier aria
 
 Accessible riche internet application.
 Documentation pour le développement des éléments complexes.
@@ -81,25 +81,26 @@ https://disic.github.io/guide-lecteurs_ecran/3-dialog.html
 https://access42.net/kit-de-survie-du-developpeur-aria-1-3/
 https://dev.access42.net/chat/
 
-************ La modale ************
+** La modale
 
 Role='dialog' ou alertdialog
-<div role='dialog' aria-label='son tître'></div>
+code: <div role='dialog' aria-label='son tître'></div>
 Quand je parcours une modale par tabulation, je reste dedans. Le focus repart au début de la modale.
 Quand je ferme une modale, le focus revient sur le bouton qui m'a permit de l'ouvrir.
+
 --> Elle n'est pas vraiment un changement de contexte.
 La touche échap ferme la modale.
 
-************ Le motif de conception ************
+** Le motif de conception
 
 Design pattern.
 Attention, certains motifs de conception wai-aria sont incompatibles avec les technologies d'assistance.
 
-************ Principes ************
+** Principes
 
 Privilégier les éléments natifs.
 
-============ Les scripts ============
+== Les scripts
 
 Chaque élément interractif doit avoir un role.
 Ils doivent être accessibles au clavier.
@@ -110,22 +111,22 @@ Action sur la page par des boutons.
 Les modales sont ouvertes par bouton.
 Le nom accessible est pertinent et reprend le nom visible.
 
-************ Les états ************
+** Les états
 
 L'état et le changement d'état d'un composant interractif sont accessibles aux technologies d'assistance.
 	Modifier l'intitulé du bouton
 	Ajouter la propriété <bouton aria-pressed="true">
 Disabled
 
-************************************************
+**
 
 Changement de contexte: Déplacement automatique du focus, changement de page, de l'aparence de la page, etc.
 L'ouverture d'une modale n'est pas considérée comme un changement de contexte.
 Design system: Bibliothèque de composants. https://www.systeme-de-design.gouv.fr/
 Aria-live
-file:///c:\\ // // // // // // // /users/deborah.powers/desktop/formation%20rgaa%202024/formation/index.html#d262
+file:///C://users/Deborah.Powers/desktop/formation%20rgaa%202024/formation/index.html#d262
 
-************ Exercice ************
+** Exercice
 
 Booklet 07.1 scripts
 Inspection du code
@@ -133,36 +134,40 @@ Constat:
 Suggestion:
 Le formulaire de contact n'a pas de rôle
 Const scripts = document.getelementsbytagname ('script');
-For (var c=0; c< scripts.length; c++){
-	console.log (scripts[c].src);
-	console.log (scripts[c].innertext);
+For (Var c=0; c< scripts.length; c++){
+	console.log (Scripts[C].src);
+	console.log (Scripts[C].innertext);
 }
 
-============ Les formulaires ============
+== Les formulaires
 
 Chaque champ doit avoir un intitulé
 	Etiquette toujours visible
 	Bouton explicite
 	Attribut title, y compris en présence d'un placeholder ou si la fonction paraît évidente.
 Title fait apparaître une infobulle. En présence d'un placeholder, le title reprend son contenu.
+code
 <label for='mon-champ'>intitulé du champ</label><input id='mon-champ'>
 <input title='intitulé du champ' aria-label="autre méthode d'intitulé">
 <p id='mon-intitule'>intitulé du champ</p><input aria-labelledby='mon-intitule'>
+/
 Surcharge: Title < aria-label < aria-labelledby < texte
 La valeur de l'attribut doit reprendre le label écris.
-<fieldset><legend>groupe de champs connectés</legend><inputs/></fieldset>
+Code: <fieldset><legend>groupe de champs connectés</legend><inputs/></fieldset>
 Fieldset concerne les champs connectés, comme les boutons radio et les checkbox, mais aussi les autres champs connectés. Boutons oui - non, etc.
-<div role='group' aria-labelledby='fausse-legende'><p id='fausse-legende' role=''>
-Dans les sélecteur, je peux utiliser <optgroup label='xyz'>
+Code: <div role='group' aria-labelledby='fausse-legende'><p id='fausse-legende' role=''>
+Dans les sélecteur, je peux utiliser < optgroup label='xyz'>
 
-************ Les boutons ************
+** Les boutons
 
 Vrais button ou input.
+Code
 <input type='image' alt='action du bouton'/>
 <input type='button' aria-label='action du bouton' aria-labelledby='id-label'/>
-Intitulé explicite ou title (infobulle)
+/
+Intitulé explicite ou title (Infobulle)
 
-************ Les champs obligatoires ************
+** Les champs obligatoires
 
 S'il n'a qu'un seul champ, il est considéré comme obligatoire par défaut. Besoin de rien.
 Si tous les champs sont obligatoire, rajouter un message générique.
@@ -170,24 +175,24 @@ L'attribut required est reconnu par les lecteurs d'écran.
 Besoin d'une propriété visuelle, qui doit rester visible quand le css est désactivé. Pas de pseudo-sélecteur.
 Tester en soumettant le formulaire à vide.
 
-************ Le contrôle de saisie ************
+** Le contrôle de saisie
 
 Préciser le format attendu
 En cas d'erreur, donner un exemple valable. Exception pour les mdp.
 Label, title ou:
-<input aria-describedby='id-description-format id-message-erreur'/>
+Code: <input aria-describedby='id-description-format id-message-erreur'/>
 Id-message-erreur doit être vide au début puis rempli par js ou autre. Les lecteurs d'écran le lisent même s'il est en display: None.
 Les messages d'erreurs ne sont pas nécessaires. Si un est présent, il doit être lié au champ.
 Si la page est rechargée à la soumission du formulaire, maj titre afin d'indiquer qu'il y a une erreur. Titre = truc-muche, erreur de soumission.
 
-************ Exercice ************
+** Exercice
 
 Booklet 11.1 formulaires
 Inspection du code
 Constat:
 Suggestion:
 
-============ Navigation ============
+== Navigation
 
 Point 12
 Deux systèmes de navigation entre les pages parmis
@@ -196,27 +201,27 @@ Deux systèmes de navigation entre les pages parmis
 	Moteur de recherche
 Chacun doit permettre d'accéder à toutes les pages.
 Si un site à peut de pages, me contenter du menu.
-Donner un rôle aux grandes zones (header, etc). Les roles sont mieux supportés que les balises car plus anciens.
+Donner un rôle aux grandes zones (Header, etc). Les roles sont mieux supportés que les balises car plus anciens.
 Cette attente est obsolète mais toujours dans le rgaa.
 Les roles sont encore utile si j'ai plusieurs headers et footers.
-<header role='banner'> <main role='main'> <nav role='navigation'> <footer role='contentinfo'> <x role='search'>
+Code: <header role='banner'> <main role='main'> <nav role='navigation'> <footer role='contentinfo'> <x role='search'>
 Un seul banner, main et contentinfo par page.
 Liens d'accès rapide.
 
-************ La tabulation ************
+** La tabulation
 
 L'ordre de tabulation doit être cohérent avec la logique de la page.
 
-************ Exercice ************
+** Exercice
 
 Booklet 06 liens
 Inspection du code
 Constat:
 Suggestion:
 
-============ Les liens ============
+== Les liens
 
-************ Glossaire ************
+** Glossaire
 
 Liens texte, image ou composite.
 Les images svg, canvas, etc compte comme des images.
@@ -225,14 +230,14 @@ Sans href, <a> est considérée comme une ancre, mais pas comme un lien.
 Booklet 06 liens
 Inspection du code
 
-************ Navigation au clavier ************
+** Navigation au clavier
 
 C'est href qui rend l'ancre focusable.
 Quand la navigation est gérée par js, les liens <a> n'ont pas d'href.
 Remplcer href par <a tabindex='0' role='link'>. Valable même pour les div.
 Relève du 7.1.
 
-************ Lien explicite ************
+** Lien explicite
 
 Les liens ont un nom accessible. Les image ont une alternative, alt ou dans un attribut de l'ancre.
 Surcharge: Title < alt < texte < aria-label < aria-labelledby
@@ -242,14 +247,14 @@ Si des liens ont des intitulés identiques, ils doivent être dans des contextes
 L'attribut title n'est pas recommandé. S'il est présent, il doit contenir le texte entre la balise <a>. Certains lecteurs d'écran lisent title au lieu de l'intitulé du lien, il faut préserver l'information. Je peux y rajouter des détails.
 Title="" ok.
 
-============ La consultation ============
+== La consultation
 
-************ Les pages ************
+** Les pages
 
 Une nouvelle page ou un nouvel onglet ne s'ouvre que sur action de l'utilisateur.
 Lors de la navigation au clavier, rien ne doit s'ouvrir si je n'appuie que sur tab. Il faut appuyer sur entrée et ? Pour lancer une action.
 
-************ Les documents bureautiques ************
+** Les documents bureautiques
 
 Pdf, etc.
 Je peux vérifier les contrastes, la structure.
@@ -262,14 +267,14 @@ Outils pour les pdf:
 Le document est accessible ou une alternative est à disposition.
 Booklet 13.3 documents
 
-************ Les éffets de flash ************
+** Les éffets de flash
 
 Alternance de luminosité.
 3 flash /s au max.
 Ou 21824 de surface flashée au max.
 Photosensitive epilepsy analysis tool
 
-************ Contenu clignotant et en mouvement ************
+** Contenu clignotant et en mouvement
 
 Chaque contenu doit être contrôlable de manière indépendante
 Au choix
@@ -279,24 +284,26 @@ Au choix
 	Faire moins de 5 seconde
 Les transitions css font moins de 5 secondes, elles sont rarement concernées.
 
-************ Ascii art et contenu criptique ************
+** Ascii art et contenu criptique
 
 Ils sont traités comme des images.
+Code
 <div role='img' aria-hidden='true'>ascii
 <div role='img' title='...'>ascii
+/
 
-************ Orientation ************
+** Orientation
 
 L'orientation doit rester contrôlable.
 Elle peut être bloquée si nécessaire, pour des jeux mobiles.
 
-************ Les gestes ************
+** Les gestes
 
 Geste simple: Un doigt, un mouvement.
 Geste complexe: Deux doigts ou swipe.
 Fournir un contrôle alternatif. Des exceptions sont possibles, notament pour les zones de signature, les captcha etc.
 Pas de règle concernant la double authentification. Donner un délais à l'utilisateur.
-L'activation par le mouvement (secouer le téléphonne) doit
+L'activation par le mouvement (Secouer le téléphonne) doit
 	Avoir une alternative
 	Etre désactivable
 Les raccourcis claviers doivent être modifiables.
@@ -304,13 +311,13 @@ Difficultés pour les personnes atteintes de tremblement.
 Référentiel du luxembourg.
 Exception possible, comme dans le cas du podomètre.
 
-************ Pointeur de la souris ************
+** Pointeur de la souris
 
-Le clique s'enclenche quand je relâche le bouton (up).
-Rien temps que le bouton est appuyé (down). Gros problème pour les personnes ayant des tremblements.
+Le clique s'enclenche quand je relâche le bouton (Up).
+Rien temps que le bouton est appuyé (Down). Gros problème pour les personnes ayant des tremblements.
 Suggestion: Lancer l'action lorsque que le bouton de la souris est relâché.
 
-============ Les contenus multi-média ============
+== Les contenus multi-média
 
 Ils ont besoin d'un titre affiché. Ce titre peut préciser si c'est une vidéo ou autre.
 Un média temporel se déroule dans le temps, comme une vidéo ou une musique. Il existe des médias audio, vidéo et synchronisés.
@@ -318,69 +325,69 @@ Un média non temporel est accessible via un plug-in ou les balises svg et canva
 Les contenus en direct sont exemptés d'audit, ainsi que les contenus datant d'avant le 23 Septembre 2023.
 Les contrôles sont le curseur pour modifier le son, les boutons de pause et d'arrêt. Ils doivent avoir des noms clairs et être accessibles aux lecteurs d'écran et par navigation clavier et souris.
 
-************ Transcription textuelle ************
+** Transcription textuelle
 
 Texte structuré, à coté du média, qui reprend les informations importantes, sonores et picturales.
 Penser au lecteur d'écran pour les sourds et aveugles. Beaucoup de personnes ont du mal à lire les sous-tîtres.
 Les média décoratifs et les captcha n'ont pas de texte alternatif.
 Les vidéos sans son peuvent avoir une alternative audio à la place.
 
-************ Sous-tître ************
+** Sous-tître
 
 Attention à la synchronisation !
 Si les contenus oraux apportent des infos.
 Les sous-tîtres automatiques sont trops mauvais.
 Les sous-tîtres incrustées dans la vidéos sont valables, même s'il est préférable d'avoir une piste séparée.
-<track kind='captions' label='français' src='...'>
+code: <track kind='captions' label='français' src='...'>
 Kind = subtitles pour les traductions.
 
-************ Audio-description ************
+** Audio-description
 
 Attention à la synchronisation !
 Décrire les actions et les infos visuelles.
 Facile à mettre en place pour les vidéos sans son.
 Le mieux est de rajouter une piste audio supperposable à la principale. La parade est de mettre deux versions de la vidéo.
 Elle n'est requise que si la bande-son principale permet de caser une audio-description.
-<audio> ou lien vers une vidéo alternative.
+< audio> ou lien vers une vidéo alternative.
 
-============ La structure ============
+== La structure
 
 Header, main, footer, nav, aside, section, article...
 
-************ Nav ************
+** Nav
 
 Liens d'accès rapide, pour se déplacer rapidement dans la page quand on navigue au clavier ou au lecteur d'écran.
 
-============ Quelques balises importantes ============
+== Quelques balises importantes
 
-************ Les tîtres ************
+** Les tîtres
 
 Extension reading map
 
-************ Les listes ************
+** Les listes
 
 Textes à puce, tirets, énnumérations et liste de définitions.
 Les listes de définitions utilisent les balises dl, dt, dd
-<div role='list'> est valable pour représenter une dl.
+code: <div role='list'> est valable pour représenter une dl.
 Les suites de liens doivent être structurées en liste. Dans les barres de navigation, etc.
 Désactiver le css avant d'activer le booklet.
 
-************ Les citations ************
+** Les citations
 
 Italiques ou guillemets.
-Balise <q> pour les citations courtes ou <blockquote> pour celles qui prennent plusieurs lignes.
+Balise < q> pour les citations courtes ou < blockquote> pour celles qui prennent plusieurs lignes.
 
-************ Exercice ************
+** Exercice
 
 Les cases du calendrier doivent-elles être dans une liste ?
 Et les icônes d'impression et des réseaux ?
 Est-ce ok de mettre des listes dans un tableau ?
 
-============ Les tableaux ============
+== Les tableaux
 
 Deux types.
 
-************ Tableaux de mise en forme ************
+** Tableaux de mise en forme
 
 Les rôle presentation et none permettent d'utiliser un tableau pour faire de la mise en page. <table role='presentation'>
 Le tableau reste compréhensible sans le css.
@@ -388,26 +395,26 @@ Eviter les balises et attributs relatifs aux tableaux de données.
 Entre autre, pas de caption, thead, th, tfoot. Summary est vide.
 Les textes sont soumis au critère 8.9.
 
-************ Tableaux de données simples ************
+** Tableaux de données simples
 
 Double entrée maxi. Un rang de tître dans chaque direction.
-Si le tableau a un titre ou une description, elle est dans une caption. Ou dans un title (ou aria-label, aria-labelledby)
-Si le tableau a deux entrées, rajouter des scope aux th. <th scope='row'>, row ou col.
-<div role='table'>... Est valide.
+Si le tableau a un titre ou une description, elle est dans une caption. Ou dans un title (Ou aria-label, aria-labelledby)
+Si le tableau a deux entrées, rajouter des scope aux th. < th scope='row'>, row ou col.
+< div role='table'>... Est valide.
 Booklet 05 tableaux
 
-************ Tableaux de données complexes ************
+** Tableaux de données complexes
 
 Deux rangs de th, th chapeautant d'autres th.
 Résumé décrivant la structure du tableau. Je peut le plier sous un bouton.
-<caption>mon titre<span>le résumé descriptif</span></caption>
+code: <caption>mon titre<span>le résumé descriptif</span></caption>
 Chaque th à un id, chaque td à un attibut headers qui fait référence à tous ses headers.
 
-************ Alternative ************
+** Alternative
 
 Présenter le tableau sous forme de listes, dans un menu déplié.
 
-************ Exercice ************
+** Exercice
 
 Tableau administratif
 	Simple
@@ -417,9 +424,9 @@ Agenda
 	Simple
 	Le titre devrait être dans une balise aria-labelledby pointant vers le h3 au-dessus.
 
-============ La présentation ============
+== La présentation
 
-************ L'info doit être accessible si je désactive le css ************
+** L'info doit être accessible si je désactive le css
 
 Linéarisation
 Le style intra-balise est interdit. Seul les attributs width et height sont admis.
@@ -431,7 +438,7 @@ Certains lecteurs d'écran commencent à lire les before.
 Méthode 1: Comparer la page normale et celle où le css à été désactivé. Des informations ont-elles été perdues ?
 Méthode 2: Booklet 10.2 contenu css.
 
-************ Attention à l'ordre de présentation du contenu ************
+** Attention à l'ordre de présentation du contenu
 
 Grid est magique !
 Afficher vite le message de désactivation des cookies et autres mentions légales.
@@ -440,17 +447,17 @@ Quid des schémas, des réseaux ? Texte alternatif.
 Si je déclare une couleur de police, je déclare aussi une couleur de fond. Elle peut être héritée. Le but est de masquer les couleurs paramètrées du navigateur. Pas d'éléments à background-color = none. Je peux tester cette règle en fixant des couleurs fantaisistes dans le navigateur.
 Quand un tag affiche une image de fond, vérifier qu'il y ai une couleur de fond de secours, et qu'elle est conforme avec celle du texte.
 
-************ Taille du texte ************
+** Taille du texte
 
 Au mois une méthode doit être viable
 	Zoom du navigateur
-	Agrandir le texte (sur firefox)
+	Agrandir le texte (Sur firefox)
 	Fonctionnalité interne pour modifier la taille du texte.
 Le zoom est la méthode la plus sûre. Je dois pouvoir zoomer six fois (400%) sans distinguer les pixels.
 Afin de mimer le zoom, le texte doit être lisible dans une fenêtre réduite à 320 * 256 px2, seulement avec l'ascenseur vertical. Réactivité.
 Une tooltip doit être survolable, rester affichée un momment.
 
-************ Navigation au clavier ************
+** Navigation au clavier
 
 Tester en tabulant. Je dois toujours voir où je suis sur la page.
 La solution la plus courrante est un cadre autour de l'élément actif. Je peux styler son conteneur tant que la navigation reste claire.
@@ -459,12 +466,12 @@ Comme toujours, vérifier le contraste entre le cadre et le fond, etc.
 Attention aux éléments cachés, qui font disparaître la tabulation. Ils ne doivent pas être accessible par la tabulation.
 https://chromewebstore.google.com/detail/taba11y/aocppmckdocdjkphmofnklcjhdidgmga
 
-************ Les liens ************
+** Les liens
 
 Si le lien en environnement de texte est signalé par autre chose que la couleur, il est ok. Sinon, vérifier les contrastes. Un lien possède aussi une infobulle - title qui se déclenche au survol et au focus.
 Je peux signaler mes liens grâce aux propriétés css telle que text-decoration ou before.
 
-************ Contenu caché ************
+** Contenu caché
 
 Display: None, visibility: Hidden, font-size: 0.
 Aria-hidden='true' pour les techno d'assistance.
@@ -472,45 +479,53 @@ Hidden cache pour tout le monde
 Quand je fait un selecteur stylisé avec des p, proposer une alternative avec des boutons radio hors écran pour les lecteurs.
 Booklet 10.8 contenus cachés.
 
-************ Si une info est transmise visuellement ************
+** Si une info est transmise visuellement
 
 Comme pour les images. Apporter des précisions via l'attribut title. Ajouter du js. Mise en gras pour montrer l'importance, symbole de statut, flèche d'instruction.
 Donner des instructions compréhensibles par des aveugles. Bouton "envoyer" au lieu de bouton en haut à droite.
 
-************ Adaptation des textes ************
+** Adaptation des textes
 
 Le texte reste lisible avec ces adpatations: Manquées
 Boîte de 1280 px.
 
-************ Les contenus additionnels ************
+** Les contenus additionnels
 
 Une popup se ferme lorsque je clique sur échap.
 
-************ Exercice ************
+** Exercice
 
+Code
 <img border='0'/>
 <input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox" type="text" size="20" value="">
+/
 Border et size sont-ils des attributs acceptables ?
+Code
 <div class="slides_container" style="overflow: Hidden; position: Relative; display: Block;">
 <div class="slides_control" style="position: Relative; width: 3000px; height: 205px; left: -1000px;">
 <img src="files/slide1.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;"><img src="files/slide2.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 5; display: Block;"><img src="files/slide3.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;"></div></div>
+/
 Je ne comprends pas à quoi la banière et ses trois boutons servent.
+
 --> Les mettre dans un div et lui donner un titre, ne serai-ce que via l'attribut title
 Calendrier, alléger la page
+
 --> Est-il possible de le mettre dans une iframe associée à un lien vers la page indépendante
 Bloc de contact
+
 --> Mettre le titre au-dessus de la photo
 Actualités
+
 --> Les titres des articles doivent être encadrés par la balise h3
 Tableau des démarches administratives
 
-============ La structure de la page ============
+== La structure de la page
 
 Parmis les éléments obligatoires, certains sont ajoutés automatiquement sur les navigateurs. Doctype. Les points 8.1 et 8.2 sont toujours mis à conformes.
-Le titre de la page, <title/> doit être présent et pertinent.
+Le titre de la page, < title/> doit être présent et pertinent.
 Pour une page de recherche, rappeler le terme recherché, permettre de limiter le nombre de résultats affichés par la pagination ou des filtrages supplémentaires.
 
-************ La langue ************
+** La langue
 
 L'attribut lang est nécessaire pour les lecteurs d'écran. <html lang='fr' ou xml: Lang='fr-fr'> valeurs iso.
 Si j'ai un bloc dans une autre langue, <div lang='fr'>. Selon la règle, les mots isolés doivent être lit dans un <span lang='fr'>. En pratiquen que ce passe-t-il si la synthèse vocale le lit en français ?
@@ -518,21 +533,22 @@ Les noms ne nécessitent pas de changement de langue, ainsi que les mots présen
 Repérer les mots en langue étrangère: Utiliser un outil de grammaire, comme grammalecte.
 En plus de la langue, le sens de lecture du texte doit être précisé s'il se lit de gauche à droite. <html dir='rtl'>
 
-************************************************
+**
 
-Les balises vides, surtout <p/> sont non conformes. Un seul <br/> à la fois.
+Les balises vides, surtout < p/> sont non conformes. Un seul < br/> à la fois.
 Eviter les titres de référencement quand un paragraphe serait plus utile. Ou leur donner le role='presentation'
 
-============ Les couleurs ============
+== Les couleurs
 
 Utilisation
-	Transmettre infos (surbrillance des liens, du menu de la page active)
+	Transmettre infos (Surbrillance des liens, du menu de la page active)
 Aveugles ou méveugles et daltonniens.
 Fournir une alternative aux captcha.
 
-************ Aveugles ************
+** Aveugles
 
 Le lecteur d'écran annonce l'information.
+code
 <a title='intro - page active'>
 <a aria-current='page'>
 <a>texte<span class='sr-only'>page active
@@ -543,20 +559,20 @@ Span.sr-only {
 	Position: Absolute;
 	...
 }
-
-************ Méveugles ************
+/
+** Méveugles
 
 Symbole en plus de la couleur.
 Tooltip, title affichant les informations. Utiliser du js au besoin. Attention, les navigateurs n'affichent pas les tooltips à la navigation clavier ou tactile.
 Dégradé et motif: Attention au contraste.
 
-************ Les contraste de texte ************
+** Les contraste de texte
 
 Texte de -24px ou -18px gras: 4.5: 1
 Grand texte: 3: 1.
 Exception pour les logos, le texte décoratif.
 
-************ Les contraste de composants d'interface ************
+** Les contraste de composants d'interface
 
 Composants avec lesquels on peut interragir ou qui portent une information.
 Contraste de 3: 1 ou méthode de remplacement.
@@ -565,14 +581,14 @@ Exception pour les logos, les photos, les drapeaux, les champs désactivés, les
 Le fond d'un bouton ou d'une icône n'a pas besoin d'être constrasté par rapport au fond de son parent.
 Le texte de remplacement est une méthode alternative.
 
-************ Exercice ************
-
+** Exercice
+code
 Const frames = document.getelementsbytagname ('iframe');
-For (var i=0; i< frames.length; i++){
-	Frames[i].style.bordercolor = 'red';
-	Frames[i].style.borderwidth = '16px';
-	Frames[i].style.borderstyle = 'dotted';
-	console.log (frames[i]);
+For (Var i=0; i< frames.length; i++){
+	Frames[I].style.bordercolor = 'red';
+	Frames[I].style.borderwidth = '16px';
+	Frames[I].style.borderstyle = 'dotted';
+	console.log (Frames[I]);
 }
 var debugstyle = `<style type='text/css'>
 Iframe {
@@ -582,14 +598,15 @@ Iframe {
 }
 </style>`;
 Document.head.innerhtml = document.head.innerhtml + debugstyle;
+/
 Donner un attribut titre au cadre.
 
-============ Les images ============
+== Les images
 
 Préférer la méthode native. Les propriétés aria surchargent les balises natives.
-<img alt="détails" aria-hidden='true'> l'image sera masquée.
+code: <img alt="détails" aria-hidden='true'> l'image sera masquée.
 Neuf critères.
-Balises img, svg, input (type=image), object, canvas, area, embed ou div (role=img).
+Balises img, svg, input (Type=image), object, canvas, area, embed ou div (Role=img).
 Image porteuse d'information ou décorative ?
 Img informative contient des infos éssentielles pour comprendre son contexte.
 Une image décorative doit être ignorée par les technologies d'assistance.
@@ -599,7 +616,7 @@ Cas d'un logo avec du texte:
 	Demander au créateur de la page, concepteur ou utilisateur de blog.
 Les images dans un lien ou dans un bouton ne sont pas considérées comme des images.
 
-************ Les images décoratives ************
+** Les images décoratives
 
 Ignorer par la méthode, au choix
 	Alt=""
@@ -608,28 +625,28 @@ Ignorer par la méthode, au choix
 Aria-hidden='true' peut être dans le conteneur de l'image. Il est valable pour le svg et autre.
 Pas de propriété de nommage, comme title
 
-************ Les images informatives ************
+** Les images informatives
 
 Les pictogrammes sont des images informatives.
 Alt, title, aria-label. Title fait apparaître une infobulle.
-<img aria-labelledby='id-text'><span id='id-text'>label de l'image</span>
+code: <img aria-labelledby='id-text'><span id='id-text'>label de l'image</span>
 Nom accessible = alternative textuelle.
 Surcharge: Title < alt < aria-label < aria-labelledby
 Title subsiste en temps que description.
 
-************ Les images svg ************
+** Les images svg
 
 La méthode native est d'utiliser un attribut title à la place de alt. Elle est mal implémentée.
 Remplacement: Role='img' + méthode aria.
 Si on n'utilise aucune méthode, le lecteur d'écran restitue les formes.
 
-************ Les captcha ************
+** Les captcha
 
 Image informative, mais les méthodes classiques sont interdites. Alt='captcha image'
 Proposer une méthode alternative pour réussir le captcha.
 Alternative non graphique. Captcha sonore, envoi d'un code par sms...
 
-************ Les infographies ************
+** Les infographies
 
 Image informative. Préciser que c'est une infographie.
 Impossible de mettre toute la description dans un attribut. Comment modifier le texte ?
@@ -637,22 +654,24 @@ Ajouter un texte adjacent à l'image. Bouton de description qui déploie une div
 Eviter l'attribut obsolète longdesc.
 Autant que possible, préférer le couple html et css à l'image.
 Lecteur d'écran qui remplace les images par leur texte.
-Quand le texte n'est pas remplaçable par du html (logo, image avec du texte stylisé), mettre un texte alternatif.
+Quand le texte n'est pas remplaçable par du html (Logo, image avec du texte stylisé), mettre un texte alternatif.
 
-************ Les images légendées ************
+** Les images légendées
 
+Code
 <figure role='group' aria-label='contenu de figcaption'>
 	<img alt="texte soulignant l'informativité de l'image"/>
 	<figcaption>contenu de figcaption</figcaption>
 </figure>
+/
 Le rgaa interdit d'utiliser aria-labelledby='caption-id' par manque de support.
 Role = group ou figure
 L'image doir avoir un alt.
 
-************ Exercice ************
+** Exercice
 
-C:/users/deborah.powers/desktop/2024-11-04-formation-auditeur/exercices/1-audit/1-site-lacommune/index.html
-C:/users/deborah.powers/desktop/2024-11-04-formation-auditeuressourcesgaa4-1-modele-grille-audit-access42.xlxs
+file:///c:/users/Deborah.Powers/desktop/2024-11-04-formation-auditeur/exercices/1-audit/1-site-lacommune/index.html
+file:///c:/users/Deborah.Powers/desktop/2024-11-04-formation-auditeuressourcesgaa4-1-modele-grille-audit-access42.xlxs
 Page p01
 Dans la colonne des modifications à apporter, pour les lignes nc
 Constat:
@@ -664,7 +683,7 @@ Quid des background, background-image ? Le lecteur d'écran l'ignore. Le rendre 
 Le calendrier contient des images, affichées dans sa popup. Survoler les éléments, cliquer sur les boutons. Virer le css afin d'affichier la page brute.
 Booklet/0 désactiver le css.
 
-============ Les cadres ============
+== Les cadres
 
 Iframes et frames.
 Annoncer le contenu du cadre. <iframe title='publicité'...></iframe>
@@ -681,16 +700,16 @@ Principe de non-interférence, éviter
 	Sons déclenchés automatiquement
 	Piège au clavier
 
-============ Législation ============
+== Législation
 
-************ Qui ************
+** Qui
 
 P morale de droit publique
 P morale de droit privé délégataire d'une mission publique
 P morale de droit privé constituée pour satisfaire un bien générale
 P morale de droit privé faisant plus de 250 me
 
-************ Obligaition ************
+** Obligaition
 
 Etre conforme au rgaa. Au moins 50% de conformité.
 A afficher:
@@ -700,9 +719,9 @@ A afficher:
 	Schéma pluriannuel de mise en conformité
 L'arcom contrôle et sanctionne les sites publiques. Il émmet des amendes.
 Ordonnance du 2023/09/06, articles 47 et 47-1.
-Directive européenne 2019/882. Nouveauté à mettre en vigueur en Juin 2025. Demande !!!
+Directive européenne 2019/882. Nouveauté à mettre en vigueur en juin 2025. Demande !!!
 
-************ Les normes ************
+** Les normes
 
 W3c est la référence
 Uaag: Agent utilisateur
@@ -710,12 +729,12 @@ Atag: Edition de contenu. Cms, éditeur de texte. Aider à la création de conte
 Wcag: Contenu web
 Aria: Cf Jeudi. Composant riche, plus qu'html seul.
 
-************ Les wcag ************
+** Les wcag
 
 Web content accessibility gidelines
 Access 42 à participé à leur traduction en français.
 Il reste toujours des cas pas couverts par la norme.
-En France, le référentiel officiel se base sur la version 2.1. La dinum n'a pas les moyens de le mettre à jour.
+En france, le référentiel officiel se base sur la version 2.1. La dinum n'a pas les moyens de le mettre à jour.
 https://www.w3.org/wai/fundamentals/accessibility-principles/fr
 https://accessibilite.numerique.gouv.fr/
 Plusieurs principes, chacun avec son nouveau d'exigence minimum.
@@ -732,19 +751,19 @@ Elément répétés: Barre de naviagation, menu latéral, etc. Certains cabinets
 Décrire ce qui est attendu en cas de non-conformité.
 Les tests au lecteur d'écran sont à réaliser après examen du code. Tests sur différents os avec différents navigateurs.
 
-************ Amménagement raisonnable ************
+** Amménagement raisonnable
 
 Modif appropriées n'apportant pas ou peut de surcharge de travail.
 Si une modif nécessite trop de travail pour peut d'impact, je la néglige et donne un autre moyen d'accéder à la fonctionnalité ou à l'info.
 Les derrogations sont affichées dans la déclaration d'accessibilité et dans le plan de mise en conformité. Je dois m'engager à rendre les pages accessibles.
 En cas de refus d'amménagement, je suis coupable de discrimination. Risque juridique, 3 à 5 ans de prison.
 
-============ Sensibilisation ============
+== Sensibilisation
 
-************ Les types de handicaps ************
+** Les types de handicaps
 
 Au moins 14% de la population française est handicapée.
-Handicaps physiques (visuels, auditifs, moteurs) et mentaux (intellectuels, cognitifs, psychiques).
+Handicaps physiques (Visuels, auditifs, moteurs) et mentaux (Intellectuels, cognitifs, psychiques).
 Polyhandicap: Mental + physique ou sensoriel.
 Trouble de santé invalidant. Cancer, allergie, douleur chronique.
 H intellectuel: Maladie génétique. Compréhension, apprentissage.
@@ -754,9 +773,9 @@ Vision en tunnel: Champ visuel de la taille d'une pièce de 2e. Pas de taille de
 Variétés de situations individuelles cumulables. Besoins commun à plusieurs troubles.
 Approche par besoins.
 
-************ Quelques outils ************
+** Quelques outils
 
-Navigation au clavier: Malvoyant (voient pas la souris) et handicapés moteurs.
+Navigation au clavier: Malvoyant (Voient pas la souris) et handicapés moteurs.
 Navigation à la souris: Certains h moteurs ne peuvent pas utiliser le clavier. Eye-tracking.
 Description des éléments audito-visuels.
 Maitrise de la page.
@@ -771,7 +790,7 @@ Trackball: Pas de contrôle fin. On pose le poignet ou le pied sur la boule.
 Contrôle par la pensée: En recherche !!!
 Tester sur plusieurs navigateurs, au mieux plusieurs environnements.
 
-************ L'accessibilité ************
+** L'accessibilité
 
 Accessibilité numérique: Percevoir, comprendre, naviger interragir et contribuer avec le web.
 Web accessibility initiative.
@@ -781,7 +800,7 @@ Promesse du numérique: Autonomie, citoyennenté, intégration.
 80% des sites sont innaccessibles, surtout les applications métier.
 L'ia n'est pas une technologie d'assistance et n'a pas vocation à l'être.
 
-************ Adapter un ordi windows ************
+** Adapter un ordi windows
 
 Paramètres / accessibilité
 Taille de police, de souris, choix des couleurs et des contrastes.
@@ -792,7 +811,7 @@ Narrateur.
 Audit: On n'étudie que le code source et ignore l'os.
 Tester avec des lecteurs d'écrans sur mac et windows.
 
-************ Ressources ************
+** Ressources
 
 Grenoble alpes métropôle, 100% d'accessibilité.
 https://www.grenoblealpesmetropole.fr/
@@ -801,18 +820,18 @@ Emmanuelle aboaf. Sous-titre avec l'ia.
 Microsoft s'implique bien pour l'accessibilité.
 https://formations.access42.net/documentation/formation-audit-accessibilite/
 Chrome://bookmarks/
-C:/program files/colour contrast analyser
-C:/program files/pac
+file:///c:/program files/colour contrast analyser
+file:///c:/program files/pac
 Tanagourou
 
-============ Mon site ============
+== Mon site
 
 Spécification !
 Contraste des couleurs
 Taille de police modifiable. Hauteur de ligne, espacement entre les mots
 Description des images
 
-================================================
+==
 
 Sujet:	Programmation, formation
 Auteur:	Access42
@@ -826,4 +845,4 @@ Date:	2024/11/04
 Durée:	5 jours
 Courriel:	Formations@access42.net
 Formatrice:	Cécile
-Feuille de présence:	https://edusign.app/student/?username=dpowers0
+Feuille de présence:	https://edusign.app/student/?username=dPowers0
