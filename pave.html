@@ -14,13 +14,23 @@ body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-pave-3d {
-	width: 8em;
-	height: 3em;
+hexa-3d {
+	width: 6cm;
+	height: 9cm;
 	color: wheat;
 	border: solid 4px var(--text-color);
-	background-color: #F0F8;
-	--depth: 6cm;
+	background-color: #F0F2;
+	--depth: 3cm;
+}
+hexa-3d > hexa-3d {
+	width: 4cm;
+	height: 6cm;
+	--depth: 2cm;
+}
+hexa-3d > hexa-3d > hexa-3d {
+	width: 2cm;
+	height: 3cm;
+	--depth: 1cm;
 }
 /*
 	animation: spin-horizontal 8s infinite linear;
@@ -29,5 +39,9 @@ pave-3d {
 	background-image: radial-gradient(circle, red 1em, blue);
 */
 </style></head><body>
-	<pave-3d><p>a</p><p>b</p></pave-3d>
+	<hexa-3d><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<hexa-3d><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+			<hexa-3d> </hexa-3d>
+		</hexa-3d>
+	</hexa-3d>
 </body></html>
