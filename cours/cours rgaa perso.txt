@@ -5,6 +5,7 @@
 J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
 Y-a-t-il une erreur quand background-color = transparent ?
 Code: <div role='list'><p role='listitem'/>
+ma prise de focus est marquée uniquement par le changement de couleur. est-ce considérée comme une information ?
 
 ** Tîtres
 

@@ -8,40 +8,31 @@
 <meta name='link' content='o'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-d.css'/>
 <script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-hexa-3d {
+boul-3d {
 	width: 6cm;
 	height: 9cm;
 	color: wheat;
-	border: solid 4px var(--text-color);
+	border: solid 4px maroon;
 	background-color: #F0F2;
-	--depth: 3cm;
-}
-hexa-3d > hexa-3d {
-	width: 4cm;
-	height: 6cm;
-	--depth: 2cm;
-}
-hexa-3d > hexa-3d > hexa-3d {
-	width: 2cm;
-	height: 3cm;
-	--depth: 1cm;
+	margin-left: 20em;
+	margin-top: 10em;
+	--depth: 4cm;
+	transform: rotateX(0deg);
 }
 /*
 	animation: spin-horizontal 8s infinite linear;
 	animation: spin-vertical 8s infinite linear;
+	transform: rotateX(60deg);
 	transform: rotateX(90deg);
 	background-image: radial-gradient(circle, red 1em, blue);
 */
 </style></head><body>
-	<hexa-3d><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<hexa-3d><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-			<hexa-3d> </hexa-3d>
-		</hexa-3d>
-	</hexa-3d>
+	<boul-3d> </boul-3d>
 </body></html>
