@@ -8,28 +8,24 @@
 <meta name='link' content='o'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 <link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave.css'/>
 <script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-boul-3d, cube-3d {
-	width: 12em;
-	height: 20cm;
-	--depth: 2cm;
+test-3d, boul-3d, cyld-3d, bevl-3d {
+	width: 10em;
+	height: 19em;
+	--depth: 4em;
 	color: ivory;
 	border: solid 4px maroon;
-	margin-left: 5em;
+	background-color: #8046;
+	margin-left: 10em;
 	margin-top: 2em;
-	transform: rotateY(60deg);
-}
-cube-3d.mesure {
-	background:
-		repeating-linear-gradient(90deg, transparent 0.9em, var(--text-color) 0.9em 1em, transparent 1em 1.9em),
-		repeating-linear-gradient(90deg, transparent 4.8em, var(--text-color) 4.8em 5em, transparent 5em 9.8em),
-		repeating-linear-gradient(transparent 0.9em, var(--text-color) 0.9em 1em, transparent 1em 1.9em),
-		repeating-linear-gradient(skyblue 4.8em, var(--text-color) 4.8em 5em, wheat 5em 9.8em);
+	border-radius: 4%;
+	animation: spin-horizontal 8s infinite linear;
 }
 /*
 	animation: spin-horizontal 8s infinite linear;
@@ -42,7 +38,16 @@ cube-3d.mesure {
 	transform: rotateX(-90deg);
 	transform: rotateX(90deg);
 	background-image: radial-gradient(circle, red 1em, blue);
+test-3d.mesure {
+	background:
+		repeating-linear-gradient(90deg, transparent 0.9em, var(--text-color) 0.9em 1em, transparent 1em 1.9em),
+		repeating-linear-gradient(90deg, transparent 4.8em, var(--text-color) 4.8em 5em, transparent 5em 9.8em),
+		repeating-linear-gradient(transparent 0.9em, var(--text-color) 0.9em 1em, transparent 1em 1.9em),
+		repeating-linear-gradient(skyblue 4.8em, var(--text-color) 4.8em 5em, wheat 5em 9.8em);
+}
+	<cyld-3d> </cyld-3d>
+	<boul-3d> </boul-3d>
 */
 </style></head><body>
-	<cube-3d class='o'><p>a</p><p>b</p><p>c</p><p>d</p><p>e</p><p>f</p></cube-3d>
+	<bevl-3d> </bevl-3d>
 </body></html>
