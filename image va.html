@@ -1,0 +1,148 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
+<style type='text/css'>
+	img, canvas, div { border-style: double; }
+	div {
+		padding: 0;
+		line-height: 0;
+		position: relative;
+		background-size: contain;
+		width: 800px;
+		height: 800px;
+		margin: 4em;
+	}
+	p {
+		width: 2px;
+		height: 100%;
+		background-color: deeppink;
+		display: inline-block;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+		cursor: move;
+	}
+	p.active { background-color: teal; }
+	p:nth-child(2n){
+		width: 100%;
+		height: 2px;
+	}
+/*	p:nth-child(1){ left: 10%; }
+	p:nth-child(2){ top: 10%; }
+	p:nth-child(3){ right: 10%; }
+	p:nth-child(4){ bottom: 10%; }
+*/
+</style></head><body>
+	<canvas></canvas>
+	<input type='file' accept='image/png, image/jpg, image/bmp' />
+	<button onclick='cropImg()'>tailler</button>
+	<div><p></p><p></p><p></p><p></p></div>
+	<img src='' alt='image A' />
+	<h1>sources</h1>
+	<a href='https://en.wikipedia.org/wiki/Data_URI_scheme'>wikipédia</a>
+	<a href='https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data#common_problems'>mozilla</a>
+	<a href='https://stackoverflow.com/questions/2516117/how-to-scale-an-image-in-data-uri-format-in-javascript-real-scaling-not-usin'>utiliser canvas</a>
+</body><script type='text/javascript'>
+	/*
+	const image = document.getElementsByTagName ('img')[0];
+	const frame = document.getElementsByTagName ('div')[0];
+	const uploader = document.getElementsByTagName ('input')[0];
+	uploader.addEventListener ('change', getUserImage);
+	function getUserImage (event){
+		// récupérer l'image
+		const imgSrc = URL.createObjectURL (event.target.files[0]);
+		// afficher l'image
+		frame.style.backgroundImage = 'url(' + imgSrc +')';
+		const newImg = new Image();
+		newImg.src = imgSrc;
+		newImg.onload = function (eventBis){
+			if (this.width > this.height){
+				const height = this.height *800/ this.width;
+				frame.style.height = height.toString() + 'px';
+			}
+			else if (this.width < this.height){
+				const width = this.width *800/ this.height;
+				frame.style.width = width.toString() + 'px';
+		}}
+	}
+	function showImgBase64(){
+		const imgHeader = 'data:image/png;base64,';
+		const imgBody = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+		image.src = imgHeader + imgBody;
+		// afficher mon image dans un div
+		frame.style.backgroundImage = 'url(' + imgHeader + imgBody +')';
+		var height = image.height *800/ image.width;
+		frame.style.height = height.toString() + 'px';
+	}
+	// bouger les lignes du frame de cropping
+	var movingLineX = null;
+	var movingLineY = null;
+	document.getElementsByTagName ('p')[0];
+	const movingLines = document.getElementsByTagName ('p');
+	function setMovingLinesTL(){
+		movingLineX = movingLines[0];
+		movingLineY = movingLines[1];
+	}
+	function setMovingLinesBR(){
+		movingLineX = movingLines[2];
+		movingLineY = movingLines[3];
+	}
+	movingLines[0].onmousedown = setMovingLinesTL;
+	movingLines[1].onmousedown = setMovingLinesTL;
+	movingLines[2].onmousedown = setMovingLinesBR;
+	movingLines[3].onmousedown = setMovingLinesBR;
+	frame.onclick = function (event){
+		movingLineX = null;
+		movingLineY = null;
+	}
+	document.onmousemove = function (event){
+		if (movingLineX){
+			if (event.clientX > frame.clientWidth) movingLineX.style.left = frame.clientWidth.toString() + 'px';
+			else movingLineX.style.left = event.clientX.toString() + 'px';
+			if (event.clientY > frame.clientHeight) movingLineY.style.top = frame.clientHeight.toString() + 'px';
+			else movingLineY.style.top = event.clientY.toString() + 'px';
+	}}
+	function cropImg(){
+		const cropPos =[ 0,0,0,0 ];
+		cropPos[0] = movingLines[0].offsetLeft - frame.offsetLeft;
+		cropPos[1] = movingLines[1].offsetTop - frame.offsetTop;
+		cropPos[2] = movingLines[2].offsetLeft - frame.offsetLeft;
+		cropPos[3] = movingLines[3].offsetTop - frame.offsetTop;
+		if (cropPos[0] > cropPos[2]){
+			const tmp = cropPos[2];
+			cropPos[2] = cropPos[0];
+			cropPos[0] = tmp;
+		}
+		if (cropPos[1] > cropPos[3]){
+			const tmp = cropPos[3];
+			cropPos[3] = cropPos[1];
+			cropPos[1] = tmp;
+		}
+		console.log (cropPos);
+	}
+	*/
+	// modifier l'image via un canva. attention, le canvas n'est pas supporté par beaucoup de navigateur
+	const imgSrc = 'file:///C:\\Users\\LENOVO\\Desktop\\images divers\\2025-05-18 tapis chinois aubusson b.jpg';
+	const image = new Image();
+	image.src = imgSrc;
+	console.dir (image);
+	const canvas = document.getElementsByTagName ('canvas')[0];
+	const context = canvas.getContext ('2d');
+	canvas.width = image.width /2;
+	canvas.height = image.height /2;
+	context.drawImage (image, 0,0, image.width, image.height);
+	/*
+	canvas.width = 800 * image.width / image.height;
+	canvas.height = 500;
+	context.drawImage (image, 0, -200, canvas.width, 800);
+	// dessiner le canvas dans une image
+	// imageBis.src = canvas.toDataURL();
+	*/
+</script></html>
