@@ -8,18 +8,22 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
-	img, canvas, div { border-style: double; }
+	canvas, div { border-style: double; }
 	div {
 		padding: 0;
 		line-height: 0;
 		position: relative;
 		background-size: contain;
-		margin: 4em;
-		/*
-		width: 800px;
-		height: 800px;
-		background-image: url('file:///C:\\Users\\LENOVO\\Desktop\\images divers\\2025-05-18 tapis chinois aubusson b.jpg');
-		*/
+		margin: 1em;
+		width: 600px;
+		height: 600px;
+		background-color: #048;
+		overflow: hidden;
+	}
+/*	div#frame-rotate { display: none; } */
+	img {
+		width: 100%;
+		mix-blend-mode: normal;
 	}
 	p {
 		width: 2px;
@@ -37,26 +41,58 @@
 		width: 100%;
 		height: 2px;
 	}
-/*	p:nth-child(1){ left: 10%; }
-	p:nth-child(2){ top: 10%; }
-	p:nth-child(3){ right: 10%; }
-	p:nth-child(4){ bottom: 10%; }
-*/
 </style></head><body>
-	<button onclick='cropImg()'>tailler</button>
-	<div><p></p><p></p><p></p><p></p></div>
+	<section id='frame-crop' style='display:none;'>
+		<div><p></p><p></p><p></p><p></p></div>
+		<button onclick='validCrop()'>valider</button>
+	</section>
+	<section id='frame-rotate' style='display:none;'>
+		<div><img alt=''></div>
+		<button onclick='validRotate()'>valider</button>
+		<button onclick='rotateLeft()'>incliner vers la gauche</button>
+		<button onclick='rotateRight()'>incliner vers la droite</button>
+	</section>
+	<section id='frame-result'>
+		<canvas></canvas>
+		<button onclick='launchCrop()'>tailler</button>
+		<button onclick='launchRotate()'>incliner</button>
+	</section>
 </body><script type='text/javascript'>
-	const imgSrc = 'file:///C:/Users/LENOVO/Desktop/images divers/2025-05-18 tapis chinois aubusson b.jpg';
-	const image = new Image();
+	// à garder
+	const frames = document.getElementsByTagName ('section');
+	const image = document.getElementsByTagName ('img')[0];
+//	const image = new Image();
+	// à modifier
+//	const imgSrc = 'https://lh3.googleusercontent.com/pw/AP1GczN8avfqi_5KidqDIKhPOvkvYuXgExMJMVd2OafCFusNqex4driLGgWaUXkkD6mX5VY5WsFq29cUlAjbpedXE4i2jtHa0lIOPG2xJgGLE5XJOiW1hH8A46IR0Zy93f7P_wh9vVlQhPMwwdUDlqikg_BY=w985-h739';
+	const imgSrc = 'file:///C:/Users/deborah.powers/Desktop/cgi/photo-deborah-tournee.bmp';
 	image.src = imgSrc;
-	const frame = document.getElementsByTagName ('div')[0];
-	frame.style.backgroundImage = 'url("' + imgSrc +'")';
-	frame.style.width = image.width /2 + 'px';
-	frame.style.height = image.height /2 + 'px';
+	const canvas = document.getElementsByTagName ('canvas')[0];
+	const context = canvas.getContext ('2d');
+	if (image.height >600){
+		canvas.width = image.width *600/ image.height;
+		canvas.height = 600;
+		context.drawImage (image, 0,0, canvas.width, 600);
+	}
+	else{
+		canvas.width = image.width;
+		canvas.height = image.height;
+		context.drawImage (image, 0,0, image.width, image.height);
+	}
+	function launchRotate(){
+		frames[0].style.display = 'none';
+		frames[1].style.display = 'block';
+		frames[2].style.display = 'none';
+		image.src = imgSrc;
+		const frame = frames[1].getElementsByTagName ('div')[0];
+		frame.style.height = '600px';
+		frame.style.width = image.width *600/ image.height + 'px';
+	}
+	var imgRotation =0;
 	// bouger les lignes du frame de cropping
 	var movingLineX = null;
 	var movingLineY = null;
-	const movingLines = document.getElementsByTagName ('p');
+	const frameCrop = frames[0].getElementsByTagName ('div')[0];
+	const movingLines = frameCrop.getElementsByTagName ('p');
 	String.prototype.fromPx = function(){
 		const nbStr = this.slice (0, -2);
 		var nb = parseInt (nbStr);
@@ -78,34 +114,41 @@
 	movingLines[1].onmousedown = setMovingLinesTL;
 	movingLines[2].onmousedown = setMovingLinesBR;
 	movingLines[3].onmousedown = setMovingLinesBR;
-	frame.onclick = function (event){
+	frameCrop.onclick = function (event){
 		movingLineX = null;
 		movingLineY = null;
 	}
-	document.onmousemove = function (event){
+	frameCrop.onmousemove = function (event){
 		if (movingLineX){
-			console.log (movingLineX.style.left, event.clientX, frame.style.width);
 			if ('-' === movingLineX.style.left[0]) movingLineX.style.left = '0px';
-			else if (movingLineX.style.left.fromPx() > frame.style.width.fromPx()) movingLineX.style.left = frame.style.width;
+			else if (movingLineX.style.left.fromPx() > frameCrop.style.width.fromPx()) movingLineX.style.left = frameCrop.style.width;
 			else movingLineX.style.left = event.clientX + 'px';
 			if ('-' === movingLineY.style.top[0]) movingLineY.style.top = '0px';
-			else if (movingLineY.style.top.fromPx() > frame.style.height.fromPx()) movingLineY.style.top = frame.style.height;
+			else if (movingLineY.style.top.fromPx() > frameCrop.style.height.fromPx()) movingLineY.style.top = frameCrop.style.height;
+		//	else if (movingLineY.style.top.fromPx() > 600) movingLineY.style.top = '590px';
 			else movingLineY.style.top = event.clientY + 'px';
 	}}
-	document.onmousemove_va = function (event){
-		if (movingLineX){
-			console.log (movingLineX.style.left, movingLineY.style.top);
-			if (event.clientX > frame.clientWidth) movingLineX.style.left = frame.clientWidth.toString() + 'px';
-			else movingLineX.style.left = event.clientX.toString() + 'px';
-			if (event.clientY > frame.clientHeight) movingLineY.style.top = frame.clientHeight.toString() + 'px';
-			else movingLineY.style.top = event.clientY.toString() + 'px';
+	function launchCrop(){
+		frames[0].style.display = 'block';
+		frames[1].style.display = 'none';
+		frames[2].style.display = 'none';
+	//	image.src = imgSrc;
+	//	frameCrop.style.backgroundImage = 'url("' + imgSrc +'")';
+		if (image.height >600){
+			frameCrop.style.height = '600px';
+			frameCrop.style.width = image.width *600/ image.height + 'px';
+		}
+		else{
+			frameCrop.style.height = image.height + 'px';
+			frameCrop.style.width = image.width + 'px';
 	}}
-	function cropImg(){
+	// tailler l'image
+	function validCrop(){
 		const cropPos =[ 0,0,0,0 ];
-		cropPos[0] = movingLines[0].offsetLeft - frame.offsetLeft;
-		cropPos[1] = movingLines[1].offsetTop - frame.offsetTop;
-		cropPos[2] = movingLines[2].offsetLeft - frame.offsetLeft;
-		cropPos[3] = movingLines[3].offsetTop - frame.offsetTop;
+		cropPos[0] = movingLines[0].style.left.fromPx();
+		cropPos[1] = movingLines[1].style.top.fromPx();
+		cropPos[2] = movingLines[2].style.left.fromPx();
+		cropPos[3] = movingLines[3].style.top.fromPx();
 		if (cropPos[0] > cropPos[2]){
 			const tmp = cropPos[2];
 			cropPos[2] = cropPos[0];
@@ -116,6 +159,46 @@
 			cropPos[3] = cropPos[1];
 			cropPos[1] = tmp;
 		}
-		console.log (cropPos);
+		if (image.height >600){
+			const ratioImgH600 = image.height /600;
+			for (var c=0; c<4; c++) cropPos[c] *= ratioImgH600;
+		}
+		canvas.width = cropPos[2] - cropPos[0];
+		canvas.height = cropPos[3] - cropPos[1];
+		context.drawImage (image, - cropPos[0], - cropPos[1]);
+		var newImgSrc = canvas.toDataURL();
+		image.src = newImgSrc;
+		image.width = canvas.width;
+		image.height = canvas.height;
+		frameCrop.style.backgroundImage = image.src;
+		frames[0].style.display = 'none';
+		frames[1].style.display = 'none';
+		frames[2].style.display = 'block';
+		console.log (image.width, image.height);
+	}
+
+			/*
+		console.log (imgRotation);
+		canvas.width = cropPos[2] - cropPos[0];
+		canvas.height = cropPos[3] - cropPos[1];
+		if (imgRotation !==0) context.rotate (imgRotation * Math.PI / 180);
+		context.drawImage (image, - cropPos[0], - cropPos[1]);
+		image.src = canvas.toDataURL();
+		frameCrop.style.backgroundImage = image.src;
+		frameCrop.style.width = canvas.width * 600 / canvas.height + 'px';
+		canvas.style.display = 'block';
+		frameCrop.style.display = 'none';
+		frameRotate.style.display = 'none';
+		*/
+	// incliner l'image
+	function rotateLeft(){
+		imgRotation -=1;
+		if (imgRotation <-90) imgRotation = -90;
+		image.style.transform = 'rotate(' + imgRotation + 'deg)';
+	}
+	function rotateRight(){
+		imgRotation +=1;
+		if (imgRotation >90) imgRotation = 90;
+		image.style.transform = 'rotateZ(' + imgRotation + 'deg)';
 	}
 </script></html>
