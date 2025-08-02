@@ -8,7 +8,10 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
-	canvas, div { border-style: double; }
+	canvas, div {
+		border-style: double;
+		background-color: var(--text-color);
+	}
 	div {
 		padding: 0;
 		line-height: 0;
@@ -17,7 +20,6 @@
 		margin: 1em;
 		width: 600px;
 		height: 600px;
-		background-color: #048;
 		overflow: hidden;
 	}
 /*	div#frame-rotate { display: none; } */
@@ -63,8 +65,11 @@
 	const image = document.getElementsByTagName ('img')[0];
 //	const image = new Image();
 	// à modifier
-//	const imgSrc = 'https://lh3.googleusercontent.com/pw/AP1GczN8avfqi_5KidqDIKhPOvkvYuXgExMJMVd2OafCFusNqex4driLGgWaUXkkD6mX5VY5WsFq29cUlAjbpedXE4i2jtHa0lIOPG2xJgGLE5XJOiW1hH8A46IR0Zy93f7P_wh9vVlQhPMwwdUDlqikg_BY=w985-h739';
+/*	const imgSrc = 'https://lh3.googleusercontent.com/pw/AP1GczN8avfqi_5KidqDIKhPOvkvYuXgExMJMVd2OafCFusNqex4driLGgWaUXkkD6mX5VY5WsFq29cUlAjbpedXE4i2jtHa0lIOPG2xJgGLE5XJOiW1hH8A46IR0Zy93f7P_wh9vVlQhPMwwdUDlqikg_BY=w985-h739';
 	const imgSrc = 'file:///C:/Users/deborah.powers/Desktop/cgi/photo-deborah-tournee.bmp';
+	const imgSrc = 'file:///C:/Users/LENOVO/Desktop/images divers/2025-05-18 tapis chinois aubusson b.jpg';
+*/
+	const imgSrc = 'file:///C:/Users/LENOVO/Desktop/images divers/yeti va.png';
 	image.src = imgSrc;
 	const canvas = document.getElementsByTagName ('canvas')[0];
 	const context = canvas.getContext ('2d');
@@ -78,21 +83,12 @@
 		canvas.height = image.height;
 		context.drawImage (image, 0,0, image.width, image.height);
 	}
-	function launchRotate(){
-		frames[0].style.display = 'none';
-		frames[1].style.display = 'block';
-		frames[2].style.display = 'none';
-		image.src = imgSrc;
-		const frame = frames[1].getElementsByTagName ('div')[0];
-		frame.style.height = '600px';
-		frame.style.width = image.width *600/ image.height + 'px';
-	}
-	var imgRotation =0;
 	// bouger les lignes du frame de cropping
 	var movingLineX = null;
 	var movingLineY = null;
 	const frameCrop = frames[0].getElementsByTagName ('div')[0];
 	const movingLines = frameCrop.getElementsByTagName ('p');
+	frameCrop.style.backgroundImage = imgSrc;
 	String.prototype.fromPx = function(){
 		const nbStr = this.slice (0, -2);
 		var nb = parseInt (nbStr);
@@ -128,12 +124,12 @@
 		//	else if (movingLineY.style.top.fromPx() > 600) movingLineY.style.top = '590px';
 			else movingLineY.style.top = event.clientY + 'px';
 	}}
+	// tailler l'image
 	function launchCrop(){
 		frames[0].style.display = 'block';
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'none';
-	//	image.src = imgSrc;
-	//	frameCrop.style.backgroundImage = 'url("' + imgSrc +'")';
+		if (""=== frameCrop.style.backgroundImage) frameCrop.style.backgroundImage = 'url("' + imgSrc +'")';
 		if (image.height >600){
 			frameCrop.style.height = '600px';
 			frameCrop.style.width = image.width *600/ image.height + 'px';
@@ -142,7 +138,6 @@
 			frameCrop.style.height = image.height + 'px';
 			frameCrop.style.width = image.width + 'px';
 	}}
-	// tailler l'image
 	function validCrop(){
 		const cropPos =[ 0,0,0,0 ];
 		cropPos[0] = movingLines[0].style.left.fromPx();
@@ -170,27 +165,67 @@
 		image.src = newImgSrc;
 		image.width = canvas.width;
 		image.height = canvas.height;
-		frameCrop.style.backgroundImage = image.src;
+		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
 		frames[0].style.display = 'none';
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'block';
-		console.log (image.width, image.height);
 	}
-
-			/*
-		console.log (imgRotation);
-		canvas.width = cropPos[2] - cropPos[0];
-		canvas.height = cropPos[3] - cropPos[1];
-		if (imgRotation !==0) context.rotate (imgRotation * Math.PI / 180);
-		context.drawImage (image, - cropPos[0], - cropPos[1]);
-		image.src = canvas.toDataURL();
-		frameCrop.style.backgroundImage = image.src;
-		frameCrop.style.width = canvas.width * 600 / canvas.height + 'px';
-		canvas.style.display = 'block';
-		frameCrop.style.display = 'none';
-		frameRotate.style.display = 'none';
-		*/
 	// incliner l'image
+	var imgRotation =0;
+	function launchRotate(){
+		frames[0].style.display = 'none';
+		frames[1].style.display = 'block';
+		frames[2].style.display = 'none';
+		const frameRotate = frames[1].getElementsByTagName ('div')[0];
+		if (image.height >600){
+			frameRotate.style.height = '600px';
+			frameRotate.style.width = image.width *600/ image.height + 'px';
+		}
+		else{
+			frameRotate.style.height = image.height + 'px';
+			frameRotate.style.width = image.width + 'px';
+	}}
+	function validRotate(){
+		const imgRotationRad = imgRotation * Math.PI / 180;
+		// longueur de la diagonale
+		const imgDiam = Math.sqrt (image.width * image.width + image.height * image.height);
+		var imgCos = image.width / imgDiam;
+		var imgSin = image.height / imgDiam;
+		var imgAngleA = Math.acos (imgCos);
+		var imgAngleO = Math.acos (imgSin);
+		imgAngleA += imgRotationRad;
+		imgAngleO += imgRotationRad;
+		imgCos = Math.max (Math.cos (imgAngleA), Math.cos (imgAngleO));
+		imgSin = Math.max (Math.sin (imgAngleA), Math.sin (imgAngleO));
+		imgCos *= imgDiam;
+		imgSin *= imgDiam;
+		var ecartWidth = (imgCos - image.width);
+		var ecartHeight = (imgSin - image.height);
+		/*
+		if (ecartWidth >0) ecartWidth *= -1;
+		if (ecartHeight >0) ecartHeight *= -1;
+		*/
+		console.log (ecartWidth, ecartHeight);
+		if (imgSin >600){
+			canvas.width = imgCos *600/ imgSin;
+			canvas.height = 600;
+			ecartWidth = ecartWidth *600/ imgSin;
+			ecartHeight = ecartHeight *600/ imgSin;
+		}
+		else{
+			canvas.width = imgCos;
+			canvas.height = imgSin;
+		}
+		// rotation
+		context.rotate (imgRotationRad);
+		context.drawImage (image, ecartWidth, ecartHeight);
+		newImgSrc = canvas.toDataURL();
+		image.src = newImgSrc;
+		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
+		frames[0].style.display = 'none';
+		frames[1].style.display = 'none';
+		frames[2].style.display = 'block';
+	}
 	function rotateLeft(){
 		imgRotation -=1;
 		if (imgRotation <-90) imgRotation = -90;
