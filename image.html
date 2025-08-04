@@ -187,26 +187,18 @@
 	}}
 	function validRotate(){
 		const imgRotationRad = imgRotation * Math.PI / 180;
-		// longueur de la diagonale
-		const imgDiam = Math.sqrt (image.width * image.width + image.height * image.height);
-		var imgCos = image.width / imgDiam;
-		var imgSin = image.height / imgDiam;
-		var imgAngleA = Math.acos (imgCos);
-		var imgAngleO = Math.acos (imgSin);
-		imgAngleA += imgRotationRad;
-		imgAngleO += imgRotationRad;
-		imgCos = Math.max (Math.cos (imgAngleA), Math.cos (imgAngleO));
-		imgSin = Math.max (Math.sin (imgAngleA), Math.sin (imgAngleO));
-		imgCos *= imgDiam;
-		imgSin *= imgDiam;
-		var ecartWidth = (imgCos - image.width);
-		var ecartHeight = (imgSin - image.height);
-		/*
-		if (ecartWidth >0) ecartWidth *= -1;
-		if (ecartHeight >0) ecartHeight *= -1;
+		canvas.width = Math.cos (imgRotationRad) * image.width;
+		canvas.height = Math.sin (imgRotationRad90) * image.height;
+		const imgRotationRad90 = (90- imgRotation) * Math.PI / 180;
+		console.log (imgRotation, image.width, image.height);
+		/* coordonnées xy du point en haut à droite
+		coopol = width, imgRotationRad
+		coocartx = width * cos imgRotationRad
+		coocarty = width * sin imgRotationRad
 		*/
-		console.log (ecartWidth, ecartHeight);
+		/*
 		if (imgSin >600){
+			console.log ('oui');
 			canvas.width = imgCos *600/ imgSin;
 			canvas.height = 600;
 			ecartWidth = ecartWidth *600/ imgSin;
@@ -215,10 +207,10 @@
 		else{
 			canvas.width = imgCos;
 			canvas.height = imgSin;
-		}
+		}*/
 		// rotation
 		context.rotate (imgRotationRad);
-		context.drawImage (image, ecartWidth, ecartHeight);
+		context.drawImage (image, 0, 0);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;
 		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
