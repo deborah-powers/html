@@ -53,33 +53,50 @@
 	</section>
 	<section id='frame-result'>
 		<canvas></canvas>
-		<button onclick='launchTumble90()'>basculer</button>
+		<button onclick='tumble90degree()'>basculer</button>
 		<button onclick='launchRotate()'>incliner</button>
 		<button onclick='launchCrop()'>tailler</button>
+		<input type='file' accept='image/png, image/jpg, image/bmp' />
+	<h1>sources</h1>
+	<a href='https://en.wikipedia.org/wiki/Data_URI_scheme'>wikipédia</a>
+	<a href='https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data#common_problems'>mozilla</a>
+	<a href='https://stackoverflow.com/questions/2516117/how-to-scale-an-image-in-data-uri-format-in-javascript-real-scaling-not-usin'>utiliser canvas</a>
 	</section>
 </body><script type='text/javascript'>
 	const frames = document.getElementsByTagName ('section');
 	const image = document.getElementsByTagName ('img')[0];
-//	const image = new Image();
-	// à modifier
-/*	const imgSrc = 'https://lh3.googleusercontent.com/pw/AP1GczN8avfqi_5KidqDIKhPOvkvYuXgExMJMVd2OafCFusNqex4driLGgWaUXkkD6mX5VY5WsFq29cUlAjbpedXE4i2jtHa0lIOPG2xJgGLE5XJOiW1hH8A46IR0Zy93f7P_wh9vVlQhPMwwdUDlqikg_BY=w985-h739';
-	const imgSrc = 'file:///C:/Users/deborah.powers/Desktop/cgi/photo-deborah-tournee.bmp';
-	const imgSrc = 'file:///C:/Users/LENOVO/Desktop/images divers/2025-05-18 tapis chinois aubusson b.jpg';
-	const imgSrc = 'file:///C:/Users/LENOVO/Desktop/images divers/yeti va.png';
-*/
-	const imgSrc = 'quadrillage.bmp';
-	image.src = imgSrc;
 	const canvas = document.getElementsByTagName ('canvas')[0];
 	const context = canvas.getContext ('2d');
-	if (image.height >600){
-		canvas.width = image.width *600/ image.height;
-		canvas.height = 600;
-		context.drawImage (image, 0,0, canvas.width, 600);
+	var imgSrc = 'quadrillage.bmp';
+	const uploader = document.getElementsByTagName ('input')[0];
+	uploader.addEventListener ('change', getUserImage);
+	function getUserImage (event){
+		imgSrc = URL.createObjectURL (event.target.files[0]);
+		image.src = imgSrc;
 	}
-	else{
-		canvas.width = image.width;
-		canvas.height = image.height;
-		context.drawImage (image, 0,0, image.width, image.height);
+	console.dir (canvas);
+	image.onload = function(){
+		console.log (this.width, this.height);
+		if (this.height >600){
+			canvas.width = this.width *600/ this.height;
+			canvas.height = 600;
+			context.drawImage (this, 0,0, canvas.width, 600);
+		}
+		else{
+			canvas.width = this.width;
+			canvas.height = this.height;
+			context.drawImage (this, 0,0, this.width, this.height);
+		}
+		console.log (this.width, this.height);
+	}
+	function tumble90degree(){
+		canvas.width = image.height;
+		canvas.height = image.width;
+		context.rotate (Math.PI /2);
+		context.drawImage (image, 0, - image.height);
+		newImgSrc = canvas.toDataURL();
+		image.src = newImgSrc;
+		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
 	}
 	// bouger les lignes du frame de cropping
 	var movingLineX = null;
@@ -168,16 +185,6 @@
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'block';
 	}
-	// basculer l'image à 90 degrés
-	function launchTumble90(){
-		canvas.width = image.height;
-		canvas.height = image.width;
-		context.rotate (Math.PI /2);
-		context.drawImage (image, 0, - image.height);
-		newImgSrc = canvas.toDataURL();
-		image.src = newImgSrc;
-		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
-	}
 	// incliner l'image
 	var imgRotation =0;
 	function launchRotate(){
@@ -188,6 +195,8 @@
 		if (image.height >600){
 			frameRotate.style.height = '600px';
 			frameRotate.style.width = image.width *600/ image.height + 'px';
+			image.width = image.width *600/ image.height;
+			image.height = 600;
 		}
 		else{
 			frameRotate.style.height = image.height + 'px';
@@ -203,26 +212,27 @@
 		var ecartHeight =0;
 		// hauteur, imgRotation >0
 		if (imgRotation >0){
-			canvas.width = degreeTOcos (imgRotation) * image.width - degreeTOcos (90+ imgRotation) * image.height;
+			canvas.width = (degreeTOcos (imgRotation) - degreeTOcos (90+ imgRotation)) * image.width;
 			canvas.height = diag * (Math.sin (imgAngle + degreeTOradian (imgRotation)));
-			// TODO centrer l'image
-			ecartWidth = degreeTOcos (- imgRotation) * (canvas.width - image.width);
-			ecartHeight = degreeTOsin (- imgRotation) * (canvas.width - image.width);
-			/*
-			ecartWidth = degreeTOcos (- imgRotation) * image.width /2;
-			ecartHeight = degreeTOsin (- imgRotation) * image.height /2;
-			*/
+			ecartWidth = degreeTOcos (90+ imgRotation) * image.height;
+			ecartHeight = - ecartWidth * degreeTOsin (- imgRotation);
+			ecartWidth *= - degreeTOcos (- imgRotation);
 		}
 		else if (imgRotation <0){
 			canvas.width = diag * (Math.cos (imgAngle + degreeTOradian (imgRotation)));
-			canvas.height = degreeTOsin (90+ imgRotation) * image.height - degreeTOsin (imgRotation) * image.width;
-			// TODO centrer l'image
+			canvas.height = (degreeTOsin (90+ imgRotation) - degreeTOsin (imgRotation)) * image.height;
+			ecartHeight = degreeTOsin (imgRotation) * image.width;
+			ecartWidth = - ecartHeight * degreeTOcos (90- imgRotation);
+			ecartHeight *= - degreeTOsin (90- imgRotation);
 		}
 		if (canvas.height >600){
+			console.log ('grand');
 			canvas.width = canvas.width *600/ canvas.height;
 			canvas.height = 600;
 			ecartWidth = ecartWidth *600/ canvas.height;
 			ecartHeight = ecartHeight *600/ canvas.height;
+			image.width = image.width *600/ image.height;
+			image.height = 600;
 		}
 		// rotation
 		context.rotate (degreeTOradian (imgRotation));
@@ -240,8 +250,12 @@
 		image.style.transform = 'rotate(' + imgRotation + 'deg)';
 	}
 	function rotateRight(){
+		console.log ('a', image.height);
 		imgRotation +=15;
+		console.log ('b', image.height);
 		if (imgRotation >90) imgRotation = 90;
+		console.log ('c', image.height);
 		image.style.transform = 'rotateZ(' + imgRotation + 'deg)';
+		console.log ('d', image.height);
 	}
 </script></html>
