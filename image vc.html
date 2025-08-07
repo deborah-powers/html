@@ -18,12 +18,15 @@
 		position: relative;
 		background-size: contain;
 		margin: 1em;
-		width: 600px;
-		height: 600px;
 		overflow: hidden;
 	}
 /*	div#frame-rotate { display: none; } */
-	img { mix-blend-mode: normal; }
+	img {
+		mix-blend-mode: normal;
+		aspect-ratio: auto;
+		max-height: 100%;
+		max-width: 100%;
+	}
 	p {
 		width: 2px;
 		height: 100%;
@@ -64,41 +67,41 @@
 	const image = document.getElementsByTagName ('img')[0];
 	const canvas = document.getElementsByTagName ('canvas')[0];
 	const context = canvas.getContext ('2d');
+	const downloadButton = document.getElementsByTagName ('a')[0];
 	const uploader = document.getElementsByTagName ('input')[0];
 	uploader.addEventListener ('change', function (event){
 		image.src = URL.createObjectURL (event.target.files[0]);
-		image.alt = event.target.files[0].name;
+		const p= event.target.files[0].name.lastIndexOf ('.');
+		image.alt = event.target.files[0].name.substring (0,p) +' bis';
+		downloadButton.download = image.alt + event.target.files[0].name.substring (p);
 	});
 	image.onload = function(){
-		/*
-		if (this.height >600){
-			this.width = this.width *600/ this.height;
-			this.height = 600;
-			this.style.width = this.width + 'px';
-			this.style.height = '600px';
-		}*/
-		canvas.width = this.width;
-		canvas.height = this.height;
-		context.drawImage (this, 0,0, this.width, this.height);
-		frameCrop.style.backgroundImage = 'url("' + this.src +'")';
-		frameCrop.style.height = this.height + 'px';
-		frameCrop.style.width = this.width + 'px';
-		const frameRotate = frames[1].getElementsByTagName ('div')[0];
-		frameRotate.style.height = this.height + 'px';
-		frameRotate.style.width = this.width + 'px';
-		const downloadButton = document.getElementsByTagName ('a')[0];
+		if ('blob:null/' === image.src.substring (0,10)){
+			if (this.height >600){
+				this.width = this.width *600/ this.height;
+				this.height = 600;
+				this.style.width = this.width + 'px';
+				this.style.height = '600px';
+			}
+			canvas.width = this.width;
+			canvas.height = this.height;
+			context.drawImage (this, 0,0, this.width, this.height);
+		}
 		downloadButton.href = this.src;
-		downloadButton.download = this.alt;
 	}
 	function tumble90degree(){
 		canvas.width = image.height;
 		canvas.height = image.width;
 		context.rotate (Math.PI /2);
-		context.drawImage (image, 0, - image.height);
+		context.drawImage (image, 0, - image.height, canvas.width, canvas.height);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;
+		/*
 		image.width = image.height;
 		image.height = canvas.height;
+		image.style.width = image.width + 'px';
+		image.style.height = image.height + 'px';
+		*/
 	}
 	// bouger les lignes du frame de cropping
 	var movingLineX = null;
@@ -142,6 +145,9 @@
 	}}
 	// tailler l'image
 	function launchCrop(){
+		frameCrop.style.backgroundImage = 'url("' + image.src +'")';
+		frameCrop.style.height = image.height + 'px';
+		frameCrop.style.width = image.width + 'px';
 		frames[0].style.display = 'block';
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'none';

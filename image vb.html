@@ -18,16 +18,12 @@
 		position: relative;
 		background-size: contain;
 		margin: 1em;
+		width: 600px;
+		height: 600px;
 		overflow: hidden;
 	}
 /*	div#frame-rotate { display: none; } */
-	img {
-		mix-blend-mode: normal;
-		aspect-ratio: auto;
-	/*	height: 600px;	*/
-		max-height: 100%;
-		max-width: 100%;
-	}
+	img { mix-blend-mode: normal; }
 	p {
 		width: 2px;
 		height: 100%;
@@ -46,55 +42,52 @@
 	}
 </style></head><body>
 	<section id='frame-crop' style='display:none;'>
-		<button onclick='validCrop()'>valider</button>
 		<div><p></p><p></p><p></p><p></p></div>
+		<button onclick='validCrop()'>valider</button>
 	</section>
 	<section id='frame-rotate' style='display:none;'>
+		<div><img alt=''></div>
 		<button onclick='validRotate()'>valider</button>
 		<button onclick='rotateLeft()'>incliner vers la gauche</button>
 		<button onclick='rotateRight()'>incliner vers la droite</button>
-		<div><img alt=''></div>
 	</section>
 	<section id='frame-result'>
-		<input type='file' accept='image/png, image/jpg, image/bmp' />
+		<canvas></canvas>
 		<button onclick='tumble90degree()'>basculer</button>
 		<button onclick='launchRotate()'>incliner</button>
 		<button onclick='launchCrop()'>tailler</button>
-		<a class='button' download='' href=''>télécharger</a>
-		<canvas></canvas>
+		<input type='file' accept='image/png, image/jpg, image/bmp' />
+	<h1>sources</h1>
+	<a href='https://en.wikipedia.org/wiki/Data_URI_scheme'>wikipédia</a>
+	<a href='https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/data#common_problems'>mozilla</a>
+	<a href='https://stackoverflow.com/questions/2516117/how-to-scale-an-image-in-data-uri-format-in-javascript-real-scaling-not-usin'>utiliser canvas</a>
 	</section>
 </body><script type='text/javascript'>
 	const frames = document.getElementsByTagName ('section');
 	const image = document.getElementsByTagName ('img')[0];
 	const canvas = document.getElementsByTagName ('canvas')[0];
 	const context = canvas.getContext ('2d');
-	const downloadButton = document.getElementsByTagName ('a')[0];
+	var imgSrc = 'quadrillage.bmp';
 	const uploader = document.getElementsByTagName ('input')[0];
-	uploader.addEventListener ('change', function (event){
-		image.src = URL.createObjectURL (event.target.files[0]);
-		const p= event.target.files[0].name.lastIndexOf ('.');
-		image.alt = event.target.files[0].name.substring (0,p) +' bis';
-		downloadButton.download = image.alt + event.target.files[0].name.substring (p);
-	});
+	uploader.addEventListener ('change', getUserImage);
+	function getUserImage (event){
+		imgSrc = URL.createObjectURL (event.target.files[0]);
+		image.src = imgSrc;
+	}
+	console.dir (canvas);
 	image.onload = function(){
 		console.log (this.width, this.height);
-/*		if (this.height >600 && false){
-			console.log ('grand');
-			this.width = this.width *600/ this.height;
-			this.height = 600;
-			this.style.width = this.width + 'px';
-			this.style.height = '600px';
-		}*/
-		canvas.width = this.width;
-		canvas.height = this.height;
-		context.drawImage (this, 0,0, this.width, this.height);
-		frameCrop.style.backgroundImage = 'url("' + this.src +'")';
-		frameCrop.style.height = this.height + 'px';
-		frameCrop.style.width = this.width + 'px';
-		const frameRotate = frames[1].getElementsByTagName ('div')[0];
-		frameRotate.style.height = this.height + 'px';
-		frameRotate.style.width = this.width + 'px';
-		downloadButton.href = this.src;
+		if (this.height >600){
+			canvas.width = this.width *600/ this.height;
+			canvas.height = 600;
+			context.drawImage (this, 0,0, canvas.width, 600);
+		}
+		else{
+			canvas.width = this.width;
+			canvas.height = this.height;
+			context.drawImage (this, 0,0, this.width, this.height);
+		}
+		console.log (this.width, this.height);
 	}
 	function tumble90degree(){
 		canvas.width = image.height;
@@ -103,14 +96,14 @@
 		context.drawImage (image, 0, - image.height);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;
-		image.width = image.height;
-		image.height = canvas.height;
+		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
 	}
 	// bouger les lignes du frame de cropping
 	var movingLineX = null;
 	var movingLineY = null;
 	const frameCrop = frames[0].getElementsByTagName ('div')[0];
 	const movingLines = frameCrop.getElementsByTagName ('p');
+	frameCrop.style.backgroundImage = imgSrc;
 	String.prototype.fromPx = function(){
 		const nbStr = this.slice (0, -2);
 		var nb = parseInt (nbStr);
@@ -151,7 +144,15 @@
 		frames[0].style.display = 'block';
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'none';
-	}
+		if (""=== frameCrop.style.backgroundImage) frameCrop.style.backgroundImage = 'url("' + imgSrc +'")';
+		if (image.height >600){
+			frameCrop.style.height = '600px';
+			frameCrop.style.width = image.width *600/ image.height + 'px';
+		}
+		else{
+			frameCrop.style.height = image.height + 'px';
+			frameCrop.style.width = image.width + 'px';
+	}}
 	function validCrop(){
 		const cropPos =[ 0,0,0,0 ];
 		cropPos[0] = movingLines[0].style.left.fromPx();
@@ -167,6 +168,10 @@
 			const tmp = cropPos[3];
 			cropPos[3] = cropPos[1];
 			cropPos[1] = tmp;
+		}
+		if (image.height >600){
+			const ratioImgH600 = image.height /600;
+			for (var c=0; c<4; c++) cropPos[c] *= ratioImgH600;
 		}
 		canvas.width = cropPos[2] - cropPos[0];
 		canvas.height = cropPos[3] - cropPos[1];
@@ -187,9 +192,16 @@
 		frames[1].style.display = 'block';
 		frames[2].style.display = 'none';
 		const frameRotate = frames[1].getElementsByTagName ('div')[0];
-		frameRotate.style.height = image.height + 'px';
-		frameRotate.style.width = image.width + 'px';
-	}
+		if (image.height >600){
+			frameRotate.style.height = '600px';
+			frameRotate.style.width = image.width *600/ image.height + 'px';
+			image.width = image.width *600/ image.height;
+			image.height = 600;
+		}
+		else{
+			frameRotate.style.height = image.height + 'px';
+			frameRotate.style.width = image.width + 'px';
+	}}
 	function degreeTOradian (degree){ return degree * Math.PI / 180; }
 	function degreeTOcos (degree){ return Math.cos (degree * Math.PI / 180); }
 	function degreeTOsin (degree){ return Math.sin (degree * Math.PI / 180); }
@@ -200,40 +212,50 @@
 		var ecartHeight =0;
 		// hauteur, imgRotation >0
 		if (imgRotation >0){
-			canvas.width = degreeTOcos (imgRotation) * image.width - degreeTOcos (90+ imgRotation) * image.height;
+			canvas.width = (degreeTOcos (imgRotation) - degreeTOcos (90+ imgRotation)) * image.width;
 			canvas.height = diag * (Math.sin (imgAngle + degreeTOradian (imgRotation)));
-			// TODO centrer l'image
 			ecartWidth = degreeTOcos (90+ imgRotation) * image.height;
 			ecartHeight = - ecartWidth * degreeTOsin (- imgRotation);
 			ecartWidth *= - degreeTOcos (- imgRotation);
 		}
 		else if (imgRotation <0){
 			canvas.width = diag * (Math.cos (imgAngle + degreeTOradian (imgRotation)));
-			canvas.height = degreeTOsin (90+ imgRotation) * image.height - degreeTOsin (imgRotation) * image.width;
-			// TODO centrer l'image
+			canvas.height = (degreeTOsin (90+ imgRotation) - degreeTOsin (imgRotation)) * image.height;
 			ecartHeight = degreeTOsin (imgRotation) * image.width;
 			ecartWidth = - ecartHeight * degreeTOcos (90- imgRotation);
 			ecartHeight *= - degreeTOsin (90- imgRotation);
+		}
+		if (canvas.height >600){
+			console.log ('grand');
+			canvas.width = canvas.width *600/ canvas.height;
+			canvas.height = 600;
+			ecartWidth = ecartWidth *600/ canvas.height;
+			ecartHeight = ecartHeight *600/ canvas.height;
+			image.width = image.width *600/ image.height;
+			image.height = 600;
 		}
 		// rotation
 		context.rotate (degreeTOradian (imgRotation));
 		context.drawImage (image, ecartWidth, ecartHeight);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;
-		image.width = canvas.width;
-		image.height = canvas.height;
+		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
 		frames[0].style.display = 'none';
 		frames[1].style.display = 'none';
 		frames[2].style.display = 'block';
 	}
 	function rotateLeft(){
-		imgRotation -=1;
+		imgRotation -=15;
 		if (imgRotation <-90) imgRotation = -90;
 		image.style.transform = 'rotate(' + imgRotation + 'deg)';
 	}
 	function rotateRight(){
-		imgRotation +=1;
+		console.log ('a', image.height);
+		imgRotation +=15;
+		console.log ('b', image.height);
 		if (imgRotation >90) imgRotation = 90;
+		console.log ('c', image.height);
 		image.style.transform = 'rotateZ(' + imgRotation + 'deg)';
+		console.log ('d', image.height);
 	}
 </script></html>
