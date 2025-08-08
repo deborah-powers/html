@@ -76,24 +76,30 @@
 		downloadButton.download = image.alt + event.target.files[0].name.substring (p);
 	});
 	image.onload = function(){
-		if ('blob:null/' === image.src.substring (0,10)){
-			if (this.height >600){
-				this.width = this.width *600/ this.height;
-				this.height = 600;
-				this.style.width = this.width + 'px';
-				this.style.height = '600px';
-			}
+		if ('blob:null/' === image.src.substring (0,10)) this.reduceSize();
+		downloadButton.href = this.src;
+	}
+	HTMLImageElement.prototype.reduceSize = function(){
+		if (this.height >600){
+			canvas.width = this.width *600/ this.height;
+			canvas.height = 600;
+			context.drawImage (this, 0,0, canvas.width, canvas.height);
+			newImgSrc = canvas.toDataURL();
+			this.src = newImgSrc;
+			this.width = canvas.width;
+			this.height = canvas.height;
+		}else{
 			canvas.width = this.width;
 			canvas.height = this.height;
 			context.drawImage (this, 0,0, this.width, this.height);
-		}
-		downloadButton.href = this.src;
-	}
+	}}
 	function tumble90degree(){
 		canvas.width = image.height;
 		canvas.height = image.width;
 		context.rotate (Math.PI /2);
-		context.drawImage (image, 0, - image.height, canvas.width, canvas.height);
+		console.log (image.width, image.height, canvas.width, canvas.height);
+		context.drawImage (image, 0, - canvas.width, canvas.width, canvas.height);
+		console.log (image.width, image.height, canvas.width, canvas.height);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;
 		/*
