@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-	<title></title>
+	<title>recadrage de photo</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='_blank'>
@@ -8,9 +8,10 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
-	canvas, div {
+	canvas, div#frame {
 		border-style: double;
 		background-color: var(--text-color);
+		width: 300px;
 	}
 	div {
 		padding: 0;
@@ -18,174 +19,156 @@
 		position: relative;
 		background-size: contain;
 		margin: 1em;
-		overflow: hidden;
 	}
-/*	div#frame-rotate { display: none; } */
+	section#frame-action {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 2em 1fr;
+	}
+	div#frame >* {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+	}
+	div.slider {
+		display: flex;
+		flex-direction: row;
+	}
+	div.slider:nth-child(6) { grid-column: 1/5; }
+	div.slider:nth-child(5) { flex-direction: column; }
+	input[type='range'] {
+		writing-mode: horizontal-tb;
+		width: 8em;
+		appearance: none;
+		accent-color: var(--text-color);
+		background-color: none;
+		cursor: pointer;
+	}
+	input[type='range'].vertical {
+		writing-mode: vertical-lr;
+		height: 8em;
+	}
+	input[type='range']::-webkit-slider-runnable-track, input[type='range']::-moz-range-track {
+		background-color: var(--bord-color);
+	}
+	input[type='range']::-webkit-slider-thumb, input[type='range']::-moz-range-thumb {
+		appearance: none;
+		background-color: var(--fond-color);
+		border: solid 2px var(--text-color);
+		border-radius: 50%;
+	}
 	img {
 		mix-blend-mode: normal;
 		aspect-ratio: auto;
-		max-height: 100%;
-		max-width: 100%;
 	}
 	p {
 		width: 2px;
 		height: 100%;
 		background-color: deeppink;
 		display: inline-block;
-		position: absolute;
-		margin: 0;
-		padding: 0;
-		line-height: 0;
-		cursor: move;
 	}
-	p.active { background-color: teal; }
-	p:nth-child(2n){
+	p.vertical {
 		width: 100%;
 		height: 2px;
 	}
 </style></head><body>
-	<section id='frame-crop' style='display:none;'>
-		<button onclick='validCrop()'>valider</button>
-		<div><p></p><p></p><p></p><p></p></div>
-	</section>
-	<section id='frame-rotate' style='display:none;'>
-		<button onclick='validRotate()'>valider</button>
-		<button onclick='rotateLeft()'>incliner vers la gauche</button>
-		<button onclick='rotateRight()'>incliner vers la droite</button>
-		<div><img alt=''></div>
-	</section>
 	<section id='frame-result'>
 		<input type='file' accept='image/png, image/jpg, image/bmp' />
-		<button onclick='tumble90degree()'>basculer</button>
-		<button onclick='launchRotate()'>incliner</button>
-		<button onclick='launchCrop()'>tailler</button>
 		<a class='button' download='' href=''>télécharger</a>
-		<canvas></canvas>
 	</section>
+	<section id='frame-action'>
+		<button onclick='tumble90degree()'>basculer</button>
+		<button onclick='rotateLeft()'>incliner à gauche</button>
+		<button onclick='rotateRight()'>incliner à droite</button>
+		<button onclick='validall()'>valider</button>
+		<div class='slider'>
+			<input type='range' min='0' max='100' value='0' class='vertical' />
+			<input type='range' min='0' max='100' value='100' class='vertical' />
+		</div>
+		<div class='slider'><input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' /></div>
+		<div id='frame'>
+			<img />
+			<canvas></canvas>
+			<p class='vertical'></p><p class='vertical'></p><p></p><p></p>
+		</div>
+	</section>
+	<img src='' id='ref' style='display: none;' />
 </body><script type='text/javascript'>
 	const frames = document.getElementsByTagName ('section');
-	const image = document.getElementsByTagName ('img')[0];
-	const canvas = document.getElementsByTagName ('canvas')[0];
+	const canvas = document.createElement ('canvas');
+//	const canvas = document.getElementsByTagName ('canvas')[0];
+	console.log (canvas.constructor.name);
 	const context = canvas.getContext ('2d');
+	const imageModif = document.getElementsByTagName ('img')[0];
+	const imageFrame = document.getElementById ('frame');
 	const downloadButton = document.getElementsByTagName ('a')[0];
 	const uploader = document.getElementsByTagName ('input')[0];
+	const imageRef = { src: "", width: 0, height: 0, rotation: 0, xo: 0, yo: 100, xu: 0, yu: 0 };
 	uploader.addEventListener ('change', function (event){
-		image.src = URL.createObjectURL (event.target.files[0]);
+		imageRef.src = URL.createObjectURL (event.target.files[0]);
+		imageModif.src = imageRef.src;
 		const p= event.target.files[0].name.lastIndexOf ('.');
-		image.alt = event.target.files[0].name.substring (0,p) +' bis';
-		downloadButton.download = image.alt + event.target.files[0].name.substring (p);
+		downloadButton.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
 	});
-	image.onload = function(){
-		if ('blob:null/' === image.src.substring (0,10)) this.reduceSize();
-		downloadButton.href = this.src;
+	imageModif.onload = function(){
+		if (imageRef.src ===""){
+			imageRef.width = this.width;
+			imageRef.height = this.height;
+			canvas.height = this.height *300/ this.width;
+			canvas.width = 300;
+			imageFrame.style.height = canvas.width + 'px';
+			context.drawImage (imageModif, 0, 0, canvas.width, canvas.height);
+	}}
+	function tumble90degree(){
+		const img = new Image();
+		img.src = canvas.toDataURL();
+		context.rotate (Math.PI /2);
+		context.drawImage (img, 0, - canvas.width);
+		/*
+		canvas.width = imageModif.height;
+		canvas.height = imageModif.width;
+		console.log (canvas.width, canvas.height, imageModif.width, imageModif.height);
+		context.drawImage (imageModif, 0, - canvas.width);
+		context.drawImage (imageModif, 0, - canvas.width, canvas.width, canvas.height);
+		imageModif.src = canvas.toDataURL();
+		imageModif.adaptFrame (canvas.width, canvas.height);
+		console.log (imageModif.width, imageModif.height, imageModif.style.width, imageModif.style.height, canvas.width, canvas.height, imageFrame.style.width, imageFrame.style.height);
+		*/
 	}
-	HTMLImageElement.prototype.reduceSize = function(){
-		if (this.height >600){
-			canvas.width = this.width *600/ this.height;
-			canvas.height = 600;
+	// bouger les lignes de recadrage
+	Element.prototype.getInputsByType = function (typeName){ return []; }
+	HTMLElement.prototype.getInputsByType = function (typeName){
+		var inputs =[];
+		var inputsTmp =[];
+		for (var child of this.children){
+			inputsTmp = child.getInputsByType (typeName);
+			for (var res of inputsTmp) inputs.push (res);
+		}
+		return inputs;
+	}
+	HTMLInputElement.prototype.getInputsByType = function (typeName){
+		if (this.type === typeName) return [ this, ];
+		else return [];
+	}
+	const frameCrop = document.getElementById ('frame');
+	const movingLines = frameCrop.getElementsByTagName ('p');
+	const movingInputs = document.body.getInputsByType ('range');
+	movingInputs[0].onchange = function(){ movingLines[0].style.top = this.value + '%'; }
+	movingInputs[1].onchange = function(){ movingLines[1].style.top = this.value + '%'; }
+	movingInputs[2].onchange = function(){ movingLines[2].style.left = this.value + '%'; }
+	movingInputs[3].onchange = function(){ movingLines[3].style.left = this.value + '%'; }
+
+/*	HTMLImageElement.prototype.reduceSize800pxh = function(){
+		if (this.height >800){
+			canvas.width = this.width *800/ this.height;
+			canvas.height = 800;
 			context.drawImage (this, 0,0, canvas.width, canvas.height);
 			newImgSrc = canvas.toDataURL();
 			this.src = newImgSrc;
 			this.width = canvas.width;
 			this.height = canvas.height;
-		}else{
-			canvas.width = this.width;
-			canvas.height = this.height;
-			context.drawImage (this, 0,0, this.width, this.height);
-	}}
-	function tumble90degree(){
-		canvas.width = image.height;
-		canvas.height = image.width;
-		context.rotate (Math.PI /2);
-		console.log (image.width, image.height, canvas.width, canvas.height);
-		context.drawImage (image, 0, - canvas.width, canvas.width, canvas.height);
-		console.log (image.width, image.height, canvas.width, canvas.height);
-		newImgSrc = canvas.toDataURL();
-		image.src = newImgSrc;
-		/*
-		image.width = image.height;
-		image.height = canvas.height;
-		image.style.width = image.width + 'px';
-		image.style.height = image.height + 'px';
-		*/
-	}
-	// bouger les lignes du frame de cropping
-	var movingLineX = null;
-	var movingLineY = null;
-	const frameCrop = frames[0].getElementsByTagName ('div')[0];
-	const movingLines = frameCrop.getElementsByTagName ('p');
-	String.prototype.fromPx = function(){
-		const nbStr = this.slice (0, -2);
-		var nb = parseInt (nbStr);
-		return nb;
-	}
-	function setMovingLinesTL(){
-		movingLineX = movingLines[0];
-		movingLineY = movingLines[1];
-		if (""=== movingLineX.style.left) movingLineX.style.left = '0px';
-		if (""=== movingLineY.style.top) movingLineY.style.top = '0px';
-	}
-	function setMovingLinesBR(){
-		movingLineX = movingLines[2];
-		movingLineY = movingLines[3];
-		if (""=== movingLineX.style.left) movingLineX.style.left = '0px';
-		if (""=== movingLineY.style.top) movingLineY.style.top = '0px';
-	}
-	movingLines[0].onmousedown = setMovingLinesTL;
-	movingLines[1].onmousedown = setMovingLinesTL;
-	movingLines[2].onmousedown = setMovingLinesBR;
-	movingLines[3].onmousedown = setMovingLinesBR;
-	frameCrop.onclick = function (event){
-		movingLineX = null;
-		movingLineY = null;
-	}
-	frameCrop.onmousemove = function (event){
-		if (movingLineX){
-			if ('-' === movingLineX.style.left[0]) movingLineX.style.left = '0px';
-			else if (movingLineX.style.left.fromPx() > frameCrop.style.width.fromPx()) movingLineX.style.left = frameCrop.style.width;
-			else movingLineX.style.left = event.clientX + 'px';
-			if ('-' === movingLineY.style.top[0]) movingLineY.style.top = '0px';
-			else if (movingLineY.style.top.fromPx() > frameCrop.style.height.fromPx()) movingLineY.style.top = frameCrop.style.height;
-		//	else if (movingLineY.style.top.fromPx() > 600) movingLineY.style.top = '590px';
-			else movingLineY.style.top = event.clientY + 'px';
-	}}
-	// tailler l'image
-	function launchCrop(){
-		frameCrop.style.backgroundImage = 'url("' + image.src +'")';
-		frameCrop.style.height = image.height + 'px';
-		frameCrop.style.width = image.width + 'px';
-		frames[0].style.display = 'block';
-		frames[1].style.display = 'none';
-		frames[2].style.display = 'none';
-	}
-	function validCrop(){
-		const cropPos =[ 0,0,0,0 ];
-		cropPos[0] = movingLines[0].style.left.fromPx();
-		cropPos[1] = movingLines[1].style.top.fromPx();
-		cropPos[2] = movingLines[2].style.left.fromPx();
-		cropPos[3] = movingLines[3].style.top.fromPx();
-		if (cropPos[0] > cropPos[2]){
-			const tmp = cropPos[2];
-			cropPos[2] = cropPos[0];
-			cropPos[0] = tmp;
-		}
-		if (cropPos[1] > cropPos[3]){
-			const tmp = cropPos[3];
-			cropPos[3] = cropPos[1];
-			cropPos[1] = tmp;
-		}
-		canvas.width = cropPos[2] - cropPos[0];
-		canvas.height = cropPos[3] - cropPos[1];
-		context.drawImage (image, - cropPos[0], - cropPos[1]);
-		var newImgSrc = canvas.toDataURL();
-		image.src = newImgSrc;
-		image.width = canvas.width;
-		image.height = canvas.height;
-		frameCrop.style.backgroundImage = 'url("'+ newImgSrc +'")';
-		frames[0].style.display = 'none';
-		frames[1].style.display = 'none';
-		frames[2].style.display = 'block';
-	}
+	}}*/
 	// incliner l'image
 	var imgRotation =0;
 	function launchRotate(){
