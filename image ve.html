@@ -12,7 +12,7 @@
 		border-style: double;
 		background-color: var(--text-color);
 	}
-	div#img-frame { width: 300px; }
+	div#img-frame, div#img-frame img { width: 300px; }
 	div {
 		padding: 0;
 		line-height: 0;
@@ -24,7 +24,7 @@
 		display: grid;
 		grid-gap: 0.5em;
 		grid-template-columns: 1em 300px;
-		grid-template-rows: 1em 300px;
+		grid-template-rows: 1em 400px;
 	}
 	div#img-frame >* {
 		position: absolute;
@@ -114,24 +114,18 @@
 		imageModif.alt = event.target.files[0].name.substring (0,p);
 	});
 	imageModif.onload = function(){
+	//	if (imageRef.src === this.src){
 		if ('blob:null/' === this.src.substring (0,10)){
 			const img = new Image();
 			img.src = this.src;
 			console.dir (img);
 			imageRef.width = img.width;
 			imageRef.height = img.height;
-			/*
 			canvas.height = this.height;
 			canvas.width = this.width;
 			imageFrame.style.height = canvas.height + 'px';
 			imageFrame.style.width = canvas.width + 'px';
 			context.drawImage (this, 0, 0, canvas.width, canvas.height);
-			*/
-			const diag = Math.sqrt (img.width * img.width + img.height * img.height);
-			this.width = img.width *300/ diag;
-			this.height = img.height *300/ diag;
-			this.style.left = (150- this.width /2) + 'px';
-			this.style.top = (150- this.height /2) + 'px';
 	}}
 	function tumble90degree(){
 		canvas.width = imageModif.height;
