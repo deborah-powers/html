@@ -6,19 +6,17 @@
 	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
 	canvas, div#img-frame {
 		border-style: double;
 		background-color: var(--text-color);
 	}
-	div#img-frame { width: 300px; }
 	div {
 		padding: 0;
+		margin: 0;
 		line-height: 0;
 		position: relative;
 		background-size: contain;
-		margin: 1em;
 	}
 	div#slider-frame {
 		display: grid;
@@ -27,6 +25,7 @@
 		grid-template-rows: 1em 300px;
 	}
 	div#img-frame >* {
+		display: block;
 		position: absolute;
 		margin: 0;
 		padding: 0;
@@ -110,14 +109,12 @@
 		imageModif.src = imageRef.src;
 		const p= event.target.files[0].name.lastIndexOf ('.');
 		linkDownload.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
-		console.log (event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p));
 		imageModif.alt = event.target.files[0].name.substring (0,p);
 	});
 	imageModif.onload = function(){
 		if ('blob:null/' === this.src.substring (0,10)){
 			const img = new Image();
 			img.src = this.src;
-			console.dir (img);
 			imageRef.width = img.width;
 			imageRef.height = img.height;
 			/*
@@ -137,12 +134,14 @@
 		canvas.width = imageModif.height;
 		canvas.height = imageModif.width;
 		context.rotate (Math.PI /2);
-		context.drawImage (imageModif, 0, - imageModif.height);
+		context.drawImage (imageModif, 0, - imageModif.height, canvas.height, canvas.width);
 		imageModif.src = canvas.toDataURL();
 		imageModif.width = canvas.width;
 		imageModif.height = canvas.height;
-		imageFrame.style.height = canvas.height + 'px';
-		imageFrame.style.width = canvas.width + 'px';
+		const parentStyle = window.getComputedStyle (imageFrame);
+		imageModif.left = (150- imageModif.width /2) + 'px';
+		imageModif.top = (150- imageModif.height /2) + 'px';
+		console.log (parentStyle.width, imageModif.width, imageModif.left, parentStyle.height, imageModif.height, imageModif.top);
 		imageRef.nbRotation +=1;
 		if (imageRef.nbRotation ===4) imageRef.nbRotation =0;
 	}
@@ -214,10 +213,9 @@
 		canvas.width = imageRef.xu;
 		canvas.height = imageRef.yu;
 		// la rotation
-		if (imageRef.nbRotation >0) imageRef.rotation += imageRef.nbRotation *90;
+		if (imageRef.nbRotation >0) imageRef.rotation += (imageRef.nbRotation *90);
 		while (imageRef.nbRotation >359) imageRef.nbRotation -=360;
 		while (imageRef.nbRotation <-359) imageRef.nbRotation +=360;
-		console.log (imageRef);
 		if (imageRef.rotation !==0) context.rotate (imageRef.rotation * Math.PI /180);
 		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo);
 //		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo, imageRef.xu, imageRef.yu);
