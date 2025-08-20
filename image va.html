@@ -9,7 +9,7 @@
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
 	canvas, div {
-		border-style: double;
+		border-style: none;
 		background-color: var(--text-color);
 	}
 	div {
@@ -69,6 +69,15 @@
 	const canvas = document.getElementsByTagName ('canvas')[0];
 	const context = canvas.getContext ('2d');
 	const downloadButton = document.getElementsByTagName ('a')[0];
+
+	function loadFirstImg (imgSrc, imgName){
+		image.src = imgSrc;
+		const p= imgName.lastIndexOf ('.');
+		image.alt = imgName.substring (0,p);
+		downloadButton.download = imgName.substring (0,p) +' bis' + imgName.substring (p);
+	}
+	loadFirstImg ('quadrillage.bmp', 'quadrillage.bmp');
+
 	const uploader = document.getElementsByTagName ('input')[0];
 	uploader.addEventListener ('change', function (event){
 		image.src = URL.createObjectURL (event.target.files[0]);
@@ -77,7 +86,6 @@
 		downloadButton.download = image.alt + event.target.files[0].name.substring (p);
 	});
 	image.onload = function(){
-		console.log (this.width, this.height);
 /*		if (this.height >600 && false){
 			console.log ('grand');
 			this.width = this.width *600/ this.height;
@@ -198,7 +206,6 @@
 		const imgAngle = Math.atan (image.height / image.width);
 		var ecartWidth =0;
 		var ecartHeight =0;
-		// hauteur, imgRotation >0
 		if (imgRotation >0){
 			canvas.width = degreeTOcos (imgRotation) * image.width - degreeTOcos (90+ imgRotation) * image.height;
 			canvas.height = diag * (Math.sin (imgAngle + degreeTOradian (imgRotation)));
@@ -217,6 +224,8 @@
 		}
 		// rotation
 		context.rotate (degreeTOradian (imgRotation));
+		console.log (imgRotation, ecartWidth, ecartHeight);
+	//	context.drawImage (image, ecartWidth, ecartHeight, image.width + ecartWidth, image.height - ecartHeight);
 		context.drawImage (image, ecartWidth, ecartHeight);
 		newImgSrc = canvas.toDataURL();
 		image.src = newImgSrc;

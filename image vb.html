@@ -6,20 +6,26 @@
 	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/drag-drop.js'></script>
 <style type='text/css'>
-	canvas, div#frame {
+	canvas, div#img-frame {
 		border-style: double;
 		background-color: var(--text-color);
 	}
 	div {
 		padding: 0;
+		margin: 0;
 		line-height: 0;
 		position: relative;
 		background-size: contain;
-		margin: 1em;
 	}
-	div#frame >* {
+	div#slider-frame {
+		display: grid;
+		grid-gap: 0.5em;
+		grid-template-columns: 1em 300px;
+		grid-template-rows: 1em 300px;
+	}
+	div#img-frame >* {
+		display: block;
 		position: absolute;
 		margin: 0;
 		padding: 0;
@@ -28,20 +34,25 @@
 	div.slider {
 		display: flex;
 		flex-direction: row;
+		height: 1em;
+		width: 300px;
 	}
-	div.slider:nth-child(6) { grid-column: 1/5; }
-	div.slider:nth-child(5) { flex-direction: column; }
+	div.slider.vertical {
+		flex-direction: column;
+		width: 1em;
+		height: 300px;
+	}
 	input[type='range'] {
-		writing-mode: horizontal-tb;
-		width: 8em;
+		writing-mode: vertical-tb;
+		width: 50%;
 		appearance: none;
 		accent-color: var(--text-color);
 		background-color: none;
 		cursor: pointer;
 	}
-	input[type='range'].vertical {
+	div.slider.vertical > input[type='range'] {
 		writing-mode: vertical-lr;
-		height: 8em;
+		height: 50%;
 	}
 	input[type='range']::-webkit-slider-runnable-track, input[type='range']::-moz-range-track {
 		background-color: var(--bord-color);
@@ -56,15 +67,15 @@
 		mix-blend-mode: normal;
 		aspect-ratio: auto;
 	}
-	p {
-		width: 2px;
-		height: 100%;
+	div#img-frame > p {
+		width: 100%;
+		height: 2px;
 		background-color: deeppink;
 		display: inline-block;
 	}
-	p.vertical {
-		width: 100%;
-		height: 2px;
+	div#img-frame > p.vertical {
+		width: 2px;
+		height: 100%;
 	}
 </style></head><body>
 	<input type='file' accept='image/png, image/jpg, image/bmp' />
@@ -73,56 +84,83 @@
 		<button onclick='rotateLeft()'>incliner vers la gauche</button>
 		<button onclick='rotateRight()'>incliner vers la droite</button>
 		<button onclick='validall()'>valider</button>
-		<div class='slider'>
-			<input type='range' min='0' max='100' value='0' class='vertical' />
-			<input type='range' min='0' max='100' value='100' class='vertical' />
+		<a href='' download='' class='button'>télécharger</a>
+		<div id='slider-frame'>
+			<p></p>
+			<div class='slider'><input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' /></div>
+			<div class='slider vertical'>
+				<input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' />
+			</div>
+			<div id='img-frame'><img src=''><p class='vertical'></p><p class='vertical'></p><p></p><p></p></div>
 		</div>
-		<div class='slider'><input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' /></div>
-		<div id='frame'><img src=''><p class='vertical'></p><p class='vertical'></p><p></p><p></p></div>
 	</section>
 	<section id='charger'></section>
 </body><script type='text/javascript'>
+	var tmpImgLoad = true;
 	const imageModif = document.getElementsByTagName ('img')[0];
-	const imageFrame = document.getElementById ('frame');
+	const imageFrame = document.getElementById ('img-frame');
 //	const canvas = document.getElementsByTagName ('canvas')[0];
 	const canvas = document.createElement ('canvas');
 	const context = canvas.getContext ('2d');
 	const imageRef = { src: "", width: 0, height: 0, rotation: 0, xo: 0, yo: 0, xu: 100, yu: 100, nbRotation: 0 };
+	const linkDownload = document.getElementsByTagName ('a')[0];
 	const uploader = document.getElementsByTagName ('input')[0];
+
+	function loadFirstImg (imgSrc, imgName){
+		imageRef.src = imgSrc;
+		imageModif.src = imageRef.src;
+		const p= imgName.lastIndexOf ('.');
+		linkDownload.download = imgName.substring (0,p) +' bis' + imgName.substring (p);
+		imageModif.alt = imgName.substring (0,p);
+	}
+	loadFirstImg ('quadrillage.bmp', 'quadrillage.bmp');
 	uploader.addEventListener ('change', function (event){
 		imageRef.src = URL.createObjectURL (event.target.files[0]);
 		imageModif.src = imageRef.src;
 		const p= event.target.files[0].name.lastIndexOf ('.');
-		imageModif.alt = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
+		linkDownload.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
+		imageModif.alt = event.target.files[0].name.substring (0,p);
 	});
 	imageModif.onload = function(){
-	//	if (imageRef.src === this.src){
-		if ('blob:null/' === this.src.substring (0,10)){
-			imageRef.width = this.width;
-			imageRef.height = this.height;
+		if ('blob:null/' === this.src.substring (0,10) || tmpImgLoad){
+			const img = new Image();
+			img.src = this.src;
+			imageRef.width = img.width;
+			imageRef.height = img.height;
+			console.log (imageRef.width, imageRef.height);
 			canvas.height = this.height;
 			canvas.width = this.width;
+			/*
 			imageFrame.style.height = canvas.height + 'px';
 			imageFrame.style.width = canvas.width + 'px';
 			context.drawImage (this, 0, 0, canvas.width, canvas.height);
+			*/
+			const diag = Math.sqrt (img.width * img.width + img.height * img.height);
+			this.width = img.width *300/ diag;
+			this.height = img.height *300/ diag;
+			this.style.left = (150- this.width /2) + 'px';
+			this.style.top = (150- this.height /2) + 'px';
 	}}
 	function tumble90degree(){
+		tmpImgLoad = false;
 		canvas.width = imageModif.height;
 		canvas.height = imageModif.width;
 		context.rotate (Math.PI /2);
-		context.drawImage (imageModif, 0, - imageModif.height);
+	//	context.drawImage (imageModif, 0, - imageModif.height);
+		context.drawImage (imageModif, 0, - imageModif.height, canvas.height, canvas.width);
 		imageModif.src = canvas.toDataURL();
 		imageModif.width = canvas.width;
 		imageModif.height = canvas.height;
+		/*
 		imageFrame.style.height = canvas.height + 'px';
 		imageFrame.style.width = canvas.width + 'px';
+		*/
+		imageModif.left = (150- imageModif.width /2) + 'px';
+		imageModif.top = (150- imageModif.height /2) + 'px';
 		imageRef.nbRotation +=1;
 		if (imageRef.nbRotation ===4) imageRef.nbRotation =0;
 	}
 	// redresser
-	function degreeTOradian (degree){ return degree * Math.PI / 180; }
-	function degreeTOcos (degree){ return Math.cos (degree * Math.PI / 180); }
-	function degreeTOsin (degree){ return Math.sin (degree * Math.PI / 180); }
 	function rotateLeft(){
 		imageRef.rotation -=1;
 		if (imageRef.rotation <-90) imageRef.rotation = -90;
@@ -149,24 +187,29 @@
 		else return [];
 	}
 	const movingLines = imageFrame.getElementsByTagName ('p');
+	movingLines[0].style.left = '0%';
+	movingLines[1].style.left = '100%';
+	movingLines[2].style.top = '0%';
+	movingLines[3].style.top = '100%';
 	const movingInputs = document.body.getInputsByType ('range');
 	movingInputs[0].onchange = function(){
-		movingLines[0].style.top = this.value + '%';
+		movingLines[0].style.left = this.value + '%';
 		imageRef.yo = parseInt (this.value);
 	}
 	movingInputs[1].onchange = function(){
-		movingLines[1].style.top = this.value + '%';
+		movingLines[1].style.left = this.value + '%';
 		imageRef.yu = parseInt (this.value);
 	}
 	movingInputs[2].onchange = function(){
-		movingLines[2].style.left = this.value + '%';
+		movingLines[2].style.top = this.value + '%';
 		imageRef.xo = parseInt (this.value);
 	}
 	movingInputs[3].onchange = function(){
-		movingLines[3].style.left = this.value + '%';
+		movingLines[3].style.top = this.value + '%';
 		imageRef.xu = parseInt (this.value);
 	}
 	function validall(){
+		tmpImgLoad = false;
 		context.clearRect (0,0, canvas.width, canvas.height);
 		imageModif.src = imageRef.src;
 		// le recadrage
@@ -183,25 +226,29 @@
 		}
 		imageRef.xu -= imageRef.xo;
 		imageRef.yu -= imageRef.yo;
-		imageRef.xo *= imageRef.width /100;
-		imageRef.xu *= imageRef.width /100;
-		imageRef.yo *= imageRef.height /100;
-		imageRef.yu *= imageRef.height /100;
+		imageRef.xo = imageRef.xo * imageRef.width /100;
+		imageRef.xu = imageRef.xu * imageRef.width /100;
+		imageRef.yo = imageRef.yo * imageRef.height /100;
+		imageRef.yu = imageRef.yu * imageRef.height /100;
 		canvas.width = imageRef.xu;
 		canvas.height = imageRef.yu;
 		// la rotation
-		if (imageRef.nbRotation >0) imageRef.rotation += imageRef.nbRotation *90;
+		if (imageRef.nbRotation >0) imageRef.rotation += (imageRef.nbRotation *90);
 		while (imageRef.nbRotation >359) imageRef.nbRotation -=360;
 		while (imageRef.nbRotation <-359) imageRef.nbRotation +=360;
 		console.log (imageRef);
 		if (imageRef.rotation !==0) context.rotate (imageRef.rotation * Math.PI /180);
-		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo);
-//		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo, imageRef.xu, imageRef.yu);
+	//	context.drawImage (imageModif, - imageRef.xo, - imageRef.yo);
+	//	context.drawImage (imageModif, - imageRef.xo, - imageRef.yo, imageRef.xu, imageRef.yu);
+		context.drawImage (imageModif, 0, 0, imageRef.xu, imageRef.yu);
+		/*
 		imageModif.src = canvas.toDataURL();
 		imageModif.width = canvas.width;
 		imageModif.height = canvas.height;
 		imageFrame.style.height = canvas.height + 'px';
 		imageFrame.style.width = canvas.width + 'px';
+		*/
+		linkDownload.href = canvas.toDataURL();
 		document.body.appendChild (canvas);
 	}
 </script></html>
