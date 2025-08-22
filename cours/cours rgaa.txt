@@ -98,10 +98,32 @@ La déclaration est valable trois ans. Si le site est refondu, elle ne sera plus
 
 ** Livrables
 
-Relevé de non-conformité, grille xslx
+Relevé de non-conformité, grille d'audit xslx
 Rapport, souvent en word. Justifier ce qui est dit dans la grille.
 Déclaration d'accessibilité. C'est moi qui le fournit. Date, version du référentiel, etc.
 Kit d'audit.
+
+== le rapport d'audit
+** le rapport d'audit permet au responsable du site de
+comprendre les erreurs d'accessibilité détectées
+avoir des pistes de correction
+avoir une estimation des coût et des délais de mise en place de ces solutions
+
+** il est structuré en trois parties
+
+introduction
+description des erreurs
+conclusion
+
+** introduction
+
+lisible par un fonctionnel, un non-spécialiste.
+liste des pages auditées
+raison de mon choix de pages. certaines sont obligatoires.
+version du rgaa utilisée comme référence
+outils utilises pour l'audit
+environnement de test. navigateurs, technos d'assistance grand public, os.
+technologies utilisées sur le site ? jsp, iframe, angular, html5, css3, ...
 
 == Atelier aria
 

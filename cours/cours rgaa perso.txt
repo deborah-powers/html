@@ -81,8 +81,8 @@ https://accessibilite.numerique.gouv.fr/obligations/champ-application/#derogatio
 ** Les documents à fournir
 
 Outils: https://accessibilite.numerique.gouv.fr/ressources/kit-audit/
-Relevé des non-conformités
-Rapport d'audit
+Relevé des non-conformités, grille xlxs
+Rapport d'audit, docx
 Déclaration d'accessibilité
 
 ** La déclaration d'accessibilité
@@ -161,6 +161,7 @@ Visionneuse d'arborescence d'accessibilité
 ** Quelques motifs de conception
 
 Présentation: https://www.w3.org/wai/aria/apg/patterns/
+dsfr: https://www.systeme-de-design.gouv.fr/version-courante/fr
 Aria-disclosure, afin de masquer ou afficher un élément en appuyant sur un bouton: https://www.w3.org/wai/aria/apg/patterns/disclosure/
 https://dev.access42.net/chat/ (Exemple de discussion) à tester avec un lecteur d'écran
 Exercice de discussion: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d298
