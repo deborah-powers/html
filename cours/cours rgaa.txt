@@ -1,41 +1,28 @@
 == 2025/07/16
 
 Deborah Powers
-deborah.powers89@gmail.com
-deborah.powers@cgi.com
+Deborah.Powers89@gmail.com
+Deborah.Powers@cgi.com
 06 22 39 55 25
-
-certifications@access42.net
-
+Certifications@access42.net
 Sujet: Certification "rgaa: Auditer l'accessibilité numérique des sites web" - Deborah Powers
 Bonjour,
-je candidate à la certification "rgaa: Auditer l'accessibilité numérique des sites web".
-
-je suis inscrite à la session du 24/10/2025.
+Je candidate à la certification "rgaa: Auditer l'accessibilité numérique des sites web".
+Je suis inscrite à la session du 24/10/2025.
 J'ai besoin d'un tiers-temps pour les épreuves écrites, comment le mettre en place ?
-
-
-
-entreprise cgi france,
-10 - 12 cours michelet,
-puteau 92800
+Entreprise cgi France,
+10 - 12 cours Michelet,
+Puteau 92800
 01 57 87 40 00
-
-employée deborah powers,
-num 238964
-
+Employée Deborah Powers,
+Num 238964
 https://formations.access42.net/securisation-examens-certification/
 https://e-learning.access42.net/mod/choice/view.php?id=1394
-
 Si vous bénéficiez d'un tiers temps, merci de vous rapprocher de nous en nous contactant directement à certifications@access42.net.
+Examen le 2025/10/24
+Résultat le 2025/11/06 environ
 
-
-
-examen le 2025/10/24
-résultat le 2025/11/06 environ
-
-
-============ Certif
+== Certif
 
 https://formations.access42.net/certifications/audit-accessibilite-numerique-rgaa/
 9h - 16h, qcm, audit, oral.
@@ -103,27 +90,65 @@ Rapport, souvent en word. Justifier ce qui est dit dans la grille.
 Déclaration d'accessibilité. C'est moi qui le fournit. Date, version du référentiel, etc.
 Kit d'audit.
 
-== le rapport d'audit
-** le rapport d'audit permet au responsable du site de
-comprendre les erreurs d'accessibilité détectées
-avoir des pistes de correction
-avoir une estimation des coût et des délais de mise en place de ces solutions
+== Le rapport d'audit
 
-** il est structuré en trois parties
+Cf "rgaa audit modele rapport.txt"
 
-introduction
-description des erreurs
-conclusion
+** Le rapport d'audit permet au responsable du site de
 
-** introduction
+Comprendre les erreurs d'accessibilité détectées
+Avoir des pistes de correction
+Avoir une estimation des coût et des délais de mise en place de ces solutions
 
-lisible par un fonctionnel, un non-spécialiste.
-liste des pages auditées
-raison de mon choix de pages. certaines sont obligatoires.
-version du rgaa utilisée comme référence
-outils utilises pour l'audit
-environnement de test. navigateurs, technos d'assistance grand public, os.
-technologies utilisées sur le site ? jsp, iframe, angular, html5, css3, ...
+** Introduction
+
+Lisible par un fonctionnel, un non-spécialiste.
+Liste des pages auditées
+Raison de mon choix de pages. Certaines sont obligatoires.
+Version du rgaa utilisée comme référence
+Outils utilises pour l'audit
+Environnement de test. Navigateurs, technos d'assistance grand public, os.
+Technologies utilisées sur le site ? Jsp, iframe, angular, html5, css3,...
+
+== La déclaration
+
+Cf "rgaa audit modele declaration accessibilite.txt"
+https://accessibilite.numerique.gouv.fr/obligations/declaration-accessibilite/
+Exemple: https://accessibilite.numerique.gouv.fr/infos/accessibilite/
+
+** Maj
+
+Tous les trois ans
+Si le rgaa change, au plus tard 18 mois après l'édition de la nouvelle norme
+Lors d'une refonte du site
+
+** Etat de conformité
+
+Totale
+Partielle, au moins 50% des critères sont conformes
+Non-conformité, absence d'audit ou trop peut de critères conformes
+Préciser à quelle version du rgaa le site est conforme. Si j'ai utilisé un autre référentiel, le préciser aussi.
+
+** Les contenus non accessibles
+
+Vrais manquement
+Contenus exemptés et les raisons
+Contenus soumis à dérogation pour charge de travail trops lourde
+Alternatives aux contenus dérrogés
+
+** Contact
+
+L'utilisateur peut signaler une non-conformité.
+Courriel ou formulaire.
+
+** Mention de la faculté pour la personne concernée de saisir le défenseur des droits
+
+En cas d'absence de réponse ou de solution, une fois les démarches effectuées via le mécanisme mentionné ci-dessus.
+
+** Réponse au usagers
+
+Après contact.
+Suivre l'article r112 du code des relations entre le public et l'administration. Il faut envoyer un accusé de réception.
 
 == Atelier aria
 
@@ -143,7 +168,7 @@ https://dev.access42.net/chat/
 ** La modale
 
 Role='dialog' ou alertdialog
-code: <div role='dialog' aria-label='son tître'></div>
+Code: <div role='dialog' aria-label='son tître'></div>
 Quand je parcours une modale par tabulation, je reste dedans. Le focus repart au début de la modale.
 Quand je ferme une modale, le focus revient sur le bouton qui m'a permit de l'ouvrir.
 
@@ -183,7 +208,7 @@ Changement de contexte: Déplacement automatique du focus, changement de page, d
 L'ouverture d'une modale n'est pas considérée comme un changement de contexte.
 Design system: Bibliothèque de composants. https://www.systeme-de-design.gouv.fr/
 Aria-live
-file:///C://users/Deborah.Powers/desktop/formation%20rgaa%202024/formation/index.html#d262
+file:///C:\/users/Deborah.Powers/desktop/formation%20rgaa%202024/formation/index.html#d262
 
 ** Exercice
 
@@ -205,7 +230,7 @@ Chaque champ doit avoir un intitulé
 	Bouton explicite
 	Attribut title, y compris en présence d'un placeholder ou si la fonction paraît évidente.
 Title fait apparaître une infobulle. En présence d'un placeholder, le title reprend son contenu.
-code
+Code
 <label for='mon-champ'>intitulé du champ</label><input id='mon-champ'>
 <input title='intitulé du champ' aria-label="autre méthode d'intitulé">
 <p id='mon-intitule'>intitulé du champ</p><input aria-labelledby='mon-intitule'>
@@ -397,7 +422,7 @@ Attention à la synchronisation !
 Si les contenus oraux apportent des infos.
 Les sous-tîtres automatiques sont trops mauvais.
 Les sous-tîtres incrustées dans la vidéos sont valables, même s'il est préférable d'avoir une piste séparée.
-code: <track kind='captions' label='français' src='...'>
+Code: <track kind='captions' label='français' src='...'>
 Kind = subtitles pour les traductions.
 
 ** Audio-description
@@ -427,7 +452,7 @@ Extension reading map
 
 Textes à puce, tirets, énnumérations et liste de définitions.
 Les listes de définitions utilisent les balises dl, dt, dd
-code: <div role='list'> est valable pour représenter une dl.
+Code: <div role='list'> est valable pour représenter une dl.
 Les suites de liens doivent être structurées en liste. Dans les barres de navigation, etc.
 Désactiver le css avant d'activer le booklet.
 
@@ -466,7 +491,7 @@ Booklet 05 tableaux
 
 Deux rangs de th, th chapeautant d'autres th.
 Résumé décrivant la structure du tableau. Je peut le plier sous un bouton.
-code: <caption>mon titre<span>le résumé descriptif</span></caption>
+Code: <caption>mon titre<span>le résumé descriptif</span></caption>
 Chaque th à un id, chaque td à un attibut headers qui fait référence à tous ses headers.
 
 ** Alternative
@@ -591,8 +616,7 @@ Si j'ai un bloc dans une autre langue, <div lang='fr'>. Selon la règle, les mot
 Les noms ne nécessitent pas de changement de langue, ainsi que les mots présents dans le dictionnaire de l'académie française.
 Repérer les mots en langue étrangère: Utiliser un outil de grammaire, comme grammalecte.
 En plus de la langue, le sens de lecture du texte doit être précisé s'il se lit de gauche à droite. <html dir='rtl'>
-
-https://www.w3.org/International/questions/qa-html-language-declarations.fr
+https://www.w3.org/international/questions/qa-html-language-declarations.fr
 
 **
 
@@ -609,7 +633,7 @@ Fournir une alternative aux captcha.
 ** Aveugles
 
 Le lecteur d'écran annonce l'information.
-code
+Code
 <a title='intro - page active'>
 <a aria-current='page'>
 <a>texte<span class='sr-only'>page active
@@ -621,6 +645,7 @@ Span.sr-only {
 	...
 }
 /
+
 ** Méveugles
 
 Symbole en plus de la couleur.
@@ -643,7 +668,8 @@ Le fond d'un bouton ou d'une icône n'a pas besoin d'être constrasté par rappo
 Le texte de remplacement est une méthode alternative.
 
 ** Exercice
-code
+
+Code
 Const frames = document.getelementsbytagname ('iframe');
 For (Var i=0; i< frames.length; i++){
 	Frames[I].style.bordercolor = 'red';
@@ -665,7 +691,7 @@ Donner un attribut titre au cadre.
 == Les images
 
 Préférer la méthode native. Les propriétés aria surchargent les balises natives.
-code: <img alt="détails" aria-hidden='true'> l'image sera masquée.
+Code: <img alt="détails" aria-hidden='true'> l'image sera masquée.
 Neuf critères.
 Balises img, svg, input (Type=image), object, canvas, area, embed ou div (Role=img).
 Image porteuse d'information ou décorative ?
@@ -690,7 +716,7 @@ Pas de propriété de nommage, comme title
 
 Les pictogrammes sont des images informatives.
 Alt, title, aria-label. Title fait apparaître une infobulle.
-code: <img aria-labelledby='id-text'><span id='id-text'>label de l'image</span>
+Code: <img aria-labelledby='id-text'><span id='id-text'>label de l'image</span>
 Nom accessible = alternative textuelle.
 Surcharge: Title < alt < aria-label < aria-labelledby
 Title subsiste en temps que description.
@@ -731,8 +757,8 @@ L'image doir avoir un alt.
 
 ** Exercice
 
-file:///c:/users/Deborah.Powers/desktop/2024-11-04-formation-auditeur/exercices/1-audit/1-site-lacommune/index.html
-file:///c:/users/Deborah.Powers/desktop/2024-11-04-formation-auditeuressourcesgaa4-1-modele-grille-audit-access42.xlxs
+file:///C:\users/Deborah.Powers/desktop/2024-11-04-formation-auditeur/exercices/1-audit/1-site-lacommune/index.html
+file:///C:\users/Deborah.Powers/desktop/2024-11-04-formation-auditeuressourcesgaa4-1-modele-grille-audit-access42.xlxs
 Page p01
 Dans la colonne des modifications à apporter, pour les lignes nc
 Constat:
@@ -780,7 +806,7 @@ A afficher:
 	Schéma pluriannuel de mise en conformité
 L'arcom contrôle et sanctionne les sites publiques. Il émmet des amendes.
 Ordonnance du 2023/09/06, articles 47 et 47-1.
-Directive européenne 2019/882. Nouveauté à mettre en vigueur en juin 2025. Demande !!!
+Directive européenne 2019/882. Nouveauté à mettre en vigueur en Juin 2025. Demande !!!
 
 ** Les normes
 
@@ -795,7 +821,7 @@ Aria: Cf Jeudi. Composant riche, plus qu'html seul.
 Web content accessibility gidelines
 Access 42 à participé à leur traduction en français.
 Il reste toujours des cas pas couverts par la norme.
-En france, le référentiel officiel se base sur la version 2.1. La dinum n'a pas les moyens de le mettre à jour.
+En France, le référentiel officiel se base sur la version 2.1. La dinum n'a pas les moyens de le mettre à jour.
 https://www.w3.org/wai/fundamentals/accessibility-principles/fr
 https://accessibilite.numerique.gouv.fr/
 Plusieurs principes, chacun avec son nouveau d'exigence minimum.
@@ -881,8 +907,8 @@ Emmanuelle aboaf. Sous-titre avec l'ia.
 Microsoft s'implique bien pour l'accessibilité.
 https://formations.access42.net/documentation/formation-audit-accessibilite/
 Chrome://bookmarks/
-file:///c:/program files/colour contrast analyser
-file:///c:/program files/pac
+file:///C:\program files/colour contrast analyser
+file:///C:\program files/pac
 Tanagourou
 
 == Mon site

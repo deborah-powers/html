@@ -146,6 +146,7 @@
 	<path id='hole' fill-rule='evenodd' d='m220,0 h80 v80 h-80 z m20,20 h40 v40 h-40 z' transform='translate(450,0)'/>
 	<path id='moon' d='m 0,0 c 80,0 80,100 0,100 c 40,-10 40,-90 0,-100' transform='translate(838,300)'/>
 	<g id='arc' transform='translate(360,250)'>
+		<!-- rx,ry rotation flag-grand-arc, flag-sweep, dx,dy -->
 		<path d='m 50,40 a 20,40 -20 1,0 0,40 z'/>
 		<path d='m 50,40 a 20,40 -20 1,1 0,40 z' class='d'/>
 		<path d='m 50,40 a 20,40 -20 0,0 0,40 z' class='e'/>
