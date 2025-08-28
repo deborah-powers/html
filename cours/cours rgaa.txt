@@ -168,7 +168,7 @@ https://dev.access42.net/chat/
 ** La modale
 
 Role='dialog' ou alertdialog
-Code: <div role='dialog' aria-label='son tître'></div>
+Code: < div role='dialog' aria-label='son tître'>< /div>
 Quand je parcours une modale par tabulation, je reste dedans. Le focus repart au début de la modale.
 Quand je ferme une modale, le focus revient sur le bouton qui m'a permit de l'ouvrir.
 
@@ -199,7 +199,7 @@ Le nom accessible est pertinent et reprend le nom visible.
 
 L'état et le changement d'état d'un composant interractif sont accessibles aux technologies d'assistance.
 	Modifier l'intitulé du bouton
-	Ajouter la propriété <bouton aria-pressed="true">
+	Ajouter la propriété < bouton aria-pressed="true">
 Disabled
 
 **
@@ -231,23 +231,23 @@ Chaque champ doit avoir un intitulé
 	Attribut title, y compris en présence d'un placeholder ou si la fonction paraît évidente.
 Title fait apparaître une infobulle. En présence d'un placeholder, le title reprend son contenu.
 Code
-<label for='mon-champ'>intitulé du champ</label><input id='mon-champ'>
-<input title='intitulé du champ' aria-label="autre méthode d'intitulé">
-<p id='mon-intitule'>intitulé du champ</p><input aria-labelledby='mon-intitule'>
+< label for='mon-champ'>intitulé du champ< /label>< input id='mon-champ'>
+< input title='intitulé du champ' aria-label="autre méthode d'intitulé">
+< p id='mon-intitule'>intitulé du champ< /p>< input aria-labelledby='mon-intitule'>
 /
 Surcharge: Title < aria-label < aria-labelledby < texte
 La valeur de l'attribut doit reprendre le label écris.
-Code: <fieldset><legend>groupe de champs connectés</legend><inputs/></fieldset>
+Code: < fieldset>< legend>groupe de champs connectés< /legend>< inputs/>< /fieldset>
 Fieldset concerne les champs connectés, comme les boutons radio et les checkbox, mais aussi les autres champs connectés. Boutons oui - non, etc.
-Code: <div role='group' aria-labelledby='fausse-legende'><p id='fausse-legende' role=''>
+Code: < div role='group' aria-labelledby='fausse-legende'>< p id='fausse-legende' role=''>
 Dans les sélecteur, je peux utiliser < optgroup label='xyz'>
 
 ** Les boutons
 
 Vrais button ou input.
 Code
-<input type='image' alt='action du bouton'/>
-<input type='button' aria-label='action du bouton' aria-labelledby='id-label'/>
+< input type='image' alt='action du bouton'/>
+< input type='button' aria-label='action du bouton' aria-labelledby='id-label'/>
 /
 Intitulé explicite ou title (Infobulle)
 
@@ -264,7 +264,7 @@ Tester en soumettant le formulaire à vide.
 Préciser le format attendu
 En cas d'erreur, donner un exemple valable. Exception pour les mdp.
 Label, title ou:
-Code: <input aria-describedby='id-description-format id-message-erreur'/>
+Code: < input aria-describedby='id-description-format id-message-erreur'/>
 Id-message-erreur doit être vide au début puis rempli par js ou autre. Les lecteurs d'écran le lisent même s'il est en display: None.
 Les messages d'erreurs ne sont pas nécessaires. Si un est présent, il doit être lié au champ.
 Si la page est rechargée à la soumission du formulaire, maj titre afin d'indiquer qu'il y a une erreur. Titre = truc-muche, erreur de soumission.
@@ -288,7 +288,7 @@ Si un site à peut de pages, me contenter du menu.
 Donner un rôle aux grandes zones (Header, etc). Les roles sont mieux supportés que les balises car plus anciens.
 Cette attente est obsolète mais toujours dans le rgaa.
 Les roles sont encore utile si j'ai plusieurs headers et footers.
-Code: <header role='banner'> <main role='main'> <nav role='navigation'> <footer role='contentinfo'> <x role='search'>
+Code: < header role='banner'> < main role='main'> < nav role='navigation'> < footer role='contentinfo'> < x role='search'>
 Un seul banner, main et contentinfo par page.
 Liens d'accès rapide.
 
@@ -310,15 +310,15 @@ Suggestion:
 Liens texte, image ou composite.
 Les images svg, canvas, etc compte comme des images.
 Un lien est un élément sur lequel on peut cliquer, qui possède un attribut href, qui conduit l'utilisateur ailleur.
-Sans href, <a> est considérée comme une ancre, mais pas comme un lien.
+Sans href, < a> est considérée comme une ancre, mais pas comme un lien.
 Booklet 06 liens
 Inspection du code
 
 ** Navigation au clavier
 
 C'est href qui rend l'ancre focusable.
-Quand la navigation est gérée par js, les liens <a> n'ont pas d'href.
-Remplcer href par <a tabindex='0' role='link'>. Valable même pour les div.
+Quand la navigation est gérée par js, les liens < a> n'ont pas d'href.
+Remplcer href par < a tabindex='0' role='link'>. Valable même pour les div.
 Relève du 7.1.
 
 ** Lien explicite
@@ -326,9 +326,9 @@ Relève du 7.1.
 Les liens ont un nom accessible. Les image ont une alternative, alt ou dans un attribut de l'ancre.
 Surcharge: Title < alt < texte < aria-label < aria-labelledby
 Son nom décris la destination et la fonction du lien. Il est affiché, ou dans un attribut title ou aria.
-Le nom visible est inclu dans le nom accessible. <a title="s'incrire - créer un compte"...>s'inscrire</a>
+Le nom visible est inclu dans le nom accessible. < a title="s'incrire - créer un compte"...>s'inscrire< /a>
 Si des liens ont des intitulés identiques, ils doivent être dans des contextes diffrents.
-L'attribut title n'est pas recommandé. S'il est présent, il doit contenir le texte entre la balise <a>. Certains lecteurs d'écran lisent title au lieu de l'intitulé du lien, il faut préserver l'information. Je peux y rajouter des détails.
+L'attribut title n'est pas recommandé. S'il est présent, il doit contenir le texte entre la balise < a>. Certains lecteurs d'écran lisent title au lieu de l'intitulé du lien, il faut préserver l'information. Je peux y rajouter des détails.
 Title="" ok.
 
 == La consultation
@@ -372,8 +372,8 @@ Les transitions css font moins de 5 secondes, elles sont rarement concernées.
 
 Ils sont traités comme des images.
 Code
-<div role='img' aria-hidden='true'>ascii
-<div role='img' title='...'>ascii
+< div role='img' aria-hidden='true'>ascii
+< div role='img' title='...'>ascii
 /
 
 ** Orientation
@@ -422,7 +422,7 @@ Attention à la synchronisation !
 Si les contenus oraux apportent des infos.
 Les sous-tîtres automatiques sont trops mauvais.
 Les sous-tîtres incrustées dans la vidéos sont valables, même s'il est préférable d'avoir une piste séparée.
-Code: <track kind='captions' label='français' src='...'>
+Code: < track kind='captions' label='français' src='...'>
 Kind = subtitles pour les traductions.
 
 ** Audio-description
@@ -452,7 +452,7 @@ Extension reading map
 
 Textes à puce, tirets, énnumérations et liste de définitions.
 Les listes de définitions utilisent les balises dl, dt, dd
-Code: <div role='list'> est valable pour représenter une dl.
+Code: < div role='list'> est valable pour représenter une dl.
 Les suites de liens doivent être structurées en liste. Dans les barres de navigation, etc.
 Désactiver le css avant d'activer le booklet.
 
@@ -473,7 +473,7 @@ Deux types.
 
 ** Tableaux de mise en forme
 
-Les rôle presentation et none permettent d'utiliser un tableau pour faire de la mise en page. <table role='presentation'>
+Les rôle presentation et none permettent d'utiliser un tableau pour faire de la mise en page. < table role='presentation'>
 Le tableau reste compréhensible sans le css.
 Eviter les balises et attributs relatifs aux tableaux de données.
 Entre autre, pas de caption, thead, th, tfoot. Summary est vide.
@@ -491,7 +491,7 @@ Booklet 05 tableaux
 
 Deux rangs de th, th chapeautant d'autres th.
 Résumé décrivant la structure du tableau. Je peut le plier sous un bouton.
-Code: <caption>mon titre<span>le résumé descriptif</span></caption>
+Code: < caption>mon titre< span>le résumé descriptif< /span>< /caption>
 Chaque th à un id, chaque td à un attibut headers qui fait référence à tous ses headers.
 
 ** Alternative
@@ -580,14 +580,14 @@ Une popup se ferme lorsque je clique sur échap.
 ** Exercice
 
 Code
-<img border='0'/>
-<input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox" type="text" size="20" value="">
+< img border='0'/>
+< input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox" type="text" size="20" value="">
 /
 Border et size sont-ils des attributs acceptables ?
 Code
-<div class="slides_container" style="overflow: Hidden; position: Relative; display: Block;">
-<div class="slides_control" style="position: Relative; width: 3000px; height: 205px; left: -1000px;">
-<img src="files/slide1.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;"><img src="files/slide2.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 5; display: Block;"><img src="files/slide3.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;"></div></div>
+< div class="slides_container" style="overflow: Hidden; position: Relative; display: Block;">
+< div class="slides_control" style="position: Relative; width: 3000px; height: 205px; left: -1000px;">
+< img src="files/slide1.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;">< img src="files/slide2.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 5; display: Block;">< img src="files/slide3.jpg" alt="" style="position: Absolute; top: 0px; left: 1000px; z-index: 0; display: None;">< /div>< /div>
 /
 Je ne comprends pas à quoi la banière et ses trois boutons servent.
 
@@ -611,11 +611,11 @@ Pour une page de recherche, rappeler le terme recherché, permettre de limiter l
 
 ** La langue
 
-L'attribut lang est nécessaire pour les lecteurs d'écran. <html lang='fr' ou xml: Lang='fr-fr'> valeurs iso.
-Si j'ai un bloc dans une autre langue, <div lang='fr'>. Selon la règle, les mots isolés doivent être lit dans un <span lang='fr'>. En pratique que ce passe-t-il si la synthèse vocale le lit en français ?
+L'attribut lang est nécessaire pour les lecteurs d'écran. < html lang='fr' ou xml: Lang='fr-fr'> valeurs iso.
+Si j'ai un bloc dans une autre langue, < div lang='fr'>. Selon la règle, les mots isolés doivent être lit dans un < span lang='fr'>. En pratique que ce passe-t-il si la synthèse vocale le lit en français ?
 Les noms ne nécessitent pas de changement de langue, ainsi que les mots présents dans le dictionnaire de l'académie française.
 Repérer les mots en langue étrangère: Utiliser un outil de grammaire, comme grammalecte.
-En plus de la langue, le sens de lecture du texte doit être précisé s'il se lit de gauche à droite. <html dir='rtl'>
+En plus de la langue, le sens de lecture du texte doit être précisé s'il se lit de gauche à droite. < html dir='rtl'>
 https://www.w3.org/international/questions/qa-html-language-declarations.fr
 
 **
@@ -634,9 +634,9 @@ Fournir une alternative aux captcha.
 
 Le lecteur d'écran annonce l'information.
 Code
-<a title='intro - page active'>
-<a aria-current='page'>
-<a>texte<span class='sr-only'>page active
+< a title='intro - page active'>
+< a aria-current='page'>
+< a>texte< span class='sr-only'>page active
 Span.sr-only {
 	Display: None; le lecteur d'écran ne lit pas ce block
 	Visibility: Hidden; idem
@@ -677,13 +677,13 @@ For (Var i=0; i< frames.length; i++){
 	Frames[I].style.borderstyle = 'dotted';
 	console.log (Frames[I]);
 }
-var debugstyle = `<style type='text/css'>
+var debugstyle = `< style type='text/css'>
 Iframe {
 	Border-style: Dotted;
 	Border-color: Red;
 	Border-width: 10px;
 }
-</style>`;
+< /style>`;
 Document.head.innerhtml = document.head.innerhtml + debugstyle;
 /
 Donner un attribut titre au cadre.
@@ -691,7 +691,7 @@ Donner un attribut titre au cadre.
 == Les images
 
 Préférer la méthode native. Les propriétés aria surchargent les balises natives.
-Code: <img alt="détails" aria-hidden='true'> l'image sera masquée.
+Code: < img alt="détails" aria-hidden='true'> l'image sera masquée.
 Neuf critères.
 Balises img, svg, input (Type=image), object, canvas, area, embed ou div (Role=img).
 Image porteuse d'information ou décorative ?
@@ -716,7 +716,7 @@ Pas de propriété de nommage, comme title
 
 Les pictogrammes sont des images informatives.
 Alt, title, aria-label. Title fait apparaître une infobulle.
-Code: <img aria-labelledby='id-text'><span id='id-text'>label de l'image</span>
+Code: < img aria-labelledby='id-text'>< span id='id-text'>label de l'image< /span>
 Nom accessible = alternative textuelle.
 Surcharge: Title < alt < aria-label < aria-labelledby
 Title subsiste en temps que description.
@@ -746,10 +746,10 @@ Quand le texte n'est pas remplaçable par du html (Logo, image avec du texte sty
 ** Les images légendées
 
 Code
-<figure role='group' aria-label='contenu de figcaption'>
-	<img alt="texte soulignant l'informativité de l'image"/>
-	<figcaption>contenu de figcaption</figcaption>
-</figure>
+< figure role='group' aria-label='contenu de figcaption'>
+	< img alt="texte soulignant l'informativité de l'image"/>
+	< figcaption>contenu de figcaption< /figcaption>
+< /figure>
 /
 Le rgaa interdit d'utiliser aria-labelledby='caption-id' par manque de support.
 Role = group ou figure
@@ -773,7 +773,7 @@ Booklet/0 désactiver le css.
 == Les cadres
 
 Iframes et frames.
-Annoncer le contenu du cadre. <iframe title='publicité'...></iframe>
+Annoncer le contenu du cadre. < iframe title='publicité'...>< /iframe>
 Iframe de script: Pas besoin de title si l'utilisateur ne perçoit pas le cadre.
 Si le cadre contient un contenu tier, il est exempté d'audit.
 Pour tous les cadres, quelque soit leur contenu:
