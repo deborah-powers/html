@@ -1,27 +1,34 @@
+questions techniques en m'entraînant à l'audit
+
+Bonjour,
+je candidate à la certification "rgaa: Auditer l'accessibilité numérique des sites web".
+je suis inscrite à la session du 24/10/2025.
+
+En m'entraînant à auditer, des situations complêxes se sont présentées.
+Pouvez-vous me guider ?
+
 == Mes questions
 
 ** Couleurs
 
 J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
 Y-a-t-il une erreur quand background-color = transparent ?
-Code: <div role='list'><p role='listitem'/>
-ma prise de focus est marquée uniquement par le changement de couleur. est-ce considérée comme une information ?
+J'ai un bouton possédant une bordure visible. Le fond de mon bouton doit-il être contrasté avec le fond de la page derrière lui ?
 
 ** Tîtres
 
 Y-a-t-il une erreur quand le tître ne contient pas de texte, mais une image sans texte ? Pour les tîtres h1, h2, etc.
-Code
-<a href='truc'>lien
-<a role='link' tabindex='0'>lien géré en js. Rgaa 7.01
-<a>ancre
-/
 
 ** Focus
 
 Dans ma page, j'ai des éléments object. Il sont sensés recevoir le focus (Tabindex=0). Ma page utilise le focus natif du navigateur.
 Mon navigateur ne les prend pas en charge. Les images et pdf sensés s'affichés n'apparaissent pas, le focus du navigateur les ignore.
 Mon navigateur devrait-il les prendre en compte ?
-Il y a des règles rgaa différentes pour les site web, les applications mobiles et les pdf.
+Deux cas concernant un bouton:
+A. Ma prise de focus est marquée uniquement par le changement de couleur du fond.
+Le focus est-il considéré comme une information ?
+B. Je marque le focus par un changement de bordure. Elle devient plus épaisse et change de motif.
+Est-une façon suffisante de marquer le focus ?
 
 ** Média non temporel
 
@@ -37,7 +44,14 @@ Aria-labelledby > aria-label > texte lisible ou intitulé de l'image > attribut 
 
 Code: <a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
-Progression: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d288
+Code: <a title='tître du lien'><img alt="tître de l'image" />
+L'intitulé est-il le tître du lien seul ou le alt de l'image seul ?
+
+==
+
+Cordialement,
+Deborah Powers
+
 
 == Le métier d'auditeur
 
@@ -98,7 +112,7 @@ La déclaration est valable trois ans sauf modification substantielle des conten
 
 ** Les ressources
 
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d311
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d311
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
 http://www.w3.org/wai/
 https://www.w3.org/tr/wcag21/
@@ -113,13 +127,13 @@ https://disic.github.io/guide-impacts_utilisateurs/index.html
 https://disic.github.io/guide-integrateur/
 http://disic.github.io/guide-contribuer_accessible/
 https://disic.github.io/guide-lecteurs_ecran/
-https://support.mozilla.org/en-US/kb/accessibility-features-firefox#w_screen-reader
+https://support.mozilla.org/en-us/kb/accessibility-features-firefox#w_screen-reader
 http://disic.github.io/rgaa_methodologie/
-Contact: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d316
+Contact: file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d316
 
 == Aria, accessible rich internet application
 
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d279
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d279
 Spécification afin d'harmoniser le fonctionnement des pages web et des navigateurs.
 Page d'aria: https://www.w3.org/tr/wai-aria/
 Kit de survie du développeur aria p1: https://access42.net/kit-de-survie-aria-1-3/
@@ -161,16 +175,16 @@ Visionneuse d'arborescence d'accessibilité
 ** Quelques motifs de conception
 
 Présentation: https://www.w3.org/wai/aria/apg/patterns/
-dsfr: https://www.systeme-de-design.gouv.fr/version-courante/fr
+Dsfr: https://www.systeme-de-design.gouv.fr/version-courante/fr
 Aria-disclosure, afin de masquer ou afficher un élément en appuyant sur un bouton: https://www.w3.org/wai/aria/apg/patterns/disclosure/
 https://dev.access42.net/chat/ (Exemple de discussion) à tester avec un lecteur d'écran
-Exercice de discussion: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d298
+Exercice de discussion: file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d298
 Aria-tabs, pour les onglets: https://www.w3.org/wai/aria/apg/patterns/tabs/
-Exemple d'onglet: file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/tabs.html
+Exemple d'onglet: file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/tabs.html
 https://disic.github.io/guide-lecteurs_ecran/4-tabpanel.html
 Attention, certains motifs sont incompatibles avec les technologies d'assistance. Par exemple, les rôles menu, https://www.w3.org/wai/aria/apg/patterns/slider/ (Slider)
 https://www.w3.org/wai/aria/apg/#keyboard
-https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/structural_roles
+https://developer.mozilla.org/en-us/docs/web/accessibility/aria/reference/roles/structural_roles
 
 ** Les lecteurs d'écran
 
@@ -187,7 +201,7 @@ Android	talkback	chrome
 
 == Les éléments interractifs
 
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d263
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d263
 Un élément interractif possède un role pertinent.
 Ouverture de page: Lien a ou role='link'.
 Déclenchement d'un évênement ou lancement d'une fonction js: Bouton ou role='aria-button'.
@@ -237,7 +251,7 @@ Cette méthode n'est pas recomandée.
 == Les formulaires
 
 Rgaa 11
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d228
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d228
 https://www.w3.org/tr/html-aam-1.0/#accessible-name-and-description-computation (Nom accessible)
 Nom accessible: Aria-labelledby > aria-label > label > innertext > bouton > value > title.
 Placeholder est inadapté pour contenir le nom accessible car il disparaît à la frappe.
@@ -314,7 +328,7 @@ Remplir le formulaire avec des valeurs mal formattées.
 == La navigation
 
 Rgaa 12
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d206
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d206
 Un ensemble de page est un groupe de pages reliées entre elles par des liens et constituant un ensemble cohérent. Souvent, la page d'accueil constitue à elle seule un ensemble.
 Deux systèmes de navigation pour chaque ensemble, parmi: Menu, plan du site, moteur de recherche.
 Toutes les pages doivent être accessibles, y compris les mentions légales.
@@ -331,12 +345,12 @@ Code
 Banner, main et contentinfo sont uniques dans la page.
 Liens ou boutons d'évitement, d'accès rapide, etc.
 Banner représente le vrai header de la page. Une page pouvant contenir plusieurs headers, header.banner indique son vrai header. Idem pour footer.contentinfo.
-nav ne contient que des liens internes au site. une liste de liens classiques n'a pas besoin d'être dans une nav.
+Nav ne contient que des liens internes au site. Une liste de liens classiques n'a pas besoin d'être dans une nav.
 
 ** Navigation par tabulation
 
 Rgaa 12.08, 12.11
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d215
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d215
 
 -- Fonctionnement
 
@@ -422,7 +436,7 @@ https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de
 ** Les liens
 
 Rgaa 6
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d193
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d193
 Lien texte, image et composite.
 Code
 <a href='truc'>lien
@@ -445,7 +459,7 @@ Le lien vide est autorisé. Il est utile pour la navigation via un lecteur d'éc
 Intitulé apporté par un svg: Aria-labelledby > aria-label > < title/> > attribut xlink: Title > < text/>
 https://www.w3.org/tr/html-aam-1.0/
 https://www.w3.org/tr/accname-1.2/#mapping_additional_nd_te
-https://www.w3.org/WAI/tutorials/images/functional/#image-used-alone-as-a-linked-logo
+https://www.w3.org/wai/tutorials/images/functional/#image-used-alone-as-a-linked-logo
 
 --
 
@@ -455,13 +469,13 @@ Le tître du lien (Attribut title) reprend le nom accessible. Un title vide est 
 == Consultation de la page
 
 Rgaa 13
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d173
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d173
 Les limites de temps éssentielles sont exemptes des règles, comme les sites de réservation.
 
 ** Le rafraîchissement
 
 Rgaa 13.01
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d174
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d174
 S'applique au rafraîchissement et à la redirection.
 L'utilisateur
 Arrête et relance le rafraîchissement
@@ -472,21 +486,21 @@ Retarde le rafraîchissement. Jusqu'à dix fois le délais prévu
 ** La session
 
 Rgaa 13.01
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d175
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d175
 Dure au moins vingt heures.
 L'utilisateur rallonge ou supprime la limite de temps.
 
 ** Les nouvelles fenêtres
 
 Rgaa 13.02
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d176
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d176
 Ouvertes par une action de l'utilisateur.
 Vérifier en navigant avec la touche tab uniquement, sans faire "entrer" ou "espace".
 
 ** Les documents
 
 Rgaa 13.03 et 13.04
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d177
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d177
 Pdf et autres.
 Un document doit être accessible, ou avoir une alternative accessible.
 Vérifier en rescençant les moyens de télécharger des documents.
@@ -502,7 +516,7 @@ Les documents antérieur au 2018/09/23 sont exemptés de tests et doivent être 
 ** Les éffets flash
 
 Rgaa 13.07
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d181
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d181
 Les vidéos et animations sont potentiellement flashy.
 Moins de 3 flash /s
 Ou <= 21842 pixels flashants sur la page.
@@ -518,11 +532,11 @@ https://trace.umd.edu/peat/
 https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/
 https://www.useragentman.com/blog/2017/04/02/using-peat-to-create-seizureless-web-animations/
 https://ffmpeg.org/
-file:///c:/users/Deborah.Powers/appdata/local/peat
-file:///c:/users/Deborah.Powers/appdata/local/ffmpeg/bin
+file:///C:\users/Deborah.Powers/appdata/local/peat
+file:///C:\users/Deborah.Powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Code: Ffmpeg -i file:///c:/ /users/Deborah.Powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 file:///c:/ /users/Deborah.Powers/desktop/video.avi
+Code: Ffmpeg -i file:///C:\ /users/Deborah.Powers/desktop/video.mp4 -an -vcodec rawvideo -y -r 25 file:///C:\ /users/Deborah.Powers/desktop/video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
@@ -531,7 +545,7 @@ Télécharger ou visionner le rapport de peat via file /...
 ** Le contenu cryptique
 
 Rgaa 13.05
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d185
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d185
 Dessin ascii, émoticônes, abréviations ou orthographes non conventionnelles, comme s41ut ou slt.
 Les # ou les urls sont assez communes pour ne pas être condidérées comme cryptiques.
 Besoin d'un title ou d'une définition dans le contexte.
@@ -563,7 +577,7 @@ Aria-label restitue le nom du lien au lecteur, c'est l'alternative.
 ** L'orientation
 
 Rgaa 13.09
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d186
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d186
 Le contenu est consultable en mode portrait ou paysage. Il reste le même.
 Exception si l'orientation est éssentielle.
 Firefox et chrome ont une vue adaptative. Outils de développement web / bouton tablette - smartphone
@@ -572,7 +586,7 @@ Choisir une taille d'écran de smartphone et faire varier l'orientation.
 ** Les gestes complèxes
 
 Rgaa 13.10
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d188
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d188
 Les fonctionnalités déclenchées par un geste complexe peuvent être aussi déclenchées par des gestes simples.
 Geste simple: Appuyer sur un bouton.
 Geste à trajectoire: Swiper, certaines façon de dévérouiller le téléphone.
@@ -594,7 +608,7 @@ Sur chacun de mes éléments:
 ** L'activation par le mouvement
 
 Rgaa 12.13
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d191
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d191
 Pour les smartphones, ou avec la caméra, les hauts-parleurs de l'ordi.
 Ces fonctionnalités peuvent être désactivées et ont une alternative simple.
 Exception si le mouvement est nécessaire à la fonctionnalité, comme dans le cas des podomètres.
@@ -602,7 +616,7 @@ Exception si le mouvement est nécessaire à la fonctionnalité, comme dans le c
 == Les contenus multimédias
 
 Rgaa 4
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d160
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d160
 Titre permettant d'identifier ce qu'est le média. "chanson - patati patata", "vidéo sur le bloubiboulga".
 Média temporel: Apporte des informations via les canaux audio, vidéo, synchro. Synchro = audio + vidéo
 Média non - temporel: Svg ou canva contenant des animations, élément accessible via un plug-in (Flash, java, etc). Oui, certains sont en fait temporels.
@@ -655,12 +669,12 @@ Exceptions à déclarer dans la déclaration d'accessibilité:
 == La structure de la page
 
 Rgaa 9
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d143
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d143
 
 ** La structure de la page
 
 Rgaa 9.02
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d153
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d153
 Compte si le doctype est html5.
 Pour la plupart des conteneurs, on peut trouver plusieurs balises sur la page.
 Nav: Elle est réservée pour
@@ -676,7 +690,7 @@ Main: Unique et obligatoire. Contient les éléments propres à la page, qui ne 
 ** Les citations
 
 Rgaa 9.04
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d151
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d151
 Code
 <p>paragraphe avec <q>une ligne de citation</q></p>
 <blockquote><p>bloc</p><p>de citation</p></blockquote>
@@ -689,7 +703,7 @@ Code
 ** Les listes
 
 Rgaa 9.03
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d147
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d147
 Ul, ol, dl
 Code: <div role='list'><p role='listitem'/>
 Les suites de liens doivent être dans une liste.
@@ -698,7 +712,7 @@ Pas de role = presentation
 ** Les tîtres
 
 Rgaa 9.01
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d144
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d144
 Important:
 	Hyérarchie cohérente des tîtres.
 	Pertinence des tîtres.
@@ -714,7 +728,7 @@ Autorisé:
 == Les tableaux
 
 Rgaa 5
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d129
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d129
 
 ** Tableau de mise en forme
 
@@ -750,12 +764,12 @@ Code: <td headers='id-a id-b' />
 == La présentation
 
 Rgaa 10
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d95
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d95
 
 ** Le css
 
 Rgaa 10.01
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d96
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d96
 Ma page doit être lisible, compréhensible, opérable et logique quand le css est supprimé. Les navigateurs d'écran sautent le pluspart du css, certains humains le modifient.
 Le css seul est utilisé pour la mise en forme.
 Utiliser les balises link, style ou l'attribut style='...'.
@@ -771,7 +785,7 @@ Vérifier s'il y a du texte hors écran.
 ** Les couleurs
 
 Rgaa 10.05
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d106
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d106
 Si une couleur de fond est déclarée ou héritée, une couleur de texte doit être déclarée ou héritée aussi. Et vice-versa.
 Vérifier à partir de la balise html si color et background-color sont déclarés. Sinon, descendre dans l'arborescence du document.
 Modifier les couleurs par défaut de la page et vérifier quels éléments gardent leurs teintes originelles.
@@ -840,7 +854,7 @@ Input[Type='radio'] { propriétés de la classe sr-only; }
 ** L'information non-textuelle
 
 Rgaa 10.09 et 10.10
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d119
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d119
 Hauteur des barres d'un histogramme, mise en gras afin de montrer l'importance d'un ingrédient.
 Rendre les infos disponibles pour une personne aveugle.
 Attribut title des barres
@@ -856,7 +870,7 @@ Tester en zoomant à 400% dans une fenêtre de 1280px. Utiliser la vue adaptativ
 ** Le texte reste lisible en modifiant son css
 
 Rgaa 10.12
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d122
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d122
 Line-height: 1.5 * fontsize;
 Margin-bottom: 2* fontsize;
 Letter-spacing: 1.12 * fontsize;
@@ -866,7 +880,7 @@ Exceptions pour les images-texte, les balises canvas, les sous-titres incrustés
 ** Le focus
 
 Rgaa 10.07
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d112
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d112
 Le css conserve la visibilité du focus. Le mieux est de laisser la signalisation native.
 Si je rajoute un cadre de focus, lui donner un constraste avec le fond de 3.3 minimum
 
@@ -887,12 +901,12 @@ https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focu
 ** Contrôle des contenus apparaissant au survol et autres
 
 Rgaa 10.13
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d124
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d124
 Survol, focus, etc.
 Je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
 Il reste en place quand je le survole.
 https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
-https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role
+https://developer.mozilla.org/en-us/docs/web/accessibility/aria/reference/roles/tooltip_role
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
 https://developer.mozilla.org/en-us/docs/web/api/document/elementfrompoint
 L'attribut title est un cas particulier.
@@ -901,7 +915,7 @@ https://accessibilite.public.lu/fr/rgaa4/criteres.html
 == Les images
 
 Rgaa 1
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d38 (Source acces 42)
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d38 (Source acces 42)
 Balises considérées comme des images: Img, area, < input type='image'>, svg, object, embed, canvas.
 Img et area possèdent un attribut alt, même vide.
 Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
@@ -962,14 +976,14 @@ La légende reprend le label.
 == Les iframes
 
 Rgaa 2
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d63
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d63
 Le titre est obligatoire.
 Si le contenu à été crée par un tiers, il est exempté d'audit. Il doit néanmoins avoir une alternative accessible, selon le principe de non-interférence.
 
 == Les couleurs
 
 Rgaa 3
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d67
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d67
 
 ** La couleur de signalement
 
@@ -1017,7 +1031,7 @@ S'il y a une version alternative pour le rgaa, c'est elle que je dois auditer. E
 
 Le contraste va de 1/1 (Même couleur) à 21/1 (Noir et blanc).
 Le logiciel cca analyse les couleurs du texte en image.
-file:///c:/program files/colour contrast analyser
+file:///C:\program files/colour contrast analyser
 Petit texte:
 	Texte de moins de 24px
 	Texte de moins de 18.5px en gras
@@ -1039,12 +1053,12 @@ Les images, les icônes, les couleurs de signalement, les étoiles de notation, 
 Le texte et l'image décoratifs, le logo et le nom de marque, l'élément de formulaire innactif (Disabled).
 L'extension wcag contrast checker analyse les couleurs des textes en html et css.
 Tester le changement de style avec https://accessconfig.a11y.fr/
-file:///c:/users/Deborah.Powers/appdata/local/accessconfig-1
+file:///C:\users/Deborah.Powers/appdata/local/accessconfig-1
 
 == Structure du document html
 
 Rgaa 8
-file:///c:/users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d82
+file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 
