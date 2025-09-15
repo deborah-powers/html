@@ -7,17 +7,23 @@ je suis inscrite à la session du 24/10/2025.
 En m'entraînant à auditer, des situations complêxes se sont présentées.
 Pouvez-vous me guider ?
 
+réponses d'adeline poggioli
+
 == Mes questions
 
 ** Couleurs
 
 J'ai un cas où je n'ai ni background-color, ni color pour un élément. Est-il en erreur ?
+--> vérifier les couleurs apparaissant à l'écran.
 Y-a-t-il une erreur quand background-color = transparent ?
+--> vérifier les couleurs apparaissant à l'écran.
 J'ai un bouton possédant une bordure visible. Le fond de mon bouton doit-il être contrasté avec le fond de la page derrière lui ?
+--> vérifier le contraste entre la bordure et le fond de la page.
 
 ** Tîtres
 
 Y-a-t-il une erreur quand le tître ne contient pas de texte, mais une image sans texte ? Pour les tîtres h1, h2, etc.
+--> il est peut-être utilisé pour des raisons de présentation, dans ce cas c’est peut etre le critère 8.9 qui est invalide. Mais le critère 9.1 peut etre non conforme avec le test 9.1.2, qui demande de vérifier la pertinence. s’il est vide il est forcément non pertinent.
 
 ** Focus
 
@@ -27,12 +33,15 @@ Mon navigateur devrait-il les prendre en compte ?
 Deux cas concernant un bouton:
 A. Ma prise de focus est marquée uniquement par le changement de couleur du fond.
 Le focus est-il considéré comme une information ?
+--> le changement de couleur de fond du bouton à l’état focus peut être suffisant s’il est suffisamment contrasté avec son arrière-plan (ratio supérieur à 3)
 B. Je marque le focus par un changement de bordure. Elle devient plus épaisse et change de motif.
 Est-une façon suffisante de marquer le focus ?
+--> si la couleur de la bordure a un ratio de contraste de 3 avec son arrière-plan, oui c’est suffisant comme état de focus (combiné avec l’épaisseur de la bordure)
 
 ** Média non temporel
 
 Quid des gif animés ?
+--> il faut les auditer s’ils sont porteurs d’information, c’est à dire s’ils contiennent du texte, et veiller à ce qu’ils aient une alternative textuelle / retranscription textuelle.
 
 ** Calculer l'intitulé d'un lien
 
@@ -46,6 +55,16 @@ Code: <a title='tître du lien'><img title="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le tître de l'image seul ?
 Code: <a title='tître du lien'><img alt="tître de l'image" />
 L'intitulé est-il le tître du lien seul ou le alt de l'image seul ?
+--> Ici je dirai que c’est le alt de l’image qui fait le nom accessible et le title du lien en indication complémentaire, mais je ne suis pas tout à fait sûre
+
+** Point non testable
+Il y a une question que ne peux pas tester,
+13.09 "le contenu proposé est-il consultable quelle que soit l'orientation de l'écran (Portait ou paysage)".
+Comment gérer ce cas de figure ?
+Dois-je la noter comme exemptée ?
+Passer mon navigateur en mode tablette ne résout pas le problème.
+--> Normalement la plupart des sites sont responsives et peuvent être testés selon ce critère. Il faut effectivement passer le navigateur en mode tablette et vérifier qu’il n’y pas de perte d’information ou que le concepteur du site ne bloque pas l’affichage en mode portrait ou paysage. L’utilisateur doit pouvoir consulter le site en tenant son téléphone en portrait ou paysage, on ne lui impose pas un affichage en particulier.
+
 
 ==
 
@@ -191,9 +210,10 @@ https://developer.mozilla.org/en-us/docs/web/accessibility/aria/reference/roles/
 Faire des tests de restitution et d'utilisation avec les https://disic.github.io/guide-lecteurs_ecran/ (Lecteurs d'écran).
 Lecteurs pour ordi
 Lecteur		navigateur:
-Nvda		firefox
-Jaws		firefox
+Nvda		firefox	ctl + alt + n puis ctl + q	https://www.nvaccess.org/download/
+Jaws		firefox	ctl + window + entrer	https://support.freedomscientific.com/Downloads/JAWS
 Voiceover	safari
+ChromeVox	chrome	ctl + alt + z	https://support.google.com/accessibility/answer/7031755?hl=en
 Lecteurs pour smartphone
 Os		lecteur		navigateur:
 Ios		voiceover	safari
@@ -228,6 +248,7 @@ Ou un texte explique le changement.
 
 https://developer.mozilla.org/fr/docs/web/accessibility/aria/guides/live_regions
 Aria-live = off, assertive, polite ou role = xxx. Actuellement, il est recommander de doubler les rôles avec aria-live.
+https://access42.net/live-regions-aria-live-analogues-alert-log-status/
 
 -- Quelques rôles
 
