@@ -132,7 +132,10 @@ La déclaration est valable trois ans sauf modification substantielle des conten
 ** Les ressources
 
 file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d311
+https://design.numerique.gouv.fr/
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
+https://www.systeme-de-design.gouv.fr/version-courante/fr
+https://ara.numerique.gouv.fr/
 http://www.w3.org/wai/
 https://www.w3.org/tr/wcag21/
 https://www.w3.org/wai/wcag21/techniques/
