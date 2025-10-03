@@ -28,8 +28,8 @@ body {
 }
 pave-3d, tiso-3d, trec-3d, hexa-3d, octo-3d, cyld-3d, boul-3d, bole-3d, cyl-q3d, bol-q3d {
 	/* propriétés modifiables */
-	--width: 9cm;
-	--height: 6cm;
+	--width: 20cm;
+	--height: 15cm;
 	--depth: 8cm;
 	--bord: solid 4px var(--bord-color);
 	--fond: #F084;
@@ -179,95 +179,84 @@ cyld-3d >*:nth-child(4){ transform: rotateY(90deg); }
 cyld-3d >*:nth-child(5){ transform: rotateY(180deg); }
 cyld-3d >*:nth-child(6){ transform: rotateY(270deg); }
 
-bol-q3d {
-	height: 50%;
-	--height: calc(var(--width) /2);
+boul-3d, bole-3d, bol-q3d {
+	--height: var(--width);
+	--depth: var(--width);
+	height: var(--width);
 }
 bol-q3d >*{
 	height: 6.5%;
 	top: unset;
-	bottom: 6.5%;
+	bottom: 50%;
 }
-bol-q3d >*:nth-child(n+60){
-	width: 100%;
-	height: 100%;
-	left: 0%;
+bol-q3d >*:nth-child(37){
+	transform: rotateX(90deg) translateZ(var(--depth-half));
+	background-color: #F0F4;
 }
-bol-q3d >*:nth-child(60){ transform: rotateY(90deg); }
-bol-q3d >*:nth-child(61){ transform: rotateY(45deg); }
-bol-q3d >*:nth-child(n+60):before, bol-q3d >*:nth-child(n+60):after{ content: none; }
+bol-q3d >*:nth-child(37):before, bol-q3d >*:nth-child(37):after{
+	content: none;
+}
 bol-q3d >*:before {
 	transform-origin: top center;
 	transform: rotateX(-7.5deg);
 	top: 100%;
+	background-color: #00F4;
 }
 bol-q3d >*:after {
 	transform-origin: bottom center;
 	transform: rotateX(7.5deg);
 	top: -100%;
+	background-color: #F004;
 }
-bol-q3d >*:nth-child(1){ transform: rotateY(93.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(2){ transform: rotateY(101.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(3){ transform: rotateY(108.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(4){ transform: rotateY(116.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(5){ transform: rotateY(123.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(6){ transform: rotateY(131.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(7){ transform: rotateY(138.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(8){ transform: rotateY(146.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(9){ transform: rotateY(153.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(10){ transform: rotateY(161.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(11){ transform: rotateY(168.75deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(12){ transform: rotateY(176.25deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(13){ transform: rotateY(93.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(14){ transform: rotateY(101.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(15){ transform: rotateY(108.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(16){ transform: rotateY(116.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(17){ transform: rotateY(123.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(18){ transform: rotateY(131.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(19){ transform: rotateY(138.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(20){ transform: rotateY(146.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(21){ transform: rotateY(153.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(22){ transform: rotateY(161.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(23){ transform: rotateY(168.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(24){ transform: rotateY(176.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(25){ transform: rotateY(93.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(26){ transform: rotateY(101.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(27){ transform: rotateY(108.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(28){ transform: rotateY(116.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(29){ transform: rotateY(123.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(30){ transform: rotateY(131.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(31){ transform: rotateY(138.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(32){ transform: rotateY(146.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(33){ transform: rotateY(153.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(34){ transform: rotateY(161.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(35){ transform: rotateY(168.75deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(36){ transform: rotateY(176.25deg) rotateX(15deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(37){ transform: rotateY(93.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(38){ transform: rotateY(101.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(39){ transform: rotateY(108.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(40){ transform: rotateY(116.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(41){ transform: rotateY(123.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(42){ transform: rotateY(131.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(43){ transform: rotateY(138.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(44){ transform: rotateY(146.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(45){ transform: rotateY(153.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(46){ transform: rotateY(161.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(47){ transform: rotateY(168.75deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(48){ transform: rotateY(176.25deg) rotateX(22.5deg) translateZ(var(--depth-half)); }
-
+bol-q3d >*:nth-child(1){ transform: rotateY(93.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(2){ transform: rotateY(101.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(3){ transform: rotateY(108.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(4){ transform: rotateY(116.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(5){ transform: rotateY(123.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(6){ transform: rotateY(131.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(7){ transform: rotateY(138.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(8){ transform: rotateY(146.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(9){ transform: rotateY(153.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(10){ transform: rotateY(161.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(11){ transform: rotateY(168.75deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(12){ transform: rotateY(176.25deg) rotateX(7.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(13){ transform: rotateY(93.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(14){ transform: rotateY(101.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(15){ transform: rotateY(108.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(16){ transform: rotateY(116.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(17){ transform: rotateY(123.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(18){ transform: rotateY(131.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(19){ transform: rotateY(138.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(20){ transform: rotateY(146.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(21){ transform: rotateY(153.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(22){ transform: rotateY(161.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(23){ transform: rotateY(168.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(24){ transform: rotateY(176.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(25){ transform: rotateY(93.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(26){ transform: rotateY(101.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(27){ transform: rotateY(108.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(28){ transform: rotateY(116.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(29){ transform: rotateY(123.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(30){ transform: rotateY(131.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(31){ transform: rotateY(138.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(32){ transform: rotateY(146.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(33){ transform: rotateY(153.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(34){ transform: rotateY(161.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(35){ transform: rotateY(168.75deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(36){ transform: rotateY(176.25deg) rotateX(52.5deg) translateZ(var(--depth-half)); }
 /*
-bol-q3d >*:nth-child(){ transform: rotateY(93.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(101.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(108.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(116.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(123.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(131.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(138.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(146.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(153.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(161.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(168.75deg) rotateX(30deg) translateZ(var(--depth-half)); }
-bol-q3d >*:nth-child(){ transform: rotateY(176.25deg) rotateX(30deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(37){ transform: rotateY(93.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(38){ transform: rotateY(101.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(39){ transform: rotateY(108.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(40){ transform: rotateY(116.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(41){ transform: rotateY(123.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(42){ transform: rotateY(131.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(43){ transform: rotateY(138.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(44){ transform: rotateY(146.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(45){ transform: rotateY(153.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(46){ transform: rotateY(161.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(47){ transform: rotateY(168.75deg) rotateX(75deg) translateZ(var(--depth-half)); }
+bol-q3d >*:nth-child(48){ transform: rotateY(176.25deg) rotateX(75deg) translateZ(var(--depth-half)); }
 */
 .mesure {
 	/* objet en cours de création */
@@ -279,7 +268,7 @@ bol-q3d >*:nth-child(){ transform: rotateY(176.25deg) rotateX(30deg) translateZ(
 		linear-gradient(90deg, transparent 49.5%, maroon 49.5% 50.5%, transparent 50.5%),
 		linear-gradient(#0994 49.5%, maroon 49.5% 50.5%, #0994 50.5%);
 }
-bole-3d { animation: spin-x 10s infinite linear; }
+bole-3d { animation: spin-y 10s infinite linear; }
 </style><script type='text/javascript'>
 function mutationNb (mutations){
 	// mutations est un MutationRecord
@@ -328,7 +317,7 @@ class Cyld3d extends Shape3d{
 	//	for (var c=2; c< this.faceNb; c++) this.appendChild (document.createElement ('cyl-q3d'));
 }}
 class BolQ3d extends Shape3d{
-	constructor(){ super (72); }
+	constructor(){ super (37); }
 	connectedCallback(){ for (var c=0; c< this.faceNb; c++) this.appendChild (document.createElement ('p')); }
 }
 class Bole3d extends Shape3d{
