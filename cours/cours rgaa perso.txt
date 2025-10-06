@@ -132,10 +132,10 @@ La déclaration est valable trois ans sauf modification substantielle des conten
 ** Les ressources
 
 file:///C:\users/Deborah.Powers/desktop/formation-rgaa-2024/formation/index.html#d311
-https://design.numerique.gouv.fr/
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
 https://www.systeme-de-design.gouv.fr/version-courante/fr
 https://ara.numerique.gouv.fr/
+https://design.numerique.gouv.fr/
 http://www.w3.org/wai/
 https://www.w3.org/tr/wcag21/
 https://www.w3.org/wai/wcag21/techniques/
@@ -407,7 +407,7 @@ Pour les raccourcis claviers constitués de caractères imprimables:
 Console / onglet d'accessibilité
 Cocher la case "afficher l'ordre de tabulation", en haut à droite.
 
--- Les touches
+-- Les touches raccourci clavier
 
 https://webaim.org/techniques/keyboard/
 Basique:
@@ -637,6 +637,45 @@ Pour les smartphones, ou avec la caméra, les hauts-parleurs de l'ordi.
 Ces fonctionnalités peuvent être désactivées et ont une alternative simple.
 Exception si le mouvement est nécessaire à la fonctionnalité, comme dans le cas des podomètres.
 
+** dialog
+
+-- dialog vs modal
+
+https://www.qphi.dev/posts/difference-modale-dialog-box
+
+quand une dialog classique s'affiche, l'utilisateur peut toujours interragir avec la page. ex: un en-cart de cookies.
+quand une modale apparaît, la page est gelée et l'utilisateur ne peut interragir qu'avec la modale. ex: un en-cart de confirmation de suppression de document.
+
+
+-- exemple de modale
+
+Code
+<button type='button' aria-controls='modal-id' id='btn-open-dialog'>ouvrir la modale</button>
+<dialog id='modal-id' aria-labelledby='modale simple' role='alertdialog' aria-modal='true'>
+	<button type='button' aria-controls='modal-id' id='btn-close-dialog'>Fermer</button>
+</dialog>
+const dialogBox = document.getElementById (modal-id);
+const btnOpenDialog = document.getElementById ('btn-open-dialog');
+btnOpenDialog.addEventListener ('click', function (event){ dialogBox.showModal(); });
+const btnCloseDialog = document.getElementById ('btn-close-dialog');
+btnCloseDialog.addEventListener ('click', function (event){ dialogBox.close(); });
+/
+aria-controls: préciser sur quel élément le bouton agit
+aria-modal: préciser que la dialog est une modale
+showModal: fonction pré-écrite qui ouvre la modale
+show: fonction pré-écrite qui ouvre une dialog
+close: idem pour fermer la modale
+role alertdialog: préciser que l'utilisateur doit se concentrer sur la modale.
+
+
+
+dialog
+modale
+popup
+
+
+https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
+https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#examples
 == Les contenus multimédias
 
 Rgaa 4
