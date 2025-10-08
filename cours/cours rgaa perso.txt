@@ -134,6 +134,7 @@ La déclaration est valable trois ans sauf modification substantielle des conten
 file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d311
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
 https://www.systeme-de-design.gouv.fr/version-courante/fr
+https://tink.uk/how-screen-readers-navigate-data-tables/
 https://ara.numerique.gouv.fr/
 https://design.numerique.gouv.fr/
 http://www.w3.org/wai/
@@ -655,6 +656,7 @@ Code
 <button type='button' aria-controls='modal-id' id='btn-open-dialog'>ouvrir la modale</button>
 <dialog id='modal-id' aria-labelledby='modale simple' role='alertdialog' aria-modal='true'>
 	<button type='button' aria-controls='modal-id' id='btn-close-dialog'>Fermer</button>
+	<p>je suis le message !</p>
 </dialog>
 const dialogBox = document.getElementById (modal-id);
 const btnOpenDialog = document.getElementById ('btn-open-dialog');
@@ -960,11 +962,22 @@ https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focu
 
 Rgaa 10.13
 file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d124
-Survol, focus, etc.
-Je peux le faire disparaître avec la touche échapp, s'il masque un autre contenu important.
-Il reste en place quand je le survole.
+
+l'infobulle apparaît
+	au survol
+	au focus
+et disparaît
+	quand la souris s'éloigne
+	à la perte de focus
+	avec la touche échappe
+
+la touche échappe est nécessaire si l'infobulle masque du contenu important.
+elle reste en place quand je la survole.
+si l'infobulle est directement incluse dans son élément déclencheur, elle n'a pas besoin d'implémenter le motif tooltip.
+
 https://www.systeme-de-design.gouv.fr/composants-et-modeles/composants/infobulle/
 https://developer.mozilla.org/en-us/docs/web/accessibility/aria/reference/roles/tooltip_role
+https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/
 https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de-focus-visible.html
 https://developer.mozilla.org/en-us/docs/web/api/document/elementfrompoint
 L'attribut title est un cas particulier.
@@ -981,6 +994,7 @@ Les autres doivent avoir un rôle. < x role='img'>. Img ou presentation.
 ** L'image de décoration doit être ignorée par les techno d'assistance
 
 Img et area: < img alt=""/> ou < img alt='divers' aria-hidden='true'/> ou < img alt='divers' role='presentation'/>
+< div role='img' style='background-image:url("...")'> la div est restituée comme une image informative.
 Les autres: < x aria-hidden='true'>
 < conteneur aria-hidden='true'>toutes les images sont masquées</>
 Les images liens sont traitées avant tout comme des liens.
@@ -1181,6 +1195,10 @@ Les deux noms doivent être pertinents et peuvent correspondre à la même balis
 Le principe de non-interférence: S'il y a des contenus non-conformes, ils laissent les utilisateurs accéder au reste de la page et à toute l'information. Un élement non-conforme doit souvent avoir une alternative accessible.
 https://developer.mozilla.org/en-us/docs/web/html/element/area
 https://disic.github.io/guide-concepteur/8-multimedia.html
+
+== le lecteur d'écran
+
+https://tink.uk/how-screen-readers-navigate-data-tables/
 
 ==
 
