@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	input, label { display: block; }
+	* { margin-bottom: 6mm; }
+	form#hidden-boxes label:hover, form#hidden-boxes label:focus { border: solid 2px deeppink; }
+	form#hidden-boxes input[type='radio'] {
+		Clip: Rect(1px, 1px, 1px, 1px)!important;
+		-webkit-clip-path: Inset(50%)!important;
+		Clip-path: Inset(50%)!important;
+		Overflow: Hidden !important;
+		Width: 1px !important;
+		Height: 1px !important;
+		Margin: -1px !important;
+		White-space: Nowrap !important;
+		Padding: 0 !important;
+		Border: 0 !important;
+		Position: Absolute !important;
+	}
+</style></head><body>
+	<h1>exemple de formulaires en js</h1>
+	<form method='get' onsubmit='printName(); return false' onreset='resetName(); return false'>
+		<label for='name'>entrez votre nom</label><input type='text' id='name' />
+		<label for='mail'>entrez votre courriel</label><input type='email' id='mail' />
+		<label for='pwd'>entrez votre mot de passe</label><input type='password' id='pwd' />
+		<input type='submit' value='envoyer' />
+		<input type='reset' value='éffacer' />
+	</form>
+	<p>entrez votre nom</p>
+	<p>entrez votre courriel</p>
+	<p>entrez votre mot de passe</p>
+<script type='text/javascript'>
+	const responses = document.getElementsByTagName ('p');
+	function printName(){
+		const infos = document.getElementsByTagName ('input');
+		responses[0].innerHTML = 'votre nom: '+ infos[0].value;
+		responses[1].innerHTML = 'votre courriel: '+ infos[1].value;
+		responses[2].innerHTML = 'votre mot de passe: '+ infos[2].value;
+	}
+	function resetName(){
+		const infos = document.getElementsByTagName ('input');
+		responses[0].innerHTML = 'entrez votre nom';
+		responses[1].innerHTML = 'entrez votre courriel';
+		responses[2].innerHTML = 'entrez votre mot de passe';
+		infos[0].value ="";
+		infos[1].value ="";
+		infos[2].value ="";
+	}
+</script></body></html>
