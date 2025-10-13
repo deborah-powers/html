@@ -153,6 +153,10 @@ https://disic.github.io/guide-lecteurs_ecran/
 https://support.mozilla.org/en-us/kb/accessibility-features-firefox#w_screen-reader
 http://disic.github.io/rgaa_methodologie/
 Contact: file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d316
+saisie vocale firefox: https://ressources-ecole-inclusive.org/tag/firefox/
+commande vocale window: https://support.microsoft.com/fr-fr/topic/prise-en-main-de-l-acc%C3%A8s-vocal-bd2aa2dc-46c2-486c-93ae-3d75f7d053a4
+saisie vocale window: https://support.microsoft.com/fr-fr/windows/utilisez-la-saisie-vocale-pour-parler-au-lieu-de-taper-sur-votre-pc-fec94565-c4bd-329d-e59a-af033fa5689f
+https://support.google.com/assistant/answer/9071681?hl=fr&co=GENIE.Platform%3DAndroid
 
 == Aria, accessible rich internet application
 

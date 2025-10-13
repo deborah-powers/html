@@ -177,7 +177,7 @@ Icon=icon name
 Terminal=true
 Type=Application
 
-** raccourci teams sur windos
+** raccourci teams sur windows
 
 teams est une application.
 
