@@ -279,11 +279,12 @@ Code
 Préciser que modifier input à un éffet sur le paragraphe et la div.
 Cette méthode n'est pas recomandée.
 
-== Les formulaires
+== Le formulaire
 
 Rgaa 11
 file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d228
-https://www.w3.org/tr/html-aam-1.0/#accessible-name-and-description-computation (Nom accessible)
+https://accessibilite.numerique.gouv.fr/methode/glossaire/#champ-de-saisie-de-formulaire
+Nom accessible: https://www.w3.org/tr/html-aam-1.0/#accessible-name-and-description-computation
 Nom accessible: Aria-labelledby > aria-label > label > innertext > bouton > value > title.
 Placeholder est inadapté pour contenir le nom accessible car il disparaît à la frappe.
 Si title et placeholder sont présents ensemble, title reprend le placeholder.
@@ -291,6 +292,20 @@ Si le label est hors-écran, le champ a une alternative visible.
 Chaque élément n'a qu'un seul et unique < label />.
 Le champ et son étiquette sont accolés. Si celà est impossible, le title reprend le texte de l'étiquette.
 Les champs doivent obligatoirement avoir un nom visible, les boutons peuvent s'en passer.
+
+** datalist
+
+donner des valeurs pré-définies à un champ de texte.
+il reste possible de taper un mot nouveau, mais ceux de la liste sont proposés en auto-complétion.
+la datalist est invisible.
+code
+<label for='animal'>choisissez un animal</label><input type='text' list='animaux' id='animal' />
+<datalist id='animaux'>
+	<option value='chat'></option>
+	<option value='chien'></option>
+	<option value='dauphin'></option>
+</datalist>
+/
 
 ** Regroupement par
 

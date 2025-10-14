@@ -7,47 +7,71 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 <style type='text/css'>
-	input, label { display: block; }
-	* { margin-bottom: 6mm; }
-	form#hidden-boxes label:hover, form#hidden-boxes label:focus { border: solid 2px deeppink; }
-	form#hidden-boxes input[type='radio'] {
-		Clip: Rect(1px, 1px, 1px, 1px)!important;
-		-webkit-clip-path: Inset(50%)!important;
-		Clip-path: Inset(50%)!important;
-		Overflow: Hidden !important;
-		Width: 1px !important;
-		Height: 1px !important;
-		Margin: -1px !important;
-		White-space: Nowrap !important;
-		Padding: 0 !important;
-		Border: 0 !important;
-		Position: Absolute !important;
+	fieldset {
+		display: grid;
+		grid-template-columns: 12em 1fr;
+	}
+	legend { grid-column: 1/3; }
+	datalist {
+		display: block;
+		border-style: dotted;
 	}
 </style></head><body>
 	<h1>exemple de formulaires en js</h1>
+	<p>les champs marqués d'une astérisque * sont obligatoires</p>
 	<form method='get' onsubmit='printName(); return false' onreset='resetName(); return false'>
-		<label for='name'>entrez votre nom</label><input type='text' id='name' />
-		<label for='mail'>entrez votre courriel</label><input type='email' id='mail' />
-		<label for='pwd'>entrez votre mot de passe</label><input type='password' id='pwd' />
+		<fieldset>
+			<legend>votre compte</legend>
+			<label for='name'>entrez votre nom *</label><input type='text' list='names' id='name' required />
+			<label for='mail'>entrez votre courriel *</label><input type='email' id='mail' required />
+			<label for='pwd'>entrez votre mot de passe *</label><input type='password' id='pwd' required />
+			<datalist id='names'>
+				<option>david</option>
+				<option>deborah</option>
+				<option>claudia</option>
+			</datalist>
+		</fieldset>
+		<fieldset>
+			<legend>vos coordonnées</legend>
+			<label for='phone'>votre n° de téléphone *</label><input type='tel' id='phone' required />
+			<label for='website'>votre site web perso</label><input type='url' id='website' />
+			<label for='city'>votre ville</label><input type='text' id='city' />
+			<label for='nb-street'>votre n° de voie</label><input type='number' id='nb-street' />
+			<label for='street'>votre rue</label><input type='text' id='street' />
+		</fieldset>
+		<fieldset>
+			<legend>vos infos</legend>
+			<label for='birth'>votre date de naissance *</label><input type='date' id='birth' required />
+			<label for='hour'>l'heure</label><input type='time' id='hour' />
+			<label for='week'>la semaine</label><input type='week' id='week' />
+			<label for='month'>le mois</label><input type='month' id='month' />
+			<label for='color'>votre couleur préférée</label><input type='color' id='color' />
+		</fieldset>
+		<fieldset>
+			<legend>prendre rendez-vous</legend>
+			<label for='date-local' required>date et heure *</label><input type='datetime-local' id='date-local' />
+			<label for='date-all'>confirmer la date</label><input type='datetime' id='date-all' />
+		</fieldset>
 		<input type='submit' value='envoyer' />
 		<input type='reset' value='éffacer' />
 	</form>
 	<p>entrez votre nom</p>
 	<p>entrez votre courriel</p>
 	<p>entrez votre mot de passe</p>
+	<a href='https://accessibilite.numerique.gouv.fr/methode/glossaire/#champ-de-saisie-de-formulaire'>qu'est-ce qu'un champ de formulaire ?</a>
 <script type='text/javascript'>
 	const responses = document.getElementsByTagName ('p');
 	function printName(){
 		const infos = document.getElementsByTagName ('input');
-		responses[0].innerHTML = 'votre nom: '+ infos[0].value;
-		responses[1].innerHTML = 'votre courriel: '+ infos[1].value;
-		responses[2].innerHTML = 'votre mot de passe: '+ infos[2].value;
+		responses[1].innerHTML = 'votre nom: '+ infos[0].value;
+		responses[2].innerHTML = 'votre courriel: '+ infos[1].value;
+		responses[3].innerHTML = 'votre mot de passe: '+ infos[2].value;
 	}
 	function resetName(){
 		const infos = document.getElementsByTagName ('input');
-		responses[0].innerHTML = 'entrez votre nom';
-		responses[1].innerHTML = 'entrez votre courriel';
-		responses[2].innerHTML = 'entrez votre mot de passe';
+		responses[1].innerHTML = 'entrez votre nom';
+		responses[2].innerHTML = 'entrez votre courriel';
+		responses[3].innerHTML = 'entrez votre mot de passe';
 		infos[0].value ="";
 		infos[1].value ="";
 		infos[2].value ="";
