@@ -1,0 +1,354 @@
+== Page de garde
+
+Définition de l'acronyme
+
+== La législation: Qui est concerné
+
+Organisation publiques
+Organisation privée travaillant avec le service public
+Grosse entreprise (Ca 250 m)
+-- En cas d'absence de déclaration d'accessibilité,
+Risque d'amende tous les six mois ! (2023)
+2 000 euros par site pour les petites villes de moins de 5 000 habitants
+20 000 euros par site pour les autres
+
+--> Nos clients !
+
+== La législation: Qu'est-ce qui est concerné
+
+Site web
+Application mobile
+Document nécessaire dans une démarche
+	Impots, conditions générales, etc
+	Usi doit pouvoir mener ses démarches administratives, faire ses achats en ligne, etc
+Document récent (Créés après le 22 sept 2018)
+Vidéo récente (Créée après le 22 sept 2020)
+Contenu multimédia récent (Après le 22 sept 2020)
+Contenu interractif
+
+--> Tous les écrans
+Pourquoi le 23 Septembre:
+En 2016, l'ue a émit une directive obligeant ses membre à mettre en place l'accessibilité. Le 23 Septembre 2018 était la date limite.
+
+== La législation: Quand faire un audit
+
+Tous les trois ans
+Quand le site est profondément modifié
+L'audit doit être réalisé par une société indépendante
+
+== La législation: Que présenter
+
+Déclaration d'accessibilité
+Rapport d'audit
+Schéma pluriannuel
+Plan d'actions de l'année en cours
+
+--> Photo de l'exemple
+
+== La législation: Focus sur la déclaration d'accessibilité
+
+Lien en pied de page sur mon site
+Structure obligatoire
+Entreprise derrière le site
+Nom du site
+Date de la daclaration
+Entreprise ayant fait l'audit
+Etat de conformité: Totalement, partiellement ou non conforme
+Version du rgaa de référence
+Rapport d'audit
+Liste des contenus non accessibles
+	Non conformités
+	Eléments sous derrogation pour charge disproportionnée
+	Eléments non soumis à l'obligation d'accessibilité
+Technologies utilisées dans le site
+Environnement de test
+Technologies utilisées pour réaliser l'audit
+Pages auditées
+Moyens de contact
+Voies de recours
+
+== La législation: Se mettre à jour
+
+Présentation claire et mise à jour: https://access42.net/ressources/accessibilite-rgaa-obligations-legales/
+Cadre légal: https://www.info.gouv.fr/accessibilite/le-cadre-legal
+Qui doit obligatoirement respecter le rgaa: https://accessibilite.numerique.gouv.fr/obligations/champ-application/
+Actualités rgaa nationnales: https://design.numerique.gouv.fr/articles/tag/RGAA/
+Actualités accessibilité nationnales: https://design.numerique.gouv.fr/articles/tag/accessibilit%C3%A9/
+Déclaration d'accessibilité: https://accessibilite.numerique.gouv.fr/obligations/declaration-accessibilite/
+Exemple de déclaration: https://www.service-public.gouv.fr/P10000
+Mentions obligatoires: https://accessibilite.numerique.gouv.fr/obligations/mentions-et-pages-obligatoires/
+European accessibility act: https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en?prefLang=fr
+Eaa pour la France: https://handicap.gouv.fr/28-juin-2025-une-avancee-decisive-pour-laccessibilite-des-produits-et-des-services-en-europe
+
+== Les handicaps: Présentation
+
+20% des français
+Moteur
+Visuel
+Auditif
+Intellectuel
+Cognitif
+Psychique
+Viellesse
+Trouble de santé invalidant
+Poly-handicap !
+
+== Les handicaps: Principes WCAG
+
+Perceptible: Tous les utilisateurs peuvent percevoir les infos importantes
+Utilisable: Tous les utilisateurs peuvent interragir avec le site
+Compréhensible: Tous les utilisateurs peuvent comprendre les infos importantes et comment interragir avec le site
+Robuste: Le site est utilisable avec une variété de technologie d'assistance
+4 principes --> 13 thèmes
+
+== Les handicaps: Approfondir
+
+Les principes: https://www.w3.org/WAI/standards-guidelines/wcag/fr
+Modèles conformes du dsfr: https://www.systeme-de-design.gouv.fr/version-courante/fr/modeles
+Adapter un site aux troubles mentaux (2023): https://dircom.pasdecalais.fr/a11y/dys/#D1
+L'impacts des handicaps sur la navigation web: https://disic.github.io/guide-impacts_utilisateurs/personnes.html
+
+== L'audit: Qui intervient pour l'accessibilité
+
+Concepteur / moa: Développer des design respectant le rgaa avec le client
+Developpeur: Appliquer les design et les corrections
+Testeur / auditeur interne: Auditer afin de vérifier si le RGAA est bien respecté
+auditeur externe: Auditer afin d'établir la déclaration d'accessibilité
+
+== L'audit: Les documents
+
+Rapport d'audit
+Grille d'audit
+Déclaration d'accessibilité (Si auditeur externe)
+
+== L'audit: Les thèmes
+
+Correspondent à des objets html dans la page web
+Images
+Cadres
+Couleurs
+Multimédia
+Tableaux
+Liens
+Scripts
+Eléments obligatoires
+Structuration
+Présentation
+Formulaires
+Navigation
+Consultation
+
+== L'audit: Les pages
+
+Echantillon de 10 à 20 pages
+Pages obligatoires: Accueil, authentification, contact, mentions légales, accessibilité, plan du site, aide
+Pages représentatives des fonctionnalités du site. Ex: Un article de blog, la liste des articles, fourre-tout
+Les étapes d'un processus en plusieurs pages. Ex: Les pages pour faire un achat
+10% de pages choisies au hasard
+Attention au nombre de visiteur par page
+
+== L'audit: L'environnement de test
+
+Les technologies employées par les utilisateurs
+Quels os: Windows ? Linux ? Mac ?
+Quels os mobiles: Android ? Ios ?
+Quels navigateurs: Firefox ? Chrome ? Edge ?
+Quels lecteurs d'écran: Nvda ? Talkback ?
+Quels logiciels de commande vocale: Voice acces ?
+Etc
+
+== L'audit: Les outils
+
+Logiciels, extensions destinés à l'audit
+Constraste:	Cca	https://developer.paciellogroup.com/color-contrast-checker/
+Clignotement:	Peat	http://trace.umd.edu/peat/
+Validateur html:	Mvs	https://validator.w3.org/
+Pdf:	Pac	https://pac.pdf-accessibility.org/en
+Etc
+
+== L'audit: Le fichier xlsx
+
+Echantillon: Les pages
+Synthèse: La note
+PX: Grille de la page X
+Critères et base de calcul: Nécessaire pour le fonctionnement du fichier. On y touche pas
+
+== L'audit: La grille
+
+Critère
+Statut: Conformité du critère sur la page
+Modifications à apporter:
+	Où est la non conformité
+	Sa Description
+	Une solution
+Dérogation: La non-conformité est-elle sous dérogation
+Commentaires en cas de dérogation: Pourquoi la non-conformité est-elle sous dérogation
+
+--> Diapo de la grille
+
+== L'audit: La note finale
+
+Donnée % critères respectés
+100%: Site Totalement conforme
+>= 50%: Site partiellement conforme
+< 50%: Site non conforme
+
+== L'audit: Approfondir et se mettre à jour
+
+Présentation des critères: https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
+Grille pour les sites web: https://github.com/DISIC/RGAA/blob/master/v4.1/Documents/rgaa4.1.modele-de-grille-d-audit_40p_v1.xlsx
+Réferentiel pour les applications mobiles: https://disic.github.io/rgaa-apps/
+Grille pour les applications mobiles: https://disic.github.io/rgaa-apps/rgaa_apps-grille-de-test-full.ods
+
+== Les éqivalents au rgaa: le Eaa, European accessibility act
+
+Accessibilité des écrans et terminaux
+En vigueur le 25/06/2025
+Ecrans sncf, e-book, etc
+référence: https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en?prefLang=fr
+en français: https://handicap.gouv.fr/28-juin-2025-une-avancee-decisive-pour-laccessibilite-des-produits-et-des-services-en-europe
+
+== Les éqivalents au rgaa: le Wcag, Web Content Accessibility Guidelines
+
+Standards d'accessibilité internationnaux qui inspirent le rgaa
+Maintenu par la wai, web accessibility initiative
+Wcag: https://www.w3.org/TR/WCAG21/
+Wai: https://www.w3.org/WAI/
+Principes: https://www.w3.org/WAI/standards-guidelines/wcag/fr
+
+== Les éqivalents au rgaa: le Rgaa-apps
+
+Règles d'accessibilité des applications mobiles
+Réferentiel: https://disic.github.io/rgaa-apps/
+Grille: https://disic.github.io/rgaa-apps/rgaa_apps-grille-de-test-full.ods
+
+== Approfondissement sur les handicaps
+
+** Visuel, aveugle
+
+-- Problèmes
+
+Organisation de la page
+Infos non-textuelle
+
+-- Outils
+
+Lecteur d'écran, gérant aussi la navigation et l'interraction avec la page
+
+** Visuel, malvoyant
+
+-- Exemples
+
+Daltonisme de plein de types différents
+Glaucome, perte de la vision à partir de la périphérie du champ de vision
+Dmla, déformation des images, opacité du centre du champ de vision
+
+-- Besoins
+
+Contrastes elevés
+Caractères agrandissables
+Ecran agrandissable par une loupe
+
+** Auditif, sourd
+
+-- Besoins
+
+Description textuelle des contenus audio. Le sous-tîtrage est trop rapide pour être pratique.
+
+** Auditif, malentendant
+
+-- Problèmes
+
+Plusieurs pistes sonores sur la page
+Mots ou infos indiscernables
+Cacophonie en arrière-plan sonore
+Effet boîte de nuit
+
+-- Besoins
+
+Idems sourds
+Simplifier les bandes-son
+
+** Moteur
+
+-- Problèmes
+
+Incapacité d'utiliser ses membres
+Mains qui tremblent
+Impossible de respecter une limite de temps
+Erreurs de saisie
+
+-- Besoins
+
+Navigation et interraction possibles uniquement via le clavier
+Navigation et interraction possibles uniquement via la souris. Beaucoup de technologies d'assistance fonctionnent comme des souris.
+Navigation et interraction par commande vocale
+Plans de site
+
+** Mental
+
+-- Exemples
+
+Dyslexie / graphie: Reconnaitre les mots, les lettres, mauvaise orthographe
+Dysphasie: Reconnaitre les mots, distinguer les sons
+Dyspraxie: Comprendre un espace, même en 2d. Carte, tableau, mouvement
+Troubles mnésique
+Tdah
+Autisme !
+
+-- Problèmes
+
+Impossible de respecter une limite de temps
+Erreurs de saisie
+Difficultés de concentration
+Difficultés à comprendre les instructions ou le contexte
+
+-- Besoins
+
+Fil d'ariane
+Prévenir d'un changement sur la page
+Prévenir d'une ouverture d'onglet
+Contrôle des éventuels minuteurs
+Annuler une action
+Tout ce qui à été vu plus haut
+
+== Abréviations
+
+Rgaa: Référentiel général d'amélioration de l'accessibilité
+Dsfr: Design system de l'état français. Exembles de blocs de codes conformes au rgaa et validés par l'état. Modèles obligatoires des sites en.gouv.fr
+Dinum: Direction interministérielle du numérique
+Disic: Direction interministérielle des systèmes d'information et de communication. Ancêtre de la dinum, qui a fait un gros travail sur le rgaa
+Eaa: European accessibility act. En vigueur le 25/06/2025
+W3c: World Wide Web Consortium
+Wai: Web accessibility initiative
+Wcag: Web Content Accessibility Guidelines
+
+== sources des images
+
+https://www.mdph08.fr/ma-mdph/definition-du-handicap
+https://shopping.mattel.com/fr-fr/pages/barbie
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ampetronic.com%2Fwhat-the-eu-accessibility-act-means-for-assistive-listening-in-2025%2F&psig=AOvVaw3vnJmJYljo_9qNh9pX6J9v&ust=1760720638292000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPjf4NSZqZADFQAAAAAdAAAAABAE
+https://www.w3.org/WAI/standards-guidelines/wcag/fr
+
+== Sources
+
+https://accessibilite.numerique.gouv.fr/ressources/references/
+Modèles conformes du dsfr: https://www.systeme-de-design.gouv.fr/version-courante/fr/modeles
+Actualités rgaa nationnales: https://design.numerique.gouv.fr/articles/tag/RGAA/
+https://disic.github.io/guide-impacts_utilisateurs/
+https://disic.github.io/guide-auditeur/
+https://disic.github.io/guide-integrateur/
+https://disic.github.io/rgaa_methodologie/
+https://disic.github.io/guide-chef_projets/2-loi.html
+https://github.com/DISIC
+https://dircom.pasdecalais.fr/a11y/dys/#D1
+https://www.cnil.fr/fr/accessibilite
+https://eur-lex.europa.eu/legal-content/EN/NIM/?uri=CELEX: 32019L0882
+https://www.w3.org/WAI/standards-guidelines/wcag/fr
+
+==
+
+Sujet: Cgi, rgaa
+Auteur: Deborah
+Lien: O
+Date: 2025/10/17
