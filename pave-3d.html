@@ -17,20 +17,16 @@ body {
 	padding-left: 4em;
 	padding-top: 4em;
 }
-matl-3d {
-	--width: 17cm;
-	--height: 11cm;
-	--depth: 13cm;
-	--radius: 3cm;
-	--bord: solid 4px var(--bord-color);
-	--fond: #F084;
-	animation: spin-x 10s infinite linear;
-}
 reste{
+	--radius: 3cm;
 	background: #0884;
 	transform: rotateX(90deg);
-	animation: spin-y 10s infinite linear;
+	animation: spin-x 10s infinite linear;
+	background-color: #F084;
 }
 </style></head><body>
-	<matl-3d> </matl-3d>
+	<octo-3d>
+		<p>bottom</p><p>top</p>
+		<p>back</p><p>back left</p><p>left</p><p>front left</p><p>front</p><p>front right</p><p>right</p><p>back right</p>
+	</octo-3d>
 </body></html>
