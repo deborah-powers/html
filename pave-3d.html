@@ -9,6 +9,7 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
 <style type='text/css'>
 body {
@@ -16,6 +17,11 @@ body {
 	perspective-origin: 10% 100px;
 	padding-left: 4em;
 	padding-top: 4em;
+}
+tube-3d {
+	height: 8em;
+	--radius: 17em;
+	animation: spin-x 10s infinite linear;
 }
 reste{
 	--radius: 3cm;
@@ -25,8 +31,5 @@ reste{
 	background-color: #F084;
 }
 </style></head><body>
-	<octo-3d>
-		<p>bottom</p><p>top</p>
-		<p>back</p><p>back left</p><p>left</p><p>front left</p><p>front</p><p>front right</p><p>right</p><p>back right</p>
-	</octo-3d>
+	<tube-3d class='mesure'></tube-3d>
 </body></html>
