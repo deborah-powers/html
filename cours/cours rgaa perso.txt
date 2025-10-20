@@ -262,7 +262,8 @@ Ou un texte explique le changement.
 ** Message d'alerte
 
 https://developer.mozilla.org/fr/docs/web/accessibility/aria/guides/live_regions
-Aria-live = off, assertive, polite ou role = xxx. Actuellement, il est recommander de doubler les rôles avec aria-live.
+le rôle est l'idéal. Actuellement, il est recommander de le doubler avec aria-live.
+Aria-live = off, assertive, polite ou role = xxx.
 https://access42.net/live-regions-aria-live-analogues-alert-log-status/
 
 -- Quelques rôles
@@ -1158,7 +1159,7 @@ file:///C:/Users/Deborah.Powers/appdata/local/accessconfig-1
 == Structure du document html
 
 Rgaa 8
-file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d82
+file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#D82
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 

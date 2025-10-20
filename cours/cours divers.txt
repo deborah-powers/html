@@ -133,6 +133,12 @@ Chrome://settings/clearbrowserdata
 Période: Toutes les données (de préférence)
 Cocher les types de données à supprimer
 
+== désactiver js dans firefox
+
+about:config
+javascript.enabled
+false - true
+
 ============ Accéder aux json
 
 ************ dans edge
