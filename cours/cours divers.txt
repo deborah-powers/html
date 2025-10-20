@@ -62,7 +62,10 @@ class AddDateCommand (sublime_plugin.TextCommand):
 
 la commande add_date et la classe AddDateCommand ont obligatoirement des noms similaires.
 
+== excel
 
+=LIEN_HYPERTEXTE(P6&"927238";"DSCI")
+=DATE(ANNEE(A2);MOIS(A2);JOUR(A2)+1)
 
 ============ Wamp
 

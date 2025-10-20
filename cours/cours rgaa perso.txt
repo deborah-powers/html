@@ -486,6 +486,10 @@ https://www.alsacreations.com/astuce/lire/1834-le-coup-de-pouce-accessibilite-de
 
 ** Les liens
 
+nom accessible décrivant la destination et le but du lien. le texte peut servir de nom accessible.
+au sein d'un texte, le lien est facile à repérer (soulignage, etc).
+trois types de lien: texte, image, composite.
+
 Rgaa 6
 file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#d193
 Lien texte, image et composite.
