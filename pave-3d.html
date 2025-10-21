@@ -18,20 +18,35 @@ body {
 	padding-left: 4em;
 	padding-top: 4em;
 }
-boul-3d {
-	--radius: 12em;
-	animation: spin-x 10s infinite linear;
+@keyframes allonge {
+	from { height: 12em; }
+	to { height: 20em; }
+	0% { --radius: 1em; }
+	10% { --radius: 1.5em; }
+	20% { --radius: 2em; }
+	30% { --radius: 2.5em; }
+	40% { --radius: 3em; }
+	50% { --radius: 3.5em; }
+	60% { --radius: 4em; }
+	70% { --radius: 4.5em; }
+	80% { --radius: 5em; }
+	90% { --radius: 5.5em; }
+	100% { --radius: 6em; }
+}
+caps-3d {
+	--radius: 3em;
 	--fond: #08F4;
+	height: 12em;
 }
 reste{
 	--radius: 3cm;
 	--fond: F084;
 	--bord: solid 4px maroon;
+	border: solid 4px maroon;
 	background: #0884;
 	transform: rotateX(90deg);
 	animation: spin-x 10s infinite linear;
-	background-color: #F084;
 }
 </style></head><body>
-	<boul-3d class=''></boul-3d>
+	<caps-3d class=''></caps-3d>
 </body></html>

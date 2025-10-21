@@ -611,7 +611,7 @@ Pour une page de recherche, rappeler le terme recherché, permettre de limiter l
 
 ** La langue
 
-L'attribut lang est nécessaire pour les lecteurs d'écran. < html lang='fr' ou xml: Lang='fr-fr'> valeurs iso.
+L'attribut lang est nécessaire pour les lecteurs d'écran. < html lang='fr' ou xml:lang='fr-fr'> valeurs iso.
 Si j'ai un bloc dans une autre langue, < div lang='fr'>. Selon la règle, les mots isolés doivent être lit dans un < span lang='fr'>. En pratique que ce passe-t-il si la synthèse vocale le lit en français ?
 Les noms ne nécessitent pas de changement de langue, ainsi que les mots présents dans le dictionnaire de l'académie française.
 Repérer les mots en langue étrangère: Utiliser un outil de grammaire, comme grammalecte.
