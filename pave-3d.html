@@ -33,10 +33,13 @@ body {
 	90% { --radius: 5.5em; }
 	100% { --radius: 6em; }
 }
-caps-3d {
-	--radius: 3em;
+chfr-3d, matl-3d {
+	--radius: 2em;
+	--depth: 11em;
 	--fond: #08F4;
+	width: 13em;
 	height: 12em;
+	animation: spin-x 10s infinite linear;
 }
 reste{
 	--radius: 3cm;
@@ -48,5 +51,6 @@ reste{
 	animation: spin-x 10s infinite linear;
 }
 </style></head><body>
-	<caps-3d class=''></caps-3d>
+	<chfr-3d class=''><p>bottom</p><p>top</p><p>back</p><p>left</p><p>right</p><p>front</p></chfr-3d>
+	<matl-3d class=''><p>bottom</p><p>top</p><p>back</p><p>left</p><p>right</p><p>front</p></matl-3d>
 </body></html>

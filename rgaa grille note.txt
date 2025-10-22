@@ -1,8 +1,6 @@
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
 file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#D1
-
 == abréviations
-
 hcp: hors cas particuliers
 pc: pour chaque
 dc: dans chaque
@@ -11,7 +9,6 @@ nt: non testé
 na: non applicable
 nc: non conforme
 c: conforme
-
 == 01 images
 les images dans des liens ou des boutons ne sont pas auditées ici.
 Balises img, svg, input[type='image'], object, canvas, area, embed ou div[role='img']
@@ -73,25 +70,25 @@ https://en.wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_
 09.04	q, blockquote
 == 10 présentation
 10.06	contraste 3:1 par rapport au texte autour. survol: changement autre que couleur
-10.08	les contenus cachés ont-ils vocation à être ignorés par les technologies d'assistance ?
-10.09	l'information ne doit pas être donnée uniquement par la forme, taille ou position. cette règle est-elle respectée ?
-10.10	l'information ne doit pas être donnée par la forme, taille ou position uniquement. cette règle est-elle implémentée de façon pertinente ?
-10.11	les contenus peuvent-ils être présentés sans avoir recours à la fois à un défilement vertical pour une fenêtre ayant une hauteur de 256px ou à un défilement horizontal pour une fenêtre ayant une largeur de 320px hcp ?
-10.12	les propriétés d'espacement du texte peuvent-elles être redéfinies par l'utilisateur sans perte de contenu ou de fonctionnalité hcp ?
-10.13	les contenus additionnels apparaissant à la prise de focus ou au survol d'un composant d'interface sont-ils contrôlables par l'utilisateur hcp ?
-10.014	les contenus additionnels apparaissant via les styles css uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ?
+10.08	display, visibility, hidden, aria-hidden, sr-only
+10.10	vérifier la pertinence de l'alternative et son accessibilité
+10.12	p {
+	margin-bottom: 2em;
+	line-height: 1.5em;
+	word-spacing: 0.16em;
+	letter-spacing: 0.12em;
+}
+10.13	pas besoin de bouger la souris pour fermer l'info-bulle. title est exempté
+10.14	focus, y compris sur le déclencheur
 == 11 formulaires
-11.01	chaque champ de formulaire a-t-il une étiquette ?
-11.02	chaque étiquette associée à un champ de formulaire est-elle pertinente hcp ?
-11.03	dc formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répété plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ?
-11.04	dc formulaire, chaque étiquette de champ et son champ associé sont-ils accolés hcp ?
-11.05	dc formulaire, les champs de même nature sont-ils regroupés, si nécessaire ?
-11.06	dc formulaire, chaque regroupement de champs de même nature a-t-il une légende ?
-11.07	dc formulaire, chaque légende associée à un regroupement de champs de même nature est-elle pertinente ?
-11.08	dc formulaire, les items de même nature d'une liste de choix sont-ils regroupées de manière pertinente ?
-11.09	dc formulaire, l'intitulé de chaque bouton est-il pertinent hcp ?
-11.10	dc formulaire, le contrôle de saisie est-il utilisé de manière pertinente hcp ?
-11.11	dc formulaire, le contrôle de saisie est-il accompagné, si nécessaire, de suggestions facilitant la correction des erreurs de saisie ?
+11.01	label[for], aria-labelledby, aria-label, title, bouton + label[for] en sr-only
+11.03	utilisateur comprend qu'il doit saisir les même infos entre les pages. validation sg
+11.04	ltr. étiquette en haut à gauche. en bas à droite pour les coches (radio, checkbox, switch)
+11.05	fieldset, [role=group], [role=radiogroup]
+11.06	legend, label aria
+11.08	optgroup[label]
+11.10	aria-required=true, required, aria-invalid=true, erreur, format
+11.11	cas d'erreur
 11.12	pc formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l'utilisateur ?
 11.13	la finalité d'un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l'utilisateur ?
 == 12 navigation
