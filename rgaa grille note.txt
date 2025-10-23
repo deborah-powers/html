@@ -1,118 +1,142 @@
 https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/
-file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#D1
-== abréviations
-hcp: hors cas particuliers
-pc: pour chaque
-dc: dans chaque
-pw: page web
-nt: non testé
-na: non applicable
-nc: non conforme
-c: conforme
+file:///C:\Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html#D1
+
+== Abréviations
+
+Nt: Non testé
+Na: Non applicable
+Nc: Non conforme
+C: Conforme
+
 == 01 images
-les images dans des liens ou des boutons ne sont pas auditées ici.
-Balises img, svg, input[type='image'], object, canvas, area, embed ou div[role='img']
+
+Les images dans des liens ou des boutons ne sont pas auditées ici.
+Balises img, svg, input[Type='image'], object, canvas, area, embed ou div[Role='img']
 01.02	aria-hidden='true', hidden
 01.06	div qui contient la description, bouton ou lien vers une page de description, accordéon à déplier, etc.
-01.08	div[role='img']
+01.08	div[Role='img']
 01.09	figure role='group / figure' aria-label='reprend la caption'
+
 == 02 cadres
+
 02.01	title='truc muche'
+
 == 03 couleurs
+
 03.01	title, icone, typographie, position
-03.02	color contrast analyser
+03.02	color contrast analyser. Penser à outline-color, outline et au focus
+
 == 04 multimédia
-publi avant 2023/09/23 exemptés
-exception déco (aria-hidden), capcha, alternative, test
+
+Publi avant 2023/09/23 exemptés
+Exception déco (Aria-hidden), capcha, alternative, test
 04.01	div qui contient la description, lien vers une page de description, etc.
-04.03	track[kind='captions']. track pas obligatoirement présent
+04.03	track[Kind='captions']. Track pas obligatoirement présent
 04.07	tître visible accolé
 04.08	lien ou bouton vers l'aternative
-04.10	chaque son déclenché automatiquement est-il contrôlable par l'utilisateur ?
-object, video, audio, embed, bgsound, js
+04.10	object, video, audio, embed, bgsound, js
 >=3sec ou bouton pour couper ou régler le son
 04.11	lecture, pause, stop, masquage des sous-tîtres, audio-description
 04.13	vérifier le code js
+
 == 05 tableaux
-role='presentation / none'
-05.01	caption, aria-describedby. vieux html: summary
-05.03	désactiver le css, utiliser un lecteur d'écran. tabulation
+
+Role='presentation / none'
+05.01	caption, aria-describedby. Vieux html: Summary
+05.03	désactiver le css, utiliser un lecteur d'écran. Tabulation
 05.04	caption, labels, title
-05.06	th ou roles: columnheader, rowheader
+05.06	th ou roles: Columnheader, rowheader
 05.07	<th scope='row / col' id='head-xyz'><td headers='head-def head-ijk head-xyz'>
-05.08	role='presentation / none'. th, thead, tfoot, caption, [scope], [headers], [colgroup], [axis], [role='rowheader'], [role='columnheader']
+05.08	role='presentation / none'. Th, thead, tfoot, caption, [Scope], [Headers], [Colgroup], [Axis], [Role='rowheader'], [Role='columnheader']
+
 == 06 liens
-06.01	fonction et destination. nom accessible et contexte
-06.02	labelledby > label > texte > title. texte vaut pour les images (alt, nom accessible)
+
+06.01	fonction et destination. Nom accessible et contexte
+06.02	labelledby > label > texte > title. Texte vaut pour les images (Alt, nom accessible)
+
 == 07 scripts
+
 07.01	nom accessible, sémentique - role, alternative accessible
 07.02	noscript, js désactivé, langage serveur
-désactiver js dans firefox: about:config / javascript.enabled / false - true
-maj par js --> maj alternative par js
+Désactiver js dans firefox: About: Config / javascript.enabled / false - true
+Maj par js --> maj alternative par js
 07.04	bouton ou lien explicite, message prévenant du changement
 07.05	roles alert, status, log, progressbar
+
 == 08 éléments obligatoires
+
 08.01	conforme automatiquement
 08.02	conforme automatiquement
-08.03	html[lang='fr-FR'], xhtml.1.0.text[xml:lang='fr-FR'][lang='fr-FR'], xhtml.1.1[xml:lang='fr-FR'], xhtml.appli[xml:lang='fr-FR'], balise[lang='fr-FR']
+08.03	html[Lang='fr-FR'], xhtml.1.0.text[Xml: Lang='fr-FR'][Lang='fr-FR'], xhtml.1.1[Xml: Lang='fr-FR'], xhtml.appli[Xml: Lang='fr-FR'], balise[Lang='fr-FR']
 08.04	fr-Fr
 https://r12a.github.io/app-subtags/
 https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 https://en.wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags
-08.07	span[lang='fr-Fr']
+08.07	span[Lang='fr-Fr']
 08.08	dico académie française, https://www.dictionnaire-academie.fr/
 08.09	role presentation
 08.10	dir='ltr', rtl
+
 == 09 structuration
+
 09.01	hx, <role='heading' aria-level='1'>
-09.02	main[role='main'], nav[role='navigation'], header[role='banner'], footer[role='contentinfo'], <input type='text' role='search' name='barre de recherche' />
+09.02	main[Role='main'], nav[Role='navigation'], header[Role='banner'], footer[Role='contentinfo'], <input type='text' role='search' name='barre de recherche' />
 09.03	ul, li, roles list et listitem
 09.04	q, blockquote
+
 == 10 présentation
-10.06	contraste 3:1 par rapport au texte autour. survol: changement autre que couleur
+
+10.06	contraste 3: 1 par rapport au texte autour. Survol: Changement autre que couleur
 10.08	display, visibility, hidden, aria-hidden, sr-only
 10.10	vérifier la pertinence de l'alternative et son accessibilité
 10.12	p {
-	margin-bottom: 2em;
-	line-height: 1.5em;
-	word-spacing: 0.16em;
-	letter-spacing: 0.12em;
+	Margin-bottom: 2em;
+	Line-height: 1.5em;
+	Word-spacing: 0.16em;
+	Letter-spacing: 0.12em;
 }
-10.13	pas besoin de bouger la souris pour fermer l'info-bulle. title est exempté
+10.13	pas besoin de bouger la souris pour fermer l'info-bulle. Title est exempté
 10.14	focus, y compris sur le déclencheur
+
 == 11 formulaires
-11.01	label[for], aria-labelledby, aria-label, title, bouton + label[for] en sr-only
-11.03	utilisateur comprend qu'il doit saisir les même infos entre les pages. validation sg
-11.04	ltr. étiquette en haut à gauche. en bas à droite pour les coches (radio, checkbox, switch)
-11.05	fieldset, [role=group], [role=radiogroup]
+
+11.01	label[For], aria-labelledby, aria-label, title, bouton + label[For] en sr-only
+11.03	utilisateur comprend qu'il doit saisir les même infos entre les pages. Validation sg
+11.04	ltr. Etiquette en haut à gauche. En bas à droite pour les coches (Radio, checkbox, switch)
+11.05	fieldset, [Role=group], [Role=radiogroup]
 11.06	legend, label aria
-11.08	optgroup[label]
+11.08	optgroup[Label]
 11.10	aria-required=true, required, aria-invalid=true, erreur, format
 11.11	cas d'erreur
-11.12	pc formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l'utilisateur ?
-11.13	la finalité d'un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l'utilisateur ?
+11.12	modification, vérification, conformation, récupération
+11.13	autocomplete
+
 == 12 navigation
-12.01	chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins hcp ?
-12.02	dc ensemble de pages, le menu et les barres de navigation sont-ils toujours à la même place hcp ?
-12.03	la page "plan du site" est-elle pertinente ?
-12.04	dc ensemble de pages, la page "plan du site" est-elle atteignable de manière identique ?
-12.05	dc ensemble de pages, le moteur de recherche est-il atteignable de manière identique ?
-12.06	les zones de regroupement de contenus présentes dans plusieurs pages web (zones d'en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées ?
-12.07	un lien d'évitement ou d'accès rapide à la zone de contenu principal est-il présent hcp ?
-12.08	l'ordre de tabulation est-il cohérent ?
-12.09	la navigation ne doit pas contenir de piège au clavier. cette règle est-elle respectée ?
-12.10	les raccourcis clavier n'utilisant qu'une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l'utilisateur ?
-12.11	les contenus additionnels apparaissant au survol, à la prise de focus ou à l'activation d'un composant d'interface sont-ils si nécessaire atteignables au clavier ?
+
+12.01	page plan, barre de recherche, menu (Barre)
+12.06	landmark explicite, tître, bouton de masquage, lien d'évitement ou d'accès rapide. Position standard dans le site
+12.07	lien d'évitement ou d'accès rapide
+12.08	attention aux scripts modifiant la page
+12.09	prévenir si particularité
+12.10	désactivation, configuration. Activation en cas de focus
+
 == 13 consultation
-13.01	l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu hcp ?
-13.02	l'ouverture d'une nouvelle fenêtre ne doit pas être déclenchée sans action de l'utilisateur. cette règle est-elle respectée ?
-13.03	chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible hcp ?
-13.04	pc document bureautique ayant une version accessible, cette version offre-t-elle la même information ?
-13.05	chaque contenu cryptique (art ascii, émoticon, syntaxe cryptique) a-t-il une alternative ?
-13.06	pc contenu cryptique (art ascii, émoticon, syntaxe cryptique) ayant une alternative, cette alternative est-elle pertinente ?
-13.07	les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés ?
-13.08	chaque contenu en mouvement ou clignotant est-il contrôlable par l'utilisateur ?
-13.09	le contenu proposé est-il consultable quelle que soit l'orientation de l'écran (portait ou paysage) hcp ?
-13.10	les fonctionnalités utilisables ou disponibles au moyen d'un geste complexe peuvent-elles être également disponibles au moyen d'un geste simple hcp ?
-13.11	les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran peuvent-elles faire l'objet d'une annulation hcp ?
-13.12	les fonctionnalités qui impliquent un mouvement de l'appareil ou vers l'appareil peuvent-elles être satisfaites de manière alternative hcp ?
+
+13.01	rafraîchissement, redirection, ajax. Pause et stop, ralentir x10 avec 20s de délais, 20h
+<meta http-equiv='refresh'...> redirection immédiate
+Balises object, embed, svg, canvas, redirection par meta ou script
+13.02	surtout au chargement de la page
+13.03	2018/09/23
+13.05	role img, [Title], description, abbr
+13.07	peat. Balises object, embed, svg, canvas, video, img, js et css !
+>=3 flash / sec ou - 21824 px
+Outil capture d'écran
+Capture vidéo, mp4 imposé
+Cavi ma-video
+Ou
+Ffmpeg -i file:///C:\Users\Deborah.Powers\Desktop\ma-video.mp4 -an -vcodec rawvideo -y -r 25 file:///C:\Users\Deborah.Powers\Desktop\ma-video.avi
+13.08	>=5s ou contrôlable et masquable en conservant toute l'info
+13.09	si orientation nécessaire pour la fonction, alternative
+13.10	boutons. Multipoint, trajectoire. Pas pour les signatures ou geste essentiels (Alternative intéressante).
+13.11	relâchement de la souris. L'action commence à l'appuis et s'arrête au relâchement. Méchanisme pour arrêter l'action avant sa fin
+13.12	désactiver la détection de mouvement. Alternative via bouton, lien, saisie, etc

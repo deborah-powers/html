@@ -560,6 +560,11 @@ file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html
 Pdf et autres.
 Un document doit être accessible, ou avoir une alternative accessible.
 Vérifier en rescençant les moyens de télécharger des documents.
+https://support.microsoft.com/en-us/office/accessibility-tools-for-microsoft-365-b5087b20-1387-4686-a0a5-8e11c5f46cdf
+https://support.microsoft.com/en-us/office/accessibility-tools-for-word-5fa2c21f-0ef4-4d4a-ae2d-451fb7003518
+windows office: mon doc / révisions / vérifier l'accessibilité / vérifier l'accessibilité
+
+-- les pdf
 https://accessibilite.public.lu/fr/rapdf1/index.html (Accessibilité des pdf)
 https://pac.pdf-accessibility.org/en/download (Pdf ch accessibility checker)
 Le doc doit avoir un tître et des balises.
@@ -592,7 +597,7 @@ file:///C:/Users/Deborah.Powers/appdata/local/peat
 file:///C:/Users/Deborah.Powers/appdata/local/ffmpeg/bin
 Faire une capture vidéo de la page de 10 secondes. Format mp4 imposé.
 Convertion en ligne de commande via ffmpeg
-Code: Ffmpeg -i file:///C:\ /users/Deborah.Powers/Desktop/video.mp4 -an -vcodec rawvideo -y -r 25 file:///C:\ /users/Deborah.Powers/Desktop/video.avi
+Code: ffmpeg -i C:\users\deborah.powers\Desktop\video.mp4 -an -vcodec rawvideo -y -r 25 C:\users\deborah.powers\Desktop\video.avi
 Ouvrir un fichier sous peat
 Analysis / analyse video
 Télécharger ou visionner le rapport de peat via file /...
