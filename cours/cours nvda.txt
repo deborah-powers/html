@@ -1,0 +1,22 @@
+
+ctl F11: revenir en haut de la page
+ctl F12: aller en bas de la page
+ctl flèche vers le bas: lire la ligne en-dessous
+maj q: fermer nvda
+l: naviguer de liste en liste
+h: naviguer de tître en tître
+p: naviguer entre les paragraphes
+,: sortir d'une liste ou d'une table
+shift ,: revenir au début d'une liste ou d'une table
+
+== sources
+
+https://download.nvaccess.org/releases/2021.2/documentation/keyCommands.html
+https://www.reddit.com/r/Blind/comments/1fo19pz/nvda_question_top_and_bottom_of_pages/?rdt=62465#:~:text=Control%20%2B%20home%20key%20to%20bring,NVDA%20key%20%2B%20the%20space%20bar
+https://www.unimelb.edu.au/accessibility/tools/testing-web-pages-with-nvda#:~:text=Browse%20mode%20v.-,Focus%20mode,focus%20to%20the%20next%20heading
+
+==
+
+Sujet:	rgaa, Programmation, outil
+Auteur:	nvaccess
+Lien:	https://download.nvaccess.org/releases/2021.2/documentation/keyCommands.html
