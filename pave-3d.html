@@ -15,8 +15,8 @@
 body {
 	perspective: 800px;
 	perspective-origin: 10% 100px;
-	padding-left: 4em;
-	padding-top: 4em;
+	padding-left: 6em;
+	padding-top: 6em;
 }
 @keyframes allonge {
 	from { height: 12em; }
@@ -37,29 +37,28 @@ body {
 	from { transform: rotateY(90deg) rotateX(0); }
 	to { transform: rotateY(90deg) rotateX(-360deg); }
 }
-matl-3d {
-	--radius: 4em;
-	--depth: 12em;
+caps-3d, cyld-3d, pave-3d {
+	--radius: 5em;
+	--depth: 18em;
 	--fond: #08F4;
-	width: 23em;
-	height: 17em;
+	--width: 14em;
+	height: 16em;
+	--bord: solid 4px maroon;
 	animation: spin-x 10s infinite linear;
 }
 reste{
-	--radius: 3cm;
+	--radius: 2cm;
 	--fond: F084;
 	--bord: solid 4px maroon;
 	border: solid 4px maroon;
 	background: #0884;
+	transform: rotateY(260deg) rotateZ(78deg);
 	transform: rotateX(90deg);
 	transform: rotateY(75deg) rotateZ(20deg);
 	animation: spin-x 10s infinite linear;
 	animation: spin-test 10s infinite linear;
 }
 </style></head><body>
-	<section class='accordeon'>
-		<h3><button aria-controls='depliable' aria-expanded='false'>tître de l'accordéon</button></h3>
-		<div id='depliable'><p>je suis le contenu</p></div>
-	</section>
-	<matl-3d class='mesure'><p>bottom</p><p>top</p><p>back</p><p>left</p><p>right</p><p>front</p></matl-3d>
+	<pave-3d> </pave-3d>
+	<cyld-3d class=''> </cyld-3d>
 </body></html>
