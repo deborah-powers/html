@@ -37,28 +37,23 @@ body {
 	from { transform: rotateY(90deg) rotateX(0); }
 	to { transform: rotateY(90deg) rotateX(-360deg); }
 }
-caps-3d, cyld-3d, pave-3d {
-	--radius: 5em;
-	--depth: 18em;
-	--fond: #08F4;
-	--width: 14em;
-	height: 16em;
+cone-3d {
+	--fond: #8844;
 	--bord: solid 4px maroon;
+	--radius: 23em;
 	animation: spin-x 10s infinite linear;
 }
 reste{
 	--radius: 2cm;
 	--fond: F084;
 	--bord: solid 4px maroon;
+	--depth: 19em;
 	border: solid 4px maroon;
 	background: #0884;
 	transform: rotateY(260deg) rotateZ(78deg);
 	transform: rotateX(90deg);
 	transform: rotateY(75deg) rotateZ(20deg);
-	animation: spin-x 10s infinite linear;
+	animation: spin-y 10s infinite linear;
 	animation: spin-test 10s infinite linear;
 }
-</style></head><body>
-	<pave-3d> </pave-3d>
-	<cyld-3d class=''> </cyld-3d>
-</body></html>
+</style></head><body></body></html>
