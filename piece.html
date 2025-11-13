@@ -1,63 +1,37 @@
 <!DOCTYPE html><html><head>
-<title>une pièce de la maison</title>
-<base target='_blank'/>
-<meta charset='utf-8'/>
-<meta name='viewport' content='width=device-width, initial-scale=1'/>
-<meta name='subject' content='loisir, maison de poupée'/>
-<meta name='author' content='deborah'/>
-<meta name='link' content='o'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece.css'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave.css'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/cylindre.css'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/boule.css'/>
-<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble.css'/>
-<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/piece.js'></script>
+	<title>une pièce de la maison</title>
+	<base target='_blank'/>
+	<meta charset='utf-8'/>
+	<meta name='viewport' content='width=device-width, initial-scale=1'/>
+	<meta name='subject' content='loisir'/>
+	<meta name='author' content='deborah'/>
+	<meta name='link' content='o'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
+	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
-piece {
-	animation-name: spin-room-horizontal;
-	--plafond: transparent;
+piece-3d > p {
+	background-color: orangered;
+	width: 30%;
 }
-bol { --width: 2cm; }
-/*
-	animation: spin-horizontal 8s infinite alternate;
-	animation: spin-vertical 8s infinite alternate;
-	transform: rotateX(90deg);
-*/
+cone-3d {
+	--radius: 2em;
+	--fond: green;
+}
+piece-3d {
+	animation: spin-y 10s infinite linear;
+}
 </style></head><body>
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-<piece class='rayure'>
-	<div><fenetre></fenetre></div>
-	<div>sol</div>
-	<div>toit</div>
-	<div class='fenetre'>gauche</div>
-	<div>droit</div>
-	<fenetre class='gauche'></fenetre>
-	<pave class='poteau table'>
-		<p>top</p>
-		<p>bottom</p>
-		<p>back</p>
-		<p>left</p>
-		<p>right</p>
-		<p>front</p>
-	</pave>
-	<bol><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-	</bol>
-</piece>
+	<piece-3d>
+		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
+		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
+	</piece-3d>
 </body></html>
