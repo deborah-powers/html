@@ -17,19 +17,21 @@ body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 }
+cone-3d {
+	--radius: 8em;
+	--fond: #8088;
+	animation: spin-z 10s infinite linear;
+}
 piece-3d > p {
 	background-color: orangered;
 	width: 30%;
 }
-cone-3d {
-	--radius: 2em;
-	--fond: green;
-}
-piece-3d {
-	animation: spin-y 10s infinite linear;
-}
+piece-3d { animation: spin-y 10s infinite linear; }
+
 </style></head><body>
+<!--
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
+-->
 	<piece-3d>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
