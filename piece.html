@@ -12,6 +12,7 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
+<style type='text/css'><![CDATA[ polygon { fill: blue; } ]]></style>
 <style type='text/css'>
 body {
 	perspective: 800px;
@@ -19,33 +20,22 @@ body {
 }
 cone-3d {
 	--radius: 8em;
-	--fond: #8088;
+	--fond: #808;
 	animation: spin-z 10s infinite linear;
 }
 piece-3d > p {
 	background-color: orangered;
 	width: 30%;
 }
-piece-3d { animation: spin-y 10s infinite linear; }
-polygon {
-	fill: blue;
-	stroke: marron;
-	stroke-width: 2px;
+piece-3d {
+	animation: spin-y 10s infinite linear;
+	--motif-color: red;
 }
-div {
-	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><polygon points='5,0 10,5 5,10 0,5' fill='wheat' /><polygon points='25,20 30,25 25,30 20,25' fill='wheat' /></svg>");
-	background-color: darkred;
-	height: 10em;
-	background-repeat: repeat;
-}
-
 </style></head><body>
 <!--
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
 -->
-<div></div>
-<svg version='1.1' width='400' height='300'><polygon points='10,0 20,10 10,20 0,10' /></svg>
-	<piece-3d class='semi-losange carrelage-cabochon'>
+	<piece-3d class='semi-losange plancher'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
 	</piece-3d>
