@@ -11,32 +11,28 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-3d.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble-3d.css'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
 <style type='text/css'><![CDATA[ polygon { fill: blue; } ]]></style>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
+	padding-left: 8em;
 }
-cone-3d {
-	--radius: 8em;
-	--fond: #808;
-	animation: spin-z 10s infinite linear;
-}
-piece-3d > p {
-	background-color: orangered;
-	width: 30%;
-}
-piece-3d {
-	animation: spin-y 10s infinite linear;
-	--motif-color: red;
+body > piedrd-3d, body > piedcr-3d, table-3d {
+	width: 20em;
+	animation: spin-x 10s infinite linear;
 }
 </style></head><body>
+	<piedcr-3d></piedcr-3d>
+	<piedrd-3d></piedrd-3d>
+	<table-3d></table-3d>
 <!--
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
--->
 	<piece-3d class='semi-losange plancher'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
 	</piece-3d>
+-->
 </body></html>
