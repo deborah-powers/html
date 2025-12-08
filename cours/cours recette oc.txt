@@ -1,0 +1,70 @@
+== Le rôle de la testeuse
+
+Me baser sur les specs
+Le plan de test recense l'approche, le planning et les ressources attribuées aux tests.
+Les user stories précisent les critères d'acceptation. Ils définissent le niveau de qualité attendu, le minimum de ce que le logiciel doit faire.
+
+** Les principes
+
+Vérifier la conformité de l'appli aux specs
+Valider sa fonctionnalité par rapport au besoin des utilisateurs
+Explorer les éléments inplicites non écris dans les specs. Absence de bugs, performance, robustesse
+
+** Plusieurs activités possibles
+
+Testeuse presse-bouton, le basique
+Lead qa, piloter les tests
+Automatisation des tests
+Conception et encadrement des développeurs
+Faire des tests de performance
+Suivre les ano
+Qa: Quality assurance
+
+== Les types de tests
+
+Istqb: Internationnal software testing qualification board
+
+** Les objectifs du test
+
+Assurer la conformité aux specs de l'appli
+Evaluer sa qualité
+Prévenir les bugs en les identifiant tôt, ce qui coûte peut cher
+Un bon niveau de qualité rassure le client, qui reste
+
+** Les limites du test
+
+Tester au plus tôt
+Impossible de faire une couverture de test à 100% exhaustive
+Les tests ne garantissent pas l'absence de bugs. L'absence d'erreur est une illusion
+Les anomalies sont souvent regroupées
+Varier les tests sur chaque fonction. Paradoxe du pesticide
+Le contexte joue sur le protocole de test
+
+== Les niveaux de tests
+
+** Les niveaux de tests
+
+T unitaire: Effectués par le développeur, à l'échelle de la fonction
+T d'intégration: Effectués par le développeur ou le testeur, afin de vérifier l'interraction entre les composant de l'appli
+T système: Effectués par le testeur afin de vérifier le fonctionnement de l'appli terminée
+T d'acceptation: Effectués par le testeur, le po et le client, afin de vérifier la conformité au besoin des utilisateurs finaux
+
+** Les types de tests
+
+Fonctionnels ou non-fonctionnels
+
+-- Non-fonctionnels
+
+Robustesse: Support des pics d'activité, d'une panne des serveurs, quand l'utilisateur perd sa connection, etc
+Performance: Vitesse de chargement d'une page
+Compatibilité: Avec les os, maintenabilité, etc
+Ergonomie: Sur ordi, smartphone ou autre condition
+Sécurité: Surtout pour les données utilisateurs
+https://openclassrooms.com/fr/courses/7365096-initiez-vous-au-test-et-a-la-qualite-logiciel/8232470-appreciez-les-qualites-du-testeur
+
+==
+
+Sujet: Travail, test, recette
+Auteur: O
+Lien: https://openclassrooms.com/fr/courses/7365096-initiez-vous-au-test-et-a-la-qualite-logiciel
+Date: 2025/12/08

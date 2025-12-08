@@ -1,0 +1,71 @@
+== suzanne
+
+bilan de test: après les tests, document décrivant mon parcours sur le site, les pages ok et les problèmes rencontrés.
+** cas de test
+part de la specification fonctionnelle.
+cahier de recette
+reprend la structure de la spec
+je peux repérer des trous de spec. ex un mauvais affichage qui reste conforme à la spec. les signaler.
+si je peux envoyer une pièce jointe ou une image, je rajoute une capture d'écran de l'ihm. si besoin, l'image est annotée.
+
+spec
+plan de test
+stratégie de recette
+non-respet de la spec = ano
+mauvais affichage conforme à la spec = trou de spec
+
+-- spec d'exemple, catalogue des formations
+
+1. aller sur l'url du catalogue, la page de connection s'affiche
+2. entrer les information de connection et valider, la page d'accueil s'affiche
+3. sur la page d'accueil, le lien du catalogue est dans le menu gauche, sous "profil"
+4. cliquer sur le lien, la page du catalogue s'affiche
+
+-- cas de tests d'exemple, cahier de recette
+
+
+1. aller sur l'url du catalogue, la page de connection s'affiche
+
+action: résultat
+aller sur l'url du catalogue: la page de connection s'affiche
+
+2. entrer les information de connection et valider, la page d'accueil s'affiche
+action: résultat
+entrer un courriel valide: le champ "courriel" est encadré en vert
+entrer un mot de passe: le mot est obscurci par des points
+
+3. sur la page d'accueil, le lien du catalogue est dans le menu gauche, sous "profil"
+4. cliquer sur le lien, la page du catalogue s'affiche
+
+
+** ex aller sur facebook
+
+faire la recette
+pages
+	feed
+	accueil
+	amis
+	moteur de recherche
+	params
+	connexion
+nouveauté à tester, formation en ligne via facebook
+specification fonctionnelle qui décris les écrans, les fonctionnalités, les chemins d'utilisateur...
+je dois tester une page, le catalogue.
+case de test
+	aller sur fb: la page de connection apparait
+	me connecter à fb: la page d'accueil apparait
+	le lien du catalogue des formation est dans le menu gauche
+	cliquer sur le lien du catalogue: la page du catalogue apparait
+
+
+== les types de tests
+
+unitaire
+https://www.atlassian.com/fr/continuous-delivery/software-testing/types-of-software-testing
+
+==
+
+Sujet: cgi, travail, test
+Auteur: cgi skillsoft et suzanne
+Lien: https://cdncontent.skillsoftcompliance.com/
+date: 2025/12/03
