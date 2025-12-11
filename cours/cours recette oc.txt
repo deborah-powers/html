@@ -60,6 +60,27 @@ Performance: Vitesse de chargement d'une page
 Compatibilité: Avec les os, maintenabilité, etc
 Ergonomie: Sur ordi, smartphone ou autre condition
 Sécurité: Surtout pour les données utilisateurs
+
+== les qualités de la testeuse
+
+** curieuse
+fait de la veille et éssaie de nouveaux outils
+pose des questions aux équipes afin de clarifier un point
+recherche la cause d'une anomalie
+** rigoureuse
+vérifie les specs, les exigeances d'entrée
+rédige des cahiers de test les plus complets possibles. pense à tous les cas
+documente les anomalies repérées. donne les conditions pour la reproduire, les infos obtenus par son analyse
+vérifie les corrections des développeurs
+lis les rapports de test et les logs à la recherche d'anomalies
+** autonome et pro-active
+travaille avec peu de supervision
+
+
+** conférence dédiée au test
+
+journée française des tests logiciels: https://www.cftl.fr/JFTL/accueil/
+
 https://openclassrooms.com/fr/courses/7365096-initiez-vous-au-test-et-a-la-qualite-logiciel/8232470-appreciez-les-qualites-du-testeur
 
 ==
