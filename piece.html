@@ -40,123 +40,13 @@ piece-3d {
 	animation: spin-y 10s infinite linear;
 }
 </style></head><body>
-	<a href='https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial'>web gl, dessiner en 3d</a>
 <!--
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
+-->
 	<piece-3d class='semi-losange carrelage-cabochon'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
 		<table-3d></table-3d>
 		<chaise-3d></chaise-3d>
 	</piece-3d>
--->
-	<canvas></canvas>
-<script type='text/javascript'>
-	const canvas = document.getElementsByTagName ('canvas')[0];
-	const context = canvas.getContext ('webgl');
-	console.log (context);
-	context.clearColor (0.0, 0.0, 1.0, 1.0);	// le fond est en bleu
-	context.clear (context.COLOR_BUFFER_BIT | context.DEPTH_BUFFER_BIT);
-	// code pour un shader de sommet. https://developer.mozilla.org/fr/docs/Web/API/WebGL_API/Tutorial/Adding_2D_content_to_a_WebGL_context
-	const shScode = `
-attribute vec4 aVertexPosition;
-uniform mat4 uModelViewMatrix;
-uniform mat4 uProjectionMatrix;
-void main() { gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition; }
-`;
-	// code pour un shader de fragment
-	const shFcode = 'void main() { gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0); }';
-
-	function loadShader (contextGl, type, source){
-		// Crée un shader du type fourni, charge le source et le compile.
-		const shader = contextGl.createShader (type);
-		contextGl.shaderSource (shader, source);
-		contextGl.compileShader (shader);
-		// Vérifier s'il a ét compilé avec succès
-		if (! contextGl.getShaderParameter (shader, contextGl.COMPILE_STATUS)){
-			alert ("An error occurred compiling the shaders: " + contextGl.getShaderInfoLog (shader));
-			contextGl.deleteShader (shader);
-			return null;
-		}
-		return shader;
-	}
-	function initShaderProgram (contextGl, shSsource, shFsource){
-		// Initialiser un programme shader, de façon à ce que WebGL sache comment dessiner nos données
-		const vertexShader = loadShader (contextGl, contextGl.VERTEX_SHADER, shSsource);
-		const fragmentShader = loadShader (contextGl, contextGl.FRAGMENT_SHADER, shFsource);
-		const shaderProgram = contextGl.createProgram();
-		contextGl.attachShader (shaderProgram, vertexShader);
-		contextGl.attachShader (shaderProgram, fragmentShader);
-		contextGl.linkProgram (shaderProgram);
-		// Si la création du programme shader a échoué, alerte
-		if (! contextGl.getProgramParameter (shaderProgram, contextGl.LINK_STATUS)){
-			alert ("Impossible d'initialiser le programme shader : " + contextGl.getProgramInfoLog (shaderProgram));
-			return null;
-		}
-		return shaderProgram;
-	}
-	const shaderProgram = initShaderProgram (context, shScode, shFcode);
-	const programInfo = {
-		program: shaderProgram,
-		attribLocations: { vertexPosition: context.getAttribLocation (shaderProgram, 'aVertexPosition') },
-		uniformLocations: {
-			projectionMatrix: context.getUniformLocation (shaderProgram, 'uProjectionMatrix'),
-			modelViewMatrix: context.getUniformLocation (shaderProgram, 'uModelViewMatrix')
-	}};
-	function initBuffers (contextGl){
-		const positionBuffer = contextGl.createBuffer();
-		contextGl.bindBuffer (contextGl.ARRAY_BUFFER, positionBuffer);
-		const squarePositions = [1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, -1.0];
-		contextGl.bufferData (contextGl.ARRAY_BUFFER, new Float32Array (squarePositions), contextGl.STATIC_DRAW);
-		return { position: positionBuffer };
-	}
-	function drawScene (contextGl, programInfo, buffers){
-		contextGl.clearColor (0.0, 0.0, 0.0, 1.0);	// effacement en noir, complètement opaque
-		contextGl.clearDepth (1.0);	// tout effacer
-		contextGl.enable (contextGl.DEPTH_TEST);	// activer le test de profondeur
-		contextGl.depthFunc (contextGl.LEQUAL);	// les choses proches cachent les choses lointaines
-		contextGl.clear (contextGl.COLOR_BUFFER_BIT | contextGl.DEPTH_BUFFER_BIT);
-		// Créer une matrice de perspective, une matrice spéciale qui est utilisée pour simuler la distorsion de la perspective dans une caméra.
-		// Notre champ de vision est de 45 degrés, avec un rapport largeur / hauteur qui correspond à la taille d'affichage du canvas
-		// et nous voulons seulement voir les objets situés entre 0,1 unité et 100 unités à partir de la caméra.
-		const fieldOfView = (45 * Math.PI) / 180;	// en radians
-		const aspect = contextGl.canvas.clientWidth / contextGl.canvas.clientHeight;
-		const zNear = 0.1;
-		const zFar = 100.0;
-		var mat4 = glMatrix.mat4;	// importer gl-matrix pour avoir mat4. https://www.npmjs.com/package/gl-matrix
-		const projectionMatrix = mat4.create();
-		// note: glmatrix.js a toujours comme premier argument la destination où stocker le résultat.
-		mat4.perspective (projectionMatrix, fieldOfView, aspect, zNear, zFar);
-		// Définir la position de dessin comme étant le point "origine", qui est le centre de la scène.
-		const modelViewMatrix = mat4.create();
-		mat4.translate (
-			modelViewMatrix,	// matrice de destination
-			modelViewMatrix,	// matrice de déplacement
-			[-0.0, 0.0, -6.0],
-		);	// quantité de déplacement
-		// Indiquer à WebGL comment extraire les positions à partir du tampon des positions pour les mettre dans l'attribut vertexPosition.
-		{
-			const numComponents = 2;	// extraire 2 valeurs par itération
-			const type = contextGl.FLOAT;	// les données dans le tampon sont des flottants 32bit
-			const normalize = false;	// ne pas normaliser
-			const stride = 0;	// combien d'octets à extraire entre un jeu de valeurs et le suivant
-			// 0 = utiliser le type et numComponents ci-dessus
-			const offset = 0;	// démarrer à partir de combien d'octets dans le tampon
-			contextGl.bindBuffer (contextGl.ARRAY_BUFFER, buffers.position);
-			contextGl.vertexAttribPointer (programInfo.attribLocations.vertexPosition, numComponents, type, normalize, stride, offset);
-			contextGl.enableVertexAttribArray (programInfo.attribLocations.vertexPosition);
-		}
-		// Indiquer à WebGL d'utiliser notre programme pour dessiner
-		contextGl.useProgram (programInfo.program);
-		contextGl.uniformMatrix4fv (programInfo.uniformLocations.projectionMatrix, false, projectionMatrix);
-		contextGl.uniformMatrix4fv (programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix,);
-		{
-			const offset = 0;
-			const vertexCount = 4;
-			contextGl.drawArrays (contextGl.TRIANGLE_STRIP, offset, vertexCount);
-		}
-	}
-	const buffers = initBuffers (context);
-	drawScene (context, programInfo, buffers);
-</script>
 </body></html>
