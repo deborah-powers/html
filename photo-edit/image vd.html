@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	canvas, div#img-frame {
+		border-style: double;
+		background-color: var(--text-color);
+	}
+	div {
+		padding: 0;
+		margin: 0;
+		line-height: 0;
+		position: relative;
+		background-size: contain;
+	}
+	div#slider-frame {
+		display: grid;
+		grid-gap: 0.5em;
+		grid-template-columns: 1em 300px;
+		grid-template-rows: 1em 300px;
+	}
+	div#img-frame >* {
+		display: block;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+	}
+	div.slider {
+		display: flex;
+		flex-direction: row;
+		height: 1em;
+		width: 300px;
+	}
+	div.slider.vertical {
+		flex-direction: column;
+		width: 1em;
+		height: 300px;
+	}
+	input[type='range'] {
+		writing-mode: vertical-tb;
+		width: 50%;
+		appearance: none;
+		accent-color: var(--text-color);
+		background-color: none;
+		cursor: pointer;
+	}
+	div.slider.vertical > input[type='range'] {
+		writing-mode: vertical-lr;
+		height: 50%;
+	}
+	input[type='range']::-webkit-slider-runnable-track, input[type='range']::-moz-range-track {
+		background-color: var(--bord-color);
+	}
+	input[type='range']::-webkit-slider-thumb, input[type='range']::-moz-range-thumb {
+		appearance: none;
+		background-color: var(--fond-color);
+		border: solid 2px var(--text-color);
+		border-radius: 50%;
+	}
+	img {
+		mix-blend-mode: normal;
+		aspect-ratio: auto;
+	}
+	div#img-frame > p {
+		width: 100%;
+		height: 2px;
+		background-color: deeppink;
+		display: inline-block;
+	}
+	div#img-frame > p.vertical {
+		width: 2px;
+		height: 100%;
+	}
+</style></head><body>
+	<input type='file' accept='image/png, image/jpg, image/bmp' />
+	<img src='file:///C:/wamp64/www/site-dp/models/css/exemple-img.bmp'>
+	<img src='file:///C:/wamp64/www/site-dp/models/css/exemple-img-2.bmp'>
+	<section id='modif'>
+		<button onclick='tumble90degree()'>basculer</button>
+		<button onclick='rotateLeft()'>incliner vers la gauche</button>
+		<button onclick='rotateRight()'>incliner vers la droite</button>
+		<button onclick='validall()'>valider</button>
+		<a href='' download='' class='button'>télécharger</a>
+		<div id='slider-frame'>
+			<p></p>
+			<div class='slider'><input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' /></div>
+			<div class='slider vertical'>
+				<input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' />
+			</div>
+			<div id='img-frame'><img src=''><p class='vertical'></p><p class='vertical'></p><p></p><p></p></div>
+		</div>
+	</section>
+</body></html>

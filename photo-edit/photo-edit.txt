@@ -1,0 +1,35 @@
+== Editeur d'image
+
+Je veux un éditeur de photo basique,
+Facilement utilisable sur mon smartphone.
+
+** Ses fonctionnalités
+
+Recadrer
+Redresser
+Faire pivoter de 90°
+Redimensionner
+
+== Fonctionnement
+
+L'appli sera une pwa utilisant du js natif.
+Js permet de modifier et de télécharger une image, sans besoin de librairie en plus.
+Dans un premier temps, réussir à créer un fichier html / js qui fonctionne,
+Puis le transformer en appli.
+
+== Les défis
+
+Afin d'être affichée correctement lors des transformations, l'image devra être re-dimensionnée.
+Elle reprendra ses dimensions d'origine lors du téléchargement.
+Les différentes fonctions doivent-elles être réaliser en même temps, sur le même écran, ou sur des écrans dédiés se transmettant la même image en cours de modification ?
+
+== Photos
+
+Exemple 1: C:\Users\LENOVO\Desktop\photo-edit\exemple-img.bmp
+Exemple 2: C:\Users\LENOVO\Desktop\photo-edit\exemple-img-2.bmp
+
+==
+
+Sujet: Programmation, application
+Auteur: Deborah
+Lien: O

@@ -1,0 +1,318 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	canvas, div#img-frame {
+		border-style: double;
+		background-color: var(--text-color);
+	}
+	div {
+		padding: 0;
+		margin: 0;
+		line-height: 0;
+		position: relative;
+		background-size: contain;
+	}
+	div#slider-frame {
+		display: grid;
+		grid-gap: 0.5em;
+		grid-template-columns: 1em 300px;
+		grid-template-rows: 1em 300px;
+	}
+	div#img-frame >* {
+		display: block;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		line-height: 0;
+	}
+	div.slider {
+		display: flex;
+		flex-direction: row;
+		height: 1em;
+		width: 300px;
+	}
+	div.slider.vertical {
+		flex-direction: column;
+		width: 1em;
+		height: 300px;
+	}
+	input[type='range'] {
+		writing-mode: vertical-tb;
+		width: 50%;
+		appearance: none;
+		accent-color: var(--text-color);
+		background-color: none;
+		cursor: pointer;
+	}
+	div.slider.vertical > input[type='range'] {
+		writing-mode: vertical-lr;
+		height: 50%;
+	}
+	input[type='range']::-webkit-slider-runnable-track, input[type='range']::-moz-range-track {
+		background-color: var(--bord-color);
+	}
+	input[type='range']::-webkit-slider-thumb, input[type='range']::-moz-range-thumb {
+		appearance: none;
+		background-color: var(--fond-color);
+		border: solid 2px var(--text-color);
+		border-radius: 50%;
+	}
+	img {
+		mix-blend-mode: normal;
+		aspect-ratio: auto;
+	}
+	div#img-frame > p {
+		width: 100%;
+		height: 2px;
+		background-color: deeppink;
+		display: inline-block;
+	}
+	div#img-frame > p.vertical {
+		width: 2px;
+		height: 100%;
+	}
+</style></head><body>
+	<article>
+		<h1>éditeur d'image basique utilisable sur le smarphone</h1>
+	</article>
+	<input type='file' accept='image/png, image/jpg, image/bmp' />
+	<section id='modif'>
+		<button onclick='tumble90degree()'>basculer</button>
+		<button onclick='rotateLeft()'>incliner vers la gauche</button>
+		<button onclick='rotateRight()'>incliner vers la droite</button>
+		<button onclick='validall()'>valider</button>
+		<a href='' download='' class='button'>télécharger</a>
+		<div id='slider-frame'>
+			<p></p>
+			<div class='slider'><input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' /></div>
+			<div class='slider vertical'>
+				<input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' />
+			</div>
+			<div id='img-frame'><img src=''><p class='vertical'></p><p class='vertical'></p><p></p><p></p></div>
+		</div>
+	</section>
+	<section id='charger'></section>
+</body><script type='text/javascript'>
+	var tmpImgLoad = true;
+	const imageModif = document.getElementsByTagName ('img')[0];
+	const imageFrame = document.getElementById ('img-frame');
+//	const canvas = document.getElementsByTagName ('canvas')[0];
+	const canvas = document.createElement ('canvas');
+	const context = canvas.getContext ('2d');
+	const imageRef = { src: "", width: 0, height: 0, rotation: 0, xo: 0, yo: 0, xu: 100, yu: 100, nbRotation: 0 };
+	const linkDownload = document.getElementsByTagName ('a')[0];
+	const uploader = document.getElementsByTagName ('input')[0];
+
+	function loadFirstImg (imgSrc, imgName){
+		imageRef.src = imgSrc;
+		imageModif.src = imageRef.src;
+		const p= imgName.lastIndexOf ('.');
+		linkDownload.download = imgName.substring (0,p) +' bis' + imgName.substring (p);
+		imageModif.alt = imgName.substring (0,p);
+	}
+	loadFirstImg ('quadrillage.bmp', 'quadrillage.bmp');
+	uploader.addEventListener ('change', function (event){
+		imageRef.src = URL.createObjectURL (event.target.files[0]);
+		imageModif.src = imageRef.src;
+		const p= event.target.files[0].name.lastIndexOf ('.');
+		linkDownload.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
+		imageModif.alt = event.target.files[0].name.substring (0,p);
+	});
+	imageModif.onload = function(){
+		if ('blob:null/' === this.src.substring (0,10) || tmpImgLoad){
+			const img = new Image();
+			img.src = this.src;
+			imageRef.width = img.width;
+			imageRef.height = img.height;
+			console.log (imageRef.width, imageRef.height);
+			canvas.height = this.height;
+			canvas.width = this.width;
+			/*
+			imageFrame.style.height = canvas.height + 'px';
+			imageFrame.style.width = canvas.width + 'px';
+			context.drawImage (this, 0, 0, canvas.width, canvas.height);
+			*/
+			const diag = Math.sqrt (img.width * img.width + img.height * img.height);
+			this.width = img.width *300/ diag;
+			this.height = img.height *300/ diag;
+			this.style.left = (150- this.width /2) + 'px';
+			this.style.top = (150- this.height /2) + 'px';
+			tmpImgLoad = false;
+	}}
+	function tumble90degree(){
+		canvas.width = imageModif.height;
+		canvas.height = imageModif.width;
+		context.rotate (Math.PI /2);
+	//	context.drawImage (imageModif, 0, - imageModif.height);
+		context.drawImage (imageModif, 0, - imageModif.height, canvas.height, canvas.width);
+		imageModif.src = canvas.toDataURL();
+		imageModif.width = canvas.width;
+		imageModif.height = canvas.height;
+		/*
+		imageFrame.style.height = canvas.height + 'px';
+		imageFrame.style.width = canvas.width + 'px';
+		*/
+		imageModif.left = (150- imageModif.width /2) + 'px';
+		imageModif.top = (150- imageModif.height /2) + 'px';
+		imageRef.nbRotation +=1;
+		if (imageRef.nbRotation ===4) imageRef.nbRotation =0;
+	}
+	// redresser
+	function rotateLeft(){
+		imageRef.rotation -=1;
+		if (imageRef.rotation <-90) imageRef.rotation = -90;
+		imageModif.style.transform = 'rotate(' + imageRef.rotation + 'deg)';
+	}
+	function rotateRight(){
+		imageRef.rotation +=1;
+		if (imageRef.rotation >90) imageRef.rotation = 90;
+		imageModif.style.transform = 'rotateZ(' + imageRef.rotation + 'deg)';
+	}
+	// recadrer
+	Element.prototype.getInputsByType = function (typeName){ return []; }
+	HTMLElement.prototype.getInputsByType = function (typeName){
+		var inputs =[];
+		var inputsTmp =[];
+		for (var child of this.children){
+			inputsTmp = child.getInputsByType (typeName);
+			for (var res of inputsTmp) inputs.push (res);
+		}
+		return inputs;
+	}
+	HTMLInputElement.prototype.getInputsByType = function (typeName){
+		if (this.type === typeName) return [ this, ];
+		else return [];
+	}
+	const movingLines = imageFrame.getElementsByTagName ('p');
+	movingLines[0].style.left = '0%';
+	movingLines[1].style.left = '100%';
+	movingLines[2].style.top = '0%';
+	movingLines[3].style.top = '100%';
+	const movingInputs = document.body.getInputsByType ('range');
+	movingInputs[0].onchange = function(){
+		movingLines[0].style.left = this.value + '%';
+		imageRef.yo = parseInt (this.value);
+	}
+	movingInputs[1].onchange = function(){
+		movingLines[1].style.left = this.value + '%';
+		imageRef.yu = parseInt (this.value);
+	}
+	movingInputs[2].onchange = function(){
+		movingLines[2].style.top = this.value + '%';
+		imageRef.xo = parseInt (this.value);
+	}
+	movingInputs[3].onchange = function(){
+		movingLines[3].style.top = this.value + '%';
+		imageRef.xu = parseInt (this.value);
+	}
+	// valider mes modifs
+
+	function degreeTOradian (degree){ return degree * Math.PI / 180; }
+	function degreeTOcos (degree){ return Math.cos (degree * Math.PI / 180); }
+	function degreeTOsin (degree){ return Math.sin (degree * Math.PI / 180); }
+	function validRotate (){
+		const imgAngle = Math.atan (imageModif.height / imageModif.width);
+		var ecartWidth =0;
+		var ecartHeight =0;
+		// hauteur, imageRef.rotation >0
+		if (imageRef.rotation >0){
+			canvas.width = degreeTOcos (imageRef.rotation) * imageModif.width - degreeTOcos (90+ imageRef.rotation) * imageModif.height;
+			canvas.height = 300 * (Math.sin (imgAngle + degreeTOradian (imageRef.rotation)));
+			// TODO centrer l'image
+			ecartWidth = degreeTOcos (90+ imageRef.rotation) * imageModif.height;
+			ecartHeight = - ecartWidth * degreeTOsin (- imageRef.rotation);
+			ecartWidth *= - degreeTOcos (- imageRef.rotation);
+		}
+		else if (imageRef.rotation <0){
+			canvas.width = 300 * (Math.cos (imgAngle + degreeTOradian (imageRef.rotation)));
+			canvas.height = degreeTOsin (90+ imageRef.rotation) * imageModif.height - degreeTOsin (imageRef.rotation) * imageModif.width;
+			// TODO centrer l'image
+			ecartHeight = degreeTOsin (imageRef.rotation) * imageModif.width;
+			ecartWidth = - ecartHeight * degreeTOcos (90- imageRef.rotation);
+			ecartHeight *= - degreeTOsin (90- imageRef.rotation);
+		}
+		// rotation
+		context.rotate (degreeTOradian (imageRef.rotation));
+		context.drawImage (imageModif, ecartWidth, ecartHeight);
+		newImgSrc = canvas.toDataURL();
+		imageModif.src = newImgSrc;
+		imageModif.width = canvas.width;
+		imageModif.height = canvas.height;
+	}
+	function validall(){
+		context.clearRect (0,0, canvas.width, canvas.height);
+		imageModif.src = imageRef.src;
+		// la rotation
+		if (imageRef.nbRotation >0) imageRef.rotation += (imageRef.nbRotation *90);
+		while (imageRef.nbRotation >359) imageRef.nbRotation -=360;
+		while (imageRef.nbRotation <-359) imageRef.nbRotation +=360;
+		var ecartWidth =0;
+		var ecartHeight =0;
+		if (imageRef.rotation !==0){
+			const diag = Math.sqrt (imageRef.width * imageRef.width + imageRef.height * imageRef.height);
+			const imgAngle = Math.atan (imageRef.height / imageRef.width);
+			// hauteur, imageRef.rotation >0
+			if (imageRef.rotation >0){
+				imageRef.width = degreeTOcos (imageRef.rotation) * imageRef.width - degreeTOcos (90+ imageRef.rotation) * imageRef.height;
+				imageRef.height = diag * (Math.sin (imgAngle + degreeTOradian (imageRef.rotation)));
+				// TODO centrer l'image
+				ecartWidth = degreeTOcos (90+ imageRef.rotation) * imageRef.height;
+				ecartHeight = - ecartWidth * degreeTOsin (- imageRef.rotation);
+				ecartWidth *= - degreeTOcos (- imageRef.rotation);
+			}
+			else if (imageRef.rotation <0){
+				imageRef.width = diag * (Math.cos (imgAngle + degreeTOradian (imageRef.rotation)));
+				imageRef.height = degreeTOsin (90+ imageRef.rotation) * imageRef.height - degreeTOsin (imageRef.rotation) * imageRef.width;
+				// TODO centrer l'image
+				ecartHeight = degreeTOsin (imageRef.rotation) * imageRef.width;
+				ecartWidth = - ecartHeight * degreeTOcos (90- imageRef.rotation);
+				ecartHeight *= - degreeTOsin (90- imageRef.rotation);
+			}
+			ecartWidth = ecartWidth *100/ imageRef.width;
+			ecartHeight = ecartHeight *100/ imageRef.height;
+			imageRef.xo += ecartWidth;
+			imageRef.yo += ecartHeight;
+		}
+		console.log (imageRef);
+		// le recadrage
+		var coordTmp =0;
+		if (imageRef.xo > imageRef.xu){
+			coordTmp = imageRef.xu;
+			imageRef.xu = imageRef.xo;
+			imageRef.xo = coordTmp;
+		}
+		if (imageRef.yo > imageRef.yu){
+			coordTmp = imageRef.yu;
+			imageRef.yu = imageRef.yo;
+			imageRef.yo = coordTmp;
+		}
+		imageRef.xu -= imageRef.xo;
+		imageRef.yu -= imageRef.yo;
+		imageRef.xo = imageRef.xo * imageRef.width /100;
+		imageRef.xu = imageRef.xu * imageRef.width /100;
+		imageRef.yo = imageRef.yo * imageRef.height /100;
+		imageRef.yu = imageRef.yu * imageRef.height /100;
+		canvas.width = imageRef.xu;
+		canvas.height = imageRef.yu;
+		if (imageRef.rotation !==0) context.rotate (imageRef.rotation * Math.PI /180);
+		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo, imageRef.xu, imageRef.yu);
+	/*	if (imageRef.rotation !==0) context.rotate (imageRef.rotation * Math.PI /180);
+		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo);
+		context.drawImage (imageModif, - imageRef.xo, - imageRef.yo, imageRef.xu, imageRef.yu);
+		context.drawImage (imageModif, 0, 0, imageRef.xu, imageRef.yu);
+		imageModif.src = canvas.toDataURL();
+		imageModif.width = canvas.width;
+		imageModif.height = canvas.height;
+		imageFrame.style.height = canvas.height + 'px';
+		imageFrame.style.width = canvas.width + 'px';
+	*/
+		linkDownload.href = canvas.toDataURL();
+		document.body.appendChild (canvas);
+	}
+</script></html>
