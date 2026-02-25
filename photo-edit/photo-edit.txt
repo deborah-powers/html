@@ -8,7 +8,7 @@ Facilement utilisable sur mon smartphone.
 Recadrer
 Redresser
 Faire pivoter de 90°
-Redimensionner
+Redimensionner (optionnel)
 
 == Fonctionnement
 
@@ -22,6 +22,32 @@ Puis le transformer en appli.
 Afin d'être affichée correctement lors des transformations, l'image devra être re-dimensionnée.
 Elle reprendra ses dimensions d'origine lors du téléchargement.
 Les différentes fonctions doivent-elles être réaliser en même temps, sur le même écran, ou sur des écrans dédiés se transmettant la même image en cours de modification ?
+
+== les écrans
+
+un écran de téléversement
+un écran principal pour afficher et télécharger l'image
+un écran secondaire pour le recadrage
+un écran secondaire pour la rotation
+un écran secondaire pour pivoter de 90°
+
+écran de téléversement contient
+	un bouton de download
+
+l'écran principal contient
+	trois boutons, chacun ammenant vers l'un des écrans secondaires
+	un bouton pour télécharger l'image
+	un bouton pour téléverser une nouvelle image. il ammène vers l'écran de téléversement
+	un cadre affichant l'image à modifier
+
+chaque écran secondaire contient
+	un bouton valider qui ramène sur l'écran principal avec l'image modifiée
+	un bouton annuler tout qui ramène sur l'écran principal avec l'image originale
+	un bouton annuler la modif qui ramène sur l'écran principal avec l'image avant cette dernière modification
+	un cadre affichant l'image à modifier. la nature de ce cadre varie selon la modification
+	des éléments nécessaire à la modification
+
+ne serai-t-il pas mieux de fusionner l'écran de téléchargement et l'écran principal ?
 
 == Photos
 
