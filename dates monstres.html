@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head>
+	<title>ramassage des encombrants</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	section {
+		padding: 1em;
+		column-count: 4;
+		border-style: solid;
+		border-width: 40px;
+		border-image-slice: 100;
+		border-image-source: repeating-linear-gradient(45deg, var(--bord-color) 5%, var(--text-color) 15%, var(--bord-color) 20%);
+	}
+	section.bord-degrade {
+		border-image-slice: 100;
+		border-image: repeating-linear-gradient(90deg, var(--bord-color), var(--text-color), var(--bord-color) 20%) 100;
+		border-image-source: repeating-linear-gradient(45deg, var(--bord-color) 5%, var(--text-color) 15%, var(--bord-color) 20%);
+		border-image-source: linear-gradient(90deg, #F00, #088);
+	}
+	section.bord-img {
+		border-image-source: url('bordure.png');
+		border-image-slice: 100;
+		border-image-repeat: round;
+	}
+</style></head><body>
+	<h1>Les dates de ramassage des encombrants pour $year</h1>
+	<h2>Les encombrants doivent être déposés sur le trottoir devant la résidence</h2>
+	<p>Entre le 62 et le 64</p>
+	<p>Le ramasage à lieu un lundi sur deux</p>
+	<section aria-label='dates de passage des encombrants'></section>
+</body><script type='text/javascript'>
+	const showFname = document.getElementById ('showFname');
+	const dateFrame = document.getElementsByTagName ('section')[0];
+	const dateRef = new Date ('2026-03-02T10:00:00Z');
+	const monthNames =[ 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre' ];
+
+	Date.prototype.toMessage = function(){
+		var dateMsg ="";
+		var dateNb = this.getDate();
+		if (dateNb <10) dateMsg = '0'+ dateNb.toString() +" ";
+		else dateMsg = dateNb.toString() +" ";
+		dateNb = this.getMonth();
+		dateMsg = dateMsg + monthNames [dateNb] +" "+ this.getFullYear();
+		dateFrame.innerHTML = dateFrame.innerHTML +'<p>'+ dateMsg +'</p>';	// affichage sur la page
+		this.setDate (this.getDate() +14);	// incrémenter la date de 2 semaines
+	}
+	var title = document.getElementsByTagName ('h1')[0];
+	title.innerHTML = title.innerHTML.replace ('$year', dateRef.getFullYear());
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+	dateRef.toMessage();
+</script></html>
