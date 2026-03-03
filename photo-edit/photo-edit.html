@@ -57,6 +57,7 @@
 		border: solid 2px var(--text-color);
 		border-radius: 50%;
 	}
+	div#img-frame { background-size: contain; }
 	div#img-frame > p {
 		position: absolute;
 		width: 100%;
@@ -65,8 +66,13 @@
 		background-color: var(--bord-color);
 		display: inline-block;
 		margin: 0;
+		text-align: center;
+		background-position: center;
+		background-size: contain;
+		transform-origin: center center;
 	}
 	div#img-frame > p.vertical {
+		position: relative;
 		width: 2px;
 		height: 100%;
 	}
