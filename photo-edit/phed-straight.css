@@ -1,0 +1,4 @@
+article#straight-screen div {
+	width: 100%;
+	background-color: var(--text-color);
+}

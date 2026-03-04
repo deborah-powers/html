@@ -1,17 +1,20 @@
 <!DOCTYPE html><html><head>
-	<title></title>
+	<title>éditer des images</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='_blank'>
 	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='https://deborah-powers.fr/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='https://deborah-powers.fr/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='phed-crop.css'/>
+	<link rel='stylesheet' type='text/css' href='phed-straight.css'/>
 <style type='text/css'>
 	img {
 		display: block;
 		width: 100%;
 		background-color: var(--fond-color);
 		min-height: 2em;
+		mix-blend-mode: normal;
 	}
 	article { display: none; }
 	article.current { display: block; }
@@ -21,70 +24,15 @@
 		justify-content: space-between;
 		margin-left: 0;
 	}
-	/* css de l'écran de recadrage */
-	div.slider { width: 100%; }
-	div#slider-frame {
-		display: grid;
-		grid-gap: 0.5em;
-		grid-template-columns: 12px 1fr;
-		grid-template-rows: 12px 1fr;
-	}
-	div.slider {
-		display: flex;
-		flex-direction: row;
-		height: 100%;
-		width: 100%;
-	}
-	div.slider.vertical { flex-direction: column; }
-	input[type='range'] {
-		writing-mode: vertical-tb;
-		width: 50%;
-		appearance: none;
-		accent-color: var(--text-color);
-		background-color: none;
-		cursor: pointer;
-	}
-	div.slider.vertical > input[type='range'] {
-		writing-mode: vertical-lr;
-		height: 50%;
-	}
-	input[type='range']::-webkit-slider-runnable-track, input[type='range']::-moz-range-track {
-		background-color: var(--bord-color);
-	}
-	input[type='range']::-webkit-slider-thumb, input[type='range']::-moz-range-thumb {
-		appearance: none;
-		background-color: var(--fond-color);
-		border: solid 2px var(--text-color);
-		border-radius: 50%;
-	}
-	div#img-frame { background-size: contain; }
-	div#img-frame > p {
-		position: absolute;
-		width: 100%;
-		height: 2px;
-		line-height: 2px;
-		background-color: var(--bord-color);
-		display: inline-block;
-		margin: 0;
-		text-align: center;
-		background-position: center;
-		background-size: contain;
-		transform-origin: center center;
-	}
-	div#img-frame > p.vertical {
-		position: relative;
-		width: 2px;
-		height: 100%;
-	}
 </style></head><body>
 	<article id='main-screen' class='current'>
 		<h1>éditeur d'image basique utilisable sur le smarphone</h1>
 		<ul>
 			<li><input type='file' value='téléversez' accept='image/png, image/jpg, image/bmp' /></li>
 			<li><button onclick='goCrop()'>recadrer</button></li>
-			<li><button onclick='goStraighten()'>redresser</button></li>
-			<li><button onclick='goTurn()'>pivoter</button></li>
-			<li><a href='' class='button'>télécharger</a></li>
+			<li><button onclick='goStraight()'>redresser</button></li>
+			<li><button onclick='tumble90degree()'>basculer</button></li>
+			<li><a href='' download='' class='button'>télécharger</a></li>
 		</ul>
 		<img src='' alt="l'image s'afichera ici">
 	</article>
@@ -93,7 +41,7 @@
 		<ul>
 			<li><button onclick='resetHard()'>restaurer</button></li>
 			<li><button onclick='resetSoft()'>annuler</button></li>
-			<li><button onclick='validate("crop-screen")'>valider</button></li>
+			<li><button onclick='validateCrop()'>valider</button></li>
 		</ul>
 		<div id='slider-frame'>
 			<p></p>
@@ -101,19 +49,37 @@
 			<div class='slider vertical'>
 				<input type='range' min='0' max='100' value='0' /><input type='range' min='0' max='100' value='100' />
 			</div>
-			<div id='img-frame'><p class='vertical'></p><p class='vertical'></p><p></p><p></p></div>
+			<svg version='1.1' width='300' height='300' xmlns='http://www.w3.org/2000/svg'>
+				<line x1='0' x2='0' y1='0' y2='100%' />
+				<line x1='0' x2='0' y1='0' y2='100%' />
+				<line x1='0' x2='100%' y1='0' y2='0' />
+				<line x1='0' x2='100%' y1='0' y2='0' />
+			</svg>
+		</div>
+	</article>
+	<article id='straight-screen'>
+		<h2>redresser l'image</h2>
+		<ul>
+			<li><button onclick='resetHard()'>restaurer</button></li>
+			<li><button onclick='resetSoft()'>annuler</button></li>
+			<li><button onclick='rotateLeft()'>pivoter à gauche</button></li>
+			<li><button onclick='rotateRight()'>pivoter à droite</button></li>
+			<li><button onclick='validateStraight()'>valider</button></li>
+		</ul>
+		<div>
+			<img src='' alt='image à redresser' />
 		</div>
 	</article>
 </body><script type='text/javascript'>
 	// script de l'écran principal
 	const uploader = document.getElementsByTagName ('input')[0];
-	const imageRef = { src: "", dst: "", width: 0, height: 0, rotation: 0, xo: 0, yo: 0, xu: 100, yu: 100, nbRotation: 0 };
+	const imageRef = { src: "", dst: "", xo: 0, yo: 0, xu: 100, yu: 100, scale: 100, rotation: 0, nbRotation: 0 };
+	const imageModif = document.getElementsByTagName ('img')[0];
 	const linkDownload = document.getElementsByTagName ('a')[0];
 
 	uploader.addEventListener ('change', function (event){
 		imageRef.src = URL.createObjectURL (event.target.files[0]);
 		imageRef.dst = imageRef.src;
-		const imageModif = document.getElementsByTagName ('img')[0];
 		imageModif.src = imageRef.src;
 		const p= event.target.files[0].name.lastIndexOf ('.');
 		linkDownload.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
@@ -122,49 +88,23 @@
 	// script commun aux écrans de modification
 	const screens = document.getElementsByTagName ('article');
 	function resetSoft(){
+		imageModif.src = imageRef.dst;
 		for (var screen of screens){
-			if (screen.id === 'main-screen'){
-				screen.className = 'current';
-				const imageModif = screen.getElementsByTagName ('img')[0];
-				imageModif.src = imageRef.dst;
-			}
+			if (screen.id === 'main-screen') screen.className = 'current';
 			else screen.className ="";
 	}}
 	function resetHard(){
+		imageRef.xo =0;
+		imageRef.xu =100;
+		imageRef.yo =0;
+		imageRef.yu =100;
+		imageRef.rotation =0;
+		imageRef.nbRotation =0;
+		imageRef.scale =100;
+		imageRef.dst = imageRef.dst;
+		imageModif.src = imageRef.src;
 		for (var screen of screens){
-			if (screen.id === 'main-screen'){
-				screen.className = 'current';
-				const imageModif = screen.getElementsByTagName ('img')[0];
-				imageModif.src = imageRef.src;
-			}
-			else screen.className ="";
-	}}
-	// script de l'écran de recadrage
-	function validate (screenId){
-		for (var screen of screens){
-			if (screen.id === screenId){
-				screen.className ="";
-				const imageModif = screen.getElementsByTagName ('img')[0];
-				const imageFinal = document.getElementsByTagName ('img')[0];
-				imageFinal.src = imageModif.src;
-				imageRef.dst = imageModif.src;
-			}
-			else if (screen.id === 'main-screen') screen.className = 'current';
-			else screen.className ="";
-	}}
-	function goCrop(){
-		for (var screen of screens){
-			if (screen.id === 'crop-screen'){
-				screen.className = 'current';
-				const imageModif = document.getElementsByTagName ('img')[0];
-				var imageFrame = document.getElementById ('img-frame');
-				imageFrame.style.height = imageModif.height + 'px';
-				imageFrame.style.backgroundImage = 'url(' + imageModif.src +')';
-				imageFrame = document.getElementById ('slider-frame');
-				imageFrame.style.height = (12+ imageModif.height) + 'px';
-				imageFrame = document.getElementsByClassName ('slider vertical')[0];
-				imageFrame.style.height = imageModif.height + 'px';
-			}
+			if (screen.id === 'main-screen') screen.className = 'current';
 			else screen.className ="";
 	}}
 	HTMLElement.prototype.getInputsByType = function (typeName){
@@ -175,36 +115,20 @@
 		}
 		return inputsFin;
 	}
-	var imageFrame = document.getElementById ('img-frame');
-	const movingLines = imageFrame.getElementsByTagName ('p');
-	movingLines[0].style.left = '0%';
-	movingLines[1].style.left = '100%';
-	/*
-	movingLines[2].style.top = '0%';
-	movingLines[3].style.top = '100%';
-	*/
-	const movingInputs = imageFrame.parentElement.getInputsByType ('range');
-	movingInputs[0].onchange = function(){
-		imageRef.xo = parseInt (this.value);
-		imageRef.xo /=2;
-		movingLines[0].style.left = imageRef.xo + '%';
-	}
-	movingInputs[1].onchange = function(){
-		imageRef.xu = parseInt (this.value);
-		imageRef.xu /=2;
-		imageRef.xu +=50;
-		movingLines[1].style.left = imageRef.xu + '%';
-	}
-	movingInputs[2].onchange = function(){
-		imageRef.yo = parseInt (this.value);
-		imageRef.yo /=2;
-		console.log (imageRef.yo);
-		movingLines[2].style.top = imageRef.yo + '%';
-	}
-	movingInputs[3].onchange = function(){
-		imageRef.yu = parseInt (this.value);
-		imageRef.yu /=2;
-		console.log (imageRef.yu);
-		movingLines[3].style.top = imageRef.yu + '%';
-	}
-</script></html>
+function tumble90degree(){
+	const canvas = document.createElement ('canvas');
+	const context = canvas.getContext ('2d');
+	canvas.width = imageModif.height;
+	canvas.height = imageModif.width;
+	context.rotate (Math.PI /2);
+	context.drawImage (imageModif, 0, - imageModif.height);
+	imageModif.src = canvas.toDataURL();
+	imageModif.width = imageModif.height;
+	imageModif.height = canvas.height;
+	imageRef.dst = imageModif.src;
+	linkDownload.href = imageModif.src;
+}
+</script>
+	<script type='text/javascript' src='phed-crop.js'></script>
+	<script type='text/javascript' src='phed-straight.js'></script>
+</html>
