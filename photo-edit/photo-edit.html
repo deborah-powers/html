@@ -152,7 +152,7 @@
 	HTMLImageElement.prototype.resizeWindow = function(){
 		const bodyStyle = window.getComputedStyle (document.body);
 		var widthMax = document.body.clientWidth;
-		const padding = 2* dimensionToNb (bodyStyle.padding);
+		const padding = 2* dimensionToNb (bodyStyle.paddingLeft);
 		widthMax -= padding;
 		if (this.width <= widthMax) return;
 		imageRef.scale = this.width / widthMax;
