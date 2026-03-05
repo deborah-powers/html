@@ -40,7 +40,7 @@
 			<li><button onclick='goCrop()'>recadrer</button></li>
 			<li><button onclick='goStraight()'>redresser</button></li>
 			<li><button onclick='tumble90degree()'>basculer</button></li>
-			<li><a href='' download='' class='button'>télécharger</a></li>
+			<li><button onclick='downloadImage()'>télécharger</button><a href='' download='' class='button' style='display:none'>télécharger</a></li>
 		</ul>
 		<img src='' alt="l'image s'afichera ici" />
 	</article>
@@ -81,7 +81,7 @@
 </body><script type='text/javascript'>
 	// script de l'écran principal
 	const uploader = document.getElementsByTagName ('input')[0];
-	const imageRef = { src: "", dst: "", xo: 0, yo: 0, xu: 100, yu: 100, scale: 100, rotation: 0 };
+	const imageRef = { src: "", dst: "", xo: 0, yo: 0, xu: 100, yu: 100, scale: 1, rotation: 0 };
 	const imageModif = document.getElementsByTagName ('img')[0];
 	const linkDownload = document.getElementsByTagName ('a')[0];
 
@@ -93,7 +93,7 @@
 		linkDownload.download = event.target.files[0].name.substring (0,p) +' bis' + event.target.files[0].name.substring (p);
 		imageModif.alt = event.target.files[0].name.substring (0,p);
 	});
-	imageModif.onload = function(){ if ('blob:' === imageRef.dst.substring (0,5)) this.resize500(); }
+	imageModif.onload = function(){ if ('blob:' === imageRef.dst.substring (0,5)) this.resizeWindow(); }
 	// script commun aux écrans de modification
 	const screens = document.getElementsByTagName ('article');
 	function resetSoft(){
@@ -108,7 +108,6 @@
 		imageRef.yo =0;
 		imageRef.yu =100;
 		imageRef.rotation =0;
-		imageRef.scale =100;
 		imageRef.dst = imageRef.dst;
 		imageModif.src = imageRef.src;
 		for (var screen of screens){
@@ -123,17 +122,48 @@
 		}
 		return inputsFin;
 	}
-	HTMLImageElement.prototype.resize500 = function(){
-		if (this.height <=500) return;
-		const scaleRatio = this.height / 500.0;
-		const scaleWidth = parseInt (this.width / scaleRatio);
-		this.width = scaleWidth;
-		this.height =500;
+	function downloadImage(){
+		// retrouver les dimensions d'origine
+		imageModif.width *= imageRef.scale;
+		imageModif.height *= imageRef.scale;
+		// hauteur maximale des images
+		if (imageModif.height >800){
+			imageRef.scale = imageModif.height / 800;
+			imageModif.width /= imageRef.scale;
+			imageModif.height = 800;
+		}
+		imageRef.scale =1;
+		// dessiner l'image
 		const canvas = document.createElement ('canvas');
 		const context = canvas.getContext ('2d');
-		canvas.width = scaleWidth;
-		canvas.height = 500;
-		context.drawImage (this, 0,0, scaleWidth, 500);
+		canvas.width = imageModif.width;
+		canvas.height = imageModif.height;
+		context.drawImage (imageModif, 0,0);
+		// activer le lien
+		linkDownload.href = canvas.toDataURL();
+		linkDownload.click();
+	}
+	function dimensionToNb (dimension){
+		// dimension = "20px"
+		dimension = dimension.substring (0, dimension.length -2);
+		dimensionNb = parseInt (dimension);
+		return dimensionNb;
+	}
+	HTMLImageElement.prototype.resizeWindow = function(){
+		const bodyStyle = window.getComputedStyle (document.body);
+		var widthMax = document.body.clientWidth;
+		const padding = 2* dimensionToNb (bodyStyle.padding);
+		widthMax -= padding;
+		if (this.width <= widthMax) return;
+		imageRef.scale = this.width / widthMax;
+		const scaleHeight = parseInt (this.height / imageRef.scale);
+		this.width = widthMax;
+		this.height = scaleHeight;
+		const canvas = document.createElement ('canvas');
+		const context = canvas.getContext ('2d');
+		canvas.width = widthMax;
+		canvas.height = scaleHeight;
+		context.drawImage (this, 0,0, widthMax, scaleHeight);
 		this.src = canvas.toDataURL();
 	}
 	function tumble90degree(){
