@@ -1,0 +1,7 @@
+article#straight-screen div {
+	width: 100%;
+	background-color: var(--text-color);
+	text-align: center;
+	overflow: hidden;
+}
+article#straight-screen div > img { display: inline-block; }
