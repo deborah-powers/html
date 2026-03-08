@@ -1,7 +1,7 @@
-article#straight-screen div {
+article#rotate-screen div {
 	width: 100%;
 	background-color: var(--text-color);
 	text-align: center;
 	overflow: hidden;
 }
-article#straight-screen div > img { display: inline-block; }
+article#rotate-screen div > img { display: inline-block; }
