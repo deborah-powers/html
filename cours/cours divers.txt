@@ -118,6 +118,21 @@ Raccourci console du bureau /propriétés/target
 Rajouter en fin de ligne:/k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
 /k doskey /macrofile=c:/users/deborah.powers/documents/macros.doskey
 
+== détacher edge de la barre des tâches
+
+C:\Users\deborah.powers\AppData\Local\Microsoft\Windows\Shell\
+LayoutModification.xml
+DefaultLayouts.xml
+supprimer
+<taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" />
+
+== empêcher le démarrage automatique de firefox au démarrage de mon pc:
+firefox / about:config
+toolkit.winRegisterApplacationRestart = false
+** ou
+firefox / menu / paramètres / général
+décocher "Ouvrir Firefox automatiquement au démarrage de votre ordinateur"
+
 ============ Effacer les coockies et le cache
 
 ************ Dans firefox
