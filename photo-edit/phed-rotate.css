@@ -1,7 +1,0 @@
-article#rotate-screen div {
-	width: 100%;
-	background-color: var(--text-color);
-	text-align: center;
-	overflow: hidden;
-}
-article#rotate-screen div > img { display: inline-block; }
