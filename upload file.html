@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+<style type='text/css'>
+	input, label { display: block; }
+	* { margin-bottom: 6mm; }
+	form#hidden-boxes label:hover, form#hidden-boxes label:focus { border: solid 2px deeppink; }
+	form#hidden-boxes input[type='radio'] {
+		Clip: Rect(1px, 1px, 1px, 1px)!important;
+		-webkit-clip-path: Inset(50%)!important;
+		Clip-path: Inset(50%)!important;
+		Overflow: Hidden !important;
+		Width: 1px !important;
+		Height: 1px !important;
+		Margin: -1px !important;
+		White-space: Nowrap !important;
+		Padding: 0 !important;
+		Border: 0 !important;
+		Position: Absolute !important;
+	}
+	section.cache { display: none; }
+	input[type='file'] { display: none; }
+	label.
+</style></head><body>
+<section id='choose-data'>
+	<label for='recup-data' class='button'>données d'un ancien audit</label>
+	<input type='file' id='recup-data' accept='text/plain'>
+	<button onclick='lancerAudit()'>créer un nouvel audit</button>
+</section>
+<section id='fill-data' class='cache'>
+	<form method='get' onsubmit='return false'>
+		<label for='info'>entrez un message</label>
+		<input type='text' id='info' />
+		<input type='submit' onmouseleave='validerInfo()'/>
+		<input type='reset'/>
+	</form>
+	<a download='message.txt' href=''>en attente de message</a>
+</section>
+</body><script type='text/javascript'>
+	const downloadLink = document.getElementsByTagName ('a')[0];
+	const infoTag = document.getElementById ('info');
+	function validerInfo(){
+		const info = 'data:text/plain;charset=utf-8,' + infoTag.value;
+		downloadLink.href = info;
+		downloadLink.innerHTML = 'télécharger le message';
+	}
+	function lancerAudit(){
+		const sections = document.getElementsByTagName ('section');
+		sections[0].className = 'cache';
+		sections[1].className ="";
+	}
+	const uploader = document.getElementById ('recup-data');
+	uploader.addEventListener ('change', function (event){
+		// récupérer le nom du fichier
+	//	const fileUrl = URL.createObjectURL (event.target.files[0]);
+		downloadLink.download = event.target.files[0].name;
+		// récupérer le contenu du fichier
+		var dataText ="";
+		const reader = new FileReader();
+		reader.readAsText (event.target.files[0], 'UTF-8');
+		reader.onload = function (event){
+			dataText = event.target.result;
+			infoTag.value = dataText;
+			lancerAudit();
+		}
+		reader.onerror = function(){ console.log ('erreur lors de la récupération du fichier'); }
+	});
+</script></html>
