@@ -36,9 +36,11 @@
 	form#header-nouveau { display: none; }
 </style></head><body>
 <section id='choix-methode'>
+	<h1>que voulez-vous auditer ?</h1>
 	<label for='recup-data' class='button'>données d'un ancien audit</label>
 	<input type='file' id='recup-data' accept='text/plain'>
 	<button onclick='lancerNouvelAudit()'>créer un nouvel audit</button>
+	<input type='text' name='test-click' />
 </section>
 <section id='audit' class='cache'>
 	<form id='header-nouveau'>
@@ -270,13 +272,19 @@ $tableAudit$`;
 		reader.onload = function (event){
 			var dataText = event.target.result;
 			dataText = dataText.trim();
-			extractMeta (dataText);
-			computeScore (dataDict['tableAudit']);
-			const dataList = dataDict['tableAudit'].split ('\n');
-			extractDataAudit (dataList);
-			lancerAudit();
-		}
-		reader.onerror = function(){ console.log ('erreur lors de la récupération du fichier'); }
+			if (! dataText.includes ('page: ') || ! dataText.includes ('\nurl: ') || ! dataText.includes ('\ndate: ') || ! dataText.includes ('\n==\n')){
+				console.log ("pas d'audit");
+				document.getElementsByTagName ('h1')[0].innerHTML = "le fichier "+ downloadLink.download +" ne correspond pas à un audit";
+			}
+			else{
+				console.log ("bon audit");
+				extractMeta (dataText);
+				computeScore (dataDict['tableAudit']);
+				const dataList = dataDict['tableAudit'].split ('\n');
+				extractDataAudit (dataList);
+				lancerAudit();
+		}}
+		reader.onerror = function(){ document.getElementsByTagName ('h1')[0].innerHTML = 'erreur lors de la récupération du fichier'; }
 	});
 	function lancerAudit(){
 		const sections = document.getElementsByTagName ('section');
