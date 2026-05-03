@@ -13,78 +13,31 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble-3d.css'/>
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
-		integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
-		crossorigin="anonymous" defer>
-</script>
-<style type='text/css'><![CDATA[ polygon { fill: blue; } ]]></style>
 <style type='text/css'>
 body {
 	perspective: 800px;
 	perspective-origin: 50% 100px;
 	padding-left: 8em;
 }
-div {
-	height: 10em;
-	width: 8em;
-	--depth: 4em;
-	--fond: #F08;
-	--depth-plate: var(--depth);
-	--bord: solid 4px green;
-	color: var(--text-color);
-	/* ------ */
-	border: none;
-	background: none;
-	display: inline-block;
-	transform-style: preserve-3d;
-	padding: 0;
-	margin: 0;
-	line-height: 0;
-	text-align: center;
-	background-position: center;
-	--depth: 5em;
-	height: 12em;
-	width: var(--depth);
-	--radius: 0.25em;
+table-3d, chaise-3d {
+	--bord: solid 4px maroon;
+	--fond: brown;
+	left: 50%;
 }
-div > pave-3d {
-	--bord: solid 2px yellow;
-	--fond: inherit;
-	width: 100%;
-	--depth: inherit;
-	height: 0.5em;
-	top: 50%;
-	position: absolute;
-}
-chaise-3d, div > pave-3d {
-	animation: spin-yz 10s infinite linear;
-}
-/*
 table-3d {
 	width: 10em;
 	--depth: 8em;
-	--bord: solid 4px maroon;
-	--fond: brown;
+	top: 15em;	/* fixé en fonction des hauteurs définies par l'utilisateur. ne peut être définie automatiquement */
 }
-piece-3d table-3d, piece-3d chaise-3d {
-	top: 15em;	/* fixé en fonction des hauteurs définies par l'utilisateur. ne peut être définie automatiquement /
-	left: 50%;
-}
-piece-3d chaise-3d { top: 13em; }
-piece-3d, body > chaise-3d {
-	animation: spin-y 10s infinite linear;
-}*/
+chaise-3d { top: 13em; }
 </style></head><body>
-	<div><pave-3d> </pave-3d></div>
-	<chaise-3d></chaise-3d>
 <!--
 <button onclick='turnLeft()'>gauche</button><button onclick='turnStraigth()'>centré</button><button onclick='turnRigth()'>droite</button>
-<object src='file:///C:/wamp64/www/html/cube.obj'></object>
+-->
 	<piece-3d class='semi-losange carrelage-cabochon'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
 		<table-3d></table-3d>
 		<chaise-3d></chaise-3d>
 	</piece-3d>
--->
 </body></html>
