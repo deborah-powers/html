@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head>
+	<title>une pièce de la maison</title>
+	<base target='_blank'/>
+	<meta charset='utf-8'/>
+	<meta name='viewport' content='width=device-width, initial-scale=1'/>
+	<meta name='subject' content='loisir'/>
+	<meta name='author' content='deborah'/>
+	<meta name='link' content='o'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/pave-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/rond-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/piece-3d.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/meuble-3d.css'/>
+	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/pave-3d.js'></script>
+<style type='text/css'>
+body {
+	perspective: 800px;
+	perspective-origin: 50% 100px;
+	padding-left: 8em;
+}
+table-3d, chaise-3d {
+	--bord: solid 4px maroon;
+	--fond: brown;
+	left: 50%;
+}
+table-3d {
+	width: 10em;
+	--depth: 8em;
+	top: 15em;	/* fixé en fonction des hauteurs définies par l'utilisateur. ne peut être définie automatiquement */
+}
+chaise-3d { top: 13em; }
+</style></head><body>
+	<ul title='pivoter la pièce'>
+<li><button onclick='turnLeft ("test-room")'>gauche</button></li>
+<li><button onclick='turnStraigth ("test-room")'>centré</button></li>
+<li><button onclick='turnRigth ("test-room")'>droite</button></li>
+	</ul>
+<!--
+-->
+	<piece-3d id='test-room' class='semi-losange carrelage-cabochon'>
+		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
+		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
+		<table-3d></table-3d>
+		<chaise-3d></chaise-3d>
+	</piece-3d>
+</body></html>
