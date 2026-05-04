@@ -30,18 +30,26 @@ table-3d {
 	top: 15em;	/* fixé en fonction des hauteurs définies par l'utilisateur. ne peut être définie automatiquement */
 }
 chaise-3d { top: 13em; }
+piece-3d {
+	width: 40em;
+	--motif-color: orange;
+	--fond: chocolate;
+	--bord: solid 6px orange;
+	--fw: 5em;
+}
+piece-3d.plancher >*:nth-child(1) { background-color: sienna; }
+porte { background-color: sienna; }
 </style></head><body>
+<!-- -->
+	<piece-3d id='test-room' class='semi losange plancher'>
+		<p></p><p></p><p>back</p><p>left</p><p class='porte'>right</p><p>front</p>
+		<porte class='right'>o</porte>
+		<table-3d></table-3d>
+		<chaise-3d></chaise-3d>
+	</piece-3d>
 	<ul title='pivoter la pièce'>
 <li><button onclick='turnLeft ("test-room")'>gauche</button></li>
 <li><button onclick='turnStraigth ("test-room")'>centré</button></li>
 <li><button onclick='turnRigth ("test-room")'>droite</button></li>
 	</ul>
-<!--
--->
-	<piece-3d id='test-room' class='semi-losange carrelage-cabochon'>
-		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
-		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
-		<table-3d></table-3d>
-		<chaise-3d></chaise-3d>
-	</piece-3d>
 </body></html>
