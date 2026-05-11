@@ -1,13 +1,13 @@
 https://git-scm.com/book/fr/v1/Les-bases-de-Git-D%C3%A9marrer-un-d%C3%A9p%C3%B4t-Git
 
-======================== l'installer ========================
+== l'installer
 
 sudo apt-get install git
 git != github
 git --version
 git status
 
-======================== installer git dans un dossier ========================
+== installer git dans un dossier
 
 dans mon dossier projet
 git init
@@ -20,7 +20,7 @@ git config --global fetch.prune true
 git config --global diff.colorMoved zebra
 git commit --allow-empty -m "Initialization"
 
-======================== commiter des fichiers ========================
+== commiter des fichiers
 
 git add .
 git commit -m 'message de création (date et heure)'
@@ -29,7 +29,7 @@ git pull origin master
 git push origin master
 
 
-======================== bases, utilisation locale ========================
+== bases, utilisation locale
 
 selectionner un fichier
 	git add doc.html
@@ -50,11 +50,23 @@ fusionner une branche dans master, garder ses modifications
 	git merge new-branch
 supprimer une branche
 	git branch -d new-branch
-conflit lors d'un meging
+conflit lors d'un merging
 	git status#Unmerged paths
+lister les fichiers modifiés par un commit
+	git diff-tree --no-commit-id --name-status (--name-only) commit-hash
+touver le hash du dernier commit
+	git rev-parse HEAD
+lister les commits des deux derniers jours en affichant leurs hash
+	git log --since=2.days (weeks, days, hours)
+lister les quatre derniers commits
+	git log -4
+	git log --pretty=format:"%H - %an, %ar : %s" -4
+%H: afficher le hash du commit
+%an: afficher l'auteur
+%ar: afficher la date de commit
+%s: afficher le message
 
-
-======================== utilisation à distance ========================
+== utilisation à distance
 
 créer un répertoire sous github
 	faire le lien. origin est un nom par défaut, comme master en locale
@@ -98,9 +110,7 @@ effacer en local les branches déjà éffacées sur le web
 C:/Users/deborah.powers/html/.git/config
 fetch.prune = true
 
-
-
-======================== utiliser un personnal acces token ========================*
+== utiliser un personnal acces token*
 
 
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
@@ -115,10 +125,9 @@ ne pas avoir à retaper le mot de passe à chaque fois
 C:/Users/deborah.powers/html/.git/config
 [remote "origin"]
 	url = https://deborah-powers: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@github.com/deborah-powers/mon-dossier-projet.git
-
 ou git push https://deborah-powers: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@github.com/deborah-powers/html.git
 
-======================== erreurs ========================
+== erreurs
 
 github fatal "couldn't find remote ref" master
 fatal: impossible de trouver la référence distante master
