@@ -1,25 +1,74 @@
 <!DOCTYPE html><html><head>
-	<title></title>
+	<title>utiliser python dans html</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='_blank'>
 	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<style type='text/css'>
+i { font-style: italic; }
+	</style>
 	<script type='text/javascript' src='brython.min.js'></script>
 	<script type='text/javascript' src='brython_stdlib.js'></script>
-	<script type='text/python'>
-		print ('bonjour')
+	<script type='text/javascript'>
+function importLocalModule (moduleName){
+	moduleName = 'C:\\Users\\LENOVO\\Desktop\\python\\' + moduleName + '.py';
+	var reqHttp = new XMLHttpRequest();
+	reqHttp.open ('GET', moduleName, false);
+	reqHttp.send();
+	var moduleText ="";
+	if (reqHttp.status ==0 || reqHttp.status ==200){
+		const pythonScript = document.getElementById ('script-python');
+		pythonScript.innerHTML = reqHttp.responseText + pythonScript.innerHTML;
+}}
+importLocalModule ('file');
 	</script>
-	<link rel='stylesheet' type='text/css' href='.css'/>
-	<style type='text/css'></style>
+	<script type='text/python' id='script-python'>
+from browser import document, html
+print ('exemple')
+document <= 'Bonjour !'	# document reçoit le texte bonjour et doit l'afficher dans le body
+document <= html.P ('Bonjour !')	# document reçoit le texte bonjour et doit l'afficher dans dans un paragraphe
+document <= html.P ('je suis votre '+ html.I ('amie'))
+document <= html.OL (html.LI(i) for i in range(5))
+document <= html.A ('tester un lien', href='https://brython.info/')
+# image d'une calculatrice
+calc = html.TABLE()
+calc <= html.TR (html.TH (html.DIV ('0', id='result'), colspan=3) + html.TD ('C', id='clear'))
+lines = [ '789/', '456*', '123-', '0.=+' ]
+calc <= (html.TR(html.TD(x) for x in line) for line in lines)
+document <= calc
+# faire marcher la calculatrice
+result = document['result']	# récupérer un élément par son id
+def pressTouch (event):
+	# Gère l'événement 'click' sur un bouton de la calculatrice
+	# L'élément sur lequel l'utilisateur a cliqué est l'attribut 'target' de
+	# l'objet event
+	element = event.target
+	# Le texte affiché sur le bouton est l'attribut 'text' de l'élément
+	value = element.text
+	if value not in '=C':
+		# mise à jour du contenu de la zone 'result'
+		if result.text in ['0', 'erreur']: result.text = value
+		else: result.text = result.text + value
+	elif value == 'C': result.text = '0'
+	elif value == '=':
+		# exécution de la formule saisie
+		try:
+			x = eval(result.text)
+			result.text = x
+		except: result.text = 'erreur'
+
+touchList = document.select ('td')	# sélecteur css qui récupère les td, comme getElementsByTagName
+for touch in touchList: touch.bind ('click', pressTouch)	# comme addEventListener
+	</script>
 </head><body>
 	<h1>utiliser python dans html; tester brython</h1>
+	<p>brython_stdlib permet d'importer les modules classiques</p>
 	<ul>
 		<li><a href='https://brython.info/'>site de brython</a></li>
 		<li><a href='https://www.reddit.com/r/learnpython/comments/1dr2p0j/is_it_possible_to_use_python_with_html/?tl=fr'>autres outils</a></li>
 		<li><a href='https://cdn.jsdelivr.net/npm/brython@3.14.1/brython.min.js'>version courrante de brython</a></li>
 	</ul>
 </body>
-<script type='text/javascript' src='.js'></script>
 </html>
