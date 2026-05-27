@@ -11,20 +11,7 @@ i { font-style: italic; }
 	</style>
 	<script type='text/javascript' src='brython.min.js'></script>
 	<script type='text/javascript' src='brython_stdlib.js'></script>
-	<script type='text/javascript'>
-function importLocalModule (moduleName){
-	moduleName = 'C:\\Users\\LENOVO\\Desktop\\python\\' + moduleName + '.py';
-	var reqHttp = new XMLHttpRequest();
-	reqHttp.open ('GET', moduleName, false);
-	reqHttp.send();
-	var moduleText ="";
-	if (reqHttp.status ==0 || reqHttp.status ==200){
-		const pythonScript = document.getElementById ('script-python');
-		pythonScript.innerHTML = reqHttp.responseText + pythonScript.innerHTML;
-}}
-importLocalModule ('file');
-	</script>
-	<script type='text/python' id='script-python'>
+	<script type='text/python' defer>
 from browser import document, html
 print ('exemple')
 document <= 'Bonjour !'	# document reçoit le texte bonjour et doit l'afficher dans le body
@@ -61,6 +48,22 @@ def pressTouch (event):
 
 touchList = document.select ('td')	# sélecteur css qui récupère les td, comme getElementsByTagName
 for touch in touchList: touch.bind ('click', pressTouch)	# comme addEventListener
+	</script>
+	<script type='text/javascript'>
+function importLocalModule (moduleName){
+//	moduleName = 'C:\\Users\\LENOVO\\Desktop\\python\\' + moduleName + '.py';
+	var reqHttp = new XMLHttpRequest();
+	reqHttp.open ('GET', moduleName, false);
+	reqHttp.send();
+	var moduleText ="";
+	if (reqHttp.status ==0 || reqHttp.status ==200){
+		const pythonScript = document.getElementById ('script-python');
+		const scripts = document.getElementsByTagName ('script');
+		var s=0;
+		while (s< scripts.length && scripts[s].type !== 'text/python') s+=1;
+		scripts[s].innerHTML = reqHttp.responseText + scripts[s].innerHTML;
+}}
+importLocalModule ('file:///C:/wamp64/www/html/brython-test.py');
 	</script>
 </head><body>
 	<h1>utiliser python dans html; tester brython</h1>
