@@ -9,6 +9,10 @@ p: naviguer entre les paragraphes
 ,: sortir d'une liste ou d'une table
 shift ,: revenir au début d'une liste ou d'une table
 
+ctl alt n: ouvrir nvda
+flèche du bas: avancer dans la lecture de la page
+flèche du haut: reculer dans la lecture de la page
+
 == sources
 
 https://download.nvaccess.org/releases/2021.2/documentation/keyCommands.html
