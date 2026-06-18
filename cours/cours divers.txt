@@ -215,8 +215,10 @@ créer un raccouci
 
 ************ Commande window
 
-Dir:				affiche la liste de fichiers dans le répertoire courant
-Copy con myfile:	Modifier le contenu d'un fichier
+Dir: affiche la liste de fichiers dans le répertoire courant
+dir *clef*.pdf: affiche les pdf contenant le mot clef dans leur nom
+def "my file.ext": supprimer le fichier
+Copy con myfile: Modifier le contenu d'un fichier
 
 ************ Racourcis clavier
 
