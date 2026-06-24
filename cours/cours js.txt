@@ -1,66 +1,77 @@
+console.log ()
 
-== les objets globaux
+== Les variables
+
+Leur nom est sensible à la casse.
+Elles sont déclarées par les mots-clefs var, let et const.
+var prix
+Prix vaut undefined
+
+== La syntaxe de base
+
+Ressources: https://codecademy-enterprise.percipio.com/fr-FR/resources/docs/javascript
+
+** Les objets globaux
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+Noms de types de variable. Object, number, etc.
+Librairies. Math, Number, console.
+Math ne fonctionne qu'avec les numbers.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-noms de types de variable. Object, number, etc.
-librairies. Math.
-
-math ne fonctionne qu'avec les numbers.
-
-== méthodes de string
+** Méthodes de string
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+Code
 var nvString = maString.toUpperCase()
 nvString = maString.trim()	// éliminer les espaces blancs aux extrêmités de la string
 var commenceParE = maString.startsWith ('E')
+/
 
+** Les méthodes
 
-== les méthodes
+Fonctions associées à des instances, notament celles des données primitives.
+NvString = maString.toUpperCase()
+console.log (NvString)
 
-fonctions associées à des instances, notament celles des données primitives.
-nvString = maString.toUpperCase()
-console.log (nvString)
+** Les opérateurs
 
-== les opérateurs
-
-** opérateurs mathématiques
+-- Opérateurs mathématiques
 
 + - * / %
 % est le modulo, ou reste d'une division entière.
 
-** opérateurs de string
+-- Opérateurs de string
 
+Code
 +, 'hello '+ 'word'
 
-** autres opérateurs
+-- Autres opérateurs
 
-.: opérateur de propriété. maString.length
+Code
+.: Opérateur de propriété. MaString.length
 
+** Les types de données
 
-== les types de données
+-- Les primitives
 
+Number: Entier ou à virgule
+Bigint: Entier > 2^53 -1 ou < -2^53 -1. N est rajouté à la fin du nombre, 1234567890123456n
+Bouléen: True ou false
+Undefined: La variable n'existe pas
+Null: Absence de donnée prévue par le code
+Symbol: Identifiant unique
+String
 
-** les primitives
+-- Autre type
 
-number: entier ou à virgule
-bigint: entier > 2^53 -1 ou < -2^53 -1. n est rajouté à la fin du nombre, 1234567890123456n
-bouléen: true ou false
-
-undefined: la variable n'existe pas
-null: absence de donnée prévue par le code
-symbol: identifiant unique
-
-string
-** autre type
 Object
-
-
 
 ==
 
-Sujet: cours, js
-Auteur: cgi
+Sujet: Cours, js
+Auteur: Cgi
 Lien: https://cgi.percipio.com/linked-contents/6bd9f1a6-8809-46fc-bd6b-a29c15790c88/landing
-date: 2026/06
-parcours: percipio js débutant à professionnel
+Date: 2026/06
+Parcours: Percipio js débutant à professionnel
