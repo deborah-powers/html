@@ -1,11 +1,45 @@
 console.log ()
+console.log (``)
+if (){}
+else{}
+console.log ('time to sleep')
+
+
+== contrôle de flux
+
+if, else, if else
+opérateur ternaire
+code
+condition ? exprSiVrai : exprSiFaux;
+var elvisLives = Math.PI > 4 ? "Yep" : "Nope";
+/
+switch
+code
+const mySwitch = 'banane';
+switch (mySwitch){
+	case 'pomme':
+		console.log ("hier j'ai mangé une pomme");
+		break;
+	case 'abricot':
+	case 'poire':
+		console.log ("... abricot");
+		break;
+	default:
+		console.log (`vous cherchez le fruit défendu, ${mySwitch}`);
+}
+/
 
 == Les variables
 
+https://code-garage.com/blog/qu-est-ce-que-le-hoisting-en-javascript/
+https://code-garage.com/blog/quelles-sont-les-differences-entre-var-let-et-const-en-javascript
+
 Leur nom est sensible à la casse.
 Elles sont déclarées par les mots-clefs var, let et const.
+var varVar peut être appelée this.varVar ou window.varVar, pas varLet ni varConst.
 var prix
 Prix vaut undefined
+const typeVar = typeof (myVar)
 
 == La syntaxe de base
 
@@ -28,6 +62,11 @@ var nvString = maString.toUpperCase()
 nvString = maString.trim()	// éliminer les espaces blancs aux extrêmités de la string
 var commenceParE = maString.startsWith ('E')
 /
+-- interpolation
+
+var myName = 'Stormageudon';
+var bonjour = `Bonjour, je suis ${myName}, votre guide pour la semaine`;
+la chaine contenant l'interpolation est entre guillemets du 7, ``.
 
 ** Les méthodes
 
@@ -46,6 +85,23 @@ console.log (NvString)
 
 Code
 +, 'hello '+ 'word'
+
+-- opérateurs d'incrémentation
+
+x+=1
+x-=1
+x*=2
+x/=2
+x++
+x--
+
+-- opérateurs de comparaison
+
+===, !==, >, <, >=, <=
+
+-- opérateurs logiques
+
+&&, ||, !
 
 -- Autres opérateurs
 
