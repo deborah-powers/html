@@ -1,3 +1,20 @@
+== déconnecter un appareil de mes comptes
+
+** google
+
+icone photo / gérer votre compte google
+menu de gauche / sécurité et connection
+vos appareils
+
+** hotmail
+
+icone photo / mon compte microsoft
+menu de gauche / sécurité
+protection des appareils
+
+
+
+
 ============ Afficher une image de google photo sur mon site
 
 https://www.benjamin-mary.com/fr/outil/google-photos
