@@ -11,23 +11,10 @@
 		padding: 1em;
 		column-count: 4;
 		border-style: solid;
-		border-width: 40px;
+		border-width: 20px;
 		border-image-slice: 100;
-		border-image-source: url("data:image/svg+xml;utf8,<svg version='1.1' width='300' height='300' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><circle cx='50' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='50' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='50' cy='150' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='150' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='150' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='150' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /></svg>");
+		border-image-source: url("data:image/svg+xml;utf8,<svg version='1.1' width='300' height='300' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><circle cx='50' cy='50' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='50' cy='250' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='50' cy='150' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='250' cy='50' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='250' cy='250' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='250' cy='150' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='150' cy='50' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /><circle cx='150' cy='250' r='45' stroke-width='10' fill='none' stroke='MediumVioletRed' /></svg>");
 		border-image-repeat: round;
-	}
-	section.bord-degrade {
-		border-image-slice: 100;
-		border-image: repeating-linear-gradient(90deg, var(--bord-color), var(--text-color), var(--bord-color) 20%) 100;
-		border-image-source: repeating-linear-gradient(45deg, var(--bord-color) 5%, var(--text-color) 15%, var(--bord-color) 20%);
-		border-image-source: linear-gradient(90deg, #F00, #088);
-	}
-	section.bord-img {
-		border-image-source: url('bordure.png');
-		border-image-slice: 100;
-		border-image-repeat: round;
-		border-image-repeat: stretch;
-		border-image-source: url("data:image/svg+xml;utf8,<svg version='1.1' width='300' height='300' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><circle cx='50' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='50' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='50' cy='150' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='250' cy='150' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='150' cy='50' r='45' stroke-width='10' fill='none' stroke='maroon' /><circle cx='150' cy='250' r='45' stroke-width='10' fill='none' stroke='maroon' /></svg>");
 	}
 </style></head><body>
 	<h1>Les dates de ramassage des encombrants pour $year</h1>
@@ -47,7 +34,8 @@
 		if (dateNb <10) dateMsg = '0'+ dateNb.toString() +" ";
 		else dateMsg = dateNb.toString() +" ";
 		dateNb = this.getMonth();
-		dateMsg = dateMsg + monthNames [dateNb] +" "+ this.getFullYear();
+		dateMsg = dateMsg + monthNames [dateNb];
+	//	dateMsg = dateMsg + monthNames [dateNb] +" "+ this.getFullYear();
 		dateFrame.innerHTML = dateFrame.innerHTML +'<p>'+ dateMsg +'</p>';	// affichage sur la page
 		this.setDate (this.getDate() +14);	// incrémenter la date de 2 semaines
 	}
