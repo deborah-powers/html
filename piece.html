@@ -45,6 +45,18 @@ bole-3d {
 	--fond: wheat;
 	left: 11em;
 }
+bole-3d:after {
+	content: 'o';
+	display: block;
+	width: 200%;
+	height: 400%;
+	border-radius: 50%;
+	position: absolute;
+	left: -50%;
+	top: -150%;
+	background-color: transparent;
+	background-image: radial-gradient(wheat, transparent, transparent);
+}
 .rond {
 	border-radius: 100%;
 	margin: 0;
@@ -55,8 +67,10 @@ bole-3d {
 	background-color: transparent;
 	border: none;
 	width: 20em;
+	/*
 	left: 3em;
 	top: -8em;
+	*/
 }
 table-3d, chaise-3d {
 	--bord: solid 4px maroon;
@@ -79,10 +93,10 @@ chaise-3d {
 		<li><button onclick='turnStraigth ("test-room")'>centré</button></li>
 		<li><button onclick='turnRigth ("test-room")'>droite</button></li>
 	</ul>
-	<piece-3d id='test-room' class='semi-losange carrelage-cabochon night'>
+	<piece-3d id='test-room' class='semi-losange carrelage-cabochon'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
-		<bole-3d> </bole-3d>
+		<bole-3d class='light'> </bole-3d>
 		<table-3d></table-3d>
 		<chaise-3d></chaise-3d>
 	</piece-3d>
