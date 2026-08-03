@@ -42,35 +42,26 @@ li > button {
 }
 bole-3d {
 	--radius: 3em;
-	--fond: wheat;
+	--fond: pink;
 	left: 11em;
 }
-bole-3d:after {
-	content: 'o';
+bole-3d:after, bole-3d:before {
+	content: " ";
 	display: block;
-	width: 200%;
-	height: 400%;
+	width: 600%;
+	height: 1200%;
 	border-radius: 50%;
 	position: absolute;
-	left: -50%;
-	top: -150%;
+	left: -250%;
+	top: -550%;
 	background-color: transparent;
-	background-image: radial-gradient(wheat, transparent, transparent);
+	background-image: radial-gradient(var(--fond), transparent, transparent);
 }
+bole-3d:before { transform: rotateY(90deg); }
 .rond {
 	border-radius: 100%;
 	margin: 0;
 	aspect-ratio: 1;
-}
-.light {
-	background-image: radial-gradient(wheat, transparent, transparent);
-	background-color: transparent;
-	border: none;
-	width: 20em;
-	/*
-	left: 3em;
-	top: -8em;
-	*/
 }
 table-3d, chaise-3d {
 	--bord: solid 4px maroon;
@@ -96,7 +87,7 @@ chaise-3d {
 	<piece-3d id='test-room' class='semi-losange carrelage-cabochon'>
 		<p>bottom</p><p>top</p><p class='fenetre'>back</p><p class='porte'>left</p><p class='fenetre'>right</p><p>front</p>
 		<porte class='left'>coco</porte><fenetre class='back'>lolo</fenetre><fenetre class='right'>lolo</fenetre>
-		<bole-3d class='light'> </bole-3d>
+		<bole-3d> </bole-3d>
 		<table-3d></table-3d>
 		<chaise-3d></chaise-3d>
 	</piece-3d>
