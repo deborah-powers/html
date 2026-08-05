@@ -46,7 +46,7 @@ bole-3d {
 	left: 11em;
 }
 bole-3d:after, bole-3d:before {
-	content: " ";
+	content: none;
 	display: block;
 	width: 600%;
 	height: 1200%;
@@ -62,6 +62,10 @@ bole-3d:before { transform: rotateY(90deg); }
 	border-radius: 100%;
 	margin: 0;
 	aspect-ratio: 1;
+	/* --- */
+	width: 3em;
+	background-color: pink;
+	background-image: radial-gradient(pink, green);
 }
 table-3d, chaise-3d {
 	--bord: solid 4px maroon;
@@ -90,6 +94,7 @@ chaise-3d {
 		<bole-3d> </bole-3d>
 		<table-3d></table-3d>
 		<chaise-3d></chaise-3d>
+		<p class='rond'></p>
 	</piece-3d>
 <script type='text/javascript'>
 </script>
