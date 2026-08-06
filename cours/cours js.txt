@@ -1,8 +1,12 @@
+== brouillons
+
 console.log ()
 console.log (``)
 if (){}
 else{}
 console.log ('time to sleep')
+
+var userName ="";
 
 
 == contrôle de flux
@@ -10,8 +14,8 @@ console.log ('time to sleep')
 if, else, if else
 opérateur ternaire
 code
-condition ? exprSiVrai : exprSiFaux;
-var elvisLives = Math.PI > 4 ? "Yep" : "Nope";
+condition ? exprSiVrai: exprSiFaux;
+var elvisLives = Math.PI > 4 ? 'Yep': 'Nope';
 /
 switch
 code
