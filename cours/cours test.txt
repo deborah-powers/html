@@ -8,28 +8,28 @@ La production de rapports
 
 Examen systématique d'un logiciel afin d'en trouver les limites.
 
-** le but des tests
+** Le but des tests
 
-fonctionnement conforme aux attentes
-	facilité d'utilisation
-	conformité aux specs technique et fonctionnelle
-	besoins des utilisateurs
-	accessibilité, rgaa, w3c
-	rgpd
-	règlementations diverses
-
-repérer rapidement les bogues
-performances
-robustesse
+Fonctionnement conforme aux attentes
+	Facilité d'utilisation
+	Conformité aux specs technique et fonctionnelle
+	Besoins des utilisateurs
+	Accessibilité, RGAA, w3c
+	Rgpd
+	Règlementations diverses
+Repérer rapidement les bogues
+Performances
+Robustesse
 Fonctionnement sur plusieurs plate-formes
 Sécurité, protection des données
 Evolutivité. Hausse du nombre d'utilisateur, rétro-compatibilité, etc
-tous ces points réduisent le coût de maintenance.
+Tous ces points réduisent le coût de maintenance.
 
 ** Divers
 
 L'environnement de test ressemble autant que possible à l'environnement de production.
-Utiliser des données réelles annonymisées.
+Utiliser des données réelles annonymisées. Tester d'abbord des situations réalistes.
+Feuille de test.
 
 ** Le plan de test
 
@@ -38,8 +38,10 @@ De la dangerosité d'une défaillance,
 Du nombre de fois où un point risque de planter,
 De l'importance de la fonctionnalité
 Les tests automatiques permettent de faire vites les tests répétés.
+Intégrer le logiciel TODO à finir
 Documenter les test permet de prouver l'amélioration du logiciel.
 Débogage: Eliminer un bogue. Réactif, proactif
+Faire évoluer le plan de test selon l'avancement du projet.
 
 ** Les types de test
 
@@ -53,17 +55,79 @@ Performance: Comportement du logiciel dans des conditions définies
 Usabilité: Confort d'utilisation du logiciel
 Compatibilité: Le logiciel fonctionne dans différents environnements. Android, window, chrome, firefox, etc
 
-** l'assurance qualité
+** L'assurance qualité
 
-les test font partie du contrôle de qualité (QC) et concernent les produits.
-l'assurance qualité (QA) est un moyen par lequel un vendeur (bien ou service, surtout en b2b) donne un niveau de qualité à ses produits et prouve sa capacité à la maintenir, y compris à elle-même. elle concerne les processus.
+Les test font partie du contrôle de qualité (QC) et concernent les produits.
+L'assurance qualité (QA) est un moyen par lequel un vendeur (Bien ou service, surtout en b2b) donne un niveau de qualité à ses produits et prouve sa capacité à la maintenir, y compris à elle-même. Elle concerne les processus.
 
+** La classification des anomalies
 
+-- Les origines des anomalies
+
+L'erreur est causée par les développeurs.
+Le défaut vient de défaillances dans les specs ou la documentation. Elles se répercutent souvent dans le code.
+La panne (L'échec) apparaît à l'usage quand un logiciel déffectueux est lancé, ou quand la fonctionnalité déffectueuse est sollicitée.
+
+-- Les défaillances dans les tests
+
+Mauvaise interprêtation des résultats du test
+Oubli de scénarios de test
+Impossibilité de reproduire les conditions d'un cas de test
+Défaillance matérielle
+
+-- Les anomalies au quotidien
+
+Anomalie d'interface
+Erreur de gestion des exceptions
+Erreur de syntaxe
+Erreur de complilation
+Erreur logique
+Défaut de fonctionnalité
+Défaut d'intégration, quand un module ne fonctionne pas avec les autres
+Défaut de sécurité
+Défaut de mémoire, out of bound. Le logiciel veut utiliser une zone mémoire qui ne lui ai pas autorisée
+
+-- Focus sur l'erreur de compilation
+
+Erreur de runtime: La compilation a réussie, l'erreur se déclenche juste après
+Erreur de ressources: Le logiciel gère mal les ressources qui le font tourner. Ram, espace disque, etc. Risque de fuite mémoire, etc
+Erreur de communication: Dépendance ko, mauvais format de données échangées, protocoles incompatibles
+
+-- Les niveaux d'importance des anomalies
+
+Critique: Fait planter le logiciel
+Majeure: Bloque une fonctionnalité
+Mineure: Complique l'utilisation du logiciel
+Triviale: Défaut esthétique
+
+-- Les niveaux de probabilité de découverte d'une anomalie
+
+Haut: Ano à laquelle les utilisateurs sont régulièrement confrontés
+Moyen: Ano apparaissant dans des cas particuliers, ou lors d'opérations peu courantes. Une petite moitié des utilisateurs y sont confrontés
+Bas: Rare, concerne peux d'utilisateurs
+
+** Les causes racines des anomalies
+
+La deadline trop sérrées. En général, on saute les phases de test. Les tu sont désactivés et laissé périmer, etc... On se retrouve avec plein de tu qui ne servent à rien et pètent à tord.
+Les erreurs humaines
+Le niveau des équipiers
+La communication dans l'équipe
+L'architecture trop complèxe
+Les règles de code trop complèxes
+Les règles de code trop limitantes
+L'utilisation de technologies mal connues
+Spec mal écrite ou mal comprise
+
+** Les méthodes de test
+
+Test automatisé
+
+** Les limites des processus de test
 
 ==
 
 Sujet: Cours, test
 Auteur: Cgi
-Lien: https://cgi.percipio.com/courses/ada6ea61-654f-42eb-82a5-3dec7db47f0b/videos/15c5863a-ff5b-4a9e-af63-5a8d96443467
+Lien: https://cgi.percipio.com/courses/ada6ea61-654f-42eb-82a5-3dec7db47f0b/videos/2b59c14e-edbd-420f-bc9d-08e31ab4d757
 Date: 2026/08/06
 Parcours: Percipio istqb testeur
