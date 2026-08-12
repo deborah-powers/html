@@ -1,3 +1,16 @@
+== les sélecteurs css
+https://www.w3schools.com/cssref/css_selectors.php
+div[role] { tous les div portant l'attribut rôle }
+div[role='group'] { tous les div portant l'attribut rôle et la valeur group }
+div[id~='monid'] { tous les div dont l'id contient le texte monid, comme commonid1 }
+div[id*='monid'] { tous les div dont l'id contient le texte monid, comme commonid1 }
+div[id|='monid'] { tous les div dont l'id commence par monid, comme monid1 }
+div[id^='monid'] { tous les div dont l'id commence par monid, comme monid1 }
+div[id$='monid'] { tous les div dont l'id fini par monid, comme commonid }
+div [id] { tous les éléments portant un id contenus dans une div }
+div:has([id]) { tous les div dont au moins un enfant porte un id }
+div:not(:has([id])) { tous les div dont aucun enfant ne porte d'id }
+
 == déconnecter un appareil de mes comptes
 
 ** google
