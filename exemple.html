@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head>
+	<title></title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<base target='_blank'>
+	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
+	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
+	<script type='text/javascript' src='.js'></script>
+	<link rel='stylesheet' type='text/css' href='.css'/>
+	<style type='text/css'></style>
+</head><body>
+	<a href='https://stackoverflow.com/questions/3024404/transform-longitude-latitude-into-meters'>gps en mètres</a>
+</body>
+<script type='text/javascript'>
+//	navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
+function toRadians (degrees){
+	degrees *= Math.PI;
+	degrees /=180;
+	return degrees;
+}
+function findNearStop (pos){
+	// latitude. 1 degré = 111.133 km
+	const deltaXgps =0.0001;
+	const deltaYgps =0.0001;
+	const deltaYmeter = deltaYgps * 40008000 / 360;
+	const circumferenceY = 40075160 * Math.cos (toRadians (pos.coords.latitude));
+	const deltaXmeter = deltaXgps * circumferenceY /360;
+	console.log (deltaXmeter, deltaYmeter);
+}
+	navigator.geolocation.getCurrentPosition(findNearStop);
+</script>
+</html>
