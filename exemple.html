@@ -11,8 +11,20 @@
 	<style type='text/css'></style>
 </head><body>
 	<a href='https://stackoverflow.com/questions/3024404/transform-longitude-latitude-into-meters'>gps en mètres</a>
+	<input type='file' />
+	<input type='file' required />
+	<input type='file' required='false' />
+	<input type='file' required='true' />
+	<input type='file' aria-required />
+	<input type='file' aria-required='false' />
+	<input type='file' aria-required='true' />
 </body>
 <script type='text/javascript'>
+const fichiers = document.getElementsByTagName ('input');
+for (var fich of fichiers){
+	console.log (fich.getAttribute ('aria-required'), typeof (fich.getAttribute ('aria-required')));
+}
+
 //	navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
 function toRadians (degrees){
 	degrees *= Math.PI;
