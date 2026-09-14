@@ -109,7 +109,6 @@ x--
 
 -- Autres opérateurs
 
-Code
 .: Opérateur de propriété. MaString.length
 
 ** Les types de données
