@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-	<title></title>
+	<title>fonctionnalités à tester</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<base target='_blank'>
@@ -8,8 +8,25 @@
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
 	<script type='text/javascript' src='.js'></script>
 	<link rel='stylesheet' type='text/css' href='.css'/>
-	<style type='text/css'></style>
-</head><body>
+<style type='text/css'>
+	section#deployer-section { display: none; }
+</style></head><body>
+	<h1>tester le fonctionnement de certains composants</h1>
+	<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section' /><label for='deployer-bouton'>déployer la section suivante</label>
+	<section id='deployer-section' role='region' aria-live='assertive'>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore <em>magna aliqua</em>. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</section>
 	<a href='https://stackoverflow.com/questions/3024404/transform-longitude-latitude-into-meters'>gps en mètres</a>
 	<input type='file' />
 	<input type='file' required />
@@ -20,11 +37,24 @@
 	<input type='file' aria-required='true' />
 </body>
 <script type='text/javascript'>
+	const bouton = document.getElementById ('deployer-bouton');
+	const section = document.getElementById ('deployer-section');
+	bouton.addEventListener ('click', function(event){
+		if (event.target.checked){
+			section.style.display = 'block';
+			event.target.setAttribute ('aria-expended', true);
+		}
+		else{
+			section.style.display = 'none';
+			event.target.setAttribute ('aria-expended', false);
+		}
+	});
+/*
+	section.style.display = 'block';
 const fichiers = document.getElementsByTagName ('input');
 for (var fich of fichiers){
 	console.log (fich.getAttribute ('aria-required'), typeof (fich.getAttribute ('aria-required')));
 }
-
 //	navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
 function toRadians (degrees){
 	degrees *= Math.PI;
@@ -41,5 +71,6 @@ function findNearStop (pos){
 	console.log (deltaXmeter, deltaYmeter);
 }
 	navigator.geolocation.getCurrentPosition(findNearStop);
+*/
 </script>
 </html>
