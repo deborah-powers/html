@@ -9,11 +9,30 @@
 	<script type='text/javascript' src='.js'></script>
 	<link rel='stylesheet' type='text/css' href='.css'/>
 <style type='text/css'>
-	section#deployer-section { display: none; }
+/*	section#deployer-section { display: none; } */
 </style></head><body>
 	<h1>tester le fonctionnement de certains composants</h1>
-	<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section' /><label for='deployer-bouton'>déployer la section suivante</label>
-	<section id='deployer-section' role='region' aria-live='assertive'>
+	<h2>les listes combobox</h2>
+	<label>liste combobox</label>
+	<input type='text' role='combobox' aria-autocomplete='list' aria-expanded='false' data-active-option='choix-1' aria-controls='option-liste' />
+	<ul role='listbox' id='option-liste'>
+		<li role='option' id='choix-1'>peche</li>
+		<li role='option' id='choix-2'>pomme</li>
+		<li role='option' id='choix-3'>poire</li>
+		<li role='option' id='choix-4'>abricot</li>
+	</ul>
+	<h2>les dépliants</h2>
+	<div>
+		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' />
+		<label for='deployer-bouton'>modifier la section suivante</label>
+	</div><div>
+		<label for='deployer-bouton'>déployer la section suivante</label>
+		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-a' />
+		<label for='deployer-rien'>ne rien déployer</label>
+	</div>
+	<p>texte interrompant le lien entre le bouton et son bloc.</p>
+	<section id='deployer-section-b' aria-live='polite'></section>
+	<section id='deployer-section-a' role='region' aria-live='polite'>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -38,14 +57,16 @@
 </body>
 <script type='text/javascript'>
 	const bouton = document.getElementById ('deployer-bouton');
-	const section = document.getElementById ('deployer-section');
+	const section = document.getElementById ('deployer-section-b');
 	bouton.addEventListener ('click', function(event){
 		if (event.target.checked){
-			section.style.display = 'block';
+		//	section.style.display = 'block';
+			section.innerHTML = '<p>Ouvert</p>';
 			event.target.setAttribute ('aria-expended', true);
 		}
 		else{
-			section.style.display = 'none';
+		//	section.style.display = 'none';
+			section.innerHTML = '<p>Fermé</p>';
 			event.target.setAttribute ('aria-expended', false);
 		}
 	});

@@ -3,9 +3,11 @@ ctl F11: revenir en haut de la page
 ctl F12: aller en bas de la page
 ctl flèche vers le bas: lire la ligne en-dessous
 maj q: fermer nvda
-l: naviguer de liste en liste
+f: naviguer entre les éléments d'un formulaire
 h: naviguer de tître en tître
+l: naviguer de liste en liste
 p: naviguer entre les paragraphes
+r: naviguer entre les boutons radio
 ,: sortir d'une liste ou d'une table
 shift ,: revenir au début d'une liste ou d'une table
 
