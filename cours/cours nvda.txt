@@ -1,8 +1,15 @@
+nvda a deux modes
+navigation:	par défaut	lecture de la page en utilisant les flèches haut et bas
+focus:	en présence de formulaire	saut d'un élément focusable à l'autre avec tab
+la touche nvda est choisie au lancement de nvda. sa valeur par défaut dépend de l'appareil. je préfère la touche maj.
 
+== raccourcis
 ctl F11: revenir en haut de la page
 ctl F12: aller en bas de la page
 ctl flèche vers le bas: lire la ligne en-dessous
-maj q: fermer nvda
+echap: passer du mode focus au mode navigation
+nvda espace: passer du mode focus au mode navigation
+nvda q: fermer nvda
 f: naviguer entre les éléments d'un formulaire
 h: naviguer de tître en tître
 l: naviguer de liste en liste

@@ -9,11 +9,21 @@
 	<script type='text/javascript' src='.js'></script>
 	<link rel='stylesheet' type='text/css' href='.css'/>
 <style type='text/css'>
-/*	section#deployer-section { display: none; } */
+/*	section#deployer-section { display: none; }
+	input ~ label { background-color: yellow; }
+	input + label { background-color: orange; }
+	*:has(input) ~ * label { background-color: limegreen; }
+	*:has(input) ~ *:has(label) { background-color: lightblue; }
+	*:has(input) ~ *:has(label) label { background-color: violet; } dans tous les cas
+*/
+	input ~ label { background-color: yellow; }
+	*:has(input) ~ * label { background-color: limegreen; }
+	input + label { background-color: orange; }
+
 </style></head><body>
 	<h1>tester le fonctionnement de certains composants</h1>
-	<h2>les listes combobox</h2>
-	<label>liste combobox</label>
+	<h2>les listes  combobox</h2>
+	<p>liste combobox</p>
 	<input type='text' role='combobox' aria-autocomplete='list' aria-expanded='false' data-active-option='choix-1' aria-controls='option-liste' />
 	<ul role='listbox' id='option-liste'>
 		<li role='option' id='choix-1'>peche</li>
@@ -21,13 +31,20 @@
 		<li role='option' id='choix-3'>poire</li>
 		<li role='option' id='choix-4'>abricot</li>
 	</ul>
+	<h2>input emballé</h2>
+		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' />
+		<p>bla bla</p><p>bla</p>
+		<label for='deployer-bouton'>label séparé de son input</label>
+		<p><input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' /></p>
+		<p><label for='deployer-bouton'>label et input emballés</label></p>
+
 	<h2>les dépliants</h2>
 	<div>
-		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' />
-		<label for='deployer-bouton'>modifier la section suivante</label>
+		<input type='checkbox' id='deployer-bouton-a' aria-expended='false' aria-controls='deployer-section-b' />
+		<label for='deployer-bouton-a'>modifier la section suivante</label>
 	</div><div>
-		<label for='deployer-bouton'>déployer la section suivante</label>
-		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-a' />
+		<label for='deployer-bouton-b'>déployer la section suivante</label>
+		<input type='checkbox' id='deployer-bouton-b' aria-expended='false' aria-controls='deployer-section-a' />
 		<label for='deployer-rien'>ne rien déployer</label>
 	</div>
 	<p>texte interrompant le lien entre le bouton et son bloc.</p>
