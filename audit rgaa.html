@@ -11,6 +11,8 @@
 		max-width: 21cm;
 		margin: auto;
 		padding: 1em;
+		--button-bg: var(--fond-color);
+		--button-border: solid;
 	}
 	h1 {
 		font-size: 2em;
@@ -27,6 +29,7 @@
 	}
 	section.cache { display: none; }
 	input[type='file'] { display: none; }
+	button, a.button { width: 40%; }
 	table, tr { width: 100%; }
 	td { padding: 0; }
 	td.nt { background-color: skyblue; }
@@ -61,18 +64,18 @@
 		<p>score: $scoreNb %. la page est $scoreConform</p>
 	</div>
 	<button onclick='validerAudit()'>valider l'audit</button>
-	<a id='download-link' download='audit rgaa.txt' href=''>en attente de validation</a>
+	<a id='download-link' class='button' download='audit rgaa.txt' href=''>en attente de validation</a>
 	<h2>grille</h2>
 <table><caption>01 images</caption>
 	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
-	<tr><td>01.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image porteuse d'information a-t-elle une alternative textuelle ?</td><td><input type='text' /></td></tr>
+	<tr><td>01.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image informative a-t-elle une alternative textuelle ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image de décoration est-elle correctement ignorée par les technologies d'assistance ?</td><td><input type='text' /></td></tr>
-	<tr><td>01.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image porteuse d'information ayant une alternative textuelle, cette alternative est-elle pertinente hcp ?</td><td><input type='text' /></td></tr>
+	<tr><td>01.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image informative ayant une alternative textuelle, cette alternative est-elle pertinente hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.04</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image utilisée comme captcha ou comme image-test, ayant une alternative textuelle, cette alternative permet-elle d'identifier la nature et la fonction de l'image ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.05</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image utilisée comme captcha, une solution d'accès alternatif au contenu ou à la fonction du captcha est-elle présente ?</td><td><input type='text' /></td></tr>
-	<tr><td>01.06</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image porteuse d'information a-t-elle, si nécessaire, une description détaillée ?</td><td><input type='text' /></td></tr>
-	<tr><td>01.07</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image porteuse d'information ayant une description détaillée, cette description est-elle pertinente ?</td><td><input type='text' /></td></tr>
-	<tr><td>01.08</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image texte porteuse d'information, en l'absence d'un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. cette règle est-elle respectée hcp ?</td><td><input type='text' /></td></tr>
+	<tr><td>01.06</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image informative a-t-elle, si nécessaire, une description détaillée ?</td><td><input type='text' /></td></tr>
+	<tr><td>01.07</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image informative ayant une description détaillée, cette description est-elle pertinente ?</td><td><input type='text' /></td></tr>
+	<tr><td>01.08</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image texte informative, en l'absence d'un mécanisme de remplacement, doit si possible être remplacée par du texte stylé. cette règle est-elle respectée hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.09</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque légende d'image est-elle, si nécessaire, correctement reliée à l'image correspondante ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>02 cadres</caption>
@@ -291,11 +294,19 @@ $tableAudit$`;
 		sections[0].className = 'cache';
 		sections[1].className ="";
 	}
+	Date.prototype.toDebbyFormat = function(){
+		var dateStr = this.getDate();
+		if (dateStr.length ===1) dateStr = '0'+ dateStr;
+		dateStr = this.getMonth() +'/'+ dateStr;
+		if (dateStr.length ===4) dateStr = '0'+ dateStr;
+		dateStr = this.getFullYear() +'/'+ dateStr;
+		return dateStr;
+	}
 	function lancerNouvelAudit(){
 		document.getElementById ('header-ancien').style.display = 'none';
 		document.getElementById ('header-nouveau').style.display = 'block';
-		const today = Date.now();
-		dataDict['dateAudit'] = today.toString();
+		const today = new Date();
+		dataDict['dateAudit'] = today.toDebbyFormat();
 		document.body.innerHTML = document.body.innerHTML.replace ('$date', dataDict['dateAudit']);
 		lancerAudit();
 	}
@@ -314,13 +325,13 @@ $tableAudit$`;
 		if (document.getElementById ('header-nouveau').style.display === 'block'){
 			dataDict['pageUrl'] = document.getElementById ('page-url').value;
 			dataDict['pageName'] = document.getElementById ('page-name').value;
-			downloadLink.download = dataDict['pageName'] + '.txt';
+			downloadLink.download = dataDict['pageName'] + ' rgaa grille.txt';
 		}
 		computeScore (dataDict['tableAudit']);
 		dataText = headerTemplate.toModel (dataDict);
 		dataText = encodeURI (dataText);
 		downloadLink.href = 'data:text/plain;charset=utf-8,' + dataText;
-		downloadLink.innerHTML = 'télécharger le message';
+		downloadLink.innerHTML = "télécharger l'audit";
 	}
 //	valeur des boutons
 	function setDerrogation (td){

@@ -1,24 +1,69 @@
-== brouillons
+== Brouillons
 
-console.log ()
-console.log (``)
+Code
+console.log ();
+console.log (``);
 if (){}
 else{}
-console.log ('time to sleep')
-
+console.log ('time to sleep');
 var userName ="";
+/
 
+== Les fonctions
 
-== contrôle de flux
+** Forme basique
 
-if, else, if else
-opérateur ternaire
-code
+Code
+function doSomething (parametre1, parametre2){
+	// déclaration
+	var res = true;
+	if (parametre2 === undefined) parametre2 = 21;	// appliquer un paramètre par défaut sans es6
+	// do something;
+	return res;	// renvoyer une valeur à l'appelant. facultatif pour la fonction
+}
+doSomething ('coucou', 45);	// appel
+/
+Paramètre: Variables utilisée dans une fonction, attendues lors de l'appel. Parametre2. Si sa valeur n'est pas précisée, elle vaut undefined par défaut.
+Argument: Valeurs transmises à une fonction lors de son appel. 45
+return vaut undefined par défaut. Si on éssaie de récupérer un résultat d'une fonction qui ne renvoi rien.
+Cette fonction peut être appelée au-dessus de sa déclaration.
+Es6 peut utiliser des paramètres par défaut
+Code
+function doSomething (parametre1, parametre2='hello'){	// appliquer un paramètre par défaut avec es6
+	if (parametre1 === undefined) parametre1 = 21;	// appliquer un paramètre par défaut sans es6
+}
+/
+
+** Fonction en expression
+
+Code
+const doSomething = function (parametre1, parametre2){
+	// do something;
+	return res;
+};
+doSomething ('coucou', 45);
+/
+On considère que la fonction est anonyme. Cette fonction ne peut pas être appelée au-dessus de sa déclaration, même si on utilise var ou let.
+
+** Fonction flèchée
+
+Que depuis es6.
+Code
+const doSomething = (parametre1, parametre2) => {...};
+const functionOneParam = paramUnique => {...};	// si 0 ou plusieurs paramètres, besoin des parenthèses
+const functionSingleLine = (parametre1, parametre2) => parametre1 + parametre2;	// le résulultat sera toujours renvoyé
+/
+
+== Le contrôle de flux
+
+If, else, if else
+Opérateur ternaire
+Code
 condition ? exprSiVrai: exprSiFaux;
 var elvisLives = Math.PI > 4 ? 'Yep': 'Nope';
 /
-switch
-code
+Switch
+Code
 const mySwitch = 'banane';
 switch (mySwitch){
 	case 'pomme':
@@ -37,13 +82,12 @@ switch (mySwitch){
 
 https://code-garage.com/blog/qu-est-ce-que-le-hoisting-en-javascript/
 https://code-garage.com/blog/quelles-sont-les-differences-entre-var-let-et-const-en-javascript
-
 Leur nom est sensible à la casse.
 Elles sont déclarées par les mots-clefs var, let et const.
 var varVar peut être appelée this.varVar ou window.varVar, pas varLet ni varConst.
 var prix
 Prix vaut undefined
-const typeVar = typeof (myVar)
+Const typeVar = typeof (MyVar)
 
 == La syntaxe de base
 
@@ -66,11 +110,12 @@ var nvString = maString.toUpperCase()
 nvString = maString.trim()	// éliminer les espaces blancs aux extrêmités de la string
 var commenceParE = maString.startsWith ('E')
 /
--- interpolation
+
+-- Interpolation
 
 var myName = 'Stormageudon';
-var bonjour = `Bonjour, je suis ${myName}, votre guide pour la semaine`;
-la chaine contenant l'interpolation est entre guillemets du 7, ``.
+var bonjour = `Bonjour, je suis ${MyName}, votre guide pour la semaine`;
+La chaine contenant l'interpolation est entre guillemets du 7, ``.
 
 ** Les méthodes
 
@@ -90,22 +135,22 @@ console.log (NvString)
 Code
 +, 'hello '+ 'word'
 
--- opérateurs d'incrémentation
+-- Opérateurs d'incrémentation
 
-x+=1
-x-=1
-x*=2
-x/=2
-x++
-x--
+X+=1
+X-=1
+X*=2
+X/=2
+X++
+X--
 
--- opérateurs de comparaison
+-- Opérateurs de comparaison
 
-===, !==, >, <, >=, <=
+==,!==, >, <, >=, <=
 
--- opérateurs logiques
+-- Opérateurs logiques
 
-&&, ||, !
+&&, ||,!
 
 -- Autres opérateurs
 

@@ -19,9 +19,17 @@
 	input ~ label { background-color: yellow; }
 	*:has(input) ~ * label { background-color: limegreen; }
 	input + label { background-color: orange; }
-
+	p.alert {
+		background-image: linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, grey, grey);
+		background-position: 0 0, 100% 0, 0 100%, 0 0, 100% 100%;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 100% 1px, 1px 100%, 100% 1px, 2.5rem 100%;
+    padding: 1rem 2.25rem .75rem 3.5rem;
+    position: relative;
+	}
 </style></head><body>
 	<h1>tester le fonctionnement de certains composants</h1>
+	<p class='alert'>hello</p>
 	<h2>les listes  combobox</h2>
 	<p>liste combobox</p>
 	<input type='text' role='combobox' aria-autocomplete='list' aria-expanded='false' data-active-option='choix-1' aria-controls='option-liste' />
@@ -72,6 +80,13 @@
 	<input type='file' aria-required='false' />
 	<input type='file' aria-required='true' />
 </body>
+<script type='text/javascript' id='brouillon'>
+const plantNeedsWater = function (day){
+	if (day === 'Wednesday') return true;
+	else return false;
+}
+
+</script>
 <script type='text/javascript'>
 	const bouton = document.getElementById ('deployer-bouton');
 	const section = document.getElementById ('deployer-section-b');
