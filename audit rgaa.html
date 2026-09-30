@@ -8,7 +8,7 @@
 	<script type='text/javascript' src='file:///C:/wamp64/www/site-dp/library-js/textFct.js'></script>
 <style type='text/css'>
 	body {
-		max-width: 21cm;
+		max-width: 30cm;
 		margin: auto;
 		padding: 1em;
 		--button-bg: var(--fond-color);
@@ -63,11 +63,22 @@
 		<p>$critD critères dérrogés.</p>
 		<p>score: $scoreNb %. la page est $scoreConform</p>
 	</div>
+	<div id='outils'>
+		<h2 id='outils-titre'>outils d'audit</h2>
+		<table aria-labelledby='outils-titre'>
+			<tr><th>fonction</th><th>logiciel</th><th>version</th></tr>
+			<tr><th>validateur de code html</th><td><a href='https://validator.w3.org/'>w3C markup validation service</a></td><td></td></tr>
+			<tr><th>contraste</th><td><a href='https://developer.paciellogroup.com/color-contrast-checker/'>CCA</a></td><td>3.5.2</td></tr>
+			<tr><th>clignotement</th><td><a href='http://trace.umd.edu/peat/'>peat</a></td><td>1.6</td></tr>
+			<tr><th>analyse des pdf</th><td><a href='https://pac.pdf-accessibility.org/en'>PAC</a></td><td>24.2.0</td></tr>
+			<tr><th>lecteur d'écran</th><td><a href='https://www.nvaccess.org/download/'>NVDA</a></td><td>2025.2.0</td></tr>
+		</table>
+	</div>
 	<button onclick='validerAudit()'>valider l'audit</button>
 	<a id='download-link' class='button' download='audit rgaa.txt' href=''>en attente de validation</a>
 	<h2>grille</h2>
 <table><caption>01 images</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>01.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image informative a-t-elle une alternative textuelle ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque image de décoration est-elle correctement ignorée par les technologies d'assistance ?</td><td><input type='text' /></td></tr>
 	<tr><td>01.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc image informative ayant une alternative textuelle, cette alternative est-elle pertinente hcp ?</td><td><input type='text' /></td></tr>
@@ -79,18 +90,18 @@
 	<tr><td>01.09</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque légende d'image est-elle, si nécessaire, correctement reliée à l'image correspondante ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>02 cadres</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>02.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque cadre a-t-il un titre de cadre ?</td><td><input type='text' /></td></tr>
 	<tr><td>02.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc cadre ayant un titre de cadre, ce titre de cadre est-il pertinent ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>03 couleurs</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>03.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>l'information ne doit pas être donnée uniquement par la couleur. cette règle est-elle respectée ?</td><td><input type='text' /></td></tr>
 	<tr><td>03.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>03.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>les couleurs utilisées dans les composants d'interface ou les éléments graphiques porteurs d'informations sont-elles suffisamment contrastées hcp ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>04 multimédia</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>04.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque média temporel pré-enregistré a-t-il, si nécessaire, une transcription textuelle ou une audiodescription hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>04.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc média temporel pré-enregistré ayant une transcription textuelle ou une audiodescription synchronisée, celles-ci sont-elles pertinentes hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>04.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque média temporel synchronisé pré-enregistré a-t-il, si nécessaire, des sous-titres synchronisés hcp ?</td><td><input type='text' /></td></tr>
@@ -106,7 +117,7 @@
 	<tr><td>04.13</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque média temporel et non temporel est-il compatible avec les technologies d'assistance hcp ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>05 tableaux</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>05.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque tableau de données complexe a-t-il un résumé ?</td><td><input type='text' /></td></tr>
 	<tr><td>05.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc tableau de données complexe ayant un résumé, celui-ci est-il pertinent ?</td><td><input type='text' /></td></tr>
 	<tr><td>05.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc tableau de mise en forme, le contenu linéarisé reste-t-il compréhensible ?</td><td><input type='text' /></td></tr>
@@ -117,12 +128,12 @@
 	<tr><td>05.08</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque tableau de mise en forme ne doit pas utiliser d'éléments propres aux tableaux de données. cette règle est-elle respectée ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>06 liens</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>06.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque lien est-il explicite hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>06.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque lien a-t-il un intitulé ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>07 scripts</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>07.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque script est-il, si nécessaire, compatible avec les technologies d'assistance ?</td><td><input type='text' /></td></tr>
 	<tr><td>07.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc script ayant une alternative, cette alternative est-elle pertinente ?</td><td><input type='text' /></td></tr>
 	<tr><td>07.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque script est-il contrôlable par le clavier et par tout dispositif de pointage hcp ?</td><td><input type='text' /></td></tr>
@@ -130,7 +141,7 @@
 	<tr><td>07.05</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>les messages de statut sont-ils correctement restitués par les technologies d'assistance ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>08 éléments obligatoires</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>08.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque pw est-elle définie par un type de document ?</td><td><input type='text' /></td></tr>
 	<tr><td>08.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>le code source généré est-il valide selon le type de document spécifié hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>08.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>la langue par défaut est-elle présente ?</td><td><input type='text' /></td></tr>
@@ -143,14 +154,14 @@
 	<tr><td>08.10</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>les changements du sens de lecture sont-ils signalés ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>09 structuration</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>09.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>l'information est-elle structurée par l'utilisation appropriée de titres ?</td><td><input type='text' /></td></tr>
 	<tr><td>09.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>la structure du document est-elle cohérente hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>09.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque liste est-elle correctement structurée ?</td><td><input type='text' /></td></tr>
 	<tr><td>09.04</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque citation est-elle correctement indiquée ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>10 présentation</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>10.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>dans le site web, des feuilles de styles sont-elles utilisées pour contrôler la présentation de l'information ?</td><td><input type='text' /></td></tr>
 	<tr><td>10.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>le contenu visible porteur d'information reste-t-il présent lorsque les feuilles de styles sont désactivées ?</td><td><input type='text' /></td></tr>
 	<tr><td>10.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>l'information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?</td><td><input type='text' /></td></tr>
@@ -167,7 +178,7 @@
 	<tr><td>10.14</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>les contenus additionnels apparaissant via les styles css uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>11 formulaires</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>11.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque champ de formulaire a-t-il une étiquette ?</td><td><input type='text' /></td></tr>
 	<tr><td>11.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque étiquette associée à un champ de formulaire est-elle pertinente hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>11.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>dc formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répété plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente ?</td><td><input type='text' /></td></tr>
@@ -183,7 +194,7 @@
 	<tr><td>11.13</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>la finalité d'un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l'utilisateur ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>12 navigation</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>12.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>12.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>dc ensemble de pages, le menu et les barres de navigation sont-ils toujours à la même place hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>12.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>la page 'plan du site' est-elle pertinente ?</td><td><input type='text' /></td></tr>
@@ -197,7 +208,7 @@
 	<tr><td>12.11</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>les contenus additionnels apparaissant au survol, à la prise de focus ou à l'activation d'un composant d'interface sont-ils si nécessaire atteignables au clavier ?</td><td><input type='text' /></td></tr>
 </table>
 <table><caption>13 consultation</caption>
-	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th>critère</th><th>commentaire</th></tr>
+	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
 	<tr><td>13.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>l'utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu hcp ?</td><td><input type='text' /></td></tr>
 	<tr><td>13.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>l'ouverture d'une nouvelle fenêtre ne doit pas être déclenchée sans action de l'utilisateur. cette règle est-elle respectée ?</td><td><input type='text' /></td></tr>
 	<tr><td>13.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible hcp ?</td><td><input type='text' /></td></tr>
@@ -248,7 +259,7 @@ $tableAudit$`;
 	}
 	function extractDataAudit (dataList){
 		const dataTags = document.getElementsByTagName ('td');
-		var d=1;
+		var d=11;
 		for (var line of dataList){
 			line = line.split ('\t');
 			dataTags[d].className = line[1];
@@ -278,9 +289,7 @@ $tableAudit$`;
 			if (! dataText.includes ('page: ') || ! dataText.includes ('\nurl: ') || ! dataText.includes ('\ndate: ') || ! dataText.includes ('\n==\n')){
 				console.log ("pas d'audit");
 				document.getElementsByTagName ('h1')[0].innerHTML = "le fichier "+ downloadLink.download +" ne correspond pas à un audit";
-			}
-			else{
-				console.log ("bon audit");
+			}else{
 				extractMeta (dataText);
 				computeScore (dataDict['tableAudit']);
 				const dataList = dataDict['tableAudit'].split ('\n');
@@ -294,7 +303,7 @@ $tableAudit$`;
 		sections[0].className = 'cache';
 		sections[1].className ="";
 	}
-	Date.prototype.toDebbyFormat = function(){
+	Date.prototype.toStrLclDay = function(){
 		var dateStr = this.getDate();
 		if (dateStr.length ===1) dateStr = '0'+ dateStr;
 		dateStr = this.getMonth() +'/'+ dateStr;
@@ -302,11 +311,22 @@ $tableAudit$`;
 		dateStr = this.getFullYear() +'/'+ dateStr;
 		return dateStr;
 	}
+	Date.prototype.toStrLclHour = function(){
+		var dateStr = this.getMinutes().toString();
+		if (dateStr.length ===1) dateStr = '0'+ dateStr;
+		dateStr = this.getHours() +'-'+ dateStr;
+		if (dateStr.length ===4) dateStr = '0'+ dateStr;
+		dateStr = '-'+ dateStr;
+		dateStr = this.toStrLclDay() + dateStr;
+		dateStr = dateStr.replaceAll ('/','-');
+		console.log (dateStr);
+		return dateStr;
+	}
 	function lancerNouvelAudit(){
 		document.getElementById ('header-ancien').style.display = 'none';
 		document.getElementById ('header-nouveau').style.display = 'block';
 		const today = new Date();
-		dataDict['dateAudit'] = today.toDebbyFormat();
+		dataDict['dateAudit'] = today.toStrLclDay();
 		document.body.innerHTML = document.body.innerHTML.replace ('$date', dataDict['dateAudit']);
 		lancerAudit();
 	}
@@ -315,7 +335,7 @@ $tableAudit$`;
 		// enregistrer les tableaux
 		const dataTags = document.getElementsByTagName ('td');
 		var dataText ="";
-		for (var d=0; d< dataTags.length; d=d+5){
+		for (var d=10; d< dataTags.length; d=d+5){
 			dataText = dataText +'\n'+ dataTags[d].innerText +'\t'+ dataTags[d+1].className +'\t'+ dataTags[d+2].className +'\t';
 			if (dataTags[d+4].children[0].value ==="") dataText = dataText +'o';
 			else dataText = dataText + dataTags[d+4].children[0].value;
@@ -325,11 +345,13 @@ $tableAudit$`;
 		if (document.getElementById ('header-nouveau').style.display === 'block'){
 			dataDict['pageUrl'] = document.getElementById ('page-url').value;
 			dataDict['pageName'] = document.getElementById ('page-name').value;
-			downloadLink.download = dataDict['pageName'] + ' rgaa grille.txt';
 		}
 		computeScore (dataDict['tableAudit']);
 		dataText = headerTemplate.toModel (dataDict);
 		dataText = encodeURI (dataText);
+		const today = new Date();
+		const dateStr = today.toStrLclHour();
+		downloadLink.download = dataDict['pageName'] +" "+ dateStr +' rgaa grille.txt';
 		downloadLink.href = 'data:text/plain;charset=utf-8,' + dataText;
 		downloadLink.innerHTML = "télécharger l'audit";
 	}
@@ -338,12 +360,10 @@ $tableAudit$`;
 		if (td.className === 'd'){
 			td.className = 's';
 			td.innerHTML = 'suivi';
-		}
-		else{
+		}else{
 			td.className = 'd';
 			td.innerHTML = 'dérrogé';
-		}
-	}
+	}}
 	function setSuivi (td){
 		if (td.className === 'nt'){
 			td.className = 'nc';
@@ -356,10 +376,8 @@ $tableAudit$`;
 		else if (td.className === 'na'){
 			td.className = 'cf';
 			td.innerHTML = 'conforme';
-		}
-		else{
+		}else{
 			td.className = 'nt';
 			td.innerHTML = 'non testé';
-		}
-	}
+	}}
 </script></html>

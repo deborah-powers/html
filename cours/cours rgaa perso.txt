@@ -1168,19 +1168,20 @@ file:///C:/Users/Deborah.Powers/Desktop/formation-rgaa-2024/formation/index.html
 Les critères 8.1 et 8.2 sont automatiquement mis à "conforme".
 Titre de page pertinent. < title>. L'idéal est d'avoir un titre unique pour chaque page. Le cas échéant, mentionner la pagination et la catégorie. C'est le premier élément restitué par les lecteurs d'écran.
 https://r12a.github.io/app-subtags/
+
+** La langue du texte est précisée
+
 https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 https://en.wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags
 https://developer.mozilla.org/en-US/docs/Glossary/BCP_47_language_tag
 https://www.w3.org/International/questions/qa-choosing-language-tags
-
-** La langue du texte est précisée
 
 Si un passage est dans une autre langue, il est dans une div contenant son propre attribut langue. Les mots isolés doivent être dans une span avec attribut lang, sauf s'ils figurent au dictionnaire de l'académie française.
 https://www.dictionnaire-academie.fr/article/a9m2217 (Dico académie)
 https://fr.wikipedia.org/wiki/iso_639
 https://learn.microsoft.com/fr-fr/partner-center/developer/partner-center-supported-languages-and-locales
 Les mots étrangers peuvent être détectés à l'aide d'outils de correction de la grammaire, comme l'extension firefox grammalecte-fr.
-Html: Lang	<!doctype html>< html lang='fr-fr'>
+Html: Lang	<!doctype html>< html lang='fr-FR'>
 Xhtml: Xml:lang
 Xhtml en texte: Xml:lang + lang
 
