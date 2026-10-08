@@ -142,8 +142,8 @@
 </table>
 <table><caption><a href='https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#8'>08 éléments obligatoires</a></caption>
 	<tr><th>critère</th><th>conformité</th><th>dérrogation</th><th width='40%'>critère</th><th width='40%'>commentaire</th></tr>
-	<tr><td>08.01</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque pw est-elle définie par un type de document ?</td><td><input type='text' /></td></tr>
-	<tr><td>08.02</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>le code source généré est-il valide selon le type de document spécifié hcp ?</td><td><input type='text' /></td></tr>
+	<tr><td>08.01</td><td onclick='setSuivi(this)' class='cf'>conforme</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque pw est-elle définie par un type de document ?</td><td><input type='text' value='plus audité' /></td></tr>
+	<tr><td>08.02</td><td onclick='setSuivi(this)' class='cf'>conforme</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>le code source généré est-il valide selon le type de document spécifié hcp ?</td><td><input type='text' value='plus audité' /></td></tr>
 	<tr><td>08.03</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>la langue par défaut est-elle présente ?</td><td><input type='text' /></td></tr>
 	<tr><td>08.04</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>pc pw ayant une langue par défaut, le code de langue est-il pertinent ?</td><td><input type='text' /></td></tr>
 	<tr><td>08.05</td><td onclick='setSuivi(this)' class='nt'>non testé</td><td onclick='setDerrogation(this)' class='s'>suivi</td><td>chaque pw a-t-elle un titre de page ?</td><td><input type='text' /></td></tr>
@@ -306,7 +306,8 @@ $tableAudit$`;
 	Date.prototype.toStrLclDay = function(){
 		var dateStr = this.getDate().toString();
 		if (dateStr.length ===1) dateStr = '0'+ dateStr;
-		dateStr = this.getMonth().toString() +'/'+ dateStr;
+		const monthNb = 1+ this.getMonth();
+		dateStr = monthNb.toString() +'/'+ dateStr;
 		if (dateStr.length ===4) dateStr = '0'+ dateStr;
 		dateStr = this.getFullYear() +'/'+ dateStr;
 		return dateStr;
