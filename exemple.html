@@ -9,16 +9,6 @@
 	<script type='text/javascript' src='.js'></script>
 	<link rel='stylesheet' type='text/css' href='.css'/>
 <style type='text/css'>
-/*	section#deployer-section { display: none; }
-	input ~ label { background-color: yellow; }
-	input + label { background-color: orange; }
-	*:has(input) ~ * label { background-color: limegreen; }
-	*:has(input) ~ *:has(label) { background-color: lightblue; }
-	*:has(input) ~ *:has(label) label { background-color: violet; } dans tous les cas
-*/
-	input ~ label { background-color: yellow; }
-	*:has(input) ~ * label { background-color: limegreen; }
-	input + label { background-color: orange; }
 	p.alert {
 		background-image: linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, grey, grey);
 		background-position: 0 0, 100% 0, 0 100%, 0 0, 100% 100%;
@@ -39,16 +29,9 @@
 		<li role='option' id='choix-3'>poire</li>
 		<li role='option' id='choix-4'>abricot</li>
 	</ul>
-	<h2>input emballé</h2>
-		<input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' />
-		<p>bla bla</p><p>bla</p>
-		<label for='deployer-bouton'>label séparé de son input</label>
-		<p><input type='checkbox' id='deployer-bouton' aria-expended='false' aria-controls='deployer-section-b' /></p>
-		<p><label for='deployer-bouton'>label et input emballés</label></p>
-
 	<h2>les dépliants</h2>
 	<div>
-		<input type='checkbox' id='deployer-bouton-a' aria-expended='false' aria-controls='deployer-section-b' />
+		<input type='checkbox' id='deployer-bouton-a' aria-expended='false' aria-controls='deployer-section-a' />
 		<label for='deployer-bouton-a'>modifier la section suivante</label>
 	</div><div>
 		<label for='deployer-bouton-b'>déployer la section suivante</label>
@@ -56,7 +39,6 @@
 		<label for='deployer-rien'>ne rien déployer</label>
 	</div>
 	<p>texte interrompant le lien entre le bouton et son bloc.</p>
-	<section id='deployer-section-b' aria-live='polite'></section>
 	<section id='deployer-section-a' role='region' aria-live='polite'>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -81,34 +63,10 @@
 	<input type='file' aria-required='true' />
 </body>
 <script type='text/javascript' id='brouillon'>
-const plantNeedsWater = function (day){
-	if (day === 'Wednesday') return true;
-	else return false;
-}
-
 </script>
 <script type='text/javascript'>
-	const bouton = document.getElementById ('deployer-bouton');
-	const section = document.getElementById ('deployer-section-b');
-	bouton.addEventListener ('click', function(event){
-		if (event.target.checked){
-		//	section.style.display = 'block';
-			section.innerHTML = '<p>Ouvert</p>';
-			event.target.setAttribute ('aria-expended', true);
-		}
-		else{
-		//	section.style.display = 'none';
-			section.innerHTML = '<p>Fermé</p>';
-			event.target.setAttribute ('aria-expended', false);
-		}
-	});
 /*
-	section.style.display = 'block';
-const fichiers = document.getElementsByTagName ('input');
-for (var fich of fichiers){
-	console.log (fich.getAttribute ('aria-required'), typeof (fich.getAttribute ('aria-required')));
-}
-//	navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
+navigator.geolocation.getCurrentPosition((pos) => console.log (pos))
 function toRadians (degrees){
 	degrees *= Math.PI;
 	degrees /=180;

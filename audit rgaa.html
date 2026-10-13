@@ -41,7 +41,7 @@
 <section id='choix-methode'>
 	<h1>que voulez-vous auditer ?</h1>
 	<label for='recup-data' class='button'>données d'un ancien audit</label>
-	<input type='file' id='recup-data' accept='text/plain'>
+	<input type='file' id='recup-data' accept='text/plain' />
 	<button onclick='lancerNouvelAudit()'>créer un nouvel audit</button>
 	<input type='text' name='test-click' />
 </section>
@@ -256,6 +256,7 @@ $tableAudit$`;
 		document.body.innerHTML = document.body.innerHTML.replace ('$pageName', dataDict['pageName']);
 		document.body.innerHTML = document.body.innerHTML.replace ('$pageUrl', dataDict['pageUrl']);
 		document.body.innerHTML = document.body.innerHTML.replace ('$date', dataDict['dateAudit']);
+		document.title = dataDict['pageName'] +" | rgaa audit";
 	}
 	function extractDataAudit (dataList){
 		const dataTags = document.getElementsByTagName ('td');
@@ -354,6 +355,7 @@ $tableAudit$`;
 		downloadLink.download = dataDict['pageName'] +" "+ dateStr +' rgaa grille.txt';
 		downloadLink.href = 'data:text/plain;charset=utf-8,' + dataText;
 		downloadLink.innerHTML = "télécharger l'audit";
+		document.title = dataDict['pageName'] +" | rgaa audit";
 	}
 //	valeur des boutons
 	function setDerrogation (td){
