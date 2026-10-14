@@ -6,53 +6,119 @@
 	<link rel='icon' type='image/svg+xml' href='file:///C:/wamp64/www/site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/structure.css'/>
 	<link rel='stylesheet' type='text/css' href='file:///C:/wamp64/www/site-dp/library-css/perso.css' media='screen'/>
-	<script type='text/javascript' src='.js'></script>
-	<link rel='stylesheet' type='text/css' href='.css'/>
 <style type='text/css'>
-	p.alert {
-		background-image: linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, springgreen, springgreen), linear-gradient(0deg, grey, grey);
-		background-position: 0 0, 100% 0, 0 100%, 0 0, 100% 100%;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: 100% 1px, 1px 100%, 100% 1px, 2.5rem 100%;
-    padding: 1rem 2.25rem .75rem 3.5rem;
-    position: relative;
-	}
+	ul[role='listbox'] { display: none; }
+	ul[role='listbox'].isopen { display: block; }
+	ul[role='listbox'] > li:focus { background-color: yellow; }
 </style></head><body>
 	<h1>tester le fonctionnement de certains composants</h1>
-	<p class='alert'>hello</p>
 	<h2>les listes  combobox</h2>
-	<p>liste combobox</p>
-	<input type='text' role='combobox' aria-autocomplete='list' aria-expanded='false' data-active-option='choix-1' aria-controls='option-liste' />
+	<h3><a href='https://blog.crea-troyes.fr/10868/coder-une-combobox-en-css-et-js-guide-code-complet/#aioseo-le-html-dune-combobox-poser-des-bases-solides-32'>tutoriel</a></h3>
+	<label for='option-choix'>choisir une option</label>
+	<input type='text' id='option-choix' role='combobox' aria-autocomplete='list' aria-expanded='false' aria-haspopup='listbox' data-active-option='choix-1' aria-controls='option-liste' />
 	<ul role='listbox' id='option-liste'>
+		<li role='option' id='choix-1'></li>
+	</ul>
+	<script type='text/javascript'>
+const ipCombo = document.getElementById ('option-choix');
+const optionList = document.getElementById ('option-liste');
+const optionsOriginal =[ 'peche', 'pomme', 'poire', 'abricot' ];
+var optionsCurrent =[];
+var optionIndex =-1;
+
+HTMLLIElement.prototype.renderOption (option, parent){
+	this.innerHTML = option;
+	this.id = 'choix-' + option;
+	this.setAttribute ('role', 'option');
+	this.addEventListener ('click', selectOption);
+	parent.appendChild (this);
+}
+HTMLUListElement.prototype.renderList = function (options){
+	this.innerHTML ="";
+	var li= null;
+	if (options.lenght ===0) this.innerHTML = "<li>aucune valeur correspondante</li>";
+	else for (var option of options){
+		li= document.createElement ('li');
+		li.renderOption (option, this);
+	}
+	this.className = 'isopen';
+}
+HTMLInputElement.prototype.searchQuery = function(){
+	const query = this.value.trim().toLowerCase();
+	optionsCurrent =[];
+	for (var option of optionsOriginal) if (option.includes (query)){
+		optionsCurrent.push (option);
+	}
+	optionList.renderList();
+	this.setAttribute ('aria-expanded', 'true');
+}
+
+
+function openList(){
+	optionList.className = 'isopen';
+	ipCombo.setAttribute ('aria-expanded', 'true');
+}
+function closeList(){
+	optionList.className ="";
+	ipCombo.setAttribute ('aria-expanded', 'false');
+}
+function selectOption (event){
+	ipCombo.value = event.target.innerText;
+	closeList();
+}
+function updateActiveOption (optionIndex){
+	for (var child of optionList.children) if (child.innerText === optionsCurrent [optionIndex]){ child.focus() }
+}
+function filterList (query){
+	const queryClean = query.trim().toLowerCase();
+	optionsCurrent =[];
+	if (queryClean ===""){ for (var option of optionsOriginal) optionsCurrent.push (option); }
+	else{ optionsCurrent = optionsOriginal.filter ((item) => item.includes (queryClean)); }
+	optionsCurrent.renderList();
+	openList();
+}
+function filterListKeyEvent (event){
+	const isOpen = optionList.className.includes ('isopen');
+	console.log (event.key);
+	if (event.key === 'ArrowDown'){
+		if (! isOpen) openList();
+		if (optionsCurrent.lenght ===0) return;
+		optionIndex -=1;
+		if (optionIndex <0) optionIndex =0;
+		updateActiveOption();
+	}
+	else if (event.key === 'ArrowUp'){
+		if (! isOpen) openList();
+		if (optionsCurrent.lenght ===0) return;
+		optionIndex +=1;
+		if (optionIndex >= optionsCurrent.lenght) optionIndex = optionsCurrent.lenght -1;
+		updateActiveOption();
+	}
+	filterList (ipCombo.value);
+}
+ipCombo.addEventListener ('focus', function (event){ filterList (ipCombo.value); });
+ipCombo.addEventListener ('keydown', filterListKeyEvent);
+
+
+	</script>
+	<h2>les listes  combobox</h2>
+	<label for='option-choix'>choisir une option</label>
+	<input type='text' id='option-choix' role='combobox' aria-autocomplete='list' aria-expanded='false' aria-haspopup='listbox' data-active-option='choix-1' aria-controls='option-liste' />
+	<ul role='listbox' id='option-liste-va'>
 		<li role='option' id='choix-1'>peche</li>
 		<li role='option' id='choix-2'>pomme</li>
 		<li role='option' id='choix-3'>poire</li>
 		<li role='option' id='choix-4'>abricot</li>
 	</ul>
-	<h2>les dépliants</h2>
-	<div>
-		<input type='checkbox' id='deployer-bouton-a' aria-expended='false' aria-controls='deployer-section-a' />
-		<label for='deployer-bouton-a'>modifier la section suivante</label>
-	</div><div>
-		<label for='deployer-bouton-b'>déployer la section suivante</label>
-		<input type='checkbox' id='deployer-bouton-b' aria-expended='false' aria-controls='deployer-section-a' />
-		<label for='deployer-rien'>ne rien déployer</label>
-	</div>
-	<p>texte interrompant le lien entre le bouton et son bloc.</p>
-	<section id='deployer-section-a' role='region' aria-live='polite'>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore <em>magna aliqua</em>. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</section>
+	<h2>l'auto-completion</h2>
+	<label for='auc-off'>auto-complétion désactivée</label><input type='text' id='auc-off' autocomplete='off' />
+	<label for='auc-on'>auto-complétion activée. le navigateur devine lui-même le type de valeur attendue</label><input type='text' id='auc-on' autocomplete='on' />
+	<label for='auc-given-name'>prénom</label><input type='text' id='auc-given-name' autocomplete='given-name' />
+	<label for='auc-family-name'>nom de famille</label><input type='text' id='auc-family-name' autocomplete='family-name' />
+	<label for='auc-url'>une url</label><input type='text' id='auc-url' autocomplete='url' />
+	<label for='auc-bday'>anniversaire</label><input type='date' id='auc-bday' autocomplete='bday' />
+	<label for='auc-'></label><input type='text' id='auc-' autocomplete='' />
+	<h2>les téléverseurs de fichiers</h2>
 	<a href='https://stackoverflow.com/questions/3024404/transform-longitude-latitude-into-meters'>gps en mètres</a>
 	<input type='file' />
 	<input type='file' required />

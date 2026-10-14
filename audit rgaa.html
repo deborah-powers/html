@@ -253,6 +253,7 @@ $tableAudit$`;
 	}
 	function extractMeta (dataText){
 		dataDict = dataText.fromModel (headerTemplate);
+		dataDict['pageName'] = dataDict['pageName'].toLowerCase();
 		document.body.innerHTML = document.body.innerHTML.replace ('$pageName', dataDict['pageName']);
 		document.body.innerHTML = document.body.innerHTML.replace ('$pageUrl', dataDict['pageUrl']);
 		document.body.innerHTML = document.body.innerHTML.replace ('$date', dataDict['dateAudit']);
