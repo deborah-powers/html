@@ -26,10 +26,11 @@ const optionsOriginal =[ 'peche', 'pomme', 'poire', 'abricot' ];
 var optionsCurrent =[];
 var optionIndex =-1;
 
-HTMLLIElement.prototype.renderOption (option, parent){
+HTMLLIElement.prototype.renderOption = function (option, parent){
 	this.innerHTML = option;
 	this.id = 'choix-' + option;
 	this.setAttribute ('role', 'option');
+	this.setAttribute ('tabindex', '0');
 	this.addEventListener ('click', selectOption);
 	parent.appendChild (this);
 }
@@ -41,23 +42,77 @@ HTMLUListElement.prototype.renderList = function (options){
 		li= document.createElement ('li');
 		li.renderOption (option, this);
 	}
+	this.children[0].focus();
 	this.className = 'isopen';
 }
 HTMLInputElement.prototype.searchQuery = function(){
 	const query = this.value.trim().toLowerCase();
 	optionsCurrent =[];
-	for (var option of optionsOriginal) if (option.includes (query)){
+	if (query ==="") for (var option of optionsOriginal){ optionsCurrent.push (option); }
+	else for (var option of optionsOriginal){ if (option.includes (query))
 		optionsCurrent.push (option);
 	}
-	optionList.renderList();
+	optionList.renderList (optionsCurrent);
 	this.setAttribute ('aria-expanded', 'true');
 }
-
-
+HTMLUListElement.prototype.updateActiveOption = function (optionIndex){ this.children[optionIndex].focus(); }
+HTMLLIElement.prototype.selectOption = function(){ ipCombo.value = this.innerText; }
+/*
+ipCombo.addEventListener ('click', function (event){ event.target.searchQuery(); });
+*/
+ipCombo.addEventListener ('focus', function (event){ event.target.searchQuery(); });
+ipCombo.addEventListener ('keydown', function (event){
+	event.target.searchQuery();
+	const isOpen = optionList.className.includes ('isopen');
+	console.log (event.key, isOpen, optionList.children.length);
+});
+/*
+ipCombo.addEventListener ('keydown', function (event){
+	const isOpen = optionList.className.includes ('isopen');
+	console.log (event.key, isOpen, optionList.children.length);
+	if (event.key === 'ArrowDown'){
+		if (! isOpen) openList();
+		if (optionsCurrent.lenght ===0) return;
+		optionIndex -=1;
+		if (optionIndex <0) optionIndex =0;
+		optionList.updateActiveOption (optionIndex);
+	}
+	else if (event.key === 'ArrowUp'){
+		if (! isOpen) openList();
+		if (optionsCurrent.lenght ===0) return;
+		optionIndex +=1;
+		if (optionIndex >= optionsCurrent.lenght) optionIndex = optionsCurrent.lenght -1;
+		optionList.updateActiveOption (optionIndex);
+	}
+	else event.target.searchQuery();
+});
 function openList(){
 	optionList.className = 'isopen';
 	ipCombo.setAttribute ('aria-expanded', 'true');
-}
+}/
+optionList.addEventListener ('focus', function (event){
+	const isOpen = event.target.className.includes ('isopen');
+	console.log (event.key, isOpen, event.target.children.length, event.target);
+	if (event.target.children.length ===0) return;
+	else if (event.key === 'ArrowDown'){
+		if (! isOpen) openList();
+		optionIndex -=1;
+		if (optionIndex <0) optionIndex =0;
+		optionList.updateActiveOption (optionIndex);
+	}
+	else if (event.key === 'ArrowUp'){
+		if (! isOpen) openList();
+		optionIndex +=1;
+		if (optionIndex >= optionsCurrent.lenght) optionIndex = optionsCurrent.lenght -1;
+		optionList.updateActiveOption (optionIndex);
+	}
+});
+
+/
+function openList(){
+	optionList.className = 'isopen';
+	ipCombo.setAttribute ('aria-expanded', 'true');
+}*/
 function closeList(){
 	optionList.className ="";
 	ipCombo.setAttribute ('aria-expanded', 'false');
@@ -96,9 +151,10 @@ function filterListKeyEvent (event){
 	}
 	filterList (ipCombo.value);
 }
+/*
 ipCombo.addEventListener ('focus', function (event){ filterList (ipCombo.value); });
 ipCombo.addEventListener ('keydown', filterListKeyEvent);
-
+*/
 
 	</script>
 	<h2>les listes  combobox</h2>
