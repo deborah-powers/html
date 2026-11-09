@@ -10,8 +10,25 @@
 	ul[role='listbox'] { display: none; }
 	ul[role='listbox'].isopen { display: block; }
 	ul[role='listbox'] > li:focus { background-color: yellow; }
+	button, input[type='checkbox'] { border-width: 8px; }
+	input[type='checkbox'] {
+		width: 6em;
+		height: 6em;
+	}
+	button:focus, input[type='checkbox']:focus {
+		border-color: red;
+		background-color: magenta;
+	}
+	button:focus-visible, input[type='checkbox']:focus-visible { border-style: dotted; }
 </style></head><body>
 	<h1>tester le fonctionnement de certains composants</h1>
+	<h2>le focus en css</h2>
+	<button>a</button><button>b</button><button>c</button><button>d</button>
+	<input type='checkbox' /><input type='checkbox' /><input type='checkbox' /><input type='checkbox' />
+	<script type='text/javascript'>
+const buttons = document.getElementsByTagName ('input');
+buttons[2].click();
+	</script>
 	<h2>les listes combobox</h2>
 	<p><a href='https://blog.crea-troyes.fr/10868/coder-une-combobox-en-css-et-js-guide-code-complet/#aioseo-le-html-dune-combobox-poser-des-bases-solides-32'>tutoriel</a></p>
 	<label for='option-choix'>choisir une option</label>
