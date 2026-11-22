@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head>
+	<title>soude au cou</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<!-- link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/ -->
+	<!-- link rel='stylesheet' type='text/css' href='sudoku.css'/ -->
+<style type='text/css'>
+body { text-align: center; }
+div {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	justify-items: stretch;
+	align-items: stretch;
+	min-width: 4cm;
+	max-width: 12cm;
+	margin: auto;
+	border-style: solid;
+	border-width: 4px;
+	border-color: #666;
+}
+div.grille { aspect-ratio: 1; }
+div.choice {
+	height: 2em;
+	margin-top: 1em;
+}
+p, button {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	border-color: #666;
+	border-width: 2px;
+	border-style: solid;
+	outline: none;
+}
+p.fixe { background-image: radial-gradient(transparent 70%, #666); }
+p:focus, button:focus, p.current {
+	background-image: radial-gradient(#666 2%, transparent 50%);
+}
+p:nth-child(3n) { border-right-width: 4px; }
+p:nth-child(9n-8) { border-left-width: 4px; }
+p:nth-child(-n+9) { border-top-width: 4px; }
+p:nth-child(27n-8), p:nth-child(27n-7), p:nth-child(27n-6),
+p:nth-child(27n-5), p:nth-child(27n-4), p:nth-child(27n-3),
+p:nth-child(27n-2), p:nth-child(27n-1), p:nth-child(27n)
+	{ border-bottom-width: 4px; }
+*.case-1 { background-color: #0EC; }
+*.case-2 { background-color: #09F; }
+*.case-3 { background-color: #96F; }
+*.case-4 { background-color: #F0F; }
+*.case-5 { background-color: #F69; }
+*.case-6 { background-color: #F93; }
+*.case-7 { background-color: #FC0; }
+*.case-8 { background-color: #CC0; }
+*.case-9 { background-color: #3C0; }
+</style></head><body>
+	<h1>grille de sudoku</h1>
+	<div class='grille'>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	</div>
+	<div class='choice'>
+		<button onclick='selectValue(this)' class='case-1'></button>
+		<button onclick='selectValue(this)' class='case-2'></button>
+		<button onclick='selectValue(this)' class='case-3'></button>
+		<button onclick='selectValue(this)' class='case-4'></button>
+		<button onclick='selectValue(this)' class='case-5'></button>
+		<button onclick='selectValue(this)' class='case-6'></button>
+		<button onclick='selectValue(this)' class='case-7'></button>
+		<button onclick='selectValue(this)' class='case-8'></button>
+		<button onclick='selectValue(this)' class='case-9'></button>
+	</div>
+	<script type='text/javascript' src='sudoku.js'></script>
+	<script type='text/javascript'>
+const cases = document.getElementsByTagName ('p');
+for (var i=0; i<9; i++){
+	for (var j=0; j<9; j++){
+		if (showValue()) cases[i*9+j].className = 'fixe case-' + tableau[i][j];
+		else cases[i*9+j].makeInterractive();
+}}
+function selectValue (button){
+	currentCase.className = 'interractive current '+ button.className;
+}
+	</script>
+</body></html>
