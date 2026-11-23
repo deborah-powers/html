@@ -1,66 +1,70 @@
 <!DOCTYPE html><html><head>
-	<title>soude au cou</title>
+	<title>Sudoku interractif</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
 <style type='text/css'>
-	body { font-size: 2em; }
-	p {
-		padding-top: 20%;
+	div.grille, div.choice { font-size: 2em; }
+	span {
 		background-color: yellow;
+		display: inline-block;
+		line-height: 4px;
+		padding-top: 0.5em;
+	}
+	em {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		font-size: 0.3em;
+		display: inline-block;
 	}
 	button { background-color: yellow; }
-	p.fixe { background-color: lightblue; }
-	p:focus, button:focus, p.current { background-color: pink; }
+	span.fixe { background-color: lightblue; }
+	span:focus, button:focus, span.current { background-color: pink; }
 	body > button { background-color: lightblue; }
 </style></head><body>
-	<h1>grille de sudoku</h1>
-	<div class='grille'>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	<h1>Sudoku interractif</h1>
+	<div class='info'>
+		<p>Les cases fixes sont en bleu, les cases variables en jaune.</p>
+		<p>Cliquer sur une case jaune pour la sélectionner.</p>
+		<p>Cliquer sur la barre de boutons jaune pour choisir un chiffre.</p>
 	</div>
-	<div class='choice'>
-		<button onclick='selectValue(this)'>1</button>
-		<button onclick='selectValue(this)'>2</button>
-		<button onclick='selectValue(this)'>3</button>
-		<button onclick='selectValue(this)'>4</button>
-		<button onclick='selectValue(this)'>5</button>
-		<button onclick='selectValue(this)'>6</button>
-		<button onclick='selectValue(this)'>7</button>
-		<button onclick='selectValue(this)'>8</button>
-		<button onclick='selectValue(this)'>9</button>
+	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+	<div class='choice' title='choisir un numéro pour la case sélectionnée'>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>1</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>2</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>3</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>4</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>5</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>6</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>7</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>8</button>
+		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>9</button>
 	</div>
 	<button onclick='newGrid()'>nouvelle grille</button>
 	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
+HTMLSpanElement.prototype.makeShowable = function (i,j){ this.innerHTML = tableau[i][j]; }
 for (var i=0; i<9; i++){
 	for (var j=0; j<9; j++){
 		if (showValue()){
 			cases[i*9+j].className = 'fixe';
-			cases[i*9+j].innerHTML = tableau[i][j];
+			cases[i*9+j].makeShowable (i,j);
 		}
 		else cases[i*9+j].makeInterractive();
 }}
 function selectValue (button){ currentCase.innerHTML = button.innerHTML; }
-function newGrid(){
-	fillTable();
-	const grille = document.body.getElementsByTagName ('div')[0];
-	grille.innerHTML = '<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>';
-	for (var i=0; i<9; i++){
-		for (var j=0; j<9; j++){
-			if (showValue()){
-				cases[i*9+j].className = 'fixe';
-				cases[i*9+j].innerHTML = tableau[i][j];
-			}
-			else cases[i*9+j].makeInterractive();
-}}}
+function selectOption (button){ currentCase.innerHTML = currentCase.innerHTML + '<em>' + button.innerHTML + '</em>'; }
 	</script>
 </body></html>

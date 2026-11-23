@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head>
+	<title>Sudoku interractif</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
+<style type='text/css'>
+	div.grille, div.choice { font-size: 2em; }
+	span {
+		padding-top: 20%;
+		background-color: yellow;
+	}
+	button { background-color: yellow; }
+	span.fixe { background-color: lightblue; }
+	span:focus, button:focus, span.current { background-color: pink; }
+	body > button { background-color: lightblue; }
+</style></head><body>
+	<h1>Sudoku interractif</h1>
+	<div class='info'>
+		<p>Les cases fixes sont en bleu, les cases variables en jaune.</p>
+		<p>Cliquer sur une case jaune pour la sélectionner.</p>
+		<p>Cliquer sur la barre de boutons jaune pour choisir un chiffre.</p>
+	</div>
+	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+	<div class='choice' title='choisir un numéro pour la case sélectionnée'>
+		<button onclick='selectValue(this)'>1</button>
+		<button onclick='selectValue(this)'>2</button>
+		<button onclick='selectValue(this)'>3</button>
+		<button onclick='selectValue(this)'>4</button>
+		<button onclick='selectValue(this)'>5</button>
+		<button onclick='selectValue(this)'>6</button>
+		<button onclick='selectValue(this)'>7</button>
+		<button onclick='selectValue(this)'>8</button>
+		<button onclick='selectValue(this)'>9</button>
+	</div>
+	<button onclick='newGrid()'>nouvelle grille</button>
+	<script type='text/javascript' src='sudoku-script.js'></script>
+	<script type='text/javascript'>
+HTMLSpanElement.prototype.makeShowable = function (i,j){ this.innerHTML = tableau[i][j]; }
+for (var i=0; i<9; i++){
+	for (var j=0; j<9; j++){
+		if (showValue()){
+			cases[i*9+j].className = 'fixe';
+			cases[i*9+j].makeShowable (i,j);
+		}
+		else cases[i*9+j].makeInterractive();
+}}
+function selectValue (button){ currentCase.innerHTML = button.innerHTML; }
+	</script>
+</body></html>

@@ -70,21 +70,34 @@ function fillTable(){
 }
 fillTable();
 // afficher les cases. garder certaines vides
-const cases = document.getElementsByTagName ('p');
+const cases = document.getElementsByTagName ('span');
 function showValue(){
 	if (Math.random() <0.4) return true;
 	else return false;
 }
 // interractivité
-HTMLParagraphElement.prototype.makeInterractive = function(){
+HTMLSpanElement.prototype.makeInterractive = function(){
 	this.className = 'interractive';
 	this.setAttribute ('tabindex', '1');
+	this.setAttribute ('role', 'button');
 	this.addEventListener ('click', selectCase);
 }
+HTMLSpanElement.prototype.makeShowable = function (i,j){ console.log ('fonction basique'); }
 var currentCase = null;
 function selectCase (event){
 	if (currentCase) currentCase.classList.remove ('current');
 	currentCase = event.target;
-	currentCase.className = currentCase.className + 'current';
+	currentCase.className = currentCase.className + ' current';
 }
-
+function newGrid(){
+	fillTable();
+	const grille = document.body.getElementsByClassName ('grille')[0];
+	grille.innerHTML = '<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>';
+	for (var i=0; i<9; i++){
+		for (var j=0; j<9; j++){
+			if (showValue()){
+				cases[i*9+j].className = 'fixe';
+				cases[i*9+j].makeShowable (i,j);
+			}
+			else cases[i*9+j].makeInterractive();
+}}}

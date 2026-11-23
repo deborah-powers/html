@@ -1,18 +1,18 @@
 <!DOCTYPE html><html><head>
-	<title>soude au cou</title>
+	<title>Sudoku en couleur</title>
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
 <style type='text/css'>
-p.fixe {
+span.fixe {
 	background-image:
 		radial-gradient(circle at 0.1em 0.1em, #666 0.1em, transparent 0.1em),
 		radial-gradient(circle at 0.6em 0.6em, #666 0.1em, transparent 0.1em);
 	background-size: 1em 1em;
 	background-repeat: repeat;
 }
-p:focus, button:focus, p.current { background-image: radial-gradient(transparent 75%, #666); }
+span:focus, button:focus, span.current { background-image: radial-gradient(transparent 75%, #666); }
 *.case-1 { background-color: red; }
 *.case-2 { background-color: #96F; }
 *.case-3 { background-color: #06F; }
@@ -23,46 +23,47 @@ p:focus, button:focus, p.current { background-image: radial-gradient(transparent
 *.case-8 { background-color: #C66; }
 *.case-9 { background-color: #E0E; }
 </style></head><body>
-	<h1>grille de sudoku</h1>
-	<div class='grille'>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
-		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+	<h1>Sudoku en couleur</h1>
+	<div class='info'>
+		<p>Une grille de sudoku où les nombres sont remplacés par des couleurs.</p>
+		<p>Les cases fixes sont marquées par des pointillés.</p>
+		<p>Cliquer sur une case unie pour la sélectionner.</p>
+		<p>Cliquer sur la barre de boutons pour choisir une couleur.</p>
 	</div>
-	<div class='choice'>
-		<button onclick='selectValue(this)' class='case-1'></button>
-		<button onclick='selectValue(this)' class='case-2'></button>
-		<button onclick='selectValue(this)' class='case-3'></button>
-		<button onclick='selectValue(this)' class='case-4'></button>
-		<button onclick='selectValue(this)' class='case-5'></button>
-		<button onclick='selectValue(this)' class='case-6'></button>
-		<button onclick='selectValue(this)' class='case-7'></button>
-		<button onclick='selectValue(this)' class='case-8'></button>
-		<button onclick='selectValue(this)' class='case-9'></button>
+	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+	<div class='choice' title='choisir une couleur pour la case sélectionnée'>
+		<button onclick='selectValue(this)' class='case-1' aria-label='couleur 1'></button>
+		<button onclick='selectValue(this)' class='case-2' aria-label='couleur 2'></button>
+		<button onclick='selectValue(this)' class='case-3' aria-label='couleur 3'></button>
+		<button onclick='selectValue(this)' class='case-4' aria-label='couleur 4'></button>
+		<button onclick='selectValue(this)' class='case-5' aria-label='couleur 5'></button>
+		<button onclick='selectValue(this)' class='case-6' aria-label='couleur 6'></button>
+		<button onclick='selectValue(this)' class='case-7' aria-label='couleur 7'></button>
+		<button onclick='selectValue(this)' class='case-8' aria-label='couleur 8'></button>
+		<button onclick='selectValue(this)' class='case-9' aria-label='couleur 9'></button>
 	</div>
 	<button onclick='newGrid()'>nouvelle grille</button>
 	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
+HTMLSpanElement.prototype.makeShowable = function (i,j){
+	this.className = 'fixe case-' + tableau[i][j];
+	cases[i*9+j].setAttribute ('aria-label', 'couleur '+ tableau[i][j]);
+}
 for (var i=0; i<9; i++){
 	for (var j=0; j<9; j++){
-		if (showValue()) cases[i*9+j].className = 'fixe case-' + tableau[i][j];
+		if (showValue()) cases[i*9+j].makeShowable (i,j);
 		else cases[i*9+j].makeInterractive();
 }}
 function selectValue (button){ currentCase.className = 'interractive current '+ button.className; }
-function newGrid(){
-	fillTable();
-	const grille = document.body.getElementsByTagName ('div')[0];
-	grille.innerHTML = '<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>';
-	for (var i=0; i<9; i++){
-		for (var j=0; j<9; j++){
-			if (showValue()) cases[i*9+j].className = 'fixe case-' + tableau[i][j];
-			else cases[i*9+j].makeInterractive();
-}}}
 	</script>
 </body></html>

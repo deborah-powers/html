@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head>
+	<title>soude au cou</title>
+	<meta name='viewport' content='width=device-width,initial-scale=1'/>
+	<meta charset='utf-8'/>
+	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
+<style type='text/css'>
+	body { font-size: 2em; }
+	span {
+		padding-top: 20%;
+		background-color: yellow;
+	}
+	button, input { background-color: yellow; }
+	span.fixe { background-color: lightblue; }
+	input:focus, button:focus { background-color: pink; }
+	body > button { background-color: lightblue; }
+</style></head><body>
+	<h1>Sudoku interractif</h1>
+	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
+		<span></span><span></span><input type='number' min='1' max='9' /><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><input type='number' min='1' max='9' />
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><input type='number' min='1' max='9' /><span></span><span></span><span></span><span></span>
+		<span></span><span></span><input type='number' min='1' max='9' /><input type='number' min='1' max='9' /><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+	<button onclick='newGrid()'>nouvelle grille</button>
+	<script type='text/javascript' src='sudoku-script.js'></script>
+	<script type='text/javascript'>
+for (var i=0; i<9; i++){
+	for (var j=0; j<9; j++){
+		if (showValue()){
+			cases[i*9+j].className = 'fixe';
+			cases[i*9+j].innerHTML = tableau[i][j];
+		}
+		else cases[i*9+j].makeInterractive();
+}}
+function selectValue (button){ currentCase.innerHTML = button.innerHTML; }
+function newGrid(){
+	fillTable();
+	const grille = document.body.getElementsByTagName ('div')[0];
+	grille.innerHTML = '<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>';
+	for (var i=0; i<9; i++){
+		for (var j=0; j<9; j++){
+			if (showValue()){
+				cases[i*9+j].className = 'fixe';
+				cases[i*9+j].innerHTML = tableau[i][j];
+			}
+			else cases[i*9+j].makeInterractive();
+}}}
+	</script>
+</body></html>
