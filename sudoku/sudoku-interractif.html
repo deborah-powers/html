@@ -3,10 +3,17 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='sudoku.css'/>
+	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
 <style type='text/css'>
-	div >p.fixe { background-color: var(--fond-color); }
+	body { font-size: 2em; }
+	p {
+		padding-top: 20%;
+		background-color: yellow;
+	}
+	button { background-color: yellow; }
+	p.fixe { background-color: lightblue; }
+	p:focus, button:focus, p.current { background-color: pink; }
+	body > button { background-color: lightblue; }
 </style></head><body>
 	<h1>grille de sudoku</h1>
 	<div class='grille'>
@@ -31,9 +38,9 @@
 		<button onclick='selectValue(this)'>8</button>
 		<button onclick='selectValue(this)'>9</button>
 	</div>
-	<script type='text/javascript' src='sudoku.js'></script>
+	<button onclick='newGrid()'>nouvelle grille</button>
+	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
-const cases = document.getElementsByTagName ('p');
 for (var i=0; i<9; i++){
 	for (var j=0; j<9; j++){
 		if (showValue()){
@@ -43,5 +50,17 @@ for (var i=0; i<9; i++){
 		else cases[i*9+j].makeInterractive();
 }}
 function selectValue (button){ currentCase.innerHTML = button.innerHTML; }
+function newGrid(){
+	fillTable();
+	const grille = document.body.getElementsByTagName ('div')[0];
+	grille.innerHTML = '<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>';
+	for (var i=0; i<9; i++){
+		for (var j=0; j<9; j++){
+			if (showValue()){
+				cases[i*9+j].className = 'fixe';
+				cases[i*9+j].innerHTML = tableau[i][j];
+			}
+			else cases[i*9+j].makeInterractive();
+}}}
 	</script>
 </body></html>

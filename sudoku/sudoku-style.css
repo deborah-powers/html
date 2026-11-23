@@ -1,0 +1,41 @@
+body { text-align: center; }
+div {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	justify-items: stretch;
+	align-items: stretch;
+	min-width: 4cm;
+	max-width: 12cm;
+	margin: auto;
+	border-style: solid;
+	border-width: 4px;
+	border-color: #666;
+}
+div.grille { aspect-ratio: 1; }
+div.choice {
+	height: 2em;
+	margin: 1em auto;
+}
+p, button {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	border-color: #666;
+	border-width: 2px;
+	border-style: solid;
+	outline: none;
+}
+p:nth-child(3n) { border-right-width: 4px; }
+p:nth-child(9n-8) { border-left-width: 4px; }
+p:nth-child(-n+9) { border-top-width: 4px; }
+p:nth-child(27n-8), p:nth-child(27n-7), p:nth-child(27n-6),
+p:nth-child(27n-5), p:nth-child(27n-4), p:nth-child(27n-3),
+p:nth-child(27n-2), p:nth-child(27n-1), p:nth-child(27n)
+	{ border-bottom-width: 4px; }
+button { font-size: inherit; }
+body > button {
+	min-width: 8em;
+	max-width: 50%;
+	background-color: #F93;
+	padding: 0.5em;
+}

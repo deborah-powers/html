@@ -1,6 +1,3 @@
-/*
-dépendances: list.js, sudoku.css, structure.css
-*/
 var tableau =[
 	[ '1', '2', '3', '4', '5', '6', '7', '8', '9' ],
 	[ [], [], [], [], [], [], [], [], [] ],
@@ -40,8 +37,8 @@ Array.prototype.remove = function (valeurCase){
 	const pos = this.indexOf (valeurCase);
 	if (pos >=0) var trash = this.splice (pos, 1);
 }
-tableau[0] = tableau[0].shuffle();
 function fillTable(){
+	tableau[0] = tableau[0].shuffle();
 	var emptyCases = false;
 	for (var i=1; i<9; i++){
 		var posI = i%3;
@@ -73,8 +70,9 @@ function fillTable(){
 }
 fillTable();
 // afficher les cases. garder certaines vides
+const cases = document.getElementsByTagName ('p');
 function showValue(){
-	if (Math.random() <0.6) return true;
+	if (Math.random() <0.4) return true;
 	else return false;
 }
 // interractivité

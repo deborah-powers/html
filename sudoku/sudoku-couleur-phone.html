@@ -3,6 +3,7 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
+	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
 <style type='text/css'>
 body { text-align: center; }
 div {
@@ -20,7 +21,7 @@ div {
 div.grille { aspect-ratio: 1; }
 div.choice {
 	height: 2em;
-	margin-top: 1em;
+	margin: 1em auto;
 }
 p, button {
 	box-sizing: border-box;
@@ -31,10 +32,6 @@ p, button {
 	border-style: solid;
 	outline: none;
 }
-p.fixe { background-image: radial-gradient(transparent 70%, #666); }
-p:focus, button:focus, p.current {
-	background-image: radial-gradient(#666 2%, transparent 50%);
-}
 p:nth-child(3n) { border-right-width: 4px; }
 p:nth-child(9n-8) { border-left-width: 4px; }
 p:nth-child(-n+9) { border-top-width: 4px; }
@@ -42,15 +39,30 @@ p:nth-child(27n-8), p:nth-child(27n-7), p:nth-child(27n-6),
 p:nth-child(27n-5), p:nth-child(27n-4), p:nth-child(27n-3),
 p:nth-child(27n-2), p:nth-child(27n-1), p:nth-child(27n)
 	{ border-bottom-width: 4px; }
-*.case-1 { background-color: #0EC; }
-*.case-2 { background-color: #09F; }
-*.case-3 { background-color: #96F; }
-*.case-4 { background-color: #F0F; }
-*.case-5 { background-color: #F69; }
-*.case-6 { background-color: #F93; }
-*.case-7 { background-color: #FC0; }
-*.case-8 { background-color: #CC0; }
-*.case-9 { background-color: #3C0; }
+button { font-size: inherit; }
+body > button {
+	min-width: 8em;
+	max-width: 50%;
+	background-color: #F93;
+	padding: 0.5em;
+}
+p.fixe {
+	background-image:
+		radial-gradient(circle at 0.1em 0.1em, #666 0.1em, transparent 0.1em),
+		radial-gradient(circle at 0.6em 0.6em, #666 0.1em, transparent 0.1em);
+	background-size: 1em 1em;
+	background-repeat: repeat;
+}
+p:focus, button:focus, p.current { background-image: radial-gradient(transparent 75%, #666); }
+*.case-1 { background-color: red; }
+*.case-2 { background-color: #96F; }
+*.case-3 { background-color: #06F; }
+*.case-4 { background-color: #0CC; }
+*.case-5 { background-color: #3C0; }
+*.case-6 { background-color: #CC0; }
+*.case-7 { background-color: #F93; }
+*.case-8 { background-color: #C66; }
+*.case-9 { background-color: #E0E; }
 </style></head><body>
 	<h1>grille de sudoku</h1>
 	<div class='grille'>
@@ -75,10 +87,9 @@ p:nth-child(27n-2), p:nth-child(27n-1), p:nth-child(27n)
 		<button onclick='selectValue(this)' class='case-8'></button>
 		<button onclick='selectValue(this)' class='case-9'></button>
 	</div>
+	<button onclick='newGrid()'>nouvelle grille</button>
+	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
-/*
-dépendances: list.js, sudoku.css, structure.css
-*/
 var tableau =[
 	[ '1', '2', '3', '4', '5', '6', '7', '8', '9' ],
 	[ [], [], [], [], [], [], [], [], [] ],
@@ -118,8 +129,8 @@ Array.prototype.remove = function (valeurCase){
 	const pos = this.indexOf (valeurCase);
 	if (pos >=0) var trash = this.splice (pos, 1);
 }
-tableau[0] = tableau[0].shuffle();
 function fillTable(){
+	tableau[0] = tableau[0].shuffle();
 	var emptyCases = false;
 	for (var i=1; i<9; i++){
 		var posI = i%3;
@@ -151,8 +162,9 @@ function fillTable(){
 }
 fillTable();
 // afficher les cases. garder certaines vides
+var cases = document.getElementsByTagName ('p');
 function showValue(){
-	if (Math.random() <0.6) return true;
+	if (Math.random() <0.4) return true;
 	else return false;
 }
 // interractivité
@@ -167,14 +179,20 @@ function selectCase (event){
 	currentCase = event.target;
 	currentCase.className = currentCase.className + 'current';
 }
-const cases = document.getElementsByTagName ('p');
 for (var i=0; i<9; i++){
 	for (var j=0; j<9; j++){
 		if (showValue()) cases[i*9+j].className = 'fixe case-' + tableau[i][j];
 		else cases[i*9+j].makeInterractive();
 }}
-function selectValue (button){
-	currentCase.className = 'interractive current '+ button.className;
-}
+function selectValue (button){ currentCase.className = 'interractive current '+ button.className; }
+function newGrid(){
+	fillTable();
+	const grille = document.body.getElementsByTagName ('div')[0];
+	grille.innerHTML = '<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>';
+	for (var i=0; i<9; i++){
+		for (var j=0; j<9; j++){
+			if (showValue()) cases[i*9+j].className = 'fixe case-' + tableau[i][j];
+			else cases[i*9+j].makeInterractive();
+}}}
 	</script>
 </body></html>

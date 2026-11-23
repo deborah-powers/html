@@ -3,11 +3,16 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'/>
 	<meta charset='utf-8'/>
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
-	<link rel='stylesheet' type='text/css' href='../../site-dp/library-css/structure.css'/>
-	<link rel='stylesheet' type='text/css' href='sudoku.css'/>
-</head><body>
+	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
+<style type='text/css'>
+	div {
+		max-width: 18cm;
+		font-size: 2em;
+	}
+	p { padding-top: 20%; }
+</style></head><body>
 	<h1>grille de sudoku</h1>
-	<div>
+	<div class='grille'>
 		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
@@ -18,9 +23,8 @@
 		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 		<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 	</div>
-	<script type='text/javascript' src='sudoku.js'></script>
+	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
-const cases = document.getElementsByTagName ('p');
 for (var i=0; i<9; i++){
 	for (var j=0; j<9; j++){
 		if (showValue()) cases[i*9+j].innerHTML = tableau[i][j];
