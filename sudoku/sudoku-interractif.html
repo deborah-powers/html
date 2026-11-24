@@ -9,18 +9,11 @@
 	span {
 		background-color: yellow;
 		display: inline-block;
-		line-height: 4px;
-		padding-top: 0.5em;
-	}
-	em {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-		font-size: 0.3em;
-		display: inline-block;
+		padding-top: 0.2em;
 	}
 	button { background-color: yellow; }
 	span.fixe { background-color: lightblue; }
+	span.fixing { font-size: 0.5em; }
 	span:focus, button:focus, span.current { background-color: pink; }
 	body > button { background-color: lightblue; }
 </style></head><body>
@@ -28,7 +21,8 @@
 	<div class='info'>
 		<p>Les cases fixes sont en bleu, les cases variables en jaune.</p>
 		<p>Cliquer sur une case jaune pour la sélectionner.</p>
-		<p>Cliquer sur la barre de boutons jaune pour choisir un chiffre.</p>
+		<p>Cliquer sur la barre de boutons jaune pour choisir un chiffre possible. Plusieurs chiffres peuvent être possibles en même temps.</p>
+		<p>Double-cliquer sur la barre de boutons jaune pour choisir un chiffre final.</p>
 	</div>
 	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
 		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -64,7 +58,15 @@ for (var i=0; i<9; i++){
 		}
 		else cases[i*9+j].makeInterractive();
 }}
-function selectValue (button){ currentCase.innerHTML = button.innerHTML; }
-function selectOption (button){ currentCase.innerHTML = currentCase.innerHTML + '<em>' + button.innerHTML + '</em>'; }
+function selectValue (button){
+	if (currentCase.className.includes ('fixing')) currentCase.classList.remove ('fixing');
+	currentCase.innerHTML = button.innerHTML;
+}
+function selectOption (button){
+	if (! currentCase.className.includes ('fixing')) currentCase.classList.add ('fixing');
+	if (currentCase.innerHTML.includes (button.innerHTML))
+		currentCase.innerHTML = currentCase.innerHTML.replace (" "+ button.innerHTML, "");
+	else currentCase.innerHTML = currentCase.innerHTML +" "+ button.innerHTML;
+}
 	</script>
 </body></html>

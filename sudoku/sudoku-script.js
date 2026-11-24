@@ -77,9 +77,9 @@ function showValue(){
 }
 // interractivité
 HTMLSpanElement.prototype.makeInterractive = function(){
-	this.className = 'interractive';
 	this.setAttribute ('tabindex', '1');
 	this.setAttribute ('role', 'button');
+	this.className = 'fixing';
 	this.addEventListener ('click', selectCase);
 }
 HTMLSpanElement.prototype.makeShowable = function (i,j){ console.log ('fonction basique'); }
@@ -87,6 +87,7 @@ var currentCase = null;
 function selectCase (event){
 	if (currentCase) currentCase.classList.remove ('current');
 	currentCase = event.target;
+	if (currentCase.tagName !== 'SPAN') currentCase = currentCase.parentElement;
 	currentCase.className = currentCase.className + ' current';
 }
 function newGrid(){
