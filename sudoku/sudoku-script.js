@@ -78,7 +78,7 @@ function showValue(){
 // interractivité
 HTMLSpanElement.prototype.makeInterractive = function(){
 	this.setAttribute ('tabindex', '1');
-	this.setAttribute ('role', 'button');
+//	this.setAttribute ('role', 'button');
 	this.className = 'fixing';
 	this.addEventListener ('click', selectCase);
 }

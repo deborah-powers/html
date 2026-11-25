@@ -5,7 +5,7 @@
 	<link rel='icon' type='image/svg+xml' href='../../site-dp/data/nounours-perso.svg'/>
 	<link rel='stylesheet' type='text/css' href='sudoku-style.css'/>
 <style type='text/css'>
-	div.grille, div.choice { font-size: 2em; }
+	div.grille, ul { font-size: 2em; }
 	span {
 		background-color: yellow;
 		display: inline-block;
@@ -18,35 +18,35 @@
 	body > button { background-color: lightblue; }
 </style></head><body>
 	<h1>Sudoku interractif</h1>
-	<div class='info'>
+	<div id='info'>
 		<p>Les cases fixes sont en bleu, les cases variables en jaune.</p>
-		<p>Cliquer sur une case jaune pour la sélectionner.</p>
-		<p>Cliquer sur la barre de boutons jaune pour choisir un chiffre possible. Plusieurs chiffres peuvent être possibles en même temps.</p>
+		<p>Cliquer sur une case vide pour la sélectionner.</p>
+		<p>Cliquer sur la barre de boutons pour choisir un chiffre possible. Plusieurs chiffres peuvent être possibles en même temps.</p>
 		<p>Double-cliquer sur la barre de boutons jaune pour choisir un chiffre final.</p>
 	</div>
-	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	<div class='grille' title='la grille' aria-describedby='info'>
+		<span aria-description='ligne 1 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 2 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 3 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 4 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 5 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 6 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 7 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 8 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 9 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
 	</div>
-	<div class='choice' title='choisir un numéro pour la case sélectionnée'>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>1</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>2</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>3</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>4</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>5</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>6</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>7</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>8</button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)'>9</button>
-	</div>
-	<button onclick='newGrid()'>nouvelle grille</button>
+	<ul title='choisir un numéro'>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>1</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>2</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>3</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>4</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>5</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>6</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>7</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>8</button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)'>9</button></li>
+	</ul>
+	<button onclick='newGrid()'>nouvelle grille</button></li>
 	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
 HTMLSpanElement.prototype.makeShowable = function (i,j){ this.innerHTML = tableau[i][j]; }
