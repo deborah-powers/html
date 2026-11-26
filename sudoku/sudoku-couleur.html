@@ -29,35 +29,35 @@ span:focus, button:focus, span.current { background-image: radial-gradient(trans
 *.couleur-9 { background-color: #E0E; }
 </style></head><body>
 	<h1>Sudoku en couleur</h1>
-	<div class='info'>
+	<div id='info'>
 		<p>Une grille de sudoku où les nombres sont remplacés par des couleurs.</p>
 		<p>Les cases fixes sont marquées par des pointillés.</p>
 		<p>Cliquer sur une case unie pour la sélectionner.</p>
 		<p>Cliquer sur la barre de boutons pour choisir une couleur possible. Plusieurs couleurs peuvent être possibles en même temps.</p>
 		<p>Double-cliquer sur la barre de boutons pour choisir une couleur finale.</p>
 	</div>
-	<div class='grille' title='la grille. sélectionner une case en cliquant dessus'>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	<div class='grille' title='la grille. sélectionner une case en cliquant dessus' aria-describedby='info'>
+		<span aria-description='ligne 1 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 2 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 3 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 4 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 5 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 6 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 7 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 8 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
+		<span aria-description='ligne 9 colonne 1'></span><span aria-description='colonne 2'></span><span aria-description='colonne 3'></span><span aria-description='colonne 4'></span><span aria-description='colonne 5'></span><span aria-description='colonne 6'></span><span aria-description='colonne 7'></span><span aria-description='colonne 8'></span><span aria-description='colonne 9'></span>
 	</div>
-	<div class='choice' title='choisir une couleur pour la case sélectionnée'>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-1' aria-label='couleur 1'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-2' aria-label='couleur 2'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-3' aria-label='couleur 3'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-4' aria-label='couleur 4'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-5' aria-label='couleur 5'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-6' aria-label='couleur 6'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-7' aria-label='couleur 7'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-8' aria-label='couleur 8'></button>
-		<button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-9' aria-label='couleur 9'></button>
-	</div>
+	<ul title='choisir une couleur'>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-1' aria-label='couleur 1'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-2' aria-label='couleur 2'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-3' aria-label='couleur 3'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-4' aria-label='couleur 4'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-5' aria-label='couleur 5'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-6' aria-label='couleur 6'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-7' aria-label='couleur 7'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-8' aria-label='couleur 8'></button></li>
+		<li><button ondblclick='selectValue(this)' onclick='selectOption(this)' class='couleur-9' aria-label='couleur 9'></button></li>
+	</ul>
 	<button onclick='newGrid()'>nouvelle grille</button>
 	<script type='text/javascript' src='sudoku-script.js'></script>
 	<script type='text/javascript'>
